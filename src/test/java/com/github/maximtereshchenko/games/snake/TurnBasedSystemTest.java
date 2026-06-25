@@ -17,6 +17,7 @@ final class TurnBasedSystemTest {
     private final TurnBasedSystem turnBasedSystem = new TurnBasedSystem(
         dominion,
         scheduler,
+        new EntityFactory(dominion),
         1
     );
 

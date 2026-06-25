@@ -7,11 +7,18 @@ final class TurnBasedSystem implements Runnable {
 
     private final Dominion dominion;
     private final Scheduler scheduler;
+    private final EntityFactory entityFactory;
     private final double turnLengthSeconds;
 
-    TurnBasedSystem(Dominion dominion, Scheduler scheduler, double turnLengthSeconds) {
+    TurnBasedSystem(
+        Dominion dominion,
+        Scheduler scheduler,
+        EntityFactory entityFactory,
+        double turnLengthSeconds
+    ) {
         this.dominion = dominion;
         this.scheduler = scheduler;
+        this.entityFactory = entityFactory;
         this.turnLengthSeconds = turnLengthSeconds;
     }
 
@@ -21,7 +28,7 @@ final class TurnBasedSystem implements Runnable {
             var stopwatch = result.comp();
             stopwatch.seconds += scheduler.deltaTime();
             if (stopwatch.seconds > turnLengthSeconds) {
-                dominion.createEntity(Event.INSTANCE, TurnStarted.INSTANCE);
+                entityFactory.createTurnStartedEvent();
                 stopwatch.seconds -= turnLengthSeconds;
             }
         }

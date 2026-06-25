@@ -22,7 +22,12 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         fitViewport = new FitViewport(10, 10);
         var dominion = Dominion.create();
         scheduler = dominion.createScheduler();
-        scheduler.schedule(new TurnBasedSystem(dominion, scheduler, 0.5));
+        scheduler.schedule(new TurnBasedSystem(
+            dominion,
+            scheduler,
+            new EntityFactory(dominion),
+            0.5
+        ));
         renderingSystem = new StandaloneRenderingSystem(
             fitViewport,
             new ShapeRenderer(),
