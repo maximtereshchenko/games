@@ -14,21 +14,22 @@ import static org.mockito.Mockito.*;
 
 final class StandaloneRenderingSystemTest {
 
+    private final FitViewport fitViewport = spy(new FitViewport(1, 1));
+    private final ShapeRenderer shapeRenderer = mock(ShapeRenderer.class);
+    private final Dominion dominion = Dominion.create();
+    private final AtomicBoolean screenCleared = new AtomicBoolean(false);
+    private final StandaloneRenderingSystem standaloneRenderingSystem = new StandaloneRenderingSystem(
+        fitViewport,
+        shapeRenderer,
+        dominion,
+        () -> screenCleared.set(true)
+    );
+
     @Test
     void givenEntity_thenEntityRendered() {
-        var fitViewport = spy(new FitViewport(1, 1));
         doNothing().when(fitViewport).apply();
-        var shapeRenderer = mock(ShapeRenderer.class);
-        var dominion = Dominion.create();
         dominion.createEntity(Color.BLACK, new Point(1, 1));
-        var screenCleared = new AtomicBoolean(false);
-        new StandaloneRenderingSystem(
-            fitViewport,
-            shapeRenderer,
-            dominion,
-            () -> screenCleared.set(true)
-        )
-            .render();
+        standaloneRenderingSystem.render();
         assertThat(screenCleared).isTrue();
         verify(fitViewport).apply();
         verify(fitViewport).getCamera();

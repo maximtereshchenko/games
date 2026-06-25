@@ -23,7 +23,7 @@ final class TurnBasedSystemTest {
 
     @BeforeEach
     void setUp() {
-        dominion.createEntity(new Stopwatch());
+        new EntityFactory(dominion).createStopwatch();
     }
 
     @Test

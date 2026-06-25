@@ -15,6 +15,10 @@ final class EntityFactory {
         this.dominion = dominion;
     }
 
+    void createStopwatch() {
+        dominion.createEntity(new Stopwatch());
+    }
+
     void createTurnStartedEvent() {
         dominion.createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
     }
