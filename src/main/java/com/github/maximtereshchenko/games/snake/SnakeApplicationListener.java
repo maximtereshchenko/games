@@ -5,36 +5,40 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.api.Scheduler;
 
 final class SnakeApplicationListener extends ApplicationAdapter {
 
-    private ShapeRenderer shapeRenderer;
-    private Viewport viewport;
+    private FitViewport fitViewport;
+    private Scheduler scheduler;
+    private StandaloneRenderingSystem renderingSystem;
 
     @Override
     public void create() {
-        shapeRenderer = new ShapeRenderer();
-        viewport = new FitViewport(10, 10);
+        fitViewport = new FitViewport(10, 10);
+        var dominion = Dominion.create();
+        scheduler = dominion.createScheduler();
+        renderingSystem = new StandaloneRenderingSystem(
+            fitViewport,
+            new ShapeRenderer(),
+            dominion,
+            () -> ScreenUtils.clear(Color.BLACK)
+        );
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height, true);
+        fitViewport.update(width, height, true);
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(Color.BLACK);
-        viewport.apply();
-        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.rect(0, 0, 10, 10);
-        shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(1, 1, 1, 1);
-        shapeRenderer.rect(2, 1, 1, 1);
-        shapeRenderer.rect(3, 1, 1, 1);
-        shapeRenderer.end();
+        renderingSystem.render();
+    }
+
+    @Override
+    public void dispose() {
+        scheduler.shutDown();
     }
 }
