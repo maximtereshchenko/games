@@ -1,36 +1,21 @@
 package com.github.maximtereshchenko.games.snake;
 
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Scheduler;
 
-final class TurnBasedSystem implements Runnable {
+abstract class TurnBasedSystem implements Runnable {
 
     private final Dominion dominion;
-    private final Scheduler scheduler;
-    private final EntityFactory entityFactory;
-    private final double turnLengthSeconds;
 
-    TurnBasedSystem(
-        Dominion dominion,
-        Scheduler scheduler,
-        EntityFactory entityFactory,
-        double turnLengthSeconds
-    ) {
+    TurnBasedSystem(Dominion dominion) {
         this.dominion = dominion;
-        this.scheduler = scheduler;
-        this.entityFactory = entityFactory;
-        this.turnLengthSeconds = turnLengthSeconds;
     }
 
     @Override
-    public void run() {
-        for (var result : dominion.findEntitiesWith(Stopwatch.class)) {
-            var stopwatch = result.comp();
-            stopwatch.seconds += scheduler.deltaTime();
-            if (stopwatch.seconds > turnLengthSeconds) {
-                entityFactory.createTurnStartedEvent();
-                stopwatch.seconds -= turnLengthSeconds;
-            }
+    public final void run() {
+        if (dominion.findCompositionsWith(TurnStarted.class).iterator().hasNext()) {
+            onTurnStarted();
         }
     }
+
+    abstract void onTurnStarted();
 }

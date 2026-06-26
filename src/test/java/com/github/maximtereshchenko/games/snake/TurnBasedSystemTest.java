@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.snake;
 
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
 import dev.dominion.ecs.api.Scheduler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ final class TurnBasedSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final Scheduler scheduler = mock(Scheduler.class);
-    private final TurnBasedSystem turnBasedSystem = new TurnBasedSystem(
+    private final TurnStartSystem turnBasedSystem = new TurnStartSystem(
         dominion,
         scheduler,
         new EntityFactory(dominion),
@@ -30,11 +29,10 @@ final class TurnBasedSystemTest {
     void givenDeltaLessThanTurnLength_thenStopwatchIncremented() {
         when(scheduler.deltaTime()).thenReturn(0.5);
         turnBasedSystem.run();
-        assertThat(dominion.findEntitiesWith(Stopwatch.class))
-            .extracting(Results.With1::comp)
+        assertThat(dominion.findCompositionsWith(Stopwatch.class))
             .extracting(stopwatch -> stopwatch.seconds)
             .containsExactly(0.5);
-        assertThat(dominion.findEntitiesWith(Event.class, TurnStarted.class))
+        assertThat(dominion.findCompositionsWith(Event.class, TurnStarted.class))
             .isEmpty();
     }
 
@@ -42,11 +40,10 @@ final class TurnBasedSystemTest {
     void givenStopwatchGreaterThatTurnLength_thenTurnStartedEvent() {
         when(scheduler.deltaTime()).thenReturn(1.5);
         turnBasedSystem.run();
-        assertThat(dominion.findEntitiesWith(Stopwatch.class))
-            .extracting(Results.With1::comp)
+        assertThat(dominion.findCompositionsWith(Stopwatch.class))
             .extracting(stopwatch -> stopwatch.seconds)
             .containsExactly(0.5);
-        assertThat(dominion.findEntitiesWith(Event.class, TurnStarted.class))
+        assertThat(dominion.findCompositionsWith(Event.class, TurnStarted.class))
             .hasSize(1);
     }
 }

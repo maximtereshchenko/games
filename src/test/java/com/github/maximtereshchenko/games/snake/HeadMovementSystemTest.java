@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.awt.*;
+import java.awt.Point;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,7 +24,7 @@ final class HeadMovementSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         entityFactory.createHead(HeadDirection.UP, new Point());
         headMovementSystem.run();
-        assertThat(dominion.findEntitiesWith(HeadDirection.class, Point.class))
+        assertThat(dominion.findCompositionsWith(HeadDirection.class, Point.class))
             .extracting(Results.With2::comp2)
             .containsExactly(new Point());
     }
@@ -52,7 +52,7 @@ final class HeadMovementSystemTest {
         entityFactory.createHead(headDirection, new Point(initialX, initialY));
         entityFactory.createTurnStartedEvent();
         headMovementSystem.run();
-        assertThat(dominion.findEntitiesWith(HeadDirection.class, Point.class))
+        assertThat(dominion.findCompositionsWith(HeadDirection.class, Point.class))
             .extracting(Results.With2::comp2)
             .containsExactly(new Point(expectedX, expectedY));
     }

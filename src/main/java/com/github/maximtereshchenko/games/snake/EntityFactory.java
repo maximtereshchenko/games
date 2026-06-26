@@ -3,7 +3,7 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.graphics.Color;
 import dev.dominion.ecs.api.Dominion;
 
-import java.awt.*;
+import java.awt.Point;
 
 final class EntityFactory {
 
@@ -25,5 +25,9 @@ final class EntityFactory {
 
     void createHead(HeadDirection headDirection, Point point) {
         dominion.createEntity(headDirection, point, DARK_GREEN);
+    }
+
+    void createSegment(Point point) {
+        dominion.createEntity(Segment.INSTANCE, point, Color.GREEN);
     }
 }

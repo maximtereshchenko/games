@@ -3,24 +3,22 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 
-import java.awt.*;
+import java.awt.Point;
 
-final class HeadMovementSystem implements Runnable {
+final class HeadMovementSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
     private final FitViewport fitViewport;
 
     HeadMovementSystem(Dominion dominion, FitViewport fitViewport) {
+        super(dominion);
         this.dominion = dominion;
         this.fitViewport = fitViewport;
     }
 
     @Override
-    public void run() {
-        if (!dominion.findEntitiesWith(TurnStarted.class).iterator().hasNext()) {
-            return;
-        }
-        for (var result : dominion.findEntitiesWith(HeadDirection.class, Point.class)) {
+    void onTurnStarted() {
+        for (var result : dominion.findCompositionsWith(HeadDirection.class, Point.class)) {
             var point = result.comp2();
             var yMax = (int) fitViewport.getWorldHeight();
             var xMax = (int) fitViewport.getWorldWidth();

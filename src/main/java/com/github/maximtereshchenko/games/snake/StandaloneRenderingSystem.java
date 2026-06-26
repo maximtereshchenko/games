@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 
-import java.awt.*;
+import java.awt.Point;
 
 final class StandaloneRenderingSystem {
 
@@ -38,7 +38,7 @@ final class StandaloneRenderingSystem {
             fitViewport.getScreenWidth(),
             fitViewport.getScreenHeight()
         );
-        for (var result : dominion.findEntitiesWith(Color.class, Point.class)) {
+        for (var result : dominion.findCompositionsWith(Color.class, Point.class)) {
             shapeRenderer.setColor(result.comp1());
             var point = result.comp2();
             shapeRenderer.rect(point.x, point.y, 1, 1);

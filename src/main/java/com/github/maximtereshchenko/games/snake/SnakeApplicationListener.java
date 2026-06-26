@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Scheduler;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.concurrent.TimeUnit;
 
 final class SnakeApplicationListener extends ApplicationAdapter {
@@ -26,7 +26,8 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         entityFactory.createStopwatch();
         entityFactory.createHead(HeadDirection.RIGHT, new Point(0, 0));
         scheduler = dominion.createScheduler();
-        scheduler.schedule(new TurnBasedSystem(dominion, scheduler, entityFactory, 0.5));
+        scheduler.schedule(new TurnStartSystem(dominion, scheduler, entityFactory, 0.5));
+        scheduler.schedule(new BodyPrependingSystem(dominion, entityFactory));
         scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
         scheduler.schedule(new EventRemovalSystem(dominion));
         renderingSystem = new StandaloneRenderingSystem(

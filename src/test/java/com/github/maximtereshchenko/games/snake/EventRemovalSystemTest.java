@@ -15,6 +15,6 @@ final class EventRemovalSystemTest {
     void givenEvent_thenEventRemoved() {
         entityFactory.createTurnStartedEvent();
         eventRemovalSystem.run();
-        assertThat(dominion.findEntitiesWith(Event.class)).isEmpty();
+        assertThat(dominion.findCompositionsWith(Event.class)).isEmpty();
     }
 }
