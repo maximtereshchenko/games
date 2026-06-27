@@ -8,13 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 final class EventRemovalSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final EntityFactory entityFactory = new EntityFactory(dominion);
     private final EventRemovalSystem eventRemovalSystem = new EventRemovalSystem(dominion);
 
     @Test
     void givenEvent_thenEventRemoved() {
-        entityFactory.createTurnStartedEvent();
+        dominion.createEntity(TurnStarted.INSTANCE);
         eventRemovalSystem.run();
-        assertThat(dominion.findCompositionsWith(Event.class)).isEmpty();
+        assertThat(dominion.findEntitiesWith(Event.class)).isEmpty();
     }
 }

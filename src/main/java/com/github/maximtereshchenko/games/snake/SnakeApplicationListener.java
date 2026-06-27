@@ -20,14 +20,17 @@ final class SnakeApplicationListener extends ApplicationAdapter {
 
     @Override
     public void create() {
-        fitViewport = new FitViewport(10, 10);
+        fitViewport = new FitViewport(5, 5);
         var dominion = Dominion.create();
-        var entityFactory = new EntityFactory(dominion);
-        entityFactory.createStopwatch();
-        entityFactory.createHead(HeadDirection.RIGHT, new Point(0, 0));
+        dominion.createEntity(new Stopwatch());
+        dominion.createEntity(
+            new Head(Head.Direction.RIGHT),
+            Tail.INSTANCE,
+            new Point(0, 0),
+            Colors.HEAD
+        );
         scheduler = dominion.createScheduler();
-        scheduler.schedule(new TurnStartSystem(dominion, scheduler, entityFactory, 0.5));
-        scheduler.schedule(new BodyPrependingSystem(dominion, entityFactory));
+        scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.3));
         scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
         scheduler.schedule(new EventRemovalSystem(dominion));
         renderingSystem = new StandaloneRenderingSystem(

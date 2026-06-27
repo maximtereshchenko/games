@@ -7,18 +7,15 @@ final class TurnStartSystem implements Runnable {
 
     private final Dominion dominion;
     private final Scheduler scheduler;
-    private final EntityFactory entityFactory;
     private final double turnLengthSeconds;
 
     TurnStartSystem(
         Dominion dominion,
         Scheduler scheduler,
-        EntityFactory entityFactory,
         double turnLengthSeconds
     ) {
         this.dominion = dominion;
         this.scheduler = scheduler;
-        this.entityFactory = entityFactory;
         this.turnLengthSeconds = turnLengthSeconds;
     }
 
@@ -27,7 +24,7 @@ final class TurnStartSystem implements Runnable {
         for (var stopwatch : dominion.findCompositionsWith(Stopwatch.class)) {
             stopwatch.seconds += scheduler.deltaTime();
             if (stopwatch.seconds > turnLengthSeconds) {
-                entityFactory.createTurnStartedEvent();
+                dominion.createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
                 stopwatch.seconds -= turnLengthSeconds;
             }
         }

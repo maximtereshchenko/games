@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.snake;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 
@@ -18,17 +19,35 @@ final class HeadMovementSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var result : dominion.findCompositionsWith(HeadDirection.class, Point.class)) {
-            var point = result.comp2();
-            var yMax = (int) fitViewport.getWorldHeight();
-            var xMax = (int) fitViewport.getWorldWidth();
-            switch (result.comp1()) {
-                case UP -> point.y = adjusted(point.y + 1, yMax);
-                case DOWN -> point.y = adjusted(point.y - 1, yMax);
-                case LEFT -> point.x = adjusted(point.x - 1, xMax);
-                case RIGHT -> point.x = adjusted(point.x + 1, xMax);
-            }
+        for (var result : dominion.findEntitiesWith(Head.class, Point.class, Color.class)) {
+            var currentHead = result.entity();
+            currentHead.removeType(Head.class);
+            currentHead.removeType(Color.class);
+            currentHead.add(
+                    new Next(
+                        dominion.createEntity(
+                            result.comp1(),
+                            nextHeadPoint(result.comp2(), result.comp1().direction),
+                            new Previous(currentHead),
+                            result.comp3()
+                        )
+                    )
+                )
+                .add(Colors.SEGMENT);
         }
+    }
+
+    private Point nextHeadPoint(Point point, Head.Direction direction) {
+        var nextHeadPoint = new Point(point);
+        var yMax = (int) fitViewport.getWorldHeight();
+        var xMax = (int) fitViewport.getWorldWidth();
+        switch (direction) {
+            case Head.Direction.UP -> nextHeadPoint.y = adjusted(nextHeadPoint.y + 1, yMax);
+            case Head.Direction.DOWN -> nextHeadPoint.y = adjusted(nextHeadPoint.y - 1, yMax);
+            case Head.Direction.LEFT -> nextHeadPoint.x = adjusted(nextHeadPoint.x - 1, xMax);
+            case Head.Direction.RIGHT -> nextHeadPoint.x = adjusted(nextHeadPoint.x + 1, xMax);
+        }
+        return nextHeadPoint;
     }
 
     private int adjusted(int value, int max) {

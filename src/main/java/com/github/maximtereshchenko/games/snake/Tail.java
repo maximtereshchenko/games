@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snake;
 
-enum Segment {
+enum Tail {
 
     INSTANCE
 }
