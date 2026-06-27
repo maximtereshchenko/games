@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -28,15 +27,9 @@ final class HeadMovementSystemTest {
             new Point(0, 0),
             Colors.HEAD
         );
+        var before = dominion.findAllEntities();
         headMovementSystem.run();
-        assertThat(dominion.findEntitiesWith(Head.class, Tail.class, Point.class, Color.class))
-            .singleElement()
-            .extracting(
-                result -> result.comp1().direction,
-                Results.With4::comp3,
-                Results.With4::comp4
-            )
-            .containsExactly(Head.Direction.RIGHT, new Point(0, 0), Colors.HEAD);
+        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }
 
     @ParameterizedTest

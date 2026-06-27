@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.snake;
 
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 
 import java.awt.Point;
@@ -16,10 +15,9 @@ final class TailRemovalSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(Tail.INSTANCE, new Point(0, 0));
+        var before = dominion.findAllEntities();
         tailRemovalSystem.run();
-        assertThat(dominion.findEntitiesWith(Tail.class, Point.class))
-            .extracting(Results.With2::comp2)
-            .containsExactly(new Point(0, 0));
+        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }
 
     @Test

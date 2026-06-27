@@ -10,6 +10,7 @@ import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Scheduler;
 
 import java.awt.Point;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 final class SnakeApplicationListener extends ApplicationAdapter {
@@ -31,6 +32,14 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         );
         scheduler = dominion.createScheduler();
         scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.3));
+        scheduler.schedule(
+            new AppleSpawningSystem(
+                dominion,
+                ThreadLocalRandom.current(),
+                fitViewport,
+                1
+            )
+        );
         scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
         scheduler.schedule(new TailRemovalSystem(dominion));
         scheduler.schedule(new EventRemovalSystem(dominion));
