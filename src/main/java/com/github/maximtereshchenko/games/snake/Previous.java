@@ -9,8 +9,4 @@ final class Previous {
     Previous(Entity entity) {
         this.entity = entity;
     }
-
-    Previous() {
-        this(null);
-    }
 }

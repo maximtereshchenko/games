@@ -100,15 +100,18 @@ final class HeadMovementSystemTest {
     void givenTail_thenSegmentCreated() {
         var head = dominion.createEntity(
             new Head(Head.Direction.RIGHT),
-            new Previous(),
             new Point(1, 0),
             Colors.HEAD
         );
-        head.get(Previous.class).entity = dominion.createEntity(
-            Tail.INSTANCE,
-            new Next(head),
-            new Point(0, 0),
-            Colors.SEGMENT
+        head.add(
+            new Previous(
+                dominion.createEntity(
+                    Tail.INSTANCE,
+                    new Next(head),
+                    new Point(0, 0),
+                    Colors.SEGMENT
+                )
+            )
         );
         dominion.createEntity(TurnStarted.INSTANCE);
         headMovementSystem.run();
