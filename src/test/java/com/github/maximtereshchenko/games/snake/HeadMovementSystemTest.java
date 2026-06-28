@@ -27,7 +27,7 @@ final class HeadMovementSystemTest {
             new Point(0, 0),
             Colors.HEAD
         );
-        var before = dominion.findAllEntities();
+        var before = dominion.findAllEntities().stream().toList();
         headMovementSystem.run();
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }

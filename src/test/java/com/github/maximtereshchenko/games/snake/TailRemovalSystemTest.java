@@ -15,7 +15,7 @@ final class TailRemovalSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(Tail.INSTANCE, new Point(0, 0));
-        var before = dominion.findAllEntities();
+        var before = dominion.findAllEntities().stream().toList();
         tailRemovalSystem.run();
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }

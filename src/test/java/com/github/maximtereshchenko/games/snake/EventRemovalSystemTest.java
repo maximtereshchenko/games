@@ -11,8 +11,16 @@ final class EventRemovalSystemTest {
     private final EventRemovalSystem eventRemovalSystem = new EventRemovalSystem(dominion);
 
     @Test
+    void givenNoTurnStartedEvent_thenNoChanges() {
+        dominion.createEntity(Event.INSTANCE);
+        var before = dominion.findAllEntities().stream().toList();
+        eventRemovalSystem.run();
+        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+    }
+
+    @Test
     void givenEvent_thenEventRemoved() {
-        dominion.createEntity(TurnStarted.INSTANCE);
+        dominion.createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
         eventRemovalSystem.run();
         assertThat(dominion.findEntitiesWith(Event.class)).isEmpty();
     }

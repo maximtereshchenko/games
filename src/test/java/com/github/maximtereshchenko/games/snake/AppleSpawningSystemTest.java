@@ -23,7 +23,7 @@ final class AppleSpawningSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        var before = dominion.findAllEntities();
+        var before = dominion.findAllEntities().stream().toList();
         appleSpawningSystem.run();
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }

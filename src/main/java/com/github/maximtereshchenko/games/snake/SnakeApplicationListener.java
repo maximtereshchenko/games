@@ -32,6 +32,9 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         );
         scheduler = dominion.createScheduler();
         scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.3));
+        scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
+        scheduler.schedule(new AppleEatingSystem(dominion));
+        scheduler.schedule(new TailRemovalSystem(dominion));
         scheduler.schedule(
             new AppleSpawningSystem(
                 dominion,
@@ -40,8 +43,6 @@ final class SnakeApplicationListener extends ApplicationAdapter {
                 1
             )
         );
-        scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
-        scheduler.schedule(new TailRemovalSystem(dominion));
         scheduler.schedule(new EventRemovalSystem(dominion));
         renderingSystem = new StandaloneRenderingSystem(
             fitViewport,
