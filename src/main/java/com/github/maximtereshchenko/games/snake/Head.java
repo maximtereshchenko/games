@@ -2,10 +2,20 @@ package com.github.maximtereshchenko.games.snake;
 
 final class Head {
 
-    Direction direction;
+    Direction current;
+    Direction next;
 
-    Head(Direction direction) {
-        this.direction = direction;
+    Head(Direction current, Direction next) {
+        this.current = current;
+        this.next = next;
+    }
+
+    Head(Direction current) {
+        this(current, current);
+    }
+
+    Head() {
+        this(Head.Direction.RIGHT);
     }
 
     enum Direction {

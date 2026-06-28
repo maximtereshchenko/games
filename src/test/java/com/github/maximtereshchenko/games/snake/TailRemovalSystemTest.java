@@ -26,7 +26,7 @@ final class TailRemovalSystemTest {
         tail.add(
             new Next(
                 dominion.createEntity(
-                    new Head(Head.Direction.RIGHT),
+                    new Head(),
                     new Point(1, 0),
                     new Previous(tail)
                 )
@@ -45,7 +45,7 @@ final class TailRemovalSystemTest {
         tail.add(
             new Next(
                 dominion.createEntity(
-                    new Head(Head.Direction.RIGHT),
+                    new Head(),
                     new Point(1, 0),
                     new Previous(tail)
                 )
@@ -63,7 +63,6 @@ final class TailRemovalSystemTest {
             .singleElement()
             .satisfies(
                 result -> assertThat(result.entity().has(Previous.class)).isFalse(),
-                result -> assertThat(result.comp1().direction).isEqualTo(Head.Direction.RIGHT),
                 result -> assertThat(result.comp3()).isEqualTo(new Point(1, 0))
             );
     }

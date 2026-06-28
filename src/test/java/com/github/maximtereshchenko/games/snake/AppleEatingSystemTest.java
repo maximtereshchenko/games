@@ -14,7 +14,7 @@ final class AppleEatingSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new Head(Head.Direction.RIGHT), new Point(0, 0));
+        dominion.createEntity(new Head(), new Point(0, 0));
         dominion.createEntity(Apple.INSTANCE, new Point(0, 0));
         var before = dominion.findAllEntities().stream().toList();
         appleEatingSystem.run();
@@ -23,7 +23,7 @@ final class AppleEatingSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenAppleEaten() {
-        dominion.createEntity(new Head(Head.Direction.RIGHT), new Point(0, 0));
+        dominion.createEntity(new Head(), new Point(0, 0));
         dominion.createEntity(Apple.INSTANCE, new Point(0, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         appleEatingSystem.run();

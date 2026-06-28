@@ -26,7 +26,7 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         dominion.createEntity(game);
         dominion.createEntity(new Stopwatch());
         dominion.createEntity(
-            new Head(Head.Direction.RIGHT),
+            new Head(),
             Tail.INSTANCE,
             new Point(0, 0),
             Colors.HEAD

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -46,17 +47,28 @@ final class InputSystemTest {
     @ParameterizedTest
     @MethodSource("directionChangedArguments")
     void givenKeyPressed_thenDirectionChanged(
-        Head.Direction initial,
+        Head.Direction current,
         int keyPressed,
-        Head.Direction expected
+        Head.Direction next
     ) {
-        dominion.createEntity(new Head(initial));
+        dominion.createEntity(new Head(current));
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
         inputSystem.run();
         assertThat(dominion.findCompositionsWith(Head.class))
             .singleElement()
-            .extracting(head -> head.direction)
-            .isEqualTo(expected);
+            .extracting(head -> head.current, head -> head.next)
+            .containsExactly(current, next);
+    }
+
+    @Test
+    void givenNextDirectionOpposite_thenDirectionChanged() {
+        dominion.createEntity(new Head(Head.Direction.UP, Head.Direction.RIGHT));
+        when(Gdx.input.isKeyPressed(Input.Keys.A)).thenReturn(true);
+        inputSystem.run();
+        assertThat(dominion.findCompositionsWith(Head.class))
+            .singleElement()
+            .extracting(head -> head.current, head -> head.next)
+            .containsExactly(Head.Direction.UP, Head.Direction.LEFT);
     }
 
     @ParameterizedTest
@@ -70,7 +82,7 @@ final class InputSystemTest {
         inputSystem.run();
         assertThat(dominion.findCompositionsWith(Head.class))
             .singleElement()
-            .extracting(head -> head.direction)
-            .isEqualTo(direction);
+            .extracting(head -> head.current, head -> head.next)
+            .containsExactly(direction, direction);
     }
 }

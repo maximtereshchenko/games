@@ -21,13 +21,14 @@ final class HeadMovementSystem extends TurnBasedSystem {
     void onTurnStarted() {
         for (var result : dominion.findEntitiesWith(Head.class, Point.class, Color.class)) {
             var currentHead = result.entity();
+            var head = result.comp1();
             currentHead.removeType(Head.class);
             currentHead.removeType(Color.class);
             currentHead.add(
                     new Next(
                         dominion.createEntity(
-                            result.comp1(),
-                            nextHeadPoint(result.comp2(), result.comp1().direction),
+                            new Head(head.next),
+                            nextHeadPoint(result.comp2(), head.next),
                             new Previous(currentHead),
                             result.comp3()
                         )
