@@ -2,9 +2,7 @@ package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Scheduler;
@@ -31,6 +29,7 @@ final class SnakeApplicationListener extends ApplicationAdapter {
             Colors.HEAD
         );
         scheduler = dominion.createScheduler();
+        scheduler.schedule(new InputSystem(dominion));
         scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.3));
         scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
         scheduler.schedule(new AppleEatingSystem(dominion));
@@ -47,8 +46,7 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         renderingSystem = new StandaloneRenderingSystem(
             fitViewport,
             new ShapeRenderer(),
-            dominion,
-            () -> ScreenUtils.clear(Color.BLACK)
+            dominion
         );
     }
 

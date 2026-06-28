@@ -1,15 +1,16 @@
 package com.github.maximtereshchenko.games.snake;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.Point;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 final class StandaloneRenderingSystemTest {
@@ -17,20 +18,24 @@ final class StandaloneRenderingSystemTest {
     private final FitViewport fitViewport = spy(new FitViewport(1, 1));
     private final ShapeRenderer shapeRenderer = mock(ShapeRenderer.class);
     private final Dominion dominion = Dominion.create();
-    private final AtomicBoolean screenCleared = new AtomicBoolean(false);
     private final StandaloneRenderingSystem standaloneRenderingSystem = new StandaloneRenderingSystem(
         fitViewport,
         shapeRenderer,
-        dominion,
-        () -> screenCleared.set(true)
+        dominion
     );
+
+    @BeforeEach
+    void setUp() {
+        Gdx.gl = mock(GL20.class);
+    }
 
     @Test
     void givenEntity_thenEntityRendered() {
         doNothing().when(fitViewport).apply();
         dominion.createEntity(Color.BLACK, new Point(1, 1));
         standaloneRenderingSystem.render();
-        assertThat(screenCleared).isTrue();
+        verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
+        verify(Gdx.gl).glClear(anyInt());
         verify(fitViewport).apply();
         verify(fitViewport).getCamera();
         verify(shapeRenderer).setProjectionMatrix(fitViewport.getCamera().combined);
