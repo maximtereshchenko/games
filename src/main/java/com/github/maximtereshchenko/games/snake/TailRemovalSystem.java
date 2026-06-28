@@ -13,6 +13,9 @@ final class TailRemovalSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
+        if (dominion.findEntitiesWith(AppleEaten.class).iterator().hasNext()) {
+            return;
+        }
         for (var result : dominion.findEntitiesWith(Tail.class, Next.class)) {
             dominion.deleteEntity(result.entity());
             var next = result.comp2().entity;

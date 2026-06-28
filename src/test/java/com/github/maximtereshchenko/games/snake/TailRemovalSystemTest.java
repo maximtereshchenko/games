@@ -21,6 +21,25 @@ final class TailRemovalSystemTest {
     }
 
     @Test
+    void givenAppleEaten_thenNoChanges() {
+        var tail = dominion.createEntity(Tail.INSTANCE, new Point(0, 0));
+        tail.add(
+            new Next(
+                dominion.createEntity(
+                    new Head(Head.Direction.RIGHT),
+                    new Point(1, 0),
+                    new Previous(tail)
+                )
+            )
+        );
+        dominion.createEntity(AppleEaten.INSTANCE);
+        dominion.createEntity(TurnStarted.INSTANCE);
+        var before = dominion.findAllEntities().stream().toList();
+        tailRemovalSystem.run();
+        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+    }
+
+    @Test
     void givenTurnStartedEvent_thenTailRemoved() {
         var tail = dominion.createEntity(Tail.INSTANCE, new Point(0, 0));
         tail.add(
