@@ -9,15 +9,15 @@ import java.util.Map;
 final class InputSystem implements Runnable {
 
     private final Dominion dominion;
-    private final Map<Integer, Head.Direction> directions;
+    private final Map<Integer, Direction> directions;
 
     InputSystem(Dominion dominion) {
         this.dominion = dominion;
         this.directions = Map.of(
-            Input.Keys.W, Head.Direction.UP,
-            Input.Keys.S, Head.Direction.DOWN,
-            Input.Keys.A, Head.Direction.LEFT,
-            Input.Keys.D, Head.Direction.RIGHT
+            Input.Keys.W, Direction.UP,
+            Input.Keys.S, Direction.DOWN,
+            Input.Keys.A, Direction.LEFT,
+            Input.Keys.D, Direction.RIGHT
         );
     }
 
@@ -25,10 +25,10 @@ final class InputSystem implements Runnable {
     public void run() {
         for (var entry : directions.entrySet()) {
             if (Gdx.input.isKeyPressed(entry.getKey())) {
-                for (var head : dominion.findCompositionsWith(Head.class)) {
+                for (var result : dominion.findCompositionsWith(CurrentDirection.class, NextDirection.class)) {
                     var direction = entry.getValue();
-                    if (head.current.opposite() != direction) {
-                        head.next = direction;
+                    if (result.comp1().value.opposite() != direction) {
+                        result.comp2().value = direction;
                     }
                 }
             }

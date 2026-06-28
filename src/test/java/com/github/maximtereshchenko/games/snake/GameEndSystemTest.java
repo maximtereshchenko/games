@@ -3,8 +3,6 @@ package com.github.maximtereshchenko.games.snake;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
-import java.awt.Point;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class GameEndSystemTest {
@@ -22,10 +20,10 @@ final class GameEndSystemTest {
     }
 
     @Test
-    void givenNoDuplicatePoint_thenGameRunning() {
+    void givenNoDuplicatePosition_thenGameRunning() {
         dominion.createEntity(new Game());
-        dominion.createEntity(new Point(0, 0));
-        dominion.createEntity(new Point(1, 0));
+        dominion.createEntity(new Position(0, 0));
+        dominion.createEntity(new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         gameEndSystem.run();
         assertThat(dominion.findCompositionsWith(Game.class))
@@ -34,10 +32,10 @@ final class GameEndSystemTest {
     }
 
     @Test
-    void givenDuplicatePoint_thenGameEnded() {
+    void givenDuplicatePosition_thenGameEnded() {
         dominion.createEntity(new Game());
-        dominion.createEntity(new Point(0, 0));
-        dominion.createEntity(new Point(0, 0));
+        dominion.createEntity(new Position(0, 0));
+        dominion.createEntity(new Position(0, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         gameEndSystem.run();
         assertThat(dominion.findCompositionsWith(Game.class))

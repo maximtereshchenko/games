@@ -2,8 +2,6 @@ package com.github.maximtereshchenko.games.snake;
 
 import dev.dominion.ecs.api.Dominion;
 
-import java.awt.Point;
-
 final class AppleEatingSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
@@ -15,8 +13,8 @@ final class AppleEatingSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var appleResult : dominion.findEntitiesWith(Apple.class, Point.class)) {
-            for (var headResult : dominion.findEntitiesWith(Head.class, Point.class)) {
+        for (var appleResult : dominion.findEntitiesWith(Apple.class, Position.class)) {
+            for (var headResult : dominion.findEntitiesWith(Head.class, Position.class)) {
                 if (headResult.comp2().equals(appleResult.comp2())) {
                     dominion.deleteEntity(appleResult.entity());
                     dominion.createEntity(AppleEaten.INSTANCE, Event.INSTANCE);

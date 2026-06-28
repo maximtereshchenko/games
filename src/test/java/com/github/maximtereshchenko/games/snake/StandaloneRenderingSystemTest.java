@@ -9,8 +9,6 @@ import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.Point;
-
 import static org.mockito.Mockito.*;
 
 final class StandaloneRenderingSystemTest {
@@ -32,7 +30,7 @@ final class StandaloneRenderingSystemTest {
     @Test
     void givenEntity_thenEntityRendered() {
         doNothing().when(fitViewport).apply();
-        dominion.createEntity(Color.BLACK, new Point(1, 1));
+        dominion.createEntity(new Position(1, 1), new Visible(Color.BLACK));
         standaloneRenderingSystem.render();
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
         verify(Gdx.gl).glClear(anyInt());

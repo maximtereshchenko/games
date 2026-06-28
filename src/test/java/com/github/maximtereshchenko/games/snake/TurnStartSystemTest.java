@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-final class TurnBasedSystemTest {
+final class TurnStartSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final Scheduler scheduler = mock(Scheduler.class);
-    private final TurnStartSystem turnBasedSystem = new TurnStartSystem(
+    private final TurnStartSystem turnStartSystem = new TurnStartSystem(
         dominion,
         scheduler,
         1
@@ -22,7 +22,7 @@ final class TurnBasedSystemTest {
     void givenDeltaLessThanTurnLength_thenStopwatchIncremented() {
         dominion.createEntity(new Stopwatch());
         when(scheduler.deltaTime()).thenReturn(0.5);
-        turnBasedSystem.run();
+        turnStartSystem.run();
         assertThat(dominion.findCompositionsWith(Stopwatch.class))
             .extracting(stopwatch -> stopwatch.seconds)
             .containsExactly(0.5);
@@ -34,7 +34,7 @@ final class TurnBasedSystemTest {
     void givenStopwatchGreaterThatTurnLength_thenTurnStartedEvent() {
         dominion.createEntity(new Stopwatch());
         when(scheduler.deltaTime()).thenReturn(1.5);
-        turnBasedSystem.run();
+        turnStartSystem.run();
         assertThat(dominion.findCompositionsWith(Stopwatch.class))
             .extracting(stopwatch -> stopwatch.seconds)
             .containsExactly(0.5);

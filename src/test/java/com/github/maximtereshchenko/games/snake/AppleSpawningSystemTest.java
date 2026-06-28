@@ -1,12 +1,9 @@
 package com.github.maximtereshchenko.games.snake;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 
-import java.awt.Point;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +14,7 @@ final class AppleSpawningSystemTest {
     private final AppleSpawningSystem appleSpawningSystem = new AppleSpawningSystem(
         dominion,
         new Random(0),
-        new FitViewport(2, 2),
+        new WorldDimensions(2, 2),
         2
     );
 
@@ -32,33 +29,33 @@ final class AppleSpawningSystemTest {
     void givenTurnStartedEvent_thenApplesSpawned() {
         dominion.createEntity(TurnStarted.INSTANCE);
         appleSpawningSystem.run();
-        assertThat(dominion.findEntitiesWith(Apple.class, Point.class, Color.class))
-            .allSatisfy(result -> assertThat(result.comp3()).isEqualTo(Colors.APPLE))
+        assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
+            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.APPLE))
             .extracting(Results.With3::comp2)
-            .containsExactlyInAnyOrder(new Point(0, 1), new Point(1, 1));
+            .containsExactlyInAnyOrder(new Position(0, 1), new Position(1, 1));
     }
 
     @Test
-    void givenPoint_thenApplesSpawnedInFreeSpace() {
-        dominion.createEntity(new Point(0, 1));
+    void givenPosition_thenApplesSpawnedInFreeSpace() {
+        dominion.createEntity(new Position(0, 1));
         dominion.createEntity(TurnStarted.INSTANCE);
         appleSpawningSystem.run();
-        assertThat(dominion.findEntitiesWith(Apple.class, Point.class, Color.class))
-            .allSatisfy(result -> assertThat(result.comp3()).isEqualTo(Colors.APPLE))
+        assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
+            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.APPLE))
             .extracting(Results.With3::comp2)
-            .containsExactlyInAnyOrder(new Point(1, 0), new Point(1, 1));
+            .containsExactlyInAnyOrder(new Position(1, 0), new Position(1, 1));
     }
 
     @Test
-    void givenNotEnoughSpace_thenStopSpawningApples() {
-        dominion.createEntity(new Point(0, 0));
-        dominion.createEntity(new Point(0, 1));
-        dominion.createEntity(new Point(1, 0));
+    void givenNotHasSpace_thenStopSpawningApples() {
+        dominion.createEntity(new Position(0, 0));
+        dominion.createEntity(new Position(0, 1));
+        dominion.createEntity(new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         appleSpawningSystem.run();
-        assertThat(dominion.findEntitiesWith(Apple.class, Point.class, Color.class))
+        assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
             .singleElement()
-            .extracting(Results.With3::comp2, Results.With3::comp3)
-            .containsExactlyInAnyOrder(new Point(1, 1), Colors.APPLE);
+            .extracting(Results.With3::comp2, result -> result.comp3().color())
+            .containsExactlyInAnyOrder(new Position(1, 1), Colors.APPLE);
     }
 }

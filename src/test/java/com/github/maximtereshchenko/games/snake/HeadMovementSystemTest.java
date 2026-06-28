@@ -1,13 +1,10 @@
 package com.github.maximtereshchenko.games.snake;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.awt.Point;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,20 +13,25 @@ final class HeadMovementSystemTest {
     private final Dominion dominion = Dominion.create();
     private final HeadMovementSystem headMovementSystem = new HeadMovementSystem(
         dominion,
-        new FitViewport(3, 3)
+        new WorldDimensions(3, 3)
     );
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(
-            new Head(Head.Direction.RIGHT),
-            Tail.INSTANCE,
-            new Point(0, 0),
-            Colors.HEAD
+            new Position(0, 0),
+            new CurrentDirection(Direction.RIGHT)
         );
-        var before = dominion.findAllEntities().stream().toList();
         headMovementSystem.run();
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        assertThat(
+            dominion.findEntitiesWith(
+                Position.class,
+                CurrentDirection.class
+            )
+        )
+            .singleElement()
+            .extracting(Results.With2::comp1, result -> result.comp2().value)
+            .containsExactly(new Position(0, 0), Direction.RIGHT);
     }
 
     @ParameterizedTest
@@ -46,155 +48,26 @@ final class HeadMovementSystemTest {
                     """
     )
     void givenTurnStartedEvent_thenHeadMoved(
-        Head.Direction direction,
+        Direction direction,
         int initialX,
         int initialY,
         int expectedX,
         int expectedY
     ) {
         dominion.createEntity(
-            new Head(direction),
-            Tail.INSTANCE,
-            new Point(initialX, initialY),
-            Colors.HEAD
+            new Position(initialX, initialY),
+            new CurrentDirection(direction)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
         headMovementSystem.run();
-        var headResult = assertThat(
+        assertThat(
             dominion.findEntitiesWith(
-                Head.class,
-                Point.class,
-                Previous.class,
-                Color.class
+                Position.class,
+                CurrentDirection.class
             )
         )
             .singleElement()
-            .actual();
-        assertThat(headResult.comp1())
-            .extracting(head -> head.current, head -> head.next)
-            .containsExactly(direction, direction);
-        assertThat(headResult.comp2()).isEqualTo(new Point(expectedX, expectedY));
-        assertThat(headResult.comp4()).isEqualTo(Colors.HEAD);
-        var tailResult = assertThat(
-            dominion.findEntitiesWith(
-                Tail.class,
-                Point.class,
-                Next.class,
-                Color.class
-            )
-        )
-            .singleElement()
-            .actual();
-        assertThat(tailResult.comp2()).isEqualTo(new Point(initialX, initialY));
-        assertThat(tailResult.comp4()).isEqualTo(Colors.SEGMENT);
-        assertThat(headResult.comp3().entity).isEqualTo(tailResult.entity());
-        assertThat(tailResult.comp3().entity).isEqualTo(headResult.entity());
-    }
-
-    @Test
-    void givenTail_thenSegmentCreated() {
-        var headEntity = dominion.createEntity(
-            new Head(Head.Direction.RIGHT),
-            new Point(1, 0),
-            Colors.HEAD
-        );
-        headEntity.add(
-            new Previous(
-                dominion.createEntity(
-                    Tail.INSTANCE,
-                    new Next(headEntity),
-                    new Point(0, 0),
-                    Colors.SEGMENT
-                )
-            )
-        );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headMovementSystem.run();
-        var headResult = assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Point.class,
-                Previous.class,
-                Color.class
-            )
-        )
-            .singleElement()
-            .actual();
-        assertThat(headResult.comp1())
-            .extracting(head -> head.current, head -> head.next)
-            .containsExactly(Head.Direction.RIGHT, Head.Direction.RIGHT);
-        assertThat(headResult.comp2()).isEqualTo(new Point(2, 0));
-        assertThat(headResult.comp4()).isEqualTo(Colors.HEAD);
-        var tailResult = assertThat(
-            dominion.findEntitiesWith(
-                Tail.class,
-                Point.class,
-                Next.class,
-                Color.class
-            )
-        )
-            .singleElement()
-            .actual();
-        assertThat(tailResult.comp2()).isEqualTo(new Point(0, 0));
-        assertThat(tailResult.comp4()).isEqualTo(Colors.SEGMENT);
-        var segmentResult = assertThat(
-            dominion.findEntitiesWith(
-                Point.class,
-                Previous.class,
-                Next.class,
-                Color.class
-            )
-        )
-            .filteredOn(result -> !result.entity().has(Head.class))
-            .filteredOn(result -> !result.entity().has(Tail.class))
-            .singleElement()
-            .actual();
-        assertThat(segmentResult.comp1()).isEqualTo(new Point(1, 0));
-        assertThat(segmentResult.comp4()).isEqualTo(Colors.SEGMENT);
-        assertThat(headResult.comp3().entity).isEqualTo(segmentResult.entity());
-        assertThat(tailResult.comp3().entity).isEqualTo(segmentResult.entity());
-        assertThat(segmentResult.comp2().entity).isEqualTo(tailResult.entity());
-        assertThat(segmentResult.comp3().entity).isEqualTo(headResult.entity());
-    }
-
-    @Test
-    void givenCurrentDirectionDifferentFromNext_thenHeadMoved() {
-        dominion.createEntity(
-            new Head(Head.Direction.UP, Head.Direction.RIGHT),
-            Tail.INSTANCE,
-            new Point(0, 0),
-            Colors.HEAD
-        );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headMovementSystem.run();
-        var headResult = assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Point.class,
-                Previous.class,
-                Color.class
-            )
-        )
-            .singleElement()
-            .actual();
-        assertThat(headResult.comp1())
-            .extracting(head -> head.current, head -> head.next)
-            .containsExactly(Head.Direction.RIGHT, Head.Direction.RIGHT);
-        assertThat(headResult.comp2()).isEqualTo(new Point(1, 0));
-        assertThat(headResult.comp4()).isEqualTo(Colors.HEAD);
-        var tailResult = assertThat(
-            dominion.findEntitiesWith(
-                Tail.class,
-                Point.class,
-                Next.class,
-                Color.class
-            )
-        )
-            .singleElement()
-            .actual();
-        assertThat(tailResult.comp2()).isEqualTo(new Point(0, 0));
-        assertThat(tailResult.comp4()).isEqualTo(Colors.SEGMENT);
-        assertThat(headResult.comp3().entity).isEqualTo(tailResult.entity());
-        assertThat(tailResult.comp3().entity).isEqualTo(headResult.entity());
+            .extracting(Results.With2::comp1)
+            .isEqualTo(new Position(expectedX, expectedY));
     }
 }

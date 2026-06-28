@@ -23,19 +23,19 @@ final class InputSystemTest {
 
     private static Stream<Arguments> directionChangedArguments() {
         return Stream.of(
-            arguments(Head.Direction.RIGHT, Input.Keys.W, Head.Direction.UP),
-            arguments(Head.Direction.UP, Input.Keys.A, Head.Direction.LEFT),
-            arguments(Head.Direction.LEFT, Input.Keys.S, Head.Direction.DOWN),
-            arguments(Head.Direction.DOWN, Input.Keys.D, Head.Direction.RIGHT)
+            arguments(Direction.RIGHT, Input.Keys.W, Direction.UP),
+            arguments(Direction.UP, Input.Keys.A, Direction.LEFT),
+            arguments(Direction.LEFT, Input.Keys.S, Direction.DOWN),
+            arguments(Direction.DOWN, Input.Keys.D, Direction.RIGHT)
         );
     }
 
     private static Stream<Arguments> directionNotChangedArguments() {
         return Stream.of(
-            arguments(Head.Direction.RIGHT, Input.Keys.A),
-            arguments(Head.Direction.UP, Input.Keys.S),
-            arguments(Head.Direction.LEFT, Input.Keys.D),
-            arguments(Head.Direction.DOWN, Input.Keys.W)
+            arguments(Direction.RIGHT, Input.Keys.A),
+            arguments(Direction.UP, Input.Keys.S),
+            arguments(Direction.LEFT, Input.Keys.D),
+            arguments(Direction.DOWN, Input.Keys.W)
         );
     }
 
@@ -47,42 +47,45 @@ final class InputSystemTest {
     @ParameterizedTest
     @MethodSource("directionChangedArguments")
     void givenKeyPressed_thenDirectionChanged(
-        Head.Direction current,
+        Direction current,
         int keyPressed,
-        Head.Direction next
+        Direction next
     ) {
-        dominion.createEntity(new Head(current));
+        dominion.createEntity(new CurrentDirection(current), new NextDirection(current));
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
         inputSystem.run();
-        assertThat(dominion.findCompositionsWith(Head.class))
+        assertThat(dominion.findCompositionsWith(CurrentDirection.class, NextDirection.class))
             .singleElement()
-            .extracting(head -> head.current, head -> head.next)
+            .extracting(result -> result.comp1().value, result -> result.comp2().value)
             .containsExactly(current, next);
     }
 
     @Test
     void givenNextDirectionOpposite_thenDirectionChanged() {
-        dominion.createEntity(new Head(Head.Direction.UP, Head.Direction.RIGHT));
+        dominion.createEntity(
+            new CurrentDirection(Direction.UP),
+            new NextDirection(Direction.RIGHT)
+        );
         when(Gdx.input.isKeyPressed(Input.Keys.A)).thenReturn(true);
         inputSystem.run();
-        assertThat(dominion.findCompositionsWith(Head.class))
+        assertThat(dominion.findCompositionsWith(CurrentDirection.class, NextDirection.class))
             .singleElement()
-            .extracting(head -> head.current, head -> head.next)
-            .containsExactly(Head.Direction.UP, Head.Direction.LEFT);
+            .extracting(result -> result.comp1().value, result -> result.comp2().value)
+            .containsExactly(Direction.UP, Direction.LEFT);
     }
 
     @ParameterizedTest
     @MethodSource("directionNotChangedArguments")
     void givenOppositeDirection_thenDirectionNotChanged(
-        Head.Direction direction,
+        Direction direction,
         int keyPressed
     ) {
-        dominion.createEntity(new Head(direction));
+        dominion.createEntity(new CurrentDirection(direction), new NextDirection(direction));
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
         inputSystem.run();
-        assertThat(dominion.findCompositionsWith(Head.class))
+        assertThat(dominion.findCompositionsWith(CurrentDirection.class, NextDirection.class))
             .singleElement()
-            .extracting(head -> head.current, head -> head.next)
+            .extracting(result -> result.comp1().value, result -> result.comp2().value)
             .containsExactly(direction, direction);
     }
 }

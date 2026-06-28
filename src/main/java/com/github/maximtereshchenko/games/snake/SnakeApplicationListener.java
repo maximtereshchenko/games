@@ -7,42 +7,48 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Scheduler;
 
-import java.awt.Point;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 final class SnakeApplicationListener extends ApplicationAdapter {
 
-    private Game game;
     private FitViewport fitViewport;
+    private Game game;
     private Scheduler scheduler;
     private StandaloneRenderingSystem renderingSystem;
 
     @Override
     public void create() {
+        var worldDimensions = new WorldDimensions(6, 6);
+        fitViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
         game = new Game();
-        fitViewport = new FitViewport(5, 5);
         var dominion = Dominion.create();
         dominion.createEntity(game);
         dominion.createEntity(new Stopwatch());
+        dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(
-            new Head(),
-            Tail.INSTANCE,
-            new Point(0, 0),
-            Colors.HEAD
+            Head.INSTANCE,
+            new CurrentDirection(Direction.RIGHT),
+            new NextDirection(Direction.RIGHT),
+            new Position(0, 0),
+            new Visible(Colors.HEAD)
         );
         scheduler = dominion.createScheduler();
         scheduler.schedule(new InputSystem(dominion));
-        scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.3));
-        scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
+        scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.4));
+        scheduler.schedule(new SegmentSpawningSystem(dominion));
+        scheduler.schedule(new CurrentDirectionSystem(dominion));
+        scheduler.schedule(new HeadMovementSystem(dominion, worldDimensions));
         scheduler.schedule(new AppleEatingSystem(dominion));
+        scheduler.schedule(new InitialSegmentTimerSystem(dominion));
+        scheduler.schedule(new TimerDecrementSystem(dominion));
+        scheduler.schedule(new TimerRemovalSystem(dominion));
         scheduler.schedule(new GameEndSystem(dominion));
-        scheduler.schedule(new TailRemovalSystem(dominion));
         scheduler.schedule(
             new AppleSpawningSystem(
                 dominion,
                 ThreadLocalRandom.current(),
-                fitViewport,
+                worldDimensions,
                 1
             )
         );

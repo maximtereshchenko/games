@@ -12,7 +12,7 @@ abstract class TurnBasedSystem implements Runnable {
 
     @Override
     public final void run() {
-        if (dominion.findEntitiesWith(TurnStarted.class).iterator().hasNext()) {
+        if (dominion.findCompositionsWith(TurnStarted.class).iterator().hasNext()) {
             onTurnStarted();
         }
     }
