@@ -13,14 +13,17 @@ import java.util.concurrent.TimeUnit;
 
 final class SnakeApplicationListener extends ApplicationAdapter {
 
+    private Game game;
     private FitViewport fitViewport;
     private Scheduler scheduler;
     private StandaloneRenderingSystem renderingSystem;
 
     @Override
     public void create() {
+        game = new Game();
         fitViewport = new FitViewport(5, 5);
         var dominion = Dominion.create();
+        dominion.createEntity(game);
         dominion.createEntity(new Stopwatch());
         dominion.createEntity(
             new Head(Head.Direction.RIGHT),
@@ -33,6 +36,7 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.3));
         scheduler.schedule(new HeadMovementSystem(dominion, fitViewport));
         scheduler.schedule(new AppleEatingSystem(dominion));
+        scheduler.schedule(new GameEndSystem(dominion));
         scheduler.schedule(new TailRemovalSystem(dominion));
         scheduler.schedule(
             new AppleSpawningSystem(
@@ -57,6 +61,9 @@ final class SnakeApplicationListener extends ApplicationAdapter {
 
     @Override
     public void render() {
+        if (game.status == Game.Status.ENDED) {
+            return;
+        }
         scheduler.tick(
             (long) (TimeUnit.SECONDS.toNanos(1) * Gdx.graphics.getDeltaTime())
         );
