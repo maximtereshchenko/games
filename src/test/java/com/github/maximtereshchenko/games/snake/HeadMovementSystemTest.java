@@ -12,25 +12,27 @@ final class HeadMovementSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final HeadMovementSystem headMovementSystem = new HeadMovementSystem(
-        dominion,
-        new WorldDimensions(3, 3)
+        dominion
     );
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
+        dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
+            Head.INSTANCE,
             new Position(0, 0),
             new CurrentDirection(Direction.RIGHT)
         );
         headMovementSystem.run();
         assertThat(
             dominion.findEntitiesWith(
+                Head.class,
                 Position.class,
                 CurrentDirection.class
             )
         )
             .singleElement()
-            .extracting(Results.With2::comp1, result -> result.comp2().value)
+            .extracting(Results.With3::comp2, result -> result.comp3().value)
             .containsExactly(new Position(0, 0), Direction.RIGHT);
     }
 
@@ -54,7 +56,9 @@ final class HeadMovementSystemTest {
         int expectedX,
         int expectedY
     ) {
+        dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
+            Head.INSTANCE,
             new Position(initialX, initialY),
             new CurrentDirection(direction)
         );
@@ -62,12 +66,13 @@ final class HeadMovementSystemTest {
         headMovementSystem.run();
         assertThat(
             dominion.findEntitiesWith(
+                Head.class,
                 Position.class,
                 CurrentDirection.class
             )
         )
             .singleElement()
-            .extracting(Results.With2::comp1)
+            .extracting(Results.With3::comp2)
             .isEqualTo(new Position(expectedX, expectedY));
     }
 }

@@ -13,17 +13,17 @@ import java.util.concurrent.TimeUnit;
 final class SnakeApplicationListener extends ApplicationAdapter {
 
     private FitViewport fitViewport;
-    private Game game;
+    private Dominion dominion;
     private Scheduler scheduler;
-    private StandaloneRenderingSystem renderingSystem;
+    private StandaloneRenderingSystem standaloneRenderingSystem;
 
     @Override
     public void create() {
         var worldDimensions = new WorldDimensions(6, 6);
         fitViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
-        game = new Game();
-        var dominion = Dominion.create();
-        dominion.createEntity(game);
+        dominion = Dominion.create();
+        dominion.createEntity(new Game());
+        dominion.createEntity(worldDimensions);
         dominion.createEntity(new Stopwatch());
         dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(
@@ -38,22 +38,15 @@ final class SnakeApplicationListener extends ApplicationAdapter {
         scheduler.schedule(new TurnStartSystem(dominion, scheduler, 0.4));
         scheduler.schedule(new SegmentSpawningSystem(dominion));
         scheduler.schedule(new CurrentDirectionSystem(dominion));
-        scheduler.schedule(new HeadMovementSystem(dominion, worldDimensions));
+        scheduler.schedule(new HeadMovementSystem(dominion));
         scheduler.schedule(new AppleEatingSystem(dominion));
         scheduler.schedule(new InitialSegmentTimerSystem(dominion));
         scheduler.schedule(new TimerDecrementSystem(dominion));
         scheduler.schedule(new TimerRemovalSystem(dominion));
         scheduler.schedule(new GameEndSystem(dominion));
-        scheduler.schedule(
-            new AppleSpawningSystem(
-                dominion,
-                ThreadLocalRandom.current(),
-                worldDimensions,
-                1
-            )
-        );
+        scheduler.schedule(new AppleSpawningSystem(dominion, ThreadLocalRandom.current(), 1));
         scheduler.schedule(new EventRemovalSystem(dominion));
-        renderingSystem = new StandaloneRenderingSystem(
+        standaloneRenderingSystem = new StandaloneRenderingSystem(
             fitViewport,
             new ShapeRenderer(),
             dominion
@@ -67,17 +60,20 @@ final class SnakeApplicationListener extends ApplicationAdapter {
 
     @Override
     public void render() {
-        if (game.status == Game.Status.ENDED) {
-            return;
+        for (var game : dominion.findCompositionsWith(Game.class)) {
+            if (game.status == Game.Status.ENDED) {
+                return;
+            }
         }
         scheduler.tick(
             (long) (TimeUnit.SECONDS.toNanos(1) * Gdx.graphics.getDeltaTime())
         );
-        renderingSystem.render();
+        standaloneRenderingSystem.render();
     }
 
     @Override
     public void dispose() {
         scheduler.shutDown();
+        standaloneRenderingSystem.dispose();
     }
 }

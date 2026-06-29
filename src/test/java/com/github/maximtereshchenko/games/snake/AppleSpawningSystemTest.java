@@ -14,12 +14,12 @@ final class AppleSpawningSystemTest {
     private final AppleSpawningSystem appleSpawningSystem = new AppleSpawningSystem(
         dominion,
         new Random(0),
-        new WorldDimensions(2, 2),
         2
     );
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
+        dominion.createEntity(new WorldDimensions(2, 2));
         var before = dominion.findAllEntities().stream().toList();
         appleSpawningSystem.run();
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
@@ -27,6 +27,7 @@ final class AppleSpawningSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenApplesSpawned() {
+        dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(TurnStarted.INSTANCE);
         appleSpawningSystem.run();
         assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
@@ -37,6 +38,7 @@ final class AppleSpawningSystemTest {
 
     @Test
     void givenPosition_thenApplesSpawnedInFreeSpace() {
+        dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(TurnStarted.INSTANCE);
         appleSpawningSystem.run();
@@ -48,6 +50,7 @@ final class AppleSpawningSystemTest {
 
     @Test
     void givenNotHasSpace_thenStopSpawningApples() {
+        dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(new Position(0, 0));
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(new Position(1, 0));

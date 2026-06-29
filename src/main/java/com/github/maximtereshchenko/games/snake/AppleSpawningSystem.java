@@ -10,19 +10,16 @@ final class AppleSpawningSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
     private final Random random;
-    private final WorldDimensions worldDimensions;
     private final int maxApples;
 
     AppleSpawningSystem(
         Dominion dominion,
         Random random,
-        WorldDimensions worldDimensions,
         int maxApples
     ) {
         super(dominion);
         this.dominion = dominion;
         this.random = random;
-        this.worldDimensions = worldDimensions;
         this.maxApples = maxApples;
     }
 
@@ -31,18 +28,16 @@ final class AppleSpawningSystem extends TurnBasedSystem {
         var positions = dominion.findCompositionsWith(Position.class)
             .stream()
             .collect(Collectors.toSet());
-        for (var i = currentApples(); hasSpace(positions) && i < maxApples; i++) {
-            var position = position(positions);
-            positions.add(position);
-            dominion.createEntity(Apple.INSTANCE, position, new Visible(Colors.APPLE));
+        for (var worldDimensions : dominion.findCompositionsWith(WorldDimensions.class)) {
+            for (var i = currentApples(); positions.size() < worldDimensions.space() && i < maxApples; i++) {
+                var position = position(positions, worldDimensions);
+                positions.add(position);
+                dominion.createEntity(Apple.INSTANCE, position, new Visible(Colors.APPLE));
+            }
         }
     }
 
-    private boolean hasSpace(Set<Position> positions) {
-        return positions.size() < worldDimensions.space();
-    }
-
-    private Position position(Set<Position> positions) {
+    private Position position(Set<Position> positions, WorldDimensions worldDimensions) {
         while (true) {
             var position = new Position(
                 random.nextInt(worldDimensions.width()),
