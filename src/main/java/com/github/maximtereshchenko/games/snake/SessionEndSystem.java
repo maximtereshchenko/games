@@ -4,11 +4,11 @@ import dev.dominion.ecs.api.Dominion;
 
 import java.util.HashSet;
 
-final class GameEndSystem extends TurnBasedSystem {
+final class SessionEndSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
 
-    GameEndSystem(Dominion dominion) {
+    SessionEndSystem(Dominion dominion) {
         super(dominion);
         this.dominion = dominion;
     }
@@ -18,8 +18,8 @@ final class GameEndSystem extends TurnBasedSystem {
         var positions = new HashSet<Position>();
         for (var position : dominion.findCompositionsWith(Position.class)) {
             if (!positions.add(position)) {
-                for (var game : dominion.findCompositionsWith(Game.class)) {
-                    game.status = Game.Status.ENDED;
+                for (var game : dominion.findCompositionsWith(Session.class)) {
+                    game.status = Session.Status.ENDED;
                 }
                 return;
             }

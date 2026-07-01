@@ -41,8 +41,4 @@ final class StandaloneRenderingSystem {
         }
         shapeRenderer.end();
     }
-
-    void dispose() {
-        shapeRenderer.dispose();
-    }
 }
