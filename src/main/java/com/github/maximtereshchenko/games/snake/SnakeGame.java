@@ -3,32 +3,52 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 final class SnakeGame extends Game {
 
-    private final ScreenFactory screenFactory;
-    private final Supplier<ShapeRenderer> supplier;
+    private final Supplier<ShapeRenderer> shapeRendererSupplier;
+    private final BiFunction<ShapeRenderer, Runnable, SnakeSessionScreen> snakeSessionScreenFunction;
     private ShapeRenderer shapeRenderer;
+    private SnakeSessionScreen snakeSessionScreen;
 
-    SnakeGame(ScreenFactory screenFactory, Supplier<ShapeRenderer> supplier) {
-        this.screenFactory = screenFactory;
-        this.supplier = supplier;
+    SnakeGame(
+        Supplier<ShapeRenderer> shapeRendererSupplier,
+        BiFunction<ShapeRenderer, Runnable, SnakeSessionScreen> snakeSessionScreenFunction
+    ) {
+        this.shapeRendererSupplier = shapeRendererSupplier;
+        this.snakeSessionScreenFunction = snakeSessionScreenFunction;
+    }
+
+    SnakeGame(
+        SnakeSessionFactory snakeSessionFactory,
+        WorldDimensions worldDimensions
+    ) {
+        this(
+            ShapeRenderer::new,
+            (providedShapeRenderer, onSessionEnd) -> new SnakeSessionScreen(
+                snakeSessionFactory,
+                worldDimensions,
+                providedShapeRenderer,
+                onSessionEnd
+            )
+        );
     }
 
     @Override
     public void create() {
-        this.shapeRenderer = supplier.get();
-        startSnakeSession();
+        shapeRenderer = shapeRendererSupplier.get();
+        snakeSessionScreen = snakeSessionScreenFunction.apply(
+            shapeRenderer,
+            () -> setScreen(snakeSessionScreen)
+        );
+        setScreen(snakeSessionScreen);
     }
 
     @Override
     public void dispose() {
         super.dispose();
         shapeRenderer.dispose();
-    }
-
-    private void startSnakeSession() {
-        setScreen(screenFactory.snakeSessionScreen(shapeRenderer, this::startSnakeSession));
     }
 }

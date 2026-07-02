@@ -9,18 +9,16 @@ import static org.mockito.Mockito.*;
 
 final class SnakeGameTest {
 
-    private final ScreenFactory screenFactory = mock(ScreenFactory.class);
     private final ShapeRenderer shapeRenderer = mock(ShapeRenderer.class);
     private final SnakeSessionScreen snakeSessionScreen = mock(SnakeSessionScreen.class);
-    private final SnakeGame snakeGame = new SnakeGame(screenFactory, () -> shapeRenderer);
+    private final SnakeGame snakeGame = new SnakeGame(() -> shapeRenderer, (_, _) -> snakeSessionScreen);
 
     @Test
     void whenDispose_thenScreenHiddenShapeRendererDisposed() {
         Gdx.graphics = mock(Graphics.class);
-        when(screenFactory.snakeSessionScreen(eq(shapeRenderer), any()))
-            .thenReturn(snakeSessionScreen);
         snakeGame.create();
         verify(snakeSessionScreen).show();
+        verify(snakeSessionScreen).resize(anyInt(), anyInt());
         snakeGame.dispose();
         verify(snakeSessionScreen).hide();
         verify(shapeRenderer).dispose();

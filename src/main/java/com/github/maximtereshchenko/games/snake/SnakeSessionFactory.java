@@ -9,31 +9,31 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 
-final class ScreenFactory {
+final class SnakeSessionFactory {
 
     private final Supplier<Dominion> supplier;
 
-    ScreenFactory(Supplier<Dominion> supplier) {
+    SnakeSessionFactory(Supplier<Dominion> supplier) {
         this.supplier = supplier;
     }
 
-    SnakeSessionScreen snakeSessionScreen(ShapeRenderer shapeRenderer, Runnable onSessionEnd) {
-        var worldDimensions = new WorldDimensions(6, 6);
+    SnakeSession snakeSession(
+        FitViewport fitViewport,
+        ShapeRenderer shapeRenderer,
+        WorldDimensions worldDimensions
+    ) {
         var dominion = supplier.get();
         createEntities(dominion, worldDimensions);
         var scheduler = dominion.createScheduler();
         scheduleSystems(dominion, scheduler);
-        var fitViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
-        return new SnakeSessionScreen(
-            fitViewport,
+        return new SnakeSession(
             dominion,
             scheduler,
             new StandaloneRenderingSystem(
                 fitViewport,
                 shapeRenderer,
                 dominion
-            ),
-            onSessionEnd
+            )
         );
     }
 
