@@ -41,7 +41,7 @@ final class InputSystemTest {
 
     @BeforeEach
     void setUp() {
-        Gdx.input = mock(Input.class);
+        Gdx.input = mock();
     }
 
     @ParameterizedTest

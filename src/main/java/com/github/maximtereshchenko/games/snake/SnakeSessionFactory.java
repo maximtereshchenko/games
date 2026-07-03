@@ -1,7 +1,7 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Scheduler;
 
@@ -18,7 +18,7 @@ final class SnakeSessionFactory {
     }
 
     SnakeSession snakeSession(
-        FitViewport fitViewport,
+        Viewport viewport,
         ShapeRenderer shapeRenderer,
         WorldDimensions worldDimensions
     ) {
@@ -30,7 +30,7 @@ final class SnakeSessionFactory {
             dominion,
             scheduler,
             new StandaloneRenderingSystem(
-                fitViewport,
+                viewport,
                 shapeRenderer,
                 dominion
             )

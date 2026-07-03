@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-final class ScreenFactoryTest {
+final class SnakeSessionFactoryTest {
 
-    private final Dominion dominion = mock(Dominion.class);
-    private final Scheduler scheduler = mock(Scheduler.class);
+    private final Dominion dominion = mock();
+    private final Scheduler scheduler = mock();
     private final SnakeSessionFactory snakeSessionFactory = new SnakeSessionFactory(() -> dominion);
 
     @Test

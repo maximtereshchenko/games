@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 final class TurnStartSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final Scheduler scheduler = mock(Scheduler.class);
+    private final Scheduler scheduler = mock();
     private final TurnStartSystem turnStartSystem = new TurnStartSystem(
         dominion,
         scheduler,

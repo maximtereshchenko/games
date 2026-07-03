@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,29 +11,29 @@ final class SnakeSessionScreen extends ScreenAdapter {
     private final SnakeSessionFactory snakeSessionFactory;
     private final WorldDimensions worldDimensions;
     private final ShapeRenderer shapeRenderer;
-    private final FitViewport fitViewport;
-    private final Runnable onSessionEnd;
+    private final Viewport viewport;
+    private final ApplicationEvents applicationEvents;
     private SnakeSession snakeSession;
 
     SnakeSessionScreen(
         SnakeSessionFactory snakeSessionFactory,
         WorldDimensions worldDimensions,
         ShapeRenderer shapeRenderer,
-        FitViewport fitViewport,
-        Runnable onSessionEnd
+        Viewport viewport,
+        ApplicationEvents applicationEvents
     ) {
         this.snakeSessionFactory = snakeSessionFactory;
         this.worldDimensions = worldDimensions;
         this.shapeRenderer = shapeRenderer;
-        this.fitViewport = fitViewport;
-        this.onSessionEnd = onSessionEnd;
+        this.viewport = viewport;
+        this.applicationEvents = applicationEvents;
     }
 
     @Override
     public void render(float delta) {
         for (var game : snakeSession.dominion().findCompositionsWith(Session.class)) {
             if (game.status == Session.Status.ENDED) {
-                onSessionEnd.run();
+                applicationEvents.publish(ApplicationEvent.SNAKE_SESSION_ENDED);
                 return;
             }
         }
@@ -43,13 +43,13 @@ final class SnakeSessionScreen extends ScreenAdapter {
 
     @Override
     public void resize(int width, int height) {
-        fitViewport.update(width, height, true);
+        viewport.update(width, height, true);
     }
 
     @Override
     public void show() {
         snakeSession = snakeSessionFactory.snakeSession(
-            fitViewport,
+            viewport,
             shapeRenderer,
             worldDimensions
         );

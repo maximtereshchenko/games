@@ -3,37 +3,32 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+final class SnakesGame extends Game implements Subscriber {
 
-final class SnakesGame extends Game {
+    private final ShapeRenderer shapeRenderer;
+    private final SnakeSessionScreen snakeSessionScreen;
 
-    private final Supplier<ShapeRenderer> shapeRendererSupplier;
-    private final BiFunction<ShapeRenderer, Runnable, SnakeSessionScreen> snakeSessionScreenFunction;
-    private ShapeRenderer shapeRenderer;
-    private SnakeSessionScreen snakeSessionScreen;
-
-    SnakesGame(
-        Supplier<ShapeRenderer> shapeRendererSupplier,
-        BiFunction<ShapeRenderer, Runnable, SnakeSessionScreen> snakeSessionScreenFunction
-    ) {
-        this.shapeRendererSupplier = shapeRendererSupplier;
-        this.snakeSessionScreenFunction = snakeSessionScreenFunction;
+    SnakesGame(ShapeRenderer shapeRenderer, SnakeSessionScreen snakeSessionScreen) {
+        this.shapeRenderer = shapeRenderer;
+        this.snakeSessionScreen = snakeSessionScreen;
+        setScreen(snakeSessionScreen);
     }
 
     @Override
     public void create() {
-        shapeRenderer = shapeRendererSupplier.get();
-        snakeSessionScreen = snakeSessionScreenFunction.apply(
-            shapeRenderer,
-            () -> setScreen(snakeSessionScreen)
-        );
-        setScreen(snakeSessionScreen);
+        //empty
     }
 
     @Override
     public void dispose() {
         super.dispose();
         shapeRenderer.dispose();
+    }
+
+    @Override
+    public void onEvent(ApplicationEvent event) {
+        switch (event) {
+            case SNAKE_SESSION_ENDED -> setScreen(snakeSessionScreen);
+        }
     }
 }
