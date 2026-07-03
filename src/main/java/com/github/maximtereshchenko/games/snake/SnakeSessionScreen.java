@@ -29,21 +29,6 @@ final class SnakeSessionScreen extends ScreenAdapter {
         this.onSessionEnd = onSessionEnd;
     }
 
-    SnakeSessionScreen(
-        SnakeSessionFactory snakeSessionFactory,
-        WorldDimensions worldDimensions,
-        ShapeRenderer shapeRenderer,
-        Runnable onSessionEnd
-    ) {
-        this(
-            snakeSessionFactory,
-            worldDimensions,
-            shapeRenderer,
-            new FitViewport(worldDimensions.width(), worldDimensions.height()),
-            onSessionEnd
-        );
-    }
-
     @Override
     public void render(float delta) {
         for (var game : snakeSession.dominion().findCompositionsWith(Session.class)) {
