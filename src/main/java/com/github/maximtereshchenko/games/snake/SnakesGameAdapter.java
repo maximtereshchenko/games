@@ -4,7 +4,6 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import dev.dominion.ecs.api.Dominion;
 
 final class SnakesGameAdapter implements ApplicationListener {
 
@@ -22,7 +21,7 @@ final class SnakesGameAdapter implements ApplicationListener {
         var snakesGame = new SnakesGame(
             shapeRenderer,
             new SnakeSessionScreen(
-                new SnakeSessionFactory(Dominion::create),
+                new SnakeSessionFactory(),
                 worldDimensions,
                 shapeRenderer,
                 new FitViewport(worldDimensions.width(), worldDimensions.height()),

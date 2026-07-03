@@ -7,22 +7,15 @@ import dev.dominion.ecs.api.Scheduler;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Supplier;
 
 final class SnakeSessionFactory {
-
-    private final Supplier<Dominion> supplier;
-
-    SnakeSessionFactory(Supplier<Dominion> supplier) {
-        this.supplier = supplier;
-    }
 
     SnakeSession snakeSession(
         Viewport viewport,
         ShapeRenderer shapeRenderer,
         WorldDimensions worldDimensions
     ) {
-        var dominion = supplier.get();
+        var dominion = Dominion.create();
         createEntities(dominion, worldDimensions);
         var scheduler = dominion.createScheduler();
         scheduleSystems(dominion, scheduler);
