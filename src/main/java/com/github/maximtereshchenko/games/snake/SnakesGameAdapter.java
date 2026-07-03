@@ -1,9 +1,14 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import java.util.HashSet;
 
 final class SnakesGameAdapter implements ApplicationListener {
 
@@ -18,15 +23,33 @@ final class SnakesGameAdapter implements ApplicationListener {
         var worldDimensions = new WorldDimensions(6, 6);
         var applicationEvents = new ApplicationEvents();
         var shapeRenderer = new ShapeRenderer();
+        var spriteBatch = new SpriteBatch();
+        var assetManager = new AssetManager();
+        Assets.ALL.forEach(assetManager::load);
+        while (!assetManager.update()) {
+            //TODO loading screen
+        }
+        var stageFactory = new StageFactory(
+            assetManager,
+            spriteBatch,
+            applicationEvents
+        );
+        var titleStage = stageFactory.titleStage(assetManager.get(Assets.SKIN));
+        var disposables = new HashSet<Disposable>();
+        disposables.add(shapeRenderer);
+        disposables.add(spriteBatch);
+        disposables.add(assetManager);
+        disposables.add(titleStage);
         var snakesGame = new SnakesGame(
-            shapeRenderer,
+            new StageScreen(titleStage),
             new SnakeSessionScreen(
                 new SnakeSessionFactory(),
                 worldDimensions,
                 shapeRenderer,
                 new FitViewport(worldDimensions.width(), worldDimensions.height()),
                 applicationEvents
-            )
+            ),
+            disposables
         );
         applicationEvents.subscribe(snakesGame);
         original = snakesGame;
