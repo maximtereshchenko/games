@@ -26,15 +26,13 @@ final class SnakesGameAdapter implements ApplicationListener {
         var spriteBatch = new SpriteBatch();
         var assetManager = new AssetManager();
         Assets.ALL.forEach(assetManager::load);
-        while (!assetManager.update()) {
-            //TODO loading screen
-        }
+        assetManager.finishLoading();//TODO loading screen
         var stageFactory = new StageFactory(
             assetManager,
             spriteBatch,
             applicationEvents
         );
-        var titleStage = stageFactory.titleStage(assetManager.get(Assets.SKIN));
+        var titleStage = stageFactory.titleStage();
         var disposables = new HashSet<Disposable>();
         disposables.add(shapeRenderer);
         disposables.add(spriteBatch);

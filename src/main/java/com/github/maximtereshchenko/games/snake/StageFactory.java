@@ -5,7 +5,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -25,12 +24,11 @@ final class StageFactory {
         this.applicationEvents = applicationEvents;
     }
 
-    Stage titleStage(Skin skin) {
-        var bundle = assetManager.get(Assets.I18N_BUNDLE);
+    Stage titleStage() {
         var table = new Table();
         table.setFillParent(true);
-        table.add(new Label(bundle.get("title.name"), skin)).row();
-        table.add(new Label(bundle.get("title.continue"), skin)).row();
+        table.add(label("title.name")).row();
+        table.add(label("title.continue")).row();
         var stage = new Stage(new ScreenViewport(), spriteBatch);
         stage.addActor(table);
         stage.addListener(
@@ -40,5 +38,12 @@ final class StageFactory {
             )
         );
         return stage;
+    }
+
+    private Label label(String key) {
+        return new Label(
+            assetManager.get(Assets.I18N_BUNDLE).get(key),
+            assetManager.get(Assets.SKIN)
+        );
     }
 }

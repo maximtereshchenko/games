@@ -21,9 +21,9 @@ final class StageFactoryTest {
 
     private final AssetManager assetManager = mock();
     private final I18NBundle bundle = mock();
+    private final Skin skin = mock();
     private final SpriteBatch spriteBatch = mock();
     private final ApplicationEvents applicationEvents = mock();
-    private final Skin skin = mock();
     private final StageFactory stageFactory = new StageFactory(
         assetManager,
         spriteBatch,
@@ -47,7 +47,8 @@ final class StageFactoryTest {
             )
         ) {
             when(assetManager.get(Assets.I18N_BUNDLE)).thenReturn(bundle);
-            var stage = stageFactory.titleStage(skin);
+            when(assetManager.get(Assets.SKIN)).thenReturn(skin);
+            var stage = stageFactory.titleStage();
             assertThat(stage.getViewport()).isEqualTo(screenViewport.constructed().getFirst());
             assertThat(stage.getBatch()).isEqualTo(spriteBatch);
             assertThat(stage.getActors())
