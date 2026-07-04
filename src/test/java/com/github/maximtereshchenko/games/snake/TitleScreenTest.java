@@ -14,7 +14,7 @@ final class TitleScreenTest {
 
     private final Stage stage = mock();
     private final Viewport viewport = mock();
-    private final StageScreen titleScreen = new TitleScreen(stage);
+    private final TitleScreen titleScreen = new TitleScreen(stage);
 
     @BeforeEach
     void setUp() {
