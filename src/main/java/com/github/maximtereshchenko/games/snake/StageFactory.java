@@ -3,8 +3,10 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -25,18 +27,34 @@ final class StageFactory {
     }
 
     Stage titleStage() {
-        var table = new Table();
-        table.setFillParent(true);
-        table.add(label("title.name")).row();
-        table.add(label("title.continue")).row();
-        var stage = new Stage(new ScreenViewport(), spriteBatch);
-        stage.addActor(table);
+        var stage = stage(
+            label("title.name"),
+            label("title.continue")
+        );
         stage.addListener(
             new FunctionalInputListener(
                 Input.Keys.SPACE,
                 () -> applicationEvents.publish(ApplicationEvent.CONTINUED_PAST_TITLE_SCREEN)
             )
         );
+        return stage;
+    }
+
+    Stage loadingStage(ProgressBar progressBar) {
+        return stage(
+            label("loading.name"),
+            progressBar
+        );
+    }
+
+    private Stage stage(Actor... actors) {
+        var table = new Table();
+        table.setFillParent(true);
+        for (var actor : actors) {
+            table.add(actor).row();
+        }
+        var stage = new Stage(new ScreenViewport(), spriteBatch);
+        stage.addActor(table);
         return stage;
     }
 

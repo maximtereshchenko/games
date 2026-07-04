@@ -6,6 +6,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
@@ -24,6 +25,7 @@ final class StageFactoryTest {
     private final Skin skin = mock();
     private final SpriteBatch spriteBatch = mock();
     private final ApplicationEvents applicationEvents = mock();
+    private final ProgressBar progressBar = mock();
     private final StageFactory stageFactory = new StageFactory(
         assetManager,
         spriteBatch,
@@ -71,6 +73,40 @@ final class StageFactoryTest {
             verify(applicationEvents).publish(ApplicationEvent.CONTINUED_PAST_TITLE_SCREEN);
             verify(bundle).get("title.name");
             verify(bundle).get("title.continue");
+        }
+    }
+
+    @Test
+    void whenLoadingStage_thenTitleStageCreated() {
+        try (
+            var screenViewport = mockConstruction(ScreenViewport.class);
+            var _ = mockConstruction(
+                Label.class,
+                (_, context) -> assertThat(context.arguments())
+                    .anySatisfy(argument -> assertThat(argument).isEqualTo(skin))
+            )
+        ) {
+            when(assetManager.get(Assets.I18N_BUNDLE)).thenReturn(bundle);
+            when(assetManager.get(Assets.SKIN)).thenReturn(skin);
+            var stage = stageFactory.loadingStage(progressBar);
+            assertThat(stage.getViewport()).isEqualTo(screenViewport.constructed().getFirst());
+            assertThat(stage.getBatch()).isEqualTo(spriteBatch);
+            assertThat(stage.getActors())
+                .singleElement()
+                .asInstanceOf(type(Table.class))
+                .extracting(
+                    Table::getWidth,
+                    Table::getHeight,
+                    table -> table.getChildren().size,
+                    table -> table.getChildren().get(1)
+                )
+                .containsExactly(
+                    stage.getWidth(),
+                    stage.getHeight(),
+                    2,
+                    progressBar
+                );
+            verify(bundle).get("loading.name");
         }
     }
 }
