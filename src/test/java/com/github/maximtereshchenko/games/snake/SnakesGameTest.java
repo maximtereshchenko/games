@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 
 final class SnakesGameTest {
 
-    private final StageScreen titleScreen = mock();
+    private final TitleScreen titleScreen = mock();
     private final SnakeSessionScreen snakeSessionScreen = mock();
     private final Disposable disposable = mock();
     private SnakesGame snakesGame;

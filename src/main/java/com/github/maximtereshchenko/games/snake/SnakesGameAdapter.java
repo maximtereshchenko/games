@@ -39,7 +39,7 @@ final class SnakesGameAdapter implements ApplicationListener {
         disposables.add(assetManager);
         disposables.add(titleStage);
         var snakesGame = new SnakesGame(
-            new StageScreen(titleStage),
+            new TitleScreen(titleStage),
             new SnakeSessionScreen(
                 new SnakeSessionFactory(),
                 worldDimensions,

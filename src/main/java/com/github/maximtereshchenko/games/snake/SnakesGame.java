@@ -7,12 +7,12 @@ import java.util.Set;
 
 final class SnakesGame extends Game implements Subscriber {
 
-    private final StageScreen titleScreen;
+    private final TitleScreen titleScreen;
     private final SnakeSessionScreen snakeSessionScreen;
     private final Set<Disposable> disposables;
 
     SnakesGame(
-        StageScreen titleScreen,
+        TitleScreen titleScreen,
         SnakeSessionScreen snakeSessionScreen,
         Set<Disposable> disposables
     ) {

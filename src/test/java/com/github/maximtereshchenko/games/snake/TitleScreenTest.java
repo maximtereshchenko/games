@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
-final class StageScreenTest {
+final class TitleScreenTest {
 
     private final Stage stage = mock();
     private final Viewport viewport = mock();
-    private final StageScreen stageScreen = new StageScreen(stage);
+    private final StageScreen titleScreen = new TitleScreen(stage);
 
     @BeforeEach
     void setUp() {
@@ -23,7 +23,7 @@ final class StageScreenTest {
 
     @Test
     void whenRender_thenStageDrawn() {
-        stageScreen.render(1.0f);
+        titleScreen.render(1.0f);
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
         verify(Gdx.gl).glClear(anyInt());
         verify(stage).act(1.0f);
@@ -33,21 +33,21 @@ final class StageScreenTest {
     @Test
     void whenResize_thenStageViewportResized() {
         when(stage.getViewport()).thenReturn(viewport);
-        stageScreen.resize(1, 2);
+        titleScreen.resize(1, 2);
         verify(viewport).update(1, 2, true);
     }
 
     @Test
     void whenShow_thenInputProcessorSet() {
         Gdx.input = mock();
-        stageScreen.show();
+        titleScreen.show();
         verify(Gdx.input).setInputProcessor(stage);
     }
 
     @Test
     void whenHide_thenInputProcessorReset() {
         Gdx.input = mock();
-        stageScreen.hide();
+        titleScreen.hide();
         verify(Gdx.input).setInputProcessor(null);
     }
 }
