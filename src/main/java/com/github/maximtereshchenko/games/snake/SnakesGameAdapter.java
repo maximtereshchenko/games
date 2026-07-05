@@ -5,10 +5,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-import java.util.HashSet;
+import java.util.Set;
 
 final class SnakesGameAdapter implements ApplicationListener {
 
@@ -26,19 +27,22 @@ final class SnakesGameAdapter implements ApplicationListener {
         var spriteBatch = new SpriteBatch();
         var assetManager = new AssetManager();
         Assets.ALL.forEach(assetManager::load);
-        assetManager.finishLoading();//TODO loading screen
+        assetManager.finishLoading(); //TODO lazy screen
         var stageFactory = new StageFactory(
             assetManager,
             spriteBatch,
             applicationEvents
         );
+        var progressBar = new ProgressBar(0, 1, 0.01f, false, assetManager.<Skin>finishLoadingAsset(Assets.SKIN));
+        var loadingStage = stageFactory.loadingStage(progressBar);
         var titleStage = stageFactory.titleStage();
-        var disposables = new HashSet<Disposable>();
-        disposables.add(shapeRenderer);
-        disposables.add(spriteBatch);
-        disposables.add(assetManager);
-        disposables.add(titleStage);
         var snakesGame = new SnakesGame(
+            new LoadingScreen(
+                loadingStage,
+                assetManager,
+                progressBar,
+                applicationEvents
+            ),
             new TitleScreen(titleStage),
             new SnakeSessionScreen(
                 new SnakeSessionFactory(),
@@ -47,7 +51,13 @@ final class SnakesGameAdapter implements ApplicationListener {
                 new FitViewport(worldDimensions.width(), worldDimensions.height()),
                 applicationEvents
             ),
-            disposables
+            Set.of(
+                shapeRenderer,
+                spriteBatch,
+                assetManager,
+                titleStage,
+                loadingStage
+            )
         );
         applicationEvents.subscribe(snakesGame);
         original = snakesGame;

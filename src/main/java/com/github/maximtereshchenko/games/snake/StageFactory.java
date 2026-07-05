@@ -27,9 +27,10 @@ final class StageFactory {
     }
 
     Stage titleStage() {
+        var bundle = assetManager.get(Assets.GAME_BUNDLE);
         var stage = stage(
-            label("title.name"),
-            label("title.continue")
+            label(bundle.get("title.name")),
+            label(bundle.get("title.continue"))
         );
         stage.addListener(
             new FunctionalInputListener(
@@ -42,7 +43,7 @@ final class StageFactory {
 
     Stage loadingStage(ProgressBar progressBar) {
         return stage(
-            label("loading.name"),
+            label(assetManager.get(Assets.LOADING_BUNDLE).get("loading.name")),
             progressBar
         );
     }
@@ -58,9 +59,9 @@ final class StageFactory {
         return stage;
     }
 
-    private Label label(String key) {
+    private Label label(String text) {
         return new Label(
-            assetManager.get(Assets.I18N_BUNDLE).get(key),
+            text,
             assetManager.get(Assets.SKIN)
         );
     }

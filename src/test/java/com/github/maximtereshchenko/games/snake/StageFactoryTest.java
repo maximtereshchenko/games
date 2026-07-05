@@ -48,7 +48,7 @@ final class StageFactoryTest {
                     .anySatisfy(argument -> assertThat(argument).isEqualTo(skin))
             )
         ) {
-            when(assetManager.get(Assets.I18N_BUNDLE)).thenReturn(bundle);
+            when(assetManager.get(Assets.GAME_BUNDLE)).thenReturn(bundle);
             when(assetManager.get(Assets.SKIN)).thenReturn(skin);
             var stage = stageFactory.titleStage();
             assertThat(stage.getViewport()).isEqualTo(screenViewport.constructed().getFirst());
@@ -86,7 +86,7 @@ final class StageFactoryTest {
                     .anySatisfy(argument -> assertThat(argument).isEqualTo(skin))
             )
         ) {
-            when(assetManager.get(Assets.I18N_BUNDLE)).thenReturn(bundle);
+            when(assetManager.get(Assets.LOADING_BUNDLE)).thenReturn(bundle);
             when(assetManager.get(Assets.SKIN)).thenReturn(skin);
             var stage = stageFactory.loadingStage(progressBar);
             assertThat(stage.getViewport()).isEqualTo(screenViewport.constructed().getFirst());

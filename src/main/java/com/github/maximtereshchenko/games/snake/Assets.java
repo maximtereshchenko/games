@@ -10,7 +10,9 @@ final class Assets {
 
     static final AssetDescriptor<Skin> SKIN =
         new AssetDescriptor<>("skin.json", Skin.class);
-    static final AssetDescriptor<I18NBundle> I18N_BUNDLE =
-        new AssetDescriptor<>("bundle", I18NBundle.class);
-    static final List<AssetDescriptor<?>> ALL = List.of(SKIN, I18N_BUNDLE);
+    static final AssetDescriptor<I18NBundle> GAME_BUNDLE =
+        new AssetDescriptor<>("game", I18NBundle.class);
+    static final AssetDescriptor<I18NBundle> LOADING_BUNDLE =
+        new AssetDescriptor<>("loading", I18NBundle.class);
+    static final List<AssetDescriptor<?>> ALL = List.of(SKIN, GAME_BUNDLE, LOADING_BUNDLE);
 }
