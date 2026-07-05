@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-abstract class StageScreen extends ScreenAdapter {
+final class StageScreen extends ScreenAdapter {
 
     private final Stage stage;
 
@@ -15,27 +15,24 @@ abstract class StageScreen extends ScreenAdapter {
     }
 
     @Override
-    public final void render(float delta) {
-        beforeRendering();
+    public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
         stage.act(delta);
         stage.draw();
     }
 
     @Override
-    public final void resize(int width, int height) {
+    public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
     }
 
     @Override
-    public final void show() {
+    public void show() {
         Gdx.input.setInputProcessor(stage);
     }
 
     @Override
-    public final void hide() {
+    public void hide() {
         Gdx.input.setInputProcessor(null);
     }
-
-    abstract void beforeRendering();
 }

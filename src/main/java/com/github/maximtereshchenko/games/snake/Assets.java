@@ -4,7 +4,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 
-import java.util.List;
+import java.util.Set;
 
 final class Assets {
 
@@ -14,5 +14,6 @@ final class Assets {
         new AssetDescriptor<>("game", I18NBundle.class);
     static final AssetDescriptor<I18NBundle> LOADING_BUNDLE =
         new AssetDescriptor<>("loading", I18NBundle.class);
-    static final List<AssetDescriptor<?>> ALL = List.of(SKIN, GAME_BUNDLE, LOADING_BUNDLE);
+    static final Set<AssetDescriptor<?>> LOADING_ASSETS = Set.of(SKIN, LOADING_BUNDLE);
+    static final Set<AssetDescriptor<?>> GAME_ASSETS = Set.of(GAME_BUNDLE);
 }

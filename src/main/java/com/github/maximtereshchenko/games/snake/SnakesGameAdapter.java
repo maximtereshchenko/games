@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,8 +25,8 @@ final class SnakesGameAdapter implements ApplicationListener {
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
         var assetManager = new AssetManager();
-        Assets.ALL.forEach(assetManager::load);
-        assetManager.finishLoading(); //TODO lazy screen
+        Assets.LOADING_ASSETS.forEach(assetManager::load);
+        assetManager.finishLoading();
         var stageFactory = new StageFactory(
             assetManager,
             spriteBatch,
@@ -33,23 +34,22 @@ final class SnakesGameAdapter implements ApplicationListener {
         );
         var progressBar = new ProgressBar(0, 1, 0.01f, false, assetManager.<Skin>finishLoadingAsset(Assets.SKIN));
         var loadingStage = stageFactory.loadingStage(progressBar);
-        var titleStage = stageFactory.titleStage();
         var disposables = new Disposables();
         disposables.add(
             shapeRenderer,
             spriteBatch,
             assetManager,
-            titleStage,
             loadingStage
         );
         var snakesGame = new SnakesGame(
             new LoadingScreen(
-                loadingStage,
+                new StageScreen(loadingStage),
                 assetManager,
                 progressBar,
-                applicationEvents
+                applicationEvents,
+                Assets.GAME_ASSETS
             ),
-            new TitleScreen(titleStage),
+            new LazyScreen(() -> titleScreen(stageFactory, disposables)),
             new SnakeSessionScreen(
                 new SnakeSessionFactory(),
                 worldDimensions,
@@ -86,5 +86,11 @@ final class SnakesGameAdapter implements ApplicationListener {
     @Override
     public void dispose() {
         original.dispose();
+    }
+
+    private Screen titleScreen(StageFactory stageFactory, Disposables disposables) {
+        var titleStage = stageFactory.titleStage();
+        disposables.add(titleStage);
+        return new StageScreen(titleStage);
     }
 }
