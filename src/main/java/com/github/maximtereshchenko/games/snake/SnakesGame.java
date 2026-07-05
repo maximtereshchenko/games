@@ -2,21 +2,18 @@ package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.utils.Disposable;
-
-import java.util.Set;
 
 final class SnakesGame extends Game implements Subscriber {
 
     private final Screen titleScreen;
     private final Screen snakeSessionScreen;
-    private final Set<Disposable> disposables;
+    private final Disposables disposables;
 
     SnakesGame(
         Screen loadingScreen,
         Screen titleScreen,
         Screen snakeSessionScreen,
-        Set<Disposable> disposables
+        Disposables disposables
     ) {
         this.titleScreen = titleScreen;
         this.snakeSessionScreen = snakeSessionScreen;
@@ -32,7 +29,7 @@ final class SnakesGame extends Game implements Subscriber {
     @Override
     public void dispose() {
         super.dispose();
-        disposables.forEach(Disposable::dispose);
+        disposables.dispose();
     }
 
     @Override

@@ -2,13 +2,10 @@ package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.utils.Disposable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.Set;
 
 import static org.mockito.Mockito.*;
 
@@ -17,7 +14,7 @@ final class SnakesGameTest {
     private final Screen loadingScreen = mock();
     private final Screen titleScreen = mock();
     private final Screen snakeSessionScreen = mock();
-    private final Disposable disposable = mock();
+    private final Disposables disposables = mock();
     private SnakesGame snakesGame;
 
     @BeforeEach
@@ -27,7 +24,7 @@ final class SnakesGameTest {
             loadingScreen,
             titleScreen,
             snakeSessionScreen,
-            Set.of(disposable)
+            disposables
         );
     }
 
@@ -56,6 +53,6 @@ final class SnakesGameTest {
     void whenDispose_thenScreenHiddenDisposableDisposed() {
         snakesGame.dispose();
         verify(loadingScreen).hide();
-        verify(disposable).dispose();
+        verify(disposables).dispose();
     }
 }

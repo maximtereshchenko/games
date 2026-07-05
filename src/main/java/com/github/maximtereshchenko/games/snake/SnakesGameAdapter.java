@@ -9,8 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-import java.util.Set;
-
 final class SnakesGameAdapter implements ApplicationListener {
 
     private ApplicationListener original;
@@ -36,6 +34,14 @@ final class SnakesGameAdapter implements ApplicationListener {
         var progressBar = new ProgressBar(0, 1, 0.01f, false, assetManager.<Skin>finishLoadingAsset(Assets.SKIN));
         var loadingStage = stageFactory.loadingStage(progressBar);
         var titleStage = stageFactory.titleStage();
+        var disposables = new Disposables();
+        disposables.add(
+            shapeRenderer,
+            spriteBatch,
+            assetManager,
+            titleStage,
+            loadingStage
+        );
         var snakesGame = new SnakesGame(
             new LoadingScreen(
                 loadingStage,
@@ -51,13 +57,7 @@ final class SnakesGameAdapter implements ApplicationListener {
                 new FitViewport(worldDimensions.width(), worldDimensions.height()),
                 applicationEvents
             ),
-            Set.of(
-                shapeRenderer,
-                spriteBatch,
-                assetManager,
-                titleStage,
-                loadingStage
-            )
+            disposables
         );
         applicationEvents.subscribe(snakesGame);
         original = snakesGame;
