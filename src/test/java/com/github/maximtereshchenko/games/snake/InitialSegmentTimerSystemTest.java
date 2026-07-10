@@ -9,25 +9,14 @@ final class InitialSegmentTimerSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final InitialSegmentTimerSystem initialSegmentTimerSystem = new InitialSegmentTimerSystem(
-        dominion
+        dominion,
+        2
     );
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new InitialSegmentTimer(0));
+        dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(AppleEaten.INSTANCE);
-        initialSegmentTimerSystem.run();
-        assertThat(dominion.findCompositionsWith(InitialSegmentTimer.class))
-            .singleElement()
-            .extracting(initialSegmentTimer -> initialSegmentTimer.value)
-            .isEqualTo(0);
-    }
-
-    @Test
-    void givenTurnStartedEvent_thenInitialSegmentTimerIncremented() {
-        dominion.createEntity(new InitialSegmentTimer(0));
-        dominion.createEntity(AppleEaten.INSTANCE);
-        dominion.createEntity(TurnStarted.INSTANCE);
         initialSegmentTimerSystem.run();
         assertThat(dominion.findCompositionsWith(InitialSegmentTimer.class))
             .singleElement()
@@ -36,13 +25,25 @@ final class InitialSegmentTimerSystemTest {
     }
 
     @Test
-    void givenNoAppleEatenEvent_thenNoChanges() {
-        dominion.createEntity(new InitialSegmentTimer(0));
+    void givenAppleEatenEvent_thenInitialSegmentTimerIncremented() {
+        dominion.createEntity(new InitialSegmentTimer(1));
+        dominion.createEntity(AppleEaten.INSTANCE);
         dominion.createEntity(TurnStarted.INSTANCE);
         initialSegmentTimerSystem.run();
         assertThat(dominion.findCompositionsWith(InitialSegmentTimer.class))
             .singleElement()
             .extracting(initialSegmentTimer -> initialSegmentTimer.value)
-            .isEqualTo(0);
+            .isEqualTo(3);
+    }
+
+    @Test
+    void givenNoAppleEatenEvent_thenNoChanges() {
+        dominion.createEntity(new InitialSegmentTimer(1));
+        dominion.createEntity(TurnStarted.INSTANCE);
+        initialSegmentTimerSystem.run();
+        assertThat(dominion.findCompositionsWith(InitialSegmentTimer.class))
+            .singleElement()
+            .extracting(initialSegmentTimer -> initialSegmentTimer.value)
+            .isEqualTo(1);
     }
 }

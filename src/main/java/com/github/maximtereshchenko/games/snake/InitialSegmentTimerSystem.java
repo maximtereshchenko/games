@@ -5,10 +5,12 @@ import dev.dominion.ecs.api.Dominion;
 final class InitialSegmentTimerSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
+    private final int step;
 
-    InitialSegmentTimerSystem(Dominion dominion) {
+    InitialSegmentTimerSystem(Dominion dominion, int step) {
         super(dominion);
         this.dominion = dominion;
+        this.step = step;
     }
 
     @Override
@@ -17,7 +19,7 @@ final class InitialSegmentTimerSystem extends TurnBasedSystem {
             return;
         }
         for (var initialSegmentTimer : dominion.findCompositionsWith(InitialSegmentTimer.class)) {
-            initialSegmentTimer.value++;
+            initialSegmentTimer.value += step;
         }
     }
 }

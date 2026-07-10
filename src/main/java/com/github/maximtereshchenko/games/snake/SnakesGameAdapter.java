@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import dev.dominion.ecs.engine.system.Config;
 
 import java.util.LinkedHashMap;
 import java.util.function.Supplier;
@@ -18,6 +19,10 @@ final class SnakesGameAdapter implements ApplicationListener {
     private ApplicationListener original;
 
     static void main() {
+        System.setProperty(
+            Config.getPropertyName(Config.SHOW_BANNER),
+            Boolean.toString(false)
+        );
         new Lwjgl3Application(new SnakesGameAdapter());
     }
 

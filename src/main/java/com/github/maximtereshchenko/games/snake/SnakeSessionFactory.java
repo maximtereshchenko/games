@@ -36,7 +36,6 @@ final class SnakeSessionFactory {
         dominion.createEntity(new Stopwatch());
         dominion.createEntity(new InitialSegmentTimer(3));
         dominion.createEntity(new LeftTurns(0));
-        //TODO +3 on eat
         dominion.createEntity(
             Head.INSTANCE,
             new CurrentDirection(Direction.RIGHT),
@@ -65,7 +64,8 @@ final class SnakeSessionFactory {
                 new CurrentDirectionSystem(dominion),
                 new HeadMovementSystem(dominion),
                 new AppleEatingSystem(dominion),
-                new InitialSegmentTimerSystem(dominion),
+                new InitialSegmentTimerSystem(dominion, 3),
+                new TimerIncrementSystem(dominion, 3),
                 new TimerDecrementSystem(dominion),
                 new TimerRemovalSystem(dominion),
                 new SessionEndSystem(dominion),

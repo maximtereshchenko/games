@@ -5,17 +5,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class TimerDecrementSystemTest {
+final class TimerIncrementSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final TimerDecrementSystem timerDecrementSystem = new TimerDecrementSystem(
-        dominion
+    private final TimerIncrementSystem timerIncrementSystem = new TimerIncrementSystem(
+        dominion,
+        2
     );
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new Timer(1));
-        timerDecrementSystem.run();
+        timerIncrementSystem.run();
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)
@@ -23,13 +24,25 @@ final class TimerDecrementSystemTest {
     }
 
     @Test
-    void givenTurnStartedEvent_thenTimerDecremented() {
+    void givenNoAppleEatenEvent_thenNoChanges() {
         dominion.createEntity(new Timer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        timerDecrementSystem.run();
+        timerIncrementSystem.run();
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)
-            .isEqualTo(0);
+            .isEqualTo(1);
+    }
+
+    @Test
+    void givenAppleEatenEvent_thenTimerIncremented() {
+        dominion.createEntity(new Timer(1));
+        dominion.createEntity(TurnStarted.INSTANCE);
+        dominion.createEntity(AppleEaten.INSTANCE);
+        timerIncrementSystem.run();
+        assertThat(dominion.findCompositionsWith(Timer.class))
+            .singleElement()
+            .extracting(timer -> timer.value)
+            .isEqualTo(3);
     }
 }
