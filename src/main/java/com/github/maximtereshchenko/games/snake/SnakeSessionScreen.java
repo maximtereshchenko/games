@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 final class SnakeSessionScreen extends ScreenAdapter implements Subscriber {
 
@@ -29,11 +30,17 @@ final class SnakeSessionScreen extends ScreenAdapter implements Subscriber {
 
     @Override
     public void render(float delta) {
-        for (var game : snakeSession.dominion().findCompositionsWith(Session.class)) {
-            if (game.status == Session.Status.ENDED) {
-                applicationEvents.publish(new SnakeSessionEnded());
-                return;
-            }
+        if (value(Session.class, session -> session.status == Session.Status.ENDED, false)) {
+            applicationEvents.publish(
+                new SnakeSessionEnded(
+                    value(
+                        LeftTurns.class,
+                        leftTurns -> leftTurns.value,
+                        0
+                    )
+                )
+            );
+            return;
         }
         snakeSession.scheduler().tick((long) (TimeUnit.SECONDS.toNanos(1) * delta));
         snakeSession.standaloneRenderingSystem().render();
@@ -63,5 +70,12 @@ final class SnakeSessionScreen extends ScreenAdapter implements Subscriber {
         if (event instanceof ModeSelected modeSelected) {
             snakeSessionFactory = modeSelected.snakeSessionFactory();
         }
+    }
+
+    private <T, R> R value(Class<T> type, Function<T, R> function, R defaultValue) {
+        for (var component : snakeSession.dominion().findCompositionsWith(type)) {
+            return function.apply(component);
+        }
+        return defaultValue;
     }
 }

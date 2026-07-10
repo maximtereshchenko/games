@@ -2,15 +2,19 @@ package com.github.maximtereshchenko.games.snake;
 
 enum Direction {
 
-    UP(1), DOWN(0), LEFT(3), RIGHT(2);
+    UP(2), DOWN(3), LEFT(1), RIGHT(0);
 
-    private final int oppositeOrdinal;
+    private final int leftOrdinal;
 
-    Direction(int oppositeOrdinal) {
-        this.oppositeOrdinal = oppositeOrdinal;
+    Direction(int leftOrdinal) {
+        this.leftOrdinal = leftOrdinal;
     }
 
     Direction opposite() {
-        return Direction.values()[oppositeOrdinal];
+        return left().left();
+    }
+
+    Direction left() {
+        return Direction.values()[leftOrdinal];
     }
 }

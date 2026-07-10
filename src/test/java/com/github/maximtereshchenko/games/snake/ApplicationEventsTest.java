@@ -12,7 +12,7 @@ final class ApplicationEventsTest {
     @Test
     void whenPublish_thenSubscribersNotified() {
         var subscriber = mock(Subscriber.class);
-        var applicationEvent = new SnakeSessionEnded();
+        var applicationEvent = new AssetsLoaded();
         applicationEvents.subscribe(subscriber);
         applicationEvents.publish(applicationEvent);
         verify(subscriber).onEvent(applicationEvent);

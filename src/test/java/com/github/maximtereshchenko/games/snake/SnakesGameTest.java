@@ -21,7 +21,7 @@ final class SnakesGameTest {
     private SnakesGame snakesGame;
 
     private static Stream<ApplicationEvent> modeSelectionScreenEvents() {
-        return Stream.of(new TitleScreenFinished(), new SnakeSessionEnded());
+        return Stream.of(new TitleScreenFinished(), new SnakeSessionEnded(1));
     }
 
     @BeforeEach
