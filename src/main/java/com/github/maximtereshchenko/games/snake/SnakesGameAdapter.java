@@ -23,7 +23,7 @@ final class SnakesGameAdapter implements ApplicationListener {
 
     @Override
     public void create() {
-        var worldDimensions = new WorldDimensions(6, 6);
+        var worldDimensions = new WorldDimensions(33, 16);
         var applicationEvents = new ApplicationEvents();
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();

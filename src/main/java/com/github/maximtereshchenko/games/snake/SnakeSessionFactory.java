@@ -47,7 +47,7 @@ final class SnakeSessionFactory {
     private void scheduleSystems(Dominion dominion, Scheduler scheduler) {
         List.of(
                 new InputSystem(dominion),
-                new TurnStartSystem(dominion, scheduler, 0.4),
+                new TurnStartSystem(dominion, scheduler, 0.13),
                 new SegmentSpawningSystem(dominion),
                 new CurrentDirectionSystem(dominion),
                 new HeadMovementSystem(dominion),

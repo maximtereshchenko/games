@@ -4,7 +4,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -22,7 +21,6 @@ final class LoadingScreenTest {
     private final ProgressBar progressBar = mock();
     private final ApplicationEvents applicationEvents = mock();
     private final AssetDescriptor<?> assetDescriptor = mock();
-    private final Viewport viewport = mock();
     private final LoadingScreen loadingScreen = new LoadingScreen(
         stageScreen,
         assetManager,
