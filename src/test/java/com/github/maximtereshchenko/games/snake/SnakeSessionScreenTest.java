@@ -24,7 +24,6 @@ final class SnakeSessionScreenTest {
     private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
     private final Results<Session> results = mock();
     private final SnakeSessionScreen snakeSessionScreen = new SnakeSessionScreen(
-        snakeSessionFactory,
         worldDimensions,
         shapeRenderer,
         viewport,
@@ -33,6 +32,7 @@ final class SnakeSessionScreenTest {
 
     @Test
     void whenShow_thenSnakeSessionCreated() {
+        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         verify(snakeSessionFactory).snakeSession(viewport, shapeRenderer, worldDimensions);
     }
@@ -43,6 +43,7 @@ final class SnakeSessionScreenTest {
             .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
         when(dominion.findCompositionsWith(Session.class)).thenReturn(results);
         when(results.iterator()).thenReturn(List.of(new Session(Session.Status.RUNNING)).iterator());
+        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         snakeSessionScreen.render(1.0f);
         verify(scheduler).tick(TimeUnit.SECONDS.toNanos(1));
@@ -55,9 +56,10 @@ final class SnakeSessionScreenTest {
             .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
         when(dominion.findCompositionsWith(Session.class)).thenReturn(results);
         when(results.iterator()).thenReturn(List.of(new Session(Session.Status.ENDED)).iterator());
+        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         snakeSessionScreen.render(1.0f);
-        verify(applicationEvents).publish(ApplicationEvent.SNAKE_SESSION_ENDED);
+        verify(applicationEvents).publish(new SnakeSessionEnded());
         verifyNoInteractions(scheduler);
         verifyNoInteractions(standaloneRenderingSystem);
     }
@@ -72,6 +74,7 @@ final class SnakeSessionScreenTest {
     void whenHide_thenSchedulerShutDown() {
         when(snakeSessionFactory.snakeSession(viewport, shapeRenderer, worldDimensions))
             .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
+        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         snakeSessionScreen.hide();
         verify(scheduler).shutDown();

@@ -62,7 +62,7 @@ final class LoadingScreenTest {
         loadingScreen.render(1.0f);
         verify(progressBar).setValue(assetManager.getProgress());
         verify(stageScreen).render(1.0f);
-        verify(applicationEvents).publish(ApplicationEvent.ASSETS_LOADED);
+        verify(applicationEvents).publish(any(AssetsLoaded.class));
 
     }
 

@@ -3,12 +3,15 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import java.util.LinkedHashMap;
+import java.util.function.Supplier;
 
 final class SnakesGameAdapter implements ApplicationListener {
 
@@ -24,7 +27,7 @@ final class SnakesGameAdapter implements ApplicationListener {
         var applicationEvents = new ApplicationEvents();
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
-        var assetManager = new AssetManager();
+        var assetManager = new AssetManager(new ClasspathFileHandleResolver());
         Assets.LOADING_ASSETS.forEach(assetManager::load);
         assetManager.finishLoading();
         var stageFactory = new StageFactory(
@@ -32,8 +35,7 @@ final class SnakesGameAdapter implements ApplicationListener {
             spriteBatch,
             applicationEvents
         );
-        var progressBar = new ProgressBar(0, 1, 0.01f, false, assetManager.<Skin>finishLoadingAsset(Assets.SKIN));
-        var loadingStage = stageFactory.loadingStage(progressBar);
+        var loadingStage = stageFactory.loadingStage();
         var disposables = new Disposables();
         disposables.add(
             shapeRenderer,
@@ -41,24 +43,26 @@ final class SnakesGameAdapter implements ApplicationListener {
             assetManager,
             loadingStage
         );
+        var snakeSessionScreen = new SnakeSessionScreen(
+            worldDimensions,
+            shapeRenderer,
+            new FitViewport(worldDimensions.width(), worldDimensions.height()),
+            applicationEvents
+        );
         var snakesGame = new SnakesGame(
             new LoadingScreen(
                 new StageScreen(loadingStage),
                 assetManager,
-                progressBar,
+                loadingStage.getRoot().findActor(StageFactory.ASSETS_LOADING_BAR),
                 applicationEvents,
                 Assets.GAME_ASSETS
             ),
-            new LazyScreen(() -> titleScreen(stageFactory, disposables)),
-            new SnakeSessionScreen(
-                new SnakeSessionFactory(),
-                worldDimensions,
-                shapeRenderer,
-                new FitViewport(worldDimensions.width(), worldDimensions.height()),
-                applicationEvents
-            ),
+            lazyScreen(stageFactory::titleStage, disposables),
+            lazyScreen(() -> stageFactory.modeSelectionStage(modes()), disposables),
+            snakeSessionScreen,
             disposables
         );
+        applicationEvents.subscribe(snakeSessionScreen);
         applicationEvents.subscribe(snakesGame);
         original = snakesGame;
     }
@@ -88,9 +92,17 @@ final class SnakesGameAdapter implements ApplicationListener {
         original.dispose();
     }
 
-    private Screen titleScreen(StageFactory stageFactory, Disposables disposables) {
-        var titleStage = stageFactory.titleStage();
-        disposables.add(titleStage);
-        return new StageScreen(titleStage);
+    private Screen lazyScreen(Supplier<Stage> supplier, Disposables disposables) {
+        return new LazyScreen(() -> {
+            var stage = supplier.get();
+            disposables.add(stage);
+            return new StageScreen(stage);
+        });
+    }
+
+    private LinkedHashMap<Mode, SnakeSessionFactory> modes() {
+        var modes = new LinkedHashMap<Mode, SnakeSessionFactory>();
+        modes.put(Mode.CLASSIC, new SnakeSessionFactory());
+        return modes;
     }
 }

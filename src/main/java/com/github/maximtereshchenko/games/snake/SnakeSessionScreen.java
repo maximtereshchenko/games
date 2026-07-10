@@ -6,23 +6,21 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.concurrent.TimeUnit;
 
-final class SnakeSessionScreen extends ScreenAdapter {
+final class SnakeSessionScreen extends ScreenAdapter implements Subscriber {
 
-    private final SnakeSessionFactory snakeSessionFactory;
     private final WorldDimensions worldDimensions;
     private final ShapeRenderer shapeRenderer;
     private final Viewport viewport;
     private final ApplicationEvents applicationEvents;
+    private SnakeSessionFactory snakeSessionFactory;
     private SnakeSession snakeSession;
 
     SnakeSessionScreen(
-        SnakeSessionFactory snakeSessionFactory,
         WorldDimensions worldDimensions,
         ShapeRenderer shapeRenderer,
         Viewport viewport,
         ApplicationEvents applicationEvents
     ) {
-        this.snakeSessionFactory = snakeSessionFactory;
         this.worldDimensions = worldDimensions;
         this.shapeRenderer = shapeRenderer;
         this.viewport = viewport;
@@ -33,7 +31,7 @@ final class SnakeSessionScreen extends ScreenAdapter {
     public void render(float delta) {
         for (var game : snakeSession.dominion().findCompositionsWith(Session.class)) {
             if (game.status == Session.Status.ENDED) {
-                applicationEvents.publish(ApplicationEvent.SNAKE_SESSION_ENDED);
+                applicationEvents.publish(new SnakeSessionEnded());
                 return;
             }
         }
@@ -58,5 +56,12 @@ final class SnakeSessionScreen extends ScreenAdapter {
     @Override
     public void hide() {
         snakeSession.scheduler().shutDown();
+    }
+
+    @Override
+    public void onEvent(ApplicationEvent event) {
+        if (event instanceof ModeSelected modeSelected) {
+            snakeSessionFactory = modeSelected.snakeSessionFactory();
+        }
     }
 }

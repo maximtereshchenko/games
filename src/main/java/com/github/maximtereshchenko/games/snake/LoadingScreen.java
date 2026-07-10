@@ -41,7 +41,7 @@ final class LoadingScreen implements Screen {
         progressBar.setValue(assetManager.getProgress());
         stageScreen.render(delta);
         if (loaded) {
-            applicationEvents.publish(ApplicationEvent.ASSETS_LOADED);
+            applicationEvents.publish(new AssetsLoaded());
         }
     }
 

@@ -6,16 +6,19 @@ import com.badlogic.gdx.Screen;
 final class SnakesGame extends Game implements Subscriber {
 
     private final Screen titleScreen;
+    private final Screen modeSelectionScreen;
     private final Screen snakeSessionScreen;
     private final Disposables disposables;
 
     SnakesGame(
         Screen loadingScreen,
         Screen titleScreen,
+        Screen modeSelectionScreen,
         Screen snakeSessionScreen,
         Disposables disposables
     ) {
         this.titleScreen = titleScreen;
+        this.modeSelectionScreen = modeSelectionScreen;
         this.snakeSessionScreen = snakeSessionScreen;
         this.disposables = disposables;
         setScreen(loadingScreen);
@@ -35,8 +38,9 @@ final class SnakesGame extends Game implements Subscriber {
     @Override
     public void onEvent(ApplicationEvent event) {
         switch (event) {
-            case ASSETS_LOADED, SNAKE_SESSION_ENDED -> setScreen(titleScreen);
-            case CONTINUED_PAST_TITLE_SCREEN -> setScreen(snakeSessionScreen);
+            case AssetsLoaded _ -> setScreen(titleScreen);
+            case TitleScreenFinished _, SnakeSessionEnded _ -> setScreen(modeSelectionScreen);
+            case ModeSelected _ -> setScreen(snakeSessionScreen);
         }
     }
 }
