@@ -25,11 +25,8 @@ final class InputSystem implements Runnable {
     public void run() {
         for (var entry : directions.entrySet()) {
             if (Gdx.input.isKeyPressed(entry.getKey())) {
-                for (var result : dominion.findCompositionsWith(CurrentDirection.class, NextDirection.class)) {
-                    var direction = entry.getValue();
-                    if (result.comp1().value.opposite() != direction) {
-                        result.comp2().value = direction;
-                    }
+                for (var nextDirection : dominion.findCompositionsWith(NextDirection.class)) {
+                    nextDirection.value = entry.getValue();
                 }
             }
         }

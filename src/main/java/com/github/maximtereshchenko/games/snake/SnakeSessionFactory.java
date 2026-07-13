@@ -61,7 +61,7 @@ final class SnakeSessionFactory {
                 new TurnStartSystem(dominion, scheduler, 0.125),
                 new SegmentSpawningSystem(dominion),
                 new LeftTurnsSystem(dominion),
-                new CurrentDirectionSystem(dominion),
+                new CurrentDirectionSystem(dominion, (current, next) -> current.opposite() != next),
                 new HeadMovementSystem(dominion),
                 new AppleEatingSystem(dominion),
                 new InitialSegmentTimerSystem(dominion, 3),
