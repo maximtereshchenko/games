@@ -17,4 +17,8 @@ enum Direction {
     Direction left() {
         return Direction.values()[leftOrdinal];
     }
+
+    Direction right() {
+        return opposite().left();
+    }
 }

@@ -1,14 +1,14 @@
 package com.github.maximtereshchenko.games.snake;
 
-final class ClassicSnakeSessionFactory extends SnakeSessionFactory {
+final class ViperSnakeSessionFactory extends SnakeSessionFactory {
 
     @Override
     Mode mode() {
-        return Mode.CLASSIC;
+        return Mode.VIPER;
     }
 
     @Override
     boolean setCurrentDirection(Direction current, Direction next) {
-        return next != current.opposite();
+        return next == current.right();
     }
 }

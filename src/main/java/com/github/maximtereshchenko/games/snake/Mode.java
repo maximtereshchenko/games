@@ -4,7 +4,7 @@ import java.util.Locale;
 
 enum Mode {
 
-    CLASSIC;
+    CLASSIC, VIPER;
 
     @Override
     public String toString() {
