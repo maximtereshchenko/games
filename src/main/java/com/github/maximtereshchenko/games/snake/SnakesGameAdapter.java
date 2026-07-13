@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.engine.system.Config;
 
-import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.function.Supplier;
 
 final class SnakesGameAdapter implements ApplicationListener {
@@ -63,7 +63,14 @@ final class SnakesGameAdapter implements ApplicationListener {
                 Assets.GAME_ASSETS
             ),
             lazyScreen(stageFactory::titleStage, disposables),
-            lazyScreen(() -> stageFactory.modeSelectionStage(modes()), disposables),
+            lazyScreen(
+                () -> stageFactory.modeSelectionStage(
+                    List.of(
+                        new ClassicSnakeSessionFactory()
+                    )
+                ),
+                disposables
+            ),
             snakeSessionScreen,
             disposables
         );
@@ -103,11 +110,5 @@ final class SnakesGameAdapter implements ApplicationListener {
             disposables.add(stage);
             return new StageScreen(stage);
         });
-    }
-
-    private LinkedHashMap<Mode, SnakeSessionFactory> modes() {
-        var modes = new LinkedHashMap<Mode, SnakeSessionFactory>();
-        modes.put(Mode.CLASSIC, new SnakeSessionFactory());
-        return modes;
     }
 }

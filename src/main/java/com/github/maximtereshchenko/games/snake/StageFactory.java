@@ -10,7 +10,6 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
@@ -67,10 +66,10 @@ final class StageFactory {
         );
     }
 
-    Stage modeSelectionStage(LinkedHashMap<Mode, SnakeSessionFactory> modes) {
+    Stage modeSelectionStage(List<SnakeSessionFactory> snakeSessionFactories) {
         var bundle = assetManager.get(Assets.GAME_BUNDLE);
         var skin = assetManager.get(Assets.SKIN);
-        var firstMode = modes.firstEntry().getKey();
+        var firstMode = snakeSessionFactories.getFirst().mode();
         var modeNameLabel = new Label(bundle.get(firstMode.nameKey()), skin);
         var modeDescriptionLabel = new Label(bundle.get(firstMode.descriptionKey()), skin);
         var modeSelectionWidth = 4;
@@ -80,7 +79,7 @@ final class StageFactory {
                 table(
                     modeSelectionWidth,
                     modeSelectionPanel(
-                        modes,
+                        snakeSessionFactories,
                         bundle,
                         skin,
                         modeSelectionWidth
@@ -96,19 +95,18 @@ final class StageFactory {
     }
 
     private List<Actor> modeSelectionPanel(
-        LinkedHashMap<Mode, SnakeSessionFactory> modes,
+        List<SnakeSessionFactory> snakeSessionFactories,
         I18NBundle bundle,
         Skin skin,
         int width
     ) {
         var panel = new ArrayList<Actor>();
-        for (var entry : modes.entrySet()) {
+        for (var snakeSessionFactory : snakeSessionFactories) {
             panel.add(
                 modeSelectionButton(
                     bundle,
                     skin,
-                    entry.getKey(),
-                    entry.getValue()
+                    snakeSessionFactory
                 )
             );
         }
@@ -124,10 +122,9 @@ final class StageFactory {
     private TextButton modeSelectionButton(
         I18NBundle bundle,
         Skin skin,
-        Mode mode,
         SnakeSessionFactory snakeSessionFactory
     ) {
-        var textButton = new TextButton(bundle.get(mode.nameKey()), skin);
+        var textButton = new TextButton(bundle.get(snakeSessionFactory.mode().nameKey()), skin);
         textButton.addListener(
             new FunctionalClickListener(
                 () -> applicationEvents.publish(new ModeSelected(snakeSessionFactory))

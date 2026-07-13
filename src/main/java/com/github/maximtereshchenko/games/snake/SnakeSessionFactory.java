@@ -8,9 +8,9 @@ import dev.dominion.ecs.api.Scheduler;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-final class SnakeSessionFactory {
+abstract class SnakeSessionFactory {
 
-    SnakeSession snakeSession(
+    final SnakeSession snakeSession(
         Viewport viewport,
         ShapeRenderer shapeRenderer,
         WorldDimensions worldDimensions
@@ -29,6 +29,10 @@ final class SnakeSessionFactory {
             )
         );
     }
+
+    abstract Mode mode();
+
+    abstract boolean setCurrentDirection(Direction current, Direction next);
 
     private void createEntities(Dominion dominion, WorldDimensions worldDimensions) {
         dominion.createEntity(new Session());
@@ -61,7 +65,7 @@ final class SnakeSessionFactory {
                 new TurnStartSystem(dominion, scheduler, 0.125),
                 new SegmentSpawningSystem(dominion),
                 new LeftTurnsSystem(dominion),
-                new CurrentDirectionSystem(dominion, (current, next) -> current.opposite() != next),
+                new CurrentDirectionSystem(dominion, this::setCurrentDirection),
                 new HeadMovementSystem(dominion),
                 new AppleEatingSystem(dominion),
                 new InitialSegmentTimerSystem(dominion, 3),
