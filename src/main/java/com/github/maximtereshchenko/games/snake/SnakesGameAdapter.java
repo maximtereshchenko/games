@@ -66,7 +66,8 @@ final class SnakesGameAdapter implements ApplicationListener {
             lazyScreen(
                 () -> stageFactory.modeSelectionStage(
                     List.of(
-                        new ClassicSnakeSessionFactory()
+                        new ClassicSnakeSessionFactory(),
+                        new ViperSnakeSessionFactory()
                     )
                 ),
                 disposables

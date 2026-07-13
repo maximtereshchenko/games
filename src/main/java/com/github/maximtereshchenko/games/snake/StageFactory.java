@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -37,8 +38,8 @@ final class StageFactory {
         var stage = stage(
             table(
                 1,
-                new Label(bundle.get("title.name"), skin),
-                new Label(bundle.get("title.continue"), skin)
+                label(bundle.get("title.name"), skin),
+                label(bundle.get("title.continue"), skin)
             )
         );
         stage.addListener(
@@ -57,7 +58,7 @@ final class StageFactory {
         return stage(
             table(
                 1,
-                new Label(
+                label(
                     assetManager.get(Assets.LOADING_BUNDLE).get("loading.name"),
                     skin
                 ),
@@ -69,36 +70,39 @@ final class StageFactory {
     Stage modeSelectionStage(List<SnakeSessionFactory> snakeSessionFactories) {
         var bundle = assetManager.get(Assets.GAME_BUNDLE);
         var skin = assetManager.get(Assets.SKIN);
-        var firstMode = snakeSessionFactories.getFirst().mode();
-        var modeNameLabel = new Label(bundle.get(firstMode.nameKey()), skin);
-        var modeDescriptionLabel = new Label(bundle.get(firstMode.descriptionKey()), skin);
+        var modeNameLabel = label("", skin);
+        var modeDescriptionLabel = label("", skin);
+        modeDescriptionLabel.setWrap(true);
+        var descriptionTable = new Table();
+        descriptionTable.add(modeNameLabel).growX().row();
+        descriptionTable.add(modeDescriptionLabel).growX();
+        var table = new Table();
         var modeSelectionWidth = 4;
-        return stage(
-            table(
-                2,
+        table.add(
                 table(
                     modeSelectionWidth,
                     modeSelectionPanel(
                         snakeSessionFactories,
                         bundle,
                         skin,
-                        modeSelectionWidth
+                        modeSelectionWidth,
+                        modeNameLabel,
+                        modeDescriptionLabel
                     )
-                ),
-                table(
-                    1,
-                    modeNameLabel,
-                    modeDescriptionLabel
                 )
             )
-        );
+            .width(Value.percentWidth(0.6f, table));
+        table.add(descriptionTable).width(Value.percentWidth(0.4f, table));
+        return stage(table);
     }
 
     private List<Actor> modeSelectionPanel(
         List<SnakeSessionFactory> snakeSessionFactories,
         I18NBundle bundle,
         Skin skin,
-        int width
+        int width,
+        Label modeNameLabel,
+        Label modeDescriptionLabel
     ) {
         var panel = new ArrayList<Actor>();
         for (var snakeSessionFactory : snakeSessionFactories) {
@@ -106,7 +110,9 @@ final class StageFactory {
                 modeSelectionButton(
                     bundle,
                     skin,
-                    snakeSessionFactory
+                    snakeSessionFactory,
+                    modeNameLabel,
+                    modeDescriptionLabel
                 )
             );
         }
@@ -122,15 +128,33 @@ final class StageFactory {
     private TextButton modeSelectionButton(
         I18NBundle bundle,
         Skin skin,
-        SnakeSessionFactory snakeSessionFactory
+        SnakeSessionFactory snakeSessionFactory,
+        Label modeNameLabel,
+        Label modeDescriptionLabel
     ) {
-        var textButton = new TextButton(bundle.get(snakeSessionFactory.mode().nameKey()), skin);
+        var mode = snakeSessionFactory.mode();
+        var name = bundle.get(mode.nameKey());
+        var textButton = new TextButton(name, skin);
         textButton.addListener(
             new FunctionalClickListener(
                 () -> applicationEvents.publish(new ModeSelected(snakeSessionFactory))
             )
         );
+        textButton.addListener(
+            new FunctionalHoverListener(() -> modeNameLabel.setText(name))
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(
+                () -> modeDescriptionLabel.setText(bundle.get(mode.descriptionKey()))
+            )
+        );
         return textButton;
+    }
+
+    private Label label(String text, Skin skin) {
+        var label = new Label(text, skin);
+        label.setAlignment(Align.center);
+        return label;
     }
 
     private Stage stage(Table table) {
@@ -148,7 +172,7 @@ final class StageFactory {
         var table = new Table();
         var rowIndex = 0;
         for (var actor : actors) {
-            table.add(actor);
+            table.add(actor).align(Align.center).growX();
             rowIndex++;
             if (rowIndex == width) {
                 table.row();
