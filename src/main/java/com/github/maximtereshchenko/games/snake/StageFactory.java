@@ -136,7 +136,7 @@ final class StageFactory {
         var name = bundle.get(mode.nameKey());
         var textButton = new TextButton(name, skin);
         textButton.addListener(
-            new FunctionalClickListener(
+            new FunctionalChangeListener(
                 () -> applicationEvents.publish(new ModeSelected(snakeSessionFactory))
             )
         );
