@@ -22,7 +22,7 @@ final class LeftTurnsSystemTest {
         );
         dominion.createEntity(new LeftTurns(1));
         var before = dominion.findAllEntities().stream().toList();
-        leftTurnsSystem.run();
+        leftTurnsSystem.run(0);
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }
 
@@ -35,7 +35,7 @@ final class LeftTurnsSystemTest {
         );
         dominion.createEntity(new LeftTurns(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        leftTurnsSystem.run();
+        leftTurnsSystem.run(0);
         assertThat(dominion.findCompositionsWith(LeftTurns.class))
             .singleElement()
             .extracting(result -> result.value)
@@ -51,7 +51,7 @@ final class LeftTurnsSystemTest {
         );
         dominion.createEntity(new LeftTurns(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        leftTurnsSystem.run();
+        leftTurnsSystem.run(0);
         assertThat(dominion.findCompositionsWith(LeftTurns.class))
             .singleElement()
             .extracting(result -> result.value)

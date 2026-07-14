@@ -6,7 +6,7 @@ import dev.dominion.ecs.api.Dominion;
 
 import java.util.Map;
 
-final class InputSystem implements Runnable {
+final class InputSystem implements System {
 
     private final Dominion dominion;
     private final Map<Integer, Direction> directions;
@@ -22,7 +22,7 @@ final class InputSystem implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run(float deltaTime) {
         for (var entry : directions.entrySet()) {
             if (Gdx.input.isKeyPressed(entry.getKey())) {
                 for (var nextDirection : dominion.findCompositionsWith(NextDirection.class)) {

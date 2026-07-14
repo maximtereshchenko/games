@@ -21,7 +21,7 @@ final class AppleSpawningSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new WorldDimensions(2, 2));
         var before = dominion.findAllEntities().stream().toList();
-        appleSpawningSystem.run();
+        appleSpawningSystem.run(0);
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }
 
@@ -29,7 +29,7 @@ final class AppleSpawningSystemTest {
     void givenTurnStartedEvent_thenApplesSpawned() {
         dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(TurnStarted.INSTANCE);
-        appleSpawningSystem.run();
+        appleSpawningSystem.run(0);
         assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
             .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.APPLE))
             .extracting(Results.With3::comp2)
@@ -41,7 +41,7 @@ final class AppleSpawningSystemTest {
         dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        appleSpawningSystem.run();
+        appleSpawningSystem.run(0);
         assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
             .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.APPLE))
             .extracting(Results.With3::comp2)
@@ -55,7 +55,7 @@ final class AppleSpawningSystemTest {
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
-        appleSpawningSystem.run();
+        appleSpawningSystem.run(0);
         assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
             .singleElement()
             .extracting(Results.With3::comp2, result -> result.comp3().color())

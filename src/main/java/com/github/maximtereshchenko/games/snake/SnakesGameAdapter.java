@@ -17,7 +17,7 @@ final class SnakesGameAdapter implements ApplicationListener {
     private ApplicationListener original;
 
     static void main() {
-        System.setProperty(
+        java.lang.System.setProperty(
             Config.getPropertyName(Config.SHOW_BANNER),
             Boolean.toString(false)
         );

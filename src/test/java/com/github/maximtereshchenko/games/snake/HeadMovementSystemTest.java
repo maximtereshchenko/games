@@ -23,7 +23,7 @@ final class HeadMovementSystemTest {
             new Position(0, 0),
             new CurrentDirection(Direction.RIGHT)
         );
-        headMovementSystem.run();
+        headMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
                 Head.class,
@@ -63,7 +63,7 @@ final class HeadMovementSystemTest {
             new CurrentDirection(direction)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
-        headMovementSystem.run();
+        headMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
                 Head.class,

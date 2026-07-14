@@ -4,7 +4,6 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 final class SnakeSessionScreen extends ScreenAdapter {
@@ -44,7 +43,7 @@ final class SnakeSessionScreen extends ScreenAdapter {
             );
             return;
         }
-        snakeSession.scheduler().tick((long) (TimeUnit.SECONDS.toNanos(1) * delta));
+        snakeSession.systems().forEach(system -> system.run(delta));
     }
 
     @Override
@@ -59,11 +58,6 @@ final class SnakeSessionScreen extends ScreenAdapter {
             shapeRenderer,
             worldDimensions
         );
-    }
-
-    @Override
-    public void hide() {
-        snakeSession.scheduler().shutDown();
     }
 
     private <T, R> R value(Class<T> type, Function<T, R> function, R defaultValue) {

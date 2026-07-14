@@ -16,7 +16,7 @@ final class CurrentDirectionSystemTest {
             new CurrentDirection(Direction.RIGHT),
             new NextDirection(Direction.UP)
         );
-        currentDirectionSystem.run();
+        currentDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
                 CurrentDirection.class,
@@ -35,7 +35,7 @@ final class CurrentDirectionSystemTest {
             new NextDirection(Direction.UP)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
-        currentDirectionSystem.run();
+        currentDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
                 CurrentDirection.class,

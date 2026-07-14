@@ -16,7 +16,7 @@ final class TimerIncrementSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new Timer(1));
-        timerIncrementSystem.run();
+        timerIncrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)
@@ -27,7 +27,7 @@ final class TimerIncrementSystemTest {
     void givenNoAppleEatenEvent_thenNoChanges() {
         dominion.createEntity(new Timer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        timerIncrementSystem.run();
+        timerIncrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)
@@ -39,7 +39,7 @@ final class TimerIncrementSystemTest {
         dominion.createEntity(new Timer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
         dominion.createEntity(AppleEaten.INSTANCE);
-        timerIncrementSystem.run();
+        timerIncrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)

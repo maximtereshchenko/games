@@ -15,7 +15,7 @@ final class TimerRemovalSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new Timer(0));
-        timerRemovalSystem.run();
+        timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)
@@ -26,7 +26,7 @@ final class TimerRemovalSystemTest {
     void givenTurnStartedEvent_thenTimerRemoved() {
         dominion.createEntity(new Timer(0));
         dominion.createEntity(TurnStarted.INSTANCE);
-        timerRemovalSystem.run();
+        timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class)).isEmpty();
     }
 
@@ -34,7 +34,7 @@ final class TimerRemovalSystemTest {
     void givenTimerPositive_thenNoChanges() {
         dominion.createEntity(new Timer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        timerRemovalSystem.run();
+        timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)

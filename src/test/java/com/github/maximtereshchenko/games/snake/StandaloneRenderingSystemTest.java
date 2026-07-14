@@ -33,7 +33,7 @@ final class StandaloneRenderingSystemTest {
         doNothing().when(viewport).apply();
         when(viewport.getCamera()).thenReturn(camera);
         dominion.createEntity(new Position(1, 1), new Visible(Color.BLACK));
-        standaloneRenderingSystem.run();
+        standaloneRenderingSystem.run(0);
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
         verify(Gdx.gl).glClear(anyInt());
         verify(viewport).apply();

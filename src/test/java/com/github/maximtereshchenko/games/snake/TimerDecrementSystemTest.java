@@ -15,7 +15,7 @@ final class TimerDecrementSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new Timer(1));
-        timerDecrementSystem.run();
+        timerDecrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)
@@ -26,7 +26,7 @@ final class TimerDecrementSystemTest {
     void givenTurnStartedEvent_thenTimerDecremented() {
         dominion.createEntity(new Timer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        timerDecrementSystem.run();
+        timerDecrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
             .extracting(timer -> timer.value)

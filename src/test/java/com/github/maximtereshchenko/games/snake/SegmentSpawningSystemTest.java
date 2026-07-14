@@ -21,7 +21,7 @@ final class SegmentSpawningSystemTest {
         );
         dominion.createEntity(new InitialSegmentTimer(0));
         var before = dominion.findAllEntities().stream().toList();
-        segmentSpawningSystem.run();
+        segmentSpawningSystem.run(0);
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }
 
@@ -33,7 +33,7 @@ final class SegmentSpawningSystemTest {
         );
         dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        segmentSpawningSystem.run();
+        segmentSpawningSystem.run(0);
         assertThat(dominion.findEntitiesWith(Timer.class, Position.class, Visible.class))
             .singleElement()
             .extracting(

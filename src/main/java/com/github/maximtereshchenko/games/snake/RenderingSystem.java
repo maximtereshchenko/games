@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 
-final class RenderingSystem implements Runnable {
+final class RenderingSystem implements System {
 
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
@@ -23,7 +23,7 @@ final class RenderingSystem implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run(float deltaTime) {
         ScreenUtils.clear(Color.BLACK);
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);

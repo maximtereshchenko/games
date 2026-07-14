@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Scheduler;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,11 +14,33 @@ abstract class SnakeSessionFactory {
         ShapeRenderer shapeRenderer,
         WorldDimensions worldDimensions
     ) {
-        var dominion = new SameThreadDominion(Dominion.create());
+        var dominion = Dominion.create();
         createEntities(dominion, worldDimensions);
-        var scheduler = dominion.createScheduler();
-        scheduleSystems(dominion, scheduler, viewport, shapeRenderer);
-        return new SnakeSession(dominion, scheduler);
+        return new SnakeSession(
+            dominion,
+            List.of(
+                new InputSystem(dominion),
+                new TurnStartSystem(dominion, 0.125),
+                new SegmentSpawningSystem(dominion),
+                new NextDirectionSystem(dominion, this::setCurrentDirection),
+                new LeftTurnsSystem(dominion),
+                new CurrentDirectionSystem(dominion),
+                new HeadMovementSystem(dominion),
+                new AppleEatingSystem(dominion),
+                new InitialSegmentTimerSystem(dominion, 3),
+                new TimerIncrementSystem(dominion, 3),
+                new TimerDecrementSystem(dominion),
+                new TimerRemovalSystem(dominion),
+                new SessionEndSystem(dominion),
+                new AppleSpawningSystem(dominion, ThreadLocalRandom.current(), 1),
+                new EventRemovalSystem(dominion),
+                new RenderingSystem(
+                    viewport,
+                    shapeRenderer,
+                    dominion
+                )
+            )
+        );
     }
 
     abstract Mode mode();
@@ -49,36 +70,5 @@ abstract class SnakeSessionFactory {
             new Position(9, 6),
             new Visible(Colors.SEGMENT)
         );
-    }
-
-    private void scheduleSystems(
-        Dominion dominion,
-        Scheduler scheduler,
-        Viewport viewport,
-        ShapeRenderer shapeRenderer
-    ) {
-        List.of(
-                new InputSystem(dominion),
-                new TurnStartSystem(dominion, scheduler, 0.125),
-                new SegmentSpawningSystem(dominion),
-                new NextDirectionSystem(dominion, this::setCurrentDirection),
-                new LeftTurnsSystem(dominion),
-                new CurrentDirectionSystem(dominion),
-                new HeadMovementSystem(dominion),
-                new AppleEatingSystem(dominion),
-                new InitialSegmentTimerSystem(dominion, 3),
-                new TimerIncrementSystem(dominion, 3),
-                new TimerDecrementSystem(dominion),
-                new TimerRemovalSystem(dominion),
-                new SessionEndSystem(dominion),
-                new AppleSpawningSystem(dominion, ThreadLocalRandom.current(), 1),
-                new EventRemovalSystem(dominion),
-                new RenderingSystem(
-                    viewport,
-                    shapeRenderer,
-                    dominion
-                )
-            )
-            .forEach(scheduler::schedule);
     }
 }

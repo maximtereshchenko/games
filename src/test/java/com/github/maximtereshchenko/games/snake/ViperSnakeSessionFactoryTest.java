@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Scheduler;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -14,7 +13,7 @@ import static org.mockito.Mockito.*;
 
 final class ViperSnakeSessionFactoryTest {
 
-    private final Scheduler scheduler = mock();
+    private final Dominion dominion = mock();
     private final SnakeSessionFactory snakeSessionFactory = new ViperSnakeSessionFactory();
 
     @Test
@@ -35,22 +34,16 @@ final class ViperSnakeSessionFactoryTest {
 
     @Test
     void givenShapeRenderer_thenSnakeSessionScreen() {
-        try (
-            var _ = mockStatic(Dominion.class);
-            var dominionConstruction = mockConstruction(
-                SameThreadDominion.class,
-                (dominion, _) -> when(dominion.createScheduler()).thenReturn(scheduler)
-            )
-        ) {
+        try (var dominionStatic = mockStatic(Dominion.class)) {
+            dominionStatic.when(Dominion::create).thenReturn(dominion);
             var snakeSession = snakeSessionFactory.snakeSession(
                 new FitViewport(0, 0),
                 mock(ShapeRenderer.class),
                 new WorldDimensions(0, 0)
             );
-            var dominion = dominionConstruction.constructed().getFirst();
-            assertThat(snakeSession).isEqualTo(new SnakeSession(dominion, scheduler));
+            assertThat(snakeSession.dominion()).isEqualTo(dominion);
+            assertThat(snakeSession.systems()).isNotEmpty();
             verify(dominion, atLeastOnce()).createEntity(any());
-            verify(scheduler, atLeastOnce()).schedule(any());
         }
     }
 }

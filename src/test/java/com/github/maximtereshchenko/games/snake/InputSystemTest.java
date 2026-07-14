@@ -42,7 +42,7 @@ final class InputSystemTest {
     ) {
         dominion.createEntity(new NextDirection(Direction.RIGHT));
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
-        inputSystem.run();
+        inputSystem.run(0);
         assertThat(dominion.findCompositionsWith(NextDirection.class))
             .singleElement()
             .extracting(nextDirection -> nextDirection.value)
