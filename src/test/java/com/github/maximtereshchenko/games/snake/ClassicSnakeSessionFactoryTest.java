@@ -7,7 +7,6 @@ import dev.dominion.ecs.api.Scheduler;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.mockito.MockedStatic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -15,7 +14,6 @@ import static org.mockito.Mockito.*;
 
 final class ClassicSnakeSessionFactoryTest {
 
-    private final Dominion dominion = mock();
     private final Scheduler scheduler = mock();
     private final SnakeSessionFactory snakeSessionFactory = new ClassicSnakeSessionFactory();
 
@@ -37,21 +35,20 @@ final class ClassicSnakeSessionFactoryTest {
 
     @Test
     void givenShapeRenderer_thenSnakeSessionScreen() {
-        try (MockedStatic<Dominion> dominionStatic = mockStatic(Dominion.class)) {
-            dominionStatic.when(Dominion::create).thenReturn(dominion);
-            when(dominion.createScheduler()).thenReturn(scheduler);
-            assertThat(
-                snakeSessionFactory.snakeSession(
-                    new FitViewport(0, 0),
-                    mock(ShapeRenderer.class),
-                    new WorldDimensions(0, 0)
-                )
+        try (
+            var _ = mockStatic(Dominion.class);
+            var dominionConstruction = mockConstruction(
+                SameThreadDominion.class,
+                (dominion, _) -> when(dominion.createScheduler()).thenReturn(scheduler)
             )
-                .satisfies(
-                    snakeSession -> assertThat(snakeSession.dominion()).isEqualTo(dominion),
-                    snakeSession -> assertThat(snakeSession.scheduler()).isEqualTo(scheduler),
-                    snakeSession -> assertThat(snakeSession.standaloneRenderingSystem()).isNotNull()
-                );
+        ) {
+            var snakeSession = snakeSessionFactory.snakeSession(
+                new FitViewport(0, 0),
+                mock(ShapeRenderer.class),
+                new WorldDimensions(0, 0)
+            );
+            var dominion = dominionConstruction.constructed().getFirst();
+            assertThat(snakeSession).isEqualTo(new SnakeSession(dominion, scheduler));
             verify(dominion, atLeastOnce()).createEntity(any());
             verify(scheduler, atLeastOnce()).schedule(any());
         }

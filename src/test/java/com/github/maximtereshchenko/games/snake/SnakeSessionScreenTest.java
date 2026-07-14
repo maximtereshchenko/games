@@ -20,7 +20,6 @@ final class SnakeSessionScreenTest {
     private final ApplicationEvents applicationEvents = mock();
     private final Dominion dominion = mock();
     private final Scheduler scheduler = mock();
-    private final StandaloneRenderingSystem standaloneRenderingSystem = mock();
     private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
     private final SnakeSessionScreen snakeSessionScreen = new SnakeSessionScreen(
         worldDimensions,
@@ -37,16 +36,15 @@ final class SnakeSessionScreenTest {
     }
 
     @Test
-    void givenSessionRunning_whenRender_thenSchedulerTickedRenderingHappened() {
+    void givenSessionRunning_whenRender_thenSchedulerTicked() {
         Results<Session> results = mock();
         when(snakeSessionFactory.snakeSession(viewport, shapeRenderer, worldDimensions))
-            .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
+            .thenReturn(new SnakeSession(dominion, scheduler));
         when(dominion.findCompositionsWith(Session.class)).thenReturn(results);
         when(results.iterator()).thenReturn(List.of(new Session(Session.Status.RUNNING)).iterator());
         snakeSessionScreen.show();
         snakeSessionScreen.render(1.0f);
         verify(scheduler).tick(TimeUnit.SECONDS.toNanos(1));
-        verify(standaloneRenderingSystem).render();
     }
 
     @Test
@@ -54,7 +52,7 @@ final class SnakeSessionScreenTest {
         Results<Session> sessionResults = mock();
         Results<LeftTurns> leftTurnsResults = mock();
         when(snakeSessionFactory.snakeSession(viewport, shapeRenderer, worldDimensions))
-            .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
+            .thenReturn(new SnakeSession(dominion, scheduler));
         when(dominion.findCompositionsWith(Session.class)).thenReturn(sessionResults);
         when(sessionResults.iterator()).thenReturn(List.of(new Session(Session.Status.ENDED)).iterator());
         when(dominion.findCompositionsWith(LeftTurns.class)).thenReturn(leftTurnsResults);
@@ -63,7 +61,6 @@ final class SnakeSessionScreenTest {
         snakeSessionScreen.render(1.0f);
         verify(applicationEvents).publish(new SnakeSessionEnded(1));
         verifyNoInteractions(scheduler);
-        verifyNoInteractions(standaloneRenderingSystem);
     }
 
     @Test
@@ -75,7 +72,7 @@ final class SnakeSessionScreenTest {
     @Test
     void whenHide_thenSchedulerShutDown() {
         when(snakeSessionFactory.snakeSession(viewport, shapeRenderer, worldDimensions))
-            .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
+            .thenReturn(new SnakeSession(dominion, scheduler));
         snakeSessionScreen.show();
         snakeSessionScreen.hide();
         verify(scheduler).shutDown();

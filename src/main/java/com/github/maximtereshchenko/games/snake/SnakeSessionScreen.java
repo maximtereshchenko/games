@@ -45,7 +45,6 @@ final class SnakeSessionScreen extends ScreenAdapter {
             return;
         }
         snakeSession.scheduler().tick((long) (TimeUnit.SECONDS.toNanos(1) * delta));
-        snakeSession.standaloneRenderingSystem().render();
     }
 
     @Override

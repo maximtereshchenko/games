@@ -15,19 +15,11 @@ abstract class SnakeSessionFactory {
         ShapeRenderer shapeRenderer,
         WorldDimensions worldDimensions
     ) {
-        var dominion = Dominion.create();
+        var dominion = new SameThreadDominion(Dominion.create());
         createEntities(dominion, worldDimensions);
         var scheduler = dominion.createScheduler();
-        scheduleSystems(dominion, scheduler);
-        return new SnakeSession(
-            dominion,
-            scheduler,
-            new StandaloneRenderingSystem(
-                viewport,
-                shapeRenderer,
-                dominion
-            )
-        );
+        scheduleSystems(dominion, scheduler, viewport, shapeRenderer);
+        return new SnakeSession(dominion, scheduler);
     }
 
     abstract Mode mode();
@@ -59,7 +51,12 @@ abstract class SnakeSessionFactory {
         );
     }
 
-    private void scheduleSystems(Dominion dominion, Scheduler scheduler) {
+    private void scheduleSystems(
+        Dominion dominion,
+        Scheduler scheduler,
+        Viewport viewport,
+        ShapeRenderer shapeRenderer
+    ) {
         List.of(
                 new InputSystem(dominion),
                 new TurnStartSystem(dominion, scheduler, 0.125),
@@ -75,7 +72,12 @@ abstract class SnakeSessionFactory {
                 new TimerRemovalSystem(dominion),
                 new SessionEndSystem(dominion),
                 new AppleSpawningSystem(dominion, ThreadLocalRandom.current(), 1),
-                new EventRemovalSystem(dominion)
+                new EventRemovalSystem(dominion),
+                new RenderingSystem(
+                    viewport,
+                    shapeRenderer,
+                    dominion
+                )
             )
             .forEach(scheduler::schedule);
     }
