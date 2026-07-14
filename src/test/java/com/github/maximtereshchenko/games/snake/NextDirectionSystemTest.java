@@ -3,19 +3,14 @@ package com.github.maximtereshchenko.games.snake;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
-import java.util.function.BiPredicate;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 final class NextDirectionSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final BiPredicate<Direction, Direction> predicate = mock();
     private final NextDirectionSystem nextDirectionSystem = new NextDirectionSystem(
         dominion,
-        predicate
+        Mode.CLASSIC
     );
 
     @Test
@@ -37,11 +32,10 @@ final class NextDirectionSystemTest {
     }
 
     @Test
-    void givenPredicateFalse_thenNextDirectionRevertedToCurrent() {
-        when(predicate.test(Direction.RIGHT, Direction.UP)).thenReturn(false);
+    void givenNonLegalDirection_thenNextDirectionRevertedToCurrent() {
         dominion.createEntity(
             new CurrentDirection(Direction.RIGHT),
-            new NextDirection(Direction.UP)
+            new NextDirection(Direction.LEFT)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
         nextDirectionSystem.run(0);
@@ -57,8 +51,7 @@ final class NextDirectionSystemTest {
     }
 
     @Test
-    void givenPredicateTrue_thenNextDirectionUnchanged() {
-        when(predicate.test(Direction.RIGHT, Direction.UP)).thenReturn(true);
+    void givenLegalDirection_thenNextDirectionUnchanged() {
         dominion.createEntity(
             new CurrentDirection(Direction.RIGHT),
             new NextDirection(Direction.UP)

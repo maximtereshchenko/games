@@ -4,7 +4,18 @@ import java.util.Locale;
 
 enum Mode {
 
-    CLASSIC, VIPER;
+    CLASSIC {
+        @Override
+        boolean isLegal(Direction current, Direction next) {
+            return next != current.opposite();
+        }
+    },
+    VIPER {
+        @Override
+        boolean isLegal(Direction current, Direction next) {
+            return next == current.right();
+        }
+    };
 
     @Override
     public String toString() {
@@ -22,6 +33,8 @@ enum Mode {
     String requirementKey() {
         return property("requirement");
     }
+
+    abstract boolean isLegal(Direction current, Direction next);
 
     private String property(String suffix) {
         return "mode.%s.%s".formatted(this, suffix);

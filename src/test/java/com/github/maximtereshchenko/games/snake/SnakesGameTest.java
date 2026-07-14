@@ -24,7 +24,6 @@ final class SnakesGameTest {
     private final Disposable disposable = mock();
     private final ApplicationEvents applicationEvents = mock();
     private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
-    private final SnakeSessionFactory snakeSessionFactory = mock();
     private final UserProfile userProfile = mock();
     private SnakesGame snakesGame;
 
@@ -71,9 +70,9 @@ final class SnakesGameTest {
 
     @Test
     void whenModeSelected_thenSnakeSessionScreenShowed() {
-        when(screenFactory.snakeSessionScreen(worldDimensions, snakeSessionFactory))
+        when(screenFactory.snakeSessionScreen(worldDimensions, Mode.CLASSIC))
             .thenReturn(snakeSessionScreen);
-        snakesGame.onEvent(new ModeSelected(snakeSessionFactory));
+        snakesGame.onEvent(new ModeSelected(Mode.CLASSIC));
         verify(snakeSessionScreen).show();
         verify(snakeSessionScreen).resize(anyInt(), anyInt());
     }

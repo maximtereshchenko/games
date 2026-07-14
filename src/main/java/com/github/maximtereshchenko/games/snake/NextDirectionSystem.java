@@ -2,17 +2,15 @@ package com.github.maximtereshchenko.games.snake;
 
 import dev.dominion.ecs.api.Dominion;
 
-import java.util.function.BiPredicate;
-
 final class NextDirectionSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
-    private final BiPredicate<Direction, Direction> predicate;
+    private final Mode mode;
 
-    NextDirectionSystem(Dominion dominion, BiPredicate<Direction, Direction> predicate) {
+    NextDirectionSystem(Dominion dominion, Mode mode) {
         super(dominion);
         this.dominion = dominion;
-        this.predicate = predicate;
+        this.mode = mode;
     }
 
     @Override
@@ -20,7 +18,7 @@ final class NextDirectionSystem extends TurnBasedSystem {
         for (var result : dominion.findEntitiesWith(CurrentDirection.class, NextDirection.class)) {
             var currentDirection = result.comp1().value;
             var nextDirection = result.comp2();
-            if (!predicate.test(currentDirection, nextDirection.value)) {
+            if (!mode.isLegal(currentDirection, nextDirection.value)) {
                 nextDirection.value = currentDirection;
             }
         }

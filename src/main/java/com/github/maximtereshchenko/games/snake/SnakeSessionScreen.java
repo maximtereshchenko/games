@@ -1,32 +1,29 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import dev.dominion.ecs.api.Dominion;
 
+import java.util.List;
 import java.util.function.Function;
 
 final class SnakeSessionScreen extends ScreenAdapter {
 
-    private final WorldDimensions worldDimensions;
-    private final ShapeRenderer shapeRenderer;
     private final Viewport viewport;
     private final ApplicationEvents applicationEvents;
-    private final SnakeSessionFactory snakeSessionFactory;
-    private SnakeSession snakeSession;
+    private final Dominion dominion;
+    private final List<System> systems;
 
     SnakeSessionScreen(
-        WorldDimensions worldDimensions,
-        ShapeRenderer shapeRenderer,
         Viewport viewport,
         ApplicationEvents applicationEvents,
-        SnakeSessionFactory snakeSessionFactory
+        Dominion dominion,
+        List<System> systems
     ) {
-        this.worldDimensions = worldDimensions;
-        this.shapeRenderer = shapeRenderer;
         this.viewport = viewport;
         this.applicationEvents = applicationEvents;
-        this.snakeSessionFactory = snakeSessionFactory;
+        this.dominion = dominion;
+        this.systems = systems;
     }
 
     @Override
@@ -43,7 +40,7 @@ final class SnakeSessionScreen extends ScreenAdapter {
             );
             return;
         }
-        snakeSession.systems().forEach(system -> system.run(delta));
+        systems.forEach(system -> system.run(delta));
     }
 
     @Override
@@ -51,17 +48,8 @@ final class SnakeSessionScreen extends ScreenAdapter {
         viewport.update(width, height, true);
     }
 
-    @Override
-    public void show() {
-        snakeSession = snakeSessionFactory.snakeSession(
-            viewport,
-            shapeRenderer,
-            worldDimensions
-        );
-    }
-
     private <T, R> R value(Class<T> type, Function<T, R> function, R defaultValue) {
-        for (var component : snakeSession.dominion().findCompositionsWith(type)) {
+        for (var component : dominion.findCompositionsWith(type)) {
             return function.apply(component);
         }
         return defaultValue;

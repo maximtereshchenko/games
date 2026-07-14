@@ -7,47 +7,16 @@ import dev.dominion.ecs.api.Dominion;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-abstract class SnakeSessionFactory {
+final class SnakeSessionFactory {
 
-    final SnakeSession snakeSession(
-        Viewport viewport,
-        ShapeRenderer shapeRenderer,
-        WorldDimensions worldDimensions
-    ) {
-        var dominion = Dominion.create();
-        createEntities(dominion, worldDimensions);
-        return new SnakeSession(
-            dominion,
-            List.of(
-                new InputSystem(dominion),
-                new TurnStartSystem(dominion, 0.125),
-                new SegmentSpawningSystem(dominion),
-                new NextDirectionSystem(dominion, this::setCurrentDirection),
-                new LeftTurnsSystem(dominion),
-                new CurrentDirectionSystem(dominion),
-                new HeadMovementSystem(dominion),
-                new AppleEatingSystem(dominion),
-                new InitialSegmentTimerSystem(dominion, 3),
-                new TimerIncrementSystem(dominion, 3),
-                new TimerDecrementSystem(dominion),
-                new TimerRemovalSystem(dominion),
-                new SessionEndSystem(dominion),
-                new AppleSpawningSystem(dominion, ThreadLocalRandom.current(), 1),
-                new EventRemovalSystem(dominion),
-                new RenderingSystem(
-                    viewport,
-                    shapeRenderer,
-                    dominion
-                )
-            )
-        );
+    private final ShapeRenderer shapeRenderer;
+
+    SnakeSessionFactory(ShapeRenderer shapeRenderer) {
+        this.shapeRenderer = shapeRenderer;
     }
 
-    abstract Mode mode();
-
-    abstract boolean setCurrentDirection(Direction current, Direction next);
-
-    private void createEntities(Dominion dominion, WorldDimensions worldDimensions) {
+    Dominion dominion(WorldDimensions worldDimensions) {
+        var dominion = Dominion.create();
         dominion.createEntity(new Session());
         dominion.createEntity(worldDimensions);
         dominion.createEntity(new Stopwatch());
@@ -69,6 +38,36 @@ abstract class SnakeSessionFactory {
             new Timer(1),
             new Position(9, 6),
             new Visible(Colors.SEGMENT)
+        );
+        return dominion;
+    }
+
+    List<System> systems(
+        Dominion dominion,
+        Mode mode,
+        Viewport viewport
+    ) {
+        return List.of(
+            new InputSystem(dominion),
+            new TurnStartSystem(dominion, 0.125),
+            new SegmentSpawningSystem(dominion),
+            new NextDirectionSystem(dominion, mode),
+            new LeftTurnsSystem(dominion),
+            new CurrentDirectionSystem(dominion),
+            new HeadMovementSystem(dominion),
+            new AppleEatingSystem(dominion),
+            new InitialSegmentTimerSystem(dominion, 3),
+            new TimerIncrementSystem(dominion, 3),
+            new TimerDecrementSystem(dominion),
+            new TimerRemovalSystem(dominion),
+            new SessionEndSystem(dominion),
+            new AppleSpawningSystem(dominion, ThreadLocalRandom.current(), 1),
+            new EventRemovalSystem(dominion),
+            new RenderingSystem(
+                viewport,
+                shapeRenderer,
+                dominion
+            )
         );
     }
 }

@@ -47,9 +47,9 @@ final class SnakesGameAdapter implements ApplicationListener {
             new ScreenFactory(
                 assetManager,
                 spriteBatch,
-                shapeRenderer,
                 applicationEvents,
-                userProfile
+                userProfile,
+                new SnakeSessionFactory(shapeRenderer)
             ),
             new WorldDimensions(33, 16),
             Set.of(

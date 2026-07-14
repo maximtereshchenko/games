@@ -4,7 +4,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -21,22 +20,22 @@ final class ScreenFactory {
 
     private final AssetManager assetManager;
     private final SpriteBatch spriteBatch;
-    private final ShapeRenderer shapeRenderer;
     private final ApplicationEvents applicationEvents;
     private final UserProfile userProfile;
+    private final SnakeSessionFactory snakeSessionFactory;
 
     ScreenFactory(
         AssetManager assetManager,
         SpriteBatch spriteBatch,
-        ShapeRenderer shapeRenderer,
         ApplicationEvents applicationEvents,
-        UserProfile userProfile
+        UserProfile userProfile,
+        SnakeSessionFactory snakeSessionFactory
     ) {
         this.assetManager = assetManager;
         this.spriteBatch = spriteBatch;
-        this.shapeRenderer = shapeRenderer;
         this.applicationEvents = applicationEvents;
         this.userProfile = userProfile;
+        this.snakeSessionFactory = snakeSessionFactory;
     }
 
     Screen loadingScreen() {
@@ -97,13 +96,17 @@ final class ScreenFactory {
         return new StageScreen(stage);
     }
 
-    Screen snakeSessionScreen(WorldDimensions worldDimensions, SnakeSessionFactory snakeSessionFactory) {
+    Screen snakeSessionScreen(
+        WorldDimensions worldDimensions,
+        Mode mode
+    ) {
+        var dominion = snakeSessionFactory.dominion(worldDimensions);
+        var viewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
         return new SnakeSessionScreen(
-            worldDimensions,
-            shapeRenderer,
-            new FitViewport(worldDimensions.width(), worldDimensions.height()),
+            viewport,
             applicationEvents,
-            snakeSessionFactory
+            dominion,
+            snakeSessionFactory.systems(dominion, mode, viewport)
         );
     }
 
@@ -127,12 +130,12 @@ final class ScreenFactory {
         Label modeDescriptionLabel
     ) {
         var panel = new ArrayList<Actor>();
-        for (var snakeSessionFactory : snakeSessionFactories()) {
+        for (var mode : Mode.values()) {
             panel.add(
                 modeSelectionButton(
                     bundle,
                     skin,
-                    snakeSessionFactory,
+                    mode,
                     modeNameLabel,
                     modeDescriptionLabel
                 )
@@ -147,27 +150,19 @@ final class ScreenFactory {
         return panel;
     }
 
-    private List<SnakeSessionFactory> snakeSessionFactories() {
-        return List.of(
-            new ClassicSnakeSessionFactory(),
-            new ViperSnakeSessionFactory()
-        );
-    }
-
     private TextButton modeSelectionButton(
         I18NBundle bundle,
         Skin skin,
-        SnakeSessionFactory snakeSessionFactory,
+        Mode mode,
         Label modeNameLabel,
         Label modeDescriptionLabel
     ) {
-        var mode = snakeSessionFactory.mode();
         var name = bundle.get(mode.nameKey());
         var textButton = new TextButton(name, skin);
         textButton.setDisabled(!userProfile.isUnlocked(mode));
         textButton.addListener(
             new FunctionalChangeListener(
-                () -> applicationEvents.publish(new ModeSelected(snakeSessionFactory))
+                () -> applicationEvents.publish(new ModeSelected(mode))
             )
         );
         textButton.addListener(
