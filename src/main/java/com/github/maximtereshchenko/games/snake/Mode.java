@@ -19,6 +19,10 @@ enum Mode {
         return property("description");
     }
 
+    String requirementKey() {
+        return property("requirement");
+    }
+
     private String property(String suffix) {
         return "mode.%s.%s".formatted(this, suffix);
     }

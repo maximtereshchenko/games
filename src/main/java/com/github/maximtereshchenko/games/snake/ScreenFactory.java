@@ -175,10 +175,17 @@ final class ScreenFactory {
         );
         textButton.addListener(
             new FunctionalHoverListener(
-                () -> modeDescriptionLabel.setText(bundle.get(mode.descriptionKey()))
+                () -> modeDescriptionLabel.setText(bundle.get(key(mode)))
             )
         );
         return textButton;
+    }
+
+    private String key(Mode mode) {
+        if (userProfile.isUnlocked(mode)) {
+            return mode.descriptionKey();
+        }
+        return mode.requirementKey();
     }
 
     private Label label(String text, Skin skin) {
