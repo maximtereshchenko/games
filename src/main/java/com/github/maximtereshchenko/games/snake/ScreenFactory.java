@@ -23,17 +23,20 @@ final class ScreenFactory {
     private final SpriteBatch spriteBatch;
     private final ShapeRenderer shapeRenderer;
     private final ApplicationEvents applicationEvents;
+    private final UserProfile userProfile;
 
     ScreenFactory(
         AssetManager assetManager,
         SpriteBatch spriteBatch,
         ShapeRenderer shapeRenderer,
-        ApplicationEvents applicationEvents
+        ApplicationEvents applicationEvents,
+        UserProfile userProfile
     ) {
         this.assetManager = assetManager;
         this.spriteBatch = spriteBatch;
         this.shapeRenderer = shapeRenderer;
         this.applicationEvents = applicationEvents;
+        this.userProfile = userProfile;
     }
 
     Screen loadingScreen() {
@@ -161,6 +164,7 @@ final class ScreenFactory {
         var mode = snakeSessionFactory.mode();
         var name = bundle.get(mode.nameKey());
         var textButton = new TextButton(name, skin);
+        textButton.setDisabled(!userProfile.isUnlocked(mode));
         textButton.addListener(
             new FunctionalChangeListener(
                 () -> applicationEvents.publish(new ModeSelected(snakeSessionFactory))

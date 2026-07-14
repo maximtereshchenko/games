@@ -25,6 +25,7 @@ final class SnakesGameTest {
     private final ApplicationEvents applicationEvents = mock();
     private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
     private final SnakeSessionFactory snakeSessionFactory = mock();
+    private final UserProfile userProfile = mock();
     private SnakesGame snakesGame;
 
     private static Stream<ApplicationEvent> modeSelectionScreenEvents() {
@@ -39,7 +40,8 @@ final class SnakesGameTest {
             screenFactory,
             worldDimensions,
             Set.of(disposable),
-            applicationEvents
+            applicationEvents,
+            userProfile
         );
     }
 
@@ -80,5 +82,6 @@ final class SnakesGameTest {
     void whenDispose_thenScreenHiddenDisposableDisposed() {
         snakesGame.dispose();
         verify(disposable).dispose();
+        verify(userProfile).save();
     }
 }

@@ -10,16 +10,19 @@ final class SnakesGame extends Game implements Subscriber {
     private final ScreenFactory screenFactory;
     private final WorldDimensions worldDimensions;
     private final Set<Disposable> disposables;
+    private final UserProfile userProfile;
 
     SnakesGame(
         ScreenFactory screenFactory,
         WorldDimensions worldDimensions,
         Set<Disposable> disposables,
-        ApplicationEvents applicationEvents
+        ApplicationEvents applicationEvents,
+        UserProfile userProfile
     ) {
         this.screenFactory = screenFactory;
         this.worldDimensions = worldDimensions;
         this.disposables = disposables;
+        this.userProfile = userProfile;
         applicationEvents.subscribe(this);
         setScreen(screenFactory.loadingScreen());
     }
@@ -33,6 +36,7 @@ final class SnakesGame extends Game implements Subscriber {
     public void dispose() {
         super.dispose();
         disposables.forEach(Disposable::dispose);
+        userProfile.save();
     }
 
     @Override

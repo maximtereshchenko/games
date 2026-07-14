@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.dominion.ecs.engine.system.Config;
 
+import java.util.Map;
 import java.util.Set;
 
 final class SnakesGameAdapter implements ApplicationListener {
@@ -30,12 +32,24 @@ final class SnakesGameAdapter implements ApplicationListener {
         var assetManager = new AssetManager(new ClasspathFileHandleResolver());
         Assets.LOADING_ASSETS.forEach(assetManager::load);
         assetManager.finishLoading();
+        var userProfile = new UserProfile(
+            Gdx.app.getPreferences("com.github.maximtereshchenko.games.snake.Snakes")
+        );
+        applicationEvents.subscribe(
+            new ModeUnlocks(
+                userProfile,
+                Map.of(
+                    Mode.VIPER, snakeSessionEnded -> snakeSessionEnded.leftTurns() >= 20
+                )
+            )
+        );
         original = new SnakesGame(
             new ScreenFactory(
                 assetManager,
                 spriteBatch,
                 shapeRenderer,
-                applicationEvents
+                applicationEvents,
+                userProfile
             ),
             new WorldDimensions(33, 16),
             Set.of(
@@ -43,7 +57,8 @@ final class SnakesGameAdapter implements ApplicationListener {
                 spriteBatch,
                 assetManager
             ),
-            applicationEvents
+            applicationEvents,
+            userProfile
         );
     }
 
