@@ -7,11 +7,11 @@ import static org.mockito.Mockito.verify;
 
 final class ApplicationEventsTest {
 
+    private final Subscriber subscriber = mock();
     private final ApplicationEvents applicationEvents = new ApplicationEvents();
 
     @Test
     void whenPublish_thenSubscribersNotified() {
-        var subscriber = mock(Subscriber.class);
         var applicationEvent = new AssetsLoaded();
         applicationEvents.subscribe(subscriber);
         applicationEvents.publish(applicationEvent);

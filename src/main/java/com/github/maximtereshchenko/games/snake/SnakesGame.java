@@ -1,27 +1,27 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.utils.Disposable;
+
+import java.util.Set;
 
 final class SnakesGame extends Game implements Subscriber {
 
-    private final Screen titleScreen;
-    private final Screen modeSelectionScreen;
-    private final Screen snakeSessionScreen;
-    private final Disposables disposables;
+    private final ScreenFactory screenFactory;
+    private final WorldDimensions worldDimensions;
+    private final Set<Disposable> disposables;
 
     SnakesGame(
-        Screen loadingScreen,
-        Screen titleScreen,
-        Screen modeSelectionScreen,
-        Screen snakeSessionScreen,
-        Disposables disposables
+        ScreenFactory screenFactory,
+        WorldDimensions worldDimensions,
+        Set<Disposable> disposables,
+        ApplicationEvents applicationEvents
     ) {
-        this.titleScreen = titleScreen;
-        this.modeSelectionScreen = modeSelectionScreen;
-        this.snakeSessionScreen = snakeSessionScreen;
+        this.screenFactory = screenFactory;
+        this.worldDimensions = worldDimensions;
         this.disposables = disposables;
-        setScreen(loadingScreen);
+        applicationEvents.subscribe(this);
+        setScreen(screenFactory.loadingScreen());
     }
 
     @Override
@@ -32,15 +32,20 @@ final class SnakesGame extends Game implements Subscriber {
     @Override
     public void dispose() {
         super.dispose();
-        disposables.dispose();
+        disposables.forEach(Disposable::dispose);
     }
 
     @Override
     public void onEvent(ApplicationEvent event) {
         switch (event) {
-            case AssetsLoaded _ -> setScreen(titleScreen);
-            case TitleScreenFinished _, SnakeSessionEnded _ -> setScreen(modeSelectionScreen);
-            case ModeSelected _ -> setScreen(snakeSessionScreen);
+            case AssetsLoaded _ -> setScreen(screenFactory.titleScreen());
+            case TitleScreenFinished _, SnakeSessionEnded _ -> setScreen(screenFactory.modeSelectionScreen());
+            case ModeSelected modeSelected -> setScreen(
+                screenFactory.snakeSessionScreen(
+                    worldDimensions,
+                    modeSelected.snakeSessionFactory()
+                )
+            );
         }
     }
 }

@@ -26,12 +26,12 @@ final class SnakeSessionScreenTest {
         worldDimensions,
         shapeRenderer,
         viewport,
-        applicationEvents
+        applicationEvents,
+        snakeSessionFactory
     );
 
     @Test
     void whenShow_thenSnakeSessionCreated() {
-        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         verify(snakeSessionFactory).snakeSession(viewport, shapeRenderer, worldDimensions);
     }
@@ -43,7 +43,6 @@ final class SnakeSessionScreenTest {
             .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
         when(dominion.findCompositionsWith(Session.class)).thenReturn(results);
         when(results.iterator()).thenReturn(List.of(new Session(Session.Status.RUNNING)).iterator());
-        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         snakeSessionScreen.render(1.0f);
         verify(scheduler).tick(TimeUnit.SECONDS.toNanos(1));
@@ -60,7 +59,6 @@ final class SnakeSessionScreenTest {
         when(sessionResults.iterator()).thenReturn(List.of(new Session(Session.Status.ENDED)).iterator());
         when(dominion.findCompositionsWith(LeftTurns.class)).thenReturn(leftTurnsResults);
         when(leftTurnsResults.iterator()).thenReturn(List.of(new LeftTurns(1)).iterator());
-        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         snakeSessionScreen.render(1.0f);
         verify(applicationEvents).publish(new SnakeSessionEnded(1));
@@ -78,7 +76,6 @@ final class SnakeSessionScreenTest {
     void whenHide_thenSchedulerShutDown() {
         when(snakeSessionFactory.snakeSession(viewport, shapeRenderer, worldDimensions))
             .thenReturn(new SnakeSession(dominion, scheduler, standaloneRenderingSystem));
-        snakeSessionScreen.onEvent(new ModeSelected(snakeSessionFactory));
         snakeSessionScreen.show();
         snakeSessionScreen.hide();
         verify(scheduler).shutDown();

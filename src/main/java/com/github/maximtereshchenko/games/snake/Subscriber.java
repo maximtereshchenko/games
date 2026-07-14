@@ -2,5 +2,5 @@ package com.github.maximtereshchenko.games.snake;
 
 interface Subscriber {
 
-    void onEvent(ApplicationEvent event);
+    void onEvent(ApplicationEvent applicationEvent);
 }

@@ -1,18 +1,14 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.dominion.ecs.engine.system.Config;
 
-import java.util.List;
-import java.util.function.Supplier;
+import java.util.Set;
 
 final class SnakesGameAdapter implements ApplicationListener {
 
@@ -28,56 +24,27 @@ final class SnakesGameAdapter implements ApplicationListener {
 
     @Override
     public void create() {
-        var worldDimensions = new WorldDimensions(33, 16);
         var applicationEvents = new ApplicationEvents();
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
         var assetManager = new AssetManager(new ClasspathFileHandleResolver());
         Assets.LOADING_ASSETS.forEach(assetManager::load);
         assetManager.finishLoading();
-        var stageFactory = new StageFactory(
-            assetManager,
-            spriteBatch,
-            applicationEvents
-        );
-        var loadingStage = stageFactory.loadingStage();
-        var disposables = new Disposables();
-        disposables.add(
-            shapeRenderer,
-            spriteBatch,
-            assetManager,
-            loadingStage
-        );
-        var snakeSessionScreen = new SnakeSessionScreen(
-            worldDimensions,
-            shapeRenderer,
-            new FitViewport(worldDimensions.width(), worldDimensions.height()),
-            applicationEvents
-        );
-        var snakesGame = new SnakesGame(
-            new LoadingScreen(
-                new StageScreen(loadingStage),
+        original = new SnakesGame(
+            new ScreenFactory(
                 assetManager,
-                loadingStage.getRoot().findActor(StageFactory.ASSETS_LOADING_BAR),
-                applicationEvents,
-                Assets.GAME_ASSETS
+                spriteBatch,
+                shapeRenderer,
+                applicationEvents
             ),
-            lazyScreen(stageFactory::titleStage, disposables),
-            lazyScreen(
-                () -> stageFactory.modeSelectionStage(
-                    List.of(
-                        new ClassicSnakeSessionFactory(),
-                        new ViperSnakeSessionFactory()
-                    )
-                ),
-                disposables
+            new WorldDimensions(33, 16),
+            Set.of(
+                shapeRenderer,
+                spriteBatch,
+                assetManager
             ),
-            snakeSessionScreen,
-            disposables
+            applicationEvents
         );
-        applicationEvents.subscribe(snakeSessionScreen);
-        applicationEvents.subscribe(snakesGame);
-        original = snakesGame;
     }
 
     @Override
@@ -103,13 +70,5 @@ final class SnakesGameAdapter implements ApplicationListener {
     @Override
     public void dispose() {
         original.dispose();
-    }
-
-    private Screen lazyScreen(Supplier<Stage> supplier, Disposables disposables) {
-        return new LazyScreen(() -> {
-            var stage = supplier.get();
-            disposables.add(stage);
-            return new StageScreen(stage);
-        });
     }
 }

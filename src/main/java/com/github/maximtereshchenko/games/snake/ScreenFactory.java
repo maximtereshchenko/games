@@ -1,73 +1,54 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
-final class StageFactory {
-
-    static final String ASSETS_LOADING_BAR = "ASSETS_LOADING_BAR";
+final class ScreenFactory {
 
     private final AssetManager assetManager;
     private final SpriteBatch spriteBatch;
+    private final ShapeRenderer shapeRenderer;
     private final ApplicationEvents applicationEvents;
 
-    StageFactory(
+    ScreenFactory(
         AssetManager assetManager,
         SpriteBatch spriteBatch,
+        ShapeRenderer shapeRenderer,
         ApplicationEvents applicationEvents
     ) {
         this.assetManager = assetManager;
         this.spriteBatch = spriteBatch;
+        this.shapeRenderer = shapeRenderer;
         this.applicationEvents = applicationEvents;
     }
 
-    Stage titleStage() {
-        var bundle = assetManager.get(Assets.GAME_BUNDLE);
-        var skin = assetManager.get(Assets.SKIN);
-        var stage = stage(
-            table(
-                1,
-                label(bundle.get("title.name"), skin),
-                label(bundle.get("title.continue"), skin)
-            )
-        );
-        stage.addListener(
-            new FunctionalInputListener(
-                Input.Keys.SPACE,
-                () -> applicationEvents.publish(new TitleScreenFinished())
-            )
-        );
-        return stage;
-    }
-
-    Stage loadingStage() {
+    Screen loadingScreen() {
         var skin = assetManager.get(Assets.SKIN);
         var progressBar = new ProgressBar(0, 1, 0.01f, false, skin);
-        progressBar.setName(ASSETS_LOADING_BAR);
-        return stage(
-            table(
-                1,
-                label(
-                    assetManager.get(Assets.LOADING_BUNDLE).get("loading.name"),
-                    skin
-                ),
-                progressBar
-            )
+        return new LoadingScreen(
+            new StageScreen(loadingStage(skin, progressBar)),
+            assetManager,
+            progressBar,
+            applicationEvents,
+            Assets.GAME_ASSETS
         );
     }
 
-    Stage modeSelectionStage(List<SnakeSessionFactory> snakeSessionFactories) {
+    Screen modeSelectionScreen() {
         var bundle = assetManager.get(Assets.GAME_BUNDLE);
         var skin = assetManager.get(Assets.SKIN);
         var modeNameLabel = label("", skin);
@@ -82,7 +63,6 @@ final class StageFactory {
                 table(
                     modeSelectionWidth,
                     modeSelectionPanel(
-                        snakeSessionFactories,
                         bundle,
                         skin,
                         modeSelectionWidth,
@@ -93,11 +73,50 @@ final class StageFactory {
             )
             .width(Value.percentWidth(0.6f, table));
         table.add(descriptionTable).width(Value.percentWidth(0.4f, table));
-        return stage(table);
+        return new StageScreen(stage(table));
+    }
+
+    Screen titleScreen() {
+        var bundle = assetManager.get(Assets.GAME_BUNDLE);
+        var skin = assetManager.get(Assets.SKIN);
+        var stage = stage(
+            vertical(
+                label(bundle.get("title.name"), skin),
+                label(bundle.get("title.continue"), skin)
+            )
+        );
+        stage.addListener(
+            new FunctionalInputListener(
+                Input.Keys.SPACE,
+                () -> applicationEvents.publish(new TitleScreenFinished())
+            )
+        );
+        return new StageScreen(stage);
+    }
+
+    Screen snakeSessionScreen(WorldDimensions worldDimensions, SnakeSessionFactory snakeSessionFactory) {
+        return new SnakeSessionScreen(
+            worldDimensions,
+            shapeRenderer,
+            new FitViewport(worldDimensions.width(), worldDimensions.height()),
+            applicationEvents,
+            snakeSessionFactory
+        );
+    }
+
+    private Stage loadingStage(Skin skin, ProgressBar progressBar) {
+        return stage(
+            vertical(
+                label(
+                    assetManager.get(Assets.LOADING_BUNDLE).get("loading.name"),
+                    skin
+                ),
+                progressBar
+            )
+        );
     }
 
     private List<Actor> modeSelectionPanel(
-        List<SnakeSessionFactory> snakeSessionFactories,
         I18NBundle bundle,
         Skin skin,
         int width,
@@ -105,7 +124,7 @@ final class StageFactory {
         Label modeDescriptionLabel
     ) {
         var panel = new ArrayList<Actor>();
-        for (var snakeSessionFactory : snakeSessionFactories) {
+        for (var snakeSessionFactory : snakeSessionFactories()) {
             panel.add(
                 modeSelectionButton(
                     bundle,
@@ -123,6 +142,13 @@ final class StageFactory {
         panel.add(new TextButton(bundle.get("modeSelection.settings"), skin));
         panel.add(new TextButton(bundle.get("modeSelection.credits"), skin));
         return panel;
+    }
+
+    private List<SnakeSessionFactory> snakeSessionFactories() {
+        return List.of(
+            new ClassicSnakeSessionFactory(),
+            new ViperSnakeSessionFactory()
+        );
     }
 
     private TextButton modeSelectionButton(
@@ -164,8 +190,8 @@ final class StageFactory {
         return stage;
     }
 
-    private Table table(int width, Actor... actors) {
-        return table(width, List.of(actors));
+    private Table vertical(Actor... actors) {
+        return table(1, List.of(actors));
     }
 
     private Table table(int width, List<Actor> actors) {

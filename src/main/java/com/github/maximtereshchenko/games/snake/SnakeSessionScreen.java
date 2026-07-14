@@ -7,25 +7,27 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-final class SnakeSessionScreen extends ScreenAdapter implements Subscriber {
+final class SnakeSessionScreen extends ScreenAdapter {
 
     private final WorldDimensions worldDimensions;
     private final ShapeRenderer shapeRenderer;
     private final Viewport viewport;
     private final ApplicationEvents applicationEvents;
-    private SnakeSessionFactory snakeSessionFactory;
+    private final SnakeSessionFactory snakeSessionFactory;
     private SnakeSession snakeSession;
 
     SnakeSessionScreen(
         WorldDimensions worldDimensions,
         ShapeRenderer shapeRenderer,
         Viewport viewport,
-        ApplicationEvents applicationEvents
+        ApplicationEvents applicationEvents,
+        SnakeSessionFactory snakeSessionFactory
     ) {
         this.worldDimensions = worldDimensions;
         this.shapeRenderer = shapeRenderer;
         this.viewport = viewport;
         this.applicationEvents = applicationEvents;
+        this.snakeSessionFactory = snakeSessionFactory;
     }
 
     @Override
@@ -63,13 +65,6 @@ final class SnakeSessionScreen extends ScreenAdapter implements Subscriber {
     @Override
     public void hide() {
         snakeSession.scheduler().shutDown();
-    }
-
-    @Override
-    public void onEvent(ApplicationEvent event) {
-        if (event instanceof ModeSelected modeSelected) {
-            snakeSessionFactory = modeSelected.snakeSessionFactory();
-        }
     }
 
     private <T, R> R value(Class<T> type, Function<T, R> function, R defaultValue) {
