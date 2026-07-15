@@ -7,4 +7,5 @@ final class Colors {
     static final Color HEAD = new Color(0x00dd00ff); //dark green
     static final Color SEGMENT = Color.GREEN;
     static final Color FOOD = Color.RED;
+    static final Color FOOD_EATEN_COUNTER = Color.BLACK;
 }

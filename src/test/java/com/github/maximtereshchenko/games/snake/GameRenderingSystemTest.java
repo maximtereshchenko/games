@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
-final class StandaloneRenderingSystemTest {
+final class GameRenderingSystemTest {
 
     private final Camera camera = mock();
     private final Viewport viewport = mock();
     private final ShapeRenderer shapeRenderer = mock();
     private final Dominion dominion = Dominion.create();
-    private final RenderingSystem standaloneRenderingSystem = new RenderingSystem(
+    private final GameRenderingSystem gameRenderingSystem = new GameRenderingSystem(
         viewport,
         shapeRenderer,
         dominion
@@ -29,11 +29,10 @@ final class StandaloneRenderingSystemTest {
     }
 
     @Test
-    void givenEntity_thenEntityRendered() {
-        doNothing().when(viewport).apply();
+    void givenEntityWithVisibleAndPosition_thenEntityRendered() {
         when(viewport.getCamera()).thenReturn(camera);
         dominion.createEntity(new Position(1, 1), new Visible(Color.BLACK));
-        standaloneRenderingSystem.run(0);
+        gameRenderingSystem.run(0);
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
         verify(Gdx.gl).glClear(anyInt());
         verify(viewport).apply();

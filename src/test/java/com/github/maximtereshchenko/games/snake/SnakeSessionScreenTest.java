@@ -6,6 +6,7 @@ import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.mockito.Mockito.*;
 
@@ -16,7 +17,7 @@ final class SnakeSessionScreenTest {
     private final Dominion dominion = mock();
     private final System system = mock();
     private final SnakeSessionScreen snakeSessionScreen = new SnakeSessionScreen(
-        viewport,
+        Set.of(viewport),
         applicationEvents,
         dominion,
         List.of(system)

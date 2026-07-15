@@ -1,5 +1,7 @@
 package com.github.maximtereshchenko.games.snake;
 
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
@@ -10,9 +12,17 @@ import java.util.concurrent.ThreadLocalRandom;
 final class SnakeSessionFactory {
 
     private final ShapeRenderer shapeRenderer;
+    private final SpriteBatch spriteBatch;
+    private final AssetManager assetManager;
 
-    SnakeSessionFactory(ShapeRenderer shapeRenderer) {
+    SnakeSessionFactory(
+        ShapeRenderer shapeRenderer,
+        SpriteBatch spriteBatch,
+        AssetManager assetManager
+    ) {
         this.shapeRenderer = shapeRenderer;
+        this.spriteBatch = spriteBatch;
+        this.assetManager = assetManager;
     }
 
     Dominion dominion(WorldDimensions worldDimensions) {
@@ -46,7 +56,8 @@ final class SnakeSessionFactory {
     List<System> systems(
         Dominion dominion,
         Mode mode,
-        Viewport viewport
+        Viewport gameViewport,
+        Viewport interfaceViewport
     ) {
         return List.of(
             new InputSystem(dominion),
@@ -65,9 +76,15 @@ final class SnakeSessionFactory {
             new SessionEndSystem(dominion),
             new FoodSpawningSystem(dominion, ThreadLocalRandom.current(), 1),
             new EventRemovalSystem(dominion),
-            new RenderingSystem(
-                viewport,
+            new GameRenderingSystem(
+                gameViewport,
                 shapeRenderer,
+                dominion
+            ),
+            new InterfaceRenderingSystem(
+                interfaceViewport,
+                spriteBatch,
+                assetManager.get(Assets.BITMAP_FONT),
                 dominion
             )
         );

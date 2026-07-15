@@ -6,13 +6,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 
-final class RenderingSystem implements System {
+final class GameRenderingSystem implements System {
 
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
     private final Dominion dominion;
 
-    RenderingSystem(
+    GameRenderingSystem(
         Viewport viewport,
         ShapeRenderer shapeRenderer,
         Dominion dominion

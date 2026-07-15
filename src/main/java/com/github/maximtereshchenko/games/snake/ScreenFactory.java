@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
 final class ScreenFactory {
@@ -101,12 +102,22 @@ final class ScreenFactory {
         Mode mode
     ) {
         var dominion = snakeSessionFactory.dominion(worldDimensions);
-        var viewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
+        var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
+        var interfaceHeight = 720f;
+        var interfaceViewport = new FitViewport(
+            interfaceHeight * worldDimensions.width() / worldDimensions.height(),
+            interfaceHeight
+        );
         return new SnakeSessionScreen(
-            viewport,
+            Set.of(gameViewport,interfaceViewport),
             applicationEvents,
             dominion,
-            snakeSessionFactory.systems(dominion, mode, viewport)
+            snakeSessionFactory.systems(
+                dominion,
+                mode,
+                gameViewport,
+                interfaceViewport
+            )
         );
     }
 

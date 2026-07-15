@@ -1,5 +1,7 @@
 package com.github.maximtereshchenko.games.snake;
 
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
@@ -14,7 +16,13 @@ final class SnakeSessionFactoryTest {
     private final Dominion dominion = mock();
     private final Viewport viewport = mock();
     private final ShapeRenderer shapeRenderer = mock();
-    private final SnakeSessionFactory snakeSessionFactory = new SnakeSessionFactory(shapeRenderer);
+    private final SpriteBatch spriteBatch = mock();
+    private final AssetManager assetManager = mock();
+    private final SnakeSessionFactory snakeSessionFactory = new SnakeSessionFactory(
+        shapeRenderer,
+        spriteBatch,
+        assetManager
+    );
 
     @Test
     void whenDominion_thenDominionWithEntities() {
@@ -31,6 +39,7 @@ final class SnakeSessionFactoryTest {
             snakeSessionFactory.systems(
                 dominion,
                 Mode.CLASSIC,
+                viewport,
                 viewport
             )
         )
