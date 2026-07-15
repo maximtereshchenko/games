@@ -44,12 +44,16 @@ final class SnakesGame extends Game implements Subscriber {
         switch (event) {
             case AssetsLoaded _ -> setScreen(screenFactory.titleScreen());
             case TitleScreenFinished _, SnakeSessionEnded _ -> setScreen(screenFactory.modeSelectionScreen());
-            case ModeSelected modeSelected -> setScreen(
-                screenFactory.snakeSessionScreen(
-                    worldDimensions,
-                    modeSelected.mode()
-                )
-            );
+            case ModeSelected modeSelected -> {
+                var mode = modeSelected.mode();
+                setScreen(
+                    screenFactory.snakeSessionScreen(
+                        worldDimensions,
+                        mode,
+                        mode.palette()
+                    )
+                );
+            }
         }
     }
 }

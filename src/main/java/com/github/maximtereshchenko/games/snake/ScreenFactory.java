@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
@@ -99,7 +101,8 @@ final class ScreenFactory {
 
     Screen snakeSessionScreen(
         WorldDimensions worldDimensions,
-        Mode mode
+        Mode mode,
+        Map<Colored, Color> palette
     ) {
         var dominion = snakeSessionFactory.dominion(worldDimensions);
         var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
@@ -109,14 +112,15 @@ final class ScreenFactory {
             interfaceHeight
         );
         return new SnakeSessionScreen(
-            Set.of(gameViewport,interfaceViewport),
+            Set.of(gameViewport, interfaceViewport),
             applicationEvents,
             dominion,
             snakeSessionFactory.systems(
                 dominion,
                 mode,
                 gameViewport,
-                interfaceViewport
+                interfaceViewport,
+                palette
             )
         );
     }

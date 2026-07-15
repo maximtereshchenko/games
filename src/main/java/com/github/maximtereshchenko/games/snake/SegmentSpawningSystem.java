@@ -18,7 +18,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
                 dominion.createEntity(
                     new Timer(initialSegmentTimer.value),
                     new Position(result.comp2()),
-                    new Visible(Colors.SEGMENT)
+                    Colored.SEGMENT
                 );
             }
         }

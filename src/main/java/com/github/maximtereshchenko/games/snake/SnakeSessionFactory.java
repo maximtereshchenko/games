@@ -1,12 +1,14 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 final class SnakeSessionFactory {
@@ -32,23 +34,23 @@ final class SnakeSessionFactory {
         dominion.createEntity(new Stopwatch());
         dominion.createEntity(new InitialSegmentTimer(3));
         dominion.createEntity(new LeftTurnsCounter(0));
-        dominion.createEntity(new FoodEatenCounter(0));
+        dominion.createEntity(new FoodEatenCounter(0), Colored.FOOD_EATEN_COUNTER);
         dominion.createEntity(
             Head.INSTANCE,
             new CurrentDirection(Direction.RIGHT),
             new NextDirection(Direction.RIGHT),
             new Position(11, 6),
-            new Visible(Colors.HEAD)
+            Colored.HEAD
         );
         dominion.createEntity(
             new Timer(2),
             new Position(10, 6),
-            new Visible(Colors.SEGMENT)
+            Colored.SEGMENT
         );
         dominion.createEntity(
             new Timer(1),
             new Position(9, 6),
-            new Visible(Colors.SEGMENT)
+            Colored.SEGMENT
         );
         return dominion;
     }
@@ -57,7 +59,8 @@ final class SnakeSessionFactory {
         Dominion dominion,
         Mode mode,
         Viewport gameViewport,
-        Viewport interfaceViewport
+        Viewport interfaceViewport,
+        Map<Colored, Color> palette
     ) {
         return List.of(
             new InputSystem(dominion),
@@ -79,13 +82,15 @@ final class SnakeSessionFactory {
             new GameRenderingSystem(
                 gameViewport,
                 shapeRenderer,
-                dominion
+                dominion,
+                palette
             ),
             new InterfaceRenderingSystem(
                 interfaceViewport,
                 spriteBatch,
                 assetManager.get(Assets.BITMAP_FONT),
-                dominion
+                dominion,
+                palette
             )
         );
     }

@@ -34,13 +34,13 @@ final class SegmentSpawningSystemTest {
         dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
         segmentSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Timer.class, Position.class, Visible.class))
+        assertThat(dominion.findEntitiesWith(Timer.class, Position.class, Colored.class))
             .singleElement()
             .extracting(
                 result -> result.comp1().value,
                 Results.With3::comp2,
-                result -> result.comp3().color()
+                Results.With3::comp3
             )
-            .containsExactly(1, new Position(1, 1), Colors.SEGMENT);
+            .containsExactly(1, new Position(1, 1), Colored.SEGMENT);
     }
 }

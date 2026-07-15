@@ -6,20 +6,25 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 
+import java.util.Map;
+
 final class GameRenderingSystem implements System {
 
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
     private final Dominion dominion;
+    private final Map<Colored, Color> palette;
 
     GameRenderingSystem(
         Viewport viewport,
         ShapeRenderer shapeRenderer,
-        Dominion dominion
+        Dominion dominion,
+        Map<Colored, Color> palette
     ) {
         this.viewport = viewport;
         this.shapeRenderer = shapeRenderer;
         this.dominion = dominion;
+        this.palette = palette;
     }
 
     @Override
@@ -28,15 +33,15 @@ final class GameRenderingSystem implements System {
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.setColor(palette.get(Colored.BACKGROUND));
         shapeRenderer.rect(
             0,
             0,
-            viewport.getScreenWidth(),
-            viewport.getScreenHeight()
+            viewport.getWorldWidth(),
+            viewport.getWorldHeight()
         );
-        for (var result : dominion.findEntitiesWith(Visible.class, Position.class)) {
-            shapeRenderer.setColor(result.comp1().color());
+        for (var result : dominion.findEntitiesWith(Colored.class, Position.class)) {
+            shapeRenderer.setColor(palette.get(result.comp1()));
             var position = result.comp2();
             shapeRenderer.rect(position.x, position.y, 1, 1);
         }

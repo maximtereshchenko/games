@@ -70,7 +70,7 @@ final class SnakesGameTest {
 
     @Test
     void whenModeSelected_thenSnakeSessionScreenShowed() {
-        when(screenFactory.snakeSessionScreen(worldDimensions, Mode.CLASSIC))
+        when(screenFactory.snakeSessionScreen(worldDimensions, Mode.CLASSIC, Mode.CLASSIC.palette()))
             .thenReturn(snakeSessionScreen);
         snakesGame.onEvent(new ModeSelected(Mode.CLASSIC));
         verify(snakeSessionScreen).show();

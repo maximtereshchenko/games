@@ -7,6 +7,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -40,7 +42,8 @@ final class SnakeSessionFactoryTest {
                 dominion,
                 Mode.CLASSIC,
                 viewport,
-                viewport
+                viewport,
+                Map.of()
             )
         )
             .isNotEmpty();

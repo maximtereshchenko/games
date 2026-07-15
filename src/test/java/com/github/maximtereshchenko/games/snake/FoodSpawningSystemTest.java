@@ -30,8 +30,8 @@ final class FoodSpawningSystemTest {
         dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(TurnStarted.INSTANCE);
         foodSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Visible.class))
-            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.FOOD))
+        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Colored.class))
+            .allSatisfy(result -> assertThat(result.comp3()).isEqualTo(Colored.FOOD))
             .extracting(Results.With3::comp2)
             .containsExactlyInAnyOrder(new Position(0, 1), new Position(1, 1));
     }
@@ -42,8 +42,8 @@ final class FoodSpawningSystemTest {
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(TurnStarted.INSTANCE);
         foodSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Visible.class))
-            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.FOOD))
+        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Colored.class))
+            .allSatisfy(result -> assertThat(result.comp3()).isEqualTo(Colored.FOOD))
             .extracting(Results.With3::comp2)
             .containsExactlyInAnyOrder(new Position(1, 0), new Position(1, 1));
     }
@@ -56,9 +56,9 @@ final class FoodSpawningSystemTest {
         dominion.createEntity(new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         foodSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Visible.class))
+        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Colored.class))
             .singleElement()
-            .extracting(Results.With3::comp2, result -> result.comp3().color())
-            .containsExactlyInAnyOrder(new Position(1, 1), Colors.FOOD);
+            .extracting(Results.With3::comp2, Results.With3::comp3)
+            .containsExactlyInAnyOrder(new Position(1, 1), Colored.FOOD);
     }
 }

@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -8,6 +9,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 final class InterfaceRenderingSystemTest {
@@ -22,7 +26,8 @@ final class InterfaceRenderingSystemTest {
         viewport,
         spriteBatch,
         bitmapFont,
-        dominion
+        dominion,
+        Map.of(Colored.FOOD_EATEN_COUNTER, Color.BLACK)
     );
 
     @Test
@@ -34,11 +39,15 @@ final class InterfaceRenderingSystemTest {
         bitmapFontData.scaleY = 1f;
         when(bitmapFont.getData()).thenReturn(bitmapFontData);
         when(bitmapFont.getCapHeight()).thenReturn(2f);
-        dominion.createEntity(new FoodEatenCounter(5));
+        dominion.createEntity(new FoodEatenCounter(5), Colored.FOOD_EATEN_COUNTER);
         try (
-            var glyphLayoutMockedConstruction = mockConstruction(
+            var glyphLayoutConstruction = mockConstruction(
                 GlyphLayout.class,
-                (glyphLayout, _) -> glyphLayout.width = 1f
+                (glyphLayout, context) -> {
+                    assertThat(context.arguments())
+                        .anySatisfy(argument -> assertThat(argument).isEqualTo(Color.BLACK));
+                    glyphLayout.width = 1f;
+                }
             )
         ) {
             interfaceRenderingSystem.run(0);
@@ -47,14 +56,8 @@ final class InterfaceRenderingSystemTest {
             verify(spriteBatch).setProjectionMatrix(camera.combined);
             verify(spriteBatch).begin();
             verify(bitmapFontData).setScale(1f);
-
-            var constructed = glyphLayoutMockedConstruction.constructed();
-            verify(bitmapFont).draw(
-                spriteBatch,
-                constructed.getFirst(),
-                2f,
-                20f
-            );
+            verify(bitmapFont)
+                .draw(spriteBatch, glyphLayoutConstruction.constructed().getFirst(), 2f, 20f);
             verify(bitmapFontData).setScale(1f, 1f);
             verify(spriteBatch).end();
         }

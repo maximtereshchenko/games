@@ -32,7 +32,7 @@ final class FoodSpawningSystem extends TurnBasedSystem {
             for (var i = currentFood(); positions.size() < worldDimensions.space() && i < maxFood; i++) {
                 var position = position(positions, worldDimensions);
                 positions.add(position);
-                dominion.createEntity(Food.INSTANCE, position, new Visible(Colors.FOOD));
+                dominion.createEntity(Food.INSTANCE, position, Colored.FOOD);
             }
         }
     }

@@ -18,8 +18,8 @@ final class Assets {
         new AssetDescriptor<>("loading", I18NBundle.class);
     static final AssetDescriptor<I18NBundle> GAME_BUNDLE =
         new AssetDescriptor<>("game", I18NBundle.class);
-    static final Set<AssetDescriptor<?>> LOADING_ASSETS = Set.of(SKIN,  LOADING_BUNDLE);
-    static final Set<AssetDescriptor<?>> GAME_ASSETS = Set.of(GAME_BUNDLE,BITMAP_FONT);
+    static final Set<AssetDescriptor<?>> LOADING_ASSETS = Set.of(SKIN, LOADING_BUNDLE);
+    static final Set<AssetDescriptor<?>> GAME_ASSETS = Set.of(GAME_BUNDLE, BITMAP_FONT);
 
     private static BitmapFontLoader.BitmapFontParameter bitmapFontParameter() {
         var bitmapFontParameter = new BitmapFontLoader.BitmapFontParameter();

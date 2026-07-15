@@ -9,6 +9,8 @@ import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.mockito.Mockito.*;
 
 final class GameRenderingSystemTest {
@@ -20,7 +22,11 @@ final class GameRenderingSystemTest {
     private final GameRenderingSystem gameRenderingSystem = new GameRenderingSystem(
         viewport,
         shapeRenderer,
-        dominion
+        dominion,
+        Map.of(
+            Colored.BACKGROUND, Color.WHITE,
+            Colored.HEAD, Color.BLACK
+        )
     );
 
     @BeforeEach
@@ -31,7 +37,7 @@ final class GameRenderingSystemTest {
     @Test
     void givenEntityWithVisibleAndPosition_thenEntityRendered() {
         when(viewport.getCamera()).thenReturn(camera);
-        dominion.createEntity(new Position(1, 1), new Visible(Color.BLACK));
+        dominion.createEntity(new Position(1, 1), Colored.HEAD);
         gameRenderingSystem.run(0);
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
         verify(Gdx.gl).glClear(anyInt());
