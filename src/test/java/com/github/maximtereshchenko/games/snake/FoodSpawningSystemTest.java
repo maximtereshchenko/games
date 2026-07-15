@@ -8,10 +8,10 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class AppleSpawningSystemTest {
+final class FoodSpawningSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final AppleSpawningSystem appleSpawningSystem = new AppleSpawningSystem(
+    private final FoodSpawningSystem foodSpawningSystem = new FoodSpawningSystem(
         dominion,
         new Random(0),
         2
@@ -21,44 +21,44 @@ final class AppleSpawningSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new WorldDimensions(2, 2));
         var before = dominion.findAllEntities().stream().toList();
-        appleSpawningSystem.run(0);
+        foodSpawningSystem.run(0);
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
     }
 
     @Test
-    void givenTurnStartedEvent_thenApplesSpawned() {
+    void givenTurnStartedEvent_thenFoodSpawned() {
         dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(TurnStarted.INSTANCE);
-        appleSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
-            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.APPLE))
+        foodSpawningSystem.run(0);
+        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Visible.class))
+            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.FOOD))
             .extracting(Results.With3::comp2)
             .containsExactlyInAnyOrder(new Position(0, 1), new Position(1, 1));
     }
 
     @Test
-    void givenPosition_thenApplesSpawnedInFreeSpace() {
+    void givenPosition_thenFoodSpawnedInFreeSpace() {
         dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(TurnStarted.INSTANCE);
-        appleSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
-            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.APPLE))
+        foodSpawningSystem.run(0);
+        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Visible.class))
+            .allSatisfy(result -> assertThat(result.comp3().color()).isEqualTo(Colors.FOOD))
             .extracting(Results.With3::comp2)
             .containsExactlyInAnyOrder(new Position(1, 0), new Position(1, 1));
     }
 
     @Test
-    void givenNotHasSpace_thenStopSpawningApples() {
+    void givenNotHasSpace_thenStopSpawningFood() {
         dominion.createEntity(new WorldDimensions(2, 2));
         dominion.createEntity(new Position(0, 0));
         dominion.createEntity(new Position(0, 1));
         dominion.createEntity(new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
-        appleSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Apple.class, Position.class, Visible.class))
+        foodSpawningSystem.run(0);
+        assertThat(dominion.findEntitiesWith(Food.class, Position.class, Visible.class))
             .singleElement()
             .extracting(Results.With3::comp2, result -> result.comp3().color())
-            .containsExactlyInAnyOrder(new Position(1, 1), Colors.APPLE);
+            .containsExactlyInAnyOrder(new Position(1, 1), Colors.FOOD);
     }
 }

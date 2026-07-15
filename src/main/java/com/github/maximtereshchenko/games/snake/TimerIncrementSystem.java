@@ -15,7 +15,7 @@ final class TimerIncrementSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        if (!dominion.findCompositionsWith(AppleEaten.class).iterator().hasNext()) {
+        if (!dominion.findCompositionsWith(FoodEaten.class).iterator().hasNext()) {
             return;
         }
         for (var timer : dominion.findCompositionsWith(Timer.class)) {

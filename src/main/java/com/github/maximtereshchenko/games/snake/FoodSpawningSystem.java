@@ -6,21 +6,21 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-final class AppleSpawningSystem extends TurnBasedSystem {
+final class FoodSpawningSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
     private final Random random;
-    private final int maxApples;
+    private final int maxFood;
 
-    AppleSpawningSystem(
+    FoodSpawningSystem(
         Dominion dominion,
         Random random,
-        int maxApples
+        int maxFood
     ) {
         super(dominion);
         this.dominion = dominion;
         this.random = random;
-        this.maxApples = maxApples;
+        this.maxFood = maxFood;
     }
 
     @Override
@@ -29,10 +29,10 @@ final class AppleSpawningSystem extends TurnBasedSystem {
             .stream()
             .collect(Collectors.toSet());
         for (var worldDimensions : dominion.findCompositionsWith(WorldDimensions.class)) {
-            for (var i = currentApples(); positions.size() < worldDimensions.space() && i < maxApples; i++) {
+            for (var i = currentFood(); positions.size() < worldDimensions.space() && i < maxFood; i++) {
                 var position = position(positions, worldDimensions);
                 positions.add(position);
-                dominion.createEntity(Apple.INSTANCE, position, new Visible(Colors.APPLE));
+                dominion.createEntity(Food.INSTANCE, position, new Visible(Colors.FOOD));
             }
         }
     }
@@ -49,7 +49,7 @@ final class AppleSpawningSystem extends TurnBasedSystem {
         }
     }
 
-    private long currentApples() {
-        return dominion.findEntitiesWith(Apple.class).stream().count();
+    private long currentFood() {
+        return dominion.findEntitiesWith(Food.class).stream().count();
     }
 }

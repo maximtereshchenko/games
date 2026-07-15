@@ -15,7 +15,7 @@ final class InitialSegmentTimerSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        if (!dominion.findCompositionsWith(AppleEaten.class).iterator().hasNext()) {
+        if (!dominion.findCompositionsWith(FoodEaten.class).iterator().hasNext()) {
             return;
         }
         for (var initialSegmentTimer : dominion.findCompositionsWith(InitialSegmentTimer.class)) {

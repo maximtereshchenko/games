@@ -16,7 +16,7 @@ final class InitialSegmentTimerSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new InitialSegmentTimer(1));
-        dominion.createEntity(AppleEaten.INSTANCE);
+        dominion.createEntity(FoodEaten.INSTANCE);
         initialSegmentTimerSystem.run(0);
         assertThat(dominion.findCompositionsWith(InitialSegmentTimer.class))
             .singleElement()
@@ -25,9 +25,9 @@ final class InitialSegmentTimerSystemTest {
     }
 
     @Test
-    void givenAppleEatenEvent_thenInitialSegmentTimerIncremented() {
+    void givenFoodEatenEvent_thenInitialSegmentTimerIncremented() {
         dominion.createEntity(new InitialSegmentTimer(1));
-        dominion.createEntity(AppleEaten.INSTANCE);
+        dominion.createEntity(FoodEaten.INSTANCE);
         dominion.createEntity(TurnStarted.INSTANCE);
         initialSegmentTimerSystem.run(0);
         assertThat(dominion.findCompositionsWith(InitialSegmentTimer.class))
@@ -37,7 +37,7 @@ final class InitialSegmentTimerSystemTest {
     }
 
     @Test
-    void givenNoAppleEatenEvent_thenNoChanges() {
+    void givenNoFoodEatenEvent_thenNoChanges() {
         dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
         initialSegmentTimerSystem.run(0);
