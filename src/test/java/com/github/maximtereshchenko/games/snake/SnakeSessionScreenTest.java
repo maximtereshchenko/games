@@ -34,11 +34,11 @@ final class SnakeSessionScreenTest {
     @Test
     void givenSessionEnded_whenRender_thenOnSessionEndCalled() {
         Results<Session> sessionResults = mock();
-        Results<LeftTurns> leftTurnsResults = mock();
+        Results<LeftTurnsCounter> leftTurnsResults = mock();
         when(dominion.findCompositionsWith(Session.class)).thenReturn(sessionResults);
         when(sessionResults.iterator()).thenReturn(List.of(new Session(Session.Status.ENDED)).iterator());
-        when(dominion.findCompositionsWith(LeftTurns.class)).thenReturn(leftTurnsResults);
-        when(leftTurnsResults.iterator()).thenReturn(List.of(new LeftTurns(1)).iterator());
+        when(dominion.findCompositionsWith(LeftTurnsCounter.class)).thenReturn(leftTurnsResults);
+        when(leftTurnsResults.iterator()).thenReturn(List.of(new LeftTurnsCounter(1)).iterator());
         snakeSessionScreen.render(1.0f);
         verify(applicationEvents).publish(new SnakeSessionEnded(1));
         verifyNoInteractions(system);

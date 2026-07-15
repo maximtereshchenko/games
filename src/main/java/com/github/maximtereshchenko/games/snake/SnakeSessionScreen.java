@@ -32,7 +32,7 @@ final class SnakeSessionScreen extends ScreenAdapter {
             applicationEvents.publish(
                 new SnakeSessionEnded(
                     value(
-                        LeftTurns.class,
+                        LeftTurnsCounter.class,
                         leftTurns -> leftTurns.value,
                         0
                     )

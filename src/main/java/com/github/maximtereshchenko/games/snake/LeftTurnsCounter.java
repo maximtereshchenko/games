@@ -1,10 +1,10 @@
 package com.github.maximtereshchenko.games.snake;
 
-final class LeftTurns {
+final class LeftTurnsCounter {
 
     int value;
 
-    LeftTurns(int value) {
+    LeftTurnsCounter(int value) {
         this.value = value;
     }
 }

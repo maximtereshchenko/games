@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class LeftTurnsSystemTest {
+final class LeftTurnsCounterSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final LeftTurnsSystem leftTurnsSystem = new LeftTurnsSystem(
+    private final LeftTurnsCounterSystem leftTurnsSystem = new LeftTurnsCounterSystem(
         dominion
     );
 
@@ -20,7 +20,7 @@ final class LeftTurnsSystemTest {
             new CurrentDirection(Direction.RIGHT),
             new NextDirection(Direction.UP)
         );
-        dominion.createEntity(new LeftTurns(1));
+        dominion.createEntity(new LeftTurnsCounter(1));
         var before = dominion.findAllEntities().stream().toList();
         leftTurnsSystem.run(0);
         assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
@@ -28,15 +28,15 @@ final class LeftTurnsSystemTest {
 
     @ParameterizedTest
     @EnumSource(Direction.class)
-    void givenLeftTurn_thenLeftTurnsIncremented(Direction direction) {
+    void givenLeftTurn_thenLeftTurnsCounterIncremented(Direction direction) {
         dominion.createEntity(
             new CurrentDirection(direction),
             new NextDirection(direction.left())
         );
-        dominion.createEntity(new LeftTurns(1));
+        dominion.createEntity(new LeftTurnsCounter(1));
         dominion.createEntity(TurnStarted.INSTANCE);
         leftTurnsSystem.run(0);
-        assertThat(dominion.findCompositionsWith(LeftTurns.class))
+        assertThat(dominion.findCompositionsWith(LeftTurnsCounter.class))
             .singleElement()
             .extracting(result -> result.value)
             .isEqualTo(2);
@@ -44,15 +44,15 @@ final class LeftTurnsSystemTest {
 
     @ParameterizedTest
     @EnumSource(Direction.class)
-    void givenRightTurn_thenLeftTurnsUnchanged(Direction direction) {
+    void givenRightTurn_thenLeftTurnsCounterNotIncremented(Direction direction) {
         dominion.createEntity(
             new CurrentDirection(direction),
             new NextDirection(direction.opposite().left())
         );
-        dominion.createEntity(new LeftTurns(1));
+        dominion.createEntity(new LeftTurnsCounter(1));
         dominion.createEntity(TurnStarted.INSTANCE);
         leftTurnsSystem.run(0);
-        assertThat(dominion.findCompositionsWith(LeftTurns.class))
+        assertThat(dominion.findCompositionsWith(LeftTurnsCounter.class))
             .singleElement()
             .extracting(result -> result.value)
             .isEqualTo(1);

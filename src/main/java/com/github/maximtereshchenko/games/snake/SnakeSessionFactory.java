@@ -21,7 +21,8 @@ final class SnakeSessionFactory {
         dominion.createEntity(worldDimensions);
         dominion.createEntity(new Stopwatch());
         dominion.createEntity(new InitialSegmentTimer(3));
-        dominion.createEntity(new LeftTurns(0));
+        dominion.createEntity(new LeftTurnsCounter(0));
+        dominion.createEntity(new FoodEatenCounter(0));
         dominion.createEntity(
             Head.INSTANCE,
             new CurrentDirection(Direction.RIGHT),
@@ -52,10 +53,11 @@ final class SnakeSessionFactory {
             new TurnStartSystem(dominion, 0.125),
             new SegmentSpawningSystem(dominion),
             new NextDirectionSystem(dominion, mode),
-            new LeftTurnsSystem(dominion),
+            new LeftTurnsCounterSystem(dominion),
             new CurrentDirectionSystem(dominion),
             new HeadMovementSystem(dominion),
             new FoodEatingSystem(dominion),
+            new FoodEatenCounterSystem(dominion),
             new InitialSegmentTimerSystem(dominion, 3),
             new TimerIncrementSystem(dominion, 3),
             new TimerDecrementSystem(dominion),
