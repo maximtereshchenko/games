@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -32,10 +33,13 @@ final class SnakeSessionScreen extends ScreenAdapter {
         if (value(Session.class, session -> session.status == Session.Status.ENDED, false)) {
             applicationEvents.publish(
                 new SnakeSessionEnded(
-                    value(
-                        LeftTurnsCounter.class,
-                        leftTurns -> leftTurns.value,
-                        0
+                    Map.of(
+                        SessionStatistics.LEFT_TURNS,
+                        value(
+                            LeftTurnsCounter.class,
+                            leftTurns -> leftTurns.value,
+                            0
+                        )
                     )
                 )
             );

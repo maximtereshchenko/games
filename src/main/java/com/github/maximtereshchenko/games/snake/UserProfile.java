@@ -11,14 +11,19 @@ final class UserProfile {
     }
 
     boolean isUnlocked(Mode mode) {
-        if (mode == Mode.CLASSIC) {
-            return true;
-        }
-        return preferences.getBoolean(mode.toString());
+        return preferences.getBoolean(mode.name());
     }
 
     void unlock(Mode mode) {
-        preferences.putBoolean(mode.toString(), true);
+        preferences.putBoolean(mode.name(), true);
+    }
+
+    int value(UserProfileStatistics statistics) {
+        return preferences.getInteger(statistics.name());
+    }
+
+    void update(UserProfileStatistics statistics, int value) {
+        preferences.putInteger(statistics.name(), value);
     }
 
     void save() {

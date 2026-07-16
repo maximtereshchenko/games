@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dev.dominion.ecs.engine.system.Config;
 
-import java.util.Map;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.util.Properties;
 import java.util.Set;
 
 final class SnakesGameAdapter implements ApplicationListener {
@@ -26,36 +28,36 @@ final class SnakesGameAdapter implements ApplicationListener {
 
     @Override
     public void create() {
+        var configuration = configuration();
+        var userProfile = new UserProfile(configuration.preferences());
+        var assets = configuration.assets();
+        var modes = configuration.modes(userProfile);
         var applicationEvents = new ApplicationEvents();
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
         var assetManager = new AssetManager(new ClasspathFileHandleResolver());
-        Assets.LOADING_ASSETS.forEach(assetManager::load);
+        assets.loadingAssets().forEach(assetManager::load);
         assetManager.finishLoading();
-        var userProfile = new UserProfile(
-            Gdx.app.getPreferences("com.github.maximtereshchenko.games.snake.Snakes")
-        );
-        applicationEvents.subscribe(
-            new ModeUnlocks(
-                userProfile,
-                Map.of(
-                    Mode.VIPER, snakeSessionEnded -> snakeSessionEnded.leftTurns() >= 20
-                )
-            )
-        );
+        applicationEvents.subscribe(new IncrementLaunches(userProfile));
+        applicationEvents.subscribe(new ModeUnlocks(userProfile, modes));
         original = new SnakesGame(
             new ScreenFactory(
+                configuration,
                 assetManager,
+                assets,
                 spriteBatch,
                 applicationEvents,
                 userProfile,
                 new SnakeSessionFactory(
+                    configuration,
                     shapeRenderer,
                     spriteBatch,
-                    assetManager
-                )
+                    assetManager,
+                    assets
+                ),
+                modes
             ),
-            new WorldDimensions(33, 16),
+            configuration.worldDimensions(),
             Set.of(
                 shapeRenderer,
                 spriteBatch,
@@ -89,5 +91,15 @@ final class SnakesGameAdapter implements ApplicationListener {
     @Override
     public void dispose() {
         original.dispose();
+    }
+
+    private Configuration configuration() {
+        var properties = new Properties();
+        try (var reader = Gdx.files.classpath("application.properties").reader()) {
+            properties.load(reader);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+        return new Configuration(properties);
     }
 }

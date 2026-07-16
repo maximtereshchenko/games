@@ -8,30 +8,51 @@ import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 final class SnakeSessionFactoryTest {
 
-    private final Dominion dominion = mock();
-    private final Viewport viewport = mock();
+    private final Configuration configuration = mock();
     private final ShapeRenderer shapeRenderer = mock();
     private final SpriteBatch spriteBatch = mock();
     private final AssetManager assetManager = mock();
+    private final Assets assets = mock();
+    private final Dominion dominion = mock();
+    private final Viewport viewport = mock();
     private final SnakeSessionFactory snakeSessionFactory = new SnakeSessionFactory(
+        configuration,
         shapeRenderer,
         spriteBatch,
-        assetManager
+        assetManager,
+        assets
     );
 
     @Test
     void whenDominion_thenDominionWithEntities() {
+        when(configuration.snakeHeadPosition()).thenReturn(new Position(0, 1));
+        when(configuration.snakeHeadDirection()).thenReturn(Direction.UP);
+        when(configuration.snakeLength()).thenReturn(2);
         try (var dominionStatic = mockStatic(Dominion.class)) {
             dominionStatic.when(Dominion::create).thenReturn(dominion);
             assertThat(snakeSessionFactory.dominion(new WorldDimensions(0, 0))).isEqualTo(dominion);
-            verify(dominion, atLeastOnce()).createEntity(any());
+            verify(dominion).createEntity(new InitialSegmentTimer(2));
+            verify(dominion)
+                .createEntity(
+                    Head.INSTANCE,
+                    new CurrentDirection(Direction.UP),
+                    new NextDirection(Direction.UP),
+                    new Position(0, 1),
+                    Colored.HEAD
+                );
+            verify(dominion)
+                .createEntity(
+                    new Timer(1),
+                    new Position(0, 0),
+                    Colored.SEGMENT
+                );
         }
     }
 
@@ -40,10 +61,9 @@ final class SnakeSessionFactoryTest {
         assertThat(
             snakeSessionFactory.systems(
                 dominion,
-                Mode.CLASSIC,
+                new Mode("", 0, Set.of(), Map.of(), null),
                 viewport,
-                viewport,
-                Map.of()
+                viewport
             )
         )
             .isNotEmpty();

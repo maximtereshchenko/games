@@ -1,3 +1,5 @@
 package com.github.maximtereshchenko.games.snake;
 
-record SnakeSessionEnded(int leftTurns) implements ApplicationEvent {}
+import java.util.Map;
+
+record SnakeSessionEnded(Map<SessionStatistics, Integer> statistics) implements ApplicationEvent {}

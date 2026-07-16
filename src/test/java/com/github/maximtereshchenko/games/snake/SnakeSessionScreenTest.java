@@ -6,6 +6,7 @@ import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.mockito.Mockito.*;
@@ -41,7 +42,7 @@ final class SnakeSessionScreenTest {
         when(dominion.findCompositionsWith(LeftTurnsCounter.class)).thenReturn(leftTurnsResults);
         when(leftTurnsResults.iterator()).thenReturn(List.of(new LeftTurnsCounter(1)).iterator());
         snakeSessionScreen.render(1.0f);
-        verify(applicationEvents).publish(new SnakeSessionEnded(1));
+        verify(applicationEvents).publish(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 1)));
         verifyNoInteractions(system);
     }
 

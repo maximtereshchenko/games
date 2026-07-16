@@ -18,9 +18,12 @@ final class NextDirectionSystem extends TurnBasedSystem {
         for (var result : dominion.findEntitiesWith(CurrentDirection.class, NextDirection.class)) {
             var currentDirection = result.comp1().value;
             var nextDirection = result.comp2();
-            if (!mode.isLegal(currentDirection, nextDirection.value)) {
-                nextDirection.value = currentDirection;
+            for (var legalTurn : mode.legalTurns()) {
+                if (currentDirection.after(legalTurn) == nextDirection.value) {
+                    return;
+                }
             }
+            nextDirection.value = currentDirection;
         }
     }
 }

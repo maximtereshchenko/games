@@ -21,4 +21,11 @@ enum Direction {
     Direction right() {
         return opposite().left();
     }
+
+    Direction after(LegalTurn legalTurn) {
+        return switch (legalTurn) {
+            case LEFT -> left();
+            case RIGHT -> right();
+        };
+    }
 }

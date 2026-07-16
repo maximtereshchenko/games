@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.snake;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -15,47 +14,55 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
 final class ScreenFactory {
 
+    private final Configuration configuration;
     private final AssetManager assetManager;
+    private final Assets assets;
     private final SpriteBatch spriteBatch;
     private final ApplicationEvents applicationEvents;
     private final UserProfile userProfile;
     private final SnakeSessionFactory snakeSessionFactory;
+    private final List<Mode> modes;
 
     ScreenFactory(
+        Configuration configuration,
         AssetManager assetManager,
+        Assets assets,
         SpriteBatch spriteBatch,
         ApplicationEvents applicationEvents,
         UserProfile userProfile,
-        SnakeSessionFactory snakeSessionFactory
+        SnakeSessionFactory snakeSessionFactory,
+        List<Mode> modes
     ) {
+        this.configuration = configuration;
         this.assetManager = assetManager;
+        this.assets = assets;
         this.spriteBatch = spriteBatch;
         this.applicationEvents = applicationEvents;
         this.userProfile = userProfile;
         this.snakeSessionFactory = snakeSessionFactory;
+        this.modes = modes;
     }
 
     Screen loadingScreen() {
-        var skin = assetManager.get(Assets.SKIN);
+        var skin = assetManager.get(assets.skin());
         var progressBar = new ProgressBar(0, 1, 0.01f, false, skin);
         return new LoadingScreen(
             new StageScreen(loadingStage(skin, progressBar)),
             assetManager,
             progressBar,
             applicationEvents,
-            Assets.GAME_ASSETS
+            assets
         );
     }
 
     Screen modeSelectionScreen() {
-        var bundle = assetManager.get(Assets.GAME_BUNDLE);
-        var skin = assetManager.get(Assets.SKIN);
+        var bundle = assetManager.get(assets.gameBundle());
+        var skin = assetManager.get(assets.skin());
         var modeNameLabel = label("", skin);
         var modeDescriptionLabel = label("", skin);
         modeDescriptionLabel.setWrap(true);
@@ -82,8 +89,8 @@ final class ScreenFactory {
     }
 
     Screen titleScreen() {
-        var bundle = assetManager.get(Assets.GAME_BUNDLE);
-        var skin = assetManager.get(Assets.SKIN);
+        var bundle = assetManager.get(assets.gameBundle());
+        var skin = assetManager.get(assets.skin());
         var stage = stage(
             vertical(
                 label(bundle.get("title.name"), skin),
@@ -101,15 +108,13 @@ final class ScreenFactory {
 
     Screen snakeSessionScreen(
         WorldDimensions worldDimensions,
-        Mode mode,
-        Map<Colored, Color> palette
+        Mode mode
     ) {
         var dominion = snakeSessionFactory.dominion(worldDimensions);
         var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
-        var interfaceHeight = 720f;
         var interfaceViewport = new FitViewport(
-            interfaceHeight * worldDimensions.width() / worldDimensions.height(),
-            interfaceHeight
+            configuration.interfaceViewportHeight() * worldDimensions.width() / worldDimensions.height(),
+            configuration.interfaceViewportHeight()
         );
         return new SnakeSessionScreen(
             Set.of(gameViewport, interfaceViewport),
@@ -119,8 +124,7 @@ final class ScreenFactory {
                 dominion,
                 mode,
                 gameViewport,
-                interfaceViewport,
-                palette
+                interfaceViewport
             )
         );
     }
@@ -129,7 +133,7 @@ final class ScreenFactory {
         return stage(
             vertical(
                 label(
-                    assetManager.get(Assets.LOADING_BUNDLE).get("loading.name"),
+                    assetManager.get(assets.loadingBundle()).get("loading.name"),
                     skin
                 ),
                 progressBar
@@ -145,7 +149,7 @@ final class ScreenFactory {
         Label modeDescriptionLabel
     ) {
         var panel = new ArrayList<Actor>();
-        for (var mode : Mode.values()) {
+        for (var mode : modes) {
             panel.add(
                 modeSelectionButton(
                     bundle,
@@ -172,7 +176,7 @@ final class ScreenFactory {
         Label modeNameLabel,
         Label modeDescriptionLabel
     ) {
-        var name = bundle.get(mode.nameKey());
+        var name = bundle.get("mode.%s.name".formatted(mode.name()));
         var textButton = new TextButton(name, skin);
         textButton.setDisabled(!userProfile.isUnlocked(mode));
         textButton.addListener(
@@ -193,9 +197,9 @@ final class ScreenFactory {
 
     private String key(Mode mode) {
         if (userProfile.isUnlocked(mode)) {
-            return mode.descriptionKey();
+            return "mode.%s.description".formatted(mode.name());
         }
-        return mode.requirementKey();
+        return "mode.%s.requirement".formatted(mode.name());
     }
 
     private Label label(String text, Skin skin) {

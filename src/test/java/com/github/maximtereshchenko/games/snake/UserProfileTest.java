@@ -2,8 +2,9 @@ package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.Preferences;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
+
+import java.util.Map;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -14,21 +15,28 @@ final class UserProfileTest {
     private final UserProfile userProfile = new UserProfile(preferences);
 
     @Test
-    void givenClassicMode_whenIsUnlocked_thenTrue() {
-        assertThat(userProfile.isUnlocked(Mode.CLASSIC)).isTrue();
-    }
-
-    @ParameterizedTest
-    @EnumSource(value = Mode.class, names = "CLASSIC", mode = EnumSource.Mode.EXCLUDE)
-    void givenMode_whenIsUnlocked_thenDelegateToPreferences(Mode mode) {
-        when(preferences.getBoolean(mode.toString())).thenReturn(true);
-        assertThat(userProfile.isUnlocked(mode)).isTrue();
+    void whenIsUnlocked_thenBooleanFromPreferences() {
+        when(preferences.getBoolean("mode")).thenReturn(true);
+        assertThat(userProfile.isUnlocked(new Mode("mode", 0, Set.of(), Map.of(), null)))
+            .isTrue();
     }
 
     @Test
-    void whenUnlock_thenStorePreference() {
-        userProfile.unlock(Mode.CLASSIC);
-        verify(preferences).putBoolean(Mode.CLASSIC.toString(), true);
+    void whenUnlock_thenPutTrueToPreferences() {
+        userProfile.unlock(new Mode("mode", 0, Set.of(), Map.of(), null));
+        verify(preferences).putBoolean("mode", true);
+    }
+
+    @Test
+    void whenValue_thenIntFromPreferences() {
+        userProfile.value(UserProfileStatistics.LAUNCHES);
+        verify(preferences).getInteger(UserProfileStatistics.LAUNCHES.name());
+    }
+
+    @Test
+    void whenUpdate_thenPutIntToPreferences() {
+        userProfile.update(UserProfileStatistics.LAUNCHES, 1);
+        verify(preferences).putInteger(UserProfileStatistics.LAUNCHES.name(), 1);
     }
 
     @Test

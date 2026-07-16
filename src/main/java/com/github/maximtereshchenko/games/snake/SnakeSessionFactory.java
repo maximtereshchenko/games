@@ -1,30 +1,34 @@
 package com.github.maximtereshchenko.games.snake;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import dev.dominion.ecs.api.Dominion;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 final class SnakeSessionFactory {
 
+    private final Configuration configuration;
     private final ShapeRenderer shapeRenderer;
     private final SpriteBatch spriteBatch;
     private final AssetManager assetManager;
+    private final Assets assets;
 
     SnakeSessionFactory(
+        Configuration configuration,
         ShapeRenderer shapeRenderer,
         SpriteBatch spriteBatch,
-        AssetManager assetManager
+        AssetManager assetManager,
+        Assets assets
     ) {
+        this.configuration = configuration;
         this.shapeRenderer = shapeRenderer;
         this.spriteBatch = spriteBatch;
         this.assetManager = assetManager;
+        this.assets = assets;
     }
 
     Dominion dominion(WorldDimensions worldDimensions) {
@@ -32,26 +36,10 @@ final class SnakeSessionFactory {
         dominion.createEntity(new Session());
         dominion.createEntity(worldDimensions);
         dominion.createEntity(new Stopwatch());
-        dominion.createEntity(new InitialSegmentTimer(3));
+        dominion.createEntity(new InitialSegmentTimer(configuration.snakeLength()));
         dominion.createEntity(new LeftTurnsCounter(0));
         dominion.createEntity(new FoodEatenCounter(0), Colored.FOOD_EATEN_COUNTER);
-        dominion.createEntity(
-            Head.INSTANCE,
-            new CurrentDirection(Direction.RIGHT),
-            new NextDirection(Direction.RIGHT),
-            new Position(11, 6),
-            Colored.HEAD
-        );
-        dominion.createEntity(
-            new Timer(2),
-            new Position(10, 6),
-            Colored.SEGMENT
-        );
-        dominion.createEntity(
-            new Timer(1),
-            new Position(9, 6),
-            Colored.SEGMENT
-        );
+        createSnake(dominion);
         return dominion;
     }
 
@@ -59,12 +47,11 @@ final class SnakeSessionFactory {
         Dominion dominion,
         Mode mode,
         Viewport gameViewport,
-        Viewport interfaceViewport,
-        Map<Colored, Color> palette
+        Viewport interfaceViewport
     ) {
         return List.of(
             new InputSystem(dominion),
-            new TurnStartSystem(dominion, 0.125),
+            new TurnStartSystem(dominion, mode.gameInterval()),
             new SegmentSpawningSystem(dominion),
             new NextDirectionSystem(dominion, mode),
             new LeftTurnsCounterSystem(dominion),
@@ -72,8 +59,8 @@ final class SnakeSessionFactory {
             new HeadMovementSystem(dominion),
             new FoodEatingSystem(dominion),
             new FoodEatenCounterSystem(dominion),
-            new InitialSegmentTimerSystem(dominion, 3),
-            new TimerIncrementSystem(dominion, 3),
+            new InitialSegmentTimerSystem(dominion, configuration.snakeFoodGrowth()),
+            new TimerIncrementSystem(dominion, configuration.snakeFoodGrowth()),
             new TimerDecrementSystem(dominion),
             new TimerRemovalSystem(dominion),
             new SessionEndSystem(dominion),
@@ -83,15 +70,42 @@ final class SnakeSessionFactory {
                 gameViewport,
                 shapeRenderer,
                 dominion,
-                palette
+                mode.palette()
             ),
             new InterfaceRenderingSystem(
                 interfaceViewport,
                 spriteBatch,
-                assetManager.get(Assets.BITMAP_FONT),
+                assetManager.get(assets.bitmapFont()),
                 dominion,
-                palette
+                mode.palette()
             )
         );
+    }
+
+    private void createSnake(Dominion dominion) {
+        var snakeHeadPosition = configuration.snakeHeadPosition();
+        dominion.createEntity(
+            Head.INSTANCE,
+            new CurrentDirection(configuration.snakeHeadDirection()),
+            new NextDirection(configuration.snakeHeadDirection()),
+            snakeHeadPosition,
+            Colored.HEAD
+        );
+        var x = snakeHeadPosition.x;
+        var y = snakeHeadPosition.y;
+        var segments = configuration.snakeLength() - 1;
+        for (var i = 0; i < segments; i++) {
+            switch (configuration.snakeHeadDirection()) {
+                case UP -> y -= 1;
+                case DOWN -> y += 1;
+                case LEFT -> x += 1;
+                case RIGHT -> x -= 1;
+            }
+            dominion.createEntity(
+                new Timer(segments - i),
+                new Position(x, y),
+                Colored.SEGMENT
+            );
+        }
     }
 }

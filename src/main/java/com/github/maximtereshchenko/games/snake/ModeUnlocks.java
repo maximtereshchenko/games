@@ -1,26 +1,35 @@
 package com.github.maximtereshchenko.games.snake;
 
-import java.util.Map;
+import java.util.List;
 import java.util.function.Predicate;
 
 final class ModeUnlocks implements Subscriber {
 
     private final UserProfile userProfile;
-    private final Map<Mode, Predicate<SnakeSessionEnded>> requirements;
+    private final List<Mode> modes;
 
-    ModeUnlocks(UserProfile userProfile, Map<Mode, Predicate<SnakeSessionEnded>> requirements) {
+    ModeUnlocks(UserProfile userProfile, List<Mode> modes) {
         this.userProfile = userProfile;
-        this.requirements = requirements;
+        this.modes = modes;
     }
 
     @Override
     public void onEvent(ApplicationEvent applicationEvent) {
-        if (!(applicationEvent instanceof SnakeSessionEnded snakeSessionEnded)) {
-            return;
+        switch (applicationEvent) {
+            case SnakeSessionEnded snakeSessionEnded -> unlock(
+                modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(snakeSessionEnded)
+            );
+            case TitleScreenFinished _ -> unlock(ModeUnlockRequirements::isSatisfied);
+            default -> {
+                //empty
+            }
         }
-        for (var entry : requirements.entrySet()) {
-            if (entry.getValue().test(snakeSessionEnded)) {
-                userProfile.unlock(entry.getKey());
+    }
+
+    private void unlock(Predicate<ModeUnlockRequirements> predicate) {
+        for (var mode : modes) {
+            if (predicate.test(mode.modeUnlockRequirements())) {
+                userProfile.unlock(mode);
             }
         }
     }

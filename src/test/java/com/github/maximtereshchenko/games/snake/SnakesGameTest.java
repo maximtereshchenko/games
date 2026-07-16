@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -28,7 +29,7 @@ final class SnakesGameTest {
     private SnakesGame snakesGame;
 
     private static Stream<ApplicationEvent> modeSelectionScreenEvents() {
-        return Stream.of(new TitleScreenFinished(), new SnakeSessionEnded(1));
+        return Stream.of(new TitleScreenFinished(), new SnakeSessionEnded(Map.of()));
     }
 
     @BeforeEach
@@ -70,9 +71,10 @@ final class SnakesGameTest {
 
     @Test
     void whenModeSelected_thenSnakeSessionScreenShowed() {
-        when(screenFactory.snakeSessionScreen(worldDimensions, Mode.CLASSIC, Mode.CLASSIC.palette()))
+        var mode = new Mode("", 0, Set.of(), Map.of(), null);
+        when(screenFactory.snakeSessionScreen(worldDimensions, mode))
             .thenReturn(snakeSessionScreen);
-        snakesGame.onEvent(new ModeSelected(Mode.CLASSIC));
+        snakesGame.onEvent(new ModeSelected(mode));
         verify(snakeSessionScreen).show();
         verify(snakeSessionScreen).resize(anyInt(), anyInt());
     }

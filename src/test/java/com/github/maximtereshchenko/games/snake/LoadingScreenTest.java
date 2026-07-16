@@ -20,13 +20,14 @@ final class LoadingScreenTest {
     private final AssetManager assetManager = mock();
     private final ProgressBar progressBar = mock();
     private final ApplicationEvents applicationEvents = mock();
+    private final Assets assets = mock();
     private final AssetDescriptor<?> assetDescriptor = mock();
     private final LoadingScreen loadingScreen = new LoadingScreen(
         stageScreen,
         assetManager,
         progressBar,
         applicationEvents,
-        Set.of(assetDescriptor)
+        assets
     );
 
     private static Stream<Consumer<Screen>> delegatingMethods() {
@@ -66,6 +67,7 @@ final class LoadingScreenTest {
 
     @Test
     void whenShow_thenInputProcessorSet() {
+        when(assets.gameAssets()).thenReturn(Set.of(assetDescriptor));
         loadingScreen.show();
         verify(assetManager).load(assetDescriptor);
         verify(stageScreen).show();
