@@ -1,27 +1,37 @@
 package com.github.maximtereshchenko.games.snakes.screen;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.github.maximtereshchenko.games.snakes.*;
+import com.github.maximtereshchenko.games.snakes.Assets;
+import com.github.maximtereshchenko.games.snakes.Configuration;
+import com.github.maximtereshchenko.games.snakes.Mode;
+import com.github.maximtereshchenko.games.snakes.UserProfile;
 import com.github.maximtereshchenko.games.snakes.event.*;
+import com.github.maximtereshchenko.games.snakes.screen.view.CreditsView;
+import com.github.maximtereshchenko.games.snakes.screen.view.LoadingView;
+import com.github.maximtereshchenko.games.snakes.screen.view.StatisticsView;
+import com.github.maximtereshchenko.games.snakes.screen.view.TitleView;
+import com.github.maximtereshchenko.games.snakes.screen.view.main.InformationView;
+import com.github.maximtereshchenko.games.snakes.screen.view.main.MainView;
+import com.github.maximtereshchenko.games.snakes.screen.view.main.ModesView;
+import com.github.maximtereshchenko.games.snakes.screen.view.main.NavigationView;
+import com.github.maximtereshchenko.games.snakes.screen.view.settings.SettingsView;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
 import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
-import java.util.stream.Stream;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
 public final class ScreenFactory {
@@ -56,62 +66,63 @@ public final class ScreenFactory {
     }
 
     public Screen loadingScreen() {
-        var skin = assetManager.get(assets.skin());
-        var progressBar = new ProgressBar(0, 1, 0.01f, false, skin);
+        var loadingView = new LoadingView(
+            assetManager.get(assets.loadingBundle()),
+            assetManager.get(assets.skin())
+        );
         return new LoadingScreen(
-            new StageScreen(loadingStage(skin, progressBar)),
+            new StageScreen(stage(loadingView)),
+            loadingView,
             assetManager,
-            progressBar,
             applicationEvents,
             assets
         );
     }
 
-    public Screen modeSelectionScreen() {
-        var bundle = assetManager.get(assets.gameBundle());
-        var skin = assetManager.get(assets.skin());
-        var titleLabel = label("", skin);
-        var descriptionLabel = label("", skin);
-        descriptionLabel.setWrap(true);
-        var descriptionTable = new Table();
-        descriptionTable.add(titleLabel).growX().row();
-        descriptionTable.add(descriptionLabel).growX();
-        var table = new Table();
-        var modeSelectionWidth = 4;
-        table.add(
-                table(
-                    modeSelectionWidth,
-                    modeSelectionPanel(
-                        bundle,
-                        skin,
-                        modeSelectionWidth,
-                        titleLabel,
-                        descriptionLabel
-                    )
-                )
-            )
-            .width(Value.percentWidth(0.6f, table));
-        table.add(descriptionTable).width(Value.percentWidth(0.4f, table));
-        return new StageScreen(stage(table));
-    }
-
     public Screen titleScreen() {
-        var bundle = assetManager.get(assets.gameBundle());
-        var skin = assetManager.get(assets.skin());
         var stage = stage(
-            table(
-                1,
-                label(bundle.get("title.name"), skin),
-                label(bundle.get("title.continue"), skin)
+            new TitleView(
+                assetManager.get(assets.gameBundle()),
+                assetManager.get(assets.skin())
             )
         );
         stage.addListener(
-            new FunctionalInputListener(
-                Input.Keys.SPACE,
-                () -> applicationEvents.publish(new TitleScreenFinished())
-            )
+            new InputListener() {
+
+                @Override
+                public boolean touchDown(
+                    InputEvent event,
+                    float x,
+                    float y,
+                    int pointer,
+                    int button
+                ) {
+                    return keyDown(event, button);
+                }
+
+                @Override
+                public boolean keyDown(InputEvent event, int keycode) {
+                    applicationEvents.publish(new TitleScreenFinished());
+                    return true;
+                }
+            }
         );
         return new StageScreen(stage);
+    }
+
+    public Screen mainScreen() {
+        var bundle = assetManager.get(assets.gameBundle());
+        var skin = assetManager.get(assets.skin());
+        var informationView = new InformationView(skin);
+        return new StageScreen(
+            stage(
+                new MainView(
+                    modesView(bundle, skin, informationView),
+                    navigationView(bundle, skin, informationView),
+                    informationView
+                )
+            )
+        );
     }
 
     public Screen snakeSessionScreen(
@@ -138,247 +149,97 @@ public final class ScreenFactory {
     }
 
     public Screen statisticsScreen() {
-        var bundle = assetManager.get(assets.gameBundle());
-        var skin = assetManager.get(assets.skin());
-        var textButton = new TextButton(bundle.get("statistics.back"), skin);
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new StatisticsScreenFinished())
-            )
+        var statisticsView = new StatisticsView(
+            assetManager.get(assets.gameBundle()),
+            assetManager.get(assets.skin()),
+            userProfile
         );
-        return new StageScreen(
-            stage(
-                table(
-                    1,
-                    table(
-                        2,
-                        Stream.of(UserProfileStatistics.values())
-                            .map(
-                                userProfileStatistics -> List.of(
-                                    label(bundle.get("statistics." + userProfileStatistics), skin),
-                                    label(String.valueOf(userProfile.value(userProfileStatistics)), skin)
-                                )
-                            )
-                            .flatMap(Collection::stream)
-                            .toList()
-                    ),
-                    textButton
-                )
-            )
+        statisticsView.onFinish(
+            () -> applicationEvents.publish(new StatisticsScreenFinished())
         );
-    }
-
-    public Screen creditsScreen() {
-        var bundle = assetManager.get(assets.gameBundle());
-        var skin = assetManager.get(assets.skin());
-        var textButton = new TextButton(bundle.get("credits.back"), skin);
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new CreditsScreenFinished())
-            )
-        );
-        return new StageScreen(
-            stage(
-                table(
-                    1,
-                    label(bundle.get("credits.text"), skin),
-                    textButton
-                )
-            )
-        );
+        return new StageScreen(stage(statisticsView));
     }
 
     public Screen settingsScreen() {
-        var bundle = assetManager.get(assets.gameBundle());
-        var skin = assetManager.get(assets.skin());
         var music = assetManager.get(assets.music());
-        var textButton = new TextButton(bundle.get("settings.back"), skin);
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new SettingsScreenFinished())
-            )
+        var settingsView = new SettingsView(
+            assetManager.get(assets.gameBundle()),
+            assetManager.get(assets.skin()),
+            music.getVolume()
         );
-        var musicVolumeSlider = new Slider(0, 1, 0.1f, false, skin);
-        musicVolumeSlider.setValue(music.getVolume());
-        musicVolumeSlider.addListener(
-            new FunctionalChangeListener(() -> setVolume(musicVolumeSlider, music))
+        settingsView.onVolumeChange(volume -> setVolume(music, volume));
+        settingsView.onFinish(
+            () -> applicationEvents.publish(new StatisticsScreenFinished())
         );
-        return new StageScreen(
-            stage(
-                table(
-                    1,
-                    table(
-                        2,
-                        label(bundle.get("settings.music.volume"), skin),
-                        musicVolumeSlider
-                    ),
-                    textButton
+        return new StageScreen(stage(settingsView));
+    }
+
+    public Screen creditsScreen() {
+        var creditsView = new CreditsView(
+            assetManager.get(assets.gameBundle()),
+            assetManager.get(assets.skin())
+        );
+        creditsView.onFinish(
+            () -> applicationEvents.publish(new CreditsScreenFinished())
+        );
+        return new StageScreen(stage(creditsView));
+    }
+
+    private NavigationView navigationView(
+        I18NBundle bundle,
+        Skin skin,
+        InformationView informationView
+    ) {
+        var navigationView = new NavigationView(bundle, skin);
+        navigationView.onHover(
+            (button, target) -> informationView.update(
+                button.getText().toString(),
+                bundle.get(
+                    "screens.main.buttons.%s.description"
+                        .formatted(target.toString().toLowerCase(Locale.ROOT))
                 )
             )
         );
-    }
-
-    private void setVolume(Slider musicVolumeSlider, Music music) {
-        userProfile.updateMusicVolume(musicVolumeSlider.getValue());
-        music.setVolume(musicVolumeSlider.getValue());
-    }
-
-    private Stage loadingStage(Skin skin, ProgressBar progressBar) {
-        return stage(
-            table(
-                1,
-                label(
-                    assetManager.get(assets.loadingBundle()).get("loading.name"),
-                    skin
-                ),
-                progressBar
+        navigationView.onClick(
+            target -> applicationEvents.publish(
+                switch (target) {
+                    case STATISTICS -> new StatisticsRequested();
+                    case SETTINGS -> new SettingsRequested();
+                    case CREDITS -> new CreditsRequested();
+                }
             )
         );
+        return navigationView;
     }
 
-    private List<Actor> modeSelectionPanel(
+    private ModesView modesView(
         I18NBundle bundle,
         Skin skin,
-        int width,
-        Label titleLabel,
-        Label descriptionLabel
+        InformationView informationView
     ) {
-        var panel = new ArrayList<Actor>();
-        for (var mode : modes) {
-            panel.add(
-                modeSelectionButton(
-                    bundle,
-                    skin,
-                    mode,
-                    titleLabel,
-                    descriptionLabel
-                )
-            );
-        }
-        do {
-            panel.add(null);
-        } while (panel.size() % width != width - 3);
-        panel.add(statisticsButton(bundle, skin, titleLabel, descriptionLabel));
-        panel.add(settingsButton(bundle, skin, titleLabel, descriptionLabel));
-        panel.add(creditsButton(bundle, skin, titleLabel, descriptionLabel));
-        return panel;
-    }
-
-    private TextButton settingsButton(
-        I18NBundle bundle,
-        Skin skin,
-        Label titleLabel,
-        Label descriptionLabel
-    ) {
-        var settingsName = bundle.get("modeSelection.settings.name");
-        var textButton = new TextButton(settingsName, skin);
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new SettingsRequested())
+        var modesView = new ModesView(bundle, skin, modes, userProfile);
+        modesView.onHover(
+            modeButton -> informationView.update(
+                modeButton.getText().toString(),
+                bundle.get(key(modeButton.mode()))
             )
         );
-        textButton.addListener(
-            new FunctionalHoverListener(() -> titleLabel.setText(settingsName))
+        modesView.onClick(
+            modeButton -> applicationEvents.publish(new ModeSelected(modeButton.mode()))
         );
-        textButton.addListener(
-            new FunctionalHoverListener(
-                () -> descriptionLabel.setText(
-                    bundle.get("modeSelection.settings.description")
-                )
-            )
-        );
-        return textButton;
-    }
-
-    private TextButton creditsButton(
-        I18NBundle bundle,
-        Skin skin,
-        Label titleLabel,
-        Label descriptionLabel
-    ) {
-        var creditsName = bundle.get("modeSelection.credits.name");
-        var textButton = new TextButton(creditsName, skin);
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new CreditsRequested())
-            )
-        );
-        textButton.addListener(
-            new FunctionalHoverListener(() -> titleLabel.setText(creditsName))
-        );
-        textButton.addListener(
-            new FunctionalHoverListener(
-                () -> descriptionLabel.setText(
-                    bundle.get("modeSelection.credits.description")
-                )
-            )
-        );
-        return textButton;
-    }
-
-    private TextButton statisticsButton(
-        I18NBundle bundle,
-        Skin skin,
-        Label titleLabel,
-        Label descriptionLabel
-    ) {
-        var statisticsName = bundle.get("modeSelection.statistics.name");
-        var textButton = new TextButton(statisticsName, skin);
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new StatisticsRequested())
-            )
-        );
-        textButton.addListener(
-            new FunctionalHoverListener(() -> titleLabel.setText(statisticsName))
-        );
-        textButton.addListener(
-            new FunctionalHoverListener(
-                () -> descriptionLabel.setText(
-                    bundle.get("modeSelection.statistics.description")
-                )
-            )
-        );
-        return textButton;
-    }
-
-    private TextButton modeSelectionButton(
-        I18NBundle bundle,
-        Skin skin,
-        Mode mode,
-        Label titleLabel,
-        Label descriptionLabel
-    ) {
-        var name = bundle.get("mode.%s.name".formatted(mode.name()));
-        var textButton = new TextButton(name, skin);
-        textButton.setDisabled(!userProfile.isUnlocked(mode));
-        textButton.addListener(
-            new FunctionalChangeListener(
-                () -> applicationEvents.publish(new ModeSelected(mode))
-            )
-        );
-        textButton.addListener(
-            new FunctionalHoverListener(() -> titleLabel.setText(name))
-        );
-        textButton.addListener(
-            new FunctionalHoverListener(
-                () -> descriptionLabel.setText(bundle.get(key(mode)))
-            )
-        );
-        return textButton;
+        return modesView;
     }
 
     private String key(Mode mode) {
         if (userProfile.isUnlocked(mode)) {
-            return "mode.%s.description".formatted(mode.name());
+            return "modes.%s.description".formatted(mode.name());
         }
-        return "mode.%s.requirement".formatted(mode.name());
+        return "modes.%s.unlock.requirement".formatted(mode.name());
     }
 
-    private Label label(String text, Skin skin) {
-        var label = new Label(text, skin);
-        label.setAlignment(Align.center);
-        return label;
+    private void setVolume(Music music, float volume) {
+        music.setVolume(volume);
+        userProfile.updateMusicVolume(volume);
     }
 
     private Stage stage(Table table) {
@@ -386,24 +247,5 @@ public final class ScreenFactory {
         var stage = new Stage(new ScreenViewport(), spriteBatch);
         stage.addActor(table);
         return stage;
-    }
-
-    private Table table(int width, Actor... actors) {
-        return table(width, List.of(actors));
-    }
-
-    private Table table(int width, List<? extends Actor> actors) {
-        var table = new Table();
-        table.pad(5);
-        var rowIndex = 0;
-        for (var actor : actors) {
-            table.add(actor).align(Align.center).growX().pad(5);
-            rowIndex++;
-            if (rowIndex == width) {
-                table.row();
-                rowIndex = 0;
-            }
-        }
-        return table;
     }
 }

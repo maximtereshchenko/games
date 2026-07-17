@@ -7,11 +7,13 @@ public final class SessionStatisticsAccumulator {
 
     public Map<SessionStatistics, Integer> value;
 
-    public SessionStatisticsAccumulator(Map<SessionStatistics, Integer> value) {
-        this.value = new EnumMap<>(value);
-    }
-
-    SessionStatisticsAccumulator() {
+    public SessionStatisticsAccumulator() {
         this.value = new EnumMap<>(SessionStatistics.class);
+        for (var sessionStatistics : SessionStatistics.values()) {
+            this.value.put(
+                sessionStatistics,
+                value.getOrDefault(sessionStatistics, 0)
+            );
+        }
     }
 }

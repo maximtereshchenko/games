@@ -33,7 +33,7 @@ final class SnakesGameTest {
         userProfile
     );
 
-    private static Stream<ApplicationEvent> modeSelectionScreenEvents() {
+    private static Stream<ApplicationEvent> mainScreenEvents() {
         return Stream.of(
             new TitleScreenFinished(),
             new SnakeSessionEnded(Map.of()),
@@ -57,9 +57,9 @@ final class SnakesGameTest {
     }
 
     @ParameterizedTest
-    @MethodSource("modeSelectionScreenEvents")
-    void whenApplicationEvent_thenModeSelectionScreenShowed(ApplicationEvent applicationEvent) {
-        when(screenFactory.modeSelectionScreen()).thenReturn(screen);
+    @MethodSource("mainScreenEvents")
+    void whenApplicationEvent_thenMainScreenShowed(ApplicationEvent applicationEvent) {
+        when(screenFactory.mainScreen()).thenReturn(screen);
         snakesGame.onEvent(applicationEvent);
         verify(screen).show();
         verify(screen).resize(anyInt(), anyInt());

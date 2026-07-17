@@ -42,20 +42,31 @@ final class SnakesGame extends Game implements Subscriber {
     @Override
     public void onEvent(ApplicationEvent event) {
         switch (event) {
-            case AssetsLoaded _ -> setScreen(screenFactory.titleScreen());
+            case AssetsLoaded _ -> setScreen(
+                screenFactory.titleScreen()
+            );
             case TitleScreenFinished _,
                  SnakeSessionEnded _,
                  StatisticsScreenFinished _,
                  CreditsScreenFinished _,
                  SettingsScreenFinished _ -> setScreen(
-                screenFactory.modeSelectionScreen()
+                screenFactory.mainScreen()
             );
             case ModeSelected modeSelected -> setScreen(
-                screenFactory.snakeSessionScreen(worldDimensions, modeSelected.mode())
+                screenFactory.snakeSessionScreen(
+                    worldDimensions,
+                    modeSelected.mode()
+                )
             );
-            case StatisticsRequested _ -> setScreen(screenFactory.statisticsScreen());
-            case CreditsRequested _ -> setScreen(screenFactory.creditsScreen());
-            case SettingsRequested _ -> setScreen(screenFactory.settingsScreen());
+            case StatisticsRequested _ -> setScreen(
+                screenFactory.statisticsScreen()
+            );
+            case SettingsRequested _ -> setScreen(
+                screenFactory.settingsScreen()
+            );
+            case CreditsRequested _ -> setScreen(
+                screenFactory.creditsScreen()
+            );
         }
     }
 }

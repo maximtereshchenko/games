@@ -35,15 +35,13 @@ final class SessionStatisticsSystemTest {
             new CurrentDirection(direction),
             new NextDirection(direction.left())
         );
-        dominion.createEntity(
-            new SessionStatisticsAccumulator(Map.of(SessionStatistics.LEFT_TURNS, 1))
-        );
+        dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(TurnStarted.INSTANCE);
         sessionStatisticsSystem.run(0);
         assertThat(dominion.findCompositionsWith(SessionStatisticsAccumulator.class))
             .singleElement()
             .extracting(result -> result.value)
-            .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 2));
+            .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 1));
     }
 
     @ParameterizedTest
@@ -53,14 +51,12 @@ final class SessionStatisticsSystemTest {
             new CurrentDirection(direction),
             new NextDirection(direction.opposite().left())
         );
-        dominion.createEntity(
-            new SessionStatisticsAccumulator(Map.of(SessionStatistics.LEFT_TURNS, 1))
-        );
+        dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(TurnStarted.INSTANCE);
         sessionStatisticsSystem.run(0);
         assertThat(dominion.findCompositionsWith(SessionStatisticsAccumulator.class))
             .singleElement()
             .extracting(result -> result.value)
-            .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 1));
+            .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 0));
     }
 }

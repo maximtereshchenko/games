@@ -6,6 +6,7 @@ import com.github.maximtereshchenko.games.snakes.event.SnakeSessionEnded;
 import com.github.maximtereshchenko.games.snakes.session.Session;
 import com.github.maximtereshchenko.games.snakes.session.SessionStatistics;
 import com.github.maximtereshchenko.games.snakes.session.SessionStatisticsAccumulator;
+import com.github.maximtereshchenko.games.snakes.session.System;
 import dev.dominion.ecs.api.Dominion;
 import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ final class SnakeSessionScreenTest {
     private final Viewport viewport = mock();
     private final ApplicationEvents applicationEvents = mock();
     private final Dominion dominion = mock();
-    private final com.github.maximtereshchenko.games.snakes.session.System system = mock();
+    private final System system = mock();
     private final SnakeSessionScreen snakeSessionScreen = new SnakeSessionScreen(
         Set.of(viewport),
         applicationEvents,
@@ -47,16 +48,9 @@ final class SnakeSessionScreenTest {
         when(dominion.findCompositionsWith(SessionStatisticsAccumulator.class))
             .thenReturn(sessionStatisticsAccumulatorResults);
         when(sessionStatisticsAccumulatorResults.iterator())
-            .thenReturn(
-                List.of(
-                        new SessionStatisticsAccumulator(
-                            Map.of(SessionStatistics.LEFT_TURNS, 1)
-                        )
-                    )
-                    .iterator()
-            );
+            .thenReturn(List.of(new SessionStatisticsAccumulator()).iterator());
         snakeSessionScreen.render(1.0f);
-        verify(applicationEvents).publish(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 1)));
+        verify(applicationEvents).publish(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 0)));
         verifyNoInteractions(system);
     }
 

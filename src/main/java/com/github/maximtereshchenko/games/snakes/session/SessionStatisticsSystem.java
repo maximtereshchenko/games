@@ -19,7 +19,7 @@ final class SessionStatisticsSystem extends TurnBasedSystem {
                 if (result.comp1().value.left() == result.comp2().value) {
                     sessionStatistics.put(
                         SessionStatistics.LEFT_TURNS,
-                        sessionStatistics.getOrDefault(SessionStatistics.LEFT_TURNS, 0) + 1
+                        sessionStatistics.get(SessionStatistics.LEFT_TURNS) + 1
                     );
                 }
             }
