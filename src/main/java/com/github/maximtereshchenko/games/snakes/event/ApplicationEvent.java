@@ -6,4 +6,6 @@ public sealed interface ApplicationEvent
     SnakeSessionEnded,
     StatisticsScreenFinished,
     StatisticsRequested,
-    TitleScreenFinished {}
+    TitleScreenFinished,
+    CreditsScreenFinished,
+    CreditsRequested {}

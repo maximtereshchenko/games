@@ -26,26 +26,25 @@ final class SnakesGameTest {
     private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
     private final UserProfile userProfile = mock();
     private final Mode mode = mock();
-    private SnakesGame snakesGame;
+    private final SnakesGame snakesGame = new SnakesGame(
+        screenFactory,
+        worldDimensions,
+        Set.of(disposable),
+        userProfile
+    );
 
     private static Stream<ApplicationEvent> modeSelectionScreenEvents() {
         return Stream.of(
             new TitleScreenFinished(),
             new SnakeSessionEnded(Map.of()),
-            new StatisticsScreenFinished()
+            new StatisticsScreenFinished(),
+            new CreditsScreenFinished()
         );
     }
 
     @BeforeEach
     void setUp() {
         Gdx.graphics = mock();
-        when(screenFactory.loadingScreen()).thenReturn(screen);
-        snakesGame = new SnakesGame(
-            screenFactory,
-            worldDimensions,
-            Set.of(disposable),
-            userProfile
-        );
     }
 
     @Test
@@ -75,9 +74,17 @@ final class SnakesGameTest {
     }
 
     @Test
-    void whenStatisticsScreenFinished_thenStatisticsShowed() {
+    void whenStatisticsRequested_thenStatisticsScreenShowed() {
         when(screenFactory.statisticsScreen()).thenReturn(screen);
         snakesGame.onEvent(new StatisticsRequested());
+        verify(screen).show();
+        verify(screen).resize(anyInt(), anyInt());
+    }
+
+    @Test
+    void whenCreditsRequested_thenCreditsScreenShowed() {
+        when(screenFactory.creditsScreen()).thenReturn(screen);
+        snakesGame.onEvent(new CreditsRequested());
         verify(screen).show();
         verify(screen).resize(anyInt(), anyInt());
     }

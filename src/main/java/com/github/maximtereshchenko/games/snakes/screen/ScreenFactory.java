@@ -165,6 +165,25 @@ public final class ScreenFactory {
         );
     }
 
+    public Screen creditsScreen() {
+        var bundle = assetManager.get(assets.gameBundle());
+        var skin = assetManager.get(assets.skin());
+        var textButton = new TextButton(bundle.get("credits.back"), skin);
+        textButton.addListener(
+            new FunctionalChangeListener(
+                () -> applicationEvents.publish(new CreditsScreenFinished())
+            )
+        );
+        return new StageScreen(
+            stage(
+                vertical(
+                    label(bundle.get("credits.text"), skin),
+                    textButton
+                )
+            )
+        );
+    }
+
     private Stage loadingStage(Skin skin, ProgressBar progressBar) {
         return stage(
             vertical(
@@ -201,8 +220,34 @@ public final class ScreenFactory {
         } while (panel.size() % width != width - 3);
         panel.add(statisticsButton(bundle, skin, modeNameLabel, modeDescriptionLabel));
         panel.add(new TextButton(bundle.get("modeSelection.settings"), skin));
-        panel.add(new TextButton(bundle.get("modeSelection.credits"), skin));
+        panel.add(creditsButton(bundle, skin, modeNameLabel, modeDescriptionLabel));
         return panel;
+    }
+
+    private TextButton creditsButton(
+        I18NBundle bundle,
+        Skin skin,
+        Label modeNameLabel,
+        Label modeDescriptionLabel
+    ) {
+        var creditsName = bundle.get("modeSelection.credits.name");
+        var textButton = new TextButton(creditsName, skin);
+        textButton.addListener(
+            new FunctionalChangeListener(
+                () -> applicationEvents.publish(new CreditsRequested())
+            )
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(() -> modeNameLabel.setText(creditsName))
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(
+                () -> modeDescriptionLabel.setText(
+                    bundle.get("modeSelection.credits.description")
+                )
+            )
+        );
+        return textButton;
     }
 
     private TextButton statisticsButton(
