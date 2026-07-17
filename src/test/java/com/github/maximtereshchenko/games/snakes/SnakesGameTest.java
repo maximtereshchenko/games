@@ -38,7 +38,8 @@ final class SnakesGameTest {
             new TitleScreenFinished(),
             new SnakeSessionEnded(Map.of()),
             new StatisticsScreenFinished(),
-            new CreditsScreenFinished()
+            new CreditsScreenFinished(),
+            new SettingsScreenFinished()
         );
     }
 
@@ -85,6 +86,14 @@ final class SnakesGameTest {
     void whenCreditsRequested_thenCreditsScreenShowed() {
         when(screenFactory.creditsScreen()).thenReturn(screen);
         snakesGame.onEvent(new CreditsRequested());
+        verify(screen).show();
+        verify(screen).resize(anyInt(), anyInt());
+    }
+
+    @Test
+    void whenSettingsRequested_thenSettingsScreenShowed() {
+        when(screenFactory.settingsScreen()).thenReturn(screen);
+        snakesGame.onEvent(new SettingsRequested());
         verify(screen).show();
         verify(screen).resize(anyInt(), anyInt());
     }

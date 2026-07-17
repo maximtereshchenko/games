@@ -49,6 +49,12 @@ final class UserProfileTest {
     }
 
     @Test
+    void whenUpdateMusicVolume_thenPutFloatToPreferences() {
+        userProfile.updateMusicVolume(0.5f);
+        verify(preferences).putFloat("music.volume", 0.5f);
+    }
+
+    @Test
     void whenSave_thenFlushPreferences() {
         userProfile.save();
         verify(preferences).flush();

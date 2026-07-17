@@ -4,6 +4,8 @@ import com.badlogic.gdx.Preferences;
 
 public final class UserProfile {
 
+    private static final String MUSIC_VOLUME_KEY = "music.volume";
+
     private final Configuration configuration;
     private final Preferences preferences;
 
@@ -20,6 +22,10 @@ public final class UserProfile {
         return preferences.getInteger(statistics.name());
     }
 
+    public void updateMusicVolume(float volume) {
+        preferences.putFloat(MUSIC_VOLUME_KEY, volume);
+    }
+
     void unlock(Mode mode) {
         preferences.putBoolean(mode.name(), true);
     }
@@ -29,7 +35,7 @@ public final class UserProfile {
     }
 
     float musicVolume() {
-        return preferences.getFloat("music.volume", configuration.defaultMusicVolume());
+        return preferences.getFloat(MUSIC_VOLUME_KEY, configuration.defaultMusicVolume());
     }
 
     void save() {

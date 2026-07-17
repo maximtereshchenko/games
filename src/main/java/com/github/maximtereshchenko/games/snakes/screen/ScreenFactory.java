@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.snakes.screen;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -69,12 +70,12 @@ public final class ScreenFactory {
     public Screen modeSelectionScreen() {
         var bundle = assetManager.get(assets.gameBundle());
         var skin = assetManager.get(assets.skin());
-        var modeNameLabel = label("", skin);
-        var modeDescriptionLabel = label("", skin);
-        modeDescriptionLabel.setWrap(true);
+        var titleLabel = label("", skin);
+        var descriptionLabel = label("", skin);
+        descriptionLabel.setWrap(true);
         var descriptionTable = new Table();
-        descriptionTable.add(modeNameLabel).growX().row();
-        descriptionTable.add(modeDescriptionLabel).growX();
+        descriptionTable.add(titleLabel).growX().row();
+        descriptionTable.add(descriptionLabel).growX();
         var table = new Table();
         var modeSelectionWidth = 4;
         table.add(
@@ -84,8 +85,8 @@ public final class ScreenFactory {
                         bundle,
                         skin,
                         modeSelectionWidth,
-                        modeNameLabel,
-                        modeDescriptionLabel
+                        titleLabel,
+                        descriptionLabel
                     )
                 )
             )
@@ -98,7 +99,8 @@ public final class ScreenFactory {
         var bundle = assetManager.get(assets.gameBundle());
         var skin = assetManager.get(assets.skin());
         var stage = stage(
-            vertical(
+            table(
+                1,
                 label(bundle.get("title.name"), skin),
                 label(bundle.get("title.continue"), skin)
             )
@@ -146,7 +148,8 @@ public final class ScreenFactory {
         );
         return new StageScreen(
             stage(
-                vertical(
+                table(
+                    1,
                     table(
                         2,
                         Stream.of(UserProfileStatistics.values())
@@ -176,7 +179,8 @@ public final class ScreenFactory {
         );
         return new StageScreen(
             stage(
-                vertical(
+                table(
+                    1,
                     label(bundle.get("credits.text"), skin),
                     textButton
                 )
@@ -184,9 +188,45 @@ public final class ScreenFactory {
         );
     }
 
+    public Screen settingsScreen() {
+        var bundle = assetManager.get(assets.gameBundle());
+        var skin = assetManager.get(assets.skin());
+        var music = assetManager.get(assets.music());
+        var textButton = new TextButton(bundle.get("settings.back"), skin);
+        textButton.addListener(
+            new FunctionalChangeListener(
+                () -> applicationEvents.publish(new SettingsScreenFinished())
+            )
+        );
+        var musicVolumeSlider = new Slider(0, 1, 0.1f, false, skin);
+        musicVolumeSlider.setValue(music.getVolume());
+        musicVolumeSlider.addListener(
+            new FunctionalChangeListener(() -> setVolume(musicVolumeSlider, music))
+        );
+        return new StageScreen(
+            stage(
+                table(
+                    1,
+                    table(
+                        2,
+                        label(bundle.get("settings.music.volume"), skin),
+                        musicVolumeSlider
+                    ),
+                    textButton
+                )
+            )
+        );
+    }
+
+    private void setVolume(Slider musicVolumeSlider, Music music) {
+        userProfile.updateMusicVolume(musicVolumeSlider.getValue());
+        music.setVolume(musicVolumeSlider.getValue());
+    }
+
     private Stage loadingStage(Skin skin, ProgressBar progressBar) {
         return stage(
-            vertical(
+            table(
+                1,
                 label(
                     assetManager.get(assets.loadingBundle()).get("loading.name"),
                     skin
@@ -200,8 +240,8 @@ public final class ScreenFactory {
         I18NBundle bundle,
         Skin skin,
         int width,
-        Label modeNameLabel,
-        Label modeDescriptionLabel
+        Label titleLabel,
+        Label descriptionLabel
     ) {
         var panel = new ArrayList<Actor>();
         for (var mode : modes) {
@@ -210,25 +250,51 @@ public final class ScreenFactory {
                     bundle,
                     skin,
                     mode,
-                    modeNameLabel,
-                    modeDescriptionLabel
+                    titleLabel,
+                    descriptionLabel
                 )
             );
         }
         do {
             panel.add(null);
         } while (panel.size() % width != width - 3);
-        panel.add(statisticsButton(bundle, skin, modeNameLabel, modeDescriptionLabel));
-        panel.add(new TextButton(bundle.get("modeSelection.settings"), skin));
-        panel.add(creditsButton(bundle, skin, modeNameLabel, modeDescriptionLabel));
+        panel.add(statisticsButton(bundle, skin, titleLabel, descriptionLabel));
+        panel.add(settingsButton(bundle, skin, titleLabel, descriptionLabel));
+        panel.add(creditsButton(bundle, skin, titleLabel, descriptionLabel));
         return panel;
+    }
+
+    private TextButton settingsButton(
+        I18NBundle bundle,
+        Skin skin,
+        Label titleLabel,
+        Label descriptionLabel
+    ) {
+        var settingsName = bundle.get("modeSelection.settings.name");
+        var textButton = new TextButton(settingsName, skin);
+        textButton.addListener(
+            new FunctionalChangeListener(
+                () -> applicationEvents.publish(new SettingsRequested())
+            )
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(() -> titleLabel.setText(settingsName))
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(
+                () -> descriptionLabel.setText(
+                    bundle.get("modeSelection.settings.description")
+                )
+            )
+        );
+        return textButton;
     }
 
     private TextButton creditsButton(
         I18NBundle bundle,
         Skin skin,
-        Label modeNameLabel,
-        Label modeDescriptionLabel
+        Label titleLabel,
+        Label descriptionLabel
     ) {
         var creditsName = bundle.get("modeSelection.credits.name");
         var textButton = new TextButton(creditsName, skin);
@@ -238,11 +304,11 @@ public final class ScreenFactory {
             )
         );
         textButton.addListener(
-            new FunctionalHoverListener(() -> modeNameLabel.setText(creditsName))
+            new FunctionalHoverListener(() -> titleLabel.setText(creditsName))
         );
         textButton.addListener(
             new FunctionalHoverListener(
-                () -> modeDescriptionLabel.setText(
+                () -> descriptionLabel.setText(
                     bundle.get("modeSelection.credits.description")
                 )
             )
@@ -253,8 +319,8 @@ public final class ScreenFactory {
     private TextButton statisticsButton(
         I18NBundle bundle,
         Skin skin,
-        Label modeNameLabel,
-        Label modeDescriptionLabel
+        Label titleLabel,
+        Label descriptionLabel
     ) {
         var statisticsName = bundle.get("modeSelection.statistics.name");
         var textButton = new TextButton(statisticsName, skin);
@@ -264,11 +330,11 @@ public final class ScreenFactory {
             )
         );
         textButton.addListener(
-            new FunctionalHoverListener(() -> modeNameLabel.setText(statisticsName))
+            new FunctionalHoverListener(() -> titleLabel.setText(statisticsName))
         );
         textButton.addListener(
             new FunctionalHoverListener(
-                () -> modeDescriptionLabel.setText(
+                () -> descriptionLabel.setText(
                     bundle.get("modeSelection.statistics.description")
                 )
             )
@@ -280,8 +346,8 @@ public final class ScreenFactory {
         I18NBundle bundle,
         Skin skin,
         Mode mode,
-        Label modeNameLabel,
-        Label modeDescriptionLabel
+        Label titleLabel,
+        Label descriptionLabel
     ) {
         var name = bundle.get("mode.%s.name".formatted(mode.name()));
         var textButton = new TextButton(name, skin);
@@ -292,11 +358,11 @@ public final class ScreenFactory {
             )
         );
         textButton.addListener(
-            new FunctionalHoverListener(() -> modeNameLabel.setText(name))
+            new FunctionalHoverListener(() -> titleLabel.setText(name))
         );
         textButton.addListener(
             new FunctionalHoverListener(
-                () -> modeDescriptionLabel.setText(bundle.get(key(mode)))
+                () -> descriptionLabel.setText(bundle.get(key(mode)))
             )
         );
         return textButton;
@@ -322,15 +388,16 @@ public final class ScreenFactory {
         return stage;
     }
 
-    private Table vertical(Actor... actors) {
-        return table(1, List.of(actors));
+    private Table table(int width, Actor... actors) {
+        return table(width, List.of(actors));
     }
 
     private Table table(int width, List<? extends Actor> actors) {
         var table = new Table();
+        table.pad(5);
         var rowIndex = 0;
         for (var actor : actors) {
-            table.add(actor).align(Align.center).growX();
+            table.add(actor).align(Align.center).growX().pad(5);
             rowIndex++;
             if (rowIndex == width) {
                 table.row();

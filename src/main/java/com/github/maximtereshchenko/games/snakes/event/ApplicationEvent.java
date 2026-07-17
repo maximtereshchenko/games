@@ -8,4 +8,6 @@ public sealed interface ApplicationEvent
     StatisticsRequested,
     TitleScreenFinished,
     CreditsScreenFinished,
-    CreditsRequested {}
+    CreditsRequested,
+    SettingsScreenFinished,
+    SettingsRequested {}

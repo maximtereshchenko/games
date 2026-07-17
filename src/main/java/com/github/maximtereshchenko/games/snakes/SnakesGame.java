@@ -46,7 +46,8 @@ final class SnakesGame extends Game implements Subscriber {
             case TitleScreenFinished _,
                  SnakeSessionEnded _,
                  StatisticsScreenFinished _,
-                 CreditsScreenFinished _ -> setScreen(
+                 CreditsScreenFinished _,
+                 SettingsScreenFinished _ -> setScreen(
                 screenFactory.modeSelectionScreen()
             );
             case ModeSelected modeSelected -> setScreen(
@@ -54,6 +55,7 @@ final class SnakesGame extends Game implements Subscriber {
             );
             case StatisticsRequested _ -> setScreen(screenFactory.statisticsScreen());
             case CreditsRequested _ -> setScreen(screenFactory.creditsScreen());
+            case SettingsRequested _ -> setScreen(screenFactory.settingsScreen());
         }
     }
 }
