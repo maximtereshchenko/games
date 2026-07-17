@@ -155,4 +155,11 @@ final class ConfigurationTest {
                 )
             );
     }
+
+    @Test
+    void whenDefaultMusicVolumes_thenParsedFromProperties() {
+        properties.setProperty("music.volume.default", "0.5");
+        assertThat(configuration.defaultMusicVolume())
+            .isEqualTo(0.5f);
+    }
 }

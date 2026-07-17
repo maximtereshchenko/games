@@ -11,14 +11,16 @@ import static org.mockito.Mockito.*;
 
 final class UserProfileTest {
 
+    private final Configuration configuration = mock();
     private final Preferences preferences = mock();
-    private final UserProfile userProfile = new UserProfile(preferences);
+    private final Mode mode = mock();
+    private final UserProfile userProfile = new UserProfile(configuration, preferences);
 
     @Test
     void whenIsUnlocked_thenBooleanFromPreferences() {
+        when(mode.name()).thenReturn("mode");
         when(preferences.getBoolean("mode")).thenReturn(true);
-        assertThat(userProfile.isUnlocked(new Mode("mode", 0, Set.of(), Map.of(), null)))
-            .isTrue();
+        assertThat(userProfile.isUnlocked(mode)).isTrue();
     }
 
     @Test
@@ -37,6 +39,13 @@ final class UserProfileTest {
     void whenUpdate_thenPutIntToPreferences() {
         userProfile.update(UserProfileStatistics.LAUNCHES, 1);
         verify(preferences).putInteger(UserProfileStatistics.LAUNCHES.name(), 1);
+    }
+
+    @Test
+    void whenMusicVolume_thenFloatFromPreferencesWithDefaultFromConfiguration() {
+        when(configuration.defaultMusicVolume()).thenReturn(0.5f);
+        when(preferences.getFloat("music.volume", 0.5f)).thenReturn(0.3f);
+        assertThat(userProfile.musicVolume()).isEqualTo(0.3f);
     }
 
     @Test

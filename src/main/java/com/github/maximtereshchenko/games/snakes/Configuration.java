@@ -79,6 +79,10 @@ public final class Configuration {
             .toList();
     }
 
+    float defaultMusicVolume() {
+        return Float.parseFloat(properties.getProperty("music.volume.default"));
+    }
+
     private Mode mode(String name) {
         return new Mode(
             name,

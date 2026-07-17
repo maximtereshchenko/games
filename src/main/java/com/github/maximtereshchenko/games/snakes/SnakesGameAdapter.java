@@ -32,7 +32,7 @@ final class SnakesGameAdapter implements ApplicationListener {
     @Override
     public void create() {
         var configuration = configuration();
-        var userProfile = new UserProfile(configuration.preferences());
+        var userProfile = new UserProfile(configuration, configuration.preferences());
         var assets = configuration.assets();
         var modes = configuration.modes();
         var applicationEvents = new ApplicationEvents();
@@ -41,7 +41,7 @@ final class SnakesGameAdapter implements ApplicationListener {
         var assetManager = new AssetManager(new ClasspathFileHandleResolver());
         assets.loadingAssets().forEach(assetManager::load);
         assetManager.finishLoading();
-        applicationEvents.subscribe(new StartMusic(assetManager, assets));
+        applicationEvents.subscribe(new StartMusic(userProfile, assetManager, assets));
         applicationEvents.subscribe(new IncrementLaunches(userProfile));
         applicationEvents.subscribe(new UnlockModes(userProfile, modes));
         var screenFactory = new ScreenFactory(

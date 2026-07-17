@@ -4,9 +4,11 @@ import com.badlogic.gdx.Preferences;
 
 public final class UserProfile {
 
+    private final Configuration configuration;
     private final Preferences preferences;
 
-    UserProfile(Preferences preferences) {
+    UserProfile(Configuration configuration, Preferences preferences) {
+        this.configuration = configuration;
         this.preferences = preferences;
     }
 
@@ -24,6 +26,10 @@ public final class UserProfile {
 
     void update(UserProfileStatistics statistics, int value) {
         preferences.putInteger(statistics.name(), value);
+    }
+
+    float musicVolume() {
+        return preferences.getFloat("music.volume", configuration.defaultMusicVolume());
     }
 
     void save() {
