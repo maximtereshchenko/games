@@ -14,12 +14,12 @@ public final class UserProfile {
         return preferences.getBoolean(mode.name());
     }
 
-    void unlock(Mode mode) {
-        preferences.putBoolean(mode.name(), true);
+    public int value(UserProfileStatistics statistics) {
+        return preferences.getInteger(statistics.name());
     }
 
-    int value(UserProfileStatistics statistics) {
-        return preferences.getInteger(statistics.name());
+    void unlock(Mode mode) {
+        preferences.putBoolean(mode.name(), true);
     }
 
     void update(UserProfileStatistics statistics, int value) {

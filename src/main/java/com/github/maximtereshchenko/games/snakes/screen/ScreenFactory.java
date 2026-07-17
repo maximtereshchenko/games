@@ -11,19 +11,16 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.github.maximtereshchenko.games.snakes.Assets;
-import com.github.maximtereshchenko.games.snakes.Configuration;
-import com.github.maximtereshchenko.games.snakes.Mode;
-import com.github.maximtereshchenko.games.snakes.UserProfile;
-import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
-import com.github.maximtereshchenko.games.snakes.event.ModeSelected;
-import com.github.maximtereshchenko.games.snakes.event.TitleScreenFinished;
+import com.github.maximtereshchenko.games.snakes.*;
+import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
 import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
 public final class ScreenFactory {
@@ -138,6 +135,36 @@ public final class ScreenFactory {
         );
     }
 
+    public Screen statisticsScreen() {
+        var bundle = assetManager.get(assets.gameBundle());
+        var skin = assetManager.get(assets.skin());
+        var textButton = new TextButton(bundle.get("statistics.back"), skin);
+        textButton.addListener(
+            new FunctionalChangeListener(
+                () -> applicationEvents.publish(new StatisticsScreenFinished())
+            )
+        );
+        return new StageScreen(
+            stage(
+                vertical(
+                    table(
+                        2,
+                        Stream.of(UserProfileStatistics.values())
+                            .map(
+                                userProfileStatistics -> List.of(
+                                    label(bundle.get("statistics." + userProfileStatistics), skin),
+                                    label(String.valueOf(userProfile.value(userProfileStatistics)), skin)
+                                )
+                            )
+                            .flatMap(Collection::stream)
+                            .toList()
+                    ),
+                    textButton
+                )
+            )
+        );
+    }
+
     private Stage loadingStage(Skin skin, ProgressBar progressBar) {
         return stage(
             vertical(
@@ -172,10 +199,36 @@ public final class ScreenFactory {
         do {
             panel.add(null);
         } while (panel.size() % width != width - 3);
-        panel.add(new TextButton(bundle.get("modeSelection.statistics"), skin));
+        panel.add(statisticsButton(bundle, skin, modeNameLabel, modeDescriptionLabel));
         panel.add(new TextButton(bundle.get("modeSelection.settings"), skin));
         panel.add(new TextButton(bundle.get("modeSelection.credits"), skin));
         return panel;
+    }
+
+    private TextButton statisticsButton(
+        I18NBundle bundle,
+        Skin skin,
+        Label modeNameLabel,
+        Label modeDescriptionLabel
+    ) {
+        var statisticsName = bundle.get("modeSelection.statistics.name");
+        var textButton = new TextButton(statisticsName, skin);
+        textButton.addListener(
+            new FunctionalChangeListener(
+                () -> applicationEvents.publish(new StatisticsRequested())
+            )
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(() -> modeNameLabel.setText(statisticsName))
+        );
+        textButton.addListener(
+            new FunctionalHoverListener(
+                () -> modeDescriptionLabel.setText(
+                    bundle.get("modeSelection.statistics.description")
+                )
+            )
+        );
+        return textButton;
     }
 
     private TextButton modeSelectionButton(
@@ -228,7 +281,7 @@ public final class ScreenFactory {
         return table(1, List.of(actors));
     }
 
-    private Table table(int width, List<Actor> actors) {
+    private Table table(int width, List<? extends Actor> actors) {
         var table = new Table();
         var rowIndex = 0;
         for (var actor : actors) {

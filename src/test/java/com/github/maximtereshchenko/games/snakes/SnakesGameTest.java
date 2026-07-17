@@ -20,24 +20,26 @@ import static org.mockito.Mockito.*;
 
 final class SnakesGameTest {
 
-    private final Screen loadingScreen = mock();
-    private final Screen titleScreen = mock();
-    private final Screen modeSelectionScreen = mock();
-    private final Screen snakeSessionScreen = mock();
+    private final Screen screen = mock();
     private final ScreenFactory screenFactory = mock();
     private final Disposable disposable = mock();
     private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
     private final UserProfile userProfile = mock();
+    private final Mode mode = mock();
     private SnakesGame snakesGame;
 
     private static Stream<ApplicationEvent> modeSelectionScreenEvents() {
-        return Stream.of(new TitleScreenFinished(), new SnakeSessionEnded(Map.of()));
+        return Stream.of(
+            new TitleScreenFinished(),
+            new SnakeSessionEnded(Map.of()),
+            new StatisticsScreenFinished()
+        );
     }
 
     @BeforeEach
     void setUp() {
         Gdx.graphics = mock();
-        when(screenFactory.loadingScreen()).thenReturn(loadingScreen);
+        when(screenFactory.loadingScreen()).thenReturn(screen);
         snakesGame = new SnakesGame(
             screenFactory,
             worldDimensions,
@@ -48,29 +50,36 @@ final class SnakesGameTest {
 
     @Test
     void givenAssetsLoaded_thenTitleScreenShowed() {
-        when(screenFactory.titleScreen()).thenReturn(titleScreen);
+        when(screenFactory.titleScreen()).thenReturn(screen);
         snakesGame.onEvent(new AssetsLoaded());
-        verify(titleScreen).show();
-        verify(titleScreen).resize(anyInt(), anyInt());
+        verify(screen).show();
+        verify(screen).resize(anyInt(), anyInt());
     }
 
     @ParameterizedTest
     @MethodSource("modeSelectionScreenEvents")
     void whenApplicationEvent_thenModeSelectionScreenShowed(ApplicationEvent applicationEvent) {
-        when(screenFactory.modeSelectionScreen()).thenReturn(modeSelectionScreen);
+        when(screenFactory.modeSelectionScreen()).thenReturn(screen);
         snakesGame.onEvent(applicationEvent);
-        verify(modeSelectionScreen).show();
-        verify(modeSelectionScreen).resize(anyInt(), anyInt());
+        verify(screen).show();
+        verify(screen).resize(anyInt(), anyInt());
     }
 
     @Test
     void whenModeSelected_thenSnakeSessionScreenShowed() {
-        var mode = new Mode("", 0, Set.of(), Map.of(), null);
         when(screenFactory.snakeSessionScreen(worldDimensions, mode))
-            .thenReturn(snakeSessionScreen);
+            .thenReturn(screen);
         snakesGame.onEvent(new ModeSelected(mode));
-        verify(snakeSessionScreen).show();
-        verify(snakeSessionScreen).resize(anyInt(), anyInt());
+        verify(screen).show();
+        verify(screen).resize(anyInt(), anyInt());
+    }
+
+    @Test
+    void whenStatisticsScreenFinished_thenStatisticsShowed() {
+        when(screenFactory.statisticsScreen()).thenReturn(screen);
+        snakesGame.onEvent(new StatisticsRequested());
+        verify(screen).show();
+        verify(screen).resize(anyInt(), anyInt());
     }
 
     @Test

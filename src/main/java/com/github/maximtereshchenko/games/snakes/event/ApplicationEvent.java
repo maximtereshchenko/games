@@ -4,4 +4,6 @@ public sealed interface ApplicationEvent
     permits AssetsLoaded,
     ModeSelected,
     SnakeSessionEnded,
+    StatisticsScreenFinished,
+    StatisticsRequested,
     TitleScreenFinished {}

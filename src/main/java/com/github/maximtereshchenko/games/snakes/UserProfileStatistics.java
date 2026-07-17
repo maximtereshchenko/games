@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes;
 
-enum UserProfileStatistics {
+public enum UserProfileStatistics {
 
     LAUNCHES
 }
