@@ -9,12 +9,12 @@ import java.util.Map;
 
 import static org.mockito.Mockito.*;
 
-final class ModeUnlocksTest {
+final class UnlockModesTest {
 
     private final UserProfile userProfile = mock();
     private final ModeUnlockRequirements modeUnlockRequirements = mock();
     private final Mode mode = mock();
-    private final ModeUnlocks modeUnlocks = new ModeUnlocks(
+    private final UnlockModes unlockModes = new UnlockModes(
         userProfile,
         List.of(mode)
     );
@@ -24,7 +24,7 @@ final class ModeUnlocksTest {
         var snakeSessionEnded = new SnakeSessionEnded(Map.of());
         when(mode.modeUnlockRequirements()).thenReturn(modeUnlockRequirements);
         when(modeUnlockRequirements.isSatisfied(snakeSessionEnded)).thenReturn(true);
-        modeUnlocks.onEvent(snakeSessionEnded);
+        unlockModes.onEvent(snakeSessionEnded);
         verify(userProfile).unlock(mode);
     }
 
@@ -32,7 +32,7 @@ final class ModeUnlocksTest {
     void givenTitleScreenFinished_thenModeUnlocked() {
         when(mode.modeUnlockRequirements()).thenReturn(modeUnlockRequirements);
         when(modeUnlockRequirements.isSatisfied()).thenReturn(true);
-        modeUnlocks.onEvent(new TitleScreenFinished());
+        unlockModes.onEvent(new TitleScreenFinished());
         verify(userProfile).unlock(mode);
     }
 }

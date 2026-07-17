@@ -8,12 +8,12 @@ import com.github.maximtereshchenko.games.snakes.event.TitleScreenFinished;
 import java.util.List;
 import java.util.function.Predicate;
 
-final class ModeUnlocks implements Subscriber {
+final class UnlockModes implements Subscriber {
 
     private final UserProfile userProfile;
     private final List<Mode> modes;
 
-    ModeUnlocks(UserProfile userProfile, List<Mode> modes) {
+    UnlockModes(UserProfile userProfile, List<Mode> modes) {
         this.userProfile = userProfile;
         this.modes = modes;
     }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.loaders.BitmapFontLoader;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -66,7 +67,8 @@ public final class Configuration {
             new AssetDescriptor<>(properties.getProperty("assets.skin"), Skin.class),
             new AssetDescriptor<>(properties.getProperty("assets.bundle.loading"), I18NBundle.class),
             new AssetDescriptor<>(properties.getProperty("assets.font.name"), BitmapFont.class, bitmapFontParameter),
-            new AssetDescriptor<>(properties.getProperty("assets.bundle.game"), I18NBundle.class)
+            new AssetDescriptor<>(properties.getProperty("assets.bundle.game"), I18NBundle.class),
+            new AssetDescriptor<>(properties.getProperty("assets.music"), Music.class)
         );
     }
 

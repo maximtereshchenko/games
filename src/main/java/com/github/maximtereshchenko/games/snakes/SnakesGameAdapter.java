@@ -41,8 +41,9 @@ final class SnakesGameAdapter implements ApplicationListener {
         var assetManager = new AssetManager(new ClasspathFileHandleResolver());
         assets.loadingAssets().forEach(assetManager::load);
         assetManager.finishLoading();
+        applicationEvents.subscribe(new StartMusic(assetManager, assets));
         applicationEvents.subscribe(new IncrementLaunches(userProfile));
-        applicationEvents.subscribe(new ModeUnlocks(userProfile, modes));
+        applicationEvents.subscribe(new UnlockModes(userProfile, modes));
         var screenFactory = new ScreenFactory(
             configuration,
             assetManager,
