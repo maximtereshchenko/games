@@ -19,7 +19,6 @@ final class ModeUnlockRequirementsTest {
     private final Map<SessionStatistics, Integer> sessionThresholds =
         new EnumMap<>(SessionStatistics.class);
     private final ModeUnlockRequirements modeUnlockRequirements = new ModeUnlockRequirements(
-        userProfile,
         userProfileThresholds,
         sessionThresholds
     );
@@ -27,7 +26,7 @@ final class ModeUnlockRequirementsTest {
     @Test
     void givenUserProfileThresholdsGreater_whenIsSatisfied_thenFalse() {
         userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
-        assertThat(modeUnlockRequirements.isSatisfied()).isFalse();
+        assertThat(modeUnlockRequirements.isSatisfied(userProfile)).isFalse();
     }
 
     @Test
@@ -35,20 +34,25 @@ final class ModeUnlockRequirementsTest {
         userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
         sessionThresholds.put(SessionStatistics.LEFT_TURNS, 1);
         when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(1);
-        assertThat(modeUnlockRequirements.isSatisfied()).isFalse();
+        assertThat(modeUnlockRequirements.isSatisfied(userProfile)).isFalse();
     }
 
     @Test
     void givenUserProfileThresholdsLesser_whenIsSatisfied_thenTrue() {
         userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
         when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(2);
-        assertThat(modeUnlockRequirements.isSatisfied()).isTrue();
+        assertThat(modeUnlockRequirements.isSatisfied(userProfile)).isTrue();
     }
 
     @Test
     void givenUserProfileThresholdsGreater_whenIsSatisfiedWithSnakeSessionEnded_thenFalse() {
         userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
-        assertThat(modeUnlockRequirements.isSatisfied(new SnakeSessionEnded(Map.of())))
+        assertThat(
+            modeUnlockRequirements.isSatisfied(
+                userProfile,
+                new SnakeSessionEnded(Map.of())
+            )
+        )
             .isFalse();
     }
 
@@ -59,6 +63,7 @@ final class ModeUnlockRequirementsTest {
         when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(2);
         assertThat(
             modeUnlockRequirements.isSatisfied(
+                userProfile,
                 new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 0))
             )
         )
@@ -72,6 +77,7 @@ final class ModeUnlockRequirementsTest {
         when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(2);
         assertThat(
             modeUnlockRequirements.isSatisfied(
+                userProfile,
                 new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 2))
             )
         )

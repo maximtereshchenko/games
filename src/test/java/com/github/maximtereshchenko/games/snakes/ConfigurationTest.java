@@ -23,7 +23,6 @@ import static org.mockito.Mockito.when;
 final class ConfigurationTest {
 
     private final Properties properties = new Properties();
-    private final UserProfile userProfile = mock();
     private final Preferences preferences = mock();
     private final Configuration configuration = new Configuration(properties);
 
@@ -124,7 +123,7 @@ final class ConfigurationTest {
             Colored.FOOD, color,
             Colored.FOOD_EATEN_COUNTER, color
         );
-        assertThat(configuration.modes(userProfile))
+        assertThat(configuration.modes())
             .containsExactly(
                 new Mode(
                     "first",
@@ -132,7 +131,6 @@ final class ConfigurationTest {
                     Set.of(LegalTurn.LEFT, LegalTurn.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
-                        userProfile,
                         Map.of(
                             UserProfileStatistics.LAUNCHES, 1
                         ),
@@ -147,7 +145,6 @@ final class ConfigurationTest {
                     Set.of(LegalTurn.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
-                        userProfile,
                         Map.of(
                             UserProfileStatistics.LAUNCHES, 0
                         ),

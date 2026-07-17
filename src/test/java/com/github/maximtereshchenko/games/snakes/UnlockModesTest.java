@@ -23,7 +23,8 @@ final class UnlockModesTest {
     void givenSnakeSessionEnded_thenModeUnlocked() {
         var snakeSessionEnded = new SnakeSessionEnded(Map.of());
         when(mode.modeUnlockRequirements()).thenReturn(modeUnlockRequirements);
-        when(modeUnlockRequirements.isSatisfied(snakeSessionEnded)).thenReturn(true);
+        when(modeUnlockRequirements.isSatisfied(userProfile, snakeSessionEnded))
+            .thenReturn(true);
         unlockModes.onEvent(snakeSessionEnded);
         verify(userProfile).unlock(mode);
     }
@@ -31,7 +32,8 @@ final class UnlockModesTest {
     @Test
     void givenTitleScreenFinished_thenModeUnlocked() {
         when(mode.modeUnlockRequirements()).thenReturn(modeUnlockRequirements);
-        when(modeUnlockRequirements.isSatisfied()).thenReturn(true);
+        when(modeUnlockRequirements.isSatisfied(userProfile))
+            .thenReturn(true);
         unlockModes.onEvent(new TitleScreenFinished());
         verify(userProfile).unlock(mode);
     }

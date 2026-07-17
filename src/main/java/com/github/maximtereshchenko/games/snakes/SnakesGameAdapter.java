@@ -34,7 +34,7 @@ final class SnakesGameAdapter implements ApplicationListener {
         var configuration = configuration();
         var userProfile = new UserProfile(configuration.preferences());
         var assets = configuration.assets();
-        var modes = configuration.modes(userProfile);
+        var modes = configuration.modes();
         var applicationEvents = new ApplicationEvents();
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();

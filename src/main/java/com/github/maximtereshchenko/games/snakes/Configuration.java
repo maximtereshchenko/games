@@ -72,14 +72,14 @@ public final class Configuration {
         );
     }
 
-    List<Mode> modes(UserProfile userProfile) {
+    List<Mode> modes() {
         return list("modes")
             .stream()
-            .map(name -> mode(userProfile, name))
+            .map(this::mode)
             .toList();
     }
 
-    private Mode mode(UserProfile userProfile, String name) {
+    private Mode mode(String name) {
         return new Mode(
             name,
             Float.parseFloat(properties.getProperty("modes.%s.game.interval".formatted(name))),
@@ -89,7 +89,6 @@ public final class Configuration {
                 .collect(Collectors.toSet()),
             palette(name),
             new ModeUnlockRequirements(
-                userProfile,
                 userProfileThresholds(name),
                 sessionThresholds(name)
             )

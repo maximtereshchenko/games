@@ -22,9 +22,14 @@ final class UnlockModes implements Subscriber {
     public void onEvent(ApplicationEvent applicationEvent) {
         switch (applicationEvent) {
             case SnakeSessionEnded snakeSessionEnded -> unlock(
-                modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(snakeSessionEnded)
+                modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(
+                    userProfile,
+                    snakeSessionEnded
+                )
             );
-            case TitleScreenFinished _ -> unlock(ModeUnlockRequirements::isSatisfied);
+            case TitleScreenFinished _ -> unlock(
+                modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(userProfile)
+            );
             default -> {
                 //empty
             }
