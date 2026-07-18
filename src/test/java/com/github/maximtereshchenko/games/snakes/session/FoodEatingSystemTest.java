@@ -4,19 +4,21 @@ import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 final class FoodEatingSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final FoodEatingSystem foodEatingSystem = new FoodEatingSystem(dominion);
+    private final EntityFactory entityFactory = mock();
+    private final FoodEatingSystem foodEatingSystem =
+        new FoodEatingSystem(dominion, entityFactory);
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(Head.INSTANCE, new Position(0, 0));
         dominion.createEntity(Food.INSTANCE, new Position(0, 0));
-        var before = dominion.findAllEntities().stream().toList();
         foodEatingSystem.run(0);
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        verifyNoInteractions(entityFactory);
     }
 
     @Test
@@ -26,7 +28,7 @@ final class FoodEatingSystemTest {
         dominion.createEntity(TurnStarted.INSTANCE);
         foodEatingSystem.run(0);
         assertThat(dominion.findEntitiesWith(Food.class, Position.class)).isEmpty();
-        assertThat(dominion.findEntitiesWith(FoodEaten.class, Event.class)).hasSize(1);
+        verify(entityFactory).createFoodEatenEvent(dominion);
     }
 
     @Test
@@ -36,6 +38,6 @@ final class FoodEatingSystemTest {
         dominion.createEntity(TurnStarted.INSTANCE);
         foodEatingSystem.run(0);
         assertThat(dominion.findEntitiesWith(Food.class, Position.class)).isNotEmpty();
-        assertThat(dominion.findEntitiesWith(FoodEaten.class, Event.class)).isEmpty();
+        verifyNoInteractions(entityFactory);
     }
 }

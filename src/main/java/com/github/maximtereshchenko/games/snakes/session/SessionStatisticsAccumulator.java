@@ -5,7 +5,7 @@ import java.util.Map;
 
 public final class SessionStatisticsAccumulator {
 
-    public Map<SessionStatistics, Integer> value;
+    public final Map<SessionStatistics, Integer> value;
 
     public SessionStatisticsAccumulator() {
         this.value = new EnumMap<>(SessionStatistics.class);

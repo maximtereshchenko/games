@@ -26,6 +26,7 @@ import com.github.maximtereshchenko.games.snakes.screen.view.main.MainView;
 import com.github.maximtereshchenko.games.snakes.screen.view.main.ModesView;
 import com.github.maximtereshchenko.games.snakes.screen.view.main.NavigationView;
 import com.github.maximtereshchenko.games.snakes.screen.view.settings.SettingsView;
+import com.github.maximtereshchenko.games.snakes.session.EntityFactory;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
 import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 
@@ -43,6 +44,7 @@ public final class ScreenFactory {
     private final ApplicationEvents applicationEvents;
     private final UserProfile userProfile;
     private final SnakeSessionFactory snakeSessionFactory;
+    private final EntityFactory entityFactory;
     private final List<Mode> modes;
 
     public ScreenFactory(
@@ -53,6 +55,7 @@ public final class ScreenFactory {
         ApplicationEvents applicationEvents,
         UserProfile userProfile,
         SnakeSessionFactory snakeSessionFactory,
+        EntityFactory entityFactory,
         List<Mode> modes
     ) {
         this.configuration = configuration;
@@ -62,6 +65,7 @@ public final class ScreenFactory {
         this.applicationEvents = applicationEvents;
         this.userProfile = userProfile;
         this.snakeSessionFactory = snakeSessionFactory;
+        this.entityFactory = entityFactory;
         this.modes = modes;
     }
 
@@ -129,7 +133,7 @@ public final class ScreenFactory {
         WorldDimensions worldDimensions,
         Mode mode
     ) {
-        var dominion = snakeSessionFactory.dominion(worldDimensions);
+        var dominion = snakeSessionFactory.dominion(entityFactory, worldDimensions);
         var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
         var interfaceViewport = new FitViewport(
             configuration.interfaceViewportHeight() * worldDimensions.width() / worldDimensions.height(),
@@ -141,6 +145,7 @@ public final class ScreenFactory {
             dominion,
             snakeSessionFactory.systems(
                 dominion,
+                entityFactory,
                 mode,
                 gameViewport,
                 interfaceViewport

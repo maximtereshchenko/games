@@ -4,34 +4,32 @@ import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 final class TurnStartSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final TurnStartSystem turnStartSystem = new TurnStartSystem(
-        dominion,
-        1
-    );
+    private final EntityFactory entityFactory = mock();
+    private final TurnStartSystem turnStartSystem =
+        new TurnStartSystem(dominion, entityFactory, 1);
 
     @Test
     void givenDeltaLessThanTurnLength_thenStopwatchIncremented() {
-        dominion.createEntity(new Stopwatch());
+        dominion.createEntity(new TurnTimer());
         turnStartSystem.run(0.5f);
-        assertThat(dominion.findCompositionsWith(Stopwatch.class))
+        assertThat(dominion.findCompositionsWith(TurnTimer.class))
             .extracting(stopwatch -> stopwatch.seconds)
             .containsExactly(0.5);
-        assertThat(dominion.findEntitiesWith(Event.class, TurnStarted.class))
-            .isEmpty();
+        verifyNoInteractions(entityFactory);
     }
 
     @Test
-    void givenStopwatchGreaterThatTurnLength_thenTurnStartedEvent() {
-        dominion.createEntity(new Stopwatch());
+    void givenTurnTimerGreaterThatTurnLength_thenTurnStartedEvent() {
+        dominion.createEntity(new TurnTimer());
         turnStartSystem.run(1.5f);
-        assertThat(dominion.findCompositionsWith(Stopwatch.class))
+        assertThat(dominion.findCompositionsWith(TurnTimer.class))
             .extracting(stopwatch -> stopwatch.seconds)
             .containsExactly(0.5);
-        assertThat(dominion.findEntitiesWith(Event.class, TurnStarted.class))
-            .hasSize(1);
+        verify(entityFactory).createTurnStartedEvent(dominion);
     }
 }

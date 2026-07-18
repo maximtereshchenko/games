@@ -4,15 +4,17 @@ import java.util.Objects;
 
 final class Timer {
 
-    int value;
+    final int turns;
+    int turnsLeft;
 
-    Timer(int value) {
-        this.value = value;
+    Timer(int turns) {
+        this.turns = turns;
+        this.turnsLeft = turns;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(turns, turnsLeft);
     }
 
     @Override
@@ -21,6 +23,7 @@ final class Timer {
             return true;
         }
         return object instanceof Timer timer &&
-               value == timer.value;
+               turns == timer.turns &&
+               turnsLeft == timer.turnsLeft;
     }
 }

@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-final class Stopwatch {
+enum Segment {
 
-    double seconds = 0;
+    INSTANCE
 }

@@ -5,10 +5,12 @@ import dev.dominion.ecs.api.Dominion;
 final class FoodEatingSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
+    private final EntityFactory entityFactory;
 
-    FoodEatingSystem(Dominion dominion) {
+    FoodEatingSystem(Dominion dominion, EntityFactory entityFactory) {
         super(dominion);
         this.dominion = dominion;
+        this.entityFactory = entityFactory;
     }
 
     @Override
@@ -17,7 +19,7 @@ final class FoodEatingSystem extends TurnBasedSystem {
             for (var headResult : dominion.findEntitiesWith(Head.class, Position.class)) {
                 if (headResult.comp2().equals(foodResult.comp2())) {
                     dominion.deleteEntity(foodResult.entity());
-                    dominion.createEntity(FoodEaten.INSTANCE, Event.INSTANCE);
+                    entityFactory.createFoodEatenEvent(dominion);
                 }
             }
         }

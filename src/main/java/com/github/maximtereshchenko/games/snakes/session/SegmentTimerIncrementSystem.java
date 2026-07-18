@@ -2,12 +2,12 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
 
-final class TimerIncrementSystem extends OnFoodEatenEventSystem {
+final class SegmentTimerIncrementSystem extends OnFoodEatenEventSystem {
 
     private final Dominion dominion;
     private final int step;
 
-    TimerIncrementSystem(Dominion dominion, int step) {
+    SegmentTimerIncrementSystem(Dominion dominion, int step) {
         super(dominion);
         this.dominion = dominion;
         this.step = step;
@@ -15,8 +15,8 @@ final class TimerIncrementSystem extends OnFoodEatenEventSystem {
 
     @Override
     void onFoodEaten() {
-        for (var timer : dominion.findCompositionsWith(Timer.class)) {
-            timer.value += step;
+        for (var results : dominion.findEntitiesWith(Timer.class, Segment.class)) {
+            results.comp1().turnsLeft += step;
         }
     }
 }

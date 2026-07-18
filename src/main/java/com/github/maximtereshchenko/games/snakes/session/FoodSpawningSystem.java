@@ -9,16 +9,18 @@ import java.util.stream.Collectors;
 final class FoodSpawningSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
+    private final EntityFactory entityFactory;
     private final Random random;
     private final int maxFood;
 
     FoodSpawningSystem(
-        Dominion dominion,
+        Dominion dominion, EntityFactory entityFactory,
         Random random,
         int maxFood
     ) {
         super(dominion);
         this.dominion = dominion;
+        this.entityFactory = entityFactory;
         this.random = random;
         this.maxFood = maxFood;
     }
@@ -32,7 +34,7 @@ final class FoodSpawningSystem extends TurnBasedSystem {
             for (var i = currentFood(); positions.size() < worldDimensions.space() && i < maxFood; i++) {
                 var position = position(positions, worldDimensions);
                 positions.add(position);
-                dominion.createEntity(Food.INSTANCE, position, Colored.FOOD);
+                entityFactory.createFood(dominion, position);
             }
         }
     }

@@ -1,17 +1,16 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 final class SegmentSpawningSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final SegmentSpawningSystem segmentSpawningSystem = new SegmentSpawningSystem(
-        dominion
-    );
+    private final EntityFactory entityFactory = mock();
+    private final SegmentSpawningSystem segmentSpawningSystem =
+        new SegmentSpawningSystem(dominion, entityFactory);
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
@@ -20,9 +19,8 @@ final class SegmentSpawningSystemTest {
             new Position(0, 0)
         );
         dominion.createEntity(new InitialSegmentTimer(0));
-        var before = dominion.findAllEntities().stream().toList();
         segmentSpawningSystem.run(0);
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        verifyNoInteractions(entityFactory);
     }
 
     @Test
@@ -34,13 +32,6 @@ final class SegmentSpawningSystemTest {
         dominion.createEntity(new InitialSegmentTimer(1));
         dominion.createEntity(TurnStarted.INSTANCE);
         segmentSpawningSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Timer.class, Position.class, Colored.class))
-            .singleElement()
-            .extracting(
-                result -> result.comp1().value,
-                Results.With3::comp2,
-                Results.With3::comp3
-            )
-            .containsExactly(1, new Position(1, 1), Colored.SEGMENT);
+        verify(entityFactory).createSegment(dominion, new Position(1, 1), 1);
     }
 }

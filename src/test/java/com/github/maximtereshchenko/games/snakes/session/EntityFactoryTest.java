@@ -1,0 +1,78 @@
+package com.github.maximtereshchenko.games.snakes.session;
+
+import com.github.maximtereshchenko.games.snakes.Configuration;
+import dev.dominion.ecs.api.Dominion;
+import org.junit.jupiter.api.Test;
+
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
+
+final class EntityFactoryTest {
+
+    private final Configuration configuration = mock();
+    private final Dominion dominion = mock();
+    private final EntityFactory entityFactory = new EntityFactory(configuration);
+
+    @Test
+    void whenCreateGlobals_thenGlobalEntitiesCreated() {
+        when(configuration.snakeLength()).thenReturn(3);
+        var worldDimensions = new WorldDimensions(10, 20);
+        entityFactory.createGlobals(dominion, worldDimensions);
+        verify(dominion).createEntity(any(Session.class));
+        verify(dominion).createEntity(worldDimensions);
+        verify(dominion).createEntity(any(TurnTimer.class));
+        verify(dominion).createEntity(new InitialSegmentTimer(3));
+        verify(dominion).createEntity(any(SessionStatisticsAccumulator.class));
+        verify(dominion).createEntity(
+            any(FoodEatenCounter.class),
+            eq(Colored.FOOD_EATEN_COUNTER)
+        );
+        verifyNoMoreInteractions(dominion);
+    }
+
+    @Test
+    void whenCreateHead_thenHeadEntityCreated() {
+        when(configuration.snakeHeadPosition()).thenReturn(new Position(2, 3));
+        when(configuration.snakeHeadForwardDirection()).thenReturn(Direction.LEFT);
+        entityFactory.createHead(dominion);
+        verify(dominion)
+            .createEntity(
+                Head.INSTANCE,
+                new CurrentForwardDirection(Direction.LEFT),
+                new NextForwardDirection(Direction.LEFT),
+                new Position(2, 3),
+                Colored.HEAD
+            );
+    }
+
+    @Test
+    void whenCreateSegment_thenSegmentEntityCreated() {
+        entityFactory.createSegment(dominion, new Position(1, 2), 4);
+        verify(dominion)
+            .createEntity(
+                Segment.INSTANCE,
+                new Position(1, 2),
+                new Timer(4),
+                Colored.SEGMENT
+            );
+    }
+
+    @Test
+    void whenCreateFood_thenFoodEntityCreated() {
+        entityFactory.createFood(dominion, new Position(5, 6));
+        verify(dominion)
+            .createEntity(Food.INSTANCE, new Position(5, 6), Colored.FOOD);
+    }
+
+    @Test
+    void whenCreateFoodEatenEvent_thenFoodEatenEventCreated() {
+        entityFactory.createFoodEatenEvent(dominion);
+        verify(dominion).createEntity(FoodEaten.INSTANCE, Event.INSTANCE);
+    }
+
+    @Test
+    void whenCreateTurnStartedEvent_thenTurnStartedEventCreated() {
+        entityFactory.createTurnStartedEvent(dominion);
+        verify(dominion).createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
+    }
+}

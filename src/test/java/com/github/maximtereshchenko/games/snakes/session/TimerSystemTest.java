@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class TimerDecrementSystemTest {
+final class TimerSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final TimerDecrementSystem timerDecrementSystem = new TimerDecrementSystem(
+    private final TimerSystem timerDecrementSystem = new TimerSystem(
         dominion
     );
 
@@ -18,7 +18,7 @@ final class TimerDecrementSystemTest {
         timerDecrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
-            .extracting(timer -> timer.value)
+            .extracting(timer -> timer.turnsLeft)
             .isEqualTo(1);
     }
 
@@ -29,7 +29,7 @@ final class TimerDecrementSystemTest {
         timerDecrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
-            .extracting(timer -> timer.value)
+            .extracting(timer -> timer.turnsLeft)
             .isEqualTo(0);
     }
 }

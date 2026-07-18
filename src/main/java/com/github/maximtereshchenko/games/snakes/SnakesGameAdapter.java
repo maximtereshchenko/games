@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
+import com.github.maximtereshchenko.games.snakes.session.EntityFactory;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
 import dev.dominion.ecs.engine.system.Config;
 
@@ -58,6 +59,7 @@ final class SnakesGameAdapter implements ApplicationListener {
                 assetManager,
                 assets
             ),
+            new EntityFactory(configuration),
             modes
         );
         original = new SnakesGame(
