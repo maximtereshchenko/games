@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-public enum LegalTurn {
+public enum RelativeDirection {
 
     LEFT, RIGHT
 }

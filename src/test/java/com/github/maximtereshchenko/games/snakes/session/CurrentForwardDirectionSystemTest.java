@@ -5,22 +5,23 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class CurrentDirectionSystemTest {
+final class CurrentForwardDirectionSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final CurrentDirectionSystem currentDirectionSystem = new CurrentDirectionSystem(dominion);
+    private final CurrentForwardDirectionSystem currentDirectionSystem =
+        new CurrentForwardDirectionSystem(dominion);
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(
-            new CurrentDirection(Direction.RIGHT),
-            new NextDirection(Direction.UP)
+            new CurrentForwardDirection(Direction.RIGHT),
+            new NextForwardDirection(Direction.UP)
         );
         currentDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
-                CurrentDirection.class,
-                NextDirection.class
+                CurrentForwardDirection.class,
+                NextForwardDirection.class
             )
         )
             .singleElement()
@@ -31,15 +32,15 @@ final class CurrentDirectionSystemTest {
     @Test
     void givenTurnStartedEvent_thenCurrentDirectionSetToNext() {
         dominion.createEntity(
-            new CurrentDirection(Direction.RIGHT),
-            new NextDirection(Direction.UP)
+            new CurrentForwardDirection(Direction.RIGHT),
+            new NextForwardDirection(Direction.UP)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
         currentDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
-                CurrentDirection.class,
-                NextDirection.class
+                CurrentForwardDirection.class,
+                NextForwardDirection.class
             )
         )
             .singleElement()

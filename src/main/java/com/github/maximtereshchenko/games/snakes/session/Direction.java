@@ -22,8 +22,8 @@ public enum Direction {
         return opposite().left();
     }
 
-    Direction after(LegalTurn legalTurn) {
-        return switch (legalTurn) {
+    Direction relative(RelativeDirection relativeDirection) {
+        return switch (relativeDirection) {
             case LEFT -> left();
             case RIGHT -> right();
         };

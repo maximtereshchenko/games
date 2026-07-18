@@ -15,7 +15,7 @@ final class SessionStatisticsSystem extends TurnBasedSystem {
     void onTurnStarted() {
         for (var accumulator : dominion.findCompositionsWith(SessionStatisticsAccumulator.class)) {
             var sessionStatistics = accumulator.value;
-            for (var result : dominion.findEntitiesWith(CurrentDirection.class, NextDirection.class)) {
+            for (var result : dominion.findEntitiesWith(CurrentForwardDirection.class, NextForwardDirection.class)) {
                 if (result.comp1().value.left() == result.comp2().value) {
                     sessionStatistics.put(
                         SessionStatistics.LEFT_TURNS,

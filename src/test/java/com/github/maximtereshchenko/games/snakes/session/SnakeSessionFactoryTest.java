@@ -36,17 +36,18 @@ final class SnakeSessionFactoryTest {
     @Test
     void whenDominion_thenDominionWithEntities() {
         when(configuration.snakeHeadPosition()).thenReturn(new Position(0, 1));
-        when(configuration.snakeHeadDirection()).thenReturn(Direction.UP);
+        when(configuration.snakeHeadForwardDirection()).thenReturn(Direction.UP);
         when(configuration.snakeLength()).thenReturn(2);
         try (var dominionStatic = mockStatic(Dominion.class)) {
             dominionStatic.when(Dominion::create).thenReturn(dominion);
-            assertThat(snakeSessionFactory.dominion(new WorldDimensions(0, 0))).isEqualTo(dominion);
+            assertThat(snakeSessionFactory.dominion(new WorldDimensions(1, 2)))
+                .isEqualTo(dominion);
             verify(dominion).createEntity(new InitialSegmentTimer(2));
             verify(dominion)
                 .createEntity(
                     Head.INSTANCE,
-                    new CurrentDirection(Direction.UP),
-                    new NextDirection(Direction.UP),
+                    new CurrentForwardDirection(Direction.UP),
+                    new NextForwardDirection(Direction.UP),
                     new Position(0, 1),
                     Colored.HEAD
                 );

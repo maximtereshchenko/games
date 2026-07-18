@@ -62,9 +62,9 @@ final class ConfigurationTest {
     }
 
     @Test
-    void whenSnakeHeadDirection_thenParsedFromProperties() {
-        properties.setProperty("snake.head.direction", "LEFT");
-        assertThat(configuration.snakeHeadDirection()).isEqualTo(Direction.LEFT);
+    void whenSnakeHeadForwardDirection_thenParsedFromProperties() {
+        properties.setProperty("snake.head.forward.direction", "LEFT");
+        assertThat(configuration.snakeHeadForwardDirection()).isEqualTo(Direction.LEFT);
     }
 
     @Test
@@ -128,7 +128,7 @@ final class ConfigurationTest {
                 new Mode(
                     "first",
                     0.1f,
-                    Set.of(LegalTurn.LEFT, LegalTurn.RIGHT),
+                    Set.of(RelativeDirection.LEFT, RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
                         Map.of(
@@ -142,7 +142,7 @@ final class ConfigurationTest {
                 new Mode(
                     "second",
                     0.2f,
-                    Set.of(LegalTurn.RIGHT),
+                    Set.of(RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
                         Map.of(

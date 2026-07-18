@@ -40,10 +40,10 @@ final class InputSystemTest {
         int keyPressed,
         Direction expected
     ) {
-        dominion.createEntity(new NextDirection(Direction.RIGHT));
+        dominion.createEntity(new NextForwardDirection(Direction.RIGHT));
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
         inputSystem.run(0);
-        assertThat(dominion.findCompositionsWith(NextDirection.class))
+        assertThat(dominion.findCompositionsWith(NextForwardDirection.class))
             .singleElement()
             .extracting(nextDirection -> nextDirection.value)
             .isEqualTo(expected);

@@ -25,7 +25,7 @@ final class InputSystem implements System {
     public void run(float deltaTime) {
         for (var entry : directions.entrySet()) {
             if (Gdx.input.isKeyPressed(entry.getKey())) {
-                for (var nextDirection : dominion.findCompositionsWith(NextDirection.class)) {
+                for (var nextDirection : dominion.findCompositionsWith(NextForwardDirection.class)) {
                     nextDirection.value = entry.getValue();
                 }
             }

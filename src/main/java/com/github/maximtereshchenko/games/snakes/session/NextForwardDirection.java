@@ -2,11 +2,11 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import java.util.Objects;
 
-final class CurrentDirection {
+final class NextForwardDirection {
 
     Direction value;
 
-    CurrentDirection(Direction value) {
+    NextForwardDirection(Direction value) {
         this.value = value;
     }
 
@@ -20,7 +20,7 @@ final class CurrentDirection {
         if (this == object) {
             return true;
         }
-        return object instanceof CurrentDirection that &&
+        return object instanceof NextForwardDirection that &&
                value == that.value;
     }
 }

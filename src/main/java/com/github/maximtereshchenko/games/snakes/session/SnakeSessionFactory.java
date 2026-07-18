@@ -42,7 +42,7 @@ public final class SnakeSessionFactory {
         dominion.createEntity(new InitialSegmentTimer(configuration.snakeLength()));
         dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(new FoodEatenCounter(0), Colored.FOOD_EATEN_COUNTER);
-        createSnake(dominion);
+        createSnake(worldDimensions, dominion);
         return dominion;
     }
 
@@ -56,10 +56,10 @@ public final class SnakeSessionFactory {
             new InputSystem(dominion),
             new TurnStartSystem(dominion, mode.gameInterval()),
             new SegmentSpawningSystem(dominion),
-            new NextDirectionSystem(dominion, mode),
+            new NextForwardDirectionSystem(dominion, mode),
             new SessionStatisticsSystem(dominion),
-            new CurrentDirectionSystem(dominion),
-            new HeadMovementSystem(dominion),
+            new CurrentForwardDirectionSystem(dominion),
+            new HeadForwardMovementSystem(dominion),
             new FoodEatingSystem(dominion),
             new FoodEatenCounterSystem(dominion),
             new InitialSegmentTimerSystem(dominion, configuration.snakeFoodGrowth()),
@@ -85,30 +85,27 @@ public final class SnakeSessionFactory {
         );
     }
 
-    private void createSnake(Dominion dominion) {
+    private void createSnake(WorldDimensions worldDimensions, Dominion dominion) {
         var snakeHeadPosition = configuration.snakeHeadPosition();
+        var snakeHeadForwardDirection = configuration.snakeHeadForwardDirection();
         dominion.createEntity(
             Head.INSTANCE,
-            new CurrentDirection(configuration.snakeHeadDirection()),
-            new NextDirection(configuration.snakeHeadDirection()),
+            new CurrentForwardDirection(snakeHeadForwardDirection),
+            new NextForwardDirection(snakeHeadForwardDirection),
             snakeHeadPosition,
             Colored.HEAD
         );
-        var x = snakeHeadPosition.x;
-        var y = snakeHeadPosition.y;
+        var previous = new Position(snakeHeadPosition);
+        var positionDirection = snakeHeadForwardDirection.opposite();
         var segments = configuration.snakeLength() - 1;
         for (var i = 0; i < segments; i++) {
-            switch (configuration.snakeHeadDirection()) {
-                case UP -> y -= 1;
-                case DOWN -> y += 1;
-                case LEFT -> x += 1;
-                case RIGHT -> x -= 1;
-            }
+            previous.move(worldDimensions, positionDirection);
             dominion.createEntity(
                 new Timer(segments - i),
-                new Position(x, y),
+                previous,
                 Colored.SEGMENT
             );
+            previous = new Position(previous);
         }
     }
 }

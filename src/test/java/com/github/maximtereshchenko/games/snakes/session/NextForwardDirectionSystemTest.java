@@ -10,26 +10,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-final class NextDirectionSystemTest {
+final class NextForwardDirectionSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final Mode mode = mock();
-    private final NextDirectionSystem nextDirectionSystem = new NextDirectionSystem(
-        dominion,
-        mode
-    );
+    private final NextForwardDirectionSystem nextDirectionSystem =
+        new NextForwardDirectionSystem(dominion, mode);
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(
-            new CurrentDirection(Direction.RIGHT),
-            new NextDirection(Direction.UP)
+            new CurrentForwardDirection(Direction.RIGHT),
+            new NextForwardDirection(Direction.UP)
         );
         nextDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
-                CurrentDirection.class,
-                NextDirection.class
+                CurrentForwardDirection.class,
+                NextForwardDirection.class
             )
         )
             .singleElement()
@@ -40,16 +38,16 @@ final class NextDirectionSystemTest {
     @Test
     void givenNonLegalDirection_thenNextDirectionRevertedToCurrent() {
         dominion.createEntity(
-            new CurrentDirection(Direction.UP),
-            new NextDirection(Direction.RIGHT)
+            new CurrentForwardDirection(Direction.UP),
+            new NextForwardDirection(Direction.RIGHT)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
-        when(mode.legalTurns()).thenReturn(Set.of(LegalTurn.LEFT));
+        when(mode.legalTurnDirections()).thenReturn(Set.of(RelativeDirection.LEFT));
         nextDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
-                CurrentDirection.class,
-                NextDirection.class
+                CurrentForwardDirection.class,
+                NextForwardDirection.class
             )
         )
             .singleElement()
@@ -60,16 +58,16 @@ final class NextDirectionSystemTest {
     @Test
     void givenLegalDirection_thenNextDirectionUnchanged() {
         dominion.createEntity(
-            new CurrentDirection(Direction.UP),
-            new NextDirection(Direction.RIGHT)
+            new CurrentForwardDirection(Direction.UP),
+            new NextForwardDirection(Direction.RIGHT)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
-        when(mode.legalTurns()).thenReturn(Set.of(LegalTurn.RIGHT));
+        when(mode.legalTurnDirections()).thenReturn(Set.of(RelativeDirection.RIGHT));
         nextDirectionSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
-                CurrentDirection.class,
-                NextDirection.class
+                CurrentForwardDirection.class,
+                NextForwardDirection.class
             )
         )
             .singleElement()

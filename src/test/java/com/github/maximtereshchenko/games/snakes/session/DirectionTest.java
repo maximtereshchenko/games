@@ -12,12 +12,12 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 final class DirectionTest {
 
-    private static Stream<Arguments> legalTurns() {
+    private static Stream<Arguments> relativeDirections() {
         return Stream.concat(
             Stream.of(Direction.values())
-                .map(direction -> arguments(direction, LegalTurn.LEFT, direction.left())),
+                .map(direction -> arguments(direction, RelativeDirection.LEFT, direction.left())),
             Stream.of(Direction.values())
-                .map(direction -> arguments(direction, LegalTurn.RIGHT, direction.right()))
+                .map(direction -> arguments(direction, RelativeDirection.RIGHT, direction.right()))
         );
     }
 
@@ -61,8 +61,12 @@ final class DirectionTest {
     }
 
     @ParameterizedTest
-    @MethodSource("legalTurns")
-    void whenLegalTurn_thenRelativeDirection(Direction direction, LegalTurn legalTurn, Direction expected) {
-        assertThat(direction.after(legalTurn)).isEqualTo(expected);
+    @MethodSource("relativeDirections")
+    void whenRelative_thenRelativeDirection(
+        Direction direction,
+        RelativeDirection relativeDirection,
+        Direction expected
+    ) {
+        assertThat(direction.relative(relativeDirection)).isEqualTo(expected);
     }
 }

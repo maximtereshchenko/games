@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
 
-final class FoodEatenCounterSystem extends TurnBasedSystem {
+final class FoodEatenCounterSystem extends OnFoodEatenEventSystem {
 
     private final Dominion dominion;
 
@@ -12,11 +12,9 @@ final class FoodEatenCounterSystem extends TurnBasedSystem {
     }
 
     @Override
-    void onTurnStarted() {
-        if (dominion.findCompositionsWith(FoodEaten.class).iterator().hasNext()) {
-            for (var foodEatenCounter : dominion.findCompositionsWith(FoodEatenCounter.class)) {
-                foodEatenCounter.value++;
-            }
+    void onFoodEaten() {
+        for (var foodEatenCounter : dominion.findCompositionsWith(FoodEatenCounter.class)) {
+            foodEatenCounter.value++;
         }
     }
 }

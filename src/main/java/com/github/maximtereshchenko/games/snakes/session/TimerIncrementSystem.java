@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
 
-final class TimerIncrementSystem extends TurnBasedSystem {
+final class TimerIncrementSystem extends OnFoodEatenEventSystem {
 
     private final Dominion dominion;
     private final int step;
@@ -14,10 +14,7 @@ final class TimerIncrementSystem extends TurnBasedSystem {
     }
 
     @Override
-    void onTurnStarted() {
-        if (!dominion.findCompositionsWith(FoodEaten.class).iterator().hasNext()) {
-            return;
-        }
+    void onFoodEaten() {
         for (var timer : dominion.findCompositionsWith(Timer.class)) {
             timer.value += step;
         }

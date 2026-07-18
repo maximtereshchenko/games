@@ -19,8 +19,8 @@ final class SessionStatisticsSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(
-            new CurrentDirection(Direction.RIGHT),
-            new NextDirection(Direction.UP)
+            new CurrentForwardDirection(Direction.RIGHT),
+            new NextForwardDirection(Direction.UP)
         );
         dominion.createEntity(new SessionStatisticsAccumulator());
         var before = dominion.findAllEntities().stream().toList();
@@ -32,8 +32,8 @@ final class SessionStatisticsSystemTest {
     @EnumSource(Direction.class)
     void givenLeftTurn_thenLeftTurnsCounterIncremented(Direction direction) {
         dominion.createEntity(
-            new CurrentDirection(direction),
-            new NextDirection(direction.left())
+            new CurrentForwardDirection(direction),
+            new NextForwardDirection(direction.left())
         );
         dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(TurnStarted.INSTANCE);
@@ -48,8 +48,8 @@ final class SessionStatisticsSystemTest {
     @EnumSource(Direction.class)
     void givenRightTurn_thenLeftTurnsCounterNotIncremented(Direction direction) {
         dominion.createEntity(
-            new CurrentDirection(direction),
-            new NextDirection(direction.opposite().left())
+            new CurrentForwardDirection(direction),
+            new NextForwardDirection(direction.opposite().left())
         );
         dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(TurnStarted.INSTANCE);

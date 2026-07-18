@@ -8,12 +8,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class HeadMovementSystemTest {
+final class HeadForwardMovementSystemTest {
 
     private final Dominion dominion = Dominion.create();
-    private final HeadMovementSystem headMovementSystem = new HeadMovementSystem(
-        dominion
-    );
+    private final HeadForwardMovementSystem headForwardMovementSystem =
+        new HeadForwardMovementSystem(dominion);
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
@@ -21,14 +20,14 @@ final class HeadMovementSystemTest {
         dominion.createEntity(
             Head.INSTANCE,
             new Position(0, 0),
-            new CurrentDirection(Direction.RIGHT)
+            new CurrentForwardDirection(Direction.RIGHT)
         );
-        headMovementSystem.run(0);
+        headForwardMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
                 Head.class,
                 Position.class,
-                CurrentDirection.class
+                CurrentForwardDirection.class
             )
         )
             .singleElement()
@@ -60,15 +59,15 @@ final class HeadMovementSystemTest {
         dominion.createEntity(
             Head.INSTANCE,
             new Position(initialX, initialY),
-            new CurrentDirection(direction)
+            new CurrentForwardDirection(direction)
         );
         dominion.createEntity(TurnStarted.INSTANCE);
-        headMovementSystem.run(0);
+        headForwardMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
                 Head.class,
                 Position.class,
-                CurrentDirection.class
+                CurrentForwardDirection.class
             )
         )
             .singleElement()
