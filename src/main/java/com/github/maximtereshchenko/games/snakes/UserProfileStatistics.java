@@ -2,5 +2,5 @@ package com.github.maximtereshchenko.games.snakes;
 
 public enum UserProfileStatistics {
 
-    LAUNCHES
+    LAUNCHES, CREDITS_READ
 }

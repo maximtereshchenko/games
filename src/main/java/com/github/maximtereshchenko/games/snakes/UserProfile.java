@@ -34,6 +34,10 @@ public final class UserProfile {
         preferences.putInteger(statistics.name(), value);
     }
 
+    void increment(UserProfileStatistics statistics) {
+        update(statistics, value(statistics) + 1);
+    }
+
     float musicVolume() {
         return preferences.getFloat(MUSIC_VOLUME_KEY, configuration.defaultMusicVolume());
     }

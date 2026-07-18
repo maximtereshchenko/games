@@ -1,9 +1,6 @@
 package com.github.maximtereshchenko.games.snakes;
 
-import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
-import com.github.maximtereshchenko.games.snakes.event.SnakeSessionEnded;
-import com.github.maximtereshchenko.games.snakes.event.Subscriber;
-import com.github.maximtereshchenko.games.snakes.event.TitleScreenFinished;
+import com.github.maximtereshchenko.games.snakes.event.*;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -27,7 +24,7 @@ final class UnlockModes implements Subscriber {
                     snakeSessionEnded
                 )
             );
-            case TitleScreenFinished _ -> unlock(
+            case TitleScreenFinished _, CreditsScreenFinished _ -> unlock(
                 modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(userProfile)
             );
             default -> {

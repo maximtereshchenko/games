@@ -1,11 +1,16 @@
 package com.github.maximtereshchenko.games.snakes;
 
+import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
+import com.github.maximtereshchenko.games.snakes.event.CreditsScreenFinished;
 import com.github.maximtereshchenko.games.snakes.event.SnakeSessionEnded;
 import com.github.maximtereshchenko.games.snakes.event.TitleScreenFinished;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static org.mockito.Mockito.*;
 
@@ -19,6 +24,13 @@ final class UnlockModesTest {
         List.of(mode)
     );
 
+    private static Stream<ApplicationEvent> events() {
+        return Stream.of(
+            new TitleScreenFinished(),
+            new CreditsScreenFinished()
+        );
+    }
+
     @Test
     void givenSnakeSessionEnded_thenModeUnlocked() {
         var snakeSessionEnded = new SnakeSessionEnded(Map.of());
@@ -29,8 +41,9 @@ final class UnlockModesTest {
         verify(userProfile).unlock(mode);
     }
 
-    @Test
-    void givenTitleScreenFinished_thenModeUnlocked() {
+    @ParameterizedTest
+    @MethodSource("events")
+    void givenTitleScreenFinished_thenModeUnlockedBasedOnProfile() {
         when(mode.modeUnlockRequirements()).thenReturn(modeUnlockRequirements);
         when(modeUnlockRequirements.isSatisfied(userProfile))
             .thenReturn(true);

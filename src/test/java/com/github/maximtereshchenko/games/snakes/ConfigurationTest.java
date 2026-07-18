@@ -137,7 +137,10 @@ final class ConfigurationTest {
                     Set.of(RelativeDirection.LEFT, RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
-                        Map.of(UserProfileStatistics.LAUNCHES, 3),
+                        Map.of(
+                            UserProfileStatistics.LAUNCHES, 3,
+                            UserProfileStatistics.CREDITS_READ, 0
+                        ),
                         Map.of(SessionStatistics.LEFT_TURNS, 0)
                     )
                 ),
@@ -149,7 +152,10 @@ final class ConfigurationTest {
                     Set.of(RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
-                        Map.of(UserProfileStatistics.LAUNCHES, 0),
+                        Map.of(
+                            UserProfileStatistics.LAUNCHES, 0,
+                            UserProfileStatistics.CREDITS_READ, 0
+                        ),
                         Map.of(SessionStatistics.LEFT_TURNS, 6)
                     )
                 )
