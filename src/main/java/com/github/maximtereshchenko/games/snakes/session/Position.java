@@ -33,14 +33,10 @@ public final class Position {
 
     void move(WorldDimensions worldDimensions, Direction direction) {
         switch (direction) {
-            case UP -> y = adjusted(y + 1, worldDimensions.height());
-            case DOWN -> y = adjusted(y - 1, worldDimensions.height());
-            case LEFT -> x = adjusted(x - 1, worldDimensions.width());
-            case RIGHT -> x = adjusted(x + 1, worldDimensions.width());
+            case UP -> y = (y + 1) % worldDimensions.height();
+            case DOWN -> y = (y - 1 + worldDimensions.height()) % worldDimensions.height();
+            case LEFT -> x = (x - 1 + worldDimensions.width()) % worldDimensions.width();
+            case RIGHT -> x = (x + 1) % worldDimensions.width();
         }
-    }
-
-    private int adjusted(int value, int max) {
-        return (value + max) % max;
     }
 }

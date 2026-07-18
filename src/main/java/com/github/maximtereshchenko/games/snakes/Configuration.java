@@ -38,7 +38,7 @@ public final class Configuration {
     }
 
     public Direction snakeHeadForwardDirection() {
-        return Direction.valueOf(properties.getProperty("snake.head.forward.direction"));
+        return Direction.valueOf(properties.getProperty("snake.head.movement.forward.direction"));
     }
 
     public int snakeLength() {
@@ -87,7 +87,19 @@ public final class Configuration {
         return new Mode(
             name,
             Float.parseFloat(properties.getProperty("modes.%s.game.interval".formatted(name))),
-            list("modes.%s.snake.turns.legal".formatted(name))
+            Integer.parseInt(
+                properties.getProperty(
+                    "modes.%s.snake.head.movement.sideways.cycle"
+                        .formatted(name)
+                )
+            ),
+            Integer.parseInt(
+                properties.getProperty(
+                    "modes.%s.snake.head.movement.sideways.interval"
+                        .formatted(name)
+                )
+            ),
+            list("modes.%s.snake.head.movement.turns.legal".formatted(name))
                 .stream()
                 .map(RelativeDirection::valueOf)
                 .collect(Collectors.toSet()),

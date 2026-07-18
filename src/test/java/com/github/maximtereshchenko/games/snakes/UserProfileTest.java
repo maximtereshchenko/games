@@ -3,9 +3,6 @@ package com.github.maximtereshchenko.games.snakes;
 import com.badlogic.gdx.Preferences;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -25,7 +22,8 @@ final class UserProfileTest {
 
     @Test
     void whenUnlock_thenPutTrueToPreferences() {
-        userProfile.unlock(new Mode("mode", 0, Set.of(), Map.of(), null));
+        when(mode.name()).thenReturn("mode");
+        userProfile.unlock(mode);
         verify(preferences).putBoolean("mode", true);
     }
 

@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.snakes.Configuration;
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ final class EntityFactoryTest {
 
     private final Configuration configuration = mock();
     private final Dominion dominion = mock();
+    private final Mode mode = mock();
     private final EntityFactory entityFactory = new EntityFactory(configuration);
 
     @Test
@@ -32,15 +34,19 @@ final class EntityFactoryTest {
 
     @Test
     void whenCreateHead_thenHeadEntityCreated() {
-        when(configuration.snakeHeadPosition()).thenReturn(new Position(2, 3));
+        when(configuration.snakeHeadPosition()).thenReturn(new Position(1, 2));
         when(configuration.snakeHeadForwardDirection()).thenReturn(Direction.LEFT);
-        entityFactory.createHead(dominion);
+        when(mode.headMovementSidewaysCycle()).thenReturn(3);
+        when(mode.headMovementSidewaysInterval()).thenReturn(4);
+        entityFactory.createHead(dominion, mode);
         verify(dominion)
             .createEntity(
                 Head.INSTANCE,
                 new CurrentForwardDirection(Direction.LEFT),
                 new NextForwardDirection(Direction.LEFT),
-                new Position(2, 3),
+                new SidewaysDirection(3),
+                new Position(1, 2),
+                new Timer(4),
                 Colored.HEAD
             );
     }

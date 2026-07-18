@@ -63,7 +63,7 @@ final class ConfigurationTest {
 
     @Test
     void whenSnakeHeadForwardDirection_thenParsedFromProperties() {
-        properties.setProperty("snake.head.forward.direction", "LEFT");
+        properties.setProperty("snake.head.movement.forward.direction", "LEFT");
         assertThat(configuration.snakeHeadForwardDirection()).isEqualTo(Direction.LEFT);
     }
 
@@ -100,21 +100,25 @@ final class ConfigurationTest {
     void whenModes_thenModesParsedWithRequirementsAndPalette() {
         properties.setProperty("modes", "first,second");
         properties.setProperty("modes.first.game.interval", "0.1");
-        properties.setProperty("modes.first.snake.turns.legal", "LEFT,RIGHT");
+        properties.setProperty("modes.first.snake.head.movement.turns.legal", "LEFT,RIGHT");
+        properties.setProperty("modes.first.snake.head.movement.sideways.cycle", "1");
+        properties.setProperty("modes.first.snake.head.movement.sideways.interval", "2");
         properties.setProperty("modes.first.palette.BACKGROUND", "FFFFFFFF");
         properties.setProperty("modes.first.palette.HEAD", "FFFFFFFF");
         properties.setProperty("modes.first.palette.SEGMENT", "FFFFFFFF");
         properties.setProperty("modes.first.palette.FOOD", "FFFFFFFF");
         properties.setProperty("modes.first.palette.FOOD_EATEN_COUNTER", "FFFFFFFF");
-        properties.setProperty("modes.first.unlock.requirements.profile.LAUNCHES", "1");
+        properties.setProperty("modes.first.unlock.requirements.profile.LAUNCHES", "3");
         properties.setProperty("modes.second.game.interval", "0.2");
-        properties.setProperty("modes.second.snake.turns.legal", "RIGHT");
+        properties.setProperty("modes.second.snake.head.movement.turns.legal", "RIGHT");
+        properties.setProperty("modes.second.snake.head.movement.sideways.cycle", "4");
+        properties.setProperty("modes.second.snake.head.movement.sideways.interval", "5");
         properties.setProperty("modes.second.palette.BACKGROUND", "FFFFFFFF");
         properties.setProperty("modes.second.palette.HEAD", "FFFFFFFF");
         properties.setProperty("modes.second.palette.SEGMENT", "FFFFFFFF");
         properties.setProperty("modes.second.palette.FOOD", "FFFFFFFF");
         properties.setProperty("modes.second.palette.FOOD_EATEN_COUNTER", "FFFFFFFF");
-        properties.setProperty("modes.second.unlock.requirements.session.LEFT_TURNS", "1");
+        properties.setProperty("modes.second.unlock.requirements.session.LEFT_TURNS", "6");
         var color = new Color(0xffffffff);
         var palette = Map.of(
             Colored.BACKGROUND, color,
@@ -128,29 +132,25 @@ final class ConfigurationTest {
                 new Mode(
                     "first",
                     0.1f,
+                    1,
+                    2,
                     Set.of(RelativeDirection.LEFT, RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
-                        Map.of(
-                            UserProfileStatistics.LAUNCHES, 1
-                        ),
-                        Map.of(
-                            SessionStatistics.LEFT_TURNS, 0
-                        )
+                        Map.of(UserProfileStatistics.LAUNCHES, 3),
+                        Map.of(SessionStatistics.LEFT_TURNS, 0)
                     )
                 ),
                 new Mode(
                     "second",
                     0.2f,
+                    4,
+                    5,
                     Set.of(RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
-                        Map.of(
-                            UserProfileStatistics.LAUNCHES, 0
-                        ),
-                        Map.of(
-                            SessionStatistics.LEFT_TURNS, 1
-                        )
+                        Map.of(UserProfileStatistics.LAUNCHES, 0),
+                        Map.of(SessionStatistics.LEFT_TURNS, 6)
                     )
                 )
             );

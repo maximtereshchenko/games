@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.snakes.Configuration;
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
 
 public final class EntityFactory {
@@ -20,12 +21,14 @@ public final class EntityFactory {
         dominion.createEntity(new FoodEatenCounter(0), Colored.FOOD_EATEN_COUNTER);
     }
 
-    void createHead(Dominion dominion) {
+    void createHead(Dominion dominion, Mode mode) {
         dominion.createEntity(
             Head.INSTANCE,
             new CurrentForwardDirection(configuration.snakeHeadForwardDirection()),
             new NextForwardDirection(configuration.snakeHeadForwardDirection()),
+            new SidewaysDirection(mode.headMovementSidewaysCycle()),
             configuration.snakeHeadPosition(),
+            new Timer(mode.headMovementSidewaysInterval()),
             Colored.HEAD
         );
     }

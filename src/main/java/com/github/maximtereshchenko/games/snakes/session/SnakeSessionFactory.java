@@ -34,10 +34,14 @@ public final class SnakeSessionFactory {
         this.assets = assets;
     }
 
-    public Dominion dominion(EntityFactory entityFactory, WorldDimensions worldDimensions) {
+    public Dominion dominion(
+        EntityFactory entityFactory,
+        WorldDimensions worldDimensions,
+        Mode mode
+    ) {
         var dominion = Dominion.create();
         entityFactory.createGlobals(dominion, worldDimensions);
-        createSnake(dominion, entityFactory, worldDimensions);
+        createSnake(dominion, entityFactory, worldDimensions, mode);
         return dominion;
     }
 
@@ -60,6 +64,7 @@ public final class SnakeSessionFactory {
             new SessionStatisticsSystem(dominion),
             new CurrentForwardDirectionSystem(dominion),
             new HeadForwardMovementSystem(dominion),
+            new HeadSidewaysMovementSystem(dominion),
             new FoodEatingSystem(dominion, entityFactory),
             new FoodEatenCounterSystem(dominion),
             new InitialSegmentTimerSystem(
@@ -99,9 +104,10 @@ public final class SnakeSessionFactory {
     private void createSnake(
         Dominion dominion,
         EntityFactory entityFactory,
-        WorldDimensions worldDimensions
+        WorldDimensions worldDimensions,
+        Mode mode
     ) {
-        entityFactory.createHead(dominion);
+        entityFactory.createHead(dominion, mode);
         var position = new Position(configuration.snakeHeadPosition());
         var positionDirection = configuration.snakeHeadForwardDirection().opposite();
         var segments = configuration.snakeLength() - 1;
