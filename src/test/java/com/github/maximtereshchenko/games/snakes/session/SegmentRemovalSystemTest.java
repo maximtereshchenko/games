@@ -18,7 +18,7 @@ final class SegmentRemovalSystemTest {
         timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
-            .extracting(timer -> timer.turnsLeft)
+            .extracting(timer -> timer.turnsRemaining)
             .isEqualTo(0);
     }
 
@@ -37,7 +37,7 @@ final class SegmentRemovalSystemTest {
         timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
-            .extracting(timer -> timer.turnsLeft)
+            .extracting(timer -> timer.turnsRemaining)
             .isEqualTo(1);
     }
 }

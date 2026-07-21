@@ -18,7 +18,7 @@ final class TimerSystemTest {
         timerDecrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
-            .extracting(timer -> timer.turnsLeft)
+            .extracting(timer -> timer.turnsRemaining)
             .isEqualTo(1);
     }
 
@@ -29,7 +29,7 @@ final class TimerSystemTest {
         timerDecrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
-            .extracting(timer -> timer.turnsLeft)
+            .extracting(timer -> timer.turnsRemaining)
             .isEqualTo(0);
     }
 }

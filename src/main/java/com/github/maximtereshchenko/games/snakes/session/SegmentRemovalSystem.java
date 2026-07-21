@@ -14,7 +14,7 @@ final class SegmentRemovalSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted() {
         for (var result : dominion.findEntitiesWith(Timer.class, Segment.class)) {
-            if (result.comp1().turnsLeft == 0) {
+            if (result.comp1().turnsRemaining == 0) {
                 dominion.deleteEntity(result.entity());
             }
         }

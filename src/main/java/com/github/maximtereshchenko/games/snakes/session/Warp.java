@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-public enum RelativeDirection {
+enum Warp {
 
-    LEFT, RIGHT, SAME
+    INSTANCE
 }

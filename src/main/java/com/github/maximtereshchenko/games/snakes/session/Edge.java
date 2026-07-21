@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-public enum RelativeDirection {
+public enum Edge {
 
-    LEFT, RIGHT, SAME
+    LEFT, RIGHT, OPPOSITE
 }

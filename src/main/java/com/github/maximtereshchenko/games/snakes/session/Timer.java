@@ -5,16 +5,16 @@ import java.util.Objects;
 final class Timer {
 
     final int turns;
-    int turnsLeft;
+    int turnsRemaining;
 
     Timer(int turns) {
         this.turns = turns;
-        this.turnsLeft = turns;
+        this.turnsRemaining = turns;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(turns, turnsLeft);
+        return Objects.hash(turns, turnsRemaining);
     }
 
     @Override
@@ -24,6 +24,6 @@ final class Timer {
         }
         return object instanceof Timer timer &&
                turns == timer.turns &&
-               turnsLeft == timer.turnsLeft;
+               turnsRemaining == timer.turnsRemaining;
     }
 }

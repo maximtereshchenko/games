@@ -4,27 +4,26 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
-
-import java.util.Map;
 
 final class GameRenderingSystem implements System {
 
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
     private final Dominion dominion;
-    private final Map<Colored, Color> palette;
+    private final Mode mode;
 
     GameRenderingSystem(
         Viewport viewport,
         ShapeRenderer shapeRenderer,
         Dominion dominion,
-        Map<Colored, Color> palette
+        Mode mode
     ) {
         this.viewport = viewport;
         this.shapeRenderer = shapeRenderer;
         this.dominion = dominion;
-        this.palette = palette;
+        this.mode = mode;
     }
 
     @Override
@@ -33,6 +32,7 @@ final class GameRenderingSystem implements System {
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        var palette = mode.palette();
         shapeRenderer.setColor(palette.get(Colored.BACKGROUND));
         shapeRenderer.rect(
             0,

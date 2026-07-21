@@ -18,6 +18,7 @@ final class HeadSidewaysMovementSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
+            Head.INSTANCE,
             new Timer(0),
             new SidewaysDirection(4, 0),
             new Position(1, 1),
@@ -26,6 +27,7 @@ final class HeadSidewaysMovementSystemTest {
         headSidewaysMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
+                Head.class,
                 Timer.class,
                 SidewaysDirection.class,
                 Position.class,
@@ -34,8 +36,8 @@ final class HeadSidewaysMovementSystemTest {
         )
             .singleElement()
             .extracting(
-                Results.With4::comp3,
-                result -> result.comp2().index
+                Results.With5::comp4,
+                result -> result.comp3().index
             )
             .containsExactly(new Position(1, 1), 0);
     }
@@ -44,6 +46,7 @@ final class HeadSidewaysMovementSystemTest {
     void givenTimerNotExpired_thenNoChanges() {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
+            Head.INSTANCE,
             new Timer(1),
             new SidewaysDirection(4, 0),
             new Position(1, 1),
@@ -53,6 +56,7 @@ final class HeadSidewaysMovementSystemTest {
         headSidewaysMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
+                Head.class,
                 Timer.class,
                 SidewaysDirection.class,
                 Position.class,
@@ -61,8 +65,8 @@ final class HeadSidewaysMovementSystemTest {
         )
             .singleElement()
             .extracting(
-                Results.With4::comp3,
-                result -> result.comp2().index
+                Results.With5::comp4,
+                result -> result.comp3().index
             )
             .containsExactly(new Position(1, 1), 0);
     }
@@ -71,6 +75,7 @@ final class HeadSidewaysMovementSystemTest {
     void givenCycleZero_thenNoChanges() {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
+            Head.INSTANCE,
             new Timer(0),
             new SidewaysDirection(0, 0),
             new Position(1, 1),
@@ -80,6 +85,7 @@ final class HeadSidewaysMovementSystemTest {
         headSidewaysMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
+                Head.class,
                 Timer.class,
                 SidewaysDirection.class,
                 Position.class,
@@ -88,8 +94,8 @@ final class HeadSidewaysMovementSystemTest {
         )
             .singleElement()
             .extracting(
-                Results.With4::comp3,
-                result -> result.comp2().index
+                Results.With5::comp4,
+                result -> result.comp3().index
             )
             .containsExactly(new Position(1, 1), 0);
     }
@@ -115,6 +121,7 @@ final class HeadSidewaysMovementSystemTest {
     ) {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
+            Head.INSTANCE,
             new Timer(0),
             new SidewaysDirection(cycle, sidewaysIndex),
             new Position(initialX, initialY),
@@ -124,6 +131,7 @@ final class HeadSidewaysMovementSystemTest {
         headSidewaysMovementSystem.run(0);
         assertThat(
             dominion.findEntitiesWith(
+                Head.class,
                 Timer.class,
                 SidewaysDirection.class,
                 Position.class,
@@ -132,8 +140,8 @@ final class HeadSidewaysMovementSystemTest {
         )
             .singleElement()
             .extracting(
-                Results.With4::comp3,
-                result -> result.comp2().index
+                Results.With5::comp4,
+                result -> result.comp3().index
             )
             .containsExactly(new Position(expectedX, expectedY), expectedSidewaysIndex);
     }

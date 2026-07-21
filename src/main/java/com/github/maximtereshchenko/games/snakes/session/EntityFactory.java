@@ -4,6 +4,11 @@ import com.github.maximtereshchenko.games.snakes.Configuration;
 import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public final class EntityFactory {
 
     private final Configuration configuration;
@@ -12,13 +17,19 @@ public final class EntityFactory {
         this.configuration = configuration;
     }
 
-    void createGlobals(Dominion dominion, WorldDimensions worldDimensions) {
+    void createWorld(Dominion dominion, WorldDimensions worldDimensions) {
         dominion.createEntity(new Session());
         dominion.createEntity(worldDimensions);
         dominion.createEntity(new TurnTimer());
         dominion.createEntity(new InitialSegmentTimer(configuration.snakeLength()));
         dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(new FoodEatenCounter(0), Colored.FOOD_EATEN_COUNTER);
+        Stream.concat(
+                positions(worldDimensions.width(), worldDimensions.height(), Position::new),
+                positions(worldDimensions.height(), worldDimensions.width(), (y, x) -> new Position(x, y))
+            )
+            .distinct()
+            .forEach(position -> dominion.createEntity(Warp.INSTANCE, position, Colored.WARP));
     }
 
     void createHead(Dominion dominion, Mode mode) {
@@ -33,17 +44,18 @@ public final class EntityFactory {
         );
     }
 
-    void createSegment(Dominion dominion, Position position, int turnsLeft) {
+    void createSegment(Dominion dominion, Position position, int turnsRemaining) {
         dominion.createEntity(
             Segment.INSTANCE,
             position,
-            new Timer(turnsLeft),
+            new Timer(turnsRemaining),
             Colored.SEGMENT
         );
     }
 
     void createFoodEatenEvent(Dominion dominion) {
-        dominion.createEntity(FoodEaten.INSTANCE, Event.INSTANCE);
+        createEvent(dominion, FoodEaten.INSTANCE);
+
     }
 
     void createFood(Dominion dominion, Position position) {
@@ -51,6 +63,24 @@ public final class EntityFactory {
     }
 
     void createTurnStartedEvent(Dominion dominion) {
-        dominion.createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
+        createEvent(dominion, TurnStarted.INSTANCE);
+    }
+
+    private Stream<Position> positions(
+        int firstBorder,
+        int secondBorder,
+        BiFunction<Integer, Integer, Position> function
+    ) {
+        return IntStream.range(0, firstBorder)
+            .mapToObj(
+                first ->
+                    IntStream.of(0, secondBorder - 1)
+                        .mapToObj(second -> function.apply(first, second))
+            )
+            .flatMap(Function.identity());
+    }
+
+    private void createEvent(Dominion dominion, Object tag) {
+        dominion.createEntity(tag, Event.INSTANCE);
     }
 }

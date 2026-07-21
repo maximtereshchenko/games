@@ -2,8 +2,6 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
 
-import java.util.HashSet;
-
 final class SessionEndSystem extends TurnBasedSystem {
 
     private final Dominion dominion;
@@ -15,13 +13,13 @@ final class SessionEndSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        var positions = new HashSet<Position>();
-        for (var position : dominion.findCompositionsWith(Position.class)) {
-            if (!positions.add(position)) {
-                for (var game : dominion.findCompositionsWith(Session.class)) {
-                    game.status = Session.Status.ENDED;
+        for (var segmentResults : dominion.findCompositionsWith(Segment.class, Position.class)) {
+            for (var headResults : dominion.findCompositionsWith(Head.class, Position.class)) {
+                if (segmentResults.comp2().equals(headResults.comp2())) {
+                    for (var game : dominion.findCompositionsWith(Session.class)) {
+                        game.status = Session.Status.ENDED;
+                    }
                 }
-                return;
             }
         }
     }

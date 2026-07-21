@@ -99,6 +99,9 @@ public final class Configuration {
                         .formatted(name)
                 )
             ),
+            Edge.valueOf(
+                properties.getProperty("modes.%s.snake.head.warp.edge".formatted(name))
+            ),
             list("modes.%s.snake.head.movement.turns.legal".formatted(name))
                 .stream()
                 .map(RelativeDirection::valueOf)

@@ -13,11 +13,9 @@ final class HeadForwardMovementSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var worldDimensions : dominion.findCompositionsWith(WorldDimensions.class)) {
-            for (var result : dominion.findEntitiesWith(Head.class, Position.class, CurrentForwardDirection.class)) {
-                var position = result.comp2();
-                position.move(worldDimensions, result.comp3().value);
-            }
+        for (var result : dominion.findEntitiesWith(Head.class, Position.class, CurrentForwardDirection.class)) {
+            var position = result.comp2();
+            position.move(result.comp3().value);
         }
     }
 }

@@ -20,10 +20,10 @@ final class SessionEndSystemTest {
     }
 
     @Test
-    void givenNoDuplicatePosition_thenSessionRunning() {
+    void givenNoHeadOnSegment_thenSessionRunning() {
         dominion.createEntity(new Session());
-        dominion.createEntity(new Position(0, 0));
-        dominion.createEntity(new Position(1, 0));
+        dominion.createEntity(Head.INSTANCE, new Position(0, 0));
+        dominion.createEntity(Segment.INSTANCE, new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         sessionEndSystem.run(0);
         assertThat(dominion.findCompositionsWith(Session.class))
@@ -32,10 +32,10 @@ final class SessionEndSystemTest {
     }
 
     @Test
-    void givenDuplicatePosition_thenSessionEnded() {
+    void givenHeadOnSegment_thenSessionEnded() {
         dominion.createEntity(new Session());
-        dominion.createEntity(new Position(0, 0));
-        dominion.createEntity(new Position(0, 0));
+        dominion.createEntity(Head.INSTANCE, new Position(0, 0));
+        dominion.createEntity(Segment.INSTANCE, new Position(0, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
         sessionEndSystem.run(0);
         assertThat(dominion.findCompositionsWith(Session.class))

@@ -31,12 +31,20 @@ public final class Position {
                y == position.y;
     }
 
-    void move(WorldDimensions worldDimensions, Direction direction) {
+    @Override
+    public String toString() {
+        return "Position{" +
+               "x=" + x +
+               ", y=" + y +
+               '}';
+    }
+
+    void move(Direction direction) {
         switch (direction) {
-            case UP -> y = (y + 1) % worldDimensions.height();
-            case DOWN -> y = (y - 1 + worldDimensions.height()) % worldDimensions.height();
-            case LEFT -> x = (x - 1 + worldDimensions.width()) % worldDimensions.width();
-            case RIGHT -> x = (x + 1) % worldDimensions.width();
+            case UP -> y++;
+            case DOWN -> y--;
+            case LEFT -> x--;
+            case RIGHT -> x++;
         }
     }
 }

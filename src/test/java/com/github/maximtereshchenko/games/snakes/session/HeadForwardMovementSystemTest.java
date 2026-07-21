@@ -42,10 +42,6 @@ final class HeadForwardMovementSystemTest {
                     DOWN, 1, 1, 1, 0
                     LEFT, 1, 1, 0, 1
                     RIGHT, 1, 1, 2, 1
-                    UP, 2, 2, 2, 0
-                    DOWN, 0, 0, 0, 2
-                    LEFT, 0, 0, 2, 0
-                    RIGHT, 2, 2, 0, 2
                     """
     )
     void givenTurnStartedEvent_thenHeadMoved(

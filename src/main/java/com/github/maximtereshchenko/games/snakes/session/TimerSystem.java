@@ -14,10 +14,10 @@ final class TimerSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted() {
         for (var timer : dominion.findCompositionsWith(Timer.class)) {
-            if (timer.turnsLeft == 0) {
-                timer.turnsLeft = timer.turns;
+            if (timer.turnsRemaining == 0) {
+                timer.turnsRemaining = timer.turns;
             }
-            timer.turnsLeft--;
+            timer.turnsRemaining--;
         }
     }
 }

@@ -26,6 +26,7 @@ public enum Direction {
         return switch (relativeDirection) {
             case LEFT -> left();
             case RIGHT -> right();
+            case SAME -> this;
         };
     }
 }

@@ -103,21 +103,25 @@ final class ConfigurationTest {
         properties.setProperty("modes.first.snake.head.movement.turns.legal", "LEFT,RIGHT");
         properties.setProperty("modes.first.snake.head.movement.sideways.cycle", "1");
         properties.setProperty("modes.first.snake.head.movement.sideways.interval", "2");
+        properties.setProperty("modes.first.snake.head.warp.edge", "LEFT");
         properties.setProperty("modes.first.palette.BACKGROUND", "FFFFFFFF");
         properties.setProperty("modes.first.palette.HEAD", "FFFFFFFF");
         properties.setProperty("modes.first.palette.SEGMENT", "FFFFFFFF");
         properties.setProperty("modes.first.palette.FOOD", "FFFFFFFF");
         properties.setProperty("modes.first.palette.FOOD_EATEN_COUNTER", "FFFFFFFF");
+        properties.setProperty("modes.first.palette.WARP", "FFFFFFFF");
         properties.setProperty("modes.first.unlock.requirements.profile.LAUNCHES", "3");
         properties.setProperty("modes.second.game.interval", "0.2");
         properties.setProperty("modes.second.snake.head.movement.turns.legal", "RIGHT");
         properties.setProperty("modes.second.snake.head.movement.sideways.cycle", "4");
         properties.setProperty("modes.second.snake.head.movement.sideways.interval", "5");
+        properties.setProperty("modes.second.snake.head.warp.edge", "RIGHT");
         properties.setProperty("modes.second.palette.BACKGROUND", "FFFFFFFF");
         properties.setProperty("modes.second.palette.HEAD", "FFFFFFFF");
         properties.setProperty("modes.second.palette.SEGMENT", "FFFFFFFF");
         properties.setProperty("modes.second.palette.FOOD", "FFFFFFFF");
         properties.setProperty("modes.second.palette.FOOD_EATEN_COUNTER", "FFFFFFFF");
+        properties.setProperty("modes.second.palette.WARP", "FFFFFFFF");
         properties.setProperty("modes.second.unlock.requirements.session.LEFT_TURNS", "6");
         var color = new Color(0xffffffff);
         var palette = Map.of(
@@ -125,7 +129,8 @@ final class ConfigurationTest {
             Colored.HEAD, color,
             Colored.SEGMENT, color,
             Colored.FOOD, color,
-            Colored.FOOD_EATEN_COUNTER, color
+            Colored.FOOD_EATEN_COUNTER, color,
+            Colored.WARP, color
         );
         assertThat(configuration.modes())
             .containsExactly(
@@ -134,6 +139,7 @@ final class ConfigurationTest {
                     0.1f,
                     1,
                     2,
+                    Edge.LEFT,
                     Set.of(RelativeDirection.LEFT, RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(
@@ -149,6 +155,7 @@ final class ConfigurationTest {
                     0.2f,
                     4,
                     5,
+                    Edge.RIGHT,
                     Set.of(RelativeDirection.RIGHT),
                     palette,
                     new ModeUnlockRequirements(

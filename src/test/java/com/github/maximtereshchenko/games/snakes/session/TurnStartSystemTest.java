@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +11,13 @@ final class TurnStartSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final EntityFactory entityFactory = mock();
+    private final Mode mode = mock();
     private final TurnStartSystem turnStartSystem =
-        new TurnStartSystem(dominion, entityFactory, 1);
+        new TurnStartSystem(dominion, entityFactory, mode);
 
     @Test
     void givenDeltaLessThanTurnLength_thenStopwatchIncremented() {
+        when(mode.gameInterval()).thenReturn(1f);
         dominion.createEntity(new TurnTimer());
         turnStartSystem.run(0.5f);
         assertThat(dominion.findCompositionsWith(TurnTimer.class))
@@ -25,6 +28,7 @@ final class TurnStartSystemTest {
 
     @Test
     void givenTurnTimerGreaterThatTurnLength_thenTurnStartedEvent() {
+        when(mode.gameInterval()).thenReturn(1f);
         dominion.createEntity(new TurnTimer());
         turnStartSystem.run(1.5f);
         assertThat(dominion.findCompositionsWith(TurnTimer.class))

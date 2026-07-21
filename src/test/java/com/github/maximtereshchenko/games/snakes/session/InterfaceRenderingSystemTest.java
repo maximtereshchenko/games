@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
@@ -22,12 +23,13 @@ final class InterfaceRenderingSystemTest {
     private final BitmapFont bitmapFont = mock();
     private final BitmapFont.BitmapFontData bitmapFontData = mock();
     private final Dominion dominion = Dominion.create();
+    private final Mode mode = mock();
     private final InterfaceRenderingSystem interfaceRenderingSystem = new InterfaceRenderingSystem(
         viewport,
         spriteBatch,
         bitmapFont,
         dominion,
-        Map.of(Colored.FOOD_EATEN_COUNTER, Color.BLACK)
+        mode
     );
 
     @Test
@@ -39,6 +41,7 @@ final class InterfaceRenderingSystemTest {
         bitmapFontData.scaleY = 1f;
         when(bitmapFont.getData()).thenReturn(bitmapFontData);
         when(bitmapFont.getCapHeight()).thenReturn(2f);
+        when(mode.palette()).thenReturn(Map.of(Colored.FOOD_EATEN_COUNTER, Color.BLACK));
         dominion.createEntity(new FoodEatenCounter(5), Colored.FOOD_EATEN_COUNTER);
         try (
             var glyphLayoutConstruction = mockConstruction(

@@ -1,14 +1,12 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
-
-import java.util.Map;
 
 final class InterfaceRenderingSystem implements System {
 
@@ -16,20 +14,20 @@ final class InterfaceRenderingSystem implements System {
     private final SpriteBatch spriteBatch;
     private final BitmapFont bitmapFont;
     private final Dominion dominion;
-    private final Map<Colored, Color> palette;
+    private final Mode mode;
 
     InterfaceRenderingSystem(
         Viewport viewport,
         SpriteBatch spriteBatch,
         BitmapFont bitmapFont,
         Dominion dominion,
-        Map<Colored, Color> palette
+        Mode mode
     ) {
         this.viewport = viewport;
         this.spriteBatch = spriteBatch;
         this.bitmapFont = bitmapFont;
         this.dominion = dominion;
-        this.palette = palette;
+        this.mode = mode;
     }
 
     @Override
@@ -45,7 +43,7 @@ final class InterfaceRenderingSystem implements System {
             var glyphLayout = new GlyphLayout(
                 bitmapFont,
                 String.valueOf(result.comp2().value),
-                palette.get(result.comp1()),
+                mode.palette().get(result.comp1()),
                 0,
                 Align.left,
                 false

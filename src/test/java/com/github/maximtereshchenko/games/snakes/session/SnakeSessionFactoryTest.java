@@ -42,7 +42,7 @@ final class SnakeSessionFactoryTest {
             var worldDimensions = new WorldDimensions(1, 2);
             assertThat(snakeSessionFactory.dominion(entityFactory, worldDimensions, mode))
                 .isEqualTo(dominion);
-            verify(entityFactory).createGlobals(dominion, worldDimensions);
+            verify(entityFactory).createWorld(dominion, worldDimensions);
             verify(entityFactory).createHead(dominion, mode);
             verify(entityFactory).createSegment(dominion, new Position(0, 0), 1);
         }

@@ -16,19 +16,104 @@ final class EntityFactoryTest {
     private final EntityFactory entityFactory = new EntityFactory(configuration);
 
     @Test
-    void whenCreateGlobals_thenGlobalEntitiesCreated() {
+    void whenCreateWorld_thenEntitiesCreated() {
         when(configuration.snakeLength()).thenReturn(3);
-        var worldDimensions = new WorldDimensions(10, 20);
-        entityFactory.createGlobals(dominion, worldDimensions);
+        var worldDimensions = new WorldDimensions(3, 4);
+        entityFactory.createWorld(dominion, worldDimensions);
         verify(dominion).createEntity(any(Session.class));
         verify(dominion).createEntity(worldDimensions);
         verify(dominion).createEntity(any(TurnTimer.class));
         verify(dominion).createEntity(new InitialSegmentTimer(3));
         verify(dominion).createEntity(any(SessionStatisticsAccumulator.class));
-        verify(dominion).createEntity(
-            any(FoodEatenCounter.class),
-            eq(Colored.FOOD_EATEN_COUNTER)
-        );
+        verify(dominion)
+            .createEntity(
+                any(FoodEatenCounter.class),
+                eq(Colored.FOOD_EATEN_COUNTER)
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(0, 0),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(1, 0),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(2, 0),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(0, 3),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(1, 3),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(2, 3),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(0, 3),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(0, 2),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(0, 1),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(0, 0),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(2, 3),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(2, 2),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(2, 1),
+                Colored.WARP
+            );
+        verify(dominion)
+            .createEntity(
+                Warp.INSTANCE,
+                new Position(2, 0),
+                Colored.WARP
+            );
         verifyNoMoreInteractions(dominion);
     }
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.snakes.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,14 +20,12 @@ final class GameRenderingSystemTest {
     private final Viewport viewport = mock();
     private final ShapeRenderer shapeRenderer = mock();
     private final Dominion dominion = Dominion.create();
+    private final Mode mode = mock();
     private final GameRenderingSystem gameRenderingSystem = new GameRenderingSystem(
         viewport,
         shapeRenderer,
         dominion,
-        Map.of(
-            Colored.BACKGROUND, Color.WHITE,
-            Colored.HEAD, Color.BLACK
-        )
+        mode
     );
 
     @BeforeEach
@@ -37,6 +36,13 @@ final class GameRenderingSystemTest {
     @Test
     void givenEntityWithVisibleAndPosition_thenEntityRendered() {
         when(viewport.getCamera()).thenReturn(camera);
+        when(mode.palette())
+            .thenReturn(
+                Map.of(
+                    Colored.BACKGROUND, Color.WHITE,
+                    Colored.HEAD, Color.BLACK
+                )
+            );
         dominion.createEntity(new Position(1, 1), Colored.HEAD);
         gameRenderingSystem.run(0);
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);

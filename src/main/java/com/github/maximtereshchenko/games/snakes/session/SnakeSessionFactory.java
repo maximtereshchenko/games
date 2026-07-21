@@ -40,8 +40,8 @@ public final class SnakeSessionFactory {
         Mode mode
     ) {
         var dominion = Dominion.create();
-        entityFactory.createGlobals(dominion, worldDimensions);
-        createSnake(dominion, entityFactory, worldDimensions, mode);
+        entityFactory.createWorld(dominion, worldDimensions);
+        createSnake(dominion, entityFactory, mode);
         return dominion;
     }
 
@@ -54,27 +54,18 @@ public final class SnakeSessionFactory {
     ) {
         return List.of(
             new InputSystem(dominion),
-            new TurnStartSystem(
-                dominion,
-                entityFactory,
-                mode.gameInterval()
-            ),
+            new TurnStartSystem(dominion, entityFactory, mode),
             new SegmentSpawningSystem(dominion, entityFactory),
             new NextForwardDirectionSystem(dominion, mode),
             new SessionStatisticsSystem(dominion),
             new CurrentForwardDirectionSystem(dominion),
             new HeadForwardMovementSystem(dominion),
             new HeadSidewaysMovementSystem(dominion),
+            new WarpSystem(dominion, mode),
             new FoodEatingSystem(dominion, entityFactory),
             new FoodEatenCounterSystem(dominion),
-            new InitialSegmentTimerSystem(
-                dominion,
-                configuration.snakeFoodGrowth()
-            ),
-            new SegmentTimerIncrementSystem(
-                dominion,
-                configuration.snakeFoodGrowth()
-            ),
+            new InitialSegmentTimerSystem(dominion, configuration),
+            new SegmentTimerIncrementSystem(dominion, configuration),
             new TimerSystem(dominion),
             new SegmentRemovalSystem(dominion),
             new SessionEndSystem(dominion),
@@ -89,14 +80,14 @@ public final class SnakeSessionFactory {
                 gameViewport,
                 shapeRenderer,
                 dominion,
-                mode.palette()
+                mode
             ),
             new InterfaceRenderingSystem(
                 interfaceViewport,
                 spriteBatch,
                 assetManager.get(assets.bitmapFont()),
                 dominion,
-                mode.palette()
+                mode
             )
         );
     }
@@ -104,7 +95,6 @@ public final class SnakeSessionFactory {
     private void createSnake(
         Dominion dominion,
         EntityFactory entityFactory,
-        WorldDimensions worldDimensions,
         Mode mode
     ) {
         entityFactory.createHead(dominion, mode);
@@ -112,7 +102,7 @@ public final class SnakeSessionFactory {
         var positionDirection = configuration.snakeHeadForwardDirection().opposite();
         var segments = configuration.snakeLength() - 1;
         for (var i = 0; i < segments; i++) {
-            position.move(worldDimensions, positionDirection);
+            position.move(positionDirection);
             entityFactory.createSegment(dominion, position, segments - i);
             position = new Position(position);
         }
