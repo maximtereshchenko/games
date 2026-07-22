@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.snakes;
+package com.github.maximtereshchenko.games.snakes.configuration;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.audio.Music;
@@ -20,7 +20,7 @@ public record Assets(
         return Set.of(gameBundle, bitmapFont, music);
     }
 
-    Set<AssetDescriptor<?>> loadingAssets() {
+    public Set<AssetDescriptor<?>> loadingAssets() {
         return Set.of(skin, loadingBundle);
     }
 }

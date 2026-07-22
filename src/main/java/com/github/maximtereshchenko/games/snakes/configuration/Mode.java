@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.snakes;
+package com.github.maximtereshchenko.games.snakes.configuration;
 
 import com.badlogic.gdx.graphics.Color;
 import com.github.maximtereshchenko.games.snakes.session.Colored;

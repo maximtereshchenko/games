@@ -1,5 +1,7 @@
-package com.github.maximtereshchenko.games.snakes;
+package com.github.maximtereshchenko.games.snakes.configuration;
 
+import com.github.maximtereshchenko.games.snakes.UserProfile;
+import com.github.maximtereshchenko.games.snakes.UserProfileStatistics;
 import com.github.maximtereshchenko.games.snakes.event.SnakeSessionEnded;
 import com.github.maximtereshchenko.games.snakes.session.SessionStatistics;
 import org.junit.jupiter.api.Test;

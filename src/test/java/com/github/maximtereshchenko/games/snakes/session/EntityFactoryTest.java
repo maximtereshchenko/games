@@ -1,7 +1,7 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-import com.github.maximtereshchenko.games.snakes.Configuration;
-import com.github.maximtereshchenko.games.snakes.Mode;
+import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 

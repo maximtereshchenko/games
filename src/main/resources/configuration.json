@@ -1,0 +1,111 @@
+{
+  "preferencesName": "com.github.maximtereshchenko.games.snakes.Snakes",
+  "worldDimensions": {
+    "width": 35,
+    "height": 18
+  },
+  "interfaceViewportHeight": 720,
+  "snakeFoodGrowth": 3,
+  "snakeHeadPosition": {
+    "x": 11,
+    "y": 6
+  },
+  "snakeHeadForwardDirection": "RIGHT",
+  "snakeLength": 3,
+  "assets": {
+    "skin": {
+      "fileName": "skin.json"
+    },
+    "loadingBundle": {
+      "fileName": "loading"
+    },
+    "bitmapFont": {
+      "fileName": "default.fnt",
+      "params": {
+        "atlasName": "skin.atlas"
+      }
+    },
+    "gameBundle": {
+      "fileName": "game"
+    },
+    "music": {
+      "fileName": "music.mp3"
+    }
+  },
+  "defaultMusicVolume": 0.1,
+  "modes": [
+    {
+      "name": "classic",
+      "gameInterval": 0.125,
+      "headMovementSidewaysCycle": 0,
+      "headMovementSidewaysInterval": 0,
+      "warpEdge": "OPPOSITE",
+      "legalTurnDirections": [
+        "SAME",
+        "LEFT",
+        "RIGHT"
+      ],
+      "palette": {
+        "BACKGROUND": "ded4baff",
+        "HEAD": "33824dff",
+        "SEGMENT": "66ce81ff",
+        "FOOD": "33824dff",
+        "FOOD_EATEN_COUNTER": "454248ff",
+        "WARP": "64b6b0ff"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "LAUNCHES": 1
+        }
+      }
+    },
+    {
+      "name": "viper",
+      "gameInterval": 0.125,
+      "headMovementSidewaysCycle": 0,
+      "headMovementSidewaysInterval": 0,
+      "warpEdge": "OPPOSITE",
+      "legalTurnDirections": [
+        "RIGHT"
+      ],
+      "palette": {
+        "BACKGROUND": "eeeeddff",
+        "HEAD": "774422ff",
+        "SEGMENT": "ddaa88ff",
+        "FOOD": "774422ff",
+        "FOOD_EATEN_COUNTER": "175ca5ff",
+        "WARP": "aa9a99ff"
+      },
+      "modeUnlockRequirements": {
+        "sessionThresholds": {
+          "LEFT_TURNS": 20
+        }
+      }
+    },
+    {
+      "name": "sidewinder",
+      "gameInterval": 0.125,
+      "headMovementSidewaysCycle": 2,
+      "headMovementSidewaysInterval": 7,
+      "warpEdge": "OPPOSITE",
+      "legalTurnDirections": [
+        "SAME",
+        "LEFT",
+        "RIGHT"
+      ],
+      "palette": {
+        "BACKGROUND": "ffeeefff",
+        "HEAD": "452210ff",
+        "SEGMENT": "885633ff",
+        "FOOD": "452210ff",
+        "FOOD_EATEN_COUNTER": "000000ff",
+        "WARP": "000000ff"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "CREDITS_READ": 1
+        }
+      }
+    }
+  ]
+}

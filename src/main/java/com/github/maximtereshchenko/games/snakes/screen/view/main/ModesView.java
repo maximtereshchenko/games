@@ -3,8 +3,8 @@ package com.github.maximtereshchenko.games.snakes.screen.view.main;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.snakes.Mode;
 import com.github.maximtereshchenko.games.snakes.UserProfile;
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.screen.view.BasicButton;
 
 import java.util.ArrayList;

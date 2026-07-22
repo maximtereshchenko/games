@@ -1,5 +1,7 @@
 package com.github.maximtereshchenko.games.snakes;
 
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
+import com.github.maximtereshchenko.games.snakes.configuration.ModeUnlockRequirements;
 import com.github.maximtereshchenko.games.snakes.event.*;
 
 import java.util.List;

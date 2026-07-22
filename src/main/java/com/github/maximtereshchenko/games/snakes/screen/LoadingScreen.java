@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.screen;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
-import com.github.maximtereshchenko.games.snakes.Assets;
+import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;
 import com.github.maximtereshchenko.games.snakes.screen.view.LoadingView;

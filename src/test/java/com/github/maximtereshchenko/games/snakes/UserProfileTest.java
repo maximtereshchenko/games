@@ -1,6 +1,8 @@
 package com.github.maximtereshchenko.games.snakes;
 
 import com.badlogic.gdx.Preferences;
+import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

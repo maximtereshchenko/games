@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.snakes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Disposable;
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;

@@ -1,7 +1,7 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-import com.github.maximtereshchenko.games.snakes.Configuration;
-import com.github.maximtereshchenko.games.snakes.Mode;
+import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 
 import java.util.function.BiFunction;
@@ -38,7 +38,7 @@ public final class EntityFactory {
             new CurrentForwardDirection(configuration.snakeHeadForwardDirection()),
             new NextForwardDirection(configuration.snakeHeadForwardDirection()),
             new SidewaysDirection(mode.headMovementSidewaysCycle()),
-            configuration.snakeHeadPosition(),
+            new Position(configuration.snakeHeadPosition()),
             new Timer(mode.headMovementSidewaysInterval()),
             Colored.HEAD
         );

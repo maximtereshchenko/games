@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.snakes;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;
 import org.junit.jupiter.api.Test;
 

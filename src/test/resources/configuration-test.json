@@ -1,0 +1,84 @@
+{
+  "preferencesName": "preferences",
+  "worldDimensions": {
+    "width": 1,
+    "height": 2
+  },
+  "interfaceViewportHeight": 3,
+  "snakeFoodGrowth": 4,
+  "snakeHeadPosition": {
+    "x": 5,
+    "y": 6
+  },
+  "snakeHeadForwardDirection": "RIGHT",
+  "snakeLength": 7,
+  "assets": {
+    "skin": {
+      "fileName": "skin"
+    },
+    "loadingBundle": {
+      "fileName": "loading"
+    },
+    "bitmapFont": {
+      "fileName": "font",
+      "params": {
+        "atlasName": "atlas"
+      }
+    },
+    "gameBundle": {
+      "fileName": "game"
+    },
+    "music": {
+      "fileName": "music"
+    }
+  },
+  "defaultMusicVolume": 0.8,
+  "modes": [
+    {
+      "name": "first",
+      "gameInterval": 0.9,
+      "headMovementSidewaysCycle": 10,
+      "headMovementSidewaysInterval": 11,
+      "warpEdge": "OPPOSITE",
+      "legalTurnDirections": [
+        "LEFT"
+      ],
+      "palette": {
+        "BACKGROUND": "00000000",
+        "HEAD": "00000000",
+        "SEGMENT": "00000000",
+        "FOOD": "00000000",
+        "FOOD_EATEN_COUNTER": "00000000",
+        "WARP": "00000000"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "LAUNCHES": 12
+        }
+      }
+    },
+    {
+      "name": "second",
+      "gameInterval": 1.3,
+      "headMovementSidewaysCycle": 14,
+      "headMovementSidewaysInterval": 15,
+      "warpEdge": "LEFT",
+      "legalTurnDirections": [
+        "RIGHT"
+      ],
+      "palette": {
+        "BACKGROUND": "00000000",
+        "HEAD": "00000000",
+        "SEGMENT": "00000000",
+        "FOOD": "00000000",
+        "FOOD_EATEN_COUNTER": "00000000",
+        "WARP": "00000000"
+      },
+      "modeUnlockRequirements": {
+        "sessionThresholds": {
+          "LEFT_TURNS": 16
+        }
+      }
+    }
+  ]
+}

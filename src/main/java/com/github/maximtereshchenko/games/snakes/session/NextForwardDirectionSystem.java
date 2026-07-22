@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-import com.github.maximtereshchenko.games.snakes.Mode;
+import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 
 final class NextForwardDirectionSystem extends TurnBasedSystem {
