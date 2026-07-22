@@ -16,7 +16,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted() {
         for (var result : dominion.findEntitiesWith(Head.class, Position.class)) {
-            for (var initialSegmentTimer : dominion.findCompositionsWith(InitialSegmentTimer.class)) {
+            for (var initialSegmentTimer : dominion.findCompositionsWith(SegmentTimerDefinition.class)) {
                 entityFactory.createSegment(
                     dominion,
                     new Position(result.comp2()),

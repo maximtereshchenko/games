@@ -14,7 +14,7 @@ final class SegmentRemovalSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new Timer(0), Segment.INSTANCE);
+        dominion.createEntity(new Timer(0, 0), Segment.INSTANCE);
         timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))
             .singleElement()
@@ -24,7 +24,7 @@ final class SegmentRemovalSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenTimerRemoved() {
-        dominion.createEntity(new Timer(0), Segment.INSTANCE);
+        dominion.createEntity(new Timer(0, 0), Segment.INSTANCE);
         dominion.createEntity(TurnStarted.INSTANCE);
         timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class)).isEmpty();
@@ -32,7 +32,7 @@ final class SegmentRemovalSystemTest {
 
     @Test
     void givenTimerPositive_thenNoChanges() {
-        dominion.createEntity(new Timer(1), Segment.INSTANCE);
+        dominion.createEntity(new Timer(1, 1), Segment.INSTANCE);
         dominion.createEntity(TurnStarted.INSTANCE);
         timerRemovalSystem.run(0);
         assertThat(dominion.findCompositionsWith(Timer.class))

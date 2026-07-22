@@ -18,7 +18,7 @@ final class SegmentSpawningSystemTest {
             Head.INSTANCE,
             new Position(0, 0)
         );
-        dominion.createEntity(new InitialSegmentTimer(0));
+        dominion.createEntity(new SegmentTimerDefinition(0, 0));
         segmentSpawningSystem.run(0);
         verifyNoInteractions(entityFactory);
     }
@@ -29,7 +29,7 @@ final class SegmentSpawningSystemTest {
             Head.INSTANCE,
             new Position(1, 1)
         );
-        dominion.createEntity(new InitialSegmentTimer(1));
+        dominion.createEntity(new SegmentTimerDefinition(1, 1));
         dominion.createEntity(TurnStarted.INSTANCE);
         segmentSpawningSystem.run(0);
         verify(entityFactory).createSegment(dominion, new Position(1, 1), 1);

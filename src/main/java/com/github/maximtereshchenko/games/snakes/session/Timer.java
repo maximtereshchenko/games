@@ -7,9 +7,9 @@ final class Timer {
     final int turns;
     int turnsRemaining;
 
-    Timer(int turns) {
+    Timer(int turns, int turnsRemaining) {
         this.turns = turns;
-        this.turnsRemaining = turns;
+        this.turnsRemaining = turnsRemaining;
     }
 
     @Override

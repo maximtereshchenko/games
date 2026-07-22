@@ -19,7 +19,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
             Head.INSTANCE,
-            new Timer(0),
+            new Timer(0, 0),
             new SidewaysDirection(4, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
@@ -47,7 +47,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
             Head.INSTANCE,
-            new Timer(1),
+            new Timer(1, 1),
             new SidewaysDirection(4, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
@@ -76,7 +76,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
             Head.INSTANCE,
-            new Timer(0),
+            new Timer(0, 0),
             new SidewaysDirection(0, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
@@ -122,7 +122,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(new WorldDimensions(3, 3));
         dominion.createEntity(
             Head.INSTANCE,
-            new Timer(0),
+            new Timer(0, 0),
             new SidewaysDirection(cycle, sidewaysIndex),
             new Position(initialX, initialY),
             new CurrentForwardDirection(direction)

@@ -5,7 +5,6 @@
     "height": 18
   },
   "interfaceViewportHeight": 720,
-  "snakeFoodGrowth": 3,
   "assets": {
     "skin": {
       "fileName": "skin.json"
@@ -53,8 +52,9 @@
         ],
         [
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.InitialSegmentTimer",
-            "value": 3
+            "type": "com.github.maximtereshchenko.games.snakes.session.SegmentTimerDefinition",
+            "value": 3,
+            "step": 3
           }
         ],
         [
@@ -9547,7 +9547,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 0
+            "turns": 0,
+            "turnsRemaining": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -9566,7 +9567,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 2
+            "turns": 2,
+            "turnsRemaining": 2
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -9585,7 +9587,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 1
+            "turns": 1,
+            "turnsRemaining": 1
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -9637,8 +9640,9 @@
         ],
         [
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.InitialSegmentTimer",
-            "value": 3
+            "type": "com.github.maximtereshchenko.games.snakes.session.SegmentTimerDefinition",
+            "value": 3,
+            "step": 3
           }
         ],
         [
@@ -19131,7 +19135,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 0
+            "turns": 0,
+            "turnsRemaining": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -19150,7 +19155,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 2
+            "turns": 2,
+            "turnsRemaining": 2
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -19169,7 +19175,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 1
+            "turns": 1,
+            "turnsRemaining": 1
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -19219,8 +19226,9 @@
         ],
         [
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.InitialSegmentTimer",
-            "value": 3
+            "type": "com.github.maximtereshchenko.games.snakes.session.SegmentTimerDefinition",
+            "value": 3,
+            "step": 3
           }
         ],
         [
@@ -28713,7 +28721,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 7
+            "turns": 7,
+            "turnsRemaining": 7
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -28732,7 +28741,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 2
+            "turns": 2,
+            "turnsRemaining": 2
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -28751,7 +28761,8 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 1
+            "turns": 1,
+            "turnsRemaining": 1
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",

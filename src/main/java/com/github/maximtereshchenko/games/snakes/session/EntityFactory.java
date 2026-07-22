@@ -8,7 +8,7 @@ public final class EntityFactory {
         dominion.createEntity(
             Segment.INSTANCE,
             position,
-            new Timer(turnsRemaining),
+            new Timer(turnsRemaining, turnsRemaining),
             Colored.SEGMENT
         );
     }

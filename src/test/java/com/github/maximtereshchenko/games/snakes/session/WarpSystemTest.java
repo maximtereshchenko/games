@@ -29,7 +29,7 @@ final class WarpSystemTest {
         );
         warpSystem.run(0);
         assertThat(
-            dominion.findCompositionsWith(
+            dominion.findEntitiesWith(
                 Head.class,
                 Position.class,
                 CurrentForwardDirection.class,
@@ -62,7 +62,7 @@ final class WarpSystemTest {
         dominion.createEntity(TurnStarted.INSTANCE);
         warpSystem.run(0);
         assertThat(
-            dominion.findCompositionsWith(
+            dominion.findEntitiesWith(
                 Head.class,
                 Position.class,
                 CurrentForwardDirection.class,
@@ -155,7 +155,7 @@ final class WarpSystemTest {
         dominion.createEntity(TurnStarted.INSTANCE);
         warpSystem.run(0);
         assertThat(
-            dominion.findCompositionsWith(
+            dominion.findEntitiesWith(
                 Head.class,
                 Position.class,
                 CurrentForwardDirection.class,

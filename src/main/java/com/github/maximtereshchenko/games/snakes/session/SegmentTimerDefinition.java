@@ -2,17 +2,19 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import java.util.Objects;
 
-final class InitialSegmentTimer {
+final class SegmentTimerDefinition {
 
+    final int step;
     int value;
 
-    InitialSegmentTimer(int value) {
+    SegmentTimerDefinition(int step, int value) {
+        this.step = step;
         this.value = value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(step, value);
     }
 
     @Override
@@ -20,7 +22,8 @@ final class InitialSegmentTimer {
         if (this == object) {
             return true;
         }
-        return object instanceof InitialSegmentTimer that &&
+        return object instanceof SegmentTimerDefinition that &&
+               step == that.step &&
                value == that.value;
     }
 }

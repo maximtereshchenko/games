@@ -18,7 +18,7 @@ final class EntityFactoryTest {
             .createEntity(
                 Segment.INSTANCE,
                 new Position(1, 2),
-                new Timer(4),
+                new Timer(4, 4),
                 Colored.SEGMENT
             );
     }

@@ -43,7 +43,6 @@ final class ConfigurationTest {
                         "preferences",
                         new WorldDimensions(1, 2),
                         3,
-                        4,
                         new Assets(
                             new AssetDescriptor<>("skin", Skin.class),
                             new AssetDescriptor<>("loading", I18NBundle.class),

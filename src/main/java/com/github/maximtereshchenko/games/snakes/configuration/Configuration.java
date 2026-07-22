@@ -16,7 +16,6 @@ public record Configuration(
     String preferencesName,
     WorldDimensions worldDimensions,
     float interfaceViewportHeight,
-    int snakeFoodGrowth,
     Assets assets,
     float defaultMusicVolume,
     List<Mode> modes
