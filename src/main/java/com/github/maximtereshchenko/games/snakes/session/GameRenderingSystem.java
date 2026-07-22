@@ -7,6 +7,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 
+import java.util.Comparator;
+
 final class GameRenderingSystem implements System {
 
     private final Viewport viewport;
@@ -32,19 +34,15 @@ final class GameRenderingSystem implements System {
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        var palette = mode.palette();
-        shapeRenderer.setColor(palette.get(Colored.BACKGROUND));
-        shapeRenderer.rect(
-            0,
-            0,
-            viewport.getWorldWidth(),
-            viewport.getWorldHeight()
-        );
-        for (var result : dominion.findEntitiesWith(Colored.class, Position.class)) {
-            shapeRenderer.setColor(palette.get(result.comp1()));
-            var position = result.comp2();
-            shapeRenderer.rect(position.x, position.y, 1, 1);
-        }
+        dominion.findEntitiesWith(Colored.class, Position.class)
+            .stream()
+            .sorted(Comparator.comparing(results -> !results.entity().has(Background.class)))
+            .forEach(results -> draw(results.comp1(), results.comp2()));
         shapeRenderer.end();
+    }
+
+    private void draw(Colored colored, Position position) {
+        shapeRenderer.setColor(mode.palette().get(colored));
+        shapeRenderer.rect(position.x, position.y, 1, 1);
     }
 }

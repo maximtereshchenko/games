@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.api.Results;
 
 import java.util.Random;
 import java.util.Set;
@@ -27,8 +28,10 @@ final class FoodSpawningSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        var positions = dominion.findCompositionsWith(Position.class)
+        var positions = dominion.findEntitiesWith(Position.class)
             .stream()
+            .filter(results -> !results.entity().has(Background.class))
+            .map(Results.With1::comp)
             .collect(Collectors.toSet());
         for (var worldDimensions : dominion.findCompositionsWith(WorldDimensions.class)) {
             for (var i = currentFood(); positions.size() < worldDimensions.space() && i < maxFood; i++) {

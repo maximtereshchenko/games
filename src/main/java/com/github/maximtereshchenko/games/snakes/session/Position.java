@@ -31,14 +31,6 @@ public final class Position {
                y == position.y;
     }
 
-    @Override
-    public String toString() {
-        return "Position{" +
-               "x=" + x +
-               ", y=" + y +
-               '}';
-    }
-
     void move(Direction direction) {
         switch (direction) {
             case UP -> y++;

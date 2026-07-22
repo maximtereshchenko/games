@@ -18,6 +18,9 @@ final class PositionDeserializer extends StdDeserializer<Position> {
         DeserializationContext deserializationContext
     ) {
         var tree = jsonParser.<JsonNode>readValueAsTree();
-        return new Position(tree.get("x").asInt(), tree.get("y").asInt());
+        return new Position(
+            tree.get("x").asInt(),
+            tree.get("y").asInt()
+        );
     }
 }

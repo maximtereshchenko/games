@@ -43,7 +43,8 @@ final class GameRenderingSystemTest {
                     Colored.HEAD, Color.BLACK
                 )
             );
-        dominion.createEntity(new Position(1, 1), Colored.HEAD);
+        dominion.createEntity(new Position(0, 0), Colored.HEAD);
+        dominion.createEntity(new Position(1, 1), Colored.BACKGROUND, Background.INSTANCE);
         gameRenderingSystem.run(0);
         verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
         verify(Gdx.gl).glClear(anyInt());
@@ -52,15 +53,9 @@ final class GameRenderingSystemTest {
         verify(shapeRenderer).setProjectionMatrix(camera.combined);
         verify(shapeRenderer).begin(ShapeRenderer.ShapeType.Filled);
         verify(shapeRenderer).setColor(Color.WHITE);
-        verify(shapeRenderer)
-            .rect(
-                0,
-                0,
-                viewport.getScreenWidth(),
-                viewport.getScreenHeight()
-            );
-        verify(shapeRenderer).setColor(Color.BLACK);
         verify(shapeRenderer).rect(1, 1, 1, 1);
+        verify(shapeRenderer).setColor(Color.BLACK);
+        verify(shapeRenderer).rect(0, 0, 1, 1);
         verify(shapeRenderer).end();
     }
 }

@@ -24,12 +24,8 @@ public final class EntityFactory {
         dominion.createEntity(new InitialSegmentTimer(configuration.snakeLength()));
         dominion.createEntity(new SessionStatisticsAccumulator());
         dominion.createEntity(new FoodEatenCounter(0), Colored.FOOD_EATEN_COUNTER);
-        Stream.concat(
-                positions(worldDimensions.width(), worldDimensions.height(), Position::new),
-                positions(worldDimensions.height(), worldDimensions.width(), (y, x) -> new Position(x, y))
-            )
-            .distinct()
-            .forEach(position -> dominion.createEntity(Warp.INSTANCE, position, Colored.WARP));
+        createBackgrounds(dominion, worldDimensions);
+        createWarps(dominion, worldDimensions);
     }
 
     void createHead(Dominion dominion, Mode mode) {
@@ -64,6 +60,35 @@ public final class EntityFactory {
 
     void createTurnStartedEvent(Dominion dominion) {
         createEvent(dominion, TurnStarted.INSTANCE);
+    }
+
+    private void createBackgrounds(Dominion dominion, WorldDimensions worldDimensions) {
+        for (var x = 0; x < worldDimensions.width(); x++) {
+            for (var y = 0; y < worldDimensions.height(); y++) {
+                dominion.createEntity(
+                    Background.INSTANCE,
+                    new Position(x, y),
+                    Colored.BACKGROUND
+                );
+            }
+        }
+    }
+
+    private void createWarps(Dominion dominion, WorldDimensions worldDimensions) {
+        Stream.concat(
+                positions(
+                    worldDimensions.width(),
+                    worldDimensions.height(),
+                    Position::new
+                ),
+                positions(
+                    worldDimensions.height(),
+                    worldDimensions.width(),
+                    (y, x) -> new Position(x, y)
+                )
+            )
+            .distinct()
+            .forEach(position -> dominion.createEntity(Warp.INSTANCE, position, Colored.WARP));
     }
 
     private Stream<Position> positions(

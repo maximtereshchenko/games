@@ -32,6 +32,78 @@ final class EntityFactoryTest {
             );
         verify(dominion)
             .createEntity(
+                Background.INSTANCE,
+                new Position(0, 0),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(1, 0),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(2, 0),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(0, 1),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(1, 1),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(2, 1),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(0, 2),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(1, 2),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(2, 2),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(0, 3),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(1, 3),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
+                Background.INSTANCE,
+                new Position(2, 3),
+                Colored.BACKGROUND
+            );
+        verify(dominion)
+            .createEntity(
                 Warp.INSTANCE,
                 new Position(0, 0),
                 Colored.WARP

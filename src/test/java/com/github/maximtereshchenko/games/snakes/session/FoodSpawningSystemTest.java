@@ -51,4 +51,14 @@ final class FoodSpawningSystemTest {
         verify(entityFactory).createFood(dominion, new Position(1, 1));
         verifyNoMoreInteractions(entityFactory);
     }
+
+    @Test
+    void givenBackground_thenFoodSpawned() {
+        dominion.createEntity(new WorldDimensions(1, 1));
+        dominion.createEntity(new Position(0, 0), Background.INSTANCE);
+        dominion.createEntity(TurnStarted.INSTANCE);
+        foodSpawningSystem.run(0);
+        verify(entityFactory).createFood(dominion, new Position(0, 0));
+        verifyNoMoreInteractions(entityFactory);
+    }
 }
