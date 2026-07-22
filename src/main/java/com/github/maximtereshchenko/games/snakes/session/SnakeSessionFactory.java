@@ -58,7 +58,7 @@ public final class SnakeSessionFactory {
             new CurrentForwardDirectionSystem(dominion),
             new HeadForwardMovementSystem(dominion),
             new HeadSidewaysMovementSystem(dominion),
-            new WarpSystem(dominion, mode),
+            new WarpSystem(dominion),
             new FoodEatingSystem(dominion, entityFactory),
             new FoodEatenCounterSystem(dominion),
             new SegmentTimersIncrementSystem(dominion),

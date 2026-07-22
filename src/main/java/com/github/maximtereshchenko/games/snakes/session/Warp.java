@@ -1,6 +1,3 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-enum Warp {
-
-    INSTANCE
-}
+record Warp(Position position, RelativeDirection relativeDirection) {}

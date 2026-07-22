@@ -2,7 +2,6 @@ package com.github.maximtereshchenko.games.snakes.configuration;
 
 import com.badlogic.gdx.graphics.Color;
 import com.github.maximtereshchenko.games.snakes.session.Colored;
-import com.github.maximtereshchenko.games.snakes.session.Edge;
 import com.github.maximtereshchenko.games.snakes.session.RelativeDirection;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.Set;
 public record Mode(
     String name,
     float gameInterval,
-    Edge warpEdge,
     List<Object[]> entities,
     Set<RelativeDirection> legalTurnDirections,
     Map<Colored, Color> palette,

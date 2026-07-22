@@ -16,10 +16,14 @@ final class SegmentTimersIncrementSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         dominion.createEntity(new SegmentTimerDefinition(1, 1));
         dominion.createEntity(new Timer(1, 1), Segment.INSTANCE);
-        var entities = dominion.findAllEntities().stream().toList();
         segmentTimersIncrementSystem.run(0);
-        assertThat(dominion.findAllEntities())
-            .containsExactlyElementsOf(entities);
+        assertThat(dominion.findCompositionsWith(SegmentTimerDefinition.class))
+            .singleElement()
+            .isEqualTo(new SegmentTimerDefinition(1, 1));
+        assertThat(dominion.findEntitiesWith(Timer.class, Segment.class))
+            .singleElement()
+            .extracting(Results.With2::comp1)
+            .isEqualTo(new Timer(1, 1));
     }
 
     @Test
@@ -27,10 +31,14 @@ final class SegmentTimersIncrementSystemTest {
         dominion.createEntity(new SegmentTimerDefinition(1, 1));
         dominion.createEntity(new Timer(1, 1), Segment.INSTANCE);
         dominion.createEntity(TurnStarted.INSTANCE);
-        var entities = dominion.findAllEntities().stream().toList();
         segmentTimersIncrementSystem.run(0);
-        assertThat(dominion.findAllEntities())
-            .containsExactlyElementsOf(entities);
+        assertThat(dominion.findCompositionsWith(SegmentTimerDefinition.class))
+            .singleElement()
+            .isEqualTo(new SegmentTimerDefinition(1, 1));
+        assertThat(dominion.findEntitiesWith(Timer.class, Segment.class))
+            .singleElement()
+            .extracting(Results.With2::comp1)
+            .isEqualTo(new Timer(1, 1));
     }
 
     @Test

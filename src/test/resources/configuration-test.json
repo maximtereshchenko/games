@@ -30,7 +30,6 @@
     {
       "name": "first",
       "gameInterval": 0.6,
-      "warpEdge": "OPPOSITE",
       "entities": [
         [
           {
@@ -60,7 +59,6 @@
     {
       "name": "second",
       "gameInterval": 1.0,
-      "warpEdge": "LEFT",
       "entities": [
         [
           {

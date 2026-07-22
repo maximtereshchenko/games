@@ -55,7 +55,6 @@ final class ConfigurationTest {
                             new Mode(
                                 "first",
                                 0.6f,
-                                Edge.OPPOSITE,
                                 List.<Object[]>of(
                                     new Object[]{new Position(7, 8)}
                                 ),
@@ -76,7 +75,6 @@ final class ConfigurationTest {
                             new Mode(
                                 "second",
                                 1.0f,
-                                Edge.LEFT,
                                 List.<Object[]>of(
                                     new Object[]{Colored.HEAD}
                                 ),
