@@ -5,6 +5,8 @@ import com.github.maximtereshchenko.games.snakes.configuration.ModeUnlockRequire
 import com.github.maximtereshchenko.games.snakes.event.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 final class UnlockModes implements Subscriber {
@@ -21,18 +23,31 @@ final class UnlockModes implements Subscriber {
     public void onEvent(ApplicationEvent applicationEvent) {
         switch (applicationEvent) {
             case SnakeSessionEnded snakeSessionEnded -> unlock(
-                modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(
-                    userProfile,
-                    snakeSessionEnded
-                )
+                modeUnlockRequirements -> isSatisfied(modeUnlockRequirements, snakeSessionEnded)
             );
             case TitleScreenFinished _, CreditsScreenFinished _ -> unlock(
-                modeUnlockRequirements -> modeUnlockRequirements.isSatisfied(userProfile)
+                this::isSatisfied
             );
             default -> {
                 //empty
             }
         }
+    }
+
+    private boolean isSatisfied(ModeUnlockRequirements modeUnlockRequirements) {
+        return userProfileThresholdsSatisfied(modeUnlockRequirements) &&
+               modeUnlockRequirements.sessionThresholds().isEmpty();
+    }
+
+    private boolean isSatisfied(
+        ModeUnlockRequirements modeUnlockRequirements,
+        SnakeSessionEnded snakeSessionEnded
+    ) {
+        return userProfileThresholdsSatisfied(modeUnlockRequirements) &&
+               isSatisfied(
+                   modeUnlockRequirements.sessionThresholds(),
+                   snakeSessionEnded.statistics()::get
+               );
     }
 
     private void unlock(Predicate<ModeUnlockRequirements> predicate) {
@@ -41,5 +56,23 @@ final class UnlockModes implements Subscriber {
                 userProfile.unlock(mode);
             }
         }
+    }
+
+    private boolean userProfileThresholdsSatisfied(
+        ModeUnlockRequirements modeUnlockRequirements
+    ) {
+        return isSatisfied(
+            modeUnlockRequirements.userProfileThresholds(),
+            userProfile::value
+        );
+    }
+
+    private <T> boolean isSatisfied(
+        Map<T, Integer> statistics,
+        Function<T, Integer> function
+    ) {
+        return statistics.entrySet()
+            .stream()
+            .allMatch(entry -> function.apply(entry.getKey()) >= entry.getValue());
     }
 }
