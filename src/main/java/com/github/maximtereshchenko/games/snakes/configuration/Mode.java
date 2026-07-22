@@ -5,15 +5,15 @@ import com.github.maximtereshchenko.games.snakes.session.Colored;
 import com.github.maximtereshchenko.games.snakes.session.Edge;
 import com.github.maximtereshchenko.games.snakes.session.RelativeDirection;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public record Mode(
     String name,
     float gameInterval,
-    int headMovementSidewaysCycle,
-    int headMovementSidewaysInterval,
     Edge warpEdge,
+    List<Object[]> entities,
     Set<RelativeDirection> legalTurnDirections,
     Map<Colored, Color> palette,
     ModeUnlockRequirements modeUnlockRequirements

@@ -34,12 +34,16 @@ final class FoodSpawningSystem extends TurnBasedSystem {
             .map(Results.With1::comp)
             .collect(Collectors.toSet());
         for (var worldDimensions : dominion.findCompositionsWith(WorldDimensions.class)) {
-            for (var i = currentFood(); positions.size() < worldDimensions.space() && i < maxFood; i++) {
+            for (var i = currentFood(); positions.size() < space(worldDimensions) && i < maxFood; i++) {
                 var position = position(positions, worldDimensions);
                 positions.add(position);
                 entityFactory.createFood(dominion, position);
             }
         }
+    }
+
+    private int space(WorldDimensions worldDimensions) {
+        return worldDimensions.height() * worldDimensions.width();
     }
 
     private Position position(Set<Position> positions, WorldDimensions worldDimensions) {

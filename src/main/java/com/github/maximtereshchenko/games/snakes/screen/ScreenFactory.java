@@ -133,7 +133,7 @@ public final class ScreenFactory {
         WorldDimensions worldDimensions,
         Mode mode
     ) {
-        var dominion = snakeSessionFactory.dominion(entityFactory, worldDimensions, mode);
+        var dominion = snakeSessionFactory.dominion(mode);
         var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
         var interfaceViewport = new FitViewport(
             configuration.interfaceViewportHeight() * worldDimensions.width() / worldDimensions.height(),

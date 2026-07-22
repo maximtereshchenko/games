@@ -12,7 +12,7 @@ final class SessionEndSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new Session());
+        dominion.createEntity(new Session(Session.Status.RUNNING));
         sessionEndSystem.run(0);
         assertThat(dominion.findCompositionsWith(Session.class))
             .extracting(game -> game.status)
@@ -21,7 +21,7 @@ final class SessionEndSystemTest {
 
     @Test
     void givenNoHeadOnSegment_thenSessionRunning() {
-        dominion.createEntity(new Session());
+        dominion.createEntity(new Session(Session.Status.RUNNING));
         dominion.createEntity(Head.INSTANCE, new Position(0, 0));
         dominion.createEntity(Segment.INSTANCE, new Position(1, 0));
         dominion.createEntity(TurnStarted.INSTANCE);
@@ -33,7 +33,7 @@ final class SessionEndSystemTest {
 
     @Test
     void givenHeadOnSegment_thenSessionEnded() {
-        dominion.createEntity(new Session());
+        dominion.createEntity(new Session(Session.Status.RUNNING));
         dominion.createEntity(Head.INSTANCE, new Position(0, 0));
         dominion.createEntity(Segment.INSTANCE, new Position(0, 0));
         dominion.createEntity(TurnStarted.INSTANCE);

@@ -34,14 +34,11 @@ public final class SnakeSessionFactory {
         this.assets = assets;
     }
 
-    public Dominion dominion(
-        EntityFactory entityFactory,
-        WorldDimensions worldDimensions,
-        Mode mode
-    ) {
+    public Dominion dominion(Mode mode) {
         var dominion = Dominion.create();
-        entityFactory.createWorld(dominion, worldDimensions);
-        createSnake(dominion, entityFactory, mode);
+        for (var components : mode.entities()) {
+            dominion.createEntity(components);
+        }
         return dominion;
     }
 
@@ -90,21 +87,5 @@ public final class SnakeSessionFactory {
                 mode
             )
         );
-    }
-
-    private void createSnake(
-        Dominion dominion,
-        EntityFactory entityFactory,
-        Mode mode
-    ) {
-        entityFactory.createHead(dominion, mode);
-        var position = new Position(configuration.snakeHeadPosition());
-        var positionDirection = configuration.snakeHeadForwardDirection().opposite();
-        var segments = configuration.snakeLength() - 1;
-        for (var i = 0; i < segments; i++) {
-            position.move(positionDirection);
-            entityFactory.createSegment(dominion, position, segments - i);
-            position = new Position(position);
-        }
     }
 }

@@ -8,13 +8,11 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
-import com.github.maximtereshchenko.games.snakes.configuration.ConfigurationModule;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.snakes.session.EntityFactory;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
 import dev.dominion.ecs.engine.system.Config;
-import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -64,7 +62,7 @@ final class SnakesGameAdapter implements ApplicationListener {
                 assetManager,
                 assets
             ),
-            new EntityFactory(configuration),
+            new EntityFactory(),
             modes
         );
         original = new SnakesGame(
@@ -108,10 +106,7 @@ final class SnakesGameAdapter implements ApplicationListener {
 
     private Configuration configuration() {
         try (var reader = Gdx.files.classpath("configuration.json").reader()) {
-            return JsonMapper.builder()
-                .addModule(new ConfigurationModule())
-                .build()
-                .readValue(reader, Configuration.class);
+            return Configuration.from(reader);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

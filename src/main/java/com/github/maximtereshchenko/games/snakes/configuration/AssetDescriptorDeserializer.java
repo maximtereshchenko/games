@@ -32,14 +32,13 @@ final class AssetDescriptorDeserializer extends StdDeserializer<AssetDescriptor<
 
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public AssetDescriptor deserialize(
+    public AssetDescriptor<?> deserialize(
         JsonParser jsonParser,
         DeserializationContext deserializationContext
     ) {
         Objects.requireNonNull(javaType);
         var tree = jsonParser.<JsonNode>readValueAsTree();
         var type = javaType.getRawClass();
-
         return new AssetDescriptor(
             tree.get("fileName").asString(),
             type,

@@ -10,6 +10,8 @@ import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -36,15 +38,11 @@ final class SnakeSessionFactoryTest {
     void whenDominion_thenDominionWithEntities() {
         try (var dominionStatic = mockStatic(Dominion.class)) {
             dominionStatic.when(Dominion::create).thenReturn(dominion);
-            when(configuration.snakeHeadPosition()).thenReturn(new Position(0, 1));
-            when(configuration.snakeHeadForwardDirection()).thenReturn(Direction.UP);
-            when(configuration.snakeLength()).thenReturn(2);
-            var worldDimensions = new WorldDimensions(1, 2);
-            assertThat(snakeSessionFactory.dominion(entityFactory, worldDimensions, mode))
+            var components = new Object[]{new Object()};
+            when(mode.entities()).thenReturn(List.<Object[]>of(components));
+            assertThat(snakeSessionFactory.dominion(mode))
                 .isEqualTo(dominion);
-            verify(entityFactory).createWorld(dominion, worldDimensions);
-            verify(entityFactory).createHead(dominion, mode);
-            verify(entityFactory).createSegment(dominion, new Position(0, 0), 1);
+            verify(dominion).createEntity(components);
         }
     }
 

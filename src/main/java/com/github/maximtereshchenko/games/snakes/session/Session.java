@@ -8,10 +8,6 @@ public final class Session {
         this.status = status;
     }
 
-    Session() {
-        this(Status.RUNNING);
-    }
-
     public enum Status {
 
         RUNNING, ENDED

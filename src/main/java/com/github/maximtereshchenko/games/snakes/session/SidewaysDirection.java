@@ -12,10 +12,6 @@ final class SidewaysDirection {
         this.index = index;
     }
 
-    SidewaysDirection(int cycle) {
-        this(cycle, 0);
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(cycle, index);
