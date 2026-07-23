@@ -34,7 +34,7 @@ final class GameRenderingSystemTest {
     }
 
     @Test
-    void givenEntityWithVisibleAndPosition_thenEntityRendered() {
+    void givenEntities_thenBackgroundEntitiesRenderedFirst() {
         when(viewport.getCamera()).thenReturn(camera);
         when(mode.palette())
             .thenReturn(
@@ -50,12 +50,13 @@ final class GameRenderingSystemTest {
         verify(Gdx.gl).glClear(anyInt());
         verify(viewport).apply();
         verify(viewport).getCamera();
-        verify(shapeRenderer).setProjectionMatrix(camera.combined);
-        verify(shapeRenderer).begin(ShapeRenderer.ShapeType.Filled);
-        verify(shapeRenderer).setColor(Color.WHITE);
-        verify(shapeRenderer).rect(1, 1, 1, 1);
-        verify(shapeRenderer).setColor(Color.BLACK);
-        verify(shapeRenderer).rect(0, 0, 1, 1);
-        verify(shapeRenderer).end();
+        var order = inOrder(shapeRenderer);
+        order.verify(shapeRenderer).setProjectionMatrix(camera.combined);
+        order.verify(shapeRenderer).begin(ShapeRenderer.ShapeType.Filled);
+        order.verify(shapeRenderer).setColor(Color.WHITE);
+        order.verify(shapeRenderer).rect(1, 1, 1, 1);
+        order.verify(shapeRenderer).setColor(Color.BLACK);
+        order.verify(shapeRenderer).rect(0, 0, 1, 1);
+        order.verify(shapeRenderer).end();
     }
 }

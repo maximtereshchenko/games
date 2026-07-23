@@ -29,8 +29,8 @@ final class FoodSpawningSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted() {
         var positions = dominion.findEntitiesWith(Position.class)
+            .without(Background.class)
             .stream()
-            .filter(result -> !result.entity().has(Background.class))
             .map(Results.With1::comp)
             .collect(Collectors.toSet());
         for (var worldDimensions : dominion.findCompositionsWith(WorldDimensions.class)) {

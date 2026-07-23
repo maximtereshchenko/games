@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,6 @@ import static org.mockito.Mockito.*;
 
 final class SnakeSessionFactoryTest {
 
-    private final Configuration configuration = mock();
     private final ShapeRenderer shapeRenderer = mock();
     private final SpriteBatch spriteBatch = mock();
     private final AssetManager assetManager = mock();
@@ -27,7 +25,6 @@ final class SnakeSessionFactoryTest {
     private final Viewport viewport = mock();
     private final Mode mode = mock();
     private final SnakeSessionFactory snakeSessionFactory = new SnakeSessionFactory(
-        configuration,
         shapeRenderer,
         spriteBatch,
         assetManager,
