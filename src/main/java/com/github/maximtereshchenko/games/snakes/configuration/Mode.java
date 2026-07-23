@@ -13,9 +13,8 @@ public record Mode(
     String name,
     WorldDimensions worldDimensions,
     float interfaceViewportHeight,
-    float gameInterval,
     List<Object[]> entities,
-    Set<RelativeDirection> legalTurnDirections,
+    Set<RelativeDirection> legalTurnDirections, //TODO
     Map<Colored, Color> palette,
     ModeUnlockRequirements modeUnlockRequirements
 ) {}

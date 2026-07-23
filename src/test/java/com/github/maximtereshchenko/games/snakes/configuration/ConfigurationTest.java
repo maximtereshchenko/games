@@ -54,7 +54,6 @@ final class ConfigurationTest {
                                 "first",
                                 new WorldDimensions(2, 3),
                                 0.4f,
-                                0.5f,
                                 List.<Object[]>of(
                                     new Object[]{new Position(6, 7)}
                                 ),
@@ -76,7 +75,6 @@ final class ConfigurationTest {
                                 "second",
                                 new WorldDimensions(9, 10),
                                 1.1f,
-                                1.2f,
                                 List.<Object[]>of(
                                     new Object[]{Colored.HEAD}
                                 ),

@@ -29,7 +29,6 @@
         "height": 18
       },
       "interfaceViewportHeight": 720,
-      "gameInterval": 0.125,
       "entities": [
         [
           {
@@ -46,7 +45,9 @@
         ],
         [
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.TurnTimer"
+            "type": "com.github.maximtereshchenko.games.snakes.session.TurnTimer",
+            "turnLengthSeconds": 0.125,
+            "timePassedSeconds": 0
           }
         ],
         [
@@ -10029,7 +10030,6 @@
         "height": 18
       },
       "interfaceViewportHeight": 720,
-      "gameInterval": 0.125,
       "entities": [
         [
           {
@@ -10046,7 +10046,9 @@
         ],
         [
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.TurnTimer"
+            "type": "com.github.maximtereshchenko.games.snakes.session.TurnTimer",
+            "turnLengthSeconds": 0.125,
+            "timePassedSeconds": 0
           }
         ],
         [
@@ -20027,7 +20029,6 @@
         "height": 18
       },
       "interfaceViewportHeight": 720,
-      "gameInterval": 0.125,
       "entities": [
         [
           {
@@ -20044,7 +20045,9 @@
         ],
         [
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.TurnTimer"
+            "type": "com.github.maximtereshchenko.games.snakes.session.TurnTimer",
+            "turnLengthSeconds": 0.125,
+            "timePassedSeconds": 0
           }
         ],
         [

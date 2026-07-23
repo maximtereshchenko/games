@@ -29,7 +29,6 @@
         "height": 3
       },
       "interfaceViewportHeight": 0.4,
-      "gameInterval": 0.5,
       "entities": [
         [
           {
@@ -63,7 +62,6 @@
         "height": 10
       },
       "interfaceViewportHeight": 1.1,
-      "gameInterval": 1.2,
       "entities": [
         [
           {

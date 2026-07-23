@@ -51,7 +51,7 @@ public final class SnakeSessionFactory {
     ) {
         return List.of(
             new InputSystem(dominion),
-            new TurnStartSystem(dominion, entityFactory, mode),
+            new TurnStartSystem(dominion, entityFactory),
             new SegmentSpawningSystem(dominion, entityFactory),
             new NextForwardDirectionSystem(dominion, mode),
             new SessionStatisticsSystem(dominion),

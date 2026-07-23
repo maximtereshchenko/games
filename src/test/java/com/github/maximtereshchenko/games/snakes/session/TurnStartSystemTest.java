@@ -1,6 +1,5 @@
 package com.github.maximtereshchenko.games.snakes.session;
 
-import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
@@ -11,29 +10,28 @@ final class TurnStartSystemTest {
 
     private final Dominion dominion = Dominion.create();
     private final EntityFactory entityFactory = mock();
-    private final Mode mode = mock();
     private final TurnStartSystem turnStartSystem =
-        new TurnStartSystem(dominion, entityFactory, mode);
+        new TurnStartSystem(dominion, entityFactory);
 
     @Test
     void givenDeltaLessThanTurnLength_thenStopwatchIncremented() {
-        when(mode.gameInterval()).thenReturn(1f);
-        dominion.createEntity(new TurnTimer());
+        dominion.createEntity(new TurnTimer(1.5f, 0.5f));
         turnStartSystem.run(0.5f);
         assertThat(dominion.findCompositionsWith(TurnTimer.class))
-            .extracting(stopwatch -> stopwatch.seconds)
-            .containsExactly(0.5);
+            .singleElement()
+            .usingRecursiveComparison()
+            .isEqualTo(new TurnTimer(1.5f, 1.0f));
         verifyNoInteractions(entityFactory);
     }
 
     @Test
     void givenTurnTimerGreaterThatTurnLength_thenTurnStartedEvent() {
-        when(mode.gameInterval()).thenReturn(1f);
-        dominion.createEntity(new TurnTimer());
-        turnStartSystem.run(1.5f);
+        dominion.createEntity(new TurnTimer(0.3f, 0.2f));
+        turnStartSystem.run(0.4f);
         assertThat(dominion.findCompositionsWith(TurnTimer.class))
-            .extracting(stopwatch -> stopwatch.seconds)
-            .containsExactly(0.5);
+            .singleElement()
+            .usingRecursiveComparison()
+            .isEqualTo(new TurnTimer(0.3f, 0.3f));
         verify(entityFactory).createTurnStartedEvent(dominion);
     }
 }
