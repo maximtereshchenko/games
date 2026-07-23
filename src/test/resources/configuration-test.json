@@ -43,7 +43,7 @@
         "HEAD": "00000000",
         "SEGMENT": "00000000",
         "FOOD": "00000000",
-        "FOOD_EATEN_COUNTER": "00000000",
+        "INTERFACE": "00000000",
         "WARP": "00000000"
       },
       "modeUnlockRequirements": {
@@ -72,7 +72,7 @@
         "HEAD": "00000000",
         "SEGMENT": "00000000",
         "FOOD": "00000000",
-        "FOOD_EATEN_COUNTER": "00000000",
+        "INTERFACE": "00000000",
         "WARP": "00000000"
       },
       "modeUnlockRequirements": {

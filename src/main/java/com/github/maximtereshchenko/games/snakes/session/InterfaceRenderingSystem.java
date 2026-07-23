@@ -35,27 +35,57 @@ final class InterfaceRenderingSystem implements System {
         viewport.apply();
         spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
         spriteBatch.begin();
+        scaled(0.05f, this::drawAirCounter);
+        scaled(0.1f, this::drawFoodEatenCounter);
+        spriteBatch.end();
+    }
+
+    private void scaled(float scale, Runnable runnable) {
         var bitmapFontData = bitmapFont.getData();
         var scaleX = bitmapFontData.scaleX;
         var scaleY = bitmapFontData.scaleY;
-        bitmapFontData.setScale(viewport.getWorldHeight() * 0.1f / bitmapFont.getCapHeight());
+        bitmapFontData.setScale(viewport.getWorldHeight() * scale / bitmapFont.getCapHeight());
+        runnable.run();
+        bitmapFontData.setScale(scaleX, scaleY);
+    }
+
+    private void drawFoodEatenCounter() {
         for (var result : dominion.findEntitiesWith(Colored.class, FoodEatenCounter.class)) {
-            var glyphLayout = new GlyphLayout(
-                bitmapFont,
+            var glyphLayout = glyphLayout(
                 String.valueOf(result.comp2().value),
-                mode.palette().get(result.comp1()),
-                0,
-                Align.left,
-                false
+                result.comp1()
             );
             bitmapFont.draw(
                 spriteBatch,
                 glyphLayout,
                 (viewport.getWorldWidth() - glyphLayout.width) / 2,
-                viewport.getWorldHeight()
+                viewport.getWorldHeight() - 35
             );
         }
-        bitmapFontData.setScale(scaleX, scaleY);
-        spriteBatch.end();
+    }
+
+    private void drawAirCounter() {
+        for (var result : dominion.findEntitiesWith(Colored.class, AirCounter.class)) {
+            bitmapFont.draw(
+                spriteBatch,
+                glyphLayout(
+                    "AIR: " + result.comp2().value,
+                    result.comp1()
+                ),
+                45,
+                viewport.getWorldHeight() - 40
+            );
+        }
+    }
+
+    private GlyphLayout glyphLayout(String text, Colored colored) {
+        return new GlyphLayout(
+            bitmapFont,
+            text,
+            mode.palette().get(colored),
+            0,
+            Align.left,
+            false
+        );
     }
 }

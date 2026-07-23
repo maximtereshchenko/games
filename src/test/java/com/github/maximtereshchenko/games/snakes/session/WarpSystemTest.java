@@ -42,8 +42,8 @@ final class WarpSystemTest {
             .singleElement()
             .extracting(
                 Results.With4::comp2,
-                results -> results.comp3().value,
-                results -> results.comp4().value
+                result -> result.comp3().value,
+                result -> result.comp4().value
             )
             .containsExactly(
                 new Position(1, 1),
@@ -84,8 +84,8 @@ final class WarpSystemTest {
             .singleElement()
             .extracting(
                 Results.With4::comp2,
-                results -> results.comp3().value,
-                results -> results.comp4().value
+                result -> result.comp3().value,
+                result -> result.comp4().value
             )
             .containsExactly(
                 new Position(0, 0),
@@ -126,8 +126,8 @@ final class WarpSystemTest {
             .singleElement()
             .extracting(
                 Results.With4::comp2,
-                results -> results.comp3().value,
-                results -> results.comp4().value
+                result -> result.comp3().value,
+                result -> result.comp4().value
             )
             .containsExactly(
                 new Position(0, 0),

@@ -65,11 +65,11 @@
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.FoodEatenCounter",
-            "value": 3
+            "value": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
-            "value": "FOOD_EATEN_COUNTER"
+            "value": "INTERFACE"
           }
         ],
         [
@@ -9999,7 +9999,7 @@
         "HEAD": "33824dff",
         "SEGMENT": "66ce81ff",
         "FOOD": "33824dff",
-        "FOOD_EATEN_COUNTER": "454248ff",
+        "INTERFACE": "454248ff",
         "WARP": "64b6b0ff"
       },
       "modeUnlockRequirements": {
@@ -10051,11 +10051,11 @@
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.FoodEatenCounter",
-            "value": 3
+            "value": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
-            "value": "FOOD_EATEN_COUNTER"
+            "value": "INTERFACE"
           }
         ],
         [
@@ -19989,7 +19989,7 @@
         "HEAD": "774422ff",
         "SEGMENT": "ddaa88ff",
         "FOOD": "774422ff",
-        "FOOD_EATEN_COUNTER": "175ca5ff",
+        "INTERFACE": "175ca5ff",
         "WARP": "aa9a99ff"
       },
       "modeUnlockRequirements": {
@@ -20041,11 +20041,11 @@
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.FoodEatenCounter",
-            "value": 3
+            "value": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
-            "value": "FOOD_EATEN_COUNTER"
+            "value": "INTERFACE"
           }
         ],
         [
@@ -29985,7 +29985,7 @@
         "HEAD": "452210ff",
         "SEGMENT": "885633ff",
         "FOOD": "452210ff",
-        "FOOD_EATEN_COUNTER": "000000ff",
+        "INTERFACE": "000000ff",
         "WARP": "000000ff"
       },
       "modeUnlockRequirements": {

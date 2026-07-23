@@ -36,8 +36,8 @@ final class GameRenderingSystem implements System {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         dominion.findEntitiesWith(Colored.class, Position.class)
             .stream()
-            .sorted(Comparator.comparing(results -> !results.entity().has(Background.class)))
-            .forEach(results -> draw(results.comp1(), results.comp2()));
+            .sorted(Comparator.comparing(result -> !result.entity().has(Background.class)))
+            .forEach(result -> draw(result.comp1(), result.comp2()));
         shapeRenderer.end();
     }
 

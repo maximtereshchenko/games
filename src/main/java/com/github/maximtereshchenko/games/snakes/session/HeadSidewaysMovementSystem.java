@@ -13,14 +13,14 @@ final class HeadSidewaysMovementSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var results : dominion.findEntitiesWith(Head.class, Timer.class, SidewaysMovement.class, Position.class, CurrentForwardDirection.class)) {
-            var headSidewaysDirection = results.comp3();
-            if (results.comp2().turnsRemaining != 0) {
+        for (var result : dominion.findEntitiesWith(Head.class, Timer.class, SidewaysMovement.class, Position.class, CurrentForwardDirection.class)) {
+            var headSidewaysDirection = result.comp3();
+            if (result.comp2().turnsRemaining != 0) {
                 continue;
             }
-            results.comp4()
+            result.comp4()
                 .move(
-                    results.comp5()
+                    result.comp5()
                         .value
                         .relative(relativeDirection(headSidewaysDirection))
                 );

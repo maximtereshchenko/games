@@ -64,7 +64,7 @@ final class ConfigurationTest {
                                     Colored.HEAD, color,
                                     Colored.SEGMENT, color,
                                     Colored.FOOD, color,
-                                    Colored.FOOD_EATEN_COUNTER, color,
+                                    Colored.INTERFACE, color,
                                     Colored.WARP, color
                                 ),
                                 new ModeUnlockRequirements(
@@ -84,7 +84,7 @@ final class ConfigurationTest {
                                     Colored.HEAD, color,
                                     Colored.SEGMENT, color,
                                     Colored.FOOD, color,
-                                    Colored.FOOD_EATEN_COUNTER, color,
+                                    Colored.INTERFACE, color,
                                     Colored.WARP, color
                                 ),
                                 new ModeUnlockRequirements(

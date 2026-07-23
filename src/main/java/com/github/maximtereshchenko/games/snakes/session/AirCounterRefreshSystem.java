@@ -13,9 +13,9 @@ final class AirCounterRefreshSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var headResults : dominion.findEntitiesWith(Head.class, Position.class)) {
-            for (var airResults : dominion.findEntitiesWith(Air.class, Position.class)) {
-                if (headResults.comp2().equals(airResults.comp2())) {
+        for (var headResult : dominion.findEntitiesWith(Head.class, Position.class)) {
+            for (var airResult : dominion.findEntitiesWith(Air.class, Position.class)) {
+                if (headResult.comp2().equals(airResult.comp2())) {
                     for (var airCounter : dominion.findCompositionsWith(AirCounter.class)) {
                         airCounter.value = airCounter.capacity;
                     }

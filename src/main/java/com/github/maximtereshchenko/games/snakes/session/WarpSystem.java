@@ -14,14 +14,14 @@ final class WarpSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var warpResults : dominion.findEntitiesWith(Warp.class, Position.class)) {
-            for (var headResults : dominion.findEntitiesWith(Head.class, Position.class, CurrentForwardDirection.class, NextForwardDirection.class)) {
-                if (warpResults.comp2().equals(headResults.comp2())) {
-                    var warp = warpResults.comp1();
-                    setPosition(headResults.entity(), warp.position());
+        for (var warpResult : dominion.findEntitiesWith(Warp.class, Position.class)) {
+            for (var headResult : dominion.findEntitiesWith(Head.class, Position.class, CurrentForwardDirection.class, NextForwardDirection.class)) {
+                if (warpResult.comp2().equals(headResult.comp2())) {
+                    var warp = warpResult.comp1();
+                    setPosition(headResult.entity(), warp.position());
                     changeDirection(
-                        headResults.comp3(),
-                        headResults.comp4(),
+                        headResult.comp3(),
+                        headResult.comp4(),
                         warp.relativeDirection()
                     );
                 }
@@ -31,7 +31,7 @@ final class WarpSystem extends TurnBasedSystem {
 
     private void setPosition(Entity entity, Position position) {
         entity.removeType(Position.class);
-        entity.add(position);
+        entity.add(new Position(position));
     }
 
     private void changeDirection(
