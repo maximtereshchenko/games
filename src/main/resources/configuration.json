@@ -9944,6 +9944,14 @@
             "value": "RIGHT"
           },
           {
+            "type": "com.github.maximtereshchenko.games.snakes.session.LegalRelativeDirections",
+            "value": [
+              "SAME",
+              "LEFT",
+              "RIGHT"
+            ]
+          },
+          {
             "type": "com.github.maximtereshchenko.games.snakes.session.Position",
             "x": 11,
             "y": 6
@@ -19930,8 +19938,11 @@
             "value": "RIGHT"
           },
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.LegalRelativeDirection",
-            "value": "RIGHT"
+            "type": "com.github.maximtereshchenko.games.snakes.session.LegalRelativeDirections",
+            "value": [
+              "SAME",
+              "RIGHT"
+            ]
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Position",
@@ -29918,6 +29929,14 @@
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.NextForwardDirection",
             "value": "RIGHT"
+          },
+          {
+            "type": "com.github.maximtereshchenko.games.snakes.session.LegalRelativeDirections",
+            "value": [
+              "SAME",
+              "LEFT",
+              "RIGHT"
+            ]
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.SidewaysMovement",

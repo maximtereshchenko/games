@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
 
@@ -14,20 +13,17 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class SnakeSessionFactory {
 
-    private final Configuration configuration;
     private final ShapeRenderer shapeRenderer;
     private final SpriteBatch spriteBatch;
     private final AssetManager assetManager;
     private final Assets assets;
 
     public SnakeSessionFactory(
-        Configuration configuration,
         ShapeRenderer shapeRenderer,
         SpriteBatch spriteBatch,
         AssetManager assetManager,
         Assets assets
     ) {
-        this.configuration = configuration;
         this.shapeRenderer = shapeRenderer;
         this.spriteBatch = spriteBatch;
         this.assetManager = assetManager;
@@ -59,6 +55,8 @@ public final class SnakeSessionFactory {
             new HeadForwardMovementSystem(dominion),
             new HeadSidewaysMovementSystem(dominion),
             new WarpSystem(dominion),
+            new AirCounterDecrementSystem(dominion),
+            new AirCounterRefreshSystem(dominion),
             new FoodEatingSystem(dominion, entityFactory),
             new FoodEatenCounterSystem(dominion),
             new SegmentTimersIncrementSystem(dominion),

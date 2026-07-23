@@ -3,6 +3,8 @@ package com.github.maximtereshchenko.games.snakes.session;
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class NextForwardDirectionSystemTest {
@@ -16,7 +18,7 @@ final class NextForwardDirectionSystemTest {
         dominion.createEntity(
             new CurrentForwardDirection(Direction.RIGHT),
             new NextForwardDirection(Direction.UP),
-            new LegalRelativeDirection(RelativeDirection.RIGHT)
+            new LegalRelativeDirections(Set.of(RelativeDirection.RIGHT))
         );
         nextDirectionSystem.run(0);
         assertThat(
@@ -35,7 +37,7 @@ final class NextForwardDirectionSystemTest {
         dominion.createEntity(
             new CurrentForwardDirection(Direction.UP),
             new NextForwardDirection(Direction.RIGHT),
-            new LegalRelativeDirection(RelativeDirection.LEFT)
+            new LegalRelativeDirections(Set.of(RelativeDirection.LEFT))
         );
         dominion.createEntity(TurnStarted.INSTANCE);
         nextDirectionSystem.run(0);
@@ -55,7 +57,7 @@ final class NextForwardDirectionSystemTest {
         dominion.createEntity(
             new CurrentForwardDirection(Direction.UP),
             new NextForwardDirection(Direction.RIGHT),
-            new LegalRelativeDirection(RelativeDirection.RIGHT)
+            new LegalRelativeDirections(Set.of(RelativeDirection.RIGHT))
         );
         dominion.createEntity(TurnStarted.INSTANCE);
         nextDirectionSystem.run(0);

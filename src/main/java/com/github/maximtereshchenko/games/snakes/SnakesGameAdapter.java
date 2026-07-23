@@ -55,7 +55,6 @@ final class SnakesGameAdapter implements ApplicationListener {
             applicationEvents,
             userProfile,
             new SnakeSessionFactory(
-                configuration,
                 shapeRenderer,
                 spriteBatch,
                 assetManager,
