@@ -20,7 +20,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(
             Head.INSTANCE,
             new Timer(0, 0),
-            new SidewaysDirection(4, 0),
+            new SidewaysMovement(4, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
         );
@@ -29,7 +29,7 @@ final class HeadSidewaysMovementSystemTest {
             dominion.findEntitiesWith(
                 Head.class,
                 Timer.class,
-                SidewaysDirection.class,
+                SidewaysMovement.class,
                 Position.class,
                 CurrentForwardDirection.class
             )
@@ -48,7 +48,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(
             Head.INSTANCE,
             new Timer(1, 1),
-            new SidewaysDirection(4, 0),
+            new SidewaysMovement(4, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
         );
@@ -58,36 +58,7 @@ final class HeadSidewaysMovementSystemTest {
             dominion.findEntitiesWith(
                 Head.class,
                 Timer.class,
-                SidewaysDirection.class,
-                Position.class,
-                CurrentForwardDirection.class
-            )
-        )
-            .singleElement()
-            .extracting(
-                Results.With5::comp4,
-                result -> result.comp3().index
-            )
-            .containsExactly(new Position(1, 1), 0);
-    }
-
-    @Test
-    void givenCycleZero_thenNoChanges() {
-        dominion.createEntity(new WorldDimensions(3, 3));
-        dominion.createEntity(
-            Head.INSTANCE,
-            new Timer(0, 0),
-            new SidewaysDirection(0, 0),
-            new Position(1, 1),
-            new CurrentForwardDirection(Direction.UP)
-        );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headSidewaysMovementSystem.run(0);
-        assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Timer.class,
-                SidewaysDirection.class,
+                SidewaysMovement.class,
                 Position.class,
                 CurrentForwardDirection.class
             )
@@ -123,7 +94,7 @@ final class HeadSidewaysMovementSystemTest {
         dominion.createEntity(
             Head.INSTANCE,
             new Timer(0, 0),
-            new SidewaysDirection(cycle, sidewaysIndex),
+            new SidewaysMovement(cycle, sidewaysIndex),
             new Position(initialX, initialY),
             new CurrentForwardDirection(direction)
         );
@@ -133,7 +104,7 @@ final class HeadSidewaysMovementSystemTest {
             dominion.findEntitiesWith(
                 Head.class,
                 Timer.class,
-                SidewaysDirection.class,
+                SidewaysMovement.class,
                 Position.class,
                 CurrentForwardDirection.class
             )

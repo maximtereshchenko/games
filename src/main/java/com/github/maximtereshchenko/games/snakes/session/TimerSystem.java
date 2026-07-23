@@ -15,7 +15,7 @@ final class TimerSystem extends TurnBasedSystem {
     void onTurnStarted() {
         for (var timer : dominion.findCompositionsWith(Timer.class)) {
             if (timer.turnsRemaining == 0) {
-                timer.turnsRemaining = timer.turns;
+                timer.turnsRemaining = timer.period;
             }
             timer.turnsRemaining--;
         }

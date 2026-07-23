@@ -20,7 +20,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
                 entityFactory.createSegment(
                     dominion,
                     new Position(result.comp2()),
-                    initialSegmentTimer.value
+                    initialSegmentTimer.duration
                 );
             }
         }

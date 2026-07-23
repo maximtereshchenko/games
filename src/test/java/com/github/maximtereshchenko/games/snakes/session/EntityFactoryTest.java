@@ -2,7 +2,11 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentCaptor.captor;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -10,17 +14,22 @@ final class EntityFactoryTest {
 
     private final Dominion dominion = mock();
     private final EntityFactory entityFactory = new EntityFactory();
+    private final ArgumentCaptor<Timer> timerCaptor = captor();
 
     @Test
     void whenCreateSegment_thenSegmentEntityCreated() {
-        entityFactory.createSegment(dominion, new Position(1, 2), 4);
+        var position = new Position(1, 2);
+        entityFactory.createSegment(dominion, position, 4);
         verify(dominion)
             .createEntity(
-                Segment.INSTANCE,
-                new Position(1, 2),
-                new Timer(4, 4),
-                Colored.SEGMENT
+                eq(Segment.INSTANCE),
+                eq(position),
+                timerCaptor.capture(),
+                eq(Colored.SEGMENT)
             );
+        assertThat(timerCaptor.getValue())
+            .usingRecursiveComparison()
+            .isEqualTo(new Timer(4, 4));
     }
 
     @Test

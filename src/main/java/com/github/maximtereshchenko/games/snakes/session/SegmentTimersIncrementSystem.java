@@ -14,9 +14,9 @@ final class SegmentTimersIncrementSystem extends OnFoodEatenEventSystem {
     @Override
     void onFoodEaten() {
         for (var initialSegmentTimer : dominion.findCompositionsWith(SegmentTimerDefinition.class)) {
-            initialSegmentTimer.value += initialSegmentTimer.step;
+            initialSegmentTimer.duration += initialSegmentTimer.incrementStep;
             for (var results : dominion.findEntitiesWith(Timer.class, Segment.class)) {
-                results.comp1().turnsRemaining += initialSegmentTimer.step;
+                results.comp1().turnsRemaining += initialSegmentTimer.incrementStep;
             }
         }
     }

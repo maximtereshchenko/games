@@ -53,8 +53,8 @@
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.SegmentTimerDefinition",
-            "value": 3,
-            "step": 3
+            "duration": 3,
+            "incrementStep": 3
           }
         ],
         [
@@ -9944,19 +9944,9 @@
             "value": "RIGHT"
           },
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.SidewaysDirection",
-            "cycle": 0,
-            "index": 0
-          },
-          {
             "type": "com.github.maximtereshchenko.games.snakes.session.Position",
             "x": 11,
             "y": 6
-          },
-          {
-            "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 0,
-            "turnsRemaining": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -9975,7 +9965,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 2,
+            "period": 2,
             "turnsRemaining": 2
           },
           {
@@ -9995,7 +9985,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 1,
+            "period": 1,
             "turnsRemaining": 1
           },
           {
@@ -10054,8 +10044,8 @@
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.SegmentTimerDefinition",
-            "value": 3,
-            "step": 3
+            "duration": 3,
+            "incrementStep": 3
           }
         ],
         [
@@ -19945,19 +19935,9 @@
             "value": "RIGHT"
           },
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.SidewaysDirection",
-            "cycle": 0,
-            "index": 0
-          },
-          {
             "type": "com.github.maximtereshchenko.games.snakes.session.Position",
             "x": 11,
             "y": 6
-          },
-          {
-            "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 0,
-            "turnsRemaining": 0
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Colored",
@@ -19976,7 +19956,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 2,
+            "period": 2,
             "turnsRemaining": 2
           },
           {
@@ -19996,7 +19976,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 1,
+            "period": 1,
             "turnsRemaining": 1
           },
           {
@@ -20053,8 +20033,8 @@
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.SegmentTimerDefinition",
-            "value": 3,
-            "step": 3
+            "duration": 3,
+            "incrementStep": 3
           }
         ],
         [
@@ -29944,7 +29924,7 @@
             "value": "RIGHT"
           },
           {
-            "type": "com.github.maximtereshchenko.games.snakes.session.SidewaysDirection",
+            "type": "com.github.maximtereshchenko.games.snakes.session.SidewaysMovement",
             "cycle": 2,
             "index": 0
           },
@@ -29955,7 +29935,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 7,
+            "period": 7,
             "turnsRemaining": 7
           },
           {
@@ -29975,7 +29955,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 2,
+            "period": 2,
             "turnsRemaining": 2
           },
           {
@@ -29995,7 +29975,7 @@
           },
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Timer",
-            "turns": 1,
+            "period": 1,
             "turnsRemaining": 1
           },
           {

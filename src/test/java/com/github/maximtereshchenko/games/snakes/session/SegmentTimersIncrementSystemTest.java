@@ -19,10 +19,12 @@ final class SegmentTimersIncrementSystemTest {
         segmentTimersIncrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(SegmentTimerDefinition.class))
             .singleElement()
+            .usingRecursiveComparison()
             .isEqualTo(new SegmentTimerDefinition(1, 1));
         assertThat(dominion.findEntitiesWith(Timer.class, Segment.class))
             .singleElement()
             .extracting(Results.With2::comp1)
+            .usingRecursiveComparison()
             .isEqualTo(new Timer(1, 1));
     }
 
@@ -34,10 +36,12 @@ final class SegmentTimersIncrementSystemTest {
         segmentTimersIncrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(SegmentTimerDefinition.class))
             .singleElement()
+            .usingRecursiveComparison()
             .isEqualTo(new SegmentTimerDefinition(1, 1));
         assertThat(dominion.findEntitiesWith(Timer.class, Segment.class))
             .singleElement()
             .extracting(Results.With2::comp1)
+            .usingRecursiveComparison()
             .isEqualTo(new Timer(1, 1));
     }
 
@@ -50,10 +54,12 @@ final class SegmentTimersIncrementSystemTest {
         segmentTimersIncrementSystem.run(0);
         assertThat(dominion.findCompositionsWith(SegmentTimerDefinition.class))
             .singleElement()
+            .usingRecursiveComparison()
             .isEqualTo(new SegmentTimerDefinition(1, 2));
         assertThat(dominion.findEntitiesWith(Timer.class, Segment.class))
             .singleElement()
             .extracting(Results.With2::comp1)
+            .usingRecursiveComparison()
             .isEqualTo(new Timer(1, 2));
     }
 }
