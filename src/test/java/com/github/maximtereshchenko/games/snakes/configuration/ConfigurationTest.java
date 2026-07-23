@@ -41,8 +41,6 @@ final class ConfigurationTest {
                 .isEqualTo(
                     new Configuration(
                         "preferences",
-                        new WorldDimensions(1, 2),
-                        3,
                         new Assets(
                             new AssetDescriptor<>("skin", Skin.class),
                             new AssetDescriptor<>("loading", I18NBundle.class),
@@ -50,13 +48,15 @@ final class ConfigurationTest {
                             new AssetDescriptor<>("game", I18NBundle.class),
                             new AssetDescriptor<>("music", Music.class)
                         ),
-                        0.5f,
+                        0.1f,
                         List.of(
                             new Mode(
                                 "first",
-                                0.6f,
+                                new WorldDimensions(2, 3),
+                                0.4f,
+                                0.5f,
                                 List.<Object[]>of(
-                                    new Object[]{new Position(7, 8)}
+                                    new Object[]{new Position(6, 7)}
                                 ),
                                 Set.of(RelativeDirection.LEFT),
                                 Map.of(
@@ -68,13 +68,15 @@ final class ConfigurationTest {
                                     Colored.WARP, color
                                 ),
                                 new ModeUnlockRequirements(
-                                    Map.of(UserProfileStatistics.LAUNCHES, 9),
+                                    Map.of(UserProfileStatistics.LAUNCHES, 8),
                                     Map.of()
                                 )
                             ),
                             new Mode(
                                 "second",
-                                1.0f,
+                                new WorldDimensions(9, 10),
+                                1.1f,
+                                1.2f,
                                 List.<Object[]>of(
                                     new Object[]{Colored.HEAD}
                                 ),
@@ -89,7 +91,7 @@ final class ConfigurationTest {
                                 ),
                                 new ModeUnlockRequirements(
                                     Map.of(),
-                                    Map.of(SessionStatistics.LEFT_TURNS, 11)
+                                    Map.of(SessionStatistics.LEFT_TURNS, 13)
                                 )
                             )
                         )

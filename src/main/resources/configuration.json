@@ -1,10 +1,5 @@
 {
   "preferencesName": "com.github.maximtereshchenko.games.snakes.Snakes",
-  "worldDimensions": {
-    "width": 35,
-    "height": 18
-  },
-  "interfaceViewportHeight": 720,
   "assets": {
     "skin": {
       "fileName": "skin.json"
@@ -29,6 +24,11 @@
   "modes": [
     {
       "name": "classic",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
       "gameInterval": 0.125,
       "entities": [
         [
@@ -10024,6 +10024,11 @@
     },
     {
       "name": "viper",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
       "gameInterval": 0.125,
       "entities": [
         [
@@ -20017,6 +20022,11 @@
     },
     {
       "name": "sidewinder",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
       "gameInterval": 0.125,
       "entities": [
         [

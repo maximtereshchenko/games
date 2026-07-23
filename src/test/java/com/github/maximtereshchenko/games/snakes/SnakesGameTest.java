@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
-import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,12 +23,10 @@ final class SnakesGameTest {
     private final Screen screen = mock();
     private final ScreenFactory screenFactory = mock();
     private final Disposable disposable = mock();
-    private final WorldDimensions worldDimensions = new WorldDimensions(0, 0);
     private final UserProfile userProfile = mock();
     private final Mode mode = mock();
     private final SnakesGame snakesGame = new SnakesGame(
         screenFactory,
-        worldDimensions,
         Set.of(disposable),
         userProfile
     );
@@ -68,8 +65,7 @@ final class SnakesGameTest {
 
     @Test
     void whenModeSelected_thenSnakeSessionScreenShowed() {
-        when(screenFactory.snakeSessionScreen(worldDimensions, mode))
-            .thenReturn(screen);
+        when(screenFactory.snakeSessionScreen(mode)).thenReturn(screen);
         snakesGame.onEvent(new ModeSelected(mode));
         verify(screen).show();
         verify(screen).resize(anyInt(), anyInt());

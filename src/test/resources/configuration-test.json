@@ -1,10 +1,5 @@
 {
   "preferencesName": "preferences",
-  "worldDimensions": {
-    "width": 1,
-    "height": 2
-  },
-  "interfaceViewportHeight": 3,
   "assets": {
     "skin": {
       "fileName": "skin"
@@ -25,17 +20,22 @@
       "fileName": "music"
     }
   },
-  "defaultMusicVolume": 0.5,
+  "defaultMusicVolume": 0.1,
   "modes": [
     {
       "name": "first",
-      "gameInterval": 0.6,
+      "worldDimensions": {
+        "width": 2,
+        "height": 3
+      },
+      "interfaceViewportHeight": 0.4,
+      "gameInterval": 0.5,
       "entities": [
         [
           {
             "type": "com.github.maximtereshchenko.games.snakes.session.Position",
-            "x": 7,
-            "y": 8
+            "x": 6,
+            "y": 7
           }
         ]
       ],
@@ -52,13 +52,18 @@
       },
       "modeUnlockRequirements": {
         "userProfileThresholds": {
-          "LAUNCHES": 9
+          "LAUNCHES": 8
         }
       }
     },
     {
       "name": "second",
-      "gameInterval": 1.0,
+      "worldDimensions": {
+        "width": 9,
+        "height": 10
+      },
+      "interfaceViewportHeight": 1.1,
+      "gameInterval": 1.2,
       "entities": [
         [
           {
@@ -80,7 +85,7 @@
       },
       "modeUnlockRequirements": {
         "sessionThresholds": {
-          "LEFT_TURNS": 11
+          "LEFT_TURNS": 13
         }
       }
     }

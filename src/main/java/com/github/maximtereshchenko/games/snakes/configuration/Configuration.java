@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.snakes.configuration;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 import tools.jackson.databind.DefaultTyping;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.cfg.ConstructorDetector;
@@ -14,8 +13,6 @@ import java.util.List;
 
 public record Configuration(
     String preferencesName,
-    WorldDimensions worldDimensions,
-    float interfaceViewportHeight,
     Assets assets,
     float defaultMusicVolume,
     List<Mode> modes

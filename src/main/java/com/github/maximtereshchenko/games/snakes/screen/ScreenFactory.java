@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.maximtereshchenko.games.snakes.UserProfile;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.screen.view.CreditsView;
@@ -28,7 +27,6 @@ import com.github.maximtereshchenko.games.snakes.screen.view.main.NavigationView
 import com.github.maximtereshchenko.games.snakes.screen.view.settings.SettingsView;
 import com.github.maximtereshchenko.games.snakes.session.EntityFactory;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
-import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 
 import java.util.List;
 import java.util.Locale;
@@ -37,7 +35,6 @@ import java.util.Set;
 //It is impossibly hard to test LibGDX UI. Therefore, this class remains untested
 public final class ScreenFactory {
 
-    private final Configuration configuration;
     private final AssetManager assetManager;
     private final Assets assets;
     private final SpriteBatch spriteBatch;
@@ -48,7 +45,6 @@ public final class ScreenFactory {
     private final List<Mode> modes;
 
     public ScreenFactory(
-        Configuration configuration,
         AssetManager assetManager,
         Assets assets,
         SpriteBatch spriteBatch,
@@ -58,7 +54,6 @@ public final class ScreenFactory {
         EntityFactory entityFactory,
         List<Mode> modes
     ) {
-        this.configuration = configuration;
         this.assetManager = assetManager;
         this.assets = assets;
         this.spriteBatch = spriteBatch;
@@ -129,15 +124,13 @@ public final class ScreenFactory {
         );
     }
 
-    public Screen snakeSessionScreen(
-        WorldDimensions worldDimensions,
-        Mode mode
-    ) {
+    public Screen snakeSessionScreen(Mode mode) {
         var dominion = snakeSessionFactory.dominion(mode);
+        var worldDimensions = mode.worldDimensions();
         var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
         var interfaceViewport = new FitViewport(
-            configuration.interfaceViewportHeight() * worldDimensions.width() / worldDimensions.height(),
-            configuration.interfaceViewportHeight()
+            mode.interfaceViewportHeight() * worldDimensions.width() / worldDimensions.height(),
+            mode.interfaceViewportHeight()
         );
         return new SnakeSessionScreen(
             Set.of(gameViewport, interfaceViewport),

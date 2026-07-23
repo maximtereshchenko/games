@@ -4,25 +4,21 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.Disposable;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
-import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 
 import java.util.Set;
 
 final class SnakesGame extends Game implements Subscriber {
 
     private final ScreenFactory screenFactory;
-    private final WorldDimensions worldDimensions;
     private final Set<Disposable> disposables;
     private final UserProfile userProfile;
 
     SnakesGame(
         ScreenFactory screenFactory,
-        WorldDimensions worldDimensions,
         Set<Disposable> disposables,
         UserProfile userProfile
     ) {
         this.screenFactory = screenFactory;
-        this.worldDimensions = worldDimensions;
         this.disposables = disposables;
         this.userProfile = userProfile;
     }
@@ -53,10 +49,7 @@ final class SnakesGame extends Game implements Subscriber {
                 screenFactory.mainScreen()
             );
             case ModeSelected modeSelected -> setScreen(
-                screenFactory.snakeSessionScreen(
-                    worldDimensions,
-                    modeSelected.mode()
-                )
+                screenFactory.snakeSessionScreen(modeSelected.mode())
             );
             case StatisticsRequested _ -> setScreen(
                 screenFactory.statisticsScreen()

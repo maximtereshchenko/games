@@ -49,7 +49,6 @@ final class SnakesGameAdapter implements ApplicationListener {
         applicationEvents.subscribe(new IncrementStatistics(userProfile));
         applicationEvents.subscribe(new UnlockModes(userProfile, modes));
         var screenFactory = new ScreenFactory(
-            configuration,
             assetManager,
             assets,
             spriteBatch,
@@ -67,7 +66,6 @@ final class SnakesGameAdapter implements ApplicationListener {
         );
         original = new SnakesGame(
             screenFactory,
-            configuration.worldDimensions(),
             Set.of(
                 shapeRenderer,
                 spriteBatch,
