@@ -38,9 +38,6 @@
           }
         ]
       ],
-      "legalTurnDirections": [
-        "LEFT"
-      ],
       "palette": {
         "BACKGROUND": "00000000",
         "HEAD": "00000000",
@@ -69,9 +66,6 @@
             "value": "HEAD"
           }
         ]
-      ],
-      "legalTurnDirections": [
-        "RIGHT"
       ],
       "palette": {
         "BACKGROUND": "00000000",

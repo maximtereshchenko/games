@@ -8,7 +8,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.snakes.UserProfileStatistics;
-import com.github.maximtereshchenko.games.snakes.session.*;
+import com.github.maximtereshchenko.games.snakes.session.Colored;
+import com.github.maximtereshchenko.games.snakes.session.Position;
+import com.github.maximtereshchenko.games.snakes.session.SessionStatistics;
+import com.github.maximtereshchenko.games.snakes.session.WorldDimensions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,7 +19,6 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,7 +59,6 @@ final class ConfigurationTest {
                                 List.<Object[]>of(
                                     new Object[]{new Position(6, 7)}
                                 ),
-                                Set.of(RelativeDirection.LEFT),
                                 Map.of(
                                     Colored.BACKGROUND, color,
                                     Colored.HEAD, color,
@@ -78,7 +79,6 @@ final class ConfigurationTest {
                                 List.<Object[]>of(
                                     new Object[]{Colored.HEAD}
                                 ),
-                                Set.of(RelativeDirection.RIGHT),
                                 Map.of(
                                     Colored.BACKGROUND, color,
                                     Colored.HEAD, color,

@@ -9994,11 +9994,6 @@
           }
         ]
       ],
-      "legalTurnDirections": [
-        "SAME",
-        "LEFT",
-        "RIGHT"
-      ],
       "palette": {
         "BACKGROUND": "ded4baff",
         "HEAD": "33824dff",
@@ -19935,6 +19930,10 @@
             "value": "RIGHT"
           },
           {
+            "type": "com.github.maximtereshchenko.games.snakes.session.LegalRelativeDirection",
+            "value": "RIGHT"
+          },
+          {
             "type": "com.github.maximtereshchenko.games.snakes.session.Position",
             "x": 11,
             "y": 6
@@ -19984,9 +19983,6 @@
             "value": "SEGMENT"
           }
         ]
-      ],
-      "legalTurnDirections": [
-        "RIGHT"
       ],
       "palette": {
         "BACKGROUND": "eeeeddff",
@@ -29983,11 +29979,6 @@
             "value": "SEGMENT"
           }
         ]
-      ],
-      "legalTurnDirections": [
-        "SAME",
-        "LEFT",
-        "RIGHT"
       ],
       "palette": {
         "BACKGROUND": "ffeeefff",

@@ -53,7 +53,7 @@ public final class SnakeSessionFactory {
             new InputSystem(dominion),
             new TurnStartSystem(dominion, entityFactory),
             new SegmentSpawningSystem(dominion, entityFactory),
-            new NextForwardDirectionSystem(dominion, mode),
+            new NextForwardDirectionSystem(dominion),
             new SessionStatisticsSystem(dominion),
             new CurrentForwardDirectionSystem(dominion),
             new HeadForwardMovementSystem(dominion),
