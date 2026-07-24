@@ -43,6 +43,10 @@ public final class SnakeSessionFactory {
             Config.getPropertyName(name, Config.CLASS_INDEX_BIT),
             "24"
         );
+        setProperty(
+            Config.getPropertyName(name, Config.CHUNK_BIT),
+            "16"
+        );
         var dominion = Dominion.create(name);
         for (var components : mode.entities()) {
             dominion.createEntity(components);
