@@ -12,7 +12,6 @@ import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.snakes.session.EntityFactory;
 import com.github.maximtereshchenko.games.snakes.session.SnakeSessionFactory;
-import dev.dominion.ecs.engine.system.Config;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -23,10 +22,6 @@ final class SnakesGameAdapter implements ApplicationListener {
     private SnakesGame original;
 
     static void main() {
-        java.lang.System.setProperty(
-            Config.getPropertyName(Config.SHOW_BANNER),
-            Boolean.toString(false)
-        );
         new Lwjgl3Application(new SnakesGameAdapter());
     }
 

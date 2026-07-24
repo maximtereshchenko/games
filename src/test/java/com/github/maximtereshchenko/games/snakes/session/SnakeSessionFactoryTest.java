@@ -34,7 +34,7 @@ final class SnakeSessionFactoryTest {
     @Test
     void whenDominion_thenDominionWithEntities() {
         try (var dominionStatic = mockStatic(Dominion.class)) {
-            dominionStatic.when(Dominion::create).thenReturn(dominion);
+            dominionStatic.when(() -> Dominion.create("snakes")).thenReturn(dominion);
             var components = new Object[]{new Object()};
             when(mode.entities()).thenReturn(List.<Object[]>of(components));
             assertThat(snakeSessionFactory.dominion(mode))

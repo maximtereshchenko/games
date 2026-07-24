@@ -7,9 +7,12 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import dev.dominion.ecs.api.Dominion;
+import dev.dominion.ecs.engine.system.Config;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static java.lang.System.setProperty;
 
 public final class SnakeSessionFactory {
 
@@ -31,7 +34,16 @@ public final class SnakeSessionFactory {
     }
 
     public Dominion dominion(Mode mode) {
-        var dominion = Dominion.create();
+        var name = "snakes";
+        setProperty(
+            Config.getPropertyName(Config.SHOW_BANNER),
+            Boolean.toString(false)
+        );
+        setProperty(
+            Config.getPropertyName(name, Config.CLASS_INDEX_BIT),
+            "24"
+        );
+        var dominion = Dominion.create(name);
         for (var components : mode.entities()) {
             dominion.createEntity(components);
         }
@@ -55,6 +67,7 @@ public final class SnakeSessionFactory {
             new HeadForwardMovementSystem(dominion),
             new HeadSidewaysMovementSystem(dominion),
             new WarpSystem(dominion),
+            new HeadCollisionTargetSystem(dominion),
             new AirCounterDecrementSystem(dominion),
             new AirCounterRefreshSystem(dominion),
             new FoodEatingSystem(dominion, entityFactory),
@@ -70,6 +83,7 @@ public final class SnakeSessionFactory {
                 1
             ),
             new EventRemovalSystem(dominion),
+            new HeadCollisionTargetRemovalSystem(dominion),
             new GameRenderingSystem(
                 gameViewport,
                 shapeRenderer,
