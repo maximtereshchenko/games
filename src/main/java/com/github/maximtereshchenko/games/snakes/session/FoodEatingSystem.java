@@ -15,13 +15,9 @@ final class FoodEatingSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var foodResult : dominion.findEntitiesWith(Food.class, Position.class)) {
-            for (var headResult : dominion.findEntitiesWith(Head.class, Position.class)) {
-                if (headResult.comp2().equals(foodResult.comp2())) {
-                    dominion.deleteEntity(foodResult.entity());
-                    entityFactory.createFoodEatenEvent(dominion);
-                }
-            }
+        for (var foodResult : dominion.findEntitiesWith(Food.class, HeadCollisionTarget.class)) {
+            dominion.deleteEntity(foodResult.entity());
+            entityFactory.createFoodEatenEvent(dominion);
         }
     }
 }
