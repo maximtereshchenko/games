@@ -13,14 +13,9 @@ final class SessionEndSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted() {
-        for (var segmentResult : dominion.findEntitiesWith(Segment.class, Position.class)) {
-            for (var headResult : dominion.findEntitiesWith(Head.class, Position.class)) {
-                if (segmentResult.comp2().equals(headResult.comp2())) {
-                    for (var game : dominion.findCompositionsWith(Session.class)) {
-                        game.status = Session.Status.ENDED;
-                    }
-                }
+        if (dominion.findEntitiesWith(Segment.class, HeadCollisionTarget.class).iterator().hasNext())
+            for (var game : dominion.findCompositionsWith(Session.class)) {
+                game.status = Session.Status.ENDED;
             }
-        }
     }
 }
