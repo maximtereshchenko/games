@@ -1,46 +1,55 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodEatenCounterSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final FoodEatenCounterSystem foodEatenCounterSystem = new FoodEatenCounterSystem(
-        dominion
+        world
     );
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(foodEatenCounterSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(FoodEaten.INSTANCE);
-        dominion.createEntity(new FoodEatenCounter(1));
-        var before = dominion.findAllEntities().stream().toList();
-        foodEatenCounterSystem.run(0);
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        world.addComponents(world.createEntity(), FoodEaten.INSTANCE);
+        world.addComponents(world.createEntity(), new FoodEatenCounter(1));
+        world.update(0);
+        assertThat(world.entities(new Query().all(FoodEatenCounter.class)))
+            .singleElement()
+            .extracting(entity -> entity.component(FoodEatenCounter.class).value)
+            .isEqualTo(1);
     }
 
     @Test
     void givenFoodEaten_thenFoodEatenCounterIncremented() {
-        dominion.createEntity(FoodEaten.INSTANCE);
-        dominion.createEntity(new FoodEatenCounter(1));
-        dominion.createEntity(TurnStarted.INSTANCE);
-        foodEatenCounterSystem.run(0);
-        assertThat(dominion.findCompositionsWith(FoodEatenCounter.class))
+        world.addComponents(world.createEntity(), FoodEaten.INSTANCE);
+        world.addComponents(world.createEntity(), new FoodEatenCounter(1));
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(FoodEatenCounter.class)))
             .singleElement()
-            .extracting(result -> result.value)
+            .extracting(entity -> entity.component(FoodEatenCounter.class).value)
             .isEqualTo(2);
     }
 
     @Test
     void givenNoFoodEaten_thenFoodEatenCounterNotIncremented() {
-        dominion.createEntity(new FoodEatenCounter(1));
-        dominion.createEntity(TurnStarted.INSTANCE);
-        foodEatenCounterSystem.run(0);
-        assertThat(dominion.findCompositionsWith(FoodEatenCounter.class))
+        world.addComponents(world.createEntity(), new FoodEatenCounter(1));
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(FoodEatenCounter.class)))
             .singleElement()
-            .extracting(result -> result.value)
+            .extracting(entity -> entity.component(FoodEatenCounter.class).value)
             .isEqualTo(1);
     }
 }

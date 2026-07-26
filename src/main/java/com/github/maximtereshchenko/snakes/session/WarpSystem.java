@@ -1,44 +1,43 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Entity;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class WarpSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> warpEntities;
+    private final Iterable<Entity> headEntities;
 
-    WarpSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    WarpSystem(World world) {
+        super(world);
+        this.warpEntities = world.entities(
+            new Query().all(Warp.class, HeadCollisionTarget.class)
+        );
+        this.headEntities = world.entities(
+            new Query()
+                .all(
+                    Head.class,
+                    Position.class,
+                    CurrentForwardDirection.class,
+                    NextForwardDirection.class
+                )
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var warpResult : dominion.findEntitiesWith(Warp.class, HeadCollisionTarget.class)) {
-            for (var headResult : dominion.findEntitiesWith(Head.class, Position.class, CurrentForwardDirection.class, NextForwardDirection.class)) {
-                var warp = warpResult.comp1();
-                setPosition(headResult.entity(), warp.position());
-                changeDirection(
-                    headResult.comp3(),
-                    headResult.comp4(),
-                    warp.relativeDirection()
-                );
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var warpEntity : warpEntities) {
+            for (var head : headEntities) {
+                var warp = warpEntity.component(Warp.class);
+                worldEdit.addComponents(head.id(), new Position(warp.position()));
+                var currentForwardDirection = head.component(CurrentForwardDirection.class);
+                currentForwardDirection.value = currentForwardDirection.value
+                    .relative(warp.relativeDirection());
+                head.component(NextForwardDirection.class).value =
+                    currentForwardDirection.value;
             }
         }
-    }
-
-    private void setPosition(Entity entity, Position position) {
-        entity.removeType(Position.class);
-        entity.add(new Position(position));
-    }
-
-    private void changeDirection(
-        CurrentForwardDirection currentForwardDirection,
-        NextForwardDirection nextForwardDirection,
-        RelativeDirection relativeDirection
-    ) {
-        currentForwardDirection.value = currentForwardDirection.value
-            .relative(relativeDirection);
-        nextForwardDirection.value = currentForwardDirection.value;
     }
 }

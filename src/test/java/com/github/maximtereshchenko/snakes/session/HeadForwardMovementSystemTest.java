@@ -1,7 +1,8 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -10,28 +11,40 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class HeadForwardMovementSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final HeadForwardMovementSystem headForwardMovementSystem =
-        new HeadForwardMovementSystem(dominion);
+        new HeadForwardMovementSystem(world);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(headForwardMovementSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new WorldDimensions(3, 3));
-        dominion.createEntity(
+        world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
+        world.addComponents(
+            world.createEntity(),
             Head.INSTANCE,
             new Position(0, 0),
             new CurrentForwardDirection(Direction.RIGHT)
         );
-        headForwardMovementSystem.run(0);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Position.class,
-                CurrentForwardDirection.class
+            world.entities(
+                new Query()
+                    .all(
+                        Head.class,
+                        Position.class,
+                        CurrentForwardDirection.class
+                    )
             )
         )
             .singleElement()
-            .extracting(Results.With3::comp2, result -> result.comp3().value)
+            .extracting(
+                entity -> entity.component(Position.class),
+                entity -> entity.component(CurrentForwardDirection.class).value
+            )
             .containsExactly(new Position(0, 0), Direction.RIGHT);
     }
 
@@ -51,23 +64,27 @@ final class HeadForwardMovementSystemTest {
         int expectedX,
         int expectedY
     ) {
-        dominion.createEntity(new WorldDimensions(3, 3));
-        dominion.createEntity(
+        world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
+        world.addComponents(
+            world.createEntity(),
             Head.INSTANCE,
             new Position(initialX, initialY),
             new CurrentForwardDirection(direction)
         );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headForwardMovementSystem.run(0);
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Position.class,
-                CurrentForwardDirection.class
+            world.entities(
+                new Query()
+                    .all(
+                        Head.class,
+                        Position.class,
+                        CurrentForwardDirection.class
+                    )
             )
         )
             .singleElement()
-            .extracting(Results.With3::comp2)
+            .extracting(entity -> entity.component(Position.class))
             .isEqualTo(new Position(expectedX, expectedY));
     }
 }

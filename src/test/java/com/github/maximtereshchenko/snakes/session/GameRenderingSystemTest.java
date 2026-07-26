@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
-import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,17 +19,18 @@ final class GameRenderingSystemTest {
     private final Camera camera = mock();
     private final Viewport viewport = mock();
     private final ShapeRenderer shapeRenderer = mock();
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final Mode mode = mock();
     private final GameRenderingSystem gameRenderingSystem = new GameRenderingSystem(
         viewport,
         shapeRenderer,
-        dominion,
+        world,
         mode
     );
 
     @BeforeEach
     void setUp() {
+        world.addSystems(gameRenderingSystem);
         Gdx.gl = mock();
     }
 
@@ -43,10 +44,25 @@ final class GameRenderingSystemTest {
                     Colored.HEAD, Color.BLACK
                 )
             );
-        dominion.createEntity(new Position(0, 0), Colored.HEAD);
-        dominion.createEntity(new Position(1, 1), Colored.BACKGROUND, Background.INSTANCE);
-        gameRenderingSystem.run(0);
-        verify(Gdx.gl).glClearColor(Color.BLACK.r, Color.BLACK.g, Color.BLACK.b, Color.BLACK.a);
+        world.addComponents(
+            world.createEntity(),
+            new Position(0, 0),
+            Colored.HEAD
+        );
+        world.addComponents(
+            world.createEntity(),
+            new Position(1, 1),
+            Colored.BACKGROUND,
+            Background.INSTANCE
+        );
+        world.update(0);
+        verify(Gdx.gl).
+            glClearColor(
+                Color.BLACK.r,
+                Color.BLACK.g,
+                Color.BLACK.b,
+                Color.BLACK.a
+            );
         verify(Gdx.gl).glClear(anyInt());
         verify(viewport).apply();
         verify(viewport).getCamera();

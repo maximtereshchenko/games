@@ -6,8 +6,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
-import dev.dominion.ecs.api.Dominion;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -24,18 +25,23 @@ final class InterfaceRenderingSystemTest {
     private final SpriteBatch spriteBatch = mock();
     private final BitmapFont bitmapFont = mock();
     private final BitmapFont.BitmapFontData bitmapFontData = mock();
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final Mode mode = mock();
     private final InterfaceRenderingSystem interfaceRenderingSystem = new InterfaceRenderingSystem(
         viewport,
         spriteBatch,
         bitmapFont,
-        dominion,
+        world,
         mode
     );
 
     private static Stream<Object> components() {
         return Stream.of(new FoodEatenCounter(1), new AirCounter(1, 1));
+    }
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(interfaceRenderingSystem);
     }
 
     @ParameterizedTest
@@ -44,7 +50,7 @@ final class InterfaceRenderingSystemTest {
         when(viewport.getCamera()).thenReturn(camera);
         when(bitmapFont.getData()).thenReturn(bitmapFontData);
         when(mode.palette()).thenReturn(Map.of(Colored.INTERFACE, Color.BLACK));
-        dominion.createEntity(component, Colored.INTERFACE);
+        world.addComponents(world.createEntity(), component, Colored.INTERFACE);
         try (
             var _ = mockConstruction(
                 GlyphLayout.class,
@@ -52,14 +58,20 @@ final class InterfaceRenderingSystemTest {
                     .anySatisfy(argument -> assertThat(argument).isEqualTo(Color.BLACK))
             )
         ) {
-            interfaceRenderingSystem.run(0);
+            world.update(0);
             verify(viewport).apply();
             verify(viewport).getCamera();
             verify(spriteBatch).setProjectionMatrix(camera.combined);
             verify(spriteBatch).begin();
-            verify(bitmapFontData, times(2)).setScale(anyFloat());
+            verify(bitmapFontData, times(2))
+                .setScale(anyFloat());
             verify(bitmapFont)
-                .draw(eq(spriteBatch), any(GlyphLayout.class), anyFloat(), anyFloat());
+                .draw(
+                    eq(spriteBatch),
+                    any(GlyphLayout.class),
+                    anyFloat(),
+                    anyFloat()
+                );
             verify(spriteBatch).end();
         }
     }

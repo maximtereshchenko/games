@@ -125,7 +125,6 @@ public final class ScreenFactory {
     }
 
     public Screen snakeSessionScreen(Mode mode) {
-        var dominion = snakeSessionFactory.dominion(mode);
         var worldDimensions = mode.worldDimensions();
         var gameViewport = new FitViewport(worldDimensions.width(), worldDimensions.height());
         var interfaceViewport = new FitViewport(
@@ -135,11 +134,9 @@ public final class ScreenFactory {
         return new SnakeSessionScreen(
             Set.of(gameViewport, interfaceViewport),
             applicationEvents,
-            dominion,
-            snakeSessionFactory.systems(
-                dominion,
-                entityFactory,
+            snakeSessionFactory.world(
                 mode,
+                entityFactory,
                 gameViewport,
                 interfaceViewport
             )

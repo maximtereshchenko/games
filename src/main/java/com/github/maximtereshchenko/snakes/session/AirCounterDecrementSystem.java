@@ -1,20 +1,25 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class AirCounterDecrementSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> airCounterEntities;
 
-    AirCounterDecrementSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    AirCounterDecrementSystem(World world) {
+        super(world);
+        this.airCounterEntities = world.entities(
+            new Query().all(AirCounter.class)
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var airCounter : dominion.findCompositionsWith(AirCounter.class)) {
-            airCounter.value--;
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var entity : airCounterEntities) {
+            entity.component(AirCounter.class).value--;
         }
     }
 }

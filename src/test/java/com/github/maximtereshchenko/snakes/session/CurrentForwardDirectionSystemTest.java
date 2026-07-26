@@ -1,50 +1,65 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class CurrentForwardDirectionSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final CurrentForwardDirectionSystem currentDirectionSystem =
-        new CurrentForwardDirectionSystem(dominion);
+        new CurrentForwardDirectionSystem(world);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(currentDirectionSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(
+        world.addComponents(
+            world.createEntity(),
             new CurrentForwardDirection(Direction.RIGHT),
             new NextForwardDirection(Direction.UP)
         );
-        currentDirectionSystem.run(0);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
+            world.entities(new Query().all(
                 CurrentForwardDirection.class,
                 NextForwardDirection.class
-            )
+            ))
         )
             .singleElement()
-            .extracting(result -> result.comp1().value, result -> result.comp2().value)
+            .extracting(
+                entity -> entity.component(CurrentForwardDirection.class).value,
+                entity -> entity.component(NextForwardDirection.class).value
+            )
             .containsExactly(Direction.RIGHT, Direction.UP);
     }
 
     @Test
     void givenTurnStartedEvent_thenCurrentDirectionSetToNext() {
-        dominion.createEntity(
+        world.addComponents(
+            world.createEntity(),
             new CurrentForwardDirection(Direction.RIGHT),
             new NextForwardDirection(Direction.UP)
         );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        currentDirectionSystem.run(0);
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
+            world.entities(new Query().all(
                 CurrentForwardDirection.class,
                 NextForwardDirection.class
-            )
+            ))
         )
             .singleElement()
-            .extracting(result -> result.comp1().value, result -> result.comp2().value)
+            .extracting(
+                entity -> entity.component(CurrentForwardDirection.class).value,
+                entity -> entity.component(NextForwardDirection.class).value
+            )
             .containsExactly(Direction.UP, Direction.UP);
     }
 }

@@ -37,11 +37,6 @@
             <classifier>natives-desktop</classifier>
         </dependency>
         <dependency>
-            <groupId>dev.dominion.ecs</groupId>
-            <artifactId>dominion-ecs-engine</artifactId>
-            <version>0.9.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>6.1.0</version>

@@ -1,22 +1,34 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class HeadCollisionTargetSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> headEntities;
+    private final Iterable<Entity> nonHeadEntities;
 
-    HeadCollisionTargetSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    HeadCollisionTargetSystem(World world) {
+        super(world);
+        this.headEntities = world.entities(
+            new Query().all(Head.class, Position.class)
+        );
+        this.nonHeadEntities = world.entities(
+            new Query().all(Position.class).none(Head.class, HeadCollisionTarget.class)
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var headResult : dominion.findEntitiesWith(Head.class, Position.class)) {
-            for (var targetResult : dominion.findEntitiesWith(Position.class).without(Head.class, HeadCollisionTarget.class)) {
-                if (headResult.comp2().equals(targetResult.comp())) {
-                    targetResult.entity().add(HeadCollisionTarget.INSTANCE);
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var head : headEntities) {
+            for (var target : nonHeadEntities) {
+                if (head.component(Position.class).equals(target.component(Position.class))) {
+                    worldEdit.addComponents(
+                        target.id(),
+                        HeadCollisionTarget.INSTANCE
+                    );
                 }
             }
         }

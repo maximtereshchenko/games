@@ -1,26 +1,35 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class SegmentSpawningSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> headEntities;
+    private final Iterable<Entity> segmentTimerDefinitionEntities;
     private final EntityFactory entityFactory;
 
-    SegmentSpawningSystem(Dominion dominion, EntityFactory entityFactory) {
-        super(dominion);
-        this.dominion = dominion;
+    SegmentSpawningSystem(World world, EntityFactory entityFactory) {
+        super(world);
+        this.headEntities = world.entities(
+            new Query().all(Head.class, Position.class)
+        );
+        this.segmentTimerDefinitionEntities = world.entities(
+            new Query().all(SegmentTimerDefinition.class)
+        );
         this.entityFactory = entityFactory;
     }
 
     @Override
-    void onTurnStarted() {
-        for (var result : dominion.findEntitiesWith(Head.class, Position.class)) {
-            for (var initialSegmentTimer : dominion.findCompositionsWith(SegmentTimerDefinition.class)) {
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var head : headEntities) {
+            for (var definition : segmentTimerDefinitionEntities) {
                 entityFactory.createSegment(
-                    dominion,
-                    new Position(result.comp2()),
-                    initialSegmentTimer.duration
+                    worldEdit,
+                    new Position(head.component(Position.class)),
+                    definition.component(SegmentTimerDefinition.class).duration
                 );
             }
         }

@@ -1,27 +1,37 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class EventRemovalSystemTest {
 
-    private final Dominion dominion = Dominion.create();
-    private final EventRemovalSystem eventRemovalSystem = new EventRemovalSystem(dominion);
+    private final World world = new World();
+    private final EventRemovalSystem eventRemovalSystem = new EventRemovalSystem(world);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(eventRemovalSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(Event.INSTANCE);
-        var before = dominion.findAllEntities().stream().toList();
-        eventRemovalSystem.run(0);
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        world.addComponents(world.createEntity(), Event.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Event.class))).hasSize(1);
     }
 
     @Test
     void givenEvent_thenEventRemoved() {
-        dominion.createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
-        eventRemovalSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Event.class)).isEmpty();
+        world.addComponents(
+            world.createEntity(),
+            TurnStarted.INSTANCE,
+            Event.INSTANCE
+        );
+        world.update(0);
+        assertThat(world.entities(new Query().all(Event.class))).isEmpty();
     }
 }

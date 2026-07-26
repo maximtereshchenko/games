@@ -1,24 +1,40 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 import java.util.Set;
 
 final class NextForwardDirectionSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> directionEntities;
 
-    NextForwardDirectionSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    NextForwardDirectionSystem(World world) {
+        super(world);
+        this.directionEntities = world.entities(
+            new Query()
+                .all(
+                    CurrentForwardDirection.class,
+                    NextForwardDirection.class,
+                    LegalRelativeDirections.class
+                )
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var result : dominion.findEntitiesWith(CurrentForwardDirection.class, NextForwardDirection.class, LegalRelativeDirections.class)) {
-            var currentDirection = result.comp1().value;
-            var nextDirection = result.comp2();
-            if (!isLegal(currentDirection, nextDirection.value, result.comp3().value())) {
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var entity : directionEntities) {
+            var currentDirection = entity.component(CurrentForwardDirection.class).value;
+            var nextDirection = entity.component(NextForwardDirection.class);
+            if (
+                !isLegal(
+                    currentDirection,
+                    nextDirection.value,
+                    entity.component(LegalRelativeDirections.class).value()
+                )
+            ) {
                 nextDirection.value = currentDirection;
             }
         }

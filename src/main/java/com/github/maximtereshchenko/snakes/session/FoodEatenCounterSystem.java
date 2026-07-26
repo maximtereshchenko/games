@@ -1,20 +1,24 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
 
 final class FoodEatenCounterSystem extends OnFoodEatenEventSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> foodEatenCounterEntities;
 
-    FoodEatenCounterSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    FoodEatenCounterSystem(World world) {
+        super(world);
+        this.foodEatenCounterEntities = world.entities(
+            new Query().all(FoodEatenCounter.class)
+        );
     }
 
     @Override
     void onFoodEaten() {
-        for (var foodEatenCounter : dominion.findCompositionsWith(FoodEatenCounter.class)) {
-            foodEatenCounter.value++;
+        for (var entity : foodEatenCounterEntities) {
+            entity.component(FoodEatenCounter.class).value++;
         }
     }
 }

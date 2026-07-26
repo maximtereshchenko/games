@@ -1,26 +1,38 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class HeadSidewaysMovementSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> headEntities;
 
-    HeadSidewaysMovementSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    HeadSidewaysMovementSystem(World world) {
+        super(world);
+        this.headEntities = world.entities(
+            new Query()
+                .all(
+                    Head.class,
+                    Timer.class,
+                    SidewaysMovement.class,
+                    Position.class,
+                    CurrentForwardDirection.class
+                )
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var result : dominion.findEntitiesWith(Head.class, Timer.class, SidewaysMovement.class, Position.class, CurrentForwardDirection.class)) {
-            var headSidewaysDirection = result.comp3();
-            if (result.comp2().turnsRemaining != 0) {
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var head : headEntities) {
+            var headSidewaysDirection = head.component(SidewaysMovement.class);
+            if (head.component(Timer.class).turnsRemaining != 0) {
                 continue;
             }
-            result.comp4()
+            head.component(Position.class)
                 .move(
-                    result.comp5()
+                    head.component(CurrentForwardDirection.class)
                         .value
                         .relative(relativeDirection(headSidewaysDirection))
                 );

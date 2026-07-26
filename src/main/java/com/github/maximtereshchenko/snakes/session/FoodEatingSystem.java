@@ -1,23 +1,28 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class FoodEatingSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> eatenFoodEntities;
     private final EntityFactory entityFactory;
 
-    FoodEatingSystem(Dominion dominion, EntityFactory entityFactory) {
-        super(dominion);
-        this.dominion = dominion;
+    FoodEatingSystem(World world, EntityFactory entityFactory) {
+        super(world);
+        this.eatenFoodEntities = world.entities(
+            new Query().all(Food.class, HeadCollisionTarget.class)
+        );
         this.entityFactory = entityFactory;
     }
 
     @Override
-    void onTurnStarted() {
-        for (var foodResult : dominion.findEntitiesWith(Food.class, HeadCollisionTarget.class)) {
-            dominion.deleteEntity(foodResult.entity());
-            entityFactory.createFoodEatenEvent(dominion);
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var food : eatenFoodEntities) {
+            worldEdit.deleteEntity(food.id());
+            entityFactory.createFoodEatenEvent(worldEdit);
         }
     }
 }

@@ -1,22 +1,32 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
 
 final class SegmentTimersIncrementSystem extends OnFoodEatenEventSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> segmentTimerDefinitionEntities;
+    private final Iterable<Entity> segmentEntities;
 
-    SegmentTimersIncrementSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    SegmentTimersIncrementSystem(World world) {
+        super(world);
+        this.segmentTimerDefinitionEntities = world.entities(
+            new Query().all(SegmentTimerDefinition.class)
+        );
+        this.segmentEntities = world.entities(
+            new Query().all(Timer.class, Segment.class)
+        );
     }
 
     @Override
     void onFoodEaten() {
-        for (var initialSegmentTimer : dominion.findCompositionsWith(SegmentTimerDefinition.class)) {
+        for (var definition : segmentTimerDefinitionEntities) {
+            var initialSegmentTimer = definition.component(SegmentTimerDefinition.class);
             initialSegmentTimer.duration += initialSegmentTimer.incrementStep;
-            for (var result : dominion.findEntitiesWith(Timer.class, Segment.class)) {
-                result.comp1().turnsRemaining += initialSegmentTimer.incrementStep;
+            for (var segment : segmentEntities) {
+                segment.component(Timer.class).turnsRemaining +=
+                    initialSegmentTimer.incrementStep;
             }
         }
     }

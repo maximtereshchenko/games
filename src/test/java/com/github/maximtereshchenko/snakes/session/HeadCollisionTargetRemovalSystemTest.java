@@ -1,33 +1,52 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class HeadCollisionTargetRemovalSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final HeadCollisionTargetRemovalSystem headCollisionTargetRemovalSystem =
-        new HeadCollisionTargetRemovalSystem(dominion);
+        new HeadCollisionTargetRemovalSystem(world);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(headCollisionTargetRemovalSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new Position(0, 0), HeadCollisionTarget.INSTANCE);
-        var before = dominion.findAllEntities().stream().toList();
-        headCollisionTargetRemovalSystem.run(0);
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        world.addComponents(
+            world.createEntity(),
+            new Position(0, 0),
+            HeadCollisionTarget.INSTANCE
+        );
+        world.update(0);
+        assertThat(
+            world.entities(
+                new Query().all(Position.class, HeadCollisionTarget.class))
+        )
+            .hasSize(1);
     }
 
     @Test
     void givenHeadCollisionTarget_thenTagRemoved() {
-        dominion.createEntity(new Position(0, 0), HeadCollisionTarget.INSTANCE);
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headCollisionTargetRemovalSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Position.class))
-            .extracting(Results.With1::entity)
-            .singleElement()
-            .doesNotMatch(entity -> entity.has(HeadCollisionTarget.class));
+        world.addComponents(
+            world.createEntity(),
+            new Position(0, 0),
+            HeadCollisionTarget.INSTANCE
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(
+            world.entities(
+                new Query().all(Position.class).none(HeadCollisionTarget.class)
+            )
+        )
+            .hasSize(1);
     }
 }

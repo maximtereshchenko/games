@@ -1,6 +1,9 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,24 +11,37 @@ import static org.mockito.Mockito.*;
 
 final class FoodEatingSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final EntityFactory entityFactory = mock();
     private final FoodEatingSystem foodEatingSystem =
-        new FoodEatingSystem(dominion, entityFactory);
+        new FoodEatingSystem(world, entityFactory);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(foodEatingSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(Food.INSTANCE, HeadCollisionTarget.INSTANCE);
-        foodEatingSystem.run(0);
+        world.addComponents(
+            world.createEntity(),
+            Food.INSTANCE,
+            HeadCollisionTarget.INSTANCE
+        );
+        world.update(0);
         verifyNoInteractions(entityFactory);
     }
 
     @Test
     void givenTurnStartedEvent_thenFoodEaten() {
-        dominion.createEntity(Food.INSTANCE, HeadCollisionTarget.INSTANCE);
-        dominion.createEntity(TurnStarted.INSTANCE);
-        foodEatingSystem.run(0);
-        assertThat(dominion.findEntitiesWith(Food.class)).isEmpty();
-        verify(entityFactory).createFoodEatenEvent(dominion);
+        world.addComponents(
+            world.createEntity(),
+            Food.INSTANCE,
+            HeadCollisionTarget.INSTANCE
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Food.class))).isEmpty();
+        verify(entityFactory).createFoodEatenEvent(any(WorldEdit.class));
     }
 }

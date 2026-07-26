@@ -4,39 +4,46 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.*;
+import com.github.maximtereshchenko.ecs.System;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
-import dev.dominion.ecs.api.Dominion;
 
 final class GameRenderingSystem implements System {
 
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
-    private final Dominion dominion;
+    private final Iterable<Entity> backgroundEntities;
+    private final Iterable<Entity> foregroundEntities;
     private final Mode mode;
 
     GameRenderingSystem(
         Viewport viewport,
         ShapeRenderer shapeRenderer,
-        Dominion dominion,
+        World world,
         Mode mode
     ) {
         this.viewport = viewport;
         this.shapeRenderer = shapeRenderer;
-        this.dominion = dominion;
+        this.backgroundEntities = world.entities(
+            new Query().all(Colored.class, Position.class, Background.class)
+        );
+        this.foregroundEntities = world.entities(
+            new Query().all(Colored.class, Position.class).none(Background.class)
+        );
         this.mode = mode;
     }
 
     @Override
-    public void run(float deltaTime) {
+    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
         ScreenUtils.clear(Color.BLACK);
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        for (var result : dominion.findEntitiesWith(Colored.class, Position.class, Background.class)) {
-            draw(result.comp1(), result.comp2());
+        for (var entity : backgroundEntities) {
+            draw(entity.component(Colored.class), entity.component(Position.class));
         }
-        for (var result : dominion.findEntitiesWith(Colored.class, Position.class).without(Background.class)) {
-            draw(result.comp1(), result.comp2());
+        for (var entity : foregroundEntities) {
+            draw(entity.component(Colored.class), entity.component(Position.class));
         }
         shapeRenderer.end();
     }

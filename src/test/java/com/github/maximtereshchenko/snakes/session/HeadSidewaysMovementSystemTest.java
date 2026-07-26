@@ -1,7 +1,8 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.api.Results;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -10,63 +11,76 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class HeadSidewaysMovementSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final HeadSidewaysMovementSystem headSidewaysMovementSystem =
-        new HeadSidewaysMovementSystem(dominion);
+        new HeadSidewaysMovementSystem(world);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(headSidewaysMovementSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new WorldDimensions(3, 3));
-        dominion.createEntity(
+        world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
+        world.addComponents(
+            world.createEntity(),
             Head.INSTANCE,
             new Timer(0, 0),
             new SidewaysMovement(4, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
         );
-        headSidewaysMovementSystem.run(0);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Timer.class,
-                SidewaysMovement.class,
-                Position.class,
-                CurrentForwardDirection.class
+            world.entities(
+                new Query()
+                    .all(
+                        Head.class,
+                        Timer.class,
+                        SidewaysMovement.class,
+                        Position.class,
+                        CurrentForwardDirection.class
+                    )
             )
         )
             .singleElement()
             .extracting(
-                Results.With5::comp4,
-                result -> result.comp3().index
+                entity -> entity.component(Position.class),
+                entity -> entity.component(SidewaysMovement.class).index
             )
             .containsExactly(new Position(1, 1), 0);
     }
 
     @Test
     void givenTimerNotExpired_thenNoChanges() {
-        dominion.createEntity(new WorldDimensions(3, 3));
-        dominion.createEntity(
+        world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
+        world.addComponents(
+            world.createEntity(),
             Head.INSTANCE,
             new Timer(1, 1),
             new SidewaysMovement(4, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
         );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headSidewaysMovementSystem.run(0);
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Timer.class,
-                SidewaysMovement.class,
-                Position.class,
-                CurrentForwardDirection.class
+            world.entities(
+                new Query()
+                    .all(
+                        Head.class,
+                        Timer.class,
+                        SidewaysMovement.class,
+                        Position.class,
+                        CurrentForwardDirection.class
+                    )
             )
         )
             .singleElement()
             .extracting(
-                Results.With5::comp4,
-                result -> result.comp3().index
+                entity -> entity.component(Position.class),
+                entity -> entity.component(SidewaysMovement.class).index
             )
             .containsExactly(new Position(1, 1), 0);
     }
@@ -90,30 +104,37 @@ final class HeadSidewaysMovementSystemTest {
         int expectedY,
         int expectedSidewaysIndex
     ) {
-        dominion.createEntity(new WorldDimensions(3, 3));
-        dominion.createEntity(
+        world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
+        world.addComponents(
+            world.createEntity(),
             Head.INSTANCE,
             new Timer(0, 0),
             new SidewaysMovement(cycle, sidewaysIndex),
             new Position(initialX, initialY),
             new CurrentForwardDirection(direction)
         );
-        dominion.createEntity(TurnStarted.INSTANCE);
-        headSidewaysMovementSystem.run(0);
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
         assertThat(
-            dominion.findEntitiesWith(
-                Head.class,
-                Timer.class,
-                SidewaysMovement.class,
-                Position.class,
-                CurrentForwardDirection.class
+            world.entities(
+                new Query()
+                    .all(
+                        Head.class,
+                        Timer.class,
+                        SidewaysMovement.class,
+                        Position.class,
+                        CurrentForwardDirection.class
+                    )
             )
         )
             .singleElement()
             .extracting(
-                Results.With5::comp4,
-                result -> result.comp3().index
+                entity -> entity.component(Position.class),
+                entity -> entity.component(SidewaysMovement.class).index
             )
-            .containsExactly(new Position(expectedX, expectedY), expectedSidewaysIndex);
+            .containsExactly(
+                new Position(expectedX, expectedY),
+                expectedSidewaysIndex
+            );
     }
 }

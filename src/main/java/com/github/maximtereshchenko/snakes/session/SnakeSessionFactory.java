@@ -4,15 +4,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.configuration.Assets;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
-import dev.dominion.ecs.api.Dominion;
-import dev.dominion.ecs.engine.system.Config;
 
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
-import static java.lang.System.setProperty;
 
 public final class SnakeSessionFactory {
 
@@ -33,74 +29,57 @@ public final class SnakeSessionFactory {
         this.assets = assets;
     }
 
-    public Dominion dominion(Mode mode) {
-        var name = "snakes";
-        setProperty(
-            Config.getPropertyName(Config.SHOW_BANNER),
-            Boolean.toString(false)
-        );
-        setProperty(
-            Config.getPropertyName(name, Config.CLASS_INDEX_BIT),
-            "24"
-        );
-        setProperty(
-            Config.getPropertyName(name, Config.CHUNK_BIT),
-            "16"
-        );
-        var dominion = Dominion.create(name);
-        for (var components : mode.entities()) {
-            dominion.createEntity(components);
-        }
-        return dominion;
-    }
-
-    public List<System> systems(
-        Dominion dominion,
-        EntityFactory entityFactory,
+    public World world(
         Mode mode,
+        EntityFactory entityFactory,
         Viewport gameViewport,
         Viewport interfaceViewport
     ) {
-        return List.of(
-            new InputSystem(dominion),
-            new TurnStartSystem(dominion, entityFactory),
-            new SegmentSpawningSystem(dominion, entityFactory),
-            new NextForwardDirectionSystem(dominion),
-            new SessionStatisticsSystem(dominion),
-            new CurrentForwardDirectionSystem(dominion),
-            new HeadForwardMovementSystem(dominion),
-            new HeadSidewaysMovementSystem(dominion),
-            new WarpSystem(dominion),
-            new HeadCollisionTargetSystem(dominion),
-            new AirCounterDecrementSystem(dominion),
-            new AirCounterRefreshSystem(dominion),
-            new FoodEatingSystem(dominion, entityFactory),
-            new FoodEatenCounterSystem(dominion),
-            new SegmentTimersIncrementSystem(dominion),
-            new TimerSystem(dominion),
-            new SegmentRemovalSystem(dominion),
-            new SessionEndSystem(dominion),
+        var world = new World();
+        for (var components : mode.entities()) {
+            world.addComponents(world.createEntity(), components);
+        }
+        world.addSystems(
+            new InputSystem(world),
+            new TurnStartSystem(world, entityFactory),
+            new SegmentSpawningSystem(world, entityFactory),
+            new NextForwardDirectionSystem(world),
+            new SessionStatisticsSystem(world),
+            new CurrentForwardDirectionSystem(world),
+            new HeadForwardMovementSystem(world),
+            new HeadSidewaysMovementSystem(world),
+            new WarpSystem(world),
+            new HeadCollisionTargetSystem(world),
+            new AirCounterDecrementSystem(world),
+            new AirCounterRefreshSystem(world),
+            new FoodEatingSystem(world, entityFactory),
+            new FoodEatenCounterSystem(world),
+            new SegmentTimersIncrementSystem(world),
+            new TimerSystem(world),
+            new SegmentRemovalSystem(world),
+            new SessionEndSystem(world),
             new FoodSpawningSystem(
-                dominion,
+                world,
                 entityFactory,
                 ThreadLocalRandom.current(),
                 1
             ),
-            new EventRemovalSystem(dominion),
-            new HeadCollisionTargetRemovalSystem(dominion),
+            new EventRemovalSystem(world),
+            new HeadCollisionTargetRemovalSystem(world),
             new GameRenderingSystem(
                 gameViewport,
                 shapeRenderer,
-                dominion,
+                world,
                 mode
             ),
             new InterfaceRenderingSystem(
                 interfaceViewport,
                 spriteBatch,
                 assetManager.get(assets.bitmapFont()),
-                dominion,
+                world,
                 mode
             )
         );
+        return world;
     }
 }

@@ -1,21 +1,26 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class SegmentRemovalSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> segmentEntities;
 
-    SegmentRemovalSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    SegmentRemovalSystem(World world) {
+        super(world);
+        this.segmentEntities = world.entities(
+            new Query().all(Timer.class, Segment.class)
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var result : dominion.findEntitiesWith(Timer.class, Segment.class)) {
-            if (result.comp1().turnsRemaining == 0) {
-                dominion.deleteEntity(result.entity());
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var segment : segmentEntities) {
+            if (segment.component(Timer.class).turnsRemaining == 0) {
+                worldEdit.deleteEntity(segment.id());
             }
         }
     }

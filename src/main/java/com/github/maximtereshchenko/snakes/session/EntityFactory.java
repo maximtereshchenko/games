@@ -1,11 +1,12 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 public final class EntityFactory {
 
-    void createSegment(Dominion dominion, Position position, int turnsRemaining) {
-        dominion.createEntity(
+    void createSegment(WorldEdit worldEdit, Position position, int turnsRemaining) {
+        createEntity(
+            worldEdit,
             Segment.INSTANCE,
             position,
             new Timer(turnsRemaining, turnsRemaining),
@@ -13,20 +14,24 @@ public final class EntityFactory {
         );
     }
 
-    void createFoodEatenEvent(Dominion dominion) {
-        createEvent(dominion, FoodEaten.INSTANCE);
+    void createFoodEatenEvent(WorldEdit worldEdit) {
+        createEvent(worldEdit, FoodEaten.INSTANCE);
 
     }
 
-    void createFood(Dominion dominion, Position position) {
-        dominion.createEntity(Food.INSTANCE, position, Colored.FOOD);
+    void createFood(WorldEdit worldEdit, Position position) {
+        createEntity(worldEdit, Food.INSTANCE, position, Colored.FOOD);
     }
 
-    void createTurnStartedEvent(Dominion dominion) {
-        createEvent(dominion, TurnStarted.INSTANCE);
+    void createTurnStartedEvent(WorldEdit worldEdit) {
+        createEvent(worldEdit, TurnStarted.INSTANCE);
     }
 
-    private void createEvent(Dominion dominion, Object tag) {
-        dominion.createEntity(tag, Event.INSTANCE);
+    private void createEvent(WorldEdit worldEdit, Object tag) {
+        createEntity(worldEdit, tag, Event.INSTANCE);
+    }
+
+    private void createEntity(WorldEdit worldEdit, Object... components) {
+        worldEdit.addComponents(worldEdit.createEntity(), components);
     }
 }

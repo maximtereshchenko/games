@@ -5,33 +5,40 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.*;
+import com.github.maximtereshchenko.ecs.System;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
-import dev.dominion.ecs.api.Dominion;
 
 final class InterfaceRenderingSystem implements System {
 
     private final Viewport viewport;
     private final SpriteBatch spriteBatch;
     private final BitmapFont bitmapFont;
-    private final Dominion dominion;
+    private final Iterable<Entity> foodEatenCounterEntities;
+    private final Iterable<Entity> airCounterEntities;
     private final Mode mode;
 
     InterfaceRenderingSystem(
         Viewport viewport,
         SpriteBatch spriteBatch,
         BitmapFont bitmapFont,
-        Dominion dominion,
+        World world,
         Mode mode
     ) {
         this.viewport = viewport;
         this.spriteBatch = spriteBatch;
         this.bitmapFont = bitmapFont;
-        this.dominion = dominion;
+        this.foodEatenCounterEntities = world.entities(
+            new Query().all(Colored.class, FoodEatenCounter.class)
+        );
+        this.airCounterEntities = world.entities(
+            new Query().all(Colored.class, AirCounter.class)
+        );
         this.mode = mode;
     }
 
     @Override
-    public void run(float deltaTime) {
+    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
         viewport.apply();
         spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
         spriteBatch.begin();
@@ -44,16 +51,18 @@ final class InterfaceRenderingSystem implements System {
         var bitmapFontData = bitmapFont.getData();
         var scaleX = bitmapFontData.scaleX;
         var scaleY = bitmapFontData.scaleY;
-        bitmapFontData.setScale(viewport.getWorldHeight() * scale / bitmapFont.getCapHeight());
+        bitmapFontData.setScale(
+            viewport.getWorldHeight() * scale / bitmapFont.getCapHeight()
+        );
         runnable.run();
         bitmapFontData.setScale(scaleX, scaleY);
     }
 
     private void drawFoodEatenCounter() {
-        for (var result : dominion.findEntitiesWith(Colored.class, FoodEatenCounter.class)) {
+        for (var entity : foodEatenCounterEntities) {
             var glyphLayout = glyphLayout(
-                String.valueOf(result.comp2().value),
-                result.comp1()
+                String.valueOf(entity.component(FoodEatenCounter.class).value),
+                entity.component(Colored.class)
             );
             bitmapFont.draw(
                 spriteBatch,
@@ -65,12 +74,12 @@ final class InterfaceRenderingSystem implements System {
     }
 
     private void drawAirCounter() {
-        for (var result : dominion.findEntitiesWith(Colored.class, AirCounter.class)) {
+        for (var entity : airCounterEntities) {
             bitmapFont.draw(
                 spriteBatch,
                 glyphLayout(
-                    "AIR: " + result.comp2().value,
-                    result.comp1()
+                    "AIR: " + entity.component(AirCounter.class).value,
+                    entity.component(Colored.class)
                 ),
                 45,
                 viewport.getWorldHeight() - 40

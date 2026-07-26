@@ -1,21 +1,24 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.*;
+import com.github.maximtereshchenko.ecs.System;
 
 abstract class TurnBasedSystem implements System {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> turnStartedEntities;
 
-    TurnBasedSystem(Dominion dominion) {
-        this.dominion = dominion;
+    TurnBasedSystem(World world) {
+        this.turnStartedEntities = world.entities(
+            new Query().all(TurnStarted.class)
+        );
     }
 
     @Override
-    public final void run(float deltaTime) {
-        if (dominion.findCompositionsWith(TurnStarted.class).iterator().hasNext()) {
-            onTurnStarted();
+    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+        if (turnStartedEntities.iterator().hasNext()) {
+            onTurnStarted(worldEdit);
         }
     }
 
-    abstract void onTurnStarted();
+    abstract void onTurnStarted(WorldEdit worldEdit);
 }

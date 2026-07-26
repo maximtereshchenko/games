@@ -1,27 +1,29 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.World;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentCaptor.captor;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 final class EntityFactoryTest {
 
-    private final Dominion dominion = mock();
+    private final World world = mock();
     private final EntityFactory entityFactory = new EntityFactory();
     private final ArgumentCaptor<Timer> timerCaptor = captor();
 
     @Test
     void whenCreateSegment_thenSegmentEntityCreated() {
-        var position = new Position(1, 2);
-        entityFactory.createSegment(dominion, position, 4);
-        verify(dominion)
-            .createEntity(
+        when(world.createEntity()).thenReturn(1);
+        var position = new Position(2, 3);
+        entityFactory.createSegment(world, position, 4);
+        verify(world).createEntity();
+        verify(world)
+            .addComponents(
+                eq(1),
                 eq(Segment.INSTANCE),
                 eq(position),
                 timerCaptor.capture(),
@@ -34,20 +36,41 @@ final class EntityFactoryTest {
 
     @Test
     void whenCreateFood_thenFoodEntityCreated() {
-        entityFactory.createFood(dominion, new Position(5, 6));
-        verify(dominion)
-            .createEntity(Food.INSTANCE, new Position(5, 6), Colored.FOOD);
+        when(world.createEntity()).thenReturn(1);
+        entityFactory.createFood(world, new Position(2, 3));
+        verify(world).createEntity();
+        verify(world)
+            .addComponents(
+                1,
+                Food.INSTANCE,
+                new Position(2, 3),
+                Colored.FOOD
+            );
     }
 
     @Test
     void whenCreateFoodEatenEvent_thenFoodEatenEventCreated() {
-        entityFactory.createFoodEatenEvent(dominion);
-        verify(dominion).createEntity(FoodEaten.INSTANCE, Event.INSTANCE);
+        when(world.createEntity()).thenReturn(1);
+        entityFactory.createFoodEatenEvent(world);
+        verify(world).createEntity();
+        verify(world)
+            .addComponents(
+                1,
+                FoodEaten.INSTANCE,
+                Event.INSTANCE
+            );
     }
 
     @Test
     void whenCreateTurnStartedEvent_thenTurnStartedEventCreated() {
-        entityFactory.createTurnStartedEvent(dominion);
-        verify(dominion).createEntity(TurnStarted.INSTANCE, Event.INSTANCE);
+        when(world.createEntity()).thenReturn(1);
+        entityFactory.createTurnStartedEvent(world);
+        verify(world).createEntity();
+        verify(world)
+            .addComponents(
+                1,
+                TurnStarted.INSTANCE,
+                Event.INSTANCE
+            );
     }
 }

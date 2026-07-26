@@ -1,20 +1,25 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class HeadCollisionTargetRemovalSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> headCollisionTargetEntities;
 
-    HeadCollisionTargetRemovalSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    HeadCollisionTargetRemovalSystem(World world) {
+        super(world);
+        this.headCollisionTargetEntities = world.entities(
+            new Query().all(HeadCollisionTarget.class)
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var result : dominion.findEntitiesWith(HeadCollisionTarget.class)) {
-            result.entity().removeType(HeadCollisionTarget.class);
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var entity : headCollisionTargetEntities) {
+            worldEdit.removeComponents(entity.id(), HeadCollisionTarget.class);
         }
     }
 }

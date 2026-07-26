@@ -1,6 +1,8 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -11,52 +13,80 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class SessionStatisticsSystemTest {
 
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final SessionStatisticsSystem sessionStatisticsSystem = new SessionStatisticsSystem(
-        dominion
+        world
     );
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(sessionStatisticsSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(
+        world.addComponents(
+            world.createEntity(),
             new CurrentForwardDirection(Direction.RIGHT),
             new NextForwardDirection(Direction.UP)
         );
-        dominion.createEntity(new SessionStatisticsAccumulator());
-        var before = dominion.findAllEntities().stream().toList();
-        sessionStatisticsSystem.run(0);
-        assertThat(dominion.findAllEntities()).containsExactlyElementsOf(before);
+        world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
+        world.update(0);
+        assertThat(
+            world.entities(
+                new Query()
+                    .all(CurrentForwardDirection.class, NextForwardDirection.class)
+            )
+        )
+            .singleElement()
+            .extracting(
+                entity -> entity.component(CurrentForwardDirection.class).value,
+                entity -> entity.component(NextForwardDirection.class).value
+            )
+            .containsExactly(Direction.RIGHT, Direction.UP);
+        assertThat(world.entities(new Query().all(SessionStatisticsAccumulator.class)))
+            .singleElement()
+            .extracting(
+                entity -> entity.component(SessionStatisticsAccumulator.class).value
+            )
+            .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 0));
     }
 
     @ParameterizedTest
     @EnumSource(Direction.class)
     void givenLeftTurn_thenLeftTurnsCounterIncremented(Direction direction) {
-        dominion.createEntity(
+        world.addComponents(
+            world.createEntity(),
             new CurrentForwardDirection(direction),
             new NextForwardDirection(direction.left())
         );
-        dominion.createEntity(new SessionStatisticsAccumulator());
-        dominion.createEntity(TurnStarted.INSTANCE);
-        sessionStatisticsSystem.run(0);
-        assertThat(dominion.findCompositionsWith(SessionStatisticsAccumulator.class))
+        world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(SessionStatisticsAccumulator.class)))
             .singleElement()
-            .extracting(result -> result.value)
+            .extracting(
+                entity -> entity.component(SessionStatisticsAccumulator.class).value
+            )
             .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 1));
     }
 
     @ParameterizedTest
     @EnumSource(Direction.class)
     void givenRightTurn_thenLeftTurnsCounterNotIncremented(Direction direction) {
-        dominion.createEntity(
+        world.addComponents(
+            world.createEntity(),
             new CurrentForwardDirection(direction),
             new NextForwardDirection(direction.opposite().left())
         );
-        dominion.createEntity(new SessionStatisticsAccumulator());
-        dominion.createEntity(TurnStarted.INSTANCE);
-        sessionStatisticsSystem.run(0);
-        assertThat(dominion.findCompositionsWith(SessionStatisticsAccumulator.class))
+        world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(SessionStatisticsAccumulator.class)))
             .singleElement()
-            .extracting(result -> result.value)
+            .extracting(
+                entity -> entity.component(SessionStatisticsAccumulator.class).value
+            )
             .isEqualTo(Map.of(SessionStatistics.LEFT_TURNS, 0));
     }
 }

@@ -2,52 +2,56 @@ package com.github.maximtereshchenko.snakes.screen;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.snakes.event.SnakeSessionEnded;
 import com.github.maximtereshchenko.snakes.session.Session;
 import com.github.maximtereshchenko.snakes.session.SessionStatisticsAccumulator;
-import com.github.maximtereshchenko.snakes.session.System;
-import dev.dominion.ecs.api.Dominion;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 
 final class SnakeSessionScreen extends ScreenAdapter {
 
     private final Set<Viewport> viewports;
     private final ApplicationEvents applicationEvents;
-    private final Dominion dominion;
-    private final List<System> systems;
+    private final World world;
+    private final Iterable<Entity> sessionEntities;
+    private final Iterable<Entity> statisticsAccumulatorEntities;
 
     SnakeSessionScreen(
         Set<Viewport> viewports,
         ApplicationEvents applicationEvents,
-        Dominion dominion,
-        List<System> systems
+        World world
     ) {
         this.viewports = viewports;
         this.applicationEvents = applicationEvents;
-        this.dominion = dominion;
-        this.systems = systems;
+        this.world = world;
+        this.sessionEntities = world.entities(
+            new Query()
+                .all(Session.class)
+        );
+        this.statisticsAccumulatorEntities = world.entities(
+            new Query().all(SessionStatisticsAccumulator.class)
+        );
     }
 
     @Override
     public void render(float delta) {
-        if (value(Session.class, session -> session.status == Session.Status.ENDED, false)) {
+        if (sessionEnded()) {
             applicationEvents.publish(
                 new SnakeSessionEnded(
-                    value(
-                        SessionStatisticsAccumulator.class,
-                        sessionStatisticsAccumulator -> sessionStatisticsAccumulator.value,
-                        Map.of()
-                    )
+                    statisticsAccumulatorEntities
+                        .iterator()
+                        .next()
+                        .component(SessionStatisticsAccumulator.class)
+                        .value
                 )
             );
             return;
         }
-        systems.forEach(system -> system.run(delta));
+        world.update(delta);
     }
 
     @Override
@@ -55,10 +59,10 @@ final class SnakeSessionScreen extends ScreenAdapter {
         viewports.forEach(viewport -> viewport.update(width, height, true));
     }
 
-    private <T, R> R value(Class<T> type, Function<T, R> function, R defaultValue) {
-        for (var component : dominion.findCompositionsWith(type)) {
-            return function.apply(component);
-        }
-        return defaultValue;
+    private boolean sessionEnded() {
+        return sessionEntities.iterator()
+                   .next()
+                   .component(Session.class)
+                   .status == Session.Status.ENDED;
     }
 }

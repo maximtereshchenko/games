@@ -90,20 +90,20 @@ public final class World implements WorldEdit {
         );
     }
 
-    void createEntity(int id) {
-        root.insert(id);
-        tablesByEntityId.set(id, root);
-    }
-
-    void addSystems(System... systems) {
+    public void addSystems(System... systems) {
         this.systems.addAll(Arrays.asList(systems));
     }
 
-    void update(float deltaTimeSeconds) {
+    public void update(float deltaTimeSeconds) {
         for (var system : systems) {
             system.update(batchingWorldEdit, deltaTimeSeconds);
             batchingWorldEdit.flush();
         }
+    }
+
+    void createEntity(int id) {
+        root.insert(id);
+        tablesByEntityId.set(id, root);
     }
 
     private void updateComponents(

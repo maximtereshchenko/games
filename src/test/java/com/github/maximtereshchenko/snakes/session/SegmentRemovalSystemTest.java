@@ -1,43 +1,49 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class SegmentRemovalSystemTest {
 
-    private final Dominion dominion = Dominion.create();
-    private final SegmentRemovalSystem timerRemovalSystem = new SegmentRemovalSystem(
-        dominion
-    );
+    private final World world = new World();
+    private final SegmentRemovalSystem timerRemovalSystem =
+        new SegmentRemovalSystem(world);
+
+    @BeforeEach
+    void setUp() {
+        world.addSystems(timerRemovalSystem);
+    }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        dominion.createEntity(new Timer(0, 0), Segment.INSTANCE);
-        timerRemovalSystem.run(0);
-        assertThat(dominion.findCompositionsWith(Timer.class))
+        world.addComponents(world.createEntity(), new Timer(0, 0), Segment.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Timer.class)))
             .singleElement()
-            .extracting(timer -> timer.turnsRemaining)
+            .extracting(entity -> entity.component(Timer.class).turnsRemaining)
             .isEqualTo(0);
     }
 
     @Test
     void givenTurnStartedEvent_thenTimerRemoved() {
-        dominion.createEntity(new Timer(0, 0), Segment.INSTANCE);
-        dominion.createEntity(TurnStarted.INSTANCE);
-        timerRemovalSystem.run(0);
-        assertThat(dominion.findCompositionsWith(Timer.class)).isEmpty();
+        world.addComponents(world.createEntity(), new Timer(0, 0), Segment.INSTANCE);
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Timer.class))).isEmpty();
     }
 
     @Test
     void givenTimerPositive_thenNoChanges() {
-        dominion.createEntity(new Timer(1, 1), Segment.INSTANCE);
-        dominion.createEntity(TurnStarted.INSTANCE);
-        timerRemovalSystem.run(0);
-        assertThat(dominion.findCompositionsWith(Timer.class))
+        world.addComponents(world.createEntity(), new Timer(1, 1), Segment.INSTANCE);
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Timer.class)))
             .singleElement()
-            .extracting(timer -> timer.turnsRemaining)
+            .extracting(entity -> entity.component(Timer.class).turnsRemaining)
             .isEqualTo(1);
     }
 }

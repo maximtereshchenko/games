@@ -1,16 +1,15 @@
 package com.github.maximtereshchenko.snakes.screen;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.System;
+import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.snakes.event.SnakeSessionEnded;
 import com.github.maximtereshchenko.snakes.session.Session;
 import com.github.maximtereshchenko.snakes.session.SessionStatistics;
 import com.github.maximtereshchenko.snakes.session.SessionStatisticsAccumulator;
-import com.github.maximtereshchenko.snakes.session.System;
-import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,26 +19,27 @@ final class SnakeSessionScreenTest {
 
     private final Viewport viewport = mock();
     private final ApplicationEvents applicationEvents = mock();
-    private final Dominion dominion = Dominion.create();
+    private final World world = new World();
     private final System system = mock();
     private final SnakeSessionScreen snakeSessionScreen = new SnakeSessionScreen(
         Set.of(viewport),
         applicationEvents,
-        dominion,
-        List.of(system)
+        world
     );
 
     @Test
-    void givenSessionRunning_whenRender_thenSchedulerTicked() {
-        dominion.createEntity(new Session(Session.Status.RUNNING));
+    void givenSessionRunning_whenRender_thenSystemUpdated() {
+        world.addComponents(world.createEntity(), new Session(Session.Status.RUNNING));
+        world.addSystems(system);
         snakeSessionScreen.render(1);
-        verify(system).run(1);
+        verify(system).update(any(), eq(1.0f));
     }
 
     @Test
     void givenSessionEnded_whenRender_thenOnSessionEndCalled() {
-        dominion.createEntity(new Session(Session.Status.ENDED));
-        dominion.createEntity(new SessionStatisticsAccumulator());
+        world.addComponents(world.createEntity(), new Session(Session.Status.ENDED));
+        world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
+        world.addSystems(system);
         snakeSessionScreen.render(1.0f);
         verify(applicationEvents)
             .publish(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 0)));

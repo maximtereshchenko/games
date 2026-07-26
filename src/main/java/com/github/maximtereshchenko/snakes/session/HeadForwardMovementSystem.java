@@ -1,21 +1,26 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import dev.dominion.ecs.api.Dominion;
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
+import com.github.maximtereshchenko.ecs.World;
+import com.github.maximtereshchenko.ecs.WorldEdit;
 
 final class HeadForwardMovementSystem extends TurnBasedSystem {
 
-    private final Dominion dominion;
+    private final Iterable<Entity> headEntities;
 
-    HeadForwardMovementSystem(Dominion dominion) {
-        super(dominion);
-        this.dominion = dominion;
+    HeadForwardMovementSystem(World world) {
+        super(world);
+        this.headEntities = world.entities(
+            new Query().all(Head.class, Position.class, CurrentForwardDirection.class)
+        );
     }
 
     @Override
-    void onTurnStarted() {
-        for (var result : dominion.findEntitiesWith(Head.class, Position.class, CurrentForwardDirection.class)) {
-            var position = result.comp2();
-            position.move(result.comp3().value);
+    void onTurnStarted(WorldEdit worldEdit) {
+        for (var head : headEntities) {
+            head.component(Position.class)
+                .move(head.component(CurrentForwardDirection.class).value);
         }
     }
 }

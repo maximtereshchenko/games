@@ -4,15 +4,16 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.snakes.configuration.Assets;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
-import dev.dominion.ecs.api.Dominion;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 final class SnakeSessionFactoryTest {
 
@@ -20,7 +21,6 @@ final class SnakeSessionFactoryTest {
     private final SpriteBatch spriteBatch = mock();
     private final AssetManager assetManager = mock();
     private final Assets assets = mock();
-    private final Dominion dominion = mock();
     private final EntityFactory entityFactory = mock();
     private final Viewport viewport = mock();
     private final Mode mode = mock();
@@ -32,28 +32,35 @@ final class SnakeSessionFactoryTest {
     );
 
     @Test
-    void whenDominion_thenDominionWithEntities() {
-        try (var dominionStatic = mockStatic(Dominion.class)) {
-            dominionStatic.when(() -> Dominion.create("snakes")).thenReturn(dominion);
-            var components = new Object[]{new Object()};
-            when(mode.entities()).thenReturn(List.<Object[]>of(components));
-            assertThat(snakeSessionFactory.dominion(mode))
-                .isEqualTo(dominion);
-            verify(dominion).createEntity(components);
-        }
+    void whenWorld_thenWorldWithEntities() {
+        var component = new Session(Session.Status.RUNNING);
+        when(mode.entities()).thenReturn(List.<Object[]>of(new Object[]{component}));
+        var world = snakeSessionFactory.world(
+            mode,
+            entityFactory,
+            viewport,
+            viewport
+        );
+        assertThat(world.entities(new Query().all(Session.class)))
+            .singleElement()
+            .extracting(entity -> entity.component(Session.class))
+            .isSameAs(component);
     }
 
     @Test
-    void whenSystems_thenSystemsCreated() {
-        assertThat(
-            snakeSessionFactory.systems(
-                dominion,
-                entityFactory,
-                mode,
-                viewport,
-                viewport
+    void whenWorld_thenDistinctConfiguredEntitiesCreated() {
+        when(mode.entities()).thenReturn(
+            List.of(
+                new Object[]{new Session(Session.Status.RUNNING)},
+                new Object[]{new WorldDimensions(2, 3)}
             )
-        )
-            .isNotEmpty();
+        );
+        var world = snakeSessionFactory.world(mode, entityFactory, viewport, viewport);
+        assertThat(world.entities(new Query().all(Session.class))).hasSize(1);
+        assertThat(world.entities(new Query().all(WorldDimensions.class)))
+            .singleElement()
+            .extracting(entity -> entity.component(WorldDimensions.class))
+            .usingRecursiveComparison()
+            .isEqualTo(new WorldDimensions(2, 3));
     }
 }
