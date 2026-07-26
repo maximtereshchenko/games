@@ -51,4 +51,21 @@ final class SessionEndSystemTest {
             .extracting(entity -> entity.component(Session.class).status)
             .containsExactly(Session.Status.ENDED);
     }
+
+    @Test
+    void givenNoAir_thenSessionEnded() {
+        world.addComponents(
+            world.createEntity(),
+            new Session(Session.Status.RUNNING)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new AirCounter(1, 0)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Session.class)))
+            .extracting(entity -> entity.component(Session.class).status)
+            .containsExactly(Session.Status.ENDED);
+    }
 }
