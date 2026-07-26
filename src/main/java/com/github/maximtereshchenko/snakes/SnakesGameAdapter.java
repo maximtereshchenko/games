@@ -7,14 +7,12 @@ import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.github.maximtereshchenko.snakes.configuration.Configuration;
+import com.github.maximtereshchenko.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.snakes.screen.ScreenFactory;
 import com.github.maximtereshchenko.snakes.session.EntityFactory;
 import com.github.maximtereshchenko.snakes.session.SnakeSessionFactory;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.util.Set;
 
 final class SnakesGameAdapter implements ApplicationListener {
@@ -27,7 +25,10 @@ final class SnakesGameAdapter implements ApplicationListener {
 
     @Override
     public void create() {
-        var configuration = configuration();
+        var configurationReader = new ConfigurationReader();
+        var configuration = configurationReader.configuration(
+            "configuration.json"
+        );
         var userProfile = new UserProfile(
             configuration,
             Gdx.app.getPreferences(configuration.preferencesName())
@@ -50,6 +51,7 @@ final class SnakesGameAdapter implements ApplicationListener {
             applicationEvents,
             userProfile,
             new SnakeSessionFactory(
+                configurationReader,
                 shapeRenderer,
                 spriteBatch,
                 assetManager,
@@ -94,13 +96,5 @@ final class SnakesGameAdapter implements ApplicationListener {
     @Override
     public void dispose() {
         original.dispose();
-    }
-
-    private Configuration configuration() {
-        try (var reader = Gdx.files.classpath("configuration.json").reader()) {
-            return Configuration.from(reader);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
     }
 }

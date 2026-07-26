@@ -6,23 +6,27 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.configuration.Assets;
+import com.github.maximtereshchenko.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class SnakeSessionFactory {
 
+    private final ConfigurationReader configurationReader;
     private final ShapeRenderer shapeRenderer;
     private final SpriteBatch spriteBatch;
     private final AssetManager assetManager;
     private final Assets assets;
 
     public SnakeSessionFactory(
+        ConfigurationReader configurationReader,
         ShapeRenderer shapeRenderer,
         SpriteBatch spriteBatch,
         AssetManager assetManager,
         Assets assets
     ) {
+        this.configurationReader = configurationReader;
         this.shapeRenderer = shapeRenderer;
         this.spriteBatch = spriteBatch;
         this.assetManager = assetManager;
@@ -36,7 +40,7 @@ public final class SnakeSessionFactory {
         Viewport interfaceViewport
     ) {
         var world = new World();
-        for (var components : mode.entities()) {
+        for (var components : configurationReader.entities(mode)) {
             world.addComponents(world.createEntity(), components);
         }
         world.addSystems(

@@ -29,15 +29,7 @@
         "height": 3
       },
       "interfaceViewportHeight": 0.4,
-      "entities": [
-        [
-          {
-            "type": "com.github.maximtereshchenko.snakes.session.Position",
-            "x": 6,
-            "y": 7
-          }
-        ]
-      ],
+      "entities": "first.json",
       "palette": {
         "BACKGROUND": "00000000",
         "HEAD": "00000000",
@@ -59,14 +51,7 @@
         "height": 10
       },
       "interfaceViewportHeight": 1.1,
-      "entities": [
-        [
-          {
-            "type": "com.github.maximtereshchenko.snakes.session.Colored",
-            "value": "HEAD"
-          }
-        ]
-      ],
+      "entities": "second.json",
       "palette": {
         "BACKGROUND": "00000000",
         "HEAD": "00000000",

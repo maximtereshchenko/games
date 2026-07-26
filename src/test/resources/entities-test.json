@@ -1,0 +1,16 @@
+[
+  [
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.Position",
+      "x": 6,
+      "y": 7
+    }
+  ],
+  [
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "value": "HEAD"
+    }
+  ]
+]
+ 
