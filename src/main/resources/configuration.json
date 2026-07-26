@@ -103,7 +103,8 @@
         "FOOD": "000000ff",
         "INTERFACE": "222249ff",
         "WARP": "483b38ff",
-        "AIR": "4a79aaff"
+        "AIR": "4a79aaff",
+        "WALL": "241d1bff"
       },
       "modeUnlockRequirements": {}
     }
