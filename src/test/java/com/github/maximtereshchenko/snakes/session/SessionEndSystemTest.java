@@ -10,7 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 final class SessionEndSystemTest {
 
     private final World world = new World();
-    private final SessionEndSystem sessionEndSystem = new SessionEndSystem(world);
+    private final SessionEndSystem sessionEndSystem =
+        new SessionEndSystem(world);
 
     @BeforeEach
     void setUp() {
@@ -35,7 +36,7 @@ final class SessionEndSystemTest {
     }
 
     @Test
-    void givenSegmentCollisionTarget_thenSessionEnded() {
+    void givenCollision_thenSessionEnded() {
         world.addComponents(
             world.createEntity(),
             new Session(Session.Status.RUNNING)
@@ -61,6 +62,24 @@ final class SessionEndSystemTest {
         world.addComponents(
             world.createEntity(),
             new AirCounter(1, 0)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(world.entities(new Query().all(Session.class)))
+            .extracting(entity -> entity.component(Session.class).status)
+            .containsExactly(Session.Status.ENDED);
+    }
+
+    @Test
+    void givenWallCollision_thenSessionEnded() {
+        world.addComponents(
+            world.createEntity(),
+            new Session(Session.Status.RUNNING)
+        );
+        world.addComponents(
+            world.createEntity(),
+            Wall.INSTANCE,
+            HeadCollisionTarget.INSTANCE
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
