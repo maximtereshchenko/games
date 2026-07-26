@@ -48,8 +48,8 @@ public final class SnakeSessionFactory {
             new CurrentForwardDirectionSystem(world),
             new HeadForwardMovementSystem(world),
             new HeadSidewaysMovementSystem(world),
-            new WarpSystem(world),
             new HeadCollisionTargetSystem(world),
+            new WarpSystem(world),
             new AirCounterDecrementSystem(world),
             new AirCounterRefreshSystem(world),
             new FoodEatingSystem(world, entityFactory),
@@ -64,8 +64,8 @@ public final class SnakeSessionFactory {
                 ThreadLocalRandom.current(),
                 1
             ),
-            new EventRemovalSystem(world),
             new HeadCollisionTargetRemovalSystem(world),
+            new EventRemovalSystem(world),
             new GameRenderingSystem(
                 gameViewport,
                 shapeRenderer,
