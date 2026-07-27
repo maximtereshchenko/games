@@ -13,13 +13,15 @@ final class FoodSpawningSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> nonBackgroundPositionEntities;
     private final Iterable<Entity> worldDimensionsEntities;
+    private final Iterable<Entity> foodDefinitionEntities;
     private final Iterable<Entity> foodEntities;
     private final EntityFactory entityFactory;
     private final Random random;
     private final int maxFood;
 
     FoodSpawningSystem(
-        World world, EntityFactory entityFactory,
+        World world,
+        EntityFactory entityFactory,
         Random random,
         int maxFood
     ) {
@@ -32,6 +34,9 @@ final class FoodSpawningSystem extends TurnBasedSystem {
         this.worldDimensionsEntities = world.entities(
             new Query().all(WorldDimensions.class)
         );
+        this.foodDefinitionEntities = world.entities(
+            new Query().all(FoodDefinition.class)
+        );
         this.foodEntities = world.entities(
             new Query().all(Food.class)
         );
@@ -43,12 +48,18 @@ final class FoodSpawningSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
         var positions = positions();
-        for (var entity : worldDimensionsEntities) {
-            var worldDimensions = entity.component(WorldDimensions.class);
-            for (var i = currentFood(); positions.size() < space(worldDimensions) && i < maxFood; i++) {
-                var position = position(positions, worldDimensions);
-                positions.add(position);
-                entityFactory.createFood(worldEdit, position);
+        for (var worldDimensionsEntity : worldDimensionsEntities) {
+            var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
+            for (var foodDefinitionEntity : foodDefinitionEntities) {
+                for (var i = currentFood(); positions.size() < space(worldDimensions) && i < maxFood; i++) {
+                    var position = position(positions, worldDimensions);
+                    positions.add(position);
+                    entityFactory.createFood(
+                        worldEdit,
+                        foodDefinitionEntity.component(FoodDefinition.class),
+                        position
+                    );
+                }
             }
         }
     }

@@ -14,12 +14,17 @@ final class EntityFactoryTest {
     private final World world = mock();
     private final EntityFactory entityFactory = new EntityFactory();
     private final ArgumentCaptor<Segment> segmentCaptor = captor();
+    private final ArgumentCaptor<ForwardMovement> forwardMovementCaptor = captor();
 
     @Test
     void whenCreateSegment_thenSegmentEntityCreated() {
         when(world.createEntity()).thenReturn(1);
         var position = new Position(2, 3);
-        entityFactory.createSegment(world, position, 4);
+        entityFactory.createSegment(
+            world,
+            new SegmentDefinition(1, 4),
+            position
+        );
         verify(world).createEntity();
         verify(world)
             .addComponents(
@@ -36,15 +41,23 @@ final class EntityFactoryTest {
     @Test
     void whenCreateFood_thenFoodEntityCreated() {
         when(world.createEntity()).thenReturn(1);
-        entityFactory.createFood(world, new Position(2, 3));
+        entityFactory.createFood(
+            world,
+            new FoodDefinition(1, Direction.RIGHT),
+            new Position(2, 3)
+        );
         verify(world).createEntity();
         verify(world)
             .addComponents(
-                1,
-                Food.INSTANCE,
-                new Position(2, 3),
-                Colored.FOOD
+                eq(1),
+                eq(Food.INSTANCE),
+                forwardMovementCaptor.capture(),
+                eq(new Position(2, 3)),
+                eq(Colored.FOOD)
             );
+        assertThat(forwardMovementCaptor.getValue())
+            .usingRecursiveComparison()
+            .isEqualTo(new ForwardMovement(1, 1, Direction.RIGHT));
     }
 
     @Test

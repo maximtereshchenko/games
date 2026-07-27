@@ -4,10 +4,14 @@ import com.github.maximtereshchenko.ecs.WorldEdit;
 
 public final class EntityFactory {
 
-    void createSegment(WorldEdit worldEdit, Position position, int turnsRemaining) {
+    void createSegment(
+        WorldEdit worldEdit,
+        SegmentDefinition segmentDefinition,
+        Position position
+    ) {
         createEntity(
             worldEdit,
-            new Segment(turnsRemaining),
+            new Segment(segmentDefinition.durationTurns),
             position,
             Colored.SEGMENT
         );
@@ -18,8 +22,22 @@ public final class EntityFactory {
 
     }
 
-    void createFood(WorldEdit worldEdit, Position position) {
-        createEntity(worldEdit, Food.INSTANCE, position, Colored.FOOD);
+    void createFood(
+        WorldEdit worldEdit,
+        FoodDefinition foodDefinition,
+        Position position
+    ) {
+        createEntity(
+            worldEdit,
+            Food.INSTANCE,
+            new ForwardMovement(
+                foodDefinition.periodTurns(),
+                foodDefinition.periodTurns(),
+                foodDefinition.direction()
+            ),
+            position,
+            Colored.FOOD
+        );
     }
 
     void createTurnStartedEvent(WorldEdit worldEdit) {

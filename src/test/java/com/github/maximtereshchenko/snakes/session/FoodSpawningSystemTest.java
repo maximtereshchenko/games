@@ -24,6 +24,7 @@ final class FoodSpawningSystemTest {
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         world.addComponents(world.createEntity(), new WorldDimensions(2, 2));
+        world.addComponents(world.createEntity(), new FoodDefinition(1, Direction.RIGHT));
         world.update(0);
         verifyNoInteractions(entityFactory);
     }
@@ -31,16 +32,19 @@ final class FoodSpawningSystemTest {
     @Test
     void givenTurnStartedEvent_thenFoodSpawned() {
         world.addComponents(world.createEntity(), new WorldDimensions(2, 2));
+        world.addComponents(world.createEntity(), new FoodDefinition(1, Direction.RIGHT));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(0, 1))
             );
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(1, 1))
             );
     }
@@ -48,17 +52,20 @@ final class FoodSpawningSystemTest {
     @Test
     void givenPosition_thenFoodSpawnedInFreeSpace() {
         world.addComponents(world.createEntity(), new WorldDimensions(2, 2));
+        world.addComponents(world.createEntity(), new FoodDefinition(1, Direction.RIGHT));
         world.addComponents(world.createEntity(), new Position(0, 1));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(1, 0))
             );
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(1, 1))
             );
     }
@@ -66,12 +73,14 @@ final class FoodSpawningSystemTest {
     @Test
     void givenSomeFood_thenRemainingFoodSpawned() {
         world.addComponents(world.createEntity(), new WorldDimensions(2, 2));
+        world.addComponents(world.createEntity(), new FoodDefinition(1, Direction.RIGHT));
         world.addComponents(world.createEntity(), Food.INSTANCE, new Position(0, 0));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(1, 1))
             );
     }
@@ -79,6 +88,7 @@ final class FoodSpawningSystemTest {
     @Test
     void givenNotHasSpace_thenStopSpawningFood() {
         world.addComponents(world.createEntity(), new WorldDimensions(2, 2));
+        world.addComponents(world.createEntity(), new FoodDefinition(1, Direction.RIGHT));
         world.addComponents(world.createEntity(), new Position(0, 0));
         world.addComponents(world.createEntity(), new Position(0, 1));
         world.addComponents(world.createEntity(), new Position(1, 0));
@@ -87,6 +97,7 @@ final class FoodSpawningSystemTest {
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(1, 1))
             );
         verifyNoMoreInteractions(entityFactory);
@@ -95,6 +106,7 @@ final class FoodSpawningSystemTest {
     @Test
     void givenBackground_thenFoodSpawned() {
         world.addComponents(world.createEntity(), new WorldDimensions(1, 1));
+        world.addComponents(world.createEntity(), new FoodDefinition(1, Direction.RIGHT));
         world.addComponents(
             world.createEntity(),
             new Position(0, 0),
@@ -105,6 +117,7 @@ final class FoodSpawningSystemTest {
         verify(entityFactory)
             .createFood(
                 any(WorldEdit.class),
+                eq(new FoodDefinition(1, Direction.RIGHT)),
                 eq(new Position(0, 0))
             );
         verifyNoMoreInteractions(entityFactory);

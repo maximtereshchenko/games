@@ -4,7 +4,10 @@ import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.ecs.WorldEdit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentCaptor.captor;
 import static org.mockito.Mockito.*;
 
 final class SegmentSpawningSystemTest {
@@ -13,6 +16,7 @@ final class SegmentSpawningSystemTest {
     private final EntityFactory entityFactory = mock();
     private final SegmentSpawningSystem segmentSpawningSystem =
         new SegmentSpawningSystem(world, entityFactory);
+    private final ArgumentCaptor<SegmentDefinition> segmentDefinitionCaptor = captor();
 
     @BeforeEach
     void setUp() {
@@ -44,8 +48,11 @@ final class SegmentSpawningSystemTest {
         verify(entityFactory)
             .createSegment(
                 any(WorldEdit.class),
-                eq(new Position(1, 1)),
-                eq(1)
+                segmentDefinitionCaptor.capture(),
+                eq(new Position(1, 1))
             );
+        assertThat(segmentDefinitionCaptor.getValue())
+            .usingRecursiveComparison()
+            .isEqualTo(new SegmentDefinition(1, 1));
     }
 }

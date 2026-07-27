@@ -28,6 +28,13 @@
   ],
   [
     {
+      "type": "com.github.maximtereshchenko.snakes.session.FoodDefinition",
+      "periodTurns": 2147483647,
+      "direction": "DOWN"
+    }
+  ],
+  [
+    {
       "type": "com.github.maximtereshchenko.snakes.session.SessionStatisticsAccumulator"
     }
   ],
