@@ -24,11 +24,12 @@ final class StartMusic implements Subscriber {
 
     @Override
     public void onEvent(ApplicationEvent applicationEvent) {
-        if (applicationEvent instanceof AssetsLoaded) {
-            var music = assetManager.get(assets.music());
-            music.setLooping(true);
-            music.setVolume(userProfile.musicVolume());
-            music.play();
+        if (!(applicationEvent instanceof AssetsLoaded)) {
+            return;
         }
+        var music = assetManager.get(assets.music());
+        music.setLooping(true);
+        music.setVolume(userProfile.musicVolume());
+        music.play();
     }
 }

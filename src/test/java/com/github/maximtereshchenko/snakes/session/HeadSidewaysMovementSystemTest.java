@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class HeadSidewaysMovementSystemTest {
@@ -26,8 +28,7 @@ final class HeadSidewaysMovementSystemTest {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new Timer(0, 0),
-            new SidewaysMovement(4, 0),
+            new SidewaysMovement(1, 4, 1, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
         );
@@ -37,7 +38,6 @@ final class HeadSidewaysMovementSystemTest {
                 new Query()
                     .all(
                         Head.class,
-                        Timer.class,
                         SidewaysMovement.class,
                         Position.class,
                         CurrentForwardDirection.class
@@ -47,19 +47,24 @@ final class HeadSidewaysMovementSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(SidewaysMovement.class).index
+                entity -> entity.component(SidewaysMovement.class)
             )
-            .containsExactly(new Position(1, 1), 0);
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new Position(1, 1),
+                    new SidewaysMovement(1, 4, 1, 0)
+                )
+            );
     }
 
     @Test
-    void givenTimerNotExpired_thenNoChanges() {
+    void givenRemainingTurnsNotZero_thenNoChanges() {
         world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new Timer(1, 1),
-            new SidewaysMovement(4, 0),
+            new SidewaysMovement(2, 4, 2, 0),
             new Position(1, 1),
             new CurrentForwardDirection(Direction.UP)
         );
@@ -70,7 +75,6 @@ final class HeadSidewaysMovementSystemTest {
                 new Query()
                     .all(
                         Head.class,
-                        Timer.class,
                         SidewaysMovement.class,
                         Position.class,
                         CurrentForwardDirection.class
@@ -80,9 +84,15 @@ final class HeadSidewaysMovementSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(SidewaysMovement.class).index
+                entity -> entity.component(SidewaysMovement.class)
             )
-            .containsExactly(new Position(1, 1), 0);
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new Position(1, 1),
+                    new SidewaysMovement(2, 4, 1, 0)
+                )
+            );
     }
 
     @ParameterizedTest
@@ -108,8 +118,7 @@ final class HeadSidewaysMovementSystemTest {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new Timer(0, 0),
-            new SidewaysMovement(cycle, sidewaysIndex),
+            new SidewaysMovement(1, cycle, 1, sidewaysIndex),
             new Position(initialX, initialY),
             new CurrentForwardDirection(direction)
         );
@@ -120,7 +129,6 @@ final class HeadSidewaysMovementSystemTest {
                 new Query()
                     .all(
                         Head.class,
-                        Timer.class,
                         SidewaysMovement.class,
                         Position.class,
                         CurrentForwardDirection.class
@@ -130,11 +138,14 @@ final class HeadSidewaysMovementSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(SidewaysMovement.class).index
+                entity -> entity.component(SidewaysMovement.class)
             )
-            .containsExactly(
-                new Position(expectedX, expectedY),
-                expectedSidewaysIndex
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new Position(expectedX, expectedY),
+                    new SidewaysMovement(1, cycle, 1, expectedSidewaysIndex)
+                )
             );
     }
 }

@@ -13,7 +13,7 @@ final class EntityFactoryTest {
 
     private final World world = mock();
     private final EntityFactory entityFactory = new EntityFactory();
-    private final ArgumentCaptor<Timer> timerCaptor = captor();
+    private final ArgumentCaptor<Segment> segmentCaptor = captor();
 
     @Test
     void whenCreateSegment_thenSegmentEntityCreated() {
@@ -24,14 +24,13 @@ final class EntityFactoryTest {
         verify(world)
             .addComponents(
                 eq(1),
-                eq(Segment.INSTANCE),
+                segmentCaptor.capture(),
                 eq(position),
-                timerCaptor.capture(),
                 eq(Colored.SEGMENT)
             );
-        assertThat(timerCaptor.getValue())
+        assertThat(segmentCaptor.getValue())
             .usingRecursiveComparison()
-            .isEqualTo(new Timer(4, 4));
+            .isEqualTo(new Segment(4));
     }
 
     @Test

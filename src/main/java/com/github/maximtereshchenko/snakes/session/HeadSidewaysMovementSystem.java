@@ -15,7 +15,6 @@ final class HeadSidewaysMovementSystem extends TurnBasedSystem {
             new Query()
                 .all(
                     Head.class,
-                    Timer.class,
                     SidewaysMovement.class,
                     Position.class,
                     CurrentForwardDirection.class
@@ -25,20 +24,24 @@ final class HeadSidewaysMovementSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        for (var head : headEntities) {
-            var headSidewaysDirection = head.component(SidewaysMovement.class);
-            if (head.component(Timer.class).turnsRemaining != 0) {
-                continue;
-            }
-            head.component(Position.class)
-                .move(
-                    head.component(CurrentForwardDirection.class)
-                        .value
-                        .relative(relativeDirection(headSidewaysDirection))
+        for (var entity : headEntities) {
+            var sidewaysMovement = entity.component(SidewaysMovement.class);
+            sidewaysMovement.remainingTurns--;
+            if (sidewaysMovement.remainingTurns == 0) {
+                sidewaysMovement.remainingTurns = sidewaysMovement.periodTurns;
+                move(
+                    entity.component(Position.class),
+                    entity.component(CurrentForwardDirection.class).value,
+                    sidewaysMovement
                 );
-            headSidewaysDirection.index = (headSidewaysDirection.index + 1) %
-                                          headSidewaysDirection.cycle;
+            }
         }
+    }
+
+    private void move(Position position, Direction direction, SidewaysMovement sidewaysMovement) {
+        position.move(direction.relative(relativeDirection(sidewaysMovement)));
+        sidewaysMovement.index = (sidewaysMovement.index + 1) %
+                                 sidewaysMovement.cycle;
     }
 
     private RelativeDirection relativeDirection(SidewaysMovement headSidewaysDirection) {

@@ -59,4 +59,11 @@ final class UserProfileTest {
         userProfile.save();
         verify(preferences).flush();
     }
+
+    @Test
+    void whenIncrement_thenPutIntToPreferences() {
+        when(preferences.getInteger(UserProfileStatistics.LAUNCHES.name())).thenReturn(1);
+        userProfile.increment(UserProfileStatistics.LAUNCHES);
+        verify(preferences).putInteger(UserProfileStatistics.LAUNCHES.name(), 2);
+    }
 }

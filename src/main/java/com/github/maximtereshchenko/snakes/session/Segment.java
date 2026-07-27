@@ -1,6 +1,10 @@
 package com.github.maximtereshchenko.snakes.session;
 
-enum Segment {
+final class Segment {
 
-    INSTANCE
+    int remainingTurns;
+
+    Segment(int remainingTurns) {
+        this.remainingTurns = remainingTurns;
+    }
 }

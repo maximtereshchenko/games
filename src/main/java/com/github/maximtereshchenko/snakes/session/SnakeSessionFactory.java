@@ -58,8 +58,7 @@ public final class SnakeSessionFactory {
             new AirCounterRefreshSystem(world),
             new FoodEatingSystem(world, entityFactory),
             new FoodEatenCounterSystem(world),
-            new SegmentTimersIncrementSystem(world),
-            new TimerSystem(world),
+            new SegmentSystem(world),
             new SegmentRemovalSystem(world),
             new SessionEndSystem(world),
             new FoodSpawningSystem(

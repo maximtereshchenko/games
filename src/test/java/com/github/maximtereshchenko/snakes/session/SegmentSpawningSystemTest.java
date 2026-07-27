@@ -26,7 +26,7 @@ final class SegmentSpawningSystemTest {
             Head.INSTANCE,
             new Position(0, 0)
         );
-        world.addComponents(world.createEntity(), new SegmentTimerDefinition(0, 0));
+        world.addComponents(world.createEntity(), new SegmentDefinition(0, 0));
         world.update(0);
         verifyNoInteractions(entityFactory);
     }
@@ -38,7 +38,7 @@ final class SegmentSpawningSystemTest {
             Head.INSTANCE,
             new Position(1, 1)
         );
-        world.addComponents(world.createEntity(), new SegmentTimerDefinition(1, 1));
+        world.addComponents(world.createEntity(), new SegmentDefinition(1, 1));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         verify(entityFactory)

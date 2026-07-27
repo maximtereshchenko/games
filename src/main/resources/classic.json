@@ -21,9 +21,9 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.SegmentTimerDefinition",
-      "duration": 3,
-      "incrementStep": 3
+      "type": "com.github.maximtereshchenko.snakes.session.SegmentDefinition",
+      "durationTurns": 3,
+      "incrementStepTurns": 3
     }
   ],
   [
@@ -7968,7 +7968,7 @@
         "x": 33,
         "y": 0
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -7987,7 +7987,7 @@
         "x": 33,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8006,7 +8006,7 @@
         "x": 33,
         "y": 2
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8025,7 +8025,7 @@
         "x": 33,
         "y": 3
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8044,7 +8044,7 @@
         "x": 33,
         "y": 4
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8063,7 +8063,7 @@
         "x": 33,
         "y": 5
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8082,7 +8082,7 @@
         "x": 33,
         "y": 6
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8101,7 +8101,7 @@
         "x": 33,
         "y": 7
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8120,7 +8120,7 @@
         "x": 33,
         "y": 8
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8139,7 +8139,7 @@
         "x": 33,
         "y": 9
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8158,7 +8158,7 @@
         "x": 33,
         "y": 10
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8177,7 +8177,7 @@
         "x": 33,
         "y": 11
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8196,7 +8196,7 @@
         "x": 33,
         "y": 12
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8215,7 +8215,7 @@
         "x": 33,
         "y": 13
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8234,7 +8234,7 @@
         "x": 33,
         "y": 14
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8253,7 +8253,7 @@
         "x": 33,
         "y": 15
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8272,7 +8272,7 @@
         "x": 33,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8291,7 +8291,7 @@
         "x": 33,
         "y": 17
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8310,7 +8310,7 @@
         "x": 1,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8329,7 +8329,7 @@
         "x": 1,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8348,7 +8348,7 @@
         "x": 2,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8367,7 +8367,7 @@
         "x": 2,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8386,7 +8386,7 @@
         "x": 3,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8405,7 +8405,7 @@
         "x": 3,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8424,7 +8424,7 @@
         "x": 4,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8443,7 +8443,7 @@
         "x": 4,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8462,7 +8462,7 @@
         "x": 5,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8481,7 +8481,7 @@
         "x": 5,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8500,7 +8500,7 @@
         "x": 6,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8519,7 +8519,7 @@
         "x": 6,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8538,7 +8538,7 @@
         "x": 7,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8557,7 +8557,7 @@
         "x": 7,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8576,7 +8576,7 @@
         "x": 8,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8595,7 +8595,7 @@
         "x": 8,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8614,7 +8614,7 @@
         "x": 9,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8633,7 +8633,7 @@
         "x": 9,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8652,7 +8652,7 @@
         "x": 10,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8671,7 +8671,7 @@
         "x": 10,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8690,7 +8690,7 @@
         "x": 11,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8709,7 +8709,7 @@
         "x": 11,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8728,7 +8728,7 @@
         "x": 12,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8747,7 +8747,7 @@
         "x": 12,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8766,7 +8766,7 @@
         "x": 13,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8785,7 +8785,7 @@
         "x": 13,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8804,7 +8804,7 @@
         "x": 14,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8823,7 +8823,7 @@
         "x": 14,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8842,7 +8842,7 @@
         "x": 15,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8861,7 +8861,7 @@
         "x": 15,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8880,7 +8880,7 @@
         "x": 16,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8899,7 +8899,7 @@
         "x": 16,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8918,7 +8918,7 @@
         "x": 17,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8937,7 +8937,7 @@
         "x": 17,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8956,7 +8956,7 @@
         "x": 18,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8975,7 +8975,7 @@
         "x": 18,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -8994,7 +8994,7 @@
         "x": 19,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9013,7 +9013,7 @@
         "x": 19,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9032,7 +9032,7 @@
         "x": 20,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9051,7 +9051,7 @@
         "x": 20,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9070,7 +9070,7 @@
         "x": 21,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9089,7 +9089,7 @@
         "x": 21,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9108,7 +9108,7 @@
         "x": 22,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9127,7 +9127,7 @@
         "x": 22,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9146,7 +9146,7 @@
         "x": 23,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9165,7 +9165,7 @@
         "x": 23,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9184,7 +9184,7 @@
         "x": 24,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9203,7 +9203,7 @@
         "x": 24,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9222,7 +9222,7 @@
         "x": 25,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9241,7 +9241,7 @@
         "x": 25,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9260,7 +9260,7 @@
         "x": 26,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9279,7 +9279,7 @@
         "x": 26,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9298,7 +9298,7 @@
         "x": 27,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9317,7 +9317,7 @@
         "x": 27,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9336,7 +9336,7 @@
         "x": 28,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9355,7 +9355,7 @@
         "x": 28,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9374,7 +9374,7 @@
         "x": 29,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9393,7 +9393,7 @@
         "x": 29,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9412,7 +9412,7 @@
         "x": 30,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9431,7 +9431,7 @@
         "x": 30,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9450,7 +9450,7 @@
         "x": 31,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9469,7 +9469,7 @@
         "x": 31,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9488,7 +9488,7 @@
         "x": 32,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9507,7 +9507,7 @@
         "x": 32,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9526,7 +9526,7 @@
         "x": 33,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9545,7 +9545,7 @@
         "x": 33,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9564,7 +9564,7 @@
         "x": 1,
         "y": 0
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9583,7 +9583,7 @@
         "x": 1,
         "y": 1
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9602,7 +9602,7 @@
         "x": 1,
         "y": 2
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9621,7 +9621,7 @@
         "x": 1,
         "y": 3
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9640,7 +9640,7 @@
         "x": 1,
         "y": 4
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9659,7 +9659,7 @@
         "x": 1,
         "y": 5
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9678,7 +9678,7 @@
         "x": 1,
         "y": 6
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9697,7 +9697,7 @@
         "x": 1,
         "y": 7
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9716,7 +9716,7 @@
         "x": 1,
         "y": 8
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9735,7 +9735,7 @@
         "x": 1,
         "y": 9
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9754,7 +9754,7 @@
         "x": 1,
         "y": 10
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9773,7 +9773,7 @@
         "x": 1,
         "y": 11
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9792,7 +9792,7 @@
         "x": 1,
         "y": 12
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9811,7 +9811,7 @@
         "x": 1,
         "y": 13
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9830,7 +9830,7 @@
         "x": 1,
         "y": 14
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9849,7 +9849,7 @@
         "x": 1,
         "y": 15
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9868,7 +9868,7 @@
         "x": 1,
         "y": 16
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9887,7 +9887,7 @@
         "x": 1,
         "y": 17
       },
-      "relativeDirection": "SAME"
+      "relativeDirection": "FORWARD"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
@@ -9915,7 +9915,7 @@
     {
       "type": "com.github.maximtereshchenko.snakes.session.LegalRelativeDirections",
       "value": [
-        "SAME",
+        "FORWARD",
         "LEFT",
         "RIGHT"
       ]
@@ -9933,17 +9933,12 @@
   [
     {
       "type": "com.github.maximtereshchenko.snakes.session.Segment",
-      "value": "INSTANCE"
+      "remainingTurns": 2
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
       "x": 10,
       "y": 6
-    },
-    {
-      "type": "com.github.maximtereshchenko.snakes.session.Timer",
-      "period": 2,
-      "turnsRemaining": 2
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Colored",
@@ -9953,17 +9948,12 @@
   [
     {
       "type": "com.github.maximtereshchenko.snakes.session.Segment",
-      "value": "INSTANCE"
+      "remainingTurns": "1"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",
       "x": 9,
       "y": 6
-    },
-    {
-      "type": "com.github.maximtereshchenko.snakes.session.Timer",
-      "period": 1,
-      "turnsRemaining": 1
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Colored",

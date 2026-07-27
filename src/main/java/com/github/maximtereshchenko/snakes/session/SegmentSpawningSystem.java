@@ -17,7 +17,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
             new Query().all(Head.class, Position.class)
         );
         this.segmentTimerDefinitionEntities = world.entities(
-            new Query().all(SegmentTimerDefinition.class)
+            new Query().all(SegmentDefinition.class)
         );
         this.entityFactory = entityFactory;
     }
@@ -29,7 +29,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
                 entityFactory.createSegment(
                     worldEdit,
                     new Position(head.component(Position.class)),
-                    definition.component(SegmentTimerDefinition.class).duration
+                    definition.component(SegmentDefinition.class).durationTurns
                 );
             }
         }

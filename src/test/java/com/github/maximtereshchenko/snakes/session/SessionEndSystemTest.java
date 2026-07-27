@@ -22,7 +22,7 @@ final class SessionEndSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         world.addComponents(
             world.createEntity(),
-            Segment.INSTANCE,
+            new Segment(1),
             HeadCollisionTarget.INSTANCE
         );
         world.addComponents(
@@ -43,7 +43,7 @@ final class SessionEndSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Segment.INSTANCE,
+            new Segment(1),
             HeadCollisionTarget.INSTANCE
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);

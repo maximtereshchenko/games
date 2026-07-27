@@ -20,30 +20,30 @@ final class SegmentRemovalSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), new Timer(0, 0), Segment.INSTANCE);
+        world.addComponents(world.createEntity(), new Segment(1));
         world.update(0);
-        assertThat(world.entities(new Query().all(Timer.class)))
+        assertThat(world.entities(new Query().all(Segment.class)))
             .singleElement()
-            .extracting(entity -> entity.component(Timer.class).turnsRemaining)
-            .isEqualTo(0);
+            .extracting(entity -> entity.component(Segment.class).remainingTurns)
+            .isEqualTo(1);
     }
 
     @Test
-    void givenTurnStartedEvent_thenTimerRemoved() {
-        world.addComponents(world.createEntity(), new Timer(0, 0), Segment.INSTANCE);
+    void givenTurnStartedEvent_thenSegmentRemoved() {
+        world.addComponents(world.createEntity(), new Segment(1));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
-        assertThat(world.entities(new Query().all(Timer.class))).isEmpty();
+        assertThat(world.entities(new Query().all(Segment.class))).isEmpty();
     }
 
     @Test
-    void givenTimerPositive_thenNoChanges() {
-        world.addComponents(world.createEntity(), new Timer(1, 1), Segment.INSTANCE);
+    void givenPositiveRemainingTurns_thenNoChanges() {
+        world.addComponents(world.createEntity(), new Segment(2));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
-        assertThat(world.entities(new Query().all(Timer.class)))
+        assertThat(world.entities(new Query().all(Segment.class)))
             .singleElement()
-            .extracting(entity -> entity.component(Timer.class).turnsRemaining)
+            .extracting(entity -> entity.component(Segment.class).remainingTurns)
             .isEqualTo(1);
     }
 }

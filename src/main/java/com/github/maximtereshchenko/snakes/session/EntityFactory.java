@@ -7,9 +7,8 @@ public final class EntityFactory {
     void createSegment(WorldEdit worldEdit, Position position, int turnsRemaining) {
         createEntity(
             worldEdit,
-            Segment.INSTANCE,
+            new Segment(turnsRemaining),
             position,
-            new Timer(turnsRemaining, turnsRemaining),
             Colored.SEGMENT
         );
     }

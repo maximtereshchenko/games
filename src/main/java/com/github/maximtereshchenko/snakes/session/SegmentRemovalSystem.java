@@ -12,15 +12,17 @@ final class SegmentRemovalSystem extends TurnBasedSystem {
     SegmentRemovalSystem(World world) {
         super(world);
         this.segmentEntities = world.entities(
-            new Query().all(Timer.class, Segment.class)
+            new Query().all(Segment.class)
         );
     }
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        for (var segment : segmentEntities) {
-            if (segment.component(Timer.class).turnsRemaining == 0) {
-                worldEdit.deleteEntity(segment.id());
+        for (var entity : segmentEntities) {
+            var segment = entity.component(Segment.class);
+            segment.remainingTurns--;
+            if (segment.remainingTurns == 0) {
+                worldEdit.deleteEntity(entity.id());
             }
         }
     }
