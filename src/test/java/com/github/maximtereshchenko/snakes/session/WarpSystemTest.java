@@ -5,6 +5,8 @@ import com.github.maximtereshchenko.ecs.World;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class WarpSystemTest {
@@ -28,8 +30,7 @@ final class WarpSystemTest {
             world.createEntity(),
             Head.INSTANCE,
             new Position(1, 1),
-            new CurrentForwardDirection(Direction.RIGHT),
-            new NextForwardDirection(Direction.RIGHT)
+            new ForwardMovement(1, 1, Direction.RIGHT)
         );
         world.update(0);
         assertThat(
@@ -38,21 +39,21 @@ final class WarpSystemTest {
                     .all(
                         Head.class,
                         Position.class,
-                        CurrentForwardDirection.class,
-                        NextForwardDirection.class
+                        ForwardMovement.class
                     )
             )
         )
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(CurrentForwardDirection.class).value,
-                entity -> entity.component(NextForwardDirection.class).value
+                entity -> entity.component(ForwardMovement.class)
             )
-            .containsExactly(
-                new Position(1, 1),
-                Direction.RIGHT,
-                Direction.RIGHT
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new Position(1, 1),
+                    new ForwardMovement(1, 1, Direction.RIGHT)
+                )
             );
     }
 
@@ -67,8 +68,7 @@ final class WarpSystemTest {
             world.createEntity(),
             Head.INSTANCE,
             new Position(1, 1),
-            new CurrentForwardDirection(Direction.RIGHT),
-            new NextForwardDirection(Direction.RIGHT)
+            new ForwardMovement(1, 1, Direction.RIGHT)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
@@ -78,21 +78,21 @@ final class WarpSystemTest {
                     .all(
                         Head.class,
                         Position.class,
-                        CurrentForwardDirection.class,
-                        NextForwardDirection.class
+                        ForwardMovement.class
                     )
             )
         )
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(CurrentForwardDirection.class).value,
-                entity -> entity.component(NextForwardDirection.class).value
+                entity -> entity.component(ForwardMovement.class)
             )
-            .containsExactly(
-                new Position(0, 0),
-                Direction.UP,
-                Direction.UP
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new Position(0, 0),
+                    new ForwardMovement(1, 1, Direction.UP)
+                )
             );
     }
 }

@@ -17,7 +17,7 @@ final class HeadSidewaysMovementSystem extends TurnBasedSystem {
                     Head.class,
                     SidewaysMovement.class,
                     Position.class,
-                    CurrentForwardDirection.class
+                    ForwardMovement.class
                 )
         );
     }
@@ -31,7 +31,7 @@ final class HeadSidewaysMovementSystem extends TurnBasedSystem {
                 sidewaysMovement.remainingTurns = sidewaysMovement.periodTurns;
                 move(
                     entity.component(Position.class),
-                    entity.component(CurrentForwardDirection.class).value,
+                    entity.component(ForwardMovement.class).direction,
                     sidewaysMovement
                 );
             }

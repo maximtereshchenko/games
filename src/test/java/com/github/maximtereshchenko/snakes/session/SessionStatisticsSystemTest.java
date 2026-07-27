@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
 import java.util.Map;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,23 +28,11 @@ final class SessionStatisticsSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         world.addComponents(
             world.createEntity(),
-            new CurrentForwardDirection(Direction.RIGHT),
-            new NextForwardDirection(Direction.UP)
+            new ForwardMovement(1, 1, Direction.RIGHT),
+            new PlannedMovement(Set.of(), Direction.UP)
         );
         world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
         world.update(0);
-        assertThat(
-            world.entities(
-                new Query()
-                    .all(CurrentForwardDirection.class, NextForwardDirection.class)
-            )
-        )
-            .singleElement()
-            .extracting(
-                entity -> entity.component(CurrentForwardDirection.class).value,
-                entity -> entity.component(NextForwardDirection.class).value
-            )
-            .containsExactly(Direction.RIGHT, Direction.UP);
         assertThat(world.entities(new Query().all(SessionStatisticsAccumulator.class)))
             .singleElement()
             .extracting(
@@ -57,8 +46,8 @@ final class SessionStatisticsSystemTest {
     void givenLeftTurn_thenLeftTurnsCounterIncremented(Direction direction) {
         world.addComponents(
             world.createEntity(),
-            new CurrentForwardDirection(direction),
-            new NextForwardDirection(direction.left())
+            new ForwardMovement(1, 1, direction),
+            new PlannedMovement(Set.of(), direction.left())
         );
         world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -76,8 +65,8 @@ final class SessionStatisticsSystemTest {
     void givenRightTurn_thenLeftTurnsCounterNotIncremented(Direction direction) {
         world.addComponents(
             world.createEntity(),
-            new CurrentForwardDirection(direction),
-            new NextForwardDirection(direction.opposite().left())
+            new ForwardMovement(1, 1, direction),
+            new PlannedMovement(Set.of(), direction.opposite().left())
         );
         world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);

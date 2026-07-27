@@ -14,7 +14,7 @@ final class InputSystem implements System {
 
     InputSystem(World world) {
         this.nextForwardDirectionEntities = world.entities(
-            new Query().all(NextForwardDirection.class)
+            new Query().all(PlannedMovement.class)
         );
         this.directions = Map.of(
             Input.Keys.W, Direction.UP,
@@ -29,7 +29,7 @@ final class InputSystem implements System {
         for (var entry : directions.entrySet()) {
             if (Gdx.input.isKeyPressed(entry.getKey())) {
                 for (var entity : nextForwardDirectionEntities) {
-                    entity.component(NextForwardDirection.class).value = entry.getValue();
+                    entity.component(PlannedMovement.class).direction = entry.getValue();
                 }
             }
         }

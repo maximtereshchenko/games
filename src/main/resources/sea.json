@@ -9916,20 +9916,19 @@
       "value": "INSTANCE"
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.CurrentForwardDirection",
-      "value": "RIGHT"
+      "type": "com.github.maximtereshchenko.snakes.session.ForwardMovement",
+      "periodTurns": 1,
+      "remainingTurns": 1,
+      "direction": "RIGHT"
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.NextForwardDirection",
-      "value": "RIGHT"
-    },
-    {
-      "type": "com.github.maximtereshchenko.snakes.session.LegalRelativeDirections",
-      "value": [
+      "type": "com.github.maximtereshchenko.snakes.session.PlannedMovement",
+      "legalRelativeDirections": [
         "FORWARD",
         "LEFT",
         "RIGHT"
-      ]
+      ],
+      "direction": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Position",

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,13 +45,14 @@ final class InputSystemTest {
     ) {
         world.addComponents(
             world.createEntity(),
-            new NextForwardDirection(Direction.RIGHT)
+            new PlannedMovement(Set.of(), Direction.RIGHT)
         );
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
         world.update(0);
-        assertThat(world.entities(new Query().all(NextForwardDirection.class)))
+        assertThat(world.entities(new Query().all(PlannedMovement.class)))
             .singleElement()
-            .extracting(entity -> entity.component(NextForwardDirection.class).value)
-            .isEqualTo(expected);
+            .extracting(entity -> entity.component(PlannedMovement.class))
+            .usingRecursiveComparison()
+            .isEqualTo(new PlannedMovement(Set.of(), expected));
     }
 }

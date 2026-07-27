@@ -11,15 +11,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class HeadSidewaysMovementSystemTest {
+final class ForwardMovementSystemTest {
 
     private final World world = new World();
-    private final HeadSidewaysMovementSystem headSidewaysMovementSystem =
-        new HeadSidewaysMovementSystem(world);
+    private final ForwardMovementSystem forwardMovementSystem =
+        new ForwardMovementSystem(world);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(headSidewaysMovementSystem);
+        world.addSystems(forwardMovementSystem);
     }
 
     @Test
@@ -28,9 +28,8 @@ final class HeadSidewaysMovementSystemTest {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new SidewaysMovement(1, 4, 1, 0),
-            new Position(1, 1),
-            new ForwardMovement(1, 1, Direction.UP)
+            new Position(0, 0),
+            new ForwardMovement(2, 1, Direction.RIGHT)
         );
         world.update(0);
         assertThat(
@@ -38,7 +37,6 @@ final class HeadSidewaysMovementSystemTest {
                 new Query()
                     .all(
                         Head.class,
-                        SidewaysMovement.class,
                         Position.class,
                         ForwardMovement.class
                     )
@@ -47,26 +45,25 @@ final class HeadSidewaysMovementSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(SidewaysMovement.class)
+                entity -> entity.component(ForwardMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new Position(1, 1),
-                    new SidewaysMovement(1, 4, 1, 0)
+                    new Position(0, 0),
+                    new ForwardMovement(2, 1, Direction.RIGHT)
                 )
             );
     }
 
     @Test
-    void givenRemainingTurnsNotZero_thenNoChanges() {
+    void givenPositiveRemainingTurns_thenNoChanges() {
         world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new SidewaysMovement(2, 4, 2, 0),
-            new Position(1, 1),
-            new ForwardMovement(1, 1, Direction.UP)
+            new Position(0, 0),
+            new ForwardMovement(2, 2, Direction.RIGHT)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
@@ -75,7 +72,6 @@ final class HeadSidewaysMovementSystemTest {
                 new Query()
                     .all(
                         Head.class,
-                        SidewaysMovement.class,
                         Position.class,
                         ForwardMovement.class
                     )
@@ -84,13 +80,13 @@ final class HeadSidewaysMovementSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(SidewaysMovement.class)
+                entity -> entity.component(ForwardMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new Position(1, 1),
-                    new SidewaysMovement(2, 4, 1, 0)
+                    new Position(0, 0),
+                    new ForwardMovement(2, 1, Direction.RIGHT)
                 )
             );
     }
@@ -98,29 +94,25 @@ final class HeadSidewaysMovementSystemTest {
     @ParameterizedTest
     @CsvSource(
         textBlock = """
-                    UP, 1, 1, 4, 0, 2, 1, 1
-                    RIGHT, 1, 1, 4, 0, 1, 0, 1
-                    UP, 1, 1, 4, 2, 0, 1, 3
-                    UP, 1, 1, 3, 2, 0, 1, 0
+                    UP, 1, 1, 1, 2
+                    DOWN, 1, 1, 1, 0
+                    LEFT, 1, 1, 0, 1
+                    RIGHT, 1, 1, 2, 1
                     """
     )
-    void givenTurnStartedEvent_thenHeadMovedSideways(
+    void givenTurnStartedEvent_thenHeadMoved(
         Direction direction,
         int initialX,
         int initialY,
-        int cycle,
-        int sidewaysIndex,
         int expectedX,
-        int expectedY,
-        int expectedSidewaysIndex
+        int expectedY
     ) {
         world.addComponents(world.createEntity(), new WorldDimensions(3, 3));
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new SidewaysMovement(1, cycle, 1, sidewaysIndex),
             new Position(initialX, initialY),
-            new ForwardMovement(1, 1, direction)
+            new ForwardMovement(2, 1, direction)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
@@ -129,7 +121,6 @@ final class HeadSidewaysMovementSystemTest {
                 new Query()
                     .all(
                         Head.class,
-                        SidewaysMovement.class,
                         Position.class,
                         ForwardMovement.class
                     )
@@ -138,13 +129,13 @@ final class HeadSidewaysMovementSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(Position.class),
-                entity -> entity.component(SidewaysMovement.class)
+                entity -> entity.component(ForwardMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
                     new Position(expectedX, expectedY),
-                    new SidewaysMovement(1, cycle, 1, expectedSidewaysIndex)
+                    new ForwardMovement(2, 2, direction)
                 )
             );
     }

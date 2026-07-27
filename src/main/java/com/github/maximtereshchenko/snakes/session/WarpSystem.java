@@ -20,8 +20,7 @@ final class WarpSystem extends TurnBasedSystem {
                 .all(
                     Head.class,
                     Position.class,
-                    CurrentForwardDirection.class,
-                    NextForwardDirection.class
+                    ForwardMovement.class
                 )
         );
     }
@@ -32,11 +31,9 @@ final class WarpSystem extends TurnBasedSystem {
             for (var head : headEntities) {
                 var warp = warpEntity.component(Warp.class);
                 worldEdit.addComponents(head.id(), new Position(warp.position()));
-                var currentForwardDirection = head.component(CurrentForwardDirection.class);
-                currentForwardDirection.value = currentForwardDirection.value
+                var forwardMovement = head.component(ForwardMovement.class);
+                forwardMovement.direction = forwardMovement.direction
                     .relative(warp.relativeDirection());
-                head.component(NextForwardDirection.class).value =
-                    currentForwardDirection.value;
             }
         }
     }
