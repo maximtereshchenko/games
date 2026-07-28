@@ -11,28 +11,17 @@ import java.util.Set;
 
 final class FoodSpawningSystem extends TurnBasedSystem {
 
-    private final Iterable<Entity> nonBackgroundPositionEntities;
-    private final Iterable<Entity> worldDimensionsEntities;
+    private final Iterable<Entity> nonBackgroundEntities;
     private final Iterable<Entity> foodDefinitionEntities;
     private final Iterable<Entity> foodEntities;
-    private final EntityFactory entityFactory;
     private final Random random;
-    private final int maxFood;
 
-    FoodSpawningSystem(
-        World world,
-        EntityFactory entityFactory,
-        Random random,
-        int maxFood
-    ) {
+    FoodSpawningSystem(World world, Random random) {
         super(world);
-        this.nonBackgroundPositionEntities = world.entities(
+        this.nonBackgroundEntities = world.entities(
             new Query()
-                .all(Position.class)
+                .all(WorldPosition.class)
                 .none(Background.class)
-        );
-        this.worldDimensionsEntities = world.entities(
-            new Query().all(WorldDimensions.class)
         );
         this.foodDefinitionEntities = world.entities(
             new Query().all(FoodDefinition.class)
@@ -40,59 +29,49 @@ final class FoodSpawningSystem extends TurnBasedSystem {
         this.foodEntities = world.entities(
             new Query().all(Food.class)
         );
-        this.entityFactory = entityFactory;
         this.random = random;
-        this.maxFood = maxFood;
     }
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        var positions = positions();
-        for (var worldDimensionsEntity : worldDimensionsEntities) {
-            var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
-            for (var foodDefinitionEntity : foodDefinitionEntities) {
-                for (var i = currentFood(); positions.size() < space(worldDimensions) && i < maxFood; i++) {
-                    var position = position(positions, worldDimensions);
-                    positions.add(position);
-                    entityFactory.createFood(
-                        worldEdit,
-                        foodDefinitionEntity.component(FoodDefinition.class),
-                        position
-                    );
-                }
-            }
+        if (foodEntities.iterator().hasNext()) {
+            return;
         }
-    }
-
-    private Set<Position> positions() {
-        var positions = new HashSet<Position>();
-        for (var entity : nonBackgroundPositionEntities) {
-            positions.add(entity.component(Position.class));
-        }
-        return positions;
-    }
-
-    private int space(WorldDimensions worldDimensions) {
-        return worldDimensions.height() * worldDimensions.width();
-    }
-
-    private Position position(Set<Position> positions, WorldDimensions worldDimensions) {
-        while (true) {
-            var position = new Position(
-                random.nextInt(worldDimensions.width()),
-                random.nextInt(worldDimensions.height())
+        for (var foodDefinitionEntity : foodDefinitionEntities) {
+            var foodDefinition = foodDefinitionEntity.component(FoodDefinition.class);
+            var worldPosition = position(foodDefinition.worldDimensions());
+            var worldPositionIntent = new WorldPosition();
+            worldPositionIntent.copy(worldPosition);
+            worldEdit.addComponents(
+                worldEdit.createEntity(),
+                Food.INSTANCE,
+                new DirectedMovement(
+                    foodDefinition.periodTurns(),
+                    foodDefinition.periodTurns()
+                ),
+                worldPosition,
+                new WorldPositionIntent(worldPositionIntent),
+                foodDefinition.direction(),
+                Colored.FOOD
             );
-            if (!positions.contains(position)) {
-                return position;
-            }
         }
     }
 
-    private int currentFood() {
-        var count = 0;
-        for (var _ : foodEntities) {
-            count++;
+    private Set<WorldPosition> worldPositions() {
+        var worldPositions = new HashSet<WorldPosition>();
+        for (var entity : nonBackgroundEntities) {
+            worldPositions.add(entity.component(WorldPosition.class));
         }
-        return count;
+        return worldPositions;
+    }
+
+    private WorldPosition position(WorldDimensions worldDimensions) {
+        var worldPositions = worldPositions();
+        var worldPosition = new WorldPosition();
+        do {
+            worldPosition.x = random.nextInt(worldDimensions.width());
+            worldPosition.y = random.nextInt(worldDimensions.height());
+        } while (worldPositions.contains(worldPosition));
+        return worldPosition;
     }
 }

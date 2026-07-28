@@ -6,7 +6,7 @@ import com.github.maximtereshchenko.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.snakes.event.CreditsScreenFinished;
 import com.github.maximtereshchenko.snakes.event.SnakeSessionEnded;
 import com.github.maximtereshchenko.snakes.event.TitleScreenFinished;
-import com.github.maximtereshchenko.snakes.session.SessionStatistics;
+import com.github.maximtereshchenko.snakes.session.SessionMetric;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,10 +23,10 @@ final class UnlockModesTest {
 
     private final UserProfile userProfile = mock();
     private final Mode mode = mock();
-    private final Map<UserProfileStatistics, Integer> userProfileThresholds =
-        new EnumMap<>(UserProfileStatistics.class);
-    private final Map<SessionStatistics, Integer> sessionThresholds =
-        new EnumMap<>(SessionStatistics.class);
+    private final Map<UserProfileMetric, Integer> userProfileThresholds =
+        new EnumMap<>(UserProfileMetric.class);
+    private final Map<SessionMetric, Integer> sessionThresholds =
+        new EnumMap<>(SessionMetric.class);
     private final ModeUnlockRequirements modeUnlockRequirements = new ModeUnlockRequirements(
         userProfileThresholds,
         sessionThresholds
@@ -50,8 +50,8 @@ final class UnlockModesTest {
     void givenUserProfileThresholdsLesser_whenScreenFinished_thenModeUnlocked(
         ApplicationEvent event
     ) {
-        userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
-        when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(2);
+        userProfileThresholds.put(UserProfileMetric.LAUNCHES, 1);
+        when(userProfile.value(UserProfileMetric.LAUNCHES)).thenReturn(2);
         unlockModes.onEvent(event);
         verify(userProfile).unlock(mode);
     }
@@ -61,7 +61,7 @@ final class UnlockModesTest {
     void givenUserProfileThresholdsGreater_whenScreenFinished_thenModeNotUnlocked(
         ApplicationEvent event
     ) {
-        userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
+        userProfileThresholds.put(UserProfileMetric.LAUNCHES, 1);
         unlockModes.onEvent(event);
         verify(userProfile, never()).unlock(mode);
     }
@@ -71,35 +71,35 @@ final class UnlockModesTest {
     void givenSessionThresholdsNotZero_whenScreenFinished_thenModeNotUnlocked(
         ApplicationEvent event
     ) {
-        userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
-        sessionThresholds.put(SessionStatistics.LEFT_TURNS, 1);
-        when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(1);
+        userProfileThresholds.put(UserProfileMetric.LAUNCHES, 1);
+        sessionThresholds.put(SessionMetric.LEFT_TURNS, 1);
+        when(userProfile.value(UserProfileMetric.LAUNCHES)).thenReturn(1);
         unlockModes.onEvent(event);
         verify(userProfile, never()).unlock(mode);
     }
 
     @Test
     void givenUserProfileThresholdsGreater_whenSnakeSessionEnded_thenModeNotUnlocked() {
-        userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
+        userProfileThresholds.put(UserProfileMetric.LAUNCHES, 1);
         unlockModes.onEvent(new SnakeSessionEnded(Map.of()));
         verify(userProfile, never()).unlock(mode);
     }
 
     @Test
     void givenSessionThresholdsGreater_whenSnakeSessionEnded_thenModeNotUnlocked() {
-        userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
-        sessionThresholds.put(SessionStatistics.LEFT_TURNS, 1);
-        when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(2);
-        unlockModes.onEvent(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 0)));
+        userProfileThresholds.put(UserProfileMetric.LAUNCHES, 1);
+        sessionThresholds.put(SessionMetric.LEFT_TURNS, 1);
+        when(userProfile.value(UserProfileMetric.LAUNCHES)).thenReturn(2);
+        unlockModes.onEvent(new SnakeSessionEnded(Map.of(SessionMetric.LEFT_TURNS, 0)));
         verify(userProfile, never()).unlock(mode);
     }
 
     @Test
     void givenSessionThresholdsLesser_whenSnakeSessionEnded_thenModeUnlocked() {
-        userProfileThresholds.put(UserProfileStatistics.LAUNCHES, 1);
-        sessionThresholds.put(SessionStatistics.LEFT_TURNS, 1);
-        when(userProfile.value(UserProfileStatistics.LAUNCHES)).thenReturn(2);
-        unlockModes.onEvent(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 2)));
+        userProfileThresholds.put(UserProfileMetric.LAUNCHES, 1);
+        sessionThresholds.put(SessionMetric.LEFT_TURNS, 1);
+        when(userProfile.value(UserProfileMetric.LAUNCHES)).thenReturn(2);
+        unlockModes.onEvent(new SnakeSessionEnded(Map.of(SessionMetric.LEFT_TURNS, 2)));
         verify(userProfile).unlock(mode);
     }
 }

@@ -1,3 +1,3 @@
 package com.github.maximtereshchenko.snakes.session;
 
-record Warp(Position position, RelativeDirection relativeDirection) {}
+record Warp(WorldPosition worldPosition) {}

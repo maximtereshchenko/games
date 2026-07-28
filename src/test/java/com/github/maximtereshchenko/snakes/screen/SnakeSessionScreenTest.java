@@ -5,9 +5,9 @@ import com.github.maximtereshchenko.ecs.System;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.snakes.event.SnakeSessionEnded;
-import com.github.maximtereshchenko.snakes.session.Session;
-import com.github.maximtereshchenko.snakes.session.SessionStatistics;
-import com.github.maximtereshchenko.snakes.session.SessionStatisticsAccumulator;
+import com.github.maximtereshchenko.snakes.session.Dead;
+import com.github.maximtereshchenko.snakes.session.SessionMetric;
+import com.github.maximtereshchenko.snakes.session.Statistics;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -21,29 +21,36 @@ final class SnakeSessionScreenTest {
     private final ApplicationEvents applicationEvents = mock();
     private final World world = new World();
     private final System system = mock();
-    private final SnakeSessionScreen snakeSessionScreen = new SnakeSessionScreen(
+    private final SessionScreen snakeSessionScreen = new SessionScreen(
         Set.of(viewport),
         applicationEvents,
         world
     );
 
     @Test
-    void givenSessionRunning_whenRender_thenSystemUpdated() {
-        world.addComponents(world.createEntity(), new Session(Session.Status.RUNNING));
+    void givenNoDead_whenRender_thenSystemUpdated() {
         world.addSystems(system);
         snakeSessionScreen.render(1);
         verify(system).update(any(), eq(1.0f));
+        verifyNoInteractions(applicationEvents);
     }
 
     @Test
-    void givenSessionEnded_whenRender_thenOnSessionEndCalled() {
-        world.addComponents(world.createEntity(), new Session(Session.Status.ENDED));
-        world.addComponents(world.createEntity(), new SessionStatisticsAccumulator());
+    void givenDead_whenRender_thenOnSessionEndCalled() {
+        world.addComponents(world.createEntity(), Dead.INSTANCE);
+        world.addComponents(world.createEntity(), new Statistics());
         world.addSystems(system);
         snakeSessionScreen.render(1.0f);
+        verify(system).update(any(), eq(1.0f));
         verify(applicationEvents)
-            .publish(new SnakeSessionEnded(Map.of(SessionStatistics.LEFT_TURNS, 0)));
-        verifyNoInteractions(system);
+            .publish(
+                new SnakeSessionEnded(
+                    Map.of(
+                        SessionMetric.LEFT_TURNS, 0,
+                        SessionMetric.FOOD_CONSUMED, 0
+                    )
+                )
+            );
     }
 
     @Test

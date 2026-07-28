@@ -1,7 +1,7 @@
 [
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Position",
+      "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
       "x": 6,
       "y": 7
     }
@@ -13,4 +13,3 @@
     }
   ]
 ]
- 

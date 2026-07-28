@@ -8,29 +8,41 @@ import com.github.maximtereshchenko.ecs.WorldEdit;
 final class SegmentSpawningSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> headEntities;
-    private final Iterable<Entity> segmentTimerDefinitionEntities;
-    private final EntityFactory entityFactory;
+    private final Iterable<Entity> segmentDefinitionEntities;
 
-    SegmentSpawningSystem(World world, EntityFactory entityFactory) {
+    SegmentSpawningSystem(World world) {
         super(world);
         this.headEntities = world.entities(
-            new Query().all(Head.class, Position.class)
+            new Query()
+                .all(
+                    Head.class,
+                    WorldPosition.class,
+                    WorldPositionIntent.class
+                )
         );
-        this.segmentTimerDefinitionEntities = world.entities(
+        this.segmentDefinitionEntities = world.entities(
             new Query().all(SegmentDefinition.class)
         );
-        this.entityFactory = entityFactory;
     }
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        for (var head : headEntities) {
-            for (var definition : segmentTimerDefinitionEntities) {
-                entityFactory.createSegment(
-                    worldEdit,
-                    definition.component(SegmentDefinition.class),
-                    new Position(head.component(Position.class))
-                );
+        for (var headEntity : headEntities) {
+            var worldPosition = headEntity.component(WorldPosition.class);
+            for (var segmentDefinitionEntity : segmentDefinitionEntities) {
+                if (!worldPosition.equals(headEntity.component(WorldPositionIntent.class).value)) {
+                    var segmentWorldPosition = new WorldPosition();
+                    segmentWorldPosition.copy(worldPosition);
+                    worldEdit.addComponents(
+                        worldEdit.createEntity(),
+                        new Segment(
+                            segmentDefinitionEntity.component(SegmentDefinition.class)
+                                .durationTurns
+                        ),
+                        segmentWorldPosition,
+                        Colored.SEGMENT
+                    );
+                }
             }
         }
     }

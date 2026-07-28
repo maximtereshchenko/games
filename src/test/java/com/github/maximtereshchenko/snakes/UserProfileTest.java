@@ -31,14 +31,8 @@ final class UserProfileTest {
 
     @Test
     void whenValue_thenIntFromPreferences() {
-        userProfile.value(UserProfileStatistics.LAUNCHES);
-        verify(preferences).getInteger(UserProfileStatistics.LAUNCHES.name());
-    }
-
-    @Test
-    void whenUpdate_thenPutIntToPreferences() {
-        userProfile.update(UserProfileStatistics.LAUNCHES, 1);
-        verify(preferences).putInteger(UserProfileStatistics.LAUNCHES.name(), 1);
+        userProfile.value(UserProfileMetric.LAUNCHES);
+        verify(preferences).getInteger(UserProfileMetric.LAUNCHES.name());
     }
 
     @Test
@@ -62,8 +56,8 @@ final class UserProfileTest {
 
     @Test
     void whenIncrement_thenPutIntToPreferences() {
-        when(preferences.getInteger(UserProfileStatistics.LAUNCHES.name())).thenReturn(1);
-        userProfile.increment(UserProfileStatistics.LAUNCHES);
-        verify(preferences).putInteger(UserProfileStatistics.LAUNCHES.name(), 2);
+        when(preferences.getInteger(UserProfileMetric.LAUNCHES.name())).thenReturn(1);
+        userProfile.increment(UserProfileMetric.LAUNCHES);
+        verify(preferences).putInteger(UserProfileMetric.LAUNCHES.name(), 2);
     }
 }

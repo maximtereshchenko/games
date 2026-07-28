@@ -3,19 +3,15 @@ package com.github.maximtereshchenko.snakes.session;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.configuration.Mode;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
-import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 final class InterfaceRenderingSystemTest {
@@ -27,52 +23,40 @@ final class InterfaceRenderingSystemTest {
     private final BitmapFont.BitmapFontData bitmapFontData = mock();
     private final World world = new World();
     private final Mode mode = mock();
-    private final InterfaceRenderingSystem interfaceRenderingSystem = new InterfaceRenderingSystem(
-        viewport,
-        spriteBatch,
-        bitmapFont,
-        world,
-        mode
-    );
-
-    private static Stream<Object> components() {
-        return Stream.of(new FoodEatenCounter(1), new AirCounter(1, 1));
-    }
+    private final InterfaceRenderingSystem interfaceRenderingSystem =
+        new InterfaceRenderingSystem(
+            world,
+            viewport,
+            spriteBatch,
+            bitmapFont,
+            mode
+        );
 
     @BeforeEach
     void setUp() {
         world.addSystems(interfaceRenderingSystem);
     }
 
-    @ParameterizedTest
-    @MethodSource("components")
-    void givenComponent_thenRendered(Object component) {
+    @Test
+    void givenInterfaceEntity_thenRendered() {
         when(viewport.getCamera()).thenReturn(camera);
         when(bitmapFont.getData()).thenReturn(bitmapFontData);
         when(mode.palette()).thenReturn(Map.of(Colored.INTERFACE, Color.BLACK));
-        world.addComponents(world.createEntity(), component, Colored.INTERFACE);
-        try (
-            var _ = mockConstruction(
-                GlyphLayout.class,
-                (_, context) -> assertThat(context.arguments())
-                    .anySatisfy(argument -> assertThat(argument).isEqualTo(Color.BLACK))
-            )
-        ) {
-            world.update(0);
-            verify(viewport).apply();
-            verify(viewport).getCamera();
-            verify(spriteBatch).setProjectionMatrix(camera.combined);
-            verify(spriteBatch).begin();
-            verify(bitmapFontData, times(2))
-                .setScale(anyFloat());
-            verify(bitmapFont)
-                .draw(
-                    eq(spriteBatch),
-                    any(GlyphLayout.class),
-                    anyFloat(),
-                    anyFloat()
-                );
-            verify(spriteBatch).end();
-        }
+        world.addComponents(
+            world.createEntity(),
+            new InterfaceText(2, "score"),
+            new InterfacePosition(10, 20),
+            Colored.INTERFACE
+        );
+        world.update(0);
+        verify(viewport).apply();
+        verify(viewport).getCamera();
+        verify(spriteBatch).setProjectionMatrix(camera.combined);
+        verify(spriteBatch).begin();
+        verify(bitmapFontData).setScale(2);
+        verify(bitmapFont).setColor(Color.BLACK);
+        verify(bitmapFont).draw(spriteBatch, "score", 10f, 20f);
+        verify(bitmapFontData).setScale(anyFloat(), anyFloat());
+        verify(spriteBatch).end();
     }
 }

@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.snakes.session;
 
-public enum Direction {
+enum Direction {
 
     UP(2), DOWN(3), LEFT(1), RIGHT(0);
 
@@ -26,7 +26,6 @@ public enum Direction {
         return switch (relativeDirection) {
             case LEFT -> left();
             case RIGHT -> right();
-            case FORWARD -> this;
         };
     }
 }

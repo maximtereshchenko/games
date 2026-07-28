@@ -1,22 +1,24 @@
 package com.github.maximtereshchenko.snakes.session;
 
+import com.github.maximtereshchenko.ecs.Entity;
+import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.ecs.World;
-import com.github.maximtereshchenko.ecs.WorldEdit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentCaptor.captor;
-import static org.mockito.Mockito.*;
 
 final class SegmentSpawningSystemTest {
 
     private final World world = new World();
-    private final EntityFactory entityFactory = mock();
+    private final Iterable<Entity> segmentEntities =
+        world.entities(new Query().all(Segment.class));
+    private final Iterable<Entity> spawnedSegmentEntities =
+        world.entities(new Query().all(Segment.class, WorldPosition.class, Colored.class));
     private final SegmentSpawningSystem segmentSpawningSystem =
-        new SegmentSpawningSystem(world, entityFactory);
-    private final ArgumentCaptor<SegmentDefinition> segmentDefinitionCaptor = captor();
+        new SegmentSpawningSystem(world);
 
     @BeforeEach
     void setUp() {
@@ -25,34 +27,59 @@ final class SegmentSpawningSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
+        var intent = new WorldPosition(1, 1);
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new Position(0, 0)
+            new WorldPosition(0, 0),
+            new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), new SegmentDefinition(0, 0));
+        world.addComponents(world.createEntity(), new SegmentDefinition(1, 4));
         world.update(0);
-        verifyNoInteractions(entityFactory);
+        assertThat(segmentEntities).isEmpty();
     }
 
     @Test
-    void givenTurnStartedEvent_thenSegmentSpawned() {
+    void givenHeadMoved_thenSegmentSpawned() {
+        var intent = new WorldPosition(1, 1);
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new Position(1, 1)
+            new WorldPosition(0, 0),
+            new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 1));
+        world.addComponents(world.createEntity(), new SegmentDefinition(1, 4));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
-        verify(entityFactory)
-            .createSegment(
-                any(WorldEdit.class),
-                segmentDefinitionCaptor.capture(),
-                eq(new Position(1, 1))
-            );
-        assertThat(segmentDefinitionCaptor.getValue())
+        assertThat(spawnedSegmentEntities)
+            .singleElement()
+            .extracting(
+                entity -> entity.component(Segment.class),
+                entity -> entity.component(WorldPosition.class),
+                entity -> entity.component(Colored.class)
+            )
             .usingRecursiveComparison()
-            .isEqualTo(new SegmentDefinition(1, 1));
+            .isEqualTo(
+                List.of(
+                    new Segment(4),
+                    new WorldPosition(0, 0),
+                    Colored.SEGMENT
+                )
+            );
+    }
+
+    @Test
+    void givenHeadNotMoved_thenNoSegmentSpawned() {
+        var intent = new WorldPosition(0, 0);
+        world.addComponents(
+            world.createEntity(),
+            Head.INSTANCE,
+            new WorldPosition(0, 0),
+            new WorldPositionIntent(intent)
+        );
+        world.addComponents(world.createEntity(), new SegmentDefinition(1, 4));
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(segmentEntities).isEmpty();
     }
 }

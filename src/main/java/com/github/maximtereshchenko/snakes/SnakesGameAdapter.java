@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.github.maximtereshchenko.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.snakes.screen.ScreenFactory;
-import com.github.maximtereshchenko.snakes.session.EntityFactory;
-import com.github.maximtereshchenko.snakes.session.SnakeSessionFactory;
+import com.github.maximtereshchenko.snakes.session.SessionFactory;
 
 import java.util.Set;
 
@@ -42,7 +41,7 @@ final class SnakesGameAdapter implements ApplicationListener {
         assets.loadingAssets().forEach(assetManager::load);
         assetManager.finishLoading();
         applicationEvents.subscribe(new StartMusic(userProfile, assetManager, assets));
-        applicationEvents.subscribe(new IncrementStatistics(userProfile));
+        applicationEvents.subscribe(new IncrementUserProfileMetrics(userProfile));
         applicationEvents.subscribe(new UnlockModes(userProfile, modes));
         var screenFactory = new ScreenFactory(
             assetManager,
@@ -50,14 +49,13 @@ final class SnakesGameAdapter implements ApplicationListener {
             spriteBatch,
             applicationEvents,
             userProfile,
-            new SnakeSessionFactory(
+            new SessionFactory(
                 configurationReader,
                 shapeRenderer,
                 spriteBatch,
                 assetManager,
                 assets
             ),
-            new EntityFactory(),
             modes
         );
         original = new SnakesGame(

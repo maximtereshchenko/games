@@ -9,27 +9,27 @@ import java.util.Map;
 
 final class InputSystem implements System {
 
-    private final Iterable<Entity> nextForwardDirectionEntities;
-    private final Map<Integer, Direction> directions;
+    private static final Map<Integer, Direction> DIRECTIONS = Map.of(
+        Input.Keys.W, Direction.UP,
+        Input.Keys.S, Direction.DOWN,
+        Input.Keys.A, Direction.LEFT,
+        Input.Keys.D, Direction.RIGHT
+    );
+
+    private final Iterable<Entity> directionIntentEntities;
 
     InputSystem(World world) {
-        this.nextForwardDirectionEntities = world.entities(
-            new Query().all(PlannedMovement.class)
-        );
-        this.directions = Map.of(
-            Input.Keys.W, Direction.UP,
-            Input.Keys.S, Direction.DOWN,
-            Input.Keys.A, Direction.LEFT,
-            Input.Keys.D, Direction.RIGHT
+        this.directionIntentEntities = world.entities(
+            new Query().all(DirectionIntent.class)
         );
     }
 
     @Override
     public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
-        for (var entry : directions.entrySet()) {
-            if (Gdx.input.isKeyPressed(entry.getKey())) {
-                for (var entity : nextForwardDirectionEntities) {
-                    entity.component(PlannedMovement.class).direction = entry.getValue();
+        for (var entity : directionIntentEntities) {
+            for (var entry : DIRECTIONS.entrySet()) {
+                if (Gdx.input.isKeyPressed(entry.getKey())) {
+                    entity.component(DirectionIntent.class).value = entry.getValue();
                 }
             }
         }

@@ -1,14 +1,14 @@
 package com.github.maximtereshchenko.snakes.configuration;
 
-import com.github.maximtereshchenko.snakes.UserProfileStatistics;
-import com.github.maximtereshchenko.snakes.session.SessionStatistics;
+import com.github.maximtereshchenko.snakes.UserProfileMetric;
+import com.github.maximtereshchenko.snakes.session.SessionMetric;
 
 import java.util.Map;
 import java.util.Objects;
 
 public record ModeUnlockRequirements(
-    Map<UserProfileStatistics, Integer> userProfileThresholds,
-    Map<SessionStatistics, Integer> sessionThresholds
+    Map<UserProfileMetric, Integer> userProfileThresholds,
+    Map<SessionMetric, Integer> sessionThresholds
 ) {
 
     public ModeUnlockRequirements {

@@ -9,10 +9,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.snakes.UserProfileStatistics;
+import com.github.maximtereshchenko.snakes.UserProfileMetric;
 import com.github.maximtereshchenko.snakes.session.Colored;
-import com.github.maximtereshchenko.snakes.session.Position;
-import com.github.maximtereshchenko.snakes.session.SessionStatistics;
+import com.github.maximtereshchenko.snakes.session.SessionMetric;
 import com.github.maximtereshchenko.snakes.session.WorldDimensions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -68,7 +67,7 @@ final class ConfigurationReaderTest {
                                 Colored.WARP, color
                             ),
                             new ModeUnlockRequirements(
-                                Map.of(UserProfileStatistics.LAUNCHES, 8),
+                                Map.of(UserProfileMetric.LAUNCHES, 8),
                                 Map.of()
                             )
                         ),
@@ -87,7 +86,7 @@ final class ConfigurationReaderTest {
                             ),
                             new ModeUnlockRequirements(
                                 Map.of(),
-                                Map.of(SessionStatistics.LEFT_TURNS, 13)
+                                Map.of(SessionMetric.LEFT_TURNS, 13)
                             )
                         )
                     )
@@ -98,12 +97,14 @@ final class ConfigurationReaderTest {
     @Test
     void givenJson_thenEntitiesDeserialized() {
         when(mode.entities()).thenReturn("entities-test.json");
-        assertThat(configurationReader.entities(mode))
-            .isDeepEqualTo(
-                new Object[][]{
-                    new Object[]{new Position(6, 7)},
-                    new Object[]{Colored.HEAD},
-                }
+        var entities = configurationReader.entities(mode);
+        assertThat(entities).hasNumberOfRows(2);
+        assertThat(entities[0])
+            .satisfiesExactly(
+                worldPosition -> assertThat(worldPosition)
+                    .extracting("x", "y")
+                    .containsExactly(6, 7)
             );
+        assertThat(entities[1]).containsExactly(Colored.HEAD);
     }
 }

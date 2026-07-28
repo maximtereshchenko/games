@@ -16,7 +16,7 @@ public final class ModeButton extends BasicButton {
         Mode mode,
         UserProfile userProfile
     ) {
-        super(bundle.get("modes.%s.name".formatted(mode.name())), skin);
+        super(bundle.get("screens.main.buttons.modes.%s.name".formatted(mode.name())), skin);
         this.mode = mode;
         setDisabled(!userProfile.isUnlocked(mode));
     }

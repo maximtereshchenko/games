@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.snakes.session;
 
-public enum RelativeDirection {
+enum RelativeDirection {
 
-    LEFT, RIGHT, FORWARD
+    LEFT, RIGHT
 }

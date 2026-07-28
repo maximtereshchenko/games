@@ -6,16 +6,11 @@ import com.github.maximtereshchenko.ecs.System;
 final class TurnStartSystem implements System {
 
     private final Iterable<Entity> turnTimerEntities;
-    private final EntityFactory entityFactory;
 
-    TurnStartSystem(
-        World world,
-        EntityFactory entityFactory
-    ) {
+    TurnStartSystem(World world) {
         this.turnTimerEntities = world.entities(
             new Query().all(TurnTimer.class)
         );
-        this.entityFactory = entityFactory;
     }
 
     @Override
@@ -25,7 +20,7 @@ final class TurnStartSystem implements System {
             turnTimer.timePassedSeconds += deltaTimeSeconds;
             if (turnTimer.timePassedSeconds > turnTimer.turnLengthSeconds) {
                 turnTimer.timePassedSeconds -= turnTimer.turnLengthSeconds;
-                entityFactory.createTurnStartedEvent(worldEdit);
+                worldEdit.addComponents(entity.id(), TurnStarted.INSTANCE);
             }
         }
     }

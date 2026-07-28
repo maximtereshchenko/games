@@ -25,8 +25,7 @@ import com.github.maximtereshchenko.snakes.screen.view.main.MainView;
 import com.github.maximtereshchenko.snakes.screen.view.main.ModesView;
 import com.github.maximtereshchenko.snakes.screen.view.main.NavigationView;
 import com.github.maximtereshchenko.snakes.screen.view.settings.SettingsView;
-import com.github.maximtereshchenko.snakes.session.EntityFactory;
-import com.github.maximtereshchenko.snakes.session.SnakeSessionFactory;
+import com.github.maximtereshchenko.snakes.session.SessionFactory;
 
 import java.util.List;
 import java.util.Locale;
@@ -40,8 +39,7 @@ public final class ScreenFactory {
     private final SpriteBatch spriteBatch;
     private final ApplicationEvents applicationEvents;
     private final UserProfile userProfile;
-    private final SnakeSessionFactory snakeSessionFactory;
-    private final EntityFactory entityFactory;
+    private final SessionFactory sessionFactory;
     private final List<Mode> modes;
 
     public ScreenFactory(
@@ -50,8 +48,7 @@ public final class ScreenFactory {
         SpriteBatch spriteBatch,
         ApplicationEvents applicationEvents,
         UserProfile userProfile,
-        SnakeSessionFactory snakeSessionFactory,
-        EntityFactory entityFactory,
+        SessionFactory sessionFactory,
         List<Mode> modes
     ) {
         this.assetManager = assetManager;
@@ -59,8 +56,7 @@ public final class ScreenFactory {
         this.spriteBatch = spriteBatch;
         this.applicationEvents = applicationEvents;
         this.userProfile = userProfile;
-        this.snakeSessionFactory = snakeSessionFactory;
-        this.entityFactory = entityFactory;
+        this.sessionFactory = sessionFactory;
         this.modes = modes;
     }
 
@@ -131,12 +127,11 @@ public final class ScreenFactory {
             mode.interfaceViewportHeight() * worldDimensions.width() / worldDimensions.height(),
             mode.interfaceViewportHeight()
         );
-        return new SnakeSessionScreen(
+        return new SessionScreen(
             Set.of(gameViewport, interfaceViewport),
             applicationEvents,
-            snakeSessionFactory.world(
+            sessionFactory.world(
                 mode,
-                entityFactory,
                 gameViewport,
                 interfaceViewport
             )
@@ -227,9 +222,9 @@ public final class ScreenFactory {
 
     private String key(Mode mode) {
         if (userProfile.isUnlocked(mode)) {
-            return "modes.%s.description".formatted(mode.name());
+            return "screens.main.buttons.modes.%s.description".formatted(mode.name());
         }
-        return "modes.%s.unlock.requirement".formatted(mode.name());
+        return "screens.main.buttons.modes.%s.unlock.requirement".formatted(mode.name());
     }
 
     private void setVolume(Music music, float volume) {

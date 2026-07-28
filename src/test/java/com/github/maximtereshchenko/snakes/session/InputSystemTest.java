@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.snakes.session;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.github.maximtereshchenko.ecs.Entity;
 import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.ecs.World;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +21,8 @@ import static org.mockito.Mockito.when;
 final class InputSystemTest {
 
     private final World world = new World();
+    private final Iterable<Entity> directionIntentEntities =
+        world.entities(new Query().all(DirectionIntent.class));
     private final InputSystem inputSystem = new InputSystem(world);
 
     private static Stream<Arguments> directionChangedArguments() {
@@ -45,14 +48,14 @@ final class InputSystemTest {
     ) {
         world.addComponents(
             world.createEntity(),
-            new PlannedMovement(Set.of(), Direction.RIGHT)
+            new DirectionIntent(Set.of(), Direction.RIGHT)
         );
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
         world.update(0);
-        assertThat(world.entities(new Query().all(PlannedMovement.class)))
+        assertThat(directionIntentEntities)
             .singleElement()
-            .extracting(entity -> entity.component(PlannedMovement.class))
+            .extracting(entity -> entity.component(DirectionIntent.class))
             .usingRecursiveComparison()
-            .isEqualTo(new PlannedMovement(Set.of(), expected));
+            .isEqualTo(new DirectionIntent(Set.of(), expected));
     }
 }

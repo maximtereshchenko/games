@@ -20,8 +20,8 @@ public final class UserProfile {
         return preferences.getBoolean(mode.name());
     }
 
-    public int value(UserProfileStatistics statistics) {
-        return preferences.getInteger(statistics.name());
+    public int value(UserProfileMetric userProfileMetric) {
+        return preferences.getInteger(userProfileMetric.name());
     }
 
     public void updateMusicVolume(float volume) {
@@ -32,12 +32,8 @@ public final class UserProfile {
         preferences.putBoolean(mode.name(), true);
     }
 
-    void update(UserProfileStatistics statistics, int value) {
-        preferences.putInteger(statistics.name(), value);
-    }
-
-    void increment(UserProfileStatistics statistics) {
-        update(statistics, value(statistics) + 1);
+    void increment(UserProfileMetric userProfileMetric) {
+        preferences.putInteger(userProfileMetric.name(), value(userProfileMetric) + 1);
     }
 
     float musicVolume() {

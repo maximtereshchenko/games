@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.snakes.UserProfile;
-import com.github.maximtereshchenko.snakes.UserProfileStatistics;
+import com.github.maximtereshchenko.snakes.UserProfileMetric;
 
 public final class StatisticsView extends Table {
 
@@ -14,9 +14,9 @@ public final class StatisticsView extends Table {
     public StatisticsView(I18NBundle bundle, Skin skin, UserProfile userProfile) {
         backButton = new BasicButton(bundle.get("screens.statistics.buttons.back"), skin);
         defaults().growX().pad(3);
-        for (var userProfileStatistics : UserProfileStatistics.values()) {
-            add(new Label(bundle.get("screens.statistics." + userProfileStatistics), skin));
-            add(new Label(String.valueOf(userProfile.value(userProfileStatistics)), skin)).row();
+        for (var userProfileMetric : UserProfileMetric.values()) {
+            add(new Label(bundle.get("screens.statistics." + userProfileMetric), skin));
+            add(new Label(String.valueOf(userProfile.value(userProfileMetric)), skin)).row();
         }
         add(backButton).colspan(2);
     }
