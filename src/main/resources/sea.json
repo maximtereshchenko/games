@@ -64,7 +64,7 @@
     {
       "type": "com.github.maximtereshchenko.snakes.session.SegmentDefinition",
       "incrementStepTurns": 3,
-      "durationTurns": 3
+      "durationTurns": 2
     }
   ],
   [

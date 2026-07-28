@@ -106,7 +106,11 @@
         "AIR": "4a79aaff",
         "WALL": "241d1bff"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "MODES_UNLOCKED": 1
+        }
+      }
     }
   ]
 }

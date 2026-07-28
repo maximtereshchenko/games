@@ -55,6 +55,12 @@ final class UserProfileTest {
     }
 
     @Test
+    void whenUpdate_thenPutIntToPreferences() {
+        userProfile.update(UserProfileMetric.MODES_UNLOCKED, 1);
+        verify(preferences).putInteger(UserProfileMetric.MODES_UNLOCKED.name(), 1);
+    }
+
+    @Test
     void whenIncrement_thenPutIntToPreferences() {
         when(preferences.getInteger(UserProfileMetric.LAUNCHES.name())).thenReturn(1);
         userProfile.increment(UserProfileMetric.LAUNCHES);

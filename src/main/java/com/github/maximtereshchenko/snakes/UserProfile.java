@@ -32,8 +32,12 @@ public final class UserProfile {
         preferences.putBoolean(mode.name(), true);
     }
 
+    void update(UserProfileMetric userProfileMetric, int value) {
+        preferences.putInteger(userProfileMetric.name(), value);
+    }
+
     void increment(UserProfileMetric userProfileMetric) {
-        preferences.putInteger(userProfileMetric.name(), value(userProfileMetric) + 1);
+        update(userProfileMetric, value(userProfileMetric) + 1);
     }
 
     float musicVolume() {

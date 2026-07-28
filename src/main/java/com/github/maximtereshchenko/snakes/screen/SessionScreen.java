@@ -6,7 +6,7 @@ import com.github.maximtereshchenko.ecs.Entity;
 import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
-import com.github.maximtereshchenko.snakes.event.SnakeSessionEnded;
+import com.github.maximtereshchenko.snakes.event.SessionEnded;
 import com.github.maximtereshchenko.snakes.session.Dead;
 import com.github.maximtereshchenko.snakes.session.Statistics;
 
@@ -42,7 +42,7 @@ final class SessionScreen extends ScreenAdapter {
         for (var _ : deadEntities) {
             for (var statisticsEntity : statisticsEntities) {
                 applicationEvents.publish(
-                    new SnakeSessionEnded(
+                    new SessionEnded(
                         statisticsEntity.component(Statistics.class)
                             .value
                     )

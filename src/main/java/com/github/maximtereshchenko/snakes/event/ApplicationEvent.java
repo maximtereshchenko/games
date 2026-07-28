@@ -3,7 +3,7 @@ package com.github.maximtereshchenko.snakes.event;
 public sealed interface ApplicationEvent
     permits AssetsLoaded,
     ModeSelected,
-    SnakeSessionEnded,
+    SessionEnded,
     StatisticsScreenFinished,
     StatisticsRequested,
     TitleScreenFinished,

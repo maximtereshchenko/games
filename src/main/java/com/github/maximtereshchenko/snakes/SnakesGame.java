@@ -42,7 +42,7 @@ final class SnakesGame extends Game implements Subscriber {
                 screenFactory.titleScreen()
             );
             case TitleScreenFinished _,
-                 SnakeSessionEnded _,
+                 SessionEnded _,
                  StatisticsScreenFinished _,
                  CreditsScreenFinished _,
                  SettingsScreenFinished _ -> setScreen(

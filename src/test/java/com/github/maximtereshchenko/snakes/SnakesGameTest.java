@@ -34,7 +34,7 @@ final class SnakesGameTest {
     private static Stream<ApplicationEvent> mainScreenEvents() {
         return Stream.of(
             new TitleScreenFinished(),
-            new SnakeSessionEnded(Map.of()),
+            new SessionEnded(Map.of()),
             new StatisticsScreenFinished(),
             new CreditsScreenFinished(),
             new SettingsScreenFinished()

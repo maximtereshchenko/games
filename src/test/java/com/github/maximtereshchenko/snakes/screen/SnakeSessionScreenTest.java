@@ -4,7 +4,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.ecs.System;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.snakes.event.ApplicationEvents;
-import com.github.maximtereshchenko.snakes.event.SnakeSessionEnded;
+import com.github.maximtereshchenko.snakes.event.SessionEnded;
 import com.github.maximtereshchenko.snakes.session.Dead;
 import com.github.maximtereshchenko.snakes.session.SessionMetric;
 import com.github.maximtereshchenko.snakes.session.Statistics;
@@ -44,7 +44,7 @@ final class SnakeSessionScreenTest {
         verify(system).update(any(), eq(1.0f));
         verify(applicationEvents)
             .publish(
-                new SnakeSessionEnded(
+                new SessionEnded(
                     Map.of(
                         SessionMetric.LEFT_TURNS, 0,
                         SessionMetric.FOOD_CONSUMED, 0

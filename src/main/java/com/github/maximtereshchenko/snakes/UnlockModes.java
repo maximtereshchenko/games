@@ -22,8 +22,8 @@ final class UnlockModes implements Subscriber {
     @Override
     public void onEvent(ApplicationEvent applicationEvent) {
         switch (applicationEvent) {
-            case SnakeSessionEnded snakeSessionEnded -> unlock(
-                modeUnlockRequirements -> isSatisfied(modeUnlockRequirements, snakeSessionEnded)
+            case SessionEnded sessionEnded -> unlock(
+                modeUnlockRequirements -> isSatisfied(modeUnlockRequirements, sessionEnded)
             );
             case TitleScreenFinished _, CreditsScreenFinished _ -> unlock(
                 this::isSatisfied
@@ -41,12 +41,12 @@ final class UnlockModes implements Subscriber {
 
     private boolean isSatisfied(
         ModeUnlockRequirements modeUnlockRequirements,
-        SnakeSessionEnded snakeSessionEnded
+        SessionEnded sessionEnded
     ) {
         return userProfileThresholdsSatisfied(modeUnlockRequirements) &&
                isSatisfied(
                    modeUnlockRequirements.sessionThresholds(),
-                   snakeSessionEnded.statistics()::get
+                   sessionEnded.statistics()::get
                );
     }
 
