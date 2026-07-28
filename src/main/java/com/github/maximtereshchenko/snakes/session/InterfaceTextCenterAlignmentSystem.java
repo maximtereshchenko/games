@@ -3,40 +3,49 @@ package com.github.maximtereshchenko.snakes.session;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.maximtereshchenko.ecs.Entity;
-import com.github.maximtereshchenko.ecs.Query;
-import com.github.maximtereshchenko.ecs.World;
-import com.github.maximtereshchenko.ecs.WorldEdit;
+import com.github.maximtereshchenko.ecs.*;
+import com.github.maximtereshchenko.ecs.System;
 
-final class InterfaceTextCenterAlignmentSystem extends TurnBasedSystem {
+final class InterfaceTextCenterAlignmentSystem implements System {
 
     private final Iterable<Entity> centerAlignedEntities;
     private final Viewport viewport;
-    private final BitmapFont bitmapFont;
+    private final ScaledFont scaledFont;
+    private final GlyphLayout glyphLayout;
 
     InterfaceTextCenterAlignmentSystem(
         World world,
         Viewport viewport,
-        BitmapFont bitmapFont
+        ScaledFont scaledFont,
+        GlyphLayout glyphLayout
     ) {
-        super(world);
         this.centerAlignedEntities = world.entities(
-            new Query().all(CenterAligned.class, InterfaceText.class, InterfacePosition.class)
+            new Query()
+                .all(
+                    CenterAligned.class,
+                    InterfaceText.class,
+                    InterfacePosition.class
+                )
         );
         this.viewport = viewport;
-        this.bitmapFont = bitmapFont;
+        this.scaledFont = scaledFont;
+        this.glyphLayout = glyphLayout;
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
         for (var centerAlignedEntity : centerAlignedEntities) {
-            centerAlignedEntity.component(InterfacePosition.class).x = centeredX(
-                centerAlignedEntity.component(InterfaceText.class).value
+            var interfaceText = centerAlignedEntity.component(InterfaceText.class);
+            scaledFont.use(
+                interfaceText.scale,
+                bitmapFont -> centerAlignedEntity.component(InterfacePosition.class).x =
+                    centeredX(bitmapFont, interfaceText.value)
             );
         }
     }
 
-    private float centeredX(String text) {
-        return (viewport.getWorldWidth() - new GlyphLayout(bitmapFont, text).width) / 2;
+    private float centeredX(BitmapFont bitmapFont, String text) {
+        glyphLayout.setText(bitmapFont, text);
+        return (viewport.getWorldWidth() - glyphLayout.width) / 2;
     }
 }

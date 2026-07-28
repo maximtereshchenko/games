@@ -14,9 +14,14 @@
       "value": "INSTANCE"
     },
     {
+      "type": "com.github.maximtereshchenko.snakes.session.LocalizableInterfaceText",
+      "key": "screens.session.food.consumed.template",
+      "variables": []
+    },
+    {
       "type": "com.github.maximtereshchenko.snakes.session.InterfaceText",
       "scale": 5,
-      "value": "0"
+      "value": ""
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Colored",

@@ -9,25 +9,30 @@ import com.github.maximtereshchenko.snakes.configuration.Mode;
 
 final class InterfaceRenderingSystem implements System {
 
-    private final Iterable<Entity> interfaceEntities;
+    private final Iterable<Entity> interfaceTextEntities;
     private final Viewport viewport;
     private final SpriteBatch spriteBatch;
-    private final BitmapFont bitmapFont;
+    private final ScaledFont scaledFont;
     private final Mode mode;
 
     InterfaceRenderingSystem(
         World world,
         Viewport viewport,
         SpriteBatch spriteBatch,
-        BitmapFont bitmapFont,
+        ScaledFont scaledFont,
         Mode mode
     ) {
-        this.interfaceEntities = world.entities(
-            new Query().all(InterfaceText.class, InterfacePosition.class, Colored.class)
+        this.interfaceTextEntities = world.entities(
+            new Query()
+                .all(
+                    InterfaceText.class,
+                    InterfacePosition.class,
+                    Colored.class
+                )
         );
         this.viewport = viewport;
         this.spriteBatch = spriteBatch;
-        this.bitmapFont = bitmapFont;
+        this.scaledFont = scaledFont;
         this.mode = mode;
 
     }
@@ -37,25 +42,33 @@ final class InterfaceRenderingSystem implements System {
         viewport.apply();
         spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
         spriteBatch.begin();
-        for (var interfaceEntity : interfaceEntities) {
+        for (var interfaceEntity : interfaceTextEntities) {
             var interfaceText = interfaceEntity.component(InterfaceText.class);
-            var interfacePosition = interfaceEntity.component(InterfacePosition.class);
-            var bitmapFontData = bitmapFont.getData();
-            var scaleX = bitmapFontData.scaleX;
-            var scaleY = bitmapFontData.scaleY;
-            bitmapFontData.setScale(interfaceText.scale);
-            bitmapFont.setColor(
-                mode.palette()
-                    .get(interfaceEntity.component(Colored.class))
+            scaledFont.use(
+                interfaceText.scale,
+                bitmapFont -> draw(
+                    bitmapFont,
+                    interfaceText.value,
+                    interfaceEntity.component(Colored.class),
+                    interfaceEntity.component(InterfacePosition.class)
+                )
             );
-            bitmapFont.draw(
-                spriteBatch,
-                interfaceText.value,
-                interfacePosition.x,
-                interfacePosition.y
-            );
-            bitmapFontData.setScale(scaleX, scaleY);
         }
         spriteBatch.end();
+    }
+
+    private void draw(
+        BitmapFont bitmapFont,
+        String text,
+        Colored colored,
+        InterfacePosition interfacePosition
+    ) {
+        bitmapFont.setColor(mode.palette().get(colored));
+        bitmapFont.draw(
+            spriteBatch,
+            text,
+            interfacePosition.x,
+            interfacePosition.y
+        );
     }
 }

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.function.Consumer;
 
 import static org.mockito.Mockito.*;
 
@@ -20,7 +21,7 @@ final class InterfaceRenderingSystemTest {
     private final Viewport viewport = mock();
     private final SpriteBatch spriteBatch = mock();
     private final BitmapFont bitmapFont = mock();
-    private final BitmapFont.BitmapFontData bitmapFontData = mock();
+    private final ScaledFont scaledFont = mock();
     private final World world = new World();
     private final Mode mode = mock();
     private final InterfaceRenderingSystem interfaceRenderingSystem =
@@ -28,19 +29,27 @@ final class InterfaceRenderingSystemTest {
             world,
             viewport,
             spriteBatch,
-            bitmapFont,
+            scaledFont,
             mode
         );
 
     @BeforeEach
     void setUp() {
         world.addSystems(interfaceRenderingSystem);
+        doAnswer(
+            invocation -> {
+                Consumer<BitmapFont> consumer = invocation.getArgument(1);
+                consumer.accept(bitmapFont);
+                return null;
+            }
+        )
+            .when(scaledFont)
+            .use(anyInt(), any());
     }
 
     @Test
     void givenInterfaceEntity_thenRendered() {
         when(viewport.getCamera()).thenReturn(camera);
-        when(bitmapFont.getData()).thenReturn(bitmapFontData);
         when(mode.palette()).thenReturn(Map.of(Colored.INTERFACE, Color.BLACK));
         world.addComponents(
             world.createEntity(),
@@ -53,10 +62,9 @@ final class InterfaceRenderingSystemTest {
         verify(viewport).getCamera();
         verify(spriteBatch).setProjectionMatrix(camera.combined);
         verify(spriteBatch).begin();
-        verify(bitmapFontData).setScale(2);
+        verify(scaledFont).use(eq(2), any());
         verify(bitmapFont).setColor(Color.BLACK);
         verify(bitmapFont).draw(spriteBatch, "score", 10f, 20f);
-        verify(bitmapFontData).setScale(anyFloat(), anyFloat());
         verify(spriteBatch).end();
     }
 }

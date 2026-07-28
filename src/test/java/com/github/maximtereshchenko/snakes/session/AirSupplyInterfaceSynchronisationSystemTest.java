@@ -11,16 +11,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class FoodConsumedInterfaceElementSynchronisationSystemTest {
+final class AirSupplyInterfaceSynchronisationSystemTest {
 
     private final World world = new World();
     private final Iterable<Entity> localizableInterfaceTextEntities =
         world.entities(
-            new Query()
-                .all(FoodConsumedInterfaceElement.class, LocalizableInterfaceText.class)
+            new Query().all(AirSupplyInterfaceElement.class, LocalizableInterfaceText.class)
         );
-    private final FoodConsumedInterfaceElementSynchronisationSystem system =
-        new FoodConsumedInterfaceElementSynchronisationSystem(world);
+    private final AirSupplyInterfaceSynchronisationSystem system =
+        new AirSupplyInterfaceSynchronisationSystem(world);
 
     @BeforeEach
     void setUp() {
@@ -28,22 +27,17 @@ final class FoodConsumedInterfaceElementSynchronisationSystemTest {
     }
 
     @Test
-    void whenUpdated_thenFoodConsumedAddedToVariables() {
-        var statistics = new Statistics();
-        statistics.value.put(SessionMetric.FOOD_CONSUMED, 4);
-        world.addComponents(world.createEntity(), statistics);
+    void whenUpdated_thenAirSupplyAddedToVariables() {
+        world.addComponents(world.createEntity(), new AirSupply(5, 3));
         world.addComponents(
             world.createEntity(),
-            FoodConsumedInterfaceElement.INSTANCE,
-            new LocalizableInterfaceText(
-                "screens.session.food.consumed.template",
-                new ArrayList<>()
-            )
+            AirSupplyInterfaceElement.INSTANCE,
+            new LocalizableInterfaceText("screens.session.air.template", new ArrayList<>())
         );
         world.update(0);
         assertThat(localizableInterfaceTextEntities)
             .singleElement()
             .extracting(entity -> entity.component(LocalizableInterfaceText.class).variables())
-            .isEqualTo(List.of(4));
+            .isEqualTo(List.of(3));
     }
 }

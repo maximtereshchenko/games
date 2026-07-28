@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.snakes.session;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -42,10 +43,11 @@ public final class SessionFactory {
         for (var components : configurationReader.entities(mode)) {
             world.addComponents(world.createEntity(), components);
         }
-        var bitmapFont = assetManager.get(assets.bitmapFont());
+        var scaledFont = new ScaledFont(assetManager.get(assets.bitmapFont()));
         world.addSystems(
             new InputSystem(world),
             new TurnStartSystem(world),
+            new SegmentRemainingTurnsDecrementSystem(world),
             new DirectionIntentSystem(world),
             new LeftTurnsIncrementSystem(world),
             new DirectionIntentCommitSystem(world),
@@ -61,18 +63,19 @@ public final class SessionFactory {
             new FoodConsumedIncrementSystem(world),
             new FoodSpawningSystem(world, ThreadLocalRandom.current()),
             new SegmentRemainingTurnsIncrementSystem(world),
-            new SegmentRemainingTurnsDecrementSystem(world),
             new AirSupplyDecrementSystem(world),
             new AirSupplyResetSystem(world),
-            new AirSupplyInterfaceElementSynchronisationSystem(
+            new AirSupplyInterfaceSynchronisationSystem(world),
+            new FoodConsumedInterfaceElementSynchronisationSystem(world),
+            new LocalizationSystem(
                 world,
                 assetManager.get(assets.gameBundle())
             ),
-            new FoodConsumedInterfaceElementSynchronisationSystem(world),
             new InterfaceTextCenterAlignmentSystem(
                 world,
                 interfaceViewport,
-                bitmapFont
+                scaledFont,
+                new GlyphLayout()
             ),
             new TagRemovalSystem(
                 world,
@@ -90,7 +93,7 @@ public final class SessionFactory {
                 world,
                 interfaceViewport,
                 spriteBatch,
-                bitmapFont,
+                scaledFont,
                 mode
             )
         );
