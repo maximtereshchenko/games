@@ -111,6 +111,24 @@
           "MODES_UNLOCKED": 1
         }
       }
+    },
+    {
+      "name": "hognose",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "hognose.json",
+      "palette": {
+        "BACKGROUND": "43bcddff",
+        "HEAD": "ff8813ff",
+        "SEGMENT": "ffeeddff",
+        "FOOD": "ff8813ff",
+        "INTERFACE": "ffba8dff",
+        "WARP": "116777ff"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
