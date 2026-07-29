@@ -5,6 +5,8 @@ import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.ecs.World;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,7 +32,8 @@ final class FoodConsumptionSystemTest {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new WorldPosition(0, 0)
+            new WorldPosition(0, 0),
+            new Hitbox(0)
         );
         world.addComponents(
             world.createEntity(),
@@ -47,7 +50,8 @@ final class FoodConsumptionSystemTest {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new WorldPosition(0, 0)
+            new WorldPosition(0, 0),
+            new Hitbox(0)
         );
         world.addComponents(
             world.createEntity(),
@@ -57,7 +61,45 @@ final class FoodConsumptionSystemTest {
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         assertThat(foodEntities).isEmpty();
-        assertThat(headFoodConsumedEntities).hasSize(1);
+        assertThat(headFoodConsumedEntities)
+            .singleElement()
+            .extracting(entity -> entity.component(FoodConsumed.class))
+            .isEqualTo(new FoodConsumed(1));
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+        textBlock = """
+                    0, 2
+                    1, 2
+                    2, 2
+                    0, 1
+                    1, 1
+                    2, 1
+                    0, 2
+                    1, 2
+                    2, 2
+                    """
+    )
+    void givenWideHitbox_thenFoodConsumed(int x, int y) {
+        world.addComponents(
+            world.createEntity(),
+            Head.INSTANCE,
+            new WorldPosition(1, 1),
+            new Hitbox(1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            Food.INSTANCE,
+            new WorldPosition(x, y)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(foodEntities).isEmpty();
+        assertThat(headFoodConsumedEntities)
+            .singleElement()
+            .extracting(entity -> entity.component(FoodConsumed.class))
+            .isEqualTo(new FoodConsumed(1));
     }
 
     @Test
@@ -65,7 +107,8 @@ final class FoodConsumptionSystemTest {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new WorldPosition(0, 0)
+            new WorldPosition(0, 0),
+            new Hitbox(0)
         );
         world.addComponents(
             world.createEntity(),
@@ -76,5 +119,32 @@ final class FoodConsumptionSystemTest {
         world.update(0);
         assertThat(foodEntities).hasSize(1);
         assertThat(foodConsumedEntities).isEmpty();
+    }
+
+    @Test
+    void givenHeadOnManyFood_thenManyFoodConsumed() {
+        world.addComponents(
+            world.createEntity(),
+            Head.INSTANCE,
+            new WorldPosition(0, 0),
+            new Hitbox(1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            Food.INSTANCE,
+            new WorldPosition(0, 1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            Food.INSTANCE,
+            new WorldPosition(1, 0)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(foodEntities).isEmpty();
+        assertThat(headFoodConsumedEntities)
+            .singleElement()
+            .extracting(entity -> entity.component(FoodConsumed.class))
+            .isEqualTo(new FoodConsumed(2));
     }
 }

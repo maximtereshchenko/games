@@ -22,7 +22,8 @@ final class FoodConsumedIncrementSystem extends TurnBasedSystem {
             var sessionStatistics = statisticsEntity.component(Statistics.class).value;
             sessionStatistics.put(
                 SessionMetric.FOOD_CONSUMED,
-                sessionStatistics.get(SessionMetric.FOOD_CONSUMED) + 1
+                sessionStatistics.get(SessionMetric.FOOD_CONSUMED) +
+                statisticsEntity.component(FoodConsumed.class).value()
             );
         }
     }

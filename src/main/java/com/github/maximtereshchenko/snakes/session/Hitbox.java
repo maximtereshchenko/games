@@ -1,3 +1,3 @@
 package com.github.maximtereshchenko.snakes.session;
 
-record FoodConsumed(int value) {}
+record Hitbox(int radius) {}

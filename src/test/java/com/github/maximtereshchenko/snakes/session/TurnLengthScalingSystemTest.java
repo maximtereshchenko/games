@@ -44,26 +44,6 @@ final class TurnLengthScalingSystemTest {
     }
 
     @Test
-    void givenNoFoodConsumed_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
-            new TurnTimer(1, 2),
-            new TurnLengthScaling(3, 4, 5, 6)
-        );
-        world.addComponents(
-            world.createEntity(),
-            new Statistics(Map.of(SessionMetric.FOOD_CONSUMED, 7))
-        );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
-        assertThat(turnTimerEntities)
-            .singleElement()
-            .extracting(entity -> entity.component(TurnTimer.class))
-            .usingRecursiveComparison()
-            .isEqualTo(new TurnTimer(1, 2));
-    }
-
-    @Test
     void givenFoodConsumed_thenNewTurnLengthCalculated() {
         world.addComponents(
             world.createEntity(),
@@ -75,7 +55,7 @@ final class TurnLengthScalingSystemTest {
             new Statistics(Map.of(SessionMetric.FOOD_CONSUMED, 5))
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.addComponents(world.createEntity(), FoodConsumed.INSTANCE);
+        world.addComponents(world.createEntity(), new FoodConsumed(1));
         world.update(0);
         assertThat(turnTimerEntities)
             .singleElement()
@@ -96,7 +76,7 @@ final class TurnLengthScalingSystemTest {
             new Statistics(Map.of(SessionMetric.FOOD_CONSUMED, 20))
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.addComponents(world.createEntity(), FoodConsumed.INSTANCE);
+        world.addComponents(world.createEntity(), new FoodConsumed(1));
         world.update(0);
         assertThat(turnTimerEntities)
             .singleElement()

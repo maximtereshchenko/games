@@ -13,7 +13,7 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
     FoodConsumptionSystem(World world) {
         super(world);
         this.headEntities = world.entities(
-            new Query().all(Head.class, WorldPosition.class)
+            new Query().all(Head.class, WorldPosition.class, Hitbox.class)
         );
         this.foodEntities = world.entities(
             new Query().all(Food.class, WorldPosition.class)
@@ -24,13 +24,35 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
     void onTurnStarted(WorldEdit worldEdit) {
         for (var headEntity : headEntities) {
             var headPosition = headEntity.component(WorldPosition.class);
+            var hitboxRadius = headEntity.component(Hitbox.class).radius();
+            var foodConsumed = 0;
             for (var foodEntity : foodEntities) {
                 var foodPosition = foodEntity.component(WorldPosition.class);
-                if (headPosition.equals(foodPosition)) {
+                if (touched(headPosition, foodPosition, hitboxRadius)) {
                     worldEdit.deleteEntity(foodEntity.id());
-                    worldEdit.addComponents(headEntity.id(), FoodConsumed.INSTANCE);
+                    foodConsumed++;
                 }
             }
+            if (foodConsumed != 0) {
+                worldEdit.addComponents(headEntity.id(), new FoodConsumed(foodConsumed));
+            }
         }
+    }
+
+    private boolean touched(
+        WorldPosition head,
+        WorldPosition food,
+        int radius
+    ) {
+        return touched(head.x, food.x, radius) &&
+               touched(head.y, food.y, radius);
+    }
+
+    private boolean touched(
+        int head,
+        int food,
+        int radius
+    ) {
+        return Math.abs(head - food) <= radius;
     }
 }

@@ -58,19 +58,19 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     @Test
     void givenFoodConsumed_thenSegmentRemainingTurnsIncremented() {
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 1));
+        world.addComponents(world.createEntity(), new SegmentDefinition(2, 1));
         world.addComponents(world.createEntity(), new Segment(1));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.addComponents(world.createEntity(), FoodConsumed.INSTANCE);
+        world.addComponents(world.createEntity(), new FoodConsumed(2));
         world.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
             .extracting(entity -> entity.component(SegmentDefinition.class))
             .usingRecursiveComparison()
-            .isEqualTo(new SegmentDefinition(1, 2));
+            .isEqualTo(new SegmentDefinition(2, 5));
         assertThat(segmentEntities)
             .singleElement()
             .extracting(entity -> entity.component(Segment.class).remainingTurns)
-            .isEqualTo(2);
+            .isEqualTo(5);
     }
 }

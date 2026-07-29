@@ -94,7 +94,12 @@
       }
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Statistics"
+      "type": "com.github.maximtereshchenko.snakes.session.Hitbox",
+      "radius": 0
+    },
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.Statistics",
+      "value": {}
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Colored",

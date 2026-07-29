@@ -17,6 +17,8 @@ final class TagRemovalSystemTest {
         world.entities(new Query().all(TurnStarted.class));
     private final Iterable<Entity> warpedEntities =
         world.entities(new Query().all(Warped.class));
+    private final Iterable<Entity> remainingEntities =
+        world.entities(new Query().all(Head.class));
     private final TagRemovalSystem tagRemovalSystem =
         new TagRemovalSystem(world, TurnStarted.class, FoodConsumed.class, Warped.class);
 
@@ -27,7 +29,7 @@ final class TagRemovalSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), FoodConsumed.INSTANCE);
+        world.addComponents(world.createEntity(), new FoodConsumed(1));
         world.update(0);
         assertThat(foodConsumedEntities).hasSize(1);
     }
@@ -37,12 +39,14 @@ final class TagRemovalSystemTest {
         world.addComponents(
             world.createEntity(),
             TurnStarted.INSTANCE,
-            FoodConsumed.INSTANCE,
-            Warped.INSTANCE
+            new FoodConsumed(1),
+            Warped.INSTANCE,
+            Head.INSTANCE
         );
         world.update(0);
         assertThat(turnStartedEntities).isEmpty();
         assertThat(foodConsumedEntities).isEmpty();
         assertThat(warpedEntities).isEmpty();
+        assertThat(remainingEntities).hasSize(1);
     }
 }

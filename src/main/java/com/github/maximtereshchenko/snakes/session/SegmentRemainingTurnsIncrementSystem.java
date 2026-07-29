@@ -26,13 +26,16 @@ final class SegmentRemainingTurnsIncrementSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        for (var _ : foodConsumedEntities) {
+        for (var foodConsumedEntity : foodConsumedEntities) {
+            var foodConsumed = foodConsumedEntity.component(FoodConsumed.class)
+                .value();
             for (var segmentDefinitionEntity : segmentDefinitionEntities) {
                 var segmentDefinition = segmentDefinitionEntity.component(SegmentDefinition.class);
-                segmentDefinition.durationTurns += segmentDefinition.incrementStepTurns;
+                var increment = segmentDefinition.incrementStepTurns * foodConsumed;
+                segmentDefinition.durationTurns += increment;
                 for (var segmentEntity : segmentEntities) {
-                    segmentEntity.component(Segment.class)
-                        .remainingTurns += segmentDefinition.incrementStepTurns;
+                    var segment = segmentEntity.component(Segment.class);
+                    segment.remainingTurns += increment;
                 }
             }
         }
