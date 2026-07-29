@@ -28,7 +28,7 @@ final class FoodConsumedIncrementSystemTest {
         world.addComponents(
             world.createEntity(),
             FoodConsumed.INSTANCE,
-            new Statistics()
+            new Statistics(Map.of())
         );
         world.update(0);
         assertThat(statisticsEntities)
@@ -47,7 +47,7 @@ final class FoodConsumedIncrementSystemTest {
         world.addComponents(
             world.createEntity(),
             FoodConsumed.INSTANCE,
-            new Statistics()
+            new Statistics(Map.of())
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
@@ -64,7 +64,7 @@ final class FoodConsumedIncrementSystemTest {
 
     @Test
     void givenNoFoodConsumed_thenFoodConsumedNotIncremented() {
-        world.addComponents(world.createEntity(), new Statistics());
+        world.addComponents(world.createEntity(), new Statistics(Map.of()));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         assertThat(statisticsEntities)

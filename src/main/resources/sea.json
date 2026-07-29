@@ -56,8 +56,15 @@
   [
     {
       "type": "com.github.maximtereshchenko.snakes.session.TurnTimer",
-      "turnLengthSeconds": 0.125,
+      "turnLengthSeconds": 0.133,
       "timePassedSeconds": 0
+    },
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.TurnLengthScaling",
+      "baseTurnLengthSeconds": 0.133,
+      "foodConsumedStep": 10,
+      "turnLengthReductionSeconds": 0.017,
+      "minimalTurnLengthSeconds": 0.067
     }
   ],
   [

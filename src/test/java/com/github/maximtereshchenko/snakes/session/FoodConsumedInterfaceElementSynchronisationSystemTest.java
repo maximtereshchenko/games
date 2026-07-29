@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,9 +30,10 @@ final class FoodConsumedInterfaceElementSynchronisationSystemTest {
 
     @Test
     void whenUpdated_thenFoodConsumedAddedToVariables() {
-        var statistics = new Statistics();
-        statistics.value.put(SessionMetric.FOOD_CONSUMED, 4);
-        world.addComponents(world.createEntity(), statistics);
+        world.addComponents(
+            world.createEntity(),
+            new Statistics(Map.of(SessionMetric.FOOD_CONSUMED, 4))
+        );
         world.addComponents(
             world.createEntity(),
             FoodConsumedInterfaceElement.INSTANCE,

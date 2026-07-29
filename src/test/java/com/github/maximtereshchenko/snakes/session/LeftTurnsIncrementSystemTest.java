@@ -32,7 +32,7 @@ final class LeftTurnsIncrementSystemTest {
             world.createEntity(),
             Direction.RIGHT,
             new DirectionIntent(Set.of(), Direction.UP),
-            new Statistics()
+            new Statistics(Map.of())
         );
         world.update(0);
         assertThat(statisticsEntities)
@@ -53,7 +53,7 @@ final class LeftTurnsIncrementSystemTest {
             world.createEntity(),
             direction,
             new DirectionIntent(Set.of(), direction.left()),
-            new Statistics()
+            new Statistics(Map.of())
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
@@ -75,7 +75,7 @@ final class LeftTurnsIncrementSystemTest {
             world.createEntity(),
             direction,
             new DirectionIntent(Set.of(), direction.opposite().left()),
-            new Statistics()
+            new Statistics(Map.of())
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);

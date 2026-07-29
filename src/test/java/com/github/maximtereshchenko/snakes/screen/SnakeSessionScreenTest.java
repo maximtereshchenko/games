@@ -38,7 +38,7 @@ final class SnakeSessionScreenTest {
     @Test
     void givenDead_whenRender_thenOnSessionEndCalled() {
         world.addComponents(world.createEntity(), Dead.INSTANCE);
-        world.addComponents(world.createEntity(), new Statistics());
+        world.addComponents(world.createEntity(), new Statistics(Map.of()));
         world.addSystems(system);
         snakeSessionScreen.render(1.0f);
         verify(system).update(any(), eq(1.0f));

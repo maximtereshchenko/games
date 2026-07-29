@@ -65,6 +65,7 @@ public final class SessionFactory {
             new SegmentRemainingTurnsIncrementSystem(world),
             new AirSupplyDecrementSystem(world),
             new AirSupplyResetSystem(world),
+            new TurnLengthScalingSystem(world),
             new AirSupplyInterfaceSynchronisationSystem(world),
             new FoodConsumedInterfaceElementSynchronisationSystem(world),
             new LocalizationSystem(
