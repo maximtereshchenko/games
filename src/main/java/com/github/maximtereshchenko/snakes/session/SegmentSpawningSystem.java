@@ -21,7 +21,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
                 )
         );
         this.segmentDefinitionEntities = world.entities(
-            new Query().all(SegmentDefinition.class)
+            new Query().all(SegmentPolicy.class)
         );
     }
 
@@ -36,7 +36,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
                     worldEdit.addComponents(
                         worldEdit.createEntity(),
                         new Segment(
-                            segmentDefinitionEntity.component(SegmentDefinition.class)
+                            segmentDefinitionEntity.component(SegmentPolicy.class)
                                 .durationTurns
                         ),
                         segmentWorldPosition,

@@ -12,7 +12,7 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     private final World world = new World();
     private final Iterable<Entity> segmentDefinitionEntities =
-        world.entities(new Query().all(SegmentDefinition.class));
+        world.entities(new Query().all(SegmentPolicy.class));
     private final Iterable<Entity> segmentEntities =
         world.entities(new Query().all(Segment.class));
     private final SegmentRemainingTurnsIncrementSystem segmentRemainingTurnsIncrementSystem =
@@ -25,14 +25,14 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 1));
+        world.addComponents(world.createEntity(), new SegmentPolicy(1, 1));
         world.addComponents(world.createEntity(), new Segment(1));
         world.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
-            .extracting(entity -> entity.component(SegmentDefinition.class))
+            .extracting(entity -> entity.component(SegmentPolicy.class))
             .usingRecursiveComparison()
-            .isEqualTo(new SegmentDefinition(1, 1));
+            .isEqualTo(new SegmentPolicy(1, 1));
         assertThat(segmentEntities)
             .singleElement()
             .extracting(entity -> entity.component(Segment.class).remainingTurns)
@@ -41,15 +41,15 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     @Test
     void givenNoFoodConsumed_thenNoChanges() {
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 1));
+        world.addComponents(world.createEntity(), new SegmentPolicy(1, 1));
         world.addComponents(world.createEntity(), new Segment(1));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
-            .extracting(entity -> entity.component(SegmentDefinition.class))
+            .extracting(entity -> entity.component(SegmentPolicy.class))
             .usingRecursiveComparison()
-            .isEqualTo(new SegmentDefinition(1, 1));
+            .isEqualTo(new SegmentPolicy(1, 1));
         assertThat(segmentEntities)
             .singleElement()
             .extracting(entity -> entity.component(Segment.class).remainingTurns)
@@ -58,16 +58,16 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     @Test
     void givenFoodConsumed_thenSegmentRemainingTurnsIncremented() {
-        world.addComponents(world.createEntity(), new SegmentDefinition(2, 1));
+        world.addComponents(world.createEntity(), new SegmentPolicy(2, 1));
         world.addComponents(world.createEntity(), new Segment(1));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.addComponents(world.createEntity(), new FoodConsumed(2));
         world.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
-            .extracting(entity -> entity.component(SegmentDefinition.class))
+            .extracting(entity -> entity.component(SegmentPolicy.class))
             .usingRecursiveComparison()
-            .isEqualTo(new SegmentDefinition(2, 5));
+            .isEqualTo(new SegmentPolicy(2, 5));
         assertThat(segmentEntities)
             .singleElement()
             .extracting(entity -> entity.component(Segment.class).remainingTurns)

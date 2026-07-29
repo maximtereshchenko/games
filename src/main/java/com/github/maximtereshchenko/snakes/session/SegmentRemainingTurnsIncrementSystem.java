@@ -17,7 +17,7 @@ final class SegmentRemainingTurnsIncrementSystem extends TurnBasedSystem {
             new Query().all(FoodConsumed.class)
         );
         this.segmentDefinitionEntities = world.entities(
-            new Query().all(SegmentDefinition.class)
+            new Query().all(SegmentPolicy.class)
         );
         this.segmentEntities = world.entities(
             new Query().all(Segment.class)
@@ -30,7 +30,7 @@ final class SegmentRemainingTurnsIncrementSystem extends TurnBasedSystem {
             var foodConsumed = foodConsumedEntity.component(FoodConsumed.class)
                 .value();
             for (var segmentDefinitionEntity : segmentDefinitionEntities) {
-                var segmentDefinition = segmentDefinitionEntity.component(SegmentDefinition.class);
+                var segmentDefinition = segmentDefinitionEntity.component(SegmentPolicy.class);
                 var increment = segmentDefinition.incrementStepTurns * foodConsumed;
                 segmentDefinition.durationTurns += increment;
                 for (var segmentEntity : segmentEntities) {

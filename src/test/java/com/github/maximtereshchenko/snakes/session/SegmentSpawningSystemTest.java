@@ -34,7 +34,7 @@ final class SegmentSpawningSystemTest {
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 4));
+        world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
         world.update(0);
         assertThat(segmentEntities).isEmpty();
     }
@@ -48,7 +48,7 @@ final class SegmentSpawningSystemTest {
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 4));
+        world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         assertThat(spawnedSegmentEntities)
@@ -77,7 +77,7 @@ final class SegmentSpawningSystemTest {
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), new SegmentDefinition(1, 4));
+        world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         assertThat(segmentEntities).isEmpty();

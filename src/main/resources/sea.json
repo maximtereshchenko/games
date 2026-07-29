@@ -69,20 +69,21 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.SegmentDefinition",
+      "type": "com.github.maximtereshchenko.snakes.session.SegmentPolicy",
       "incrementStepTurns": 3,
       "durationTurns": 2
     }
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.FoodDefinition",
+      "type": "com.github.maximtereshchenko.snakes.session.FoodPolicy",
       "worldDimensions": {
         "width": 35,
         "height": 18
       },
       "periodTurns": 3,
-      "direction": "DOWN"
+      "direction": "DOWN",
+      "max": 1
     }
   ],
   [

@@ -12,7 +12,7 @@ import java.util.Set;
 final class FoodSpawningSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> nonBackgroundEntities;
-    private final Iterable<Entity> foodDefinitionEntities;
+    private final Iterable<Entity> foodPolicyEntities;
     private final Iterable<Entity> foodEntities;
     private final Random random;
 
@@ -23,8 +23,8 @@ final class FoodSpawningSystem extends TurnBasedSystem {
                 .all(WorldPosition.class)
                 .none(Background.class)
         );
-        this.foodDefinitionEntities = world.entities(
-            new Query().all(FoodDefinition.class)
+        this.foodPolicyEntities = world.entities(
+            new Query().all(FoodPolicy.class)
         );
         this.foodEntities = world.entities(
             new Query().all(Food.class)
@@ -34,27 +34,49 @@ final class FoodSpawningSystem extends TurnBasedSystem {
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        if (foodEntities.iterator().hasNext()) {
-            return;
+        for (var foodPolicyEntity : foodPolicyEntities) {
+            var foodPolicy = foodPolicyEntity.component(FoodPolicy.class);
+            var worldDimensions = foodPolicy.worldDimensions();
+            var worldPositions = worldPositions();
+            for (
+                var i = food();
+                i < foodPolicy.max() &&
+                worldPositions.size() < space(worldDimensions);
+                i++
+            ) {
+                var worldPosition = new WorldPosition();
+                do {
+                    worldPosition.x = random.nextInt(worldDimensions.width());
+                    worldPosition.y = random.nextInt(worldDimensions.height());
+                } while (worldPositions.contains(worldPosition));
+                createFood(worldEdit, worldPosition, foodPolicy);
+            }
         }
-        for (var foodDefinitionEntity : foodDefinitionEntities) {
-            var foodDefinition = foodDefinitionEntity.component(FoodDefinition.class);
-            var worldPosition = position(foodDefinition.worldDimensions());
-            var worldPositionIntent = new WorldPosition();
-            worldPositionIntent.copy(worldPosition);
-            worldEdit.addComponents(
-                worldEdit.createEntity(),
-                Food.INSTANCE,
-                new DirectedMovement(
-                    foodDefinition.periodTurns(),
-                    foodDefinition.periodTurns()
-                ),
-                worldPosition,
-                new WorldPositionIntent(worldPositionIntent),
-                foodDefinition.direction(),
-                Colored.FOOD
-            );
-        }
+    }
+
+    private int space(WorldDimensions worldDimensions) {
+        return worldDimensions.height() * worldDimensions.width();
+    }
+
+    private void createFood(
+        WorldEdit worldEdit,
+        WorldPosition worldPosition,
+        FoodPolicy foodPolicy
+    ) {
+        var worldPositionIntent = new WorldPosition();
+        worldPositionIntent.copy(worldPosition);
+        worldEdit.addComponents(
+            worldEdit.createEntity(),
+            Food.INSTANCE,
+            new DirectedMovement(
+                foodPolicy.periodTurns(),
+                foodPolicy.periodTurns()
+            ),
+            worldPosition,
+            new WorldPositionIntent(worldPositionIntent),
+            foodPolicy.direction(),
+            Colored.FOOD
+        );
     }
 
     private Set<WorldPosition> worldPositions() {
@@ -65,13 +87,11 @@ final class FoodSpawningSystem extends TurnBasedSystem {
         return worldPositions;
     }
 
-    private WorldPosition position(WorldDimensions worldDimensions) {
-        var worldPositions = worldPositions();
-        var worldPosition = new WorldPosition();
-        do {
-            worldPosition.x = random.nextInt(worldDimensions.width());
-            worldPosition.y = random.nextInt(worldDimensions.height());
-        } while (worldPositions.contains(worldPosition));
-        return worldPosition;
+    private int food() {
+        var food = 0;
+        for (var _ : foodEntities) {
+            food++;
+        }
+        return food;
     }
 }

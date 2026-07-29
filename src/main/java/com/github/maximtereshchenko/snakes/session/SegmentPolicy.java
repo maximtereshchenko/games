@@ -1,11 +1,11 @@
 package com.github.maximtereshchenko.snakes.session;
 
-final class SegmentDefinition {
+final class SegmentPolicy {
 
     final int incrementStepTurns;
     int durationTurns;
 
-    SegmentDefinition(int incrementStepTurns, int durationTurns) {
+    SegmentPolicy(int incrementStepTurns, int durationTurns) {
         this.incrementStepTurns = incrementStepTurns;
         this.durationTurns = durationTurns;
     }
