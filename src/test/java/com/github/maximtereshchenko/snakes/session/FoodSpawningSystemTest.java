@@ -112,7 +112,7 @@ final class FoodSpawningSystemTest {
                 new WorldDimensions(2, 2),
                 1,
                 Direction.RIGHT,
-                2
+                5
             )
         );
         world.addComponents(
@@ -123,11 +123,12 @@ final class FoodSpawningSystemTest {
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
         assertThat(foodEntities)
-            .hasSize(2)
             .extracting(entity -> entity.component(WorldPosition.class))
-            .containsExactly(
+            .containsExactlyInAnyOrder(
                 new WorldPosition(0, 0),
-                new WorldPosition(1, 1)
+                new WorldPosition(1, 1),
+                new WorldPosition(0, 1),
+                new WorldPosition(1, 0)
             );
     }
 

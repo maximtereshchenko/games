@@ -48,7 +48,7 @@ final class FoodSpawningSystem extends TurnBasedSystem {
                 do {
                     worldPosition.x = random.nextInt(worldDimensions.width());
                     worldPosition.y = random.nextInt(worldDimensions.height());
-                } while (worldPositions.contains(worldPosition));
+                } while (!worldPositions.add(worldPosition));
                 createFood(worldEdit, worldPosition, foodPolicy);
             }
         }
