@@ -148,6 +148,24 @@
         "WALL": "ff9135ff"
       },
       "modeUnlockRequirements": {}
+    },
+    {
+      "name": "trouser",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "trouser.json",
+      "palette": {
+        "BACKGROUND": "8f6dd7ff",
+        "HEAD": "a601a7ff",
+        "SEGMENT": "d25fd3ff",
+        "FOOD": "8f6dd7ff",
+        "INTERFACE": "29067eff",
+        "WARP": "290672ff"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
