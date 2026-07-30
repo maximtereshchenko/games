@@ -129,6 +129,25 @@
         "WARP": "116777ff"
       },
       "modeUnlockRequirements": {}
+    },
+    {
+      "name": "mamushi",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "mamushi.json",
+      "palette": {
+        "BACKGROUND": "fdeba9ff",
+        "HEAD": "d6264dff",
+        "SEGMENT": "ff5476ff",
+        "FOOD": "d6264dff",
+        "INTERFACE": "06255dff",
+        "WARP": "f6d76bff",
+        "WALL": "ff9135ff"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
