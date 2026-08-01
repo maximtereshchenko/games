@@ -28,13 +28,6 @@ final class TagRemovalSystemTest {
     }
 
     @Test
-    void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), new FoodConsumed(1));
-        world.update(0);
-        assertThat(foodConsumedEntities).hasSize(1);
-    }
-
-    @Test
     void givenTags_thenTagsRemoved() {
         world.addComponents(
             world.createEntity(),

@@ -1,17 +1,14 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import com.github.maximtereshchenko.ecs.Entity;
-import com.github.maximtereshchenko.ecs.Query;
-import com.github.maximtereshchenko.ecs.World;
-import com.github.maximtereshchenko.ecs.WorldEdit;
+import com.github.maximtereshchenko.ecs.*;
+import com.github.maximtereshchenko.ecs.System;
 
-final class TagRemovalSystem extends TurnBasedSystem {
+final class TagRemovalSystem implements System {
 
     private final Iterable<Entity> taggedEntities;
     private final Class<?>[] types;
 
     TagRemovalSystem(World world, Class<?>... types) {
-        super(world);
         this.taggedEntities = world.entities(
             new Query().one(types)
         );
@@ -19,7 +16,7 @@ final class TagRemovalSystem extends TurnBasedSystem {
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
         for (var taggedEntity : taggedEntities) {
             worldEdit.removeComponents(taggedEntity.id(), types);
         }

@@ -56,4 +56,9 @@ final class SessionScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         viewports.forEach(viewport -> viewport.update(width, height, true));
     }
+
+    @Override
+    public void show() {
+        world.update(0);
+    }
 }

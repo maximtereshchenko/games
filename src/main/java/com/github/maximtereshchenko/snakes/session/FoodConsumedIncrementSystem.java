@@ -1,23 +1,20 @@
 package com.github.maximtereshchenko.snakes.session;
 
-import com.github.maximtereshchenko.ecs.Entity;
-import com.github.maximtereshchenko.ecs.Query;
-import com.github.maximtereshchenko.ecs.World;
-import com.github.maximtereshchenko.ecs.WorldEdit;
+import com.github.maximtereshchenko.ecs.*;
+import com.github.maximtereshchenko.ecs.System;
 
-final class FoodConsumedIncrementSystem extends TurnBasedSystem {
+final class FoodConsumedIncrementSystem implements System {
 
     private final Iterable<Entity> statisticsEntities;
 
     FoodConsumedIncrementSystem(World world) {
-        super(world);
         this.statisticsEntities = world.entities(
             new Query().all(FoodConsumed.class, Statistics.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
         for (var statisticsEntity : statisticsEntities) {
             var sessionStatistics = statisticsEntity.component(Statistics.class).value;
             sessionStatistics.put(

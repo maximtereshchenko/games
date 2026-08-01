@@ -58,4 +58,11 @@ final class SnakeSessionScreenTest {
         snakeSessionScreen.resize(1, 2);
         verify(viewport).update(1, 2, true);
     }
+
+    @Test
+    void whenShow_thenSystemUpdated() {
+        world.addSystems(system);
+        snakeSessionScreen.show();
+        verify(system).update(any(), eq(0.0f));
+    }
 }

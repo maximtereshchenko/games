@@ -53,7 +53,7 @@ public final class SessionFactory {
             new DirectionIntentCommitSystem(world),
             new DirectedMovementSystem(world),
             new SidewaysMovementSystem(world),
-            new WarpSystem(world),
+            new WarpingSystem(world),
             new WarpedRelativeDirectionSystem(world),
             new HeadCollisionSystem(world),
             new FoodCollisionSystem(world),
@@ -61,9 +61,10 @@ public final class SessionFactory {
             new PositionIntentCommitSystem(world),
             new FoodConsumptionSystem(world),
             new FoodConsumedIncrementSystem(world),
+            new WallSpawningSystem(world),
+            new WarpingEdgeSpawningSystem(world),
             new FoodSpawningSystem(world, ThreadLocalRandom.current()),
             new SegmentRemainingTurnsIncrementSystem(world),
-            new WallPolicySystem(world),
             new AirSupplyDecrementSystem(world),
             new AirSupplyResetSystem(world),
             new TurnLengthScalingSystem(world),
@@ -81,6 +82,7 @@ public final class SessionFactory {
             ),
             new TagRemovalSystem(
                 world,
+                Initializing.class,
                 TurnStarted.class,
                 FoodConsumed.class,
                 Warped.class

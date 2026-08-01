@@ -69,6 +69,13 @@
   ],
   [
     {
+      "type": "com.github.maximtereshchenko.snakes.session.WorldDimensions",
+      "width": 35,
+      "height": 18
+    }
+  ],
+  [
+    {
       "type": "com.github.maximtereshchenko.snakes.session.SegmentPolicy",
       "incrementStepTurns": 3,
       "durationTurns": 2
@@ -77,13 +84,21 @@
   [
     {
       "type": "com.github.maximtereshchenko.snakes.session.FoodPolicy",
-      "worldDimensions": {
-        "width": 35,
-        "height": 18
-      },
       "periodTurns": 3,
       "direction": "DOWN",
       "max": 1
+    },
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.Initializing",
+      "value": "INSTANCE"
+    }
+  ],
+  [
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingPolicy",
+      "periodConsumedFood": 2147483647,
+      "remainingConsumedFood": 2147483647,
+      "layers": 1
     }
   ],
   [
@@ -119,6 +134,10 @@
         "x": 11,
         "y": 6
       }
+    },
+    {
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingDestinationEdge",
+      "value": "OPPOSITE"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.Hitbox",
@@ -8354,11 +8373,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 0,
-        "y": 16
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -8867,11 +8883,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 34,
-        "y": 16
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -8885,11 +8898,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 0,
-        "y": 1
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9398,11 +9408,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 34,
-        "y": 1
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9416,11 +9423,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 1
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9434,11 +9438,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 2
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9452,11 +9453,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 3
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9470,11 +9468,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 4
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9488,11 +9483,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 5
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9506,11 +9498,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 6
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9524,11 +9513,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 7
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9542,11 +9528,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 8
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9560,11 +9543,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 9
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9578,11 +9558,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 10
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9596,11 +9573,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 11
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9614,11 +9588,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 12
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9632,11 +9603,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 13
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9650,11 +9618,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 14
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9668,11 +9633,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 15
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9686,11 +9648,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 33,
-        "y": 16
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "LEFT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9704,11 +9663,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 1
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9722,11 +9678,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 2
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9740,11 +9693,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 3
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9758,11 +9708,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 4
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9776,11 +9723,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 5
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9794,11 +9738,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 6
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9812,11 +9753,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 7
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9830,11 +9768,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 8
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9848,11 +9783,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 9
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9866,11 +9798,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 10
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9884,11 +9813,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 11
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9902,11 +9828,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 12
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9920,11 +9843,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 13
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9938,11 +9858,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 14
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9956,11 +9873,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 15
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",
@@ -9974,11 +9888,8 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Warp",
-      "worldPosition": {
-        "x": 1,
-        "y": 16
-      }
+      "type": "com.github.maximtereshchenko.snakes.session.WarpingEdge",
+      "value": "RIGHT"
     },
     {
       "type": "com.github.maximtereshchenko.snakes.session.WorldPosition",

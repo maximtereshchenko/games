@@ -42,27 +42,54 @@ final class FoodSpawningSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(2, 2),
-                1,
-                Direction.RIGHT,
-                1
-            )
+            new FoodPolicy(1, Direction.RIGHT, 1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(2, 2)
         );
         world.update(0);
         assertThat(foodEntities).isEmpty();
     }
 
     @Test
+    void givenInitializing_thenFoodSpawned() {
+        world.addComponents(
+            world.createEntity(),
+            new FoodPolicy(1, Direction.RIGHT, 1),
+            Initializing.INSTANCE
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(2, 2)
+        );
+        world.update(0);
+        assertThat(spawnedFoodEntities)
+            .singleElement()
+            .extracting(
+                entity -> entity.component(DirectedMovement.class),
+                entity -> entity.component(Direction.class),
+                entity -> entity.component(Colored.class)
+            )
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new DirectedMovement(1, 1),
+                    Direction.RIGHT,
+                    Colored.FOOD
+                )
+            );
+    }
+
+    @Test
     void givenTurnStartedEvent_thenFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(2, 2),
-                1,
-                Direction.RIGHT,
-                1
-            )
+            new FoodPolicy(1, Direction.RIGHT, 1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(2, 2)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
         world.update(0);
@@ -87,12 +114,11 @@ final class FoodSpawningSystemTest {
     void givenEnoughFood_thenNoFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(2, 2),
-                1,
-                Direction.RIGHT,
-                1
-            )
+            new FoodPolicy(1, Direction.RIGHT, 1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(2, 2)
         );
         world.addComponents(
             world.createEntity(),
@@ -108,12 +134,11 @@ final class FoodSpawningSystemTest {
     void givenSomeFood_thenRemainingFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(2, 2),
-                1,
-                Direction.RIGHT,
-                5
-            )
+            new FoodPolicy(1, Direction.RIGHT, 5)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(2, 2)
         );
         world.addComponents(
             world.createEntity(),
@@ -136,12 +161,11 @@ final class FoodSpawningSystemTest {
     void givenOccupiedPosition_thenFoodSpawnedInFreeSpace() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(1, 2),
-                1,
-                Direction.RIGHT,
-                1
-            )
+            new FoodPolicy(1, Direction.RIGHT, 1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(1, 2)
         );
         world.addComponents(world.createEntity(), new WorldPosition(0, 0));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -156,12 +180,11 @@ final class FoodSpawningSystemTest {
     void givenBackground_thenFoodSpawnedOnBackground() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(1, 1),
-                1,
-                Direction.RIGHT,
-                1
-            )
+            new FoodPolicy(1, Direction.RIGHT, 1)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -180,12 +203,11 @@ final class FoodSpawningSystemTest {
     void givenNotEnoughSpace_thenNoFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(
-                new WorldDimensions(1, 1),
-                1,
-                Direction.RIGHT,
-                2
-            )
+            new FoodPolicy(1, Direction.RIGHT, 2)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new WorldDimensions(1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -196,5 +218,4 @@ final class FoodSpawningSystemTest {
         world.update(0);
         assertThat(foodEntities).isEmpty();
     }
-
 }

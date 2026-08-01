@@ -5,12 +5,12 @@ import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.ecs.WorldEdit;
 
-final class WallPolicySystem extends TurnBasedSystem {
+final class WallSpawningSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> foodConsumedEntities;
     private final Iterable<Entity> wallPolicyEntities;
 
-    WallPolicySystem(World world) {
+    WallSpawningSystem(World world) {
         super(world);
         this.foodConsumedEntities = world.entities(
             new Query().all(FoodConsumed.class, WorldPosition.class)

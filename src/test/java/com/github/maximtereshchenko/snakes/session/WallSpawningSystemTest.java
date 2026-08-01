@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class WallPolicySystemTest {
+final class WallSpawningSystemTest {
 
     private final World world = new World();
     private final Iterable<Entity> wallEntities =
@@ -22,11 +22,11 @@ final class WallPolicySystemTest {
                     Colored.class
                 )
         );
-    private final WallPolicySystem wallPolicySystem = new WallPolicySystem(world);
+    private final WallSpawningSystem wallSpawningSystem = new WallSpawningSystem(world);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(wallPolicySystem);
+        world.addSystems(wallSpawningSystem);
     }
 
     @Test

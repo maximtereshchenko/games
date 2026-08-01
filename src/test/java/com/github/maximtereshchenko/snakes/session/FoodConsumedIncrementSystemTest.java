@@ -24,25 +24,6 @@ final class FoodConsumedIncrementSystemTest {
     }
 
     @Test
-    void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
-            new FoodConsumed(1),
-            new Statistics(Map.of())
-        );
-        world.update(0);
-        assertThat(statisticsEntities)
-            .singleElement()
-            .extracting(entity -> entity.component(Statistics.class).value)
-            .isEqualTo(
-                Map.of(
-                    SessionMetric.LEFT_TURNS, 0,
-                    SessionMetric.FOOD_CONSUMED, 0
-                )
-            );
-    }
-
-    @Test
     void givenFoodConsumed_thenFoodConsumedIncremented() {
         world.addComponents(
             world.createEntity(),
