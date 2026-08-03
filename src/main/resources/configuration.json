@@ -166,6 +166,24 @@
         "WARP": "290672ff"
       },
       "modeUnlockRequirements": {}
+    },
+    {
+      "name": "boa",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "boa.json",
+      "palette": {
+        "BACKGROUND": "96320eff",
+        "HEAD": "52363dff",
+        "SEGMENT": "22383eff",
+        "FOOD": "52363dff",
+        "INTERFACE": "ffffd5ff",
+        "WARP": "ffffd5ff"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
