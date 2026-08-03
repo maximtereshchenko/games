@@ -180,8 +180,26 @@
         "HEAD": "52363dff",
         "SEGMENT": "22383eff",
         "FOOD": "52363dff",
-        "INTERFACE": "ffffd5ff",
-        "WARP": "ffffd5ff"
+        "INTERFACE": "ffffd3ff",
+        "WARP": "bda46cff"
+      },
+      "modeUnlockRequirements": {}
+    },
+    {
+      "name": "mamba",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "mamba.json",
+      "palette": {
+        "BACKGROUND": "ffff73ff",
+        "HEAD": "8c4079ff",
+        "SEGMENT": "25261eff",
+        "FOOD": "8c4079ff",
+        "INTERFACE": "dd2c50ff",
+        "WARP": "ffff05ff"
       },
       "modeUnlockRequirements": {}
     }
