@@ -40,19 +40,19 @@ final class WorldRenderingSystemTest {
         when(mode.palette())
             .thenReturn(
                 Map.of(
-                    Colored.BACKGROUND, Color.WHITE,
-                    Colored.HEAD, Color.BLACK
+                    PaletteColor.BACKGROUND, Color.WHITE,
+                    PaletteColor.HEAD, Color.BLACK
                 )
             );
         world.addComponents(
             world.createEntity(),
             new WorldPosition(0, 0),
-            Colored.HEAD
+            PaletteColor.HEAD
         );
         world.addComponents(
             world.createEntity(),
             new WorldPosition(1, 1),
-            Colored.BACKGROUND,
+            PaletteColor.BACKGROUND,
             Background.INSTANCE
         );
         world.update(0);

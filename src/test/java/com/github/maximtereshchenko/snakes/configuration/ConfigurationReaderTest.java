@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.snakes.UserProfileMetric;
-import com.github.maximtereshchenko.snakes.session.Colored;
+import com.github.maximtereshchenko.snakes.session.PaletteColor;
 import com.github.maximtereshchenko.snakes.session.SessionMetric;
 import com.github.maximtereshchenko.snakes.session.WorldDimensions;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,12 +59,12 @@ final class ConfigurationReaderTest {
                             0.4f,
                             "first.json",
                             Map.of(
-                                Colored.BACKGROUND, color,
-                                Colored.HEAD, color,
-                                Colored.SEGMENT, color,
-                                Colored.FOOD, color,
-                                Colored.INTERFACE, color,
-                                Colored.WARP, color
+                                PaletteColor.BACKGROUND, color,
+                                PaletteColor.HEAD, color,
+                                PaletteColor.SEGMENT, color,
+                                PaletteColor.FOOD, color,
+                                PaletteColor.INTERFACE, color,
+                                PaletteColor.WARP, color
                             ),
                             new ModeUnlockRequirements(
                                 Map.of(UserProfileMetric.LAUNCHES, 8),
@@ -77,12 +77,12 @@ final class ConfigurationReaderTest {
                             1.1f,
                             "second.json",
                             Map.of(
-                                Colored.BACKGROUND, color,
-                                Colored.HEAD, color,
-                                Colored.SEGMENT, color,
-                                Colored.FOOD, color,
-                                Colored.INTERFACE, color,
-                                Colored.WARP, color
+                                PaletteColor.BACKGROUND, color,
+                                PaletteColor.HEAD, color,
+                                PaletteColor.SEGMENT, color,
+                                PaletteColor.FOOD, color,
+                                PaletteColor.INTERFACE, color,
+                                PaletteColor.WARP, color
                             ),
                             new ModeUnlockRequirements(
                                 Map.of(),
@@ -105,6 +105,6 @@ final class ConfigurationReaderTest {
                     .extracting("x", "y")
                     .containsExactly(6, 7)
             );
-        assertThat(entities[1]).containsExactly(Colored.HEAD);
+        assertThat(entities[1]).containsExactly(PaletteColor.HEAD);
     }
 }

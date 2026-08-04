@@ -94,7 +94,7 @@ final class FoodSpawningSystem implements System {
             worldPosition,
             new WorldPositionIntent(worldPositionIntent),
             foodPolicy.direction(),
-            Colored.FOOD
+            PaletteColor.FOOD
         );
     }
 

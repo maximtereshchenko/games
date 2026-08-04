@@ -74,7 +74,7 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.TOP,
                     new WorldPosition(i, worldDimensions.height() - warpingLayers - 1),
-                    Colored.WARP
+                    PaletteColor.WARP
                 );
             }
             for (var i = warpingLayers; i < worldDimensions.width() - warpingLayers; i++) {
@@ -82,7 +82,7 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.BOTTOM,
                     new WorldPosition(i, warpingLayers),
-                    Colored.WARP
+                    PaletteColor.WARP
                 );
             }
             for (var i = warpingLayers + 1; i < worldDimensions.height() - warpingLayers - 1; i++) {
@@ -90,7 +90,7 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.LEFT,
                     new WorldPosition(warpingLayers, i),
-                    Colored.WARP
+                    PaletteColor.WARP
                 );
             }
             for (var i = warpingLayers + 1; i < worldDimensions.height() - warpingLayers - 1; i++) {
@@ -98,7 +98,7 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.RIGHT,
                     new WorldPosition(worldDimensions.width() - warpingLayers - 1, i),
-                    Colored.WARP
+                    PaletteColor.WARP
                 );
             }
         }

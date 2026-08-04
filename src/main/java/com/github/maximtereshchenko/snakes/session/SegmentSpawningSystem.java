@@ -40,7 +40,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
                                 .durationTurns
                         ),
                         segmentWorldPosition,
-                        Colored.SEGMENT
+                        PaletteColor.SEGMENT
                     );
                 }
             }

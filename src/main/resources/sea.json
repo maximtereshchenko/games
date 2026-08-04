@@ -24,7 +24,7 @@
       "value": ""
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "INTERFACE"
     }
   ],
@@ -49,7 +49,7 @@
       "value": ""
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "INTERFACE"
     }
   ],
@@ -153,7 +153,7 @@
       "value": 100
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "HEAD"
     }
   ],
@@ -168,7 +168,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "SEGMENT"
     }
   ],
@@ -183,7 +183,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "SEGMENT"
     }
   ],
@@ -198,7 +198,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -213,7 +213,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -228,7 +228,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -243,7 +243,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -258,7 +258,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -273,7 +273,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -288,7 +288,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -303,7 +303,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -318,7 +318,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -333,7 +333,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -348,7 +348,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -363,7 +363,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -378,7 +378,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -393,7 +393,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -412,7 +412,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -431,7 +431,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -446,7 +446,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -461,7 +461,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -476,7 +476,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -491,7 +491,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -506,7 +506,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -521,7 +521,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -536,7 +536,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -551,7 +551,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -566,7 +566,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -581,7 +581,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -596,7 +596,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -611,7 +611,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -626,7 +626,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -641,7 +641,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -660,7 +660,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -679,7 +679,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -694,7 +694,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -709,7 +709,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -724,7 +724,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -739,7 +739,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -754,7 +754,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -769,7 +769,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -784,7 +784,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -799,7 +799,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -814,7 +814,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -829,7 +829,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -844,7 +844,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -859,7 +859,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -874,7 +874,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -889,7 +889,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -908,7 +908,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -927,7 +927,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -942,7 +942,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -957,7 +957,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -972,7 +972,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -987,7 +987,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1002,7 +1002,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1017,7 +1017,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1032,7 +1032,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1047,7 +1047,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1062,7 +1062,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1077,7 +1077,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1092,7 +1092,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1107,7 +1107,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1122,7 +1122,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1137,7 +1137,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1156,7 +1156,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1175,7 +1175,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1190,7 +1190,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1205,7 +1205,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1220,7 +1220,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1235,7 +1235,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1250,7 +1250,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1265,7 +1265,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1280,7 +1280,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1295,7 +1295,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1310,7 +1310,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1325,7 +1325,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1340,7 +1340,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1355,7 +1355,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1370,7 +1370,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1385,7 +1385,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1404,7 +1404,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1423,7 +1423,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1438,7 +1438,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1453,7 +1453,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1468,7 +1468,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1483,7 +1483,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1498,7 +1498,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1513,7 +1513,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1528,7 +1528,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1543,7 +1543,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1558,7 +1558,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1573,7 +1573,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1588,7 +1588,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1603,7 +1603,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1618,7 +1618,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1633,7 +1633,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1652,7 +1652,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1671,7 +1671,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1686,7 +1686,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1701,7 +1701,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1716,7 +1716,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1731,7 +1731,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1746,7 +1746,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1761,7 +1761,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1776,7 +1776,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1791,7 +1791,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1806,7 +1806,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1821,7 +1821,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1836,7 +1836,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1851,7 +1851,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1866,7 +1866,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1881,7 +1881,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1900,7 +1900,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1919,7 +1919,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -1934,7 +1934,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1949,7 +1949,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1964,7 +1964,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1979,7 +1979,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -1994,7 +1994,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2009,7 +2009,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2024,7 +2024,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2039,7 +2039,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2054,7 +2054,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2069,7 +2069,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2084,7 +2084,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2099,7 +2099,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2114,7 +2114,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2129,7 +2129,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2148,7 +2148,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2167,7 +2167,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2182,7 +2182,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2197,7 +2197,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2212,7 +2212,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2227,7 +2227,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2242,7 +2242,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2257,7 +2257,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2272,7 +2272,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2287,7 +2287,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2302,7 +2302,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2317,7 +2317,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2332,7 +2332,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2347,7 +2347,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2362,7 +2362,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2377,7 +2377,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2396,7 +2396,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2415,7 +2415,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2430,7 +2430,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2445,7 +2445,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2460,7 +2460,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2475,7 +2475,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2490,7 +2490,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2505,7 +2505,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2520,7 +2520,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2535,7 +2535,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2550,7 +2550,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2565,7 +2565,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2580,7 +2580,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2595,7 +2595,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2610,7 +2610,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2625,7 +2625,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2644,7 +2644,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2663,7 +2663,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2678,7 +2678,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2693,7 +2693,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2708,7 +2708,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2723,7 +2723,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2738,7 +2738,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2753,7 +2753,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2768,7 +2768,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2783,7 +2783,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2798,7 +2798,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2813,7 +2813,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2828,7 +2828,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2843,7 +2843,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2858,7 +2858,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2873,7 +2873,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2892,7 +2892,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2911,7 +2911,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -2926,7 +2926,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2941,7 +2941,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2956,7 +2956,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2971,7 +2971,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -2986,7 +2986,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3001,7 +3001,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3016,7 +3016,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3031,7 +3031,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3046,7 +3046,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3061,7 +3061,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3076,7 +3076,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3091,7 +3091,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3106,7 +3106,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3121,7 +3121,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3140,7 +3140,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3159,7 +3159,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3174,7 +3174,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3189,7 +3189,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3204,7 +3204,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3219,7 +3219,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3234,7 +3234,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3249,7 +3249,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3264,7 +3264,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3279,7 +3279,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3294,7 +3294,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3309,7 +3309,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3324,7 +3324,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3339,7 +3339,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3354,7 +3354,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3369,7 +3369,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3388,7 +3388,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3407,7 +3407,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3422,7 +3422,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3437,7 +3437,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3452,7 +3452,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3467,7 +3467,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3482,7 +3482,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3497,7 +3497,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3512,7 +3512,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3527,7 +3527,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3542,7 +3542,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3557,7 +3557,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3572,7 +3572,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3587,7 +3587,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3602,7 +3602,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3617,7 +3617,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3636,7 +3636,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3655,7 +3655,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3670,7 +3670,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3685,7 +3685,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3700,7 +3700,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3715,7 +3715,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3730,7 +3730,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3745,7 +3745,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3760,7 +3760,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3775,7 +3775,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3790,7 +3790,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3805,7 +3805,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3820,7 +3820,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3835,7 +3835,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3850,7 +3850,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3865,7 +3865,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3884,7 +3884,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3903,7 +3903,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -3918,7 +3918,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3933,7 +3933,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3948,7 +3948,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3963,7 +3963,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3978,7 +3978,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -3993,7 +3993,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4008,7 +4008,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4023,7 +4023,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4038,7 +4038,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4053,7 +4053,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4068,7 +4068,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4083,7 +4083,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4098,7 +4098,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4113,7 +4113,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4132,7 +4132,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4151,7 +4151,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4166,7 +4166,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4181,7 +4181,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4196,7 +4196,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4211,7 +4211,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4226,7 +4226,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4241,7 +4241,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4256,7 +4256,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4271,7 +4271,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4286,7 +4286,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4301,7 +4301,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4316,7 +4316,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4331,7 +4331,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4346,7 +4346,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4361,7 +4361,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4380,7 +4380,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4399,7 +4399,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4414,7 +4414,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4429,7 +4429,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4444,7 +4444,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4459,7 +4459,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4474,7 +4474,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4489,7 +4489,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4504,7 +4504,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4519,7 +4519,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4534,7 +4534,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4549,7 +4549,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4564,7 +4564,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4579,7 +4579,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4594,7 +4594,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4609,7 +4609,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4628,7 +4628,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4647,7 +4647,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4662,7 +4662,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4677,7 +4677,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4692,7 +4692,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4707,7 +4707,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4722,7 +4722,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4737,7 +4737,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4752,7 +4752,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4767,7 +4767,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4782,7 +4782,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4797,7 +4797,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4812,7 +4812,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4827,7 +4827,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4842,7 +4842,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4857,7 +4857,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4876,7 +4876,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4895,7 +4895,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -4910,7 +4910,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4925,7 +4925,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4940,7 +4940,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4955,7 +4955,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4970,7 +4970,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -4985,7 +4985,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5000,7 +5000,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5015,7 +5015,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5030,7 +5030,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5045,7 +5045,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5060,7 +5060,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5075,7 +5075,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5090,7 +5090,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5105,7 +5105,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5124,7 +5124,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5143,7 +5143,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5158,7 +5158,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5173,7 +5173,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5188,7 +5188,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5203,7 +5203,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5218,7 +5218,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5233,7 +5233,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5248,7 +5248,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5263,7 +5263,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5278,7 +5278,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5293,7 +5293,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5308,7 +5308,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5323,7 +5323,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5338,7 +5338,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5353,7 +5353,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5372,7 +5372,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5391,7 +5391,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5406,7 +5406,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5421,7 +5421,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5436,7 +5436,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5451,7 +5451,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5466,7 +5466,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5481,7 +5481,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5496,7 +5496,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5511,7 +5511,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5526,7 +5526,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5541,7 +5541,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5556,7 +5556,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5571,7 +5571,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5586,7 +5586,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5601,7 +5601,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5620,7 +5620,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5639,7 +5639,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5654,7 +5654,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5669,7 +5669,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5684,7 +5684,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5699,7 +5699,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5714,7 +5714,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5729,7 +5729,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5744,7 +5744,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5759,7 +5759,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5774,7 +5774,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5789,7 +5789,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5804,7 +5804,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5819,7 +5819,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5834,7 +5834,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5849,7 +5849,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5868,7 +5868,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5887,7 +5887,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -5902,7 +5902,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5917,7 +5917,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5932,7 +5932,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5947,7 +5947,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5962,7 +5962,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5977,7 +5977,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -5992,7 +5992,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6007,7 +6007,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6022,7 +6022,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6037,7 +6037,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6052,7 +6052,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6067,7 +6067,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6082,7 +6082,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6097,7 +6097,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6116,7 +6116,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6135,7 +6135,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6150,7 +6150,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6165,7 +6165,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6180,7 +6180,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6195,7 +6195,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6210,7 +6210,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6225,7 +6225,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6240,7 +6240,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6255,7 +6255,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6270,7 +6270,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6285,7 +6285,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6300,7 +6300,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6315,7 +6315,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6330,7 +6330,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6345,7 +6345,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6364,7 +6364,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6383,7 +6383,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6398,7 +6398,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6413,7 +6413,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6428,7 +6428,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6443,7 +6443,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6458,7 +6458,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6473,7 +6473,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6488,7 +6488,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6503,7 +6503,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6518,7 +6518,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6533,7 +6533,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6548,7 +6548,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6563,7 +6563,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6578,7 +6578,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6593,7 +6593,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6612,7 +6612,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6631,7 +6631,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6646,7 +6646,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6661,7 +6661,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6676,7 +6676,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6691,7 +6691,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6706,7 +6706,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6721,7 +6721,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6736,7 +6736,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6751,7 +6751,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6766,7 +6766,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6781,7 +6781,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6796,7 +6796,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6811,7 +6811,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6826,7 +6826,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6841,7 +6841,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6860,7 +6860,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6879,7 +6879,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -6894,7 +6894,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6909,7 +6909,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6924,7 +6924,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6939,7 +6939,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6954,7 +6954,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6969,7 +6969,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6984,7 +6984,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -6999,7 +6999,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7014,7 +7014,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7029,7 +7029,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7044,7 +7044,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7059,7 +7059,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7074,7 +7074,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7089,7 +7089,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7108,7 +7108,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7127,7 +7127,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7142,7 +7142,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7157,7 +7157,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7172,7 +7172,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7187,7 +7187,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7202,7 +7202,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7217,7 +7217,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7232,7 +7232,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7247,7 +7247,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7262,7 +7262,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7277,7 +7277,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7292,7 +7292,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7307,7 +7307,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7322,7 +7322,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7337,7 +7337,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7356,7 +7356,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7375,7 +7375,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7390,7 +7390,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7405,7 +7405,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7420,7 +7420,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7435,7 +7435,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7450,7 +7450,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7465,7 +7465,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7480,7 +7480,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7495,7 +7495,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7510,7 +7510,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7525,7 +7525,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7540,7 +7540,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7555,7 +7555,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7570,7 +7570,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7585,7 +7585,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7604,7 +7604,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7623,7 +7623,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7638,7 +7638,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7653,7 +7653,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7668,7 +7668,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7683,7 +7683,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7698,7 +7698,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7713,7 +7713,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7728,7 +7728,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7743,7 +7743,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7758,7 +7758,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7773,7 +7773,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7788,7 +7788,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7803,7 +7803,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7818,7 +7818,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7833,7 +7833,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7852,7 +7852,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7871,7 +7871,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -7886,7 +7886,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7901,7 +7901,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7916,7 +7916,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7931,7 +7931,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7946,7 +7946,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7961,7 +7961,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7976,7 +7976,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -7991,7 +7991,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8006,7 +8006,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8021,7 +8021,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8036,7 +8036,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8051,7 +8051,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8066,7 +8066,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8081,7 +8081,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8100,7 +8100,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -8119,7 +8119,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -8134,7 +8134,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8149,7 +8149,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8164,7 +8164,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8179,7 +8179,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8194,7 +8194,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8209,7 +8209,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8224,7 +8224,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8239,7 +8239,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8254,7 +8254,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8269,7 +8269,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8284,7 +8284,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8299,7 +8299,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8314,7 +8314,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8329,7 +8329,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "BACKGROUND"
     }
   ],
@@ -8348,7 +8348,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -8367,7 +8367,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "AIR"
     }
   ],
@@ -8382,7 +8382,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -8397,7 +8397,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8412,7 +8412,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8427,7 +8427,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8442,7 +8442,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8457,7 +8457,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8472,7 +8472,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8487,7 +8487,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8502,7 +8502,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8517,7 +8517,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8532,7 +8532,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8547,7 +8547,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8562,7 +8562,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8577,7 +8577,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8592,7 +8592,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8607,7 +8607,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8622,7 +8622,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8637,7 +8637,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8652,7 +8652,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8667,7 +8667,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8682,7 +8682,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8697,7 +8697,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8712,7 +8712,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8727,7 +8727,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8742,7 +8742,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8757,7 +8757,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8772,7 +8772,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8787,7 +8787,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8802,7 +8802,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8817,7 +8817,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8832,7 +8832,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8847,7 +8847,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8862,7 +8862,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8877,7 +8877,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8892,7 +8892,7 @@
       "y": 0
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -8907,7 +8907,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -8922,7 +8922,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8937,7 +8937,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8952,7 +8952,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8967,7 +8967,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8982,7 +8982,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -8997,7 +8997,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9012,7 +9012,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9027,7 +9027,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9042,7 +9042,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9057,7 +9057,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9072,7 +9072,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9087,7 +9087,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9102,7 +9102,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9117,7 +9117,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9132,7 +9132,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9147,7 +9147,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9162,7 +9162,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9177,7 +9177,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9192,7 +9192,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9207,7 +9207,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9222,7 +9222,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9237,7 +9237,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9252,7 +9252,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9267,7 +9267,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9282,7 +9282,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9297,7 +9297,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9312,7 +9312,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9327,7 +9327,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9342,7 +9342,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9357,7 +9357,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9372,7 +9372,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9387,7 +9387,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9402,7 +9402,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WALL"
     }
   ],
@@ -9417,7 +9417,7 @@
       "y": 17
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9432,7 +9432,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9447,7 +9447,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9462,7 +9462,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9477,7 +9477,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9492,7 +9492,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9507,7 +9507,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9522,7 +9522,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9537,7 +9537,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9552,7 +9552,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9567,7 +9567,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9582,7 +9582,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9597,7 +9597,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9612,7 +9612,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9627,7 +9627,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9642,7 +9642,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9657,7 +9657,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9672,7 +9672,7 @@
       "y": 1
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9687,7 +9687,7 @@
       "y": 2
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9702,7 +9702,7 @@
       "y": 3
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9717,7 +9717,7 @@
       "y": 4
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9732,7 +9732,7 @@
       "y": 5
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9747,7 +9747,7 @@
       "y": 6
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9762,7 +9762,7 @@
       "y": 7
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9777,7 +9777,7 @@
       "y": 8
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9792,7 +9792,7 @@
       "y": 9
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9807,7 +9807,7 @@
       "y": 10
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9822,7 +9822,7 @@
       "y": 11
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9837,7 +9837,7 @@
       "y": 12
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9852,7 +9852,7 @@
       "y": 13
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9867,7 +9867,7 @@
       "y": 14
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9882,7 +9882,7 @@
       "y": 15
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ],
@@ -9897,7 +9897,7 @@
       "y": 16
     },
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "WARP"
     }
   ]

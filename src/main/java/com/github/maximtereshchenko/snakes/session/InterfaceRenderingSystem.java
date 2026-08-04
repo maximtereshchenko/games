@@ -27,7 +27,7 @@ final class InterfaceRenderingSystem implements System {
                 .all(
                     InterfaceText.class,
                     InterfacePosition.class,
-                    Colored.class
+                    PaletteColor.class
                 )
         );
         this.viewport = viewport;
@@ -49,7 +49,7 @@ final class InterfaceRenderingSystem implements System {
                 bitmapFont -> draw(
                     bitmapFont,
                     interfaceText.value,
-                    interfaceEntity.component(Colored.class),
+                    interfaceEntity.component(PaletteColor.class),
                     interfaceEntity.component(InterfacePosition.class)
                 )
             );
@@ -60,10 +60,10 @@ final class InterfaceRenderingSystem implements System {
     private void draw(
         BitmapFont bitmapFont,
         String text,
-        Colored colored,
+        PaletteColor paletteColor,
         InterfacePosition interfacePosition
     ) {
-        bitmapFont.setColor(mode.palette().get(colored));
+        bitmapFont.setColor(mode.palette().get(paletteColor));
         bitmapFont.draw(
             spriteBatch,
             text,

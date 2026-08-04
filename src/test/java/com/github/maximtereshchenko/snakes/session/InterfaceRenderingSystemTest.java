@@ -50,12 +50,12 @@ final class InterfaceRenderingSystemTest {
     @Test
     void givenInterfaceEntity_thenRendered() {
         when(viewport.getCamera()).thenReturn(camera);
-        when(mode.palette()).thenReturn(Map.of(Colored.INTERFACE, Color.BLACK));
+        when(mode.palette()).thenReturn(Map.of(PaletteColor.INTERFACE, Color.BLACK));
         world.addComponents(
             world.createEntity(),
             new InterfaceText(2, "score"),
             new InterfacePosition(10, 20),
-            Colored.INTERFACE
+            PaletteColor.INTERFACE
         );
         world.update(0);
         verify(viewport).apply();

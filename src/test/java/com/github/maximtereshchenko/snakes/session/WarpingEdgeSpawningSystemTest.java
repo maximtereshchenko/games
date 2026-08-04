@@ -27,7 +27,7 @@ final class WarpingEdgeSpawningSystemTest {
                 .all(
                     WarpingEdge.class,
                     WorldPosition.class,
-                    Colored.class
+                    PaletteColor.class
                 )
         );
     private final Iterable<Entity> warpingPolicyEntities =
@@ -144,7 +144,7 @@ final class WarpingEdgeSpawningSystemTest {
         world.update(0);
         assertThat(spawnedWarpingEdgeEntities).hasSize(expectedWarpingEdges.size());
         for (var entity : spawnedWarpingEdgeEntities) {
-            assertThat(entity.component(Colored.class)).isEqualTo(Colored.WARP);
+            assertThat(entity.component(PaletteColor.class)).isEqualTo(PaletteColor.WARP);
             assertThat(expectedWarpingEdges)
                 .containsEntry(
                     entity.component(WorldPosition.class),
@@ -168,7 +168,7 @@ final class WarpingEdgeSpawningSystemTest {
         world.update(0);
         assertThat(spawnedWarpingEdgeEntities).hasSize(expectedWarpingEdges.size());
         for (var entity : spawnedWarpingEdgeEntities) {
-            assertThat(entity.component(Colored.class)).isEqualTo(Colored.WARP);
+            assertThat(entity.component(PaletteColor.class)).isEqualTo(PaletteColor.WARP);
             assertThat(expectedWarpingEdges)
                 .containsEntry(
                     entity.component(WorldPosition.class),

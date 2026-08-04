@@ -8,7 +8,7 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.Colored",
+      "type": "com.github.maximtereshchenko.snakes.session.PaletteColor",
       "value": "HEAD"
     }
   ]

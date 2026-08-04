@@ -31,7 +31,7 @@ final class WallSpawningSystem extends TurnBasedSystem {
                     worldEdit.createEntity(),
                     Wall.INSTANCE,
                     wallWorldPosition,
-                    Colored.WALL
+                    PaletteColor.WALL
                 );
             }
         }
