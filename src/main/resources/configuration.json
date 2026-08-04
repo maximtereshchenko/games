@@ -31,12 +31,12 @@
       "interfaceViewportHeight": 720,
       "entities": "classic.json",
       "palette": {
-        "BACKGROUND": "ded4baff",
-        "HEAD": "33824dff",
-        "SEGMENT": "66ce81ff",
-        "FOOD": "33824dff",
-        "INTERFACE": "454248ff",
-        "WARP": "64b6b0ff"
+        "BACKGROUND": "#ded4ba",
+        "HEAD": "#33824d",
+        "SEGMENT": "#66ce81",
+        "FOOD": "#33824d",
+        "INTERFACE": "#454248",
+        "WARP": "#64b6b0"
       },
       "modeUnlockRequirements": {
         "userProfileThresholds": {
@@ -53,12 +53,12 @@
       "interfaceViewportHeight": 720,
       "entities": "viper.json",
       "palette": {
-        "BACKGROUND": "eeeeddff",
-        "HEAD": "774422ff",
-        "SEGMENT": "ddaa88ff",
-        "FOOD": "774422ff",
-        "INTERFACE": "175ca5ff",
-        "WARP": "aa9a99ff"
+        "BACKGROUND": "#eeeedd",
+        "HEAD": "#774422",
+        "SEGMENT": "#ddaa88",
+        "FOOD": "#774422",
+        "INTERFACE": "#175ca5",
+        "WARP": "#aa9a99"
       },
       "modeUnlockRequirements": {
         "sessionThresholds": {
@@ -75,12 +75,12 @@
       "interfaceViewportHeight": 720,
       "entities": "sidewinder.json",
       "palette": {
-        "BACKGROUND": "ffeeefff",
-        "HEAD": "452210ff",
-        "SEGMENT": "885633ff",
-        "FOOD": "452210ff",
-        "INTERFACE": "000000ff",
-        "WARP": "000000ff"
+        "BACKGROUND": "#ffeeef",
+        "HEAD": "#452210",
+        "SEGMENT": "#885633",
+        "FOOD": "#452210",
+        "INTERFACE": "#000000",
+        "WARP": "#000000"
       },
       "modeUnlockRequirements": {
         "userProfileThresholds": {
@@ -97,14 +97,14 @@
       "interfaceViewportHeight": 720,
       "entities": "sea.json",
       "palette": {
-        "BACKGROUND": "33deffff",
-        "HEAD": "000000ff",
-        "SEGMENT": "ffffffff",
-        "FOOD": "000000ff",
-        "INTERFACE": "222249ff",
-        "WARP": "483b38ff",
-        "AIR": "4a79aaff",
-        "WALL": "241d1bff"
+        "BACKGROUND": "#33deff",
+        "HEAD": "#000000",
+        "SEGMENT": "#ffffff",
+        "FOOD": "#000000",
+        "INTERFACE": "#222249",
+        "WARP": "#483b38",
+        "AIR": "#4a79aa",
+        "WALL": "#241d1b"
       },
       "modeUnlockRequirements": {
         "userProfileThresholds": {
@@ -121,12 +121,12 @@
       "interfaceViewportHeight": 720,
       "entities": "hognose.json",
       "palette": {
-        "BACKGROUND": "43bcddff",
-        "HEAD": "ff8813ff",
-        "SEGMENT": "ffeeddff",
-        "FOOD": "ff8813ff",
-        "INTERFACE": "ffba8dff",
-        "WARP": "116777ff"
+        "BACKGROUND": "#43bcdd",
+        "HEAD": "#ff8813",
+        "SEGMENT": "#ffeedd",
+        "FOOD": "#ff8813",
+        "INTERFACE": "#ffba8d",
+        "WARP": "#116777"
       },
       "modeUnlockRequirements": {}
     },
@@ -139,13 +139,13 @@
       "interfaceViewportHeight": 720,
       "entities": "mamushi.json",
       "palette": {
-        "BACKGROUND": "fdeba9ff",
-        "HEAD": "d6264dff",
-        "SEGMENT": "ff5476ff",
-        "FOOD": "d6264dff",
-        "INTERFACE": "06255dff",
-        "WARP": "f6d76bff",
-        "WALL": "ff9135ff"
+        "BACKGROUND": "#fdeba9",
+        "HEAD": "#d6264d",
+        "SEGMENT": "#ff5476",
+        "FOOD": "#d6264d",
+        "INTERFACE": "#06255d",
+        "WARP": "#f6d76b",
+        "WALL": "#ff9135"
       },
       "modeUnlockRequirements": {}
     },
@@ -158,12 +158,12 @@
       "interfaceViewportHeight": 720,
       "entities": "trouser.json",
       "palette": {
-        "BACKGROUND": "8f6dd7ff",
-        "HEAD": "a601a7ff",
-        "SEGMENT": "d25fd3ff",
-        "FOOD": "8f6dd7ff",
-        "INTERFACE": "29067eff",
-        "WARP": "290672ff"
+        "BACKGROUND": "#8f6dd7",
+        "HEAD": "#a601a7",
+        "SEGMENT": "#d25fd3",
+        "FOOD": "#8f6dd7",
+        "INTERFACE": "#29067e",
+        "WARP": "#290672"
       },
       "modeUnlockRequirements": {}
     },
@@ -176,12 +176,12 @@
       "interfaceViewportHeight": 720,
       "entities": "boa.json",
       "palette": {
-        "BACKGROUND": "96320eff",
-        "HEAD": "52363dff",
-        "SEGMENT": "22383eff",
-        "FOOD": "52363dff",
-        "INTERFACE": "ffffd3ff",
-        "WARP": "bda46cff"
+        "BACKGROUND": "#96320e",
+        "HEAD": "#52363d",
+        "SEGMENT": "#22383e",
+        "FOOD": "#52363d",
+        "INTERFACE": "#ffffd3",
+        "WARP": "#bda46c"
       },
       "modeUnlockRequirements": {}
     },
@@ -194,12 +194,12 @@
       "interfaceViewportHeight": 720,
       "entities": "mamba.json",
       "palette": {
-        "BACKGROUND": "ffff73ff",
-        "HEAD": "8c4079ff",
-        "SEGMENT": "25261eff",
-        "FOOD": "8c4079ff",
-        "INTERFACE": "dd2c50ff",
-        "WARP": "ffff05ff"
+        "BACKGROUND": "#ffff73",
+        "HEAD": "#8c4079",
+        "SEGMENT": "#25261e",
+        "FOOD": "#8c4079",
+        "INTERFACE": "#dd2c50",
+        "WARP": "#ffff05"
       },
       "modeUnlockRequirements": {}
     }
