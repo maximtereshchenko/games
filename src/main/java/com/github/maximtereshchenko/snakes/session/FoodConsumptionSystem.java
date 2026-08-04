@@ -27,8 +27,9 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
             var hitboxRadius = headEntity.component(Hitbox.class).radius();
             var foodConsumed = 0;
             for (var foodEntity : foodEntities) {
+                var growth = foodEntity.component(Food.class).growth;
                 var foodPosition = foodEntity.component(WorldPosition.class);
-                if (touched(headPosition, foodPosition, hitboxRadius)) {
+                if (growth == 1 && touched(headPosition, foodPosition, hitboxRadius)) {
                     worldEdit.deleteEntity(foodEntity.id());
                     foodConsumed++;
                 }

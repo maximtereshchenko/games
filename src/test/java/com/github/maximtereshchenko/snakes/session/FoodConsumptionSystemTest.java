@@ -122,6 +122,25 @@ final class FoodConsumptionSystemTest {
     }
 
     @Test
+    void givenFoodGrowthNotOne_thenNoChanges() {
+        world.addComponents(
+            world.createEntity(),
+            Head.INSTANCE,
+            new WorldPosition(1, 1),
+            new Hitbox(0)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new Food(0.9f),
+            new WorldPosition(1, 1)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(foodEntities).hasSize(1);
+        assertThat(foodConsumedEntities).isEmpty();
+    }
+
+    @Test
     void givenHeadOnManyFood_thenManyFoodConsumed() {
         world.addComponents(
             world.createEntity(),
