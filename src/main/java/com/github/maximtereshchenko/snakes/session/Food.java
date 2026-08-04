@@ -1,6 +1,10 @@
 package com.github.maximtereshchenko.snakes.session;
 
-enum Food {
+final class Food {
 
-    INSTANCE
+    float growth;
+
+    Food(float growth) {
+        this.growth = growth;
+    }
 }

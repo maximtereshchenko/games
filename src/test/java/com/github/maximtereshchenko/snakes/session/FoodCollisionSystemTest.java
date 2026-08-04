@@ -26,7 +26,7 @@ final class FoodCollisionSystemTest {
         var intent = new WorldPosition(1, 1);
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
@@ -47,7 +47,7 @@ final class FoodCollisionSystemTest {
         var intent = new WorldPosition(1, 1);
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
@@ -69,7 +69,7 @@ final class FoodCollisionSystemTest {
         var intent = new WorldPosition(1, 1);
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );

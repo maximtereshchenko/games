@@ -146,7 +146,9 @@ final class WarpingEdgeSpawningSystemTest {
         assertThat(spawnedWarpingEdgeEntities).hasSize(expectedWarpingEdges.size());
         for (var entity : spawnedWarpingEdgeEntities) {
             assertThat(entity.component(PaletteColor.class)).isEqualTo(PaletteColor.WARP);
-            assertThat(entity.component(Opacity.class)).isEqualTo(new Opacity(1));
+            assertThat(entity.component(Opacity.class))
+                .usingRecursiveComparison()
+                .isEqualTo(new Opacity(1));
             assertThat(expectedWarpingEdges)
                 .containsEntry(
                     entity.component(WorldPosition.class),
@@ -171,7 +173,9 @@ final class WarpingEdgeSpawningSystemTest {
         assertThat(spawnedWarpingEdgeEntities).hasSize(expectedWarpingEdges.size());
         for (var entity : spawnedWarpingEdgeEntities) {
             assertThat(entity.component(PaletteColor.class)).isEqualTo(PaletteColor.WARP);
-            assertThat(entity.component(Opacity.class)).isEqualTo(new Opacity(1));
+            assertThat(entity.component(Opacity.class))
+                .usingRecursiveComparison()
+                .isEqualTo(new Opacity(1));
             assertThat(expectedWarpingEdges)
                 .containsEntry(
                     entity.component(WorldPosition.class),

@@ -43,7 +43,7 @@ final class FoodSpawningSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1)
+            new FoodPolicy(1, Direction.RIGHT, 1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -57,7 +57,7 @@ final class FoodSpawningSystemTest {
     void givenInitializing_thenFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1),
+            new FoodPolicy(1, Direction.RIGHT, 1, 1),
             Initializing.INSTANCE
         );
         world.addComponents(
@@ -68,6 +68,7 @@ final class FoodSpawningSystemTest {
         assertThat(spawnedFoodEntities)
             .singleElement()
             .extracting(
+                entity -> entity.component(Food.class),
                 entity -> entity.component(DirectedMovement.class),
                 entity -> entity.component(Direction.class),
                 entity -> entity.component(PaletteColor.class),
@@ -76,6 +77,7 @@ final class FoodSpawningSystemTest {
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
+                    new Food(1),
                     new DirectedMovement(1, 1),
                     Direction.RIGHT,
                     PaletteColor.FOOD,
@@ -88,7 +90,7 @@ final class FoodSpawningSystemTest {
     void givenTurnStartedEvent_thenFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1)
+            new FoodPolicy(1, Direction.RIGHT, 1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -99,6 +101,7 @@ final class FoodSpawningSystemTest {
         assertThat(spawnedFoodEntities)
             .singleElement()
             .extracting(
+                entity -> entity.component(Food.class),
                 entity -> entity.component(DirectedMovement.class),
                 entity -> entity.component(Direction.class),
                 entity -> entity.component(PaletteColor.class),
@@ -107,6 +110,7 @@ final class FoodSpawningSystemTest {
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
+                    new Food(1),
                     new DirectedMovement(1, 1),
                     Direction.RIGHT,
                     PaletteColor.FOOD,
@@ -119,7 +123,7 @@ final class FoodSpawningSystemTest {
     void givenEnoughFood_thenNoFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1)
+            new FoodPolicy(1, Direction.RIGHT, 1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -127,7 +131,7 @@ final class FoodSpawningSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -139,7 +143,7 @@ final class FoodSpawningSystemTest {
     void givenSomeFood_thenRemainingFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 5)
+            new FoodPolicy(1, Direction.RIGHT, 5, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -147,7 +151,7 @@ final class FoodSpawningSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -166,7 +170,7 @@ final class FoodSpawningSystemTest {
     void givenOccupiedPosition_thenFoodSpawnedInFreeSpace() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1)
+            new FoodPolicy(1, Direction.RIGHT, 1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -185,7 +189,7 @@ final class FoodSpawningSystemTest {
     void givenBackground_thenFoodSpawnedOnBackground() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1)
+            new FoodPolicy(1, Direction.RIGHT, 1, 1)
         );
         world.addComponents(
             world.createEntity(),
@@ -208,7 +212,7 @@ final class FoodSpawningSystemTest {
     void givenNotEnoughSpace_thenNoFoodSpawned() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 2)
+            new FoodPolicy(1, Direction.RIGHT, 2, 1)
         );
         world.addComponents(
             world.createEntity(),

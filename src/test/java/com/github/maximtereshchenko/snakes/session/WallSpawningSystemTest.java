@@ -6,6 +6,8 @@ import com.github.maximtereshchenko.ecs.World;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 final class WallSpawningSystemTest {
@@ -71,10 +73,13 @@ final class WallSpawningSystemTest {
                 entity -> entity.component(PaletteColor.class),
                 entity -> entity.component(Opacity.class)
             )
-            .containsExactly(
-                new WorldPosition(5, 5),
-                PaletteColor.WALL,
-                new Opacity(1)
+            .usingRecursiveComparison()
+            .isEqualTo(
+                List.of(
+                    new WorldPosition(5, 5),
+                    PaletteColor.WALL,
+                    new Opacity(1)
+                )
             );
     }
 }

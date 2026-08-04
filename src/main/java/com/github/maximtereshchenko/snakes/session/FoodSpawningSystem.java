@@ -57,17 +57,17 @@ final class FoodSpawningSystem implements System {
                 var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
                 var worldPositions = worldPositions();
                 for (
-                    var i = food();
-                    i < foodPolicy.max() &&
+                    var index = food();
+                    index < foodPolicy.max() &&
                     worldPositions.size() < space(worldDimensions);
-                    i++
+                    index++
                 ) {
                     var worldPosition = new WorldPosition();
                     do {
                         worldPosition.x = random.nextInt(worldDimensions.width());
                         worldPosition.y = random.nextInt(worldDimensions.height());
                     } while (!worldPositions.add(worldPosition));
-                    spawnFood(worldEdit, worldPosition, foodPolicy);
+                    spawnFood(worldEdit, worldPosition, foodPolicy, index);
                 }
             }
         }
@@ -80,13 +80,14 @@ final class FoodSpawningSystem implements System {
     private void spawnFood(
         WorldEdit worldEdit,
         WorldPosition worldPosition,
-        FoodPolicy foodPolicy
+        FoodPolicy foodPolicy,
+        int index
     ) {
         var worldPositionIntent = new WorldPosition();
         worldPositionIntent.copy(worldPosition);
         worldEdit.addComponents(
             worldEdit.createEntity(),
-            Food.INSTANCE,
+            new Food(1.0f - index * foodPolicy.growthStep()),
             new DirectedMovement(
                 foodPolicy.periodTurns(),
                 foodPolicy.periodTurns()

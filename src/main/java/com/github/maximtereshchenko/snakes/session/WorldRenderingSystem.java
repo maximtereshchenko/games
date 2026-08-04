@@ -1,6 +1,8 @@
 package com.github.maximtereshchenko.snakes.session;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -43,6 +45,8 @@ final class WorldRenderingSystem implements System {
 
     @Override
     public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         ScreenUtils.clear(Color.BLACK);
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
@@ -50,14 +54,14 @@ final class WorldRenderingSystem implements System {
         for (var entity : backgroundEntities) {
             draw(
                 entity.component(PaletteColor.class),
-                entity.component(Opacity.class).value(),
+                entity.component(Opacity.class).value,
                 entity.component(WorldPosition.class)
             );
         }
         for (var entity : foregroundEntities) {
             draw(
                 entity.component(PaletteColor.class),
-                entity.component(Opacity.class).value(),
+                entity.component(Opacity.class).value,
                 entity.component(WorldPosition.class)
             );
         }

@@ -1,3 +1,10 @@
 package com.github.maximtereshchenko.snakes.session;
 
-record Opacity(float value) {}
+final class Opacity {
+
+    float value;
+
+    Opacity(float value) {
+        this.value = value;
+    }
+}

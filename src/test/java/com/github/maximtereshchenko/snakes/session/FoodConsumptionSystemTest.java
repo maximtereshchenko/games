@@ -37,7 +37,7 @@ final class FoodConsumptionSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0)
         );
         world.update(0);
@@ -55,7 +55,7 @@ final class FoodConsumptionSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 0)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -90,7 +90,7 @@ final class FoodConsumptionSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(x, y)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -112,7 +112,7 @@ final class FoodConsumptionSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(1, 1)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -131,12 +131,12 @@ final class FoodConsumptionSystemTest {
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(0, 1)
         );
         world.addComponents(
             world.createEntity(),
-            Food.INSTANCE,
+            new Food(1),
             new WorldPosition(1, 0)
         );
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
