@@ -19,7 +19,8 @@ final class WallSpawningSystemTest {
                 .all(
                     Wall.class,
                     WorldPosition.class,
-                    PaletteColor.class
+                    PaletteColor.class,
+                    Opacity.class
                 )
         );
     private final WallSpawningSystem wallSpawningSystem = new WallSpawningSystem(world);
@@ -67,11 +68,13 @@ final class WallSpawningSystemTest {
             .singleElement()
             .extracting(
                 entity -> entity.component(WorldPosition.class),
-                entity -> entity.component(PaletteColor.class)
+                entity -> entity.component(PaletteColor.class),
+                entity -> entity.component(Opacity.class)
             )
             .containsExactly(
                 new WorldPosition(5, 5),
-                PaletteColor.WALL
+                PaletteColor.WALL,
+                new Opacity(1)
             );
     }
 }

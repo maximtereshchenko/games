@@ -25,7 +25,8 @@ final class FoodSpawningSystemTest {
                     WorldPosition.class,
                     WorldPositionIntent.class,
                     Direction.class,
-                    PaletteColor.class
+                    PaletteColor.class,
+                    Opacity.class
                 )
         );
     private final Iterable<Entity> foodWithPositionEntities =
@@ -69,14 +70,16 @@ final class FoodSpawningSystemTest {
             .extracting(
                 entity -> entity.component(DirectedMovement.class),
                 entity -> entity.component(Direction.class),
-                entity -> entity.component(PaletteColor.class)
+                entity -> entity.component(PaletteColor.class),
+                entity -> entity.component(Opacity.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
                     new DirectedMovement(1, 1),
                     Direction.RIGHT,
-                    PaletteColor.FOOD
+                    PaletteColor.FOOD,
+                    new Opacity(1)
                 )
             );
     }
@@ -98,14 +101,16 @@ final class FoodSpawningSystemTest {
             .extracting(
                 entity -> entity.component(DirectedMovement.class),
                 entity -> entity.component(Direction.class),
-                entity -> entity.component(PaletteColor.class)
+                entity -> entity.component(PaletteColor.class),
+                entity -> entity.component(Opacity.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
                     new DirectedMovement(1, 1),
                     Direction.RIGHT,
-                    PaletteColor.FOOD
+                    PaletteColor.FOOD,
+                    new Opacity(1)
                 )
             );
     }

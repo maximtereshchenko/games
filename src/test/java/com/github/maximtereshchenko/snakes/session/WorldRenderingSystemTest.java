@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 final class WorldRenderingSystemTest {
@@ -21,6 +22,8 @@ final class WorldRenderingSystemTest {
     private final ShapeRenderer shapeRenderer = mock();
     private final World world = new World();
     private final Mode mode = mock();
+    private final Color backgroundColor = new Color();
+    private final Color headColor = new Color();
     private final WorldRenderingSystem worldRenderingSystem = new WorldRenderingSystem(
         world,
         viewport,
@@ -44,16 +47,19 @@ final class WorldRenderingSystemTest {
                     PaletteColor.HEAD, Color.BLACK
                 )
             );
+        when(shapeRenderer.getColor()).thenReturn(backgroundColor, headColor);
         world.addComponents(
             world.createEntity(),
             new WorldPosition(0, 0),
-            PaletteColor.HEAD
+            PaletteColor.HEAD,
+            new Opacity(1)
         );
         world.addComponents(
             world.createEntity(),
             new WorldPosition(1, 1),
             PaletteColor.BACKGROUND,
-            Background.INSTANCE
+            Background.INSTANCE,
+            new Opacity(0.5f)
         );
         world.update(0);
         verify(Gdx.gl).glClearColor(
@@ -68,10 +74,10 @@ final class WorldRenderingSystemTest {
         var order = inOrder(shapeRenderer);
         order.verify(shapeRenderer).setProjectionMatrix(camera.combined);
         order.verify(shapeRenderer).begin(ShapeRenderer.ShapeType.Filled);
-        order.verify(shapeRenderer).setColor(Color.WHITE);
         order.verify(shapeRenderer).rect(1, 1, 1, 1);
-        order.verify(shapeRenderer).setColor(Color.BLACK);
         order.verify(shapeRenderer).rect(0, 0, 1, 1);
         order.verify(shapeRenderer).end();
+        assertThat(backgroundColor).isEqualTo(new Color(1, 1, 1, 0.5f));
+        assertThat(headColor).isEqualTo(Color.BLACK);
     }
 }

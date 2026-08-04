@@ -16,7 +16,15 @@ final class SegmentSpawningSystemTest {
     private final Iterable<Entity> segmentEntities =
         world.entities(new Query().all(Segment.class));
     private final Iterable<Entity> spawnedSegmentEntities =
-        world.entities(new Query().all(Segment.class, WorldPosition.class, PaletteColor.class));
+        world.entities(
+            new Query()
+                .all(
+                    Segment.class,
+                    WorldPosition.class,
+                    PaletteColor.class,
+                    Opacity.class
+                )
+        );
     private final SegmentSpawningSystem segmentSpawningSystem =
         new SegmentSpawningSystem(world);
 
@@ -56,14 +64,16 @@ final class SegmentSpawningSystemTest {
             .extracting(
                 entity -> entity.component(Segment.class),
                 entity -> entity.component(WorldPosition.class),
-                entity -> entity.component(PaletteColor.class)
+                entity -> entity.component(PaletteColor.class),
+                entity -> entity.component(Opacity.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
                     new Segment(4),
                     new WorldPosition(0, 0),
-                    PaletteColor.SEGMENT
+                    PaletteColor.SEGMENT,
+                    new Opacity(1)
                 )
             );
     }

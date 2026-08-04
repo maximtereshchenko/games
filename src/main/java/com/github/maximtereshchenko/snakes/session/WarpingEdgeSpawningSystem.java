@@ -5,6 +5,7 @@ import com.github.maximtereshchenko.ecs.System;
 
 import java.util.function.Predicate;
 
+//TODO refactoring
 final class WarpingEdgeSpawningSystem implements System {
 
     private final Iterable<Entity> foodConsumedEntities;
@@ -74,7 +75,8 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.TOP,
                     new WorldPosition(i, worldDimensions.height() - warpingLayers - 1),
-                    PaletteColor.WARP
+                    PaletteColor.WARP,
+                    new Opacity(1)
                 );
             }
             for (var i = warpingLayers; i < worldDimensions.width() - warpingLayers; i++) {
@@ -82,7 +84,8 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.BOTTOM,
                     new WorldPosition(i, warpingLayers),
-                    PaletteColor.WARP
+                    PaletteColor.WARP,
+                    new Opacity(1)
                 );
             }
             for (var i = warpingLayers + 1; i < worldDimensions.height() - warpingLayers - 1; i++) {
@@ -90,7 +93,8 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.LEFT,
                     new WorldPosition(warpingLayers, i),
-                    PaletteColor.WARP
+                    PaletteColor.WARP,
+                    new Opacity(1)
                 );
             }
             for (var i = warpingLayers + 1; i < worldDimensions.height() - warpingLayers - 1; i++) {
@@ -98,7 +102,8 @@ final class WarpingEdgeSpawningSystem implements System {
                     worldEdit.createEntity(),
                     WarpingEdge.RIGHT,
                     new WorldPosition(worldDimensions.width() - warpingLayers - 1, i),
-                    PaletteColor.WARP
+                    PaletteColor.WARP,
+                    new Opacity(1)
                 );
             }
         }

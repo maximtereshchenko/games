@@ -23,10 +23,18 @@ final class WorldRenderingSystem implements System {
         Mode mode
     ) {
         this.backgroundEntities = world.entities(
-            new Query().all(PaletteColor.class, WorldPosition.class, Background.class)
+            new Query()
+                .all(
+                    PaletteColor.class,
+                    Opacity.class,
+                    WorldPosition.class,
+                    Background.class
+                )
         );
         this.foregroundEntities = world.entities(
-            new Query().all(PaletteColor.class, WorldPosition.class).none(Background.class)
+            new Query()
+                .all(PaletteColor.class, Opacity.class, WorldPosition.class)
+                .none(Background.class)
         );
         this.viewport = viewport;
         this.shapeRenderer = shapeRenderer;
@@ -40,16 +48,26 @@ final class WorldRenderingSystem implements System {
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         for (var entity : backgroundEntities) {
-            draw(entity.component(PaletteColor.class), entity.component(WorldPosition.class));
+            draw(
+                entity.component(PaletteColor.class),
+                entity.component(Opacity.class).value(),
+                entity.component(WorldPosition.class)
+            );
         }
         for (var entity : foregroundEntities) {
-            draw(entity.component(PaletteColor.class), entity.component(WorldPosition.class));
+            draw(
+                entity.component(PaletteColor.class),
+                entity.component(Opacity.class).value(),
+                entity.component(WorldPosition.class)
+            );
         }
         shapeRenderer.end();
     }
 
-    private void draw(PaletteColor paletteColor, WorldPosition position) {
-        shapeRenderer.setColor(mode.palette().get(paletteColor));
+    private void draw(PaletteColor paletteColor, float alpha, WorldPosition position) {
+        var color = shapeRenderer.getColor();
+        color.set(mode.palette().get(paletteColor));
+        color.a = alpha;
         shapeRenderer.rect(position.x, position.y, 1, 1);
     }
 }
