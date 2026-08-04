@@ -29,7 +29,7 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
             for (var foodEntity : foodEntities) {
                 var growth = foodEntity.component(Food.class).growth;
                 var foodPosition = foodEntity.component(WorldPosition.class);
-                if (growth == 1 && touched(headPosition, foodPosition, hitboxRadius)) {
+                if (isOne(growth) && touched(headPosition, foodPosition, hitboxRadius)) {
                     worldEdit.deleteEntity(foodEntity.id());
                     foodConsumed++;
                 }
@@ -38,6 +38,10 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
                 worldEdit.addComponents(headEntity.id(), new FoodConsumed(foodConsumed));
             }
         }
+    }
+
+    private boolean isOne(float growth) {
+        return 1f - growth < 0.001f;
     }
 
     private boolean touched(

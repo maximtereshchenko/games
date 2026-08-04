@@ -141,6 +141,28 @@ final class FoodConsumptionSystemTest {
     }
 
     @Test
+    void givenFoodGrowthAlmostOne_thenFoodConsumed() {
+        world.addComponents(
+            world.createEntity(),
+            Head.INSTANCE,
+            new WorldPosition(0, 0),
+            new Hitbox(0)
+        );
+        world.addComponents(
+            world.createEntity(),
+            new Food(0.9999f),
+            new WorldPosition(0, 0)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(foodEntities).isEmpty();
+        assertThat(headFoodConsumedEntities)
+            .singleElement()
+            .extracting(entity -> entity.component(FoodConsumed.class))
+            .isEqualTo(new FoodConsumed(1));
+    }
+
+    @Test
     void givenHeadOnManyFood_thenManyFoodConsumed() {
         world.addComponents(
             world.createEntity(),

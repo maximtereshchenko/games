@@ -202,6 +202,24 @@
         "WARP": "#ffff05"
       },
       "modeUnlockRequirements": {}
+    },
+    {
+      "name": "burmese",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "burmese.json",
+      "palette": {
+        "BACKGROUND": "#fc0007",
+        "HEAD": "#ffa700",
+        "SEGMENT": "#ff6f00",
+        "FOOD": "#ffa700",
+        "INTERFACE": "#ffce90",
+        "WARP": "#a30108"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
