@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.snakes.session;
 
-record FoodPolicy(
+record ConstantAmountFoodPolicy(
     int periodTurns,
     Direction direction,
     int max,

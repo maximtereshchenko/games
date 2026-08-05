@@ -27,7 +27,7 @@ final class FoodGrowthIncrementSystemTest {
     void givenNoTurnStartedEvent_thenNoChanges() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1, 0.3f)
+            new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 0.3f)
         );
         world.addComponents(world.createEntity(), new Food(0.5f));
         world.addComponents(world.createEntity(), new FoodConsumed(1));
@@ -42,7 +42,7 @@ final class FoodGrowthIncrementSystemTest {
     void givenNoFoodConsumed_thenNoChanges() {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1, 0.3f)
+            new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 0.3f)
         );
         world.addComponents(world.createEntity(), new Food(0.5f));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -68,7 +68,7 @@ final class FoodGrowthIncrementSystemTest {
     ) {
         world.addComponents(
             world.createEntity(),
-            new FoodPolicy(1, Direction.RIGHT, 1, growthStep)
+            new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, growthStep)
         );
         world.addComponents(world.createEntity(), new Food(initialGrowth));
         world.addComponents(world.createEntity(), new FoodConsumed(1));

@@ -8,7 +8,7 @@ import com.github.maximtereshchenko.ecs.WorldEdit;
 final class FoodGrowthIncrementSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> foodConsumedEntities;
-    private final Iterable<Entity> foodPolicyEntities;
+    private final Iterable<Entity> constantAmountFoodPolicyEntities;
     private final Iterable<Entity> foodEntities;
 
     FoodGrowthIncrementSystem(World world) {
@@ -16,8 +16,8 @@ final class FoodGrowthIncrementSystem extends TurnBasedSystem {
         this.foodConsumedEntities = world.entities(
             new Query().all(FoodConsumed.class)
         );
-        this.foodPolicyEntities = world.entities(
-            new Query().all(FoodPolicy.class)
+        this.constantAmountFoodPolicyEntities = world.entities(
+            new Query().all(ConstantAmountFoodPolicy.class)
         );
         this.foodEntities = world.entities(
             new Query().all(Food.class)
@@ -27,12 +27,14 @@ final class FoodGrowthIncrementSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
         for (var _ : foodConsumedEntities) {
-            for (var foodPolicyEntity : foodPolicyEntities) {
-                var foodPolicy = foodPolicyEntity.component(FoodPolicy.class);
+            for (var constantAmountFoodPolicyEntity : constantAmountFoodPolicyEntities) {
+                var constantAmountFoodPolicy = constantAmountFoodPolicyEntity.component(
+                    ConstantAmountFoodPolicy.class
+                );
                 for (var foodEntity : foodEntities) {
                     var food = foodEntity.component(Food.class);
                     food.growth = Math.min(
-                        food.growth + foodPolicy.growthStep(),
+                        food.growth + constantAmountFoodPolicy.growthStep(),
                         1.0f
                     );
                 }

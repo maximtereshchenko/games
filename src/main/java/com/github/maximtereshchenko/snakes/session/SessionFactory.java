@@ -66,7 +66,7 @@ public final class SessionFactory {
             new FoodGrowthIncrementSystem(world),
             new FoodWarpingSystem(world),
             new FoodRemovalSystem(world),
-            new FoodSpawningSystem(world, ThreadLocalRandom.current()),
+            new ConstantAmountFoodSpawningSystem(world, ThreadLocalRandom.current()),
             new SegmentRemainingTurnsIncrementSystem(world),
             new AirSupplyDecrementSystem(world),
             new AirSupplyResetSystem(world),

@@ -7,25 +7,25 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-final class FoodSpawningSystem implements System {
+final class ConstantAmountFoodSpawningSystem implements System {
 
     private final Iterable<Entity> turnStartedEntities;
     private final Iterable<Entity> initializingEntities;
-    private final Iterable<Entity> foodPolicyEntities;
+    private final Iterable<Entity> constantAmountFoodPolicyEntities;
     private final Iterable<Entity> nonBackgroundEntities;
     private final Iterable<Entity> foodEntities;
     private final Iterable<Entity> worldDimensionsEntities;
     private final Random random;
 
-    FoodSpawningSystem(World world, Random random) {
+    ConstantAmountFoodSpawningSystem(World world, Random random) {
         this.turnStartedEntities = world.entities(
             new Query().all(TurnStarted.class)
         );
         this.initializingEntities = world.entities(
-            new Query().all(FoodPolicy.class, Initializing.class)
+            new Query().all(ConstantAmountFoodPolicy.class, Initializing.class)
         );
-        this.foodPolicyEntities = world.entities(
-            new Query().all(FoodPolicy.class)
+        this.constantAmountFoodPolicyEntities = world.entities(
+            new Query().all(ConstantAmountFoodPolicy.class)
         );
         this.nonBackgroundEntities = world.entities(
             new Query()
@@ -47,18 +47,18 @@ final class FoodSpawningSystem implements System {
         if (!turnStartedEntities.iterator().hasNext()) {
             return;
         }
-        spawnFood(worldEdit, foodPolicyEntities);
+        spawnFood(worldEdit, constantAmountFoodPolicyEntities);
     }
 
     private void spawnFood(WorldEdit worldEdit, Iterable<Entity> entities) {
-        for (var foodPolicyEntity : entities) {
-            var foodPolicy = foodPolicyEntity.component(FoodPolicy.class);
+        for (var entity : entities) {
+            var constantAmountFoodPolicy = entity.component(ConstantAmountFoodPolicy.class);
             for (var worldDimensionsEntity : worldDimensionsEntities) {
                 var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
                 var worldPositions = worldPositions();
                 for (
                     var index = food();
-                    index < foodPolicy.max() &&
+                    index < constantAmountFoodPolicy.max() &&
                     worldPositions.size() < space(worldDimensions);
                     index++
                 ) {
@@ -67,7 +67,7 @@ final class FoodSpawningSystem implements System {
                         worldPosition.x = random.nextInt(worldDimensions.width());
                         worldPosition.y = random.nextInt(worldDimensions.height());
                     } while (!worldPositions.add(worldPosition));
-                    spawnFood(worldEdit, worldPosition, foodPolicy, index);
+                    spawnFood(worldEdit, worldPosition, constantAmountFoodPolicy, index);
                 }
             }
         }
@@ -80,21 +80,21 @@ final class FoodSpawningSystem implements System {
     private void spawnFood(
         WorldEdit worldEdit,
         WorldPosition worldPosition,
-        FoodPolicy foodPolicy,
+        ConstantAmountFoodPolicy constantAmountFoodPolicy,
         int index
     ) {
         var worldPositionIntent = new WorldPosition();
         worldPositionIntent.copy(worldPosition);
         worldEdit.addComponents(
             worldEdit.createEntity(),
-            new Food(1.0f - index * foodPolicy.growthStep()),
+            new Food(1.0f - index * constantAmountFoodPolicy.growthStep()),
             new DirectedMovement(
-                foodPolicy.periodTurns(),
-                foodPolicy.periodTurns()
+                constantAmountFoodPolicy.periodTurns(),
+                constantAmountFoodPolicy.periodTurns()
             ),
             worldPosition,
             new WorldPositionIntent(worldPositionIntent),
-            foodPolicy.direction(),
+            constantAmountFoodPolicy.direction(),
             PaletteColor.FOOD,
             new Opacity(1)
         );

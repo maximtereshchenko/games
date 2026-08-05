@@ -58,7 +58,7 @@
   ],
   [
     {
-      "type": "com.github.maximtereshchenko.snakes.session.FoodPolicy",
+      "type": "com.github.maximtereshchenko.snakes.session.ConstantAmountFoodPolicy",
       "periodTurns": 2147483647,
       "direction": "DOWN",
       "max": 2,
