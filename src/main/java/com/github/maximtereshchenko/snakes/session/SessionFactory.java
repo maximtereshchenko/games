@@ -44,6 +44,7 @@ public final class SessionFactory {
             world.addComponents(world.createEntity(), components);
         }
         var scaledFont = new ScaledFont(assetManager.get(assets.bitmapFont()));
+        var random = ThreadLocalRandom.current();
         world.addSystems(
             new InputSystem(world),
             new TurnStartSystem(world),
@@ -66,7 +67,8 @@ public final class SessionFactory {
             new FoodGrowthIncrementSystem(world),
             new FoodWarpingSystem(world),
             new FoodRemovalSystem(world),
-            new ConstantAmountFoodSpawningSystem(world, ThreadLocalRandom.current()),
+            new ConstantAmountFoodSpawningSystem(world, random),
+            new WallClusterFoodSpawningSystem(world, random),
             new SegmentRemainingTurnsIncrementSystem(world),
             new AirSupplyDecrementSystem(world),
             new AirSupplyResetSystem(world),
