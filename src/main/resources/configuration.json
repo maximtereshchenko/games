@@ -238,6 +238,25 @@
         "WARP": "#04a779"
       },
       "modeUnlockRequirements": {}
+    },
+    {
+      "name": "asp",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "asp.json",
+      "palette": {
+        "BACKGROUND": "#5fc0ce",
+        "HEAD": "#ff7a02",
+        "SEGMENT": "#ff1400",
+        "FOOD": "#ff7a02",
+        "INTERFACE": "#a50d03",
+        "WARP": "#03899c",
+        "WALL": "#ffaf44"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
