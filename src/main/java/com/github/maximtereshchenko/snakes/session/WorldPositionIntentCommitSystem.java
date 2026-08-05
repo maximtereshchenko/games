@@ -5,22 +5,22 @@ import com.github.maximtereshchenko.ecs.Query;
 import com.github.maximtereshchenko.ecs.World;
 import com.github.maximtereshchenko.ecs.WorldEdit;
 
-final class PositionIntentCommitSystem extends TurnBasedSystem {
+final class WorldPositionIntentCommitSystem extends TurnBasedSystem {
 
-    private final Iterable<Entity> positionIntentEntities;
+    private final Iterable<Entity> worldPositionIntentEntities;
 
-    PositionIntentCommitSystem(World world) {
+    WorldPositionIntentCommitSystem(World world) {
         super(world);
-        this.positionIntentEntities = world.entities(
+        this.worldPositionIntentEntities = world.entities(
             new Query().all(WorldPosition.class, WorldPositionIntent.class)
         );
     }
 
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
-        for (var entity : positionIntentEntities) {
+        for (var entity : worldPositionIntentEntities) {
             entity.component(WorldPosition.class)
-                .copy(entity.component(WorldPositionIntent.class).value);
+                .copy(entity.component(WorldPositionIntent.class).value());
         }
     }
 }

@@ -38,8 +38,8 @@ final class FoodCollisionSystemTest {
         world.update(0);
         assertThat(foodWorldPositionIntentEntities)
             .singleElement()
-            .extracting(entity -> entity.component(WorldPositionIntent.class).value)
-            .isEqualTo(new WorldPosition(1, 1));
+            .extracting(entity -> entity.component(WorldPositionIntent.class))
+            .isEqualTo(new WorldPositionIntent(new WorldPosition(1, 1)));
     }
 
     @Test
@@ -60,8 +60,8 @@ final class FoodCollisionSystemTest {
         world.update(0);
         assertThat(foodWorldPositionIntentEntities)
             .singleElement()
-            .extracting(entity -> entity.component(WorldPositionIntent.class).value)
-            .isEqualTo(new WorldPosition(0, 0));
+            .extracting(entity -> entity.component(WorldPositionIntent.class))
+            .isEqualTo(new WorldPositionIntent(new WorldPosition(0, 0)));
     }
 
     @Test
@@ -82,7 +82,7 @@ final class FoodCollisionSystemTest {
         world.update(0);
         assertThat(foodWorldPositionIntentEntities)
             .singleElement()
-            .extracting(entity -> entity.component(WorldPositionIntent.class).value)
-            .isEqualTo(new WorldPosition(1, 1));
+            .extracting(entity -> entity.component(WorldPositionIntent.class))
+            .isEqualTo(new WorldPositionIntent(new WorldPosition(1, 1)));
     }
 }

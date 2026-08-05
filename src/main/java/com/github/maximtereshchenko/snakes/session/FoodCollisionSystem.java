@@ -26,8 +26,8 @@ final class FoodCollisionSystem extends TurnBasedSystem {
             var foodWorldPositionIntent = foodEntity.component(WorldPositionIntent.class);
             for (var wallEntity : wallEntities) {
                 var wallWorldPosition = wallEntity.component(WorldPosition.class);
-                if (foodWorldPositionIntent.value.equals(wallWorldPosition)) {
-                    foodWorldPositionIntent.value.copy(foodEntity.component(WorldPosition.class));
+                if (foodWorldPositionIntent.value().equals(wallWorldPosition)) {
+                    foodWorldPositionIntent.value().copy(foodEntity.component(WorldPosition.class));
                 }
             }
         }

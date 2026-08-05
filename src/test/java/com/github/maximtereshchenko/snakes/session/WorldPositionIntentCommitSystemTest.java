@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class PositionIntentCommitSystemTest {
+final class WorldPositionIntentCommitSystemTest {
 
     private final World world = new World();
     private final Iterable<Entity> worldPositionEntities =
         world.entities(new Query().all(WorldPosition.class));
-    private final PositionIntentCommitSystem positionIntentCommitSystem =
-        new PositionIntentCommitSystem(world);
+    private final WorldPositionIntentCommitSystem worldPositionIntentCommitSystem =
+        new WorldPositionIntentCommitSystem(world);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(positionIntentCommitSystem);
+        world.addSystems(worldPositionIntentCommitSystem);
     }
 
     @Test

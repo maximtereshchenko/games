@@ -35,12 +35,10 @@ final class SegmentSpawningSystemTest {
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        var intent = new WorldPosition(1, 1);
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new WorldPosition(0, 0),
-            new WorldPositionIntent(intent)
+            new WorldPosition(0, 0)
         );
         world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
         world.update(0);
@@ -48,13 +46,23 @@ final class SegmentSpawningSystemTest {
     }
 
     @Test
-    void givenHeadMoved_thenSegmentSpawned() {
-        var intent = new WorldPosition(1, 1);
+    void givenNoSegmentPolicy_thenNoSegmentSpawned() {
         world.addComponents(
             world.createEntity(),
             Head.INSTANCE,
-            new WorldPosition(0, 0),
-            new WorldPositionIntent(intent)
+            new WorldPosition(0, 0)
+        );
+        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
+        world.update(0);
+        assertThat(segmentEntities).isEmpty();
+    }
+
+    @Test
+    void givenTurnStartedEvent_thenSegmentSpawned() {
+        world.addComponents(
+            world.createEntity(),
+            Head.INSTANCE,
+            new WorldPosition(0, 0)
         );
         world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
         world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
@@ -76,20 +84,5 @@ final class SegmentSpawningSystemTest {
                     new Opacity(1)
                 )
             );
-    }
-
-    @Test
-    void givenHeadNotMoved_thenNoSegmentSpawned() {
-        var intent = new WorldPosition(0, 0);
-        world.addComponents(
-            world.createEntity(),
-            Head.INSTANCE,
-            new WorldPosition(0, 0),
-            new WorldPositionIntent(intent)
-        );
-        world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
-        assertThat(segmentEntities).isEmpty();
     }
 }

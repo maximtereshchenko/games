@@ -45,13 +45,13 @@ final class SidewaysMovementSystemTest {
         assertThat(movingEntities)
             .singleElement()
             .extracting(
-                entity -> entity.component(WorldPositionIntent.class).value,
+                entity -> entity.component(WorldPositionIntent.class),
                 entity -> entity.component(SidewaysMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new WorldPosition(1, 1),
+                    new WorldPositionIntent(new WorldPosition(1, 1)),
                     new SidewaysMovement(1, 4, 1, 0)
                 )
             );
@@ -71,13 +71,13 @@ final class SidewaysMovementSystemTest {
         assertThat(movingEntities)
             .singleElement()
             .extracting(
-                entity -> entity.component(WorldPositionIntent.class).value,
+                entity -> entity.component(WorldPositionIntent.class),
                 entity -> entity.component(SidewaysMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new WorldPosition(1, 1),
+                    new WorldPositionIntent(new WorldPosition(1, 1)),
                     new SidewaysMovement(2, 4, 1, 0)
                 )
             );
@@ -114,13 +114,13 @@ final class SidewaysMovementSystemTest {
         assertThat(movingEntities)
             .singleElement()
             .extracting(
-                entity -> entity.component(WorldPositionIntent.class).value,
+                entity -> entity.component(WorldPositionIntent.class),
                 entity -> entity.component(SidewaysMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new WorldPosition(expectedX, expectedY),
+                    new WorldPositionIntent(new WorldPosition(expectedX, expectedY)),
                     new SidewaysMovement(1, cycle, 1, expectedSidewaysIndex)
                 )
             );

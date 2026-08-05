@@ -29,7 +29,7 @@ final class SidewaysMovementSystem extends TurnBasedSystem {
             if (sidewaysMovement.remainingTurns == 0) {
                 sidewaysMovement.remainingTurns = sidewaysMovement.periodTurns;
                 entity.component(WorldPositionIntent.class)
-                    .value
+                    .value()
                     .move(
                         entity.component(Direction.class)
                             .relative(relativeDirection(sidewaysMovement))

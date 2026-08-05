@@ -45,13 +45,13 @@ final class DirectedMovementSystemTest {
         assertThat(movingEntities)
             .singleElement()
             .extracting(
-                entity -> entity.component(WorldPositionIntent.class).value,
+                entity -> entity.component(WorldPositionIntent.class),
                 entity -> entity.component(DirectedMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new WorldPosition(0, 0),
+                    new WorldPositionIntent(new WorldPosition(0, 0)),
                     new DirectedMovement(2, 1)
                 )
             );
@@ -71,13 +71,13 @@ final class DirectedMovementSystemTest {
         assertThat(movingEntities)
             .singleElement()
             .extracting(
-                entity -> entity.component(WorldPositionIntent.class).value,
+                entity -> entity.component(WorldPositionIntent.class),
                 entity -> entity.component(DirectedMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new WorldPosition(0, 0),
+                    new WorldPositionIntent(new WorldPosition(0, 0)),
                     new DirectedMovement(2, 1)
                 )
             );
@@ -111,13 +111,13 @@ final class DirectedMovementSystemTest {
         assertThat(movingEntities)
             .singleElement()
             .extracting(
-                entity -> entity.component(WorldPositionIntent.class).value,
+                entity -> entity.component(WorldPositionIntent.class),
                 entity -> entity.component(DirectedMovement.class)
             )
             .usingRecursiveComparison()
             .isEqualTo(
                 List.of(
-                    new WorldPosition(expectedX, expectedY),
+                    new WorldPositionIntent(new WorldPosition(expectedX, expectedY)),
                     new DirectedMovement(2, 2)
                 )
             );

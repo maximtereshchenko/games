@@ -31,7 +31,7 @@ final class WarpingSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
         for (var warpingDestinationEntity : warpingDestinationEntities) {
-            var worldPosition = warpingDestinationEntity.component(WorldPositionIntent.class).value;
+            var worldPosition = warpingDestinationEntity.component(WorldPositionIntent.class).value();
             for (var warpingEdgeEntity : warpingEdgeEntities) {
                 var warpWorldPosition = warpingEdgeEntity.component(WorldPosition.class);
                 if (worldPosition.equals(warpWorldPosition)) {

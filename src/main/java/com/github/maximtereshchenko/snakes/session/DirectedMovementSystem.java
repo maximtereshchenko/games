@@ -28,7 +28,7 @@ final class DirectedMovementSystem extends TurnBasedSystem {
             if (directedMovement.remainingTurns == 0) {
                 directedMovement.remainingTurns = directedMovement.periodTurns;
                 entity.component(WorldPositionIntent.class)
-                    .value
+                    .value()
                     .move(entity.component(Direction.class));
             }
         }

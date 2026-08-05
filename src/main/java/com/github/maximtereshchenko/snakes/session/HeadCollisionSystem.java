@@ -25,7 +25,7 @@ final class HeadCollisionSystem extends TurnBasedSystem {
     @Override
     void onTurnStarted(WorldEdit worldEdit) {
         for (var headEntity : headEntities) {
-            var headWorldPositionIntent = headEntity.component(WorldPositionIntent.class).value;
+            var headWorldPositionIntent = headEntity.component(WorldPositionIntent.class).value();
             for (var obstacleEntity : obstacleEntities) {
                 var obstacleWorldPosition = obstacleEntity.component(WorldPosition.class);
                 if (headWorldPositionIntent.equals(obstacleWorldPosition)) {

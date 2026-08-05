@@ -14,11 +14,7 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
         super(world);
         this.headEntities = world.entities(
             new Query()
-                .all(
-                    Head.class,
-                    WorldPosition.class,
-                    WorldPositionIntent.class
-                )
+                .all(Head.class, WorldPosition.class)
         );
         this.segmentDefinitionEntities = world.entities(
             new Query().all(SegmentPolicy.class)
@@ -30,20 +26,18 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
         for (var headEntity : headEntities) {
             var worldPosition = headEntity.component(WorldPosition.class);
             for (var segmentDefinitionEntity : segmentDefinitionEntities) {
-                if (!worldPosition.equals(headEntity.component(WorldPositionIntent.class).value)) {
-                    var segmentWorldPosition = new WorldPosition();
-                    segmentWorldPosition.copy(worldPosition);
-                    worldEdit.addComponents(
-                        worldEdit.createEntity(),
-                        new Segment(
-                            segmentDefinitionEntity.component(SegmentPolicy.class)
-                                .durationTurns
-                        ),
-                        segmentWorldPosition,
-                        PaletteColor.SEGMENT,
-                        new Opacity(1)
-                    );
-                }
+                var segmentWorldPosition = new WorldPosition();
+                segmentWorldPosition.copy(worldPosition);
+                worldEdit.addComponents(
+                    worldEdit.createEntity(),
+                    new Segment(
+                        segmentDefinitionEntity.component(SegmentPolicy.class)
+                            .durationTurns
+                    ),
+                    segmentWorldPosition,
+                    PaletteColor.SEGMENT,
+                    new Opacity(1)
+                );
             }
         }
     }
