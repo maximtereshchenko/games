@@ -220,6 +220,24 @@
         "WARP": "#a30108"
       },
       "modeUnlockRequirements": {}
+    },
+    {
+      "name": "solid",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "solid.json",
+      "palette": {
+        "BACKGROUND": "#5fd3b4",
+        "HEAD": "#130873",
+        "SEGMENT": "#2818b1",
+        "FOOD": "#130873",
+        "INTERFACE": "#000006",
+        "WARP": "#04a779"
+      },
+      "modeUnlockRequirements": {}
     }
   ]
 }
