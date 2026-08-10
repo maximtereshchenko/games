@@ -4,7 +4,7 @@ final class WarpingPolicy {
 
     final int periodConsumedFood;
     int remainingConsumedFood;
-    int layers; //TODO separate
+    int layers;
 
     WarpingPolicy(int periodConsumedFood, int remainingConsumedFood, int layers) {
         this.periodConsumedFood = periodConsumedFood;

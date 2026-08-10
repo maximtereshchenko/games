@@ -5,7 +5,6 @@ import com.github.maximtereshchenko.ecs.System;
 
 import java.util.function.Predicate;
 
-//TODO refactoring
 final class WarpingEdgeSpawningSystem implements System {
 
     private final Iterable<Entity> foodConsumedEntities;
@@ -30,7 +29,7 @@ final class WarpingEdgeSpawningSystem implements System {
 
     @Override
     public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
-        spawnWarpingEdges(worldEdit, initializingEntities, warpingPolicy -> true);
+        spawnWarpingEdges(worldEdit, initializingEntities, _ -> true);
         if (!foodConsumedEntities.iterator().hasNext()) {
             return;
         }
@@ -70,42 +69,35 @@ final class WarpingEdgeSpawningSystem implements System {
     ) {
         for (var worldDimensionsEntity : worldDimensionsEntities) {
             var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
-            for (var i = warpingLayers; i < worldDimensions.width() - warpingLayers; i++) {
-                worldEdit.addComponents(
-                    worldEdit.createEntity(),
-                    WarpingEdge.TOP,
-                    new WorldPosition(i, worldDimensions.height() - warpingLayers - 1),
-                    PaletteColor.WARP,
-                    new Opacity(1)
-                );
+            var rightBoundary = worldDimensions.width() - warpingLayers;
+            var topBoundary = worldDimensions.height() - warpingLayers - 1;
+            for (var i = warpingLayers; i < rightBoundary; i++) {
+                createWarp(worldEdit, WarpingEdge.TOP, i, topBoundary);
             }
-            for (var i = warpingLayers; i < worldDimensions.width() - warpingLayers; i++) {
-                worldEdit.addComponents(
-                    worldEdit.createEntity(),
-                    WarpingEdge.BOTTOM,
-                    new WorldPosition(i, warpingLayers),
-                    PaletteColor.WARP,
-                    new Opacity(1)
-                );
+            for (var i = warpingLayers; i < rightBoundary; i++) {
+                createWarp(worldEdit, WarpingEdge.BOTTOM, i, warpingLayers);
             }
-            for (var i = warpingLayers + 1; i < worldDimensions.height() - warpingLayers - 1; i++) {
-                worldEdit.addComponents(
-                    worldEdit.createEntity(),
-                    WarpingEdge.LEFT,
-                    new WorldPosition(warpingLayers, i),
-                    PaletteColor.WARP,
-                    new Opacity(1)
-                );
+            for (var i = warpingLayers + 1; i < topBoundary; i++) {
+                createWarp(worldEdit, WarpingEdge.LEFT, warpingLayers, i);
             }
-            for (var i = warpingLayers + 1; i < worldDimensions.height() - warpingLayers - 1; i++) {
-                worldEdit.addComponents(
-                    worldEdit.createEntity(),
+            for (var i = warpingLayers + 1; i < topBoundary; i++) {
+                createWarp(
+                    worldEdit,
                     WarpingEdge.RIGHT,
-                    new WorldPosition(worldDimensions.width() - warpingLayers - 1, i),
-                    PaletteColor.WARP,
-                    new Opacity(1)
+                    worldDimensions.width() - warpingLayers - 1,
+                    i
                 );
             }
         }
+    }
+
+    private void createWarp(WorldEdit worldEdit, WarpingEdge warpingEdge, int x, int y) {
+        worldEdit.addComponents(
+            worldEdit.createEntity(),
+            warpingEdge,
+            new WorldPosition(x, y),
+            PaletteColor.WARP,
+            new Opacity(1)
+        );
     }
 }
