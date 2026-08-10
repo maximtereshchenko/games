@@ -41,7 +41,8 @@ final class LeftTurnsIncrementSystemTest {
             .isEqualTo(
                 Map.of(
                     SessionMetric.LEFT_TURNS, 0,
-                    SessionMetric.FOOD_CONSUMED, 0
+                    SessionMetric.FOOD_CONSUMED, 0,
+                    SessionMetric.WARPS, 0
                 )
             );
     }
@@ -63,7 +64,8 @@ final class LeftTurnsIncrementSystemTest {
             .isEqualTo(
                 Map.of(
                     SessionMetric.LEFT_TURNS, 1,
-                    SessionMetric.FOOD_CONSUMED, 0
+                    SessionMetric.FOOD_CONSUMED, 0,
+                    SessionMetric.WARPS, 0
                 )
             );
     }
@@ -85,7 +87,8 @@ final class LeftTurnsIncrementSystemTest {
             .isEqualTo(
                 Map.of(
                     SessionMetric.LEFT_TURNS, 0,
-                    SessionMetric.FOOD_CONSUMED, 0
+                    SessionMetric.FOOD_CONSUMED, 0,
+                    SessionMetric.WARPS, 0
                 )
             );
     }

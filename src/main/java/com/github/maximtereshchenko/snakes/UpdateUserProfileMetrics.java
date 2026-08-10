@@ -2,8 +2,10 @@ package com.github.maximtereshchenko.snakes;
 
 import com.github.maximtereshchenko.snakes.configuration.Mode;
 import com.github.maximtereshchenko.snakes.event.*;
+import com.github.maximtereshchenko.snakes.session.SessionMetric;
 
 import java.util.List;
+import java.util.Map;
 
 final class UpdateUserProfileMetrics implements Subscriber {
 
@@ -26,11 +28,35 @@ final class UpdateUserProfileMetrics implements Subscriber {
                 userProfile.increment(UserProfileMetric.LAUNCHES);
                 updateModesUnlocked();
             }
-            case SessionEnded _ -> updateModesUnlocked();
+            case SessionEnded sessionEnded -> {
+                update(sessionEnded.statistics());
+                updateModesUnlocked();
+            }
             default -> {
                 //empty
             }
         }
+    }
+
+    private void update(Map<SessionMetric, Integer> statistics) {
+        var foodConsumed = statistics.get(SessionMetric.FOOD_CONSUMED);
+        if (foodConsumed == 1) {
+            userProfile.increment(UserProfileMetric.ONE_FOOD_CONSUMED);
+        }
+        if (foodConsumed % 2 != 0) {
+            userProfile.increment(UserProfileMetric.ODD_FOOD_CONSUMED);
+        }
+        userProfile.update(
+            UserProfileMetric.FOOD_CONSUMED,
+            userProfile.value(UserProfileMetric.FOOD_CONSUMED) +
+            statistics.get(SessionMetric.FOOD_CONSUMED)
+        );
+        userProfile.update(
+            UserProfileMetric.WARPS,
+            userProfile.value(UserProfileMetric.WARPS) +
+            statistics.get(SessionMetric.WARPS)
+        );
+        userProfile.increment(UserProfileMetric.FINISHED_SESSIONS);
     }
 
     private void updateModesUnlocked() {

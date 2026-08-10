@@ -108,7 +108,7 @@
       },
       "modeUnlockRequirements": {
         "userProfileThresholds": {
-          "MODES_UNLOCKED": 1
+          "MODES_UNLOCKED": 3
         }
       }
     },
@@ -128,7 +128,11 @@
         "INTERFACE": "#ffba8d",
         "WARP": "#116777"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "ONE_FOOD_CONSUMED": 1
+        }
+      }
     },
     {
       "name": "mamushi",
@@ -147,7 +151,11 @@
         "WARP": "#f6d76b",
         "WALL": "#ff9135"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "ODD_FOOD_CONSUMED": 1
+        }
+      }
     },
     {
       "name": "trouser",
@@ -165,7 +173,11 @@
         "INTERFACE": "#29067e",
         "WARP": "#290672"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FOOD_CONSUMED": 100
+        }
+      }
     },
     {
       "name": "boa",
@@ -183,7 +195,11 @@
         "INTERFACE": "#ffffd3",
         "WARP": "#bda46c"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "WARPS": 200
+        }
+      }
     },
     {
       "name": "mamba",
@@ -201,7 +217,11 @@
         "INTERFACE": "#dd2c50",
         "WARP": "#ffff05"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "MODES_UNLOCKED": 6
+        }
+      }
     },
     {
       "name": "burmese",
@@ -219,7 +239,11 @@
         "INTERFACE": "#ffce90",
         "WARP": "#a30108"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FINISHED_SESSIONS": 10
+        }
+      }
     },
     {
       "name": "solid",
@@ -237,7 +261,11 @@
         "INTERFACE": "#000006",
         "WARP": "#04a779"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FOOD_CONSUMED": 200
+        }
+      }
     },
     {
       "name": "asp",
@@ -256,7 +284,11 @@
         "WARP": "#03899c",
         "WALL": "#ffaf44"
       },
-      "modeUnlockRequirements": {}
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FINISHED_SESSIONS": 25
+        }
+      }
     }
   ]
 }

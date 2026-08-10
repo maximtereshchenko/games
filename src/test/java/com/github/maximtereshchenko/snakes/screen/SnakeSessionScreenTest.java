@@ -47,7 +47,8 @@ final class SnakeSessionScreenTest {
                 new SessionEnded(
                     Map.of(
                         SessionMetric.LEFT_TURNS, 0,
-                        SessionMetric.FOOD_CONSUMED, 0
+                        SessionMetric.FOOD_CONSUMED, 0,
+                        SessionMetric.WARPS, 0
                     )
                 )
             );

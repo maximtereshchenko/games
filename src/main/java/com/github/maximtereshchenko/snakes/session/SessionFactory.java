@@ -56,6 +56,7 @@ public final class SessionFactory {
             new SidewaysMovementSystem(world),
             new WarpingSystem(world),
             new WarpedRelativeDirectionSystem(world),
+            new WarpsIncrementSystem(world),
             new HeadCollisionSystem(world),
             new FoodCollisionSystem(world),
             new SegmentSpawningSystem(world),
