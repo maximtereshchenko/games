@@ -6,9 +6,12 @@ import com.github.maximtereshchenko.games.ecs.System;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Stream;
 
 final class WallClusterFoodSpawningSystem implements System {
+
+    private static final int CLUSTER_SIZE = 3;
+    private static final int CLUSTER_CELLS = CLUSTER_SIZE * CLUSTER_SIZE;
+    private static final int CLUSTER_CENTER = CLUSTER_SIZE / 2;
 
     private final Iterable<Entity> turnStartedEntities;
     private final Iterable<Entity> initializingEntities;
@@ -44,61 +47,100 @@ final class WallClusterFoodSpawningSystem implements System {
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        if ((initializingEntities.iterator().hasNext() || turnStartedEntities.iterator().hasNext()) && !foodEntities.iterator().hasNext()) {
-            for (var _ : wallClusterFoodPolicyEntities) {
-                for (var worldDimensionsEntity : worldDimensionsEntities) {
-                    var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
-                    var worldPositions = worldPositions();
-                    if (space(worldDimensions) - worldPositions.size() > 9) {
-                        var spawnArea = new WorldPosition[3][3];
-                        for (var row : spawnArea) {
-                            for (var columnIndex = 0; columnIndex < row.length; columnIndex++) {
-                                row[columnIndex] = new WorldPosition();
-                            }
-                        }
-                        do {
-                            var x = random.nextInt(1, worldDimensions.width() - 1);
-                            var y = random.nextInt(1, worldDimensions.height() - 1);
-                            var xOffset = -1;
-                            var yOffset = -1;
-                            for (var row : spawnArea) {
-                                for (var worldPosition : row) {
-                                    worldPosition.x = x + xOffset;
-                                    worldPosition.y = y + yOffset;
-                                    xOffset++;
-                                }
-                                xOffset = -1;
-                                yOffset++;
-                            }
-                        } while (
-                            Stream.of(spawnArea)
-                                .flatMap(Stream::of)
-                                .anyMatch(worldPositions::contains)
-                        );
-                        for (var rowIndex = 0; rowIndex < spawnArea.length; rowIndex++) {
-                            var row = spawnArea[rowIndex];
-                            for (var columnIndex = 0; columnIndex < row.length; columnIndex++) {
-                                var worldPosition = row[columnIndex];
-                                if (rowIndex == 1 && columnIndex == 1) {
-                                    registryEdit.addComponents(
-                                        registryEdit.createEntity(),
-                                        Wall.INSTANCE,
-                                        worldPosition,
-                                        PaletteColor.WALL,
-                                        new Opacity(1)
-                                    );
-                                } else {
-                                    registryEdit.addComponents(
-                                        registryEdit.createEntity(),
-                                        new Food(1),
-                                        worldPosition,
-                                        PaletteColor.FOOD,
-                                        new Opacity(1)
-                                    );
-                                }
-                            }
-                        }
-                    }
+        if (foodEntities.iterator().hasNext()) {
+            return;
+        }
+        if (!initializingEntities.iterator().hasNext() && !turnStartedEntities.iterator().hasNext()) {
+            return;
+        }
+        spawnClusters(registryEdit);
+    }
+
+    private void spawnClusters(RegistryEdit registryEdit) {
+        for (var _ : wallClusterFoodPolicyEntities) {
+            for (var worldDimensionsEntity : worldDimensionsEntities) {
+                spawnCluster(
+                    registryEdit,
+                    worldDimensionsEntity.component(WorldDimensions.class)
+                );
+            }
+        }
+    }
+
+    private void spawnCluster(RegistryEdit registryEdit, WorldDimensions worldDimensions) {
+        var worldPositions = worldPositions();
+        if (space(worldDimensions) - worldPositions.size() <= CLUSTER_CELLS) {
+            return;
+        }
+        spawnCluster(registryEdit, freeSpawnArea(worldDimensions, worldPositions));
+    }
+
+    private WorldPosition[][] freeSpawnArea(
+        WorldDimensions worldDimensions,
+        Set<WorldPosition> worldPositions
+    ) {
+        var spawnArea = newSpawnArea();
+        do {
+            placeSpawnArea(spawnArea, worldDimensions);
+        } while (isOccupied(spawnArea, worldPositions));
+        return spawnArea;
+    }
+
+    private WorldPosition[][] newSpawnArea() {
+        var spawnArea = new WorldPosition[CLUSTER_SIZE][CLUSTER_SIZE];
+        for (var row : spawnArea) {
+            for (var columnIndex = 0; columnIndex < row.length; columnIndex++) {
+                row[columnIndex] = new WorldPosition();
+            }
+        }
+        return spawnArea;
+    }
+
+    private void placeSpawnArea(WorldPosition[][] spawnArea, WorldDimensions worldDimensions) {
+        var x = random.nextInt(1, worldDimensions.width() - 1);
+        var y = random.nextInt(1, worldDimensions.height() - 1);
+        for (var rowIndex = 0; rowIndex < spawnArea.length; rowIndex++) {
+            var row = spawnArea[rowIndex];
+            for (var columnIndex = 0; columnIndex < row.length; columnIndex++) {
+                var worldPosition = row[columnIndex];
+                worldPosition.x = x + columnIndex - CLUSTER_CENTER;
+                worldPosition.y = y + rowIndex - CLUSTER_CENTER;
+            }
+        }
+    }
+
+    private boolean isOccupied(WorldPosition[][] spawnArea, Set<WorldPosition> worldPositions) {
+        for (var row : spawnArea) {
+            for (var worldPosition : row) {
+                if (worldPositions.contains(worldPosition)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void spawnCluster(RegistryEdit registryEdit, WorldPosition[][] spawnArea) {
+        for (var rowIndex = 0; rowIndex < spawnArea.length; rowIndex++) {
+            var row = spawnArea[rowIndex];
+            for (var columnIndex = 0; columnIndex < row.length; columnIndex++) {
+                var worldPosition = row[columnIndex];
+                if (rowIndex == CLUSTER_CENTER && columnIndex == CLUSTER_CENTER) {
+                    registryEdit.addComponents(
+                        registryEdit.createEntity(),
+                        Wall.INSTANCE,
+                        worldPosition,
+                        PaletteColor.WALL,
+                        new Opacity(1)
+                    );
+                } else {
+                    registryEdit.addComponents(
+                        registryEdit.createEntity(),
+                        new Food(1),
+                        worldPosition,
+                        PaletteColor.FOOD,
+                        new Opacity(1)
+                    );
                 }
             }
         }
