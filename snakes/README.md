@@ -21,7 +21,7 @@ in Java.
 
 ## Architecture
 
-- **Custom archetype ECS** (`com.github.maximtereshchenko.ecs`) — entities are bags of components
+- **Custom archetype ECS** (`com.github.maximtereshchenko.games.ecs`) — entities are bags of components
   grouped into archetype tables; systems query by component mask and update the registry each frame /
   turn.
 - **One session core for all modes** — movement, collisions, food, warping, growth, air supply, UI
