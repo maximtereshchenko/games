@@ -1,3 +1,0 @@
-package com.github.maximtereshchenko.snakes.session;
-
-record WorldPositionIntent(WorldPosition value) {}

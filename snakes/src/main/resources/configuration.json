@@ -1,0 +1,294 @@
+{
+  "preferencesName": "com.github.maximtereshchenko.games.snakes.Snakes",
+  "assets": {
+    "skin": {
+      "fileName": "skin.json"
+    },
+    "loadingBundle": {
+      "fileName": "loading"
+    },
+    "bitmapFont": {
+      "fileName": "default.fnt",
+      "params": {
+        "atlasName": "skin.atlas"
+      }
+    },
+    "gameBundle": {
+      "fileName": "game"
+    },
+    "music": {
+      "fileName": "music.mp3"
+    }
+  },
+  "defaultMusicVolume": 0.1,
+  "modes": [
+    {
+      "name": "classic",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "classic.json",
+      "palette": {
+        "BACKGROUND": "#ded4ba",
+        "HEAD": "#33824d",
+        "SEGMENT": "#66ce81",
+        "FOOD": "#33824d",
+        "INTERFACE": "#454248",
+        "WARP": "#64b6b0"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "LAUNCHES": 1
+        }
+      }
+    },
+    {
+      "name": "viper",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "viper.json",
+      "palette": {
+        "BACKGROUND": "#eeeedd",
+        "HEAD": "#774422",
+        "SEGMENT": "#ddaa88",
+        "FOOD": "#774422",
+        "INTERFACE": "#175ca5",
+        "WARP": "#aa9a99"
+      },
+      "modeUnlockRequirements": {
+        "sessionThresholds": {
+          "LEFT_TURNS": 20
+        }
+      }
+    },
+    {
+      "name": "sidewinder",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "sidewinder.json",
+      "palette": {
+        "BACKGROUND": "#ffeeef",
+        "HEAD": "#452210",
+        "SEGMENT": "#885633",
+        "FOOD": "#452210",
+        "INTERFACE": "#000000",
+        "WARP": "#000000"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "CREDITS_READ": 1
+        }
+      }
+    },
+    {
+      "name": "sea",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "sea.json",
+      "palette": {
+        "BACKGROUND": "#33deff",
+        "HEAD": "#000000",
+        "SEGMENT": "#ffffff",
+        "FOOD": "#000000",
+        "INTERFACE": "#222249",
+        "WARP": "#483b38",
+        "AIR": "#4a79aa",
+        "WALL": "#241d1b"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "MODES_UNLOCKED": 3
+        }
+      }
+    },
+    {
+      "name": "hognose",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "hognose.json",
+      "palette": {
+        "BACKGROUND": "#43bcdd",
+        "HEAD": "#ff8813",
+        "SEGMENT": "#ffeedd",
+        "FOOD": "#ff8813",
+        "INTERFACE": "#ffba8d",
+        "WARP": "#116777"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "ONE_FOOD_CONSUMED": 1
+        }
+      }
+    },
+    {
+      "name": "mamushi",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "mamushi.json",
+      "palette": {
+        "BACKGROUND": "#fdeba9",
+        "HEAD": "#d6264d",
+        "SEGMENT": "#ff5476",
+        "FOOD": "#d6264d",
+        "INTERFACE": "#06255d",
+        "WARP": "#f6d76b",
+        "WALL": "#ff9135"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "ODD_FOOD_CONSUMED": 1
+        }
+      }
+    },
+    {
+      "name": "trouser",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "trouser.json",
+      "palette": {
+        "BACKGROUND": "#8f6dd7",
+        "HEAD": "#a601a7",
+        "SEGMENT": "#d25fd3",
+        "FOOD": "#8f6dd7",
+        "INTERFACE": "#29067e",
+        "WARP": "#290672"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FOOD_CONSUMED": 100
+        }
+      }
+    },
+    {
+      "name": "boa",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "boa.json",
+      "palette": {
+        "BACKGROUND": "#96320e",
+        "HEAD": "#52363d",
+        "SEGMENT": "#22383e",
+        "FOOD": "#52363d",
+        "INTERFACE": "#ffffd3",
+        "WARP": "#bda46c"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "WARPS": 200
+        }
+      }
+    },
+    {
+      "name": "mamba",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "mamba.json",
+      "palette": {
+        "BACKGROUND": "#ffff73",
+        "HEAD": "#8c4079",
+        "SEGMENT": "#25261e",
+        "FOOD": "#8c4079",
+        "INTERFACE": "#dd2c50",
+        "WARP": "#ffff05"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "MODES_UNLOCKED": 6
+        }
+      }
+    },
+    {
+      "name": "burmese",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "burmese.json",
+      "palette": {
+        "BACKGROUND": "#fc0007",
+        "HEAD": "#ffa700",
+        "SEGMENT": "#ff6f00",
+        "FOOD": "#ffa700",
+        "INTERFACE": "#ffce90",
+        "WARP": "#a30108"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FINISHED_SESSIONS": 10
+        }
+      }
+    },
+    {
+      "name": "solid",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "solid.json",
+      "palette": {
+        "BACKGROUND": "#5fd3b4",
+        "HEAD": "#130873",
+        "SEGMENT": "#2818b1",
+        "FOOD": "#130873",
+        "INTERFACE": "#000006",
+        "WARP": "#04a779"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FOOD_CONSUMED": 200
+        }
+      }
+    },
+    {
+      "name": "asp",
+      "worldDimensions": {
+        "width": 35,
+        "height": 18
+      },
+      "interfaceViewportHeight": 720,
+      "entities": "asp.json",
+      "palette": {
+        "BACKGROUND": "#5fc0ce",
+        "HEAD": "#ff7a02",
+        "SEGMENT": "#ff1400",
+        "FOOD": "#ff7a02",
+        "INTERFACE": "#a50d03",
+        "WARP": "#03899c",
+        "WALL": "#ffaf44"
+      },
+      "modeUnlockRequirements": {
+        "userProfileThresholds": {
+          "FINISHED_SESSIONS": 25
+        }
+      }
+    }
+  ]
+}
