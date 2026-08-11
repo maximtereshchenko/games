@@ -12,29 +12,29 @@ final class WarpingEdgeSpawningSystem implements System {
     private final Iterable<Entity> worldDimensionsEntities;
     private final Iterable<Entity> warpingPolicyEntities;
 
-    WarpingEdgeSpawningSystem(World world) {
-        this.foodConsumedEntities = world.entities(
+    WarpingEdgeSpawningSystem(Registry registry) {
+        this.foodConsumedEntities = registry.entities(
             new Query().all(FoodConsumed.class)
         );
-        this.initializingEntities = world.entities(
+        this.initializingEntities = registry.entities(
             new Query().all(WarpingPolicy.class, Initializing.class)
         );
-        this.worldDimensionsEntities = world.entities(
+        this.worldDimensionsEntities = registry.entities(
             new Query().all(WorldDimensions.class)
         );
-        this.warpingPolicyEntities = world.entities(
+        this.warpingPolicyEntities = registry.entities(
             new Query().all(WarpingPolicy.class)
         );
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
-        spawnWarpingEdges(worldEdit, initializingEntities, _ -> true);
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
+        spawnWarpingEdges(registryEdit, initializingEntities, _ -> true);
         if (!foodConsumedEntities.iterator().hasNext()) {
             return;
         }
         spawnWarpingEdges(
-            worldEdit,
+            registryEdit,
             warpingPolicyEntities,
             this::decrement
         );
@@ -50,21 +50,21 @@ final class WarpingEdgeSpawningSystem implements System {
     }
 
     private void spawnWarpingEdges(
-        WorldEdit worldEdit,
+        RegistryEdit registryEdit,
         Iterable<Entity> entities,
         Predicate<WarpingPolicy> predicate
     ) {
         for (var warpingPolicyEntity : entities) {
             var warpingPolicy = warpingPolicyEntity.component(WarpingPolicy.class);
             if (predicate.test(warpingPolicy)) {
-                spawnWarpingEdges(worldEdit, warpingPolicy.layers);
+                spawnWarpingEdges(registryEdit, warpingPolicy.layers);
                 warpingPolicy.layers++;
             }
         }
     }
 
     private void spawnWarpingEdges(
-        WorldEdit worldEdit,
+        RegistryEdit registryEdit,
         int warpingLayers
     ) {
         for (var worldDimensionsEntity : worldDimensionsEntities) {
@@ -72,17 +72,17 @@ final class WarpingEdgeSpawningSystem implements System {
             var rightBoundary = worldDimensions.width() - warpingLayers;
             var topBoundary = worldDimensions.height() - warpingLayers - 1;
             for (var i = warpingLayers; i < rightBoundary; i++) {
-                createWarp(worldEdit, WarpingEdge.TOP, i, topBoundary);
+                createWarp(registryEdit, WarpingEdge.TOP, i, topBoundary);
             }
             for (var i = warpingLayers; i < rightBoundary; i++) {
-                createWarp(worldEdit, WarpingEdge.BOTTOM, i, warpingLayers);
+                createWarp(registryEdit, WarpingEdge.BOTTOM, i, warpingLayers);
             }
             for (var i = warpingLayers + 1; i < topBoundary; i++) {
-                createWarp(worldEdit, WarpingEdge.LEFT, warpingLayers, i);
+                createWarp(registryEdit, WarpingEdge.LEFT, warpingLayers, i);
             }
             for (var i = warpingLayers + 1; i < topBoundary; i++) {
                 createWarp(
-                    worldEdit,
+                    registryEdit,
                     WarpingEdge.RIGHT,
                     worldDimensions.width() - warpingLayers - 1,
                     i
@@ -91,9 +91,9 @@ final class WarpingEdgeSpawningSystem implements System {
         }
     }
 
-    private void createWarp(WorldEdit worldEdit, WarpingEdge warpingEdge, int x, int y) {
-        worldEdit.addComponents(
-            worldEdit.createEntity(),
+    private void createWarp(RegistryEdit registryEdit, WarpingEdge warpingEdge, int x, int y) {
+        registryEdit.addComponents(
+            registryEdit.createEntity(),
             warpingEdge,
             new WorldPosition(x, y),
             PaletteColor.WARP,

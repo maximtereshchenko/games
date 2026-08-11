@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,33 +10,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class TagRemovalSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodConsumedEntities =
-        world.entities(new Query().all(FoodConsumed.class));
+        registry.entities(new Query().all(FoodConsumed.class));
     private final Iterable<Entity> turnStartedEntities =
-        world.entities(new Query().all(TurnStarted.class));
+        registry.entities(new Query().all(TurnStarted.class));
     private final Iterable<Entity> warpedEntities =
-        world.entities(new Query().all(Warped.class));
+        registry.entities(new Query().all(Warped.class));
     private final Iterable<Entity> remainingEntities =
-        world.entities(new Query().all(Head.class));
+        registry.entities(new Query().all(Head.class));
     private final TagRemovalSystem tagRemovalSystem =
-        new TagRemovalSystem(world, TurnStarted.class, FoodConsumed.class, Warped.class);
+        new TagRemovalSystem(registry, TurnStarted.class, FoodConsumed.class, Warped.class);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(tagRemovalSystem);
+        registry.addSystems(tagRemovalSystem);
     }
 
     @Test
     void givenTags_thenTagsRemoved() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             TurnStarted.INSTANCE,
             new FoodConsumed(1),
             Warped.INSTANCE,
             Head.INSTANCE
         );
-        world.update(0);
+        registry.update(0);
         assertThat(turnStartedEntities).isEmpty();
         assertThat(foodConsumedEntities).isEmpty();
         assertThat(warpedEntities).isEmpty();

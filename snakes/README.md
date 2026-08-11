@@ -22,7 +22,7 @@ in Java.
 ## Architecture
 
 - **Custom archetype ECS** (`com.github.maximtereshchenko.ecs`) — entities are bags of components
-  grouped into archetype tables; systems query by component mask and update the world each frame /
+  grouped into archetype tables; systems query by component mask and update the registry each frame /
   turn.
 - **One session core for all modes** — movement, collisions, food, warping, growth, air supply, UI
   sync, and rendering are shared systems. Modes differ mainly by which components and policies are

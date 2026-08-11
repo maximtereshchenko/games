@@ -4,7 +4,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.games.snakes.event.SessionEnded;
 import com.github.maximtereshchenko.games.snakes.session.Dead;
@@ -16,29 +16,29 @@ final class SessionScreen extends ScreenAdapter {
 
     private final Set<Viewport> viewports;
     private final ApplicationEvents applicationEvents;
-    private final World world;
+    private final Registry registry;
     private final Iterable<Entity> deadEntities;
     private final Iterable<Entity> statisticsEntities;
 
     SessionScreen(
         Set<Viewport> viewports,
         ApplicationEvents applicationEvents,
-        World world
+        Registry registry
     ) {
         this.viewports = viewports;
         this.applicationEvents = applicationEvents;
-        this.world = world;
-        this.deadEntities = world.entities(
+        this.registry = registry;
+        this.deadEntities = registry.entities(
             new Query().all(Dead.class)
         );
-        this.statisticsEntities = world.entities(
+        this.statisticsEntities = registry.entities(
             new Query().all(Statistics.class)
         );
     }
 
     @Override
     public void render(float delta) {
-        world.update(delta);
+        registry.update(delta);
         for (var _ : deadEntities) {
             for (var statisticsEntity : statisticsEntities) {
                 applicationEvents.publish(
@@ -59,6 +59,6 @@ final class SessionScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        world.update(0);
+        registry.update(0);
     }
 }

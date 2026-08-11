@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,26 +15,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class LeftTurnsIncrementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> statisticsEntities =
-        world.entities(new Query().all(Statistics.class));
+        registry.entities(new Query().all(Statistics.class));
     private final LeftTurnsIncrementSystem leftTurnsIncrementSystem =
-        new LeftTurnsIncrementSystem(world);
+        new LeftTurnsIncrementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(leftTurnsIncrementSystem);
+        registry.addSystems(leftTurnsIncrementSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Direction.RIGHT,
             new DirectionIntent(Set.of(), Direction.UP),
             new Statistics(Map.of())
         );
-        world.update(0);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)
@@ -50,14 +50,14 @@ final class LeftTurnsIncrementSystemTest {
     @ParameterizedTest
     @EnumSource(Direction.class)
     void givenLeftTurn_thenLeftTurnsCounterIncremented(Direction direction) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             direction,
             new DirectionIntent(Set.of(), direction.left()),
             new Statistics(Map.of())
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)
@@ -73,14 +73,14 @@ final class LeftTurnsIncrementSystemTest {
     @ParameterizedTest
     @EnumSource(Direction.class)
     void givenRightTurn_thenLeftTurnsCounterNotIncremented(Direction direction) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             direction,
             new DirectionIntent(Set.of(), direction.opposite().left()),
             new Statistics(Map.of())
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)

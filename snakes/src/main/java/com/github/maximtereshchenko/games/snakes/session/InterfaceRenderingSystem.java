@@ -16,13 +16,13 @@ final class InterfaceRenderingSystem implements System {
     private final Mode mode;
 
     InterfaceRenderingSystem(
-        World world,
+        Registry registry,
         Viewport viewport,
         SpriteBatch spriteBatch,
         ScaledFont scaledFont,
         Mode mode
     ) {
-        this.interfaceTextEntities = world.entities(
+        this.interfaceTextEntities = registry.entities(
             new Query()
                 .all(
                     InterfaceText.class,
@@ -38,7 +38,7 @@ final class InterfaceRenderingSystem implements System {
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         viewport.apply();
         spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
         spriteBatch.begin();

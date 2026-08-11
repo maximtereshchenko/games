@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,9 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodWarpingSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodWarpingEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     FoodWarping.class,
@@ -21,27 +21,27 @@ final class FoodWarpingSystemTest {
                 )
         );
     private final FoodWarpingSystem foodWarpingSystem =
-        new FoodWarpingSystem(world);
+        new FoodWarpingSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(foodWarpingSystem);
+        registry.addSystems(foodWarpingSystem);
     }
 
     @Test
     void givenNoFoodConsumed_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             FoodWarping.INSTANCE,
             new WorldPosition(0, 0),
             new WorldPositionIntent(new WorldPosition(0, 0))
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(3, 4)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodWarpingEntities)
             .singleElement()
             .extracting(
@@ -56,14 +56,14 @@ final class FoodWarpingSystemTest {
 
     @Test
     void givenNoFood_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new FoodConsumed(1),
             FoodWarping.INSTANCE,
             new WorldPosition(0, 0),
             new WorldPositionIntent(new WorldPosition(0, 0))
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodWarpingEntities)
             .singleElement()
             .extracting(
@@ -78,19 +78,19 @@ final class FoodWarpingSystemTest {
 
     @Test
     void givenFoodConsumed_thenWarpedToFood() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new FoodConsumed(1),
             FoodWarping.INSTANCE,
             new WorldPosition(0, 0),
             new WorldPositionIntent(new WorldPosition(1, 1))
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(3, 4)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodWarpingEntities)
             .singleElement()
             .extracting(

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,12 +20,12 @@ final class WorldRenderingSystemTest {
     private final Camera camera = mock();
     private final Viewport viewport = mock();
     private final ShapeRenderer shapeRenderer = mock();
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Mode mode = mock();
     private final Color backgroundColor = new Color();
     private final Color headColor = new Color();
     private final WorldRenderingSystem worldRenderingSystem = new WorldRenderingSystem(
-        world,
+        registry,
         viewport,
         shapeRenderer,
         mode
@@ -33,7 +33,7 @@ final class WorldRenderingSystemTest {
 
     @BeforeEach
     void setUp() {
-        world.addSystems(worldRenderingSystem);
+        registry.addSystems(worldRenderingSystem);
         Gdx.gl = mock();
     }
 
@@ -48,20 +48,20 @@ final class WorldRenderingSystemTest {
                 )
             );
         when(shapeRenderer.getColor()).thenReturn(backgroundColor, headColor);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPosition(0, 0),
             PaletteColor.HEAD,
             new Opacity(1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPosition(1, 1),
             PaletteColor.BACKGROUND,
             Background.INSTANCE,
             new Opacity(0.5f)
         );
-        world.update(0);
+        registry.update(0);
         verify(Gdx.gl).glClearColor(
             Color.BLACK.r,
             Color.BLACK.g,

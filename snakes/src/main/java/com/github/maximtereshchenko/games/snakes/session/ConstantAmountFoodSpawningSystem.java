@@ -17,40 +17,40 @@ final class ConstantAmountFoodSpawningSystem implements System {
     private final Iterable<Entity> worldDimensionsEntities;
     private final Random random;
 
-    ConstantAmountFoodSpawningSystem(World world, Random random) {
-        this.turnStartedEntities = world.entities(
+    ConstantAmountFoodSpawningSystem(Registry registry, Random random) {
+        this.turnStartedEntities = registry.entities(
             new Query().all(TurnStarted.class)
         );
-        this.initializingEntities = world.entities(
+        this.initializingEntities = registry.entities(
             new Query().all(ConstantAmountFoodPolicy.class, Initializing.class)
         );
-        this.constantAmountFoodPolicyEntities = world.entities(
+        this.constantAmountFoodPolicyEntities = registry.entities(
             new Query().all(ConstantAmountFoodPolicy.class)
         );
-        this.nonBackgroundEntities = world.entities(
+        this.nonBackgroundEntities = registry.entities(
             new Query()
                 .all(WorldPosition.class)
                 .none(Background.class)
         );
-        this.foodEntities = world.entities(
+        this.foodEntities = registry.entities(
             new Query().all(Food.class)
         );
-        this.worldDimensionsEntities = world.entities(
+        this.worldDimensionsEntities = registry.entities(
             new Query().all(WorldDimensions.class)
         );
         this.random = random;
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
-        spawnFood(worldEdit, initializingEntities);
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
+        spawnFood(registryEdit, initializingEntities);
         if (!turnStartedEntities.iterator().hasNext()) {
             return;
         }
-        spawnFood(worldEdit, constantAmountFoodPolicyEntities);
+        spawnFood(registryEdit, constantAmountFoodPolicyEntities);
     }
 
-    private void spawnFood(WorldEdit worldEdit, Iterable<Entity> entities) {
+    private void spawnFood(RegistryEdit registryEdit, Iterable<Entity> entities) {
         for (var entity : entities) {
             var constantAmountFoodPolicy = entity.component(ConstantAmountFoodPolicy.class);
             for (var worldDimensionsEntity : worldDimensionsEntities) {
@@ -67,7 +67,7 @@ final class ConstantAmountFoodSpawningSystem implements System {
                         worldPosition.x = random.nextInt(worldDimensions.width());
                         worldPosition.y = random.nextInt(worldDimensions.height());
                     } while (!worldPositions.add(worldPosition));
-                    spawnFood(worldEdit, worldPosition, constantAmountFoodPolicy, index);
+                    spawnFood(registryEdit, worldPosition, constantAmountFoodPolicy, index);
                 }
             }
         }
@@ -78,15 +78,15 @@ final class ConstantAmountFoodSpawningSystem implements System {
     }
 
     private void spawnFood(
-        WorldEdit worldEdit,
+        RegistryEdit registryEdit,
         WorldPosition worldPosition,
         ConstantAmountFoodPolicy constantAmountFoodPolicy,
         int index
     ) {
         var worldPositionIntent = new WorldPosition();
         worldPositionIntent.copy(worldPosition);
-        worldEdit.addComponents(
-            worldEdit.createEntity(),
+        registryEdit.addComponents(
+            registryEdit.createEntity(),
             new Food(1.0f - index * constantAmountFoodPolicy.growthStep()),
             new DirectedMovement(
                 constantAmountFoodPolicy.periodTurns(),

@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,32 +12,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class WarpingSystemTest {
 
-    private final World world = new World();
-    private final Iterable<Entity> warpedEntities = world.entities(
+    private final Registry registry = new Registry();
+    private final Iterable<Entity> warpedEntities = registry.entities(
         new Query().all(Warped.class, WorldPositionIntent.class)
     );
-    private final WarpingSystem warpingSystem = new WarpingSystem(world);
+    private final WarpingSystem warpingSystem = new WarpingSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(warpingSystem);
+        registry.addSystems(warpingSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WarpingEdge.RIGHT,
             new WorldPosition(1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPositionIntent(new WorldPosition(1, 1)),
             WarpingDestinationEdge.OPPOSITE
         );
-        world.addComponents(world.createEntity(), new WarpingPolicy(1, 1, 1));
-        world.addComponents(world.createEntity(), new WorldDimensions(4, 4));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WarpingPolicy(1, 1, 1));
+        registry.addComponents(registry.createEntity(), new WorldDimensions(4, 4));
+        registry.update(0);
         assertThat(warpedEntities).isEmpty();
     }
 
@@ -109,20 +109,20 @@ final class WarpingSystemTest {
         int expectedX,
         int expectedY
     ) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             warpingEdge,
             new WorldPosition(warpingEdgeX, warpingEdgeY)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPositionIntent(new WorldPosition(warpingEdgeX, warpingEdgeY)),
             warpingDestinationEdge
         );
-        world.addComponents(world.createEntity(), new WarpingPolicy(1, 1, layers));
-        world.addComponents(world.createEntity(), new WorldDimensions(10, 6));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WarpingPolicy(1, 1, layers));
+        registry.addComponents(registry.createEntity(), new WorldDimensions(10, 6));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(warpedEntities)
             .singleElement()
             .extracting(entity -> entity.component(WorldPositionIntent.class))

@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.ecs;
 
-public interface WorldEdit {
+public interface RegistryEdit {
 
     int createEntity();
 

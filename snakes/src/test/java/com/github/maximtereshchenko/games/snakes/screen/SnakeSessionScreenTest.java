@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.screen;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.ecs.System;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
 import com.github.maximtereshchenko.games.snakes.event.SessionEnded;
 import com.github.maximtereshchenko.games.snakes.session.Dead;
@@ -19,17 +19,17 @@ final class SnakeSessionScreenTest {
 
     private final Viewport viewport = mock();
     private final ApplicationEvents applicationEvents = mock();
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final System system = mock();
     private final SessionScreen snakeSessionScreen = new SessionScreen(
         Set.of(viewport),
         applicationEvents,
-        world
+        registry
     );
 
     @Test
     void givenNoDead_whenRender_thenSystemUpdated() {
-        world.addSystems(system);
+        registry.addSystems(system);
         snakeSessionScreen.render(1);
         verify(system).update(any(), eq(1.0f));
         verifyNoInteractions(applicationEvents);
@@ -37,9 +37,9 @@ final class SnakeSessionScreenTest {
 
     @Test
     void givenDead_whenRender_thenOnSessionEndCalled() {
-        world.addComponents(world.createEntity(), Dead.INSTANCE);
-        world.addComponents(world.createEntity(), new Statistics(Map.of()));
-        world.addSystems(system);
+        registry.addComponents(registry.createEntity(), Dead.INSTANCE);
+        registry.addComponents(registry.createEntity(), new Statistics(Map.of()));
+        registry.addSystems(system);
         snakeSessionScreen.render(1.0f);
         verify(system).update(any(), eq(1.0f));
         verify(applicationEvents)
@@ -62,7 +62,7 @@ final class SnakeSessionScreenTest {
 
     @Test
     void whenShow_thenSystemUpdated() {
-        world.addSystems(system);
+        registry.addSystems(system);
         snakeSessionScreen.show();
         verify(system).update(any(), eq(0.0f));
     }

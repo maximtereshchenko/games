@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class WarpedRelativeDirectionSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> directionIntentEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     Warped.class,
@@ -25,23 +25,23 @@ final class WarpedRelativeDirectionSystemTest {
                 )
         );
     private final WarpedRelativeDirectionSystem warpedRelativeDirectionSystem =
-        new WarpedRelativeDirectionSystem(world);
+        new WarpedRelativeDirectionSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(warpedRelativeDirectionSystem);
+        registry.addSystems(warpedRelativeDirectionSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Warped.INSTANCE,
             new WarpedRelativeDirection(RelativeDirection.LEFT),
             Direction.RIGHT,
             new DirectionIntent(Set.of(), Direction.RIGHT)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(directionIntentEntities)
             .singleElement()
             .extracting(
@@ -59,15 +59,15 @@ final class WarpedRelativeDirectionSystemTest {
 
     @Test
     void givenWarped_thenDirectionAndIntentUpdated() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Warped.INSTANCE,
             new WarpedRelativeDirection(RelativeDirection.LEFT),
             Direction.RIGHT,
             new DirectionIntent(Set.of(), Direction.RIGHT)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(directionIntentEntities)
             .singleElement()
             .extracting(

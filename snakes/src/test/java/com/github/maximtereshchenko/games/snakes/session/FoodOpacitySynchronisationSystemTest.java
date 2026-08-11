@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,25 +10,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodOpacitySynchronisationSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        world.entities(new Query().all(Food.class, Opacity.class));
+        registry.entities(new Query().all(Food.class, Opacity.class));
     private final FoodOpacitySynchronisationSystem foodOpacitySynchronisationSystem =
-        new FoodOpacitySynchronisationSystem(world);
+        new FoodOpacitySynchronisationSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(foodOpacitySynchronisationSystem);
+        registry.addSystems(foodOpacitySynchronisationSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(0.5f),
             new Opacity(1.0f)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodEntities)
             .singleElement()
             .extracting(entity -> entity.component(Opacity.class).value)
@@ -37,13 +37,13 @@ final class FoodOpacitySynchronisationSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenOpacitySynchronisedWithGrowth() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(0.5f),
             new Opacity(1.0f)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities)
             .singleElement()
             .extracting(entity -> entity.component(Opacity.class).value)
@@ -52,18 +52,18 @@ final class FoodOpacitySynchronisationSystemTest {
 
     @Test
     void givenManyFood_thenEachOpacitySynchronisedWithGrowth() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(0.3f),
             new Opacity(1.0f)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(0.7f),
             new Opacity(1.0f)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities)
             .extracting(entity -> entity.component(Opacity.class).value)
             .containsExactlyInAnyOrder(0.3f, 0.7f);

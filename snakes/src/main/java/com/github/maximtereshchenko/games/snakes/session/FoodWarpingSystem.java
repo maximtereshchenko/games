@@ -8,8 +8,8 @@ final class FoodWarpingSystem implements System {
     private final Iterable<Entity> foodWarpingEntities;
     private final Iterable<Entity> foodEntities;
 
-    FoodWarpingSystem(World world) {
-        this.foodWarpingEntities = world.entities(
+    FoodWarpingSystem(Registry registry) {
+        this.foodWarpingEntities = registry.entities(
             new Query()
                 .all(
                     FoodConsumed.class,
@@ -18,13 +18,13 @@ final class FoodWarpingSystem implements System {
                     WorldPositionIntent.class
                 )
         );
-        this.foodEntities = world.entities(
+        this.foodEntities = registry.entities(
             new Query().all(Food.class, WorldPosition.class)
         );
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var foodWarpingEntity : foodWarpingEntities) {
             for (var foodEntity : foodEntities) {
                 var worldPosition = foodEntity.component(WorldPosition.class);

@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,26 +12,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodGrowthIncrementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        world.entities(new Query().all(Food.class));
+        registry.entities(new Query().all(Food.class));
     private final FoodGrowthIncrementSystem foodGrowthIncrementSystem =
-        new FoodGrowthIncrementSystem(world);
+        new FoodGrowthIncrementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(foodGrowthIncrementSystem);
+        registry.addSystems(foodGrowthIncrementSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 0.3f)
         );
-        world.addComponents(world.createEntity(), new Food(0.5f));
-        world.addComponents(world.createEntity(), new FoodConsumed(1));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new Food(0.5f));
+        registry.addComponents(registry.createEntity(), new FoodConsumed(1));
+        registry.update(0);
         assertThat(foodEntities)
             .singleElement()
             .extracting(entity -> entity.component(Food.class).growth)
@@ -40,13 +40,13 @@ final class FoodGrowthIncrementSystemTest {
 
     @Test
     void givenNoFoodConsumed_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 0.3f)
         );
-        world.addComponents(world.createEntity(), new Food(0.5f));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new Food(0.5f));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities)
             .singleElement()
             .extracting(entity -> entity.component(Food.class).growth)
@@ -66,14 +66,14 @@ final class FoodGrowthIncrementSystemTest {
         float initialGrowth,
         float expectedGrowth
     ) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, growthStep)
         );
-        world.addComponents(world.createEntity(), new Food(initialGrowth));
-        world.addComponents(world.createEntity(), new FoodConsumed(1));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new Food(initialGrowth));
+        registry.addComponents(registry.createEntity(), new FoodConsumed(1));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities)
             .singleElement()
             .extracting(entity -> entity.component(Food.class).growth)

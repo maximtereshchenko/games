@@ -2,26 +2,26 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class FoodConsumptionSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> headEntities;
     private final Iterable<Entity> foodEntities;
 
-    FoodConsumptionSystem(World world) {
-        super(world);
-        this.headEntities = world.entities(
+    FoodConsumptionSystem(Registry registry) {
+        super(registry);
+        this.headEntities = registry.entities(
             new Query().all(Head.class, WorldPosition.class, Hitbox.class)
         );
-        this.foodEntities = world.entities(
+        this.foodEntities = registry.entities(
             new Query().all(Food.class, WorldPosition.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var headEntity : headEntities) {
             var headPosition = headEntity.component(WorldPosition.class);
             var hitboxRadius = headEntity.component(Hitbox.class).radius();
@@ -30,12 +30,12 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
                 var growth = foodEntity.component(Food.class).growth;
                 var foodPosition = foodEntity.component(WorldPosition.class);
                 if (isOne(growth) && touched(headPosition, foodPosition, hitboxRadius)) {
-                    worldEdit.deleteEntity(foodEntity.id());
+                    registryEdit.deleteEntity(foodEntity.id());
                     foodConsumed++;
                 }
             }
             if (foodConsumed != 0) {
-                worldEdit.addComponents(headEntity.id(), new FoodConsumed(foodConsumed));
+                registryEdit.addComponents(headEntity.id(), new FoodConsumed(foodConsumed));
             }
         }
     }

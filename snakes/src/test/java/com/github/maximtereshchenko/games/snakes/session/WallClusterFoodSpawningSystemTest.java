@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class WallClusterFoodSpawningSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        world.entities(new Query().all(Food.class));
+        registry.entities(new Query().all(Food.class));
     private final Iterable<Entity> wallEntities =
-        world.entities(new Query().all(Wall.class));
+        registry.entities(new Query().all(Wall.class));
     private final Iterable<Entity> spawnedFoodEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     Food.class,
@@ -28,7 +28,7 @@ final class WallClusterFoodSpawningSystemTest {
                 )
         );
     private final Iterable<Entity> spawnedWallEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     Wall.class,
@@ -38,52 +38,52 @@ final class WallClusterFoodSpawningSystemTest {
                 )
         );
     private final WallClusterFoodSpawningSystem wallClusterFoodSpawningSystem =
-        new WallClusterFoodSpawningSystem(world, new Random(0));
+        new WallClusterFoodSpawningSystem(registry, new Random(0));
 
     @BeforeEach
     void setUp() {
-        world.addSystems(wallClusterFoodSpawningSystem);
+        registry.addSystems(wallClusterFoodSpawningSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(wallEntities).isEmpty();
     }
 
     @Test
     void givenNoWallClusterFoodPolicy_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(wallEntities).isEmpty();
     }
 
     @Test
     void givenInitializing_thenClusterSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE,
             Initializing.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.update(0);
+        registry.update(0);
         assertCluster(
             new WorldPosition(1, 2),
             new WorldPosition(0, 1),
@@ -99,16 +99,16 @@ final class WallClusterFoodSpawningSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenClusterSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertCluster(
             new WorldPosition(1, 2),
             new WorldPosition(0, 1),
@@ -124,38 +124,38 @@ final class WallClusterFoodSpawningSystemTest {
 
     @Test
     void givenExistingFood_thenNoClusterSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).hasSize(1);
         assertThat(wallEntities).isEmpty();
     }
 
     @Test
     void givenOccupiedPosition_thenClusterSpawnedInFreeSpace() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.addComponents(world.createEntity(), new WorldPosition(1, 2));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WorldPosition(1, 2));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertCluster(
             new WorldPosition(3, 3),
             new WorldPosition(2, 2),
@@ -171,21 +171,21 @@ final class WallClusterFoodSpawningSystemTest {
 
     @Test
     void givenBackground_thenClusterSpawnedOnBackground() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(5, 5)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPosition(1, 2),
             Background.INSTANCE
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertCluster(
             new WorldPosition(1, 2),
             new WorldPosition(0, 1),
@@ -201,16 +201,16 @@ final class WallClusterFoodSpawningSystemTest {
 
     @Test
     void givenNotEnoughSpace_thenNoClusterSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             WallClusterFoodPolicy.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(3, 3)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(wallEntities).isEmpty();
     }

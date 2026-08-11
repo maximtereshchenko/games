@@ -2,8 +2,8 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class SegmentRemainingTurnsIncrementSystem extends TurnBasedSystem {
 
@@ -11,21 +11,21 @@ final class SegmentRemainingTurnsIncrementSystem extends TurnBasedSystem {
     private final Iterable<Entity> segmentDefinitionEntities;
     private final Iterable<Entity> segmentEntities;
 
-    SegmentRemainingTurnsIncrementSystem(World world) {
-        super(world);
-        this.foodConsumedEntities = world.entities(
+    SegmentRemainingTurnsIncrementSystem(Registry registry) {
+        super(registry);
+        this.foodConsumedEntities = registry.entities(
             new Query().all(FoodConsumed.class)
         );
-        this.segmentDefinitionEntities = world.entities(
+        this.segmentDefinitionEntities = registry.entities(
             new Query().all(SegmentPolicy.class)
         );
-        this.segmentEntities = world.entities(
+        this.segmentEntities = registry.entities(
             new Query().all(Segment.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var foodConsumedEntity : foodConsumedEntities) {
             var foodConsumed = foodConsumedEntity.component(FoodConsumed.class)
                 .value();

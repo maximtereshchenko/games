@@ -18,32 +18,32 @@ final class WallClusterFoodSpawningSystem implements System {
     private final Iterable<Entity> worldDimensionsEntities;
     private final Random random;
 
-    WallClusterFoodSpawningSystem(World world, Random random) {
-        this.turnStartedEntities = world.entities(
+    WallClusterFoodSpawningSystem(Registry registry, Random random) {
+        this.turnStartedEntities = registry.entities(
             new Query().all(TurnStarted.class)
         );
-        this.initializingEntities = world.entities(
+        this.initializingEntities = registry.entities(
             new Query().all(WallClusterFoodPolicy.class, Initializing.class)
         );
-        this.wallClusterFoodPolicyEntities = world.entities(
+        this.wallClusterFoodPolicyEntities = registry.entities(
             new Query().all(WallClusterFoodPolicy.class)
         );
-        this.nonBackgroundEntities = world.entities(
+        this.nonBackgroundEntities = registry.entities(
             new Query()
                 .all(WorldPosition.class)
                 .none(Background.class)
         );
-        this.foodEntities = world.entities(
+        this.foodEntities = registry.entities(
             new Query().all(Food.class)
         );
-        this.worldDimensionsEntities = world.entities(
+        this.worldDimensionsEntities = registry.entities(
             new Query().all(WorldDimensions.class)
         );
         this.random = random;
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         if ((initializingEntities.iterator().hasNext() || turnStartedEntities.iterator().hasNext()) && !foodEntities.iterator().hasNext()) {
             for (var _ : wallClusterFoodPolicyEntities) {
                 for (var worldDimensionsEntity : worldDimensionsEntities) {
@@ -80,16 +80,16 @@ final class WallClusterFoodSpawningSystem implements System {
                             for (var columnIndex = 0; columnIndex < row.length; columnIndex++) {
                                 var worldPosition = row[columnIndex];
                                 if (rowIndex == 1 && columnIndex == 1) {
-                                    worldEdit.addComponents(
-                                        worldEdit.createEntity(),
+                                    registryEdit.addComponents(
+                                        registryEdit.createEntity(),
                                         Wall.INSTANCE,
                                         worldPosition,
                                         PaletteColor.WALL,
                                         new Opacity(1)
                                     );
                                 } else {
-                                    worldEdit.addComponents(
-                                        worldEdit.createEntity(),
+                                    registryEdit.addComponents(
+                                        registryEdit.createEntity(),
                                         new Food(1),
                                         worldPosition,
                                         PaletteColor.FOOD,

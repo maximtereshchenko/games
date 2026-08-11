@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,9 +14,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class DirectedMovementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> movingEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     DirectedMovement.class,
@@ -25,23 +25,23 @@ final class DirectedMovementSystemTest {
                 )
         );
     private final DirectedMovementSystem directedMovementSystem =
-        new DirectedMovementSystem(world);
+        new DirectedMovementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(directedMovementSystem);
+        registry.addSystems(directedMovementSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         var intent = new WorldPosition(0, 0);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new DirectedMovement(2, 1),
             Direction.RIGHT,
             new WorldPositionIntent(intent)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(movingEntities)
             .singleElement()
             .extracting(
@@ -60,14 +60,14 @@ final class DirectedMovementSystemTest {
     @Test
     void givenPositiveRemainingTurns_thenRemainingTurnsDecremented() {
         var intent = new WorldPosition(0, 0);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new DirectedMovement(2, 2),
             Direction.RIGHT,
             new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(movingEntities)
             .singleElement()
             .extracting(
@@ -100,14 +100,14 @@ final class DirectedMovementSystemTest {
         int expectedY
     ) {
         var intent = new WorldPosition(initialX, initialY);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new DirectedMovement(2, 1),
             direction,
             new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(movingEntities)
             .singleElement()
             .extracting(

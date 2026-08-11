@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,25 +10,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class AirSupplyDecrementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> airSupplyEntities =
-        world.entities(new Query().all(AirSupply.class));
+        registry.entities(new Query().all(AirSupply.class));
     private final Iterable<Entity> deadEntities =
-        world.entities(new Query().all(Dead.class));
+        registry.entities(new Query().all(Dead.class));
     private final Iterable<Entity> deadAirSupplyEntities =
-        world.entities(new Query().all(AirSupply.class, Dead.class));
+        registry.entities(new Query().all(AirSupply.class, Dead.class));
     private final AirSupplyDecrementSystem airSupplyDecrementSystem =
-        new AirSupplyDecrementSystem(world);
+        new AirSupplyDecrementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(airSupplyDecrementSystem);
+        registry.addSystems(airSupplyDecrementSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), new AirSupply(2, 1));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new AirSupply(2, 1));
+        registry.update(0);
         assertThat(airSupplyEntities)
             .singleElement()
             .extracting(entity -> entity.component(AirSupply.class))
@@ -39,9 +39,9 @@ final class AirSupplyDecrementSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenAirSupplyDecremented() {
-        world.addComponents(world.createEntity(), new AirSupply(2, 2));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new AirSupply(2, 2));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(airSupplyEntities)
             .singleElement()
             .extracting(entity -> entity.component(AirSupply.class))
@@ -52,9 +52,9 @@ final class AirSupplyDecrementSystemTest {
 
     @Test
     void givenAirSupplyReachesZero_thenDeadAdded() {
-        world.addComponents(world.createEntity(), new AirSupply(2, 1));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new AirSupply(2, 1));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(deadAirSupplyEntities)
             .singleElement()
             .extracting(entity -> entity.component(AirSupply.class))

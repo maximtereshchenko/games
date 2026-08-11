@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,11 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class WallSpawningSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> wallEntities =
-        world.entities(new Query().all(Wall.class));
+        registry.entities(new Query().all(Wall.class));
     private final Iterable<Entity> spawnedWallEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     Wall.class,
@@ -25,47 +25,47 @@ final class WallSpawningSystemTest {
                     Opacity.class
                 )
         );
-    private final WallSpawningSystem wallSpawningSystem = new WallSpawningSystem(world);
+    private final WallSpawningSystem wallSpawningSystem = new WallSpawningSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(wallSpawningSystem);
+        registry.addSystems(wallSpawningSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), WallPolicy.INSTANCE);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(registry.createEntity(), WallPolicy.INSTANCE);
+        registry.addComponents(
+            registry.createEntity(),
             new FoodConsumed(1),
             new WorldPosition(5, 5)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(wallEntities).isEmpty();
     }
 
     @Test
     void givenNoWallPolicy_thenNoWallsCreated() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new FoodConsumed(1),
             new WorldPosition(5, 5)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(wallEntities).isEmpty();
     }
 
     @Test
     void givenWallPolicyAndFoodConsumed_thenWallCreated() {
-        world.addComponents(world.createEntity(), WallPolicy.INSTANCE);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(registry.createEntity(), WallPolicy.INSTANCE);
+        registry.addComponents(
+            registry.createEntity(),
             new FoodConsumed(1),
             new WorldPosition(5, 5)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(spawnedWallEntities)
             .singleElement()
             .extracting(

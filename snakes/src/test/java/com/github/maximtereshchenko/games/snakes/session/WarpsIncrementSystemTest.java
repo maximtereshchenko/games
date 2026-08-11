@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,25 +12,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class WarpsIncrementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> statisticsEntities =
-        world.entities(new Query().all(Statistics.class));
+        registry.entities(new Query().all(Statistics.class));
     private final WarpsIncrementSystem warpsIncrementSystem =
-        new WarpsIncrementSystem(world);
+        new WarpsIncrementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(warpsIncrementSystem);
+        registry.addSystems(warpsIncrementSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Warped.INSTANCE,
             new Statistics(Map.of())
         );
-        world.update(0);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)
@@ -45,13 +45,13 @@ final class WarpsIncrementSystemTest {
 
     @Test
     void givenWarped_thenWarpsIncremented() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Warped.INSTANCE,
             new Statistics(Map.of(SessionMetric.WARPS, 1))
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)
@@ -66,9 +66,9 @@ final class WarpsIncrementSystemTest {
 
     @Test
     void givenNoWarped_thenWarpsNotIncremented() {
-        world.addComponents(world.createEntity(), new Statistics(Map.of()));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new Statistics(Map.of()));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)

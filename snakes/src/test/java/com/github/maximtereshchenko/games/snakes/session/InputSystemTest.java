@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -20,10 +20,10 @@ import static org.mockito.Mockito.when;
 
 final class InputSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> directionIntentEntities =
-        world.entities(new Query().all(DirectionIntent.class));
-    private final InputSystem inputSystem = new InputSystem(world);
+        registry.entities(new Query().all(DirectionIntent.class));
+    private final InputSystem inputSystem = new InputSystem(registry);
 
     private static Stream<Arguments> directionChangedArguments() {
         return Stream.of(
@@ -36,7 +36,7 @@ final class InputSystemTest {
 
     @BeforeEach
     void setUp() {
-        world.addSystems(inputSystem);
+        registry.addSystems(inputSystem);
         Gdx.input = mock();
     }
 
@@ -46,12 +46,12 @@ final class InputSystemTest {
         int keyPressed,
         Direction expected
     ) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new DirectionIntent(Set.of(), Direction.RIGHT)
         );
         when(Gdx.input.isKeyPressed(keyPressed)).thenReturn(true);
-        world.update(0);
+        registry.update(0);
         assertThat(directionIntentEntities)
             .singleElement()
             .extracting(entity -> entity.component(DirectionIntent.class))

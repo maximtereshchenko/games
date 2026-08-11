@@ -7,14 +7,14 @@ final class FoodConsumedIncrementSystem implements System {
 
     private final Iterable<Entity> statisticsEntities;
 
-    FoodConsumedIncrementSystem(World world) {
-        this.statisticsEntities = world.entities(
+    FoodConsumedIncrementSystem(Registry registry) {
+        this.statisticsEntities = registry.entities(
             new Query().all(FoodConsumed.class, Statistics.class)
         );
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var statisticsEntity : statisticsEntities) {
             var sessionStatistics = statisticsEntity.component(Statistics.class).value;
             sessionStatistics.put(

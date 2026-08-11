@@ -2,8 +2,8 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class FoodGrowthIncrementSystem extends TurnBasedSystem {
 
@@ -11,21 +11,21 @@ final class FoodGrowthIncrementSystem extends TurnBasedSystem {
     private final Iterable<Entity> constantAmountFoodPolicyEntities;
     private final Iterable<Entity> foodEntities;
 
-    FoodGrowthIncrementSystem(World world) {
-        super(world);
-        this.foodConsumedEntities = world.entities(
+    FoodGrowthIncrementSystem(Registry registry) {
+        super(registry);
+        this.foodConsumedEntities = registry.entities(
             new Query().all(FoodConsumed.class)
         );
-        this.constantAmountFoodPolicyEntities = world.entities(
+        this.constantAmountFoodPolicyEntities = registry.entities(
             new Query().all(ConstantAmountFoodPolicy.class)
         );
-        this.foodEntities = world.entities(
+        this.foodEntities = registry.entities(
             new Query().all(Food.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var _ : foodConsumedEntities) {
             for (var constantAmountFoodPolicyEntity : constantAmountFoodPolicyEntities) {
                 var constantAmountFoodPolicy = constantAmountFoodPolicyEntity.component(

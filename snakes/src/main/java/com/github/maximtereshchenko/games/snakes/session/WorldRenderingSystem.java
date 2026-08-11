@@ -19,12 +19,12 @@ final class WorldRenderingSystem implements System {
     private final Mode mode;
 
     WorldRenderingSystem(
-        World world,
+        Registry registry,
         Viewport viewport,
         ShapeRenderer shapeRenderer,
         Mode mode
     ) {
-        this.backgroundEntities = world.entities(
+        this.backgroundEntities = registry.entities(
             new Query()
                 .all(
                     PaletteColor.class,
@@ -33,7 +33,7 @@ final class WorldRenderingSystem implements System {
                     Background.class
                 )
         );
-        this.foregroundEntities = world.entities(
+        this.foregroundEntities = registry.entities(
             new Query()
                 .all(PaletteColor.class, Opacity.class, WorldPosition.class)
                 .none(Background.class)
@@ -44,7 +44,7 @@ final class WorldRenderingSystem implements System {
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         ScreenUtils.clear(Color.BLACK);

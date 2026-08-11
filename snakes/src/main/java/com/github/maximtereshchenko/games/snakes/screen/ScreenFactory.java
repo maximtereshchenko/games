@@ -130,7 +130,7 @@ public final class ScreenFactory {
         return new SessionScreen(
             Set.of(gameViewport, interfaceViewport),
             applicationEvents,
-            sessionFactory.world(
+            sessionFactory.registry(
                 mode,
                 gameViewport,
                 interfaceViewport

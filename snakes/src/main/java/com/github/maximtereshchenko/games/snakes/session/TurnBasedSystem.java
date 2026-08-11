@@ -7,18 +7,18 @@ abstract class TurnBasedSystem implements System {
 
     private final Iterable<Entity> turnStartedEntities;
 
-    TurnBasedSystem(World world) {
-        this.turnStartedEntities = world.entities(
+    TurnBasedSystem(Registry registry) {
+        this.turnStartedEntities = registry.entities(
             new Query().all(TurnStarted.class)
         );
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         if (turnStartedEntities.iterator().hasNext()) {
-            onTurnStarted(worldEdit);
+            onTurnStarted(registryEdit);
         }
     }
 
-    abstract void onTurnStarted(WorldEdit worldEdit);
+    abstract void onTurnStarted(RegistryEdit registryEdit);
 }

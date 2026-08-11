@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,35 +14,35 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodConsumedInterfaceElementSynchronisationSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> localizableInterfaceTextEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(FoodConsumedInterfaceElement.class, LocalizableInterfaceText.class)
         );
     private final FoodConsumedInterfaceElementSynchronisationSystem system =
-        new FoodConsumedInterfaceElementSynchronisationSystem(world);
+        new FoodConsumedInterfaceElementSynchronisationSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(system);
+        registry.addSystems(system);
     }
 
     @Test
     void whenUpdated_thenFoodConsumedAddedToVariables() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Statistics(Map.of(SessionMetric.FOOD_CONSUMED, 4))
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             FoodConsumedInterfaceElement.INSTANCE,
             new LocalizableInterfaceText(
                 "screens.session.food.consumed.template",
                 new ArrayList<>()
             )
         );
-        world.update(0);
+        registry.update(0);
         assertThat(localizableInterfaceTextEntities)
             .singleElement()
             .extracting(entity -> entity.component(LocalizableInterfaceText.class).variables())

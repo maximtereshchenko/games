@@ -2,22 +2,22 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class WorldPositionIntentCommitSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> worldPositionIntentEntities;
 
-    WorldPositionIntentCommitSystem(World world) {
-        super(world);
-        this.worldPositionIntentEntities = world.entities(
+    WorldPositionIntentCommitSystem(Registry registry) {
+        super(registry);
+        this.worldPositionIntentEntities = registry.entities(
             new Query().all(WorldPosition.class, WorldPositionIntent.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var entity : worldPositionIntentEntities) {
             entity.component(WorldPosition.class)
                 .copy(entity.component(WorldPositionIntent.class).value());

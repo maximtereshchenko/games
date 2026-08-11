@@ -2,16 +2,16 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class SidewaysMovementSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> sidewaysMovementEntities;
 
-    SidewaysMovementSystem(World world) {
-        super(world);
-        this.sidewaysMovementEntities = world.entities(
+    SidewaysMovementSystem(Registry registry) {
+        super(registry);
+        this.sidewaysMovementEntities = registry.entities(
             new Query()
                 .all(
                     SidewaysMovement.class,
@@ -22,7 +22,7 @@ final class SidewaysMovementSystem extends TurnBasedSystem {
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var entity : sidewaysMovementEntities) {
             var sidewaysMovement = entity.component(SidewaysMovement.class);
             sidewaysMovement.remainingTurns--;

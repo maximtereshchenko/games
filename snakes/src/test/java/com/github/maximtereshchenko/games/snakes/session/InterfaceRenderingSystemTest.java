@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,11 +22,11 @@ final class InterfaceRenderingSystemTest {
     private final SpriteBatch spriteBatch = mock();
     private final BitmapFont bitmapFont = mock();
     private final ScaledFont scaledFont = mock();
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Mode mode = mock();
     private final InterfaceRenderingSystem interfaceRenderingSystem =
         new InterfaceRenderingSystem(
-            world,
+            registry,
             viewport,
             spriteBatch,
             scaledFont,
@@ -35,7 +35,7 @@ final class InterfaceRenderingSystemTest {
 
     @BeforeEach
     void setUp() {
-        world.addSystems(interfaceRenderingSystem);
+        registry.addSystems(interfaceRenderingSystem);
         doAnswer(
             invocation -> {
                 Consumer<BitmapFont> consumer = invocation.getArgument(1);
@@ -51,13 +51,13 @@ final class InterfaceRenderingSystemTest {
     void givenInterfaceEntity_thenRendered() {
         when(viewport.getCamera()).thenReturn(camera);
         when(mode.palette()).thenReturn(Map.of(PaletteColor.INTERFACE, Color.BLACK));
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new InterfaceText(2, "score"),
             new InterfacePosition(10, 20),
             PaletteColor.INTERFACE
         );
-        world.update(0);
+        registry.update(0);
         verify(viewport).apply();
         verify(viewport).getCamera();
         verify(spriteBatch).setProjectionMatrix(camera.combined);

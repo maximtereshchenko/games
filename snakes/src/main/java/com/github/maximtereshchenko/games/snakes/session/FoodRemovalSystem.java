@@ -8,21 +8,21 @@ final class FoodRemovalSystem implements System {
     private final Iterable<Entity> foodWarpingEntities;
     private final Iterable<Entity> foodEntities;
 
-    FoodRemovalSystem(World world) {
-        this.foodWarpingEntities = world.entities(
+    FoodRemovalSystem(Registry registry) {
+        this.foodWarpingEntities = registry.entities(
             new Query()
                 .all(FoodConsumed.class, FoodWarping.class)
         );
-        this.foodEntities = world.entities(
+        this.foodEntities = registry.entities(
             new Query().all(Food.class)
         );
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var _ : foodWarpingEntities) {
             for (var foodEntity : foodEntities) {
-                worldEdit.deleteEntity(foodEntity.id());
+                registryEdit.deleteEntity(foodEntity.id());
             }
         }
     }

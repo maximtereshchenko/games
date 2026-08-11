@@ -2,34 +2,34 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class SegmentSpawningSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> headEntities;
     private final Iterable<Entity> segmentDefinitionEntities;
 
-    SegmentSpawningSystem(World world) {
-        super(world);
-        this.headEntities = world.entities(
+    SegmentSpawningSystem(Registry registry) {
+        super(registry);
+        this.headEntities = registry.entities(
             new Query()
                 .all(Head.class, WorldPosition.class)
         );
-        this.segmentDefinitionEntities = world.entities(
+        this.segmentDefinitionEntities = registry.entities(
             new Query().all(SegmentPolicy.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var headEntity : headEntities) {
             var worldPosition = headEntity.component(WorldPosition.class);
             for (var segmentDefinitionEntity : segmentDefinitionEntities) {
                 var segmentWorldPosition = new WorldPosition();
                 segmentWorldPosition.copy(worldPosition);
-                worldEdit.addComponents(
-                    worldEdit.createEntity(),
+                registryEdit.addComponents(
+                    registryEdit.createEntity(),
                     new Segment(
                         segmentDefinitionEntity.component(SegmentPolicy.class)
                             .durationTurns

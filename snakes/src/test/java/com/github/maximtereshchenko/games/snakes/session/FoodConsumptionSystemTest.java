@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,54 +12,54 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodConsumptionSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        world.entities(new Query().all(Food.class));
+        registry.entities(new Query().all(Food.class));
     private final Iterable<Entity> foodConsumedEntities =
-        world.entities(new Query().all(FoodConsumed.class));
+        registry.entities(new Query().all(FoodConsumed.class));
     private final Iterable<Entity> headFoodConsumedEntities =
-        world.entities(new Query().all(Head.class, FoodConsumed.class));
+        registry.entities(new Query().all(Head.class, FoodConsumed.class));
     private final FoodConsumptionSystem foodConsumptionSystem =
-        new FoodConsumptionSystem(world);
+        new FoodConsumptionSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(foodConsumptionSystem);
+        registry.addSystems(foodConsumptionSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0),
             new Hitbox(0)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(0, 0)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodEntities).hasSize(1);
         assertThat(foodConsumedEntities).isEmpty();
     }
 
     @Test
     void givenHeadOnFood_thenFoodConsumed() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0),
             new Hitbox(0)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(headFoodConsumedEntities)
             .singleElement()
@@ -82,19 +82,19 @@ final class FoodConsumptionSystemTest {
                     """
     )
     void givenWideHitbox_thenFoodConsumed(int x, int y) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(1, 1),
             new Hitbox(1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(x, y)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(headFoodConsumedEntities)
             .singleElement()
@@ -104,57 +104,57 @@ final class FoodConsumptionSystemTest {
 
     @Test
     void givenHeadNotOnFood_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0),
             new Hitbox(0)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(1, 1)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).hasSize(1);
         assertThat(foodConsumedEntities).isEmpty();
     }
 
     @Test
     void givenFoodGrowthNotOne_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(1, 1),
             new Hitbox(0)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(0.9f),
             new WorldPosition(1, 1)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).hasSize(1);
         assertThat(foodConsumedEntities).isEmpty();
     }
 
     @Test
     void givenFoodGrowthAlmostOne_thenFoodConsumed() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0),
             new Hitbox(0)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(0.9999f),
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(headFoodConsumedEntities)
             .singleElement()
@@ -164,24 +164,24 @@ final class FoodConsumptionSystemTest {
 
     @Test
     void givenHeadOnManyFood_thenManyFoodConsumed() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0),
             new Hitbox(1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(0, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(1, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
         assertThat(headFoodConsumedEntities)
             .singleElement()

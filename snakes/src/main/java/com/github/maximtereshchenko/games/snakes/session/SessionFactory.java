@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
@@ -34,80 +34,80 @@ public final class SessionFactory {
         this.assets = assets;
     }
 
-    public World world(
+    public Registry registry(
         Mode mode,
         Viewport gameViewport,
         Viewport interfaceViewport
     ) {
-        var world = new World();
+        var registry = new Registry();
         for (var components : configurationReader.entities(mode)) {
-            world.addComponents(world.createEntity(), components);
+            registry.addComponents(registry.createEntity(), components);
         }
         var scaledFont = new ScaledFont(assetManager.get(assets.bitmapFont()));
         var random = ThreadLocalRandom.current();
-        world.addSystems(
-            new InputSystem(world),
-            new TurnStartSystem(world),
-            new SegmentRemainingTurnsDecrementSystem(world),
-            new DirectionIntentSystem(world),
-            new LeftTurnsIncrementSystem(world),
-            new DirectionIntentCommitSystem(world),
-            new DirectedMovementSystem(world),
-            new SidewaysMovementSystem(world),
-            new WarpingSystem(world),
-            new WarpedRelativeDirectionSystem(world),
-            new WarpsIncrementSystem(world),
-            new HeadCollisionSystem(world),
-            new FoodCollisionSystem(world),
-            new SegmentSpawningSystem(world),
-            new WorldPositionIntentCommitSystem(world),
-            new FoodConsumptionSystem(world),
-            new FoodConsumedIncrementSystem(world),
-            new WallSpawningSystem(world),
-            new WarpingEdgeSpawningSystem(world),
-            new FoodGrowthIncrementSystem(world),
-            new FoodWarpingSystem(world),
-            new FoodRemovalSystem(world),
-            new ConstantAmountFoodSpawningSystem(world, random),
-            new WallClusterFoodSpawningSystem(world, random),
-            new SegmentRemainingTurnsIncrementSystem(world),
-            new AirSupplyDecrementSystem(world),
-            new AirSupplyResetSystem(world),
-            new TurnLengthScalingSystem(world),
-            new FoodOpacitySynchronisationSystem(world),
-            new AirSupplyInterfaceSynchronisationSystem(world),
-            new FoodConsumedInterfaceElementSynchronisationSystem(world),
+        registry.addSystems(
+            new InputSystem(registry),
+            new TurnStartSystem(registry),
+            new SegmentRemainingTurnsDecrementSystem(registry),
+            new DirectionIntentSystem(registry),
+            new LeftTurnsIncrementSystem(registry),
+            new DirectionIntentCommitSystem(registry),
+            new DirectedMovementSystem(registry),
+            new SidewaysMovementSystem(registry),
+            new WarpingSystem(registry),
+            new WarpedRelativeDirectionSystem(registry),
+            new WarpsIncrementSystem(registry),
+            new HeadCollisionSystem(registry),
+            new FoodCollisionSystem(registry),
+            new SegmentSpawningSystem(registry),
+            new WorldPositionIntentCommitSystem(registry),
+            new FoodConsumptionSystem(registry),
+            new FoodConsumedIncrementSystem(registry),
+            new WallSpawningSystem(registry),
+            new WarpingEdgeSpawningSystem(registry),
+            new FoodGrowthIncrementSystem(registry),
+            new FoodWarpingSystem(registry),
+            new FoodRemovalSystem(registry),
+            new ConstantAmountFoodSpawningSystem(registry, random),
+            new WallClusterFoodSpawningSystem(registry, random),
+            new SegmentRemainingTurnsIncrementSystem(registry),
+            new AirSupplyDecrementSystem(registry),
+            new AirSupplyResetSystem(registry),
+            new TurnLengthScalingSystem(registry),
+            new FoodOpacitySynchronisationSystem(registry),
+            new AirSupplyInterfaceSynchronisationSystem(registry),
+            new FoodConsumedInterfaceElementSynchronisationSystem(registry),
             new LocalizationSystem(
-                world,
+                registry,
                 assetManager.get(assets.gameBundle())
             ),
             new InterfaceTextCenterAlignmentSystem(
-                world,
+                registry,
                 interfaceViewport,
                 scaledFont,
                 new GlyphLayout()
             ),
             new TagRemovalSystem(
-                world,
+                registry,
                 Initializing.class,
                 TurnStarted.class,
                 FoodConsumed.class,
                 Warped.class
             ),
             new WorldRenderingSystem(
-                world,
+                registry,
                 gameViewport,
                 shapeRenderer,
                 mode
             ),
             new InterfaceRenderingSystem(
-                world,
+                registry,
                 interfaceViewport,
                 spriteBatch,
                 scaledFont,
                 mode
             )
         );
-        return world;
+        return registry;
     }
 }

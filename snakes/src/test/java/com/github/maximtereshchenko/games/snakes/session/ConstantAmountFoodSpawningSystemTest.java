@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class ConstantAmountFoodSpawningSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        world.entities(new Query().all(Food.class));
+        registry.entities(new Query().all(Food.class));
     private final Iterable<Entity> spawnedFoodEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     Food.class,
@@ -30,41 +30,41 @@ final class ConstantAmountFoodSpawningSystemTest {
                 )
         );
     private final Iterable<Entity> foodWithPositionEntities =
-        world.entities(new Query().all(Food.class, WorldPosition.class));
+        registry.entities(new Query().all(Food.class, WorldPosition.class));
     private final ConstantAmountFoodSpawningSystem constantAmountFoodSpawningSystem =
-        new ConstantAmountFoodSpawningSystem(world, new Random(0));
+        new ConstantAmountFoodSpawningSystem(registry, new Random(0));
 
     @BeforeEach
     void setUp() {
-        world.addSystems(constantAmountFoodSpawningSystem);
+        registry.addSystems(constantAmountFoodSpawningSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(2, 2)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
     }
 
     @Test
     void givenInitializing_thenFoodSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 1),
             Initializing.INSTANCE
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(2, 2)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(spawnedFoodEntities)
             .singleElement()
             .extracting(
@@ -88,16 +88,16 @@ final class ConstantAmountFoodSpawningSystemTest {
 
     @Test
     void givenTurnStartedEvent_thenFoodSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(2, 2)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(spawnedFoodEntities)
             .singleElement()
             .extracting(
@@ -121,41 +121,41 @@ final class ConstantAmountFoodSpawningSystemTest {
 
     @Test
     void givenEnoughFood_thenNoFoodSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(2, 2)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).hasSize(1);
     }
 
     @Test
     void givenSomeFood_thenRemainingFoodSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 5, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(2, 2)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new Food(1),
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities)
             .extracting(entity -> entity.component(WorldPosition.class))
             .containsExactlyInAnyOrder(
@@ -168,17 +168,17 @@ final class ConstantAmountFoodSpawningSystemTest {
 
     @Test
     void givenOccupiedPosition_thenFoodSpawnedInFreeSpace() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(1, 2)
         );
-        world.addComponents(world.createEntity(), new WorldPosition(0, 0));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WorldPosition(0, 0));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodWithPositionEntities)
             .singleElement()
             .extracting(entity -> entity.component(WorldPosition.class))
@@ -187,21 +187,21 @@ final class ConstantAmountFoodSpawningSystemTest {
 
     @Test
     void givenBackground_thenFoodSpawnedOnBackground() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPosition(0, 0),
             Background.INSTANCE
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodWithPositionEntities)
             .singleElement()
             .extracting(entity -> entity.component(WorldPosition.class))
@@ -210,21 +210,21 @@ final class ConstantAmountFoodSpawningSystemTest {
 
     @Test
     void givenNotEnoughSpace_thenNoFoodSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new ConstantAmountFoodPolicy(1, Direction.RIGHT, 2, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldDimensions(1, 1)
         );
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(foodEntities).isEmpty();
     }
 }

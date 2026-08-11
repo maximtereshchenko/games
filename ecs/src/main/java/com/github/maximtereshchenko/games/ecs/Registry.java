@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public final class World implements WorldEdit {
+public final class Registry implements RegistryEdit {
 
     private static final int[] EMPTY_INT_ARRAY = new int[0];
     private static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
@@ -16,10 +16,10 @@ public final class World implements WorldEdit {
     private final Table root;
     private final Map<ViewMask, View> views;
     private final List<System> systems;
-    private final BatchingWorldEdit batchingWorldEdit;
+    private final BatchingRegistryEdit batchingRegistryEdit;
     private final BitSet bitSet;
 
-    public World() {
+    public Registry() {
         this.newEntityIds = new NewEntityIds();
         this.componentTypeIdRegistry = new ComponentTypeIdRegistry();
         this.tables = new HashMap<>();
@@ -27,7 +27,7 @@ public final class World implements WorldEdit {
         this.root = new Table(new BitSet());
         this.views = new HashMap<>();
         this.systems = new ArrayList<>();
-        this.batchingWorldEdit = new BatchingWorldEdit(this, newEntityIds);
+        this.batchingRegistryEdit = new BatchingRegistryEdit(this, newEntityIds);
         this.bitSet = new BitSet();
         tables.put(root.mask(), root);
     }
@@ -96,8 +96,8 @@ public final class World implements WorldEdit {
 
     public void update(float deltaTimeSeconds) {
         for (var system : systems) {
-            system.update(batchingWorldEdit, deltaTimeSeconds);
-            batchingWorldEdit.flush();
+            system.update(batchingRegistryEdit, deltaTimeSeconds);
+            batchingRegistryEdit.flush();
         }
     }
 

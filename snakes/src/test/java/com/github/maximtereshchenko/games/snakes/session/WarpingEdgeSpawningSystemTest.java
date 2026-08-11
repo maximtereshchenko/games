@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,11 +18,11 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 final class WarpingEdgeSpawningSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> warpingEdgeEntities =
-        world.entities(new Query().all(WarpingEdge.class));
+        registry.entities(new Query().all(WarpingEdge.class));
     private final Iterable<Entity> spawnedWarpingEdgeEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     WarpingEdge.class,
@@ -32,9 +32,9 @@ final class WarpingEdgeSpawningSystemTest {
                 )
         );
     private final Iterable<Entity> warpingPolicyEntities =
-        world.entities(new Query().all(WarpingPolicy.class));
+        registry.entities(new Query().all(WarpingPolicy.class));
     private final WarpingEdgeSpawningSystem warpingEdgeSpawningSystem =
-        new WarpingEdgeSpawningSystem(world);
+        new WarpingEdgeSpawningSystem(registry);
 
     private static Stream<Arguments> warpingEdges() {
         return Stream.of(
@@ -106,23 +106,23 @@ final class WarpingEdgeSpawningSystemTest {
 
     @BeforeEach
     void setUp() {
-        world.addSystems(warpingEdgeSpawningSystem);
+        registry.addSystems(warpingEdgeSpawningSystem);
     }
 
     @Test
     void givenNoFoodConsumedAndNotInitializing_thenNoWarpingEdges() {
-        world.addComponents(world.createEntity(), new WarpingPolicy(1, 1, 0));
-        world.addComponents(world.createEntity(), new WorldDimensions(7, 7));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WarpingPolicy(1, 1, 0));
+        registry.addComponents(registry.createEntity(), new WorldDimensions(7, 7));
+        registry.update(0);
         assertThat(warpingEdgeEntities).isEmpty();
     }
 
     @Test
     void givenFoodConsumedButPeriodNotReached_thenNoWarpingEdges() {
-        world.addComponents(world.createEntity(), new WarpingPolicy(2, 2, 0));
-        world.addComponents(world.createEntity(), new WorldDimensions(7, 7));
-        world.addComponents(world.createEntity(), new FoodConsumed(1));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WarpingPolicy(2, 2, 0));
+        registry.addComponents(registry.createEntity(), new WorldDimensions(7, 7));
+        registry.addComponents(registry.createEntity(), new FoodConsumed(1));
+        registry.update(0);
         assertThat(warpingEdgeEntities).isEmpty();
         assertThat(warpingPolicyEntities)
             .singleElement()
@@ -139,10 +139,10 @@ final class WarpingEdgeSpawningSystemTest {
         int layers,
         Map<WorldPosition, WarpingEdge> expectedWarpingEdges
     ) {
-        world.addComponents(world.createEntity(), new WarpingPolicy(1, 1, layers));
-        world.addComponents(world.createEntity(), new WorldDimensions(7, 7));
-        world.addComponents(world.createEntity(), new FoodConsumed(1));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WarpingPolicy(1, 1, layers));
+        registry.addComponents(registry.createEntity(), new WorldDimensions(7, 7));
+        registry.addComponents(registry.createEntity(), new FoodConsumed(1));
+        registry.update(0);
         assertThat(spawnedWarpingEdgeEntities).hasSize(expectedWarpingEdges.size());
         for (var entity : spawnedWarpingEdgeEntities) {
             assertThat(entity.component(PaletteColor.class)).isEqualTo(PaletteColor.WARP);
@@ -163,13 +163,13 @@ final class WarpingEdgeSpawningSystemTest {
         int layers,
         Map<WorldPosition, WarpingEdge> expectedWarpingEdges
     ) {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WarpingPolicy(1, 1, layers),
             Initializing.INSTANCE
         );
-        world.addComponents(world.createEntity(), new WorldDimensions(7, 7));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new WorldDimensions(7, 7));
+        registry.update(0);
         assertThat(spawnedWarpingEdgeEntities).hasSize(expectedWarpingEdges.size());
         for (var entity : spawnedWarpingEdgeEntities) {
             assertThat(entity.component(PaletteColor.class)).isEqualTo(PaletteColor.WARP);

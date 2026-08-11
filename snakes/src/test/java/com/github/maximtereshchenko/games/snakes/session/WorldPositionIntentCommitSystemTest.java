@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,26 +10,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class WorldPositionIntentCommitSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> worldPositionEntities =
-        world.entities(new Query().all(WorldPosition.class));
+        registry.entities(new Query().all(WorldPosition.class));
     private final WorldPositionIntentCommitSystem worldPositionIntentCommitSystem =
-        new WorldPositionIntentCommitSystem(world);
+        new WorldPositionIntentCommitSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(worldPositionIntentCommitSystem);
+        registry.addSystems(worldPositionIntentCommitSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
         var intent = new WorldPosition(1, 1);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
-        world.update(0);
+        registry.update(0);
         assertThat(worldPositionEntities)
             .singleElement()
             .extracting(entity -> entity.component(WorldPosition.class))
@@ -39,13 +39,13 @@ final class WorldPositionIntentCommitSystemTest {
     @Test
     void givenTurnStartedEvent_thenPositionCopiedFromIntent() {
         var intent = new WorldPosition(1, 1);
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new WorldPosition(0, 0),
             new WorldPositionIntent(intent)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(worldPositionEntities)
             .singleElement()
             .extracting(entity -> entity.component(WorldPosition.class))

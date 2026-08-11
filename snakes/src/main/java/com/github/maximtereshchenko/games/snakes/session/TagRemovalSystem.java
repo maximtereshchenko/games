@@ -8,17 +8,17 @@ final class TagRemovalSystem implements System {
     private final Iterable<Entity> taggedEntities;
     private final Class<?>[] types;
 
-    TagRemovalSystem(World world, Class<?>... types) {
-        this.taggedEntities = world.entities(
+    TagRemovalSystem(Registry registry, Class<?>... types) {
+        this.taggedEntities = registry.entities(
             new Query().one(types)
         );
         this.types = types;
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var taggedEntity : taggedEntities) {
-            worldEdit.removeComponents(taggedEntity.id(), types);
+            registryEdit.removeComponents(taggedEntity.id(), types);
         }
     }
 }

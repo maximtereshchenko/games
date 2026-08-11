@@ -14,12 +14,12 @@ final class InterfaceTextCenterAlignmentSystem implements System {
     private final GlyphLayout glyphLayout;
 
     InterfaceTextCenterAlignmentSystem(
-        World world,
+        Registry registry,
         Viewport viewport,
         ScaledFont scaledFont,
         GlyphLayout glyphLayout
     ) {
-        this.centerAlignedEntities = world.entities(
+        this.centerAlignedEntities = registry.entities(
             new Query()
                 .all(
                     CenterAligned.class,
@@ -33,7 +33,7 @@ final class InterfaceTextCenterAlignmentSystem implements System {
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var centerAlignedEntity : centerAlignedEntities) {
             var interfaceText = centerAlignedEntity.component(InterfaceText.class);
             scaledFont.use(

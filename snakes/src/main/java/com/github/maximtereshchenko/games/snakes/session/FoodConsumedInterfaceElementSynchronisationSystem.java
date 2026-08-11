@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ final class FoodConsumedInterfaceElementSynchronisationSystem
 
     private final Iterable<Entity> statisticsEntities;
 
-    FoodConsumedInterfaceElementSynchronisationSystem(World world) {
-        super(world, FoodConsumedInterfaceElement.class);
-        this.statisticsEntities = world.entities(
+    FoodConsumedInterfaceElementSynchronisationSystem(Registry registry) {
+        super(registry, FoodConsumedInterfaceElement.class);
+        this.statisticsEntities = registry.entities(
             new Query().all(Statistics.class)
         );
     }

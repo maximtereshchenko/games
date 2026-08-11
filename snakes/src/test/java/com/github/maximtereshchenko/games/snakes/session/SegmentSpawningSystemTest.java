@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,11 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class SegmentSpawningSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> segmentEntities =
-        world.entities(new Query().all(Segment.class));
+        registry.entities(new Query().all(Segment.class));
     private final Iterable<Entity> spawnedSegmentEntities =
-        world.entities(
+        registry.entities(
             new Query()
                 .all(
                     Segment.class,
@@ -26,47 +26,47 @@ final class SegmentSpawningSystemTest {
                 )
         );
     private final SegmentSpawningSystem segmentSpawningSystem =
-        new SegmentSpawningSystem(world);
+        new SegmentSpawningSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(segmentSpawningSystem);
+        registry.addSystems(segmentSpawningSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new SegmentPolicy(1, 4));
+        registry.update(0);
         assertThat(segmentEntities).isEmpty();
     }
 
     @Test
     void givenNoSegmentPolicy_thenNoSegmentSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(segmentEntities).isEmpty();
     }
 
     @Test
     void givenTurnStartedEvent_thenSegmentSpawned() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             Head.INSTANCE,
             new WorldPosition(0, 0)
         );
-        world.addComponents(world.createEntity(), new SegmentPolicy(1, 4));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new SegmentPolicy(1, 4));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(spawnedSegmentEntities)
             .singleElement()
             .extracting(

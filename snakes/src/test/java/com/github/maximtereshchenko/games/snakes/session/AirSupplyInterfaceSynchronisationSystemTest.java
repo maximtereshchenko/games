@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,28 +13,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class AirSupplyInterfaceSynchronisationSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> localizableInterfaceTextEntities =
-        world.entities(
+        registry.entities(
             new Query().all(AirSupplyInterfaceElement.class, LocalizableInterfaceText.class)
         );
     private final AirSupplyInterfaceSynchronisationSystem system =
-        new AirSupplyInterfaceSynchronisationSystem(world);
+        new AirSupplyInterfaceSynchronisationSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(system);
+        registry.addSystems(system);
     }
 
     @Test
     void whenUpdated_thenAirSupplyAddedToVariables() {
-        world.addComponents(world.createEntity(), new AirSupply(5, 3));
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(registry.createEntity(), new AirSupply(5, 3));
+        registry.addComponents(
+            registry.createEntity(),
             AirSupplyInterfaceElement.INSTANCE,
             new LocalizableInterfaceText("screens.session.air.template", new ArrayList<>())
         );
-        world.update(0);
+        registry.update(0);
         assertThat(localizableInterfaceTextEntities)
             .singleElement()
             .extracting(entity -> entity.component(LocalizableInterfaceText.class).variables())

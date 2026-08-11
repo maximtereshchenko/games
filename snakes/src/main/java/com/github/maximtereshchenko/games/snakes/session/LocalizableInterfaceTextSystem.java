@@ -9,14 +9,14 @@ abstract class LocalizableInterfaceTextSystem implements System {
 
     private final Iterable<Entity> localizableInterfaceTextEntities;
 
-    LocalizableInterfaceTextSystem(World world, Class<?> tag) {
-        this.localizableInterfaceTextEntities = world.entities(
+    LocalizableInterfaceTextSystem(Registry registry, Class<?> tag) {
+        this.localizableInterfaceTextEntities = registry.entities(
             new Query().all(tag, LocalizableInterfaceText.class)
         );
     }
 
     @Override
-    public final void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public final void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var localizableInterfaceTextEntity : localizableInterfaceTextEntities) {
             var variables = localizableInterfaceTextEntity.component(
                     LocalizableInterfaceText.class

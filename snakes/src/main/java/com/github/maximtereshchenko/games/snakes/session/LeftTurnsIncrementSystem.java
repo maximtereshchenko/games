@@ -2,22 +2,22 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class LeftTurnsIncrementSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> statisticsEntities;
 
-    LeftTurnsIncrementSystem(World world) {
-        super(world);
-        this.statisticsEntities = world.entities(
+    LeftTurnsIncrementSystem(Registry registry) {
+        super(registry);
+        this.statisticsEntities = registry.entities(
             new Query().all(Direction.class, DirectionIntent.class, Statistics.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var statisticsEntity : statisticsEntities) {
             var statistics = statisticsEntity.component(Statistics.class).value;
             var currentDirection = statisticsEntity.component(Direction.class);

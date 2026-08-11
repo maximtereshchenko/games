@@ -18,14 +18,14 @@ final class InputSystem implements System {
 
     private final Iterable<Entity> directionIntentEntities;
 
-    InputSystem(World world) {
-        this.directionIntentEntities = world.entities(
+    InputSystem(Registry registry) {
+        this.directionIntentEntities = registry.entities(
             new Query().all(DirectionIntent.class)
         );
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var entity : directionIntentEntities) {
             for (var entry : DIRECTIONS.entrySet()) {
                 if (Gdx.input.isKeyPressed(entry.getKey())) {

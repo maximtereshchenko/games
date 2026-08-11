@@ -2,8 +2,8 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 import java.util.Set;
 
@@ -11,9 +11,9 @@ final class DirectionIntentSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> directionEntities;
 
-    DirectionIntentSystem(World world) {
-        super(world);
-        this.directionEntities = world.entities(
+    DirectionIntentSystem(Registry registry) {
+        super(registry);
+        this.directionEntities = registry.entities(
             new Query().all(
                 Direction.class,
                 DirectionIntent.class
@@ -22,7 +22,7 @@ final class DirectionIntentSystem extends TurnBasedSystem {
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var entity : directionEntities) {
             var direction = entity.component(Direction.class);
             var directionIntent = entity.component(DirectionIntent.class);

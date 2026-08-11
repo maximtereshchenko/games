@@ -2,16 +2,16 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class WarpedRelativeDirectionSystem extends TurnBasedSystem {
 
     private final Iterable<Entity> warpedEntities;
 
-    WarpedRelativeDirectionSystem(World world) {
-        super(world);
-        this.warpedEntities = world.entities(
+    WarpedRelativeDirectionSystem(Registry registry) {
+        super(registry);
+        this.warpedEntities = registry.entities(
             new Query()
                 .all(
                     Warped.class,
@@ -23,14 +23,14 @@ final class WarpedRelativeDirectionSystem extends TurnBasedSystem {
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var warpedEntity : warpedEntities) {
             var direction = warpedEntity.component(Direction.class)
                 .relative(
                     warpedEntity.component(WarpedRelativeDirection.class)
                         .value()
                 );
-            worldEdit.addComponents(warpedEntity.id(), direction);
+            registryEdit.addComponents(warpedEntity.id(), direction);
             warpedEntity.component(DirectionIntent.class).value = direction;
         }
     }

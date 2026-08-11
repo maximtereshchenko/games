@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,26 +12,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class FoodConsumedIncrementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> statisticsEntities =
-        world.entities(new Query().all(Statistics.class));
+        registry.entities(new Query().all(Statistics.class));
     private final FoodConsumedIncrementSystem foodConsumedIncrementSystem =
-        new FoodConsumedIncrementSystem(world);
+        new FoodConsumedIncrementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(foodConsumedIncrementSystem);
+        registry.addSystems(foodConsumedIncrementSystem);
     }
 
     @Test
     void givenFoodConsumed_thenFoodConsumedIncremented() {
-        world.addComponents(
-            world.createEntity(),
+        registry.addComponents(
+            registry.createEntity(),
             new FoodConsumed(2),
             new Statistics(Map.of(SessionMetric.FOOD_CONSUMED, 1))
         );
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)
@@ -46,9 +46,9 @@ final class FoodConsumedIncrementSystemTest {
 
     @Test
     void givenNoFoodConsumed_thenFoodConsumedNotIncremented() {
-        world.addComponents(world.createEntity(), new Statistics(Map.of()));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new Statistics(Map.of()));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(statisticsEntities)
             .singleElement()
             .extracting(entity -> entity.component(Statistics.class).value)

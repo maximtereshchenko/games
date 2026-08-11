@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
+import com.github.maximtereshchenko.games.ecs.Registry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,24 +10,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 final class SegmentRemainingTurnsIncrementSystemTest {
 
-    private final World world = new World();
+    private final Registry registry = new Registry();
     private final Iterable<Entity> segmentDefinitionEntities =
-        world.entities(new Query().all(SegmentPolicy.class));
+        registry.entities(new Query().all(SegmentPolicy.class));
     private final Iterable<Entity> segmentEntities =
-        world.entities(new Query().all(Segment.class));
+        registry.entities(new Query().all(Segment.class));
     private final SegmentRemainingTurnsIncrementSystem segmentRemainingTurnsIncrementSystem =
-        new SegmentRemainingTurnsIncrementSystem(world);
+        new SegmentRemainingTurnsIncrementSystem(registry);
 
     @BeforeEach
     void setUp() {
-        world.addSystems(segmentRemainingTurnsIncrementSystem);
+        registry.addSystems(segmentRemainingTurnsIncrementSystem);
     }
 
     @Test
     void givenNoTurnStartedEvent_thenNoChanges() {
-        world.addComponents(world.createEntity(), new SegmentPolicy(1, 1));
-        world.addComponents(world.createEntity(), new Segment(1));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new SegmentPolicy(1, 1));
+        registry.addComponents(registry.createEntity(), new Segment(1));
+        registry.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
             .extracting(entity -> entity.component(SegmentPolicy.class))
@@ -41,10 +41,10 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     @Test
     void givenNoFoodConsumed_thenNoChanges() {
-        world.addComponents(world.createEntity(), new SegmentPolicy(1, 1));
-        world.addComponents(world.createEntity(), new Segment(1));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new SegmentPolicy(1, 1));
+        registry.addComponents(registry.createEntity(), new Segment(1));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
             .extracting(entity -> entity.component(SegmentPolicy.class))
@@ -58,11 +58,11 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     @Test
     void givenFoodConsumed_thenSegmentRemainingTurnsIncremented() {
-        world.addComponents(world.createEntity(), new SegmentPolicy(2, 1));
-        world.addComponents(world.createEntity(), new Segment(1));
-        world.addComponents(world.createEntity(), TurnStarted.INSTANCE);
-        world.addComponents(world.createEntity(), new FoodConsumed(2));
-        world.update(0);
+        registry.addComponents(registry.createEntity(), new SegmentPolicy(2, 1));
+        registry.addComponents(registry.createEntity(), new Segment(1));
+        registry.addComponents(registry.createEntity(), TurnStarted.INSTANCE);
+        registry.addComponents(registry.createEntity(), new FoodConsumed(2));
+        registry.update(0);
         assertThat(segmentDefinitionEntities)
             .singleElement()
             .extracting(entity -> entity.component(SegmentPolicy.class))

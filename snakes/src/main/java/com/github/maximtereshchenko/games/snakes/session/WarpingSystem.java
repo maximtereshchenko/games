@@ -2,8 +2,8 @@ package com.github.maximtereshchenko.games.snakes.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.World;
-import com.github.maximtereshchenko.games.ecs.WorldEdit;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
 final class WarpingSystem extends TurnBasedSystem {
 
@@ -12,24 +12,24 @@ final class WarpingSystem extends TurnBasedSystem {
     private final Iterable<Entity> worldDimensionsEntities;
     private final Iterable<Entity> warpingPolicyEntities;
 
-    WarpingSystem(World world) {
-        super(world);
-        this.warpingEdgeEntities = world.entities(
+    WarpingSystem(Registry registry) {
+        super(registry);
+        this.warpingEdgeEntities = registry.entities(
             new Query().all(WarpingEdge.class, WorldPosition.class)
         );
-        this.warpingDestinationEntities = world.entities(
+        this.warpingDestinationEntities = registry.entities(
             new Query().all(WarpingDestinationEdge.class, WorldPositionIntent.class)
         );
-        this.worldDimensionsEntities = world.entities(
+        this.worldDimensionsEntities = registry.entities(
             new Query().all(WorldDimensions.class)
         );
-        this.warpingPolicyEntities = world.entities(
+        this.warpingPolicyEntities = registry.entities(
             new Query().all(WarpingPolicy.class)
         );
     }
 
     @Override
-    void onTurnStarted(WorldEdit worldEdit) {
+    void onTurnStarted(RegistryEdit registryEdit) {
         for (var warpingDestinationEntity : warpingDestinationEntities) {
             var worldPosition = warpingDestinationEntity.component(WorldPositionIntent.class).value();
             for (var warpingEdgeEntity : warpingEdgeEntities) {
@@ -40,7 +40,7 @@ final class WarpingSystem extends TurnBasedSystem {
                         warpingDestinationEntity.component(WarpingDestinationEdge.class),
                         warpingEdgeEntity.component(WarpingEdge.class)
                     );
-                    worldEdit.addComponents(warpingDestinationEntity.id(), Warped.INSTANCE);
+                    registryEdit.addComponents(warpingDestinationEntity.id(), Warped.INSTANCE);
                 }
             }
         }

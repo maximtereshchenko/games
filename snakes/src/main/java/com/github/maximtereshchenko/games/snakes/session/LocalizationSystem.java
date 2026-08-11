@@ -9,15 +9,15 @@ final class LocalizationSystem implements System {
     private final Iterable<Entity> interfaceTextEntities;
     private final I18NBundle bundle;
 
-    LocalizationSystem(World world, I18NBundle bundle) {
-        this.interfaceTextEntities = world.entities(
+    LocalizationSystem(Registry registry, I18NBundle bundle) {
+        this.interfaceTextEntities = registry.entities(
             new Query().all(LocalizableInterfaceText.class, InterfaceText.class)
         );
         this.bundle = bundle;
     }
 
     @Override
-    public void update(WorldEdit worldEdit, float deltaTimeSeconds) {
+    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var interfaceTextEntity : interfaceTextEntities) {
             var localizableInterfaceText =
                 interfaceTextEntity.component(LocalizableInterfaceText.class);
