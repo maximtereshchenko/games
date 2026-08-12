@@ -11,6 +11,7 @@ import com.github.maximtereshchenko.games.ecs.Registry;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 public final class SessionFactory {
@@ -41,7 +42,8 @@ public final class SessionFactory {
             world,
             BodyDef.BodyType.StaticBody,
             new Vector2(),
-            shape
+            shape,
+            false
         );
         shape.dispose();
         return world;
@@ -49,7 +51,7 @@ public final class SessionFactory {
 
     public Registry registry(Viewport viewport, World world) {
         var registry = new Registry();
-        createPaddleBall(registry, viewport);
+        createCommon(registry, viewport);
         createBricks(registry);
         addSystems(registry, world, viewport);
         return registry;
@@ -61,22 +63,25 @@ public final class SessionFactory {
         Viewport viewport
     ) {
         registry.addSystems(
-            new PhysicsRegistrationSystem(
-                registry,
-                world,
-                fixtureFactory
-            ),
             new InputSystem(registry, viewport),
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),
             new WorldSynchronizationSystem(registry),
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
-            new BrickRemovalSystem(registry, world),
+            new BonusCollisionSystem(registry),
+            new BonusSpawningSystem(registry, ThreadLocalRandom.current()),
+            new EntityRemovalSystem(registry, world),
+            new PhysicsRegistrationSystem(
+                registry,
+                world,
+                fixtureFactory
+            ),
             new ComponentRemovalSystem(
                 registry,
                 BodyDef.BodyType.class,
-                Collision.class
+                Sensor.class,
+                Collisions.class
             ),
             new WorldRenderingSystem(
                 registry,
@@ -86,7 +91,7 @@ public final class SessionFactory {
         );
     }
 
-    private void createPaddleBall(Registry registry, Viewport viewport) {
+    private void createCommon(Registry registry, Viewport viewport) {
         var paddleRectangle = new Rectangle(2, 0.2f);
         var paddleVector2 = new Vector2(
             viewport.getWorldWidth() / 2,
@@ -115,6 +120,30 @@ public final class SessionFactory {
             ),
             new Velocity(new Vector2(0, 5)),
             new Visible(Color.valueOf("#feffff"))
+        );
+        registry.addComponents(
+            registry.createEntity(),
+            new BonusSpawnPolicy(
+                0.1f,
+                List.of(
+                    new Object[]{
+                        Bonus.MULTIPLY_BALLS,
+                        new Visible(Color.valueOf("#a6d81d"))
+                    },
+                    new Object[]{
+                        Bonus.ADD_BALLS,
+                        new Visible(Color.valueOf("#00cce4"))
+                    },
+                    new Object[]{
+                        Bonus.WIDEN_PADDLE,
+                        new Visible(Color.GREEN)
+                    },
+                    new Object[]{
+                        Bonus.SPAWN_PROTECTION,
+                        new Visible(Color.valueOf("#ff9859"))
+                    }
+                )
+            )
         );
     }
 

@@ -4,13 +4,13 @@ import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
-final class BrickCollisionSystem extends CollisionSystem {
+final class BonusCollisionSystem extends CollisionSystem {
 
-    BrickCollisionSystem(Registry registry) {
+    BonusCollisionSystem(Registry registry) {
         super(
             registry,
-            new Class[]{Ball.class},
-            new Class[]{Brick.class}
+            new Class[]{Paddle.class},
+            new Class[]{Bonus.class}
         );
     }
 

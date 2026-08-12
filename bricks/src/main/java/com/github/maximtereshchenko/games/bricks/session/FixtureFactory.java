@@ -9,18 +9,20 @@ public final class FixtureFactory {
         World world,
         BodyDef.BodyType bodyType,
         Vector2 vector2,
-        Shape shape
+        Shape shape,
+        boolean isSensor
     ) {
         return world.createBody(bodyDefinition(bodyType, vector2))
-            .createFixture(fixtureDefinition(shape));
+            .createFixture(fixtureDefinition(shape, isSensor));
     }
 
-    private FixtureDef fixtureDefinition(Shape shape) {
+    private FixtureDef fixtureDefinition(Shape shape, boolean isSensor) {
         var fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = shape;
         fixtureDefinition.density = 1;
         fixtureDefinition.friction = 0;
         fixtureDefinition.restitution = 1;
+        fixtureDefinition.isSensor = isSensor;
         return fixtureDefinition;
     }
 
@@ -31,6 +33,7 @@ public final class FixtureFactory {
         var bodyDefinition = new BodyDef();
         bodyDefinition.type = bodyType;
         bodyDefinition.position.set(vector2);
+        bodyDefinition.fixedRotation = true;
         return bodyDefinition;
     }
 }

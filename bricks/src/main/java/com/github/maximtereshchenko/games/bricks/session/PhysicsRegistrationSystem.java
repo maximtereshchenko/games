@@ -18,7 +18,7 @@ final class PhysicsRegistrationSystem implements System {
         this.entities = registry.entities(
             new Query()
                 .all(BodyDef.BodyType.class, WorldPosition.class)
-                .one(Rectangle.class, Circle.class)
+                .one(Rectangle.class, Circle.class, Sensor.class)
         );
         this.world = world;
         this.fixtureFactory = fixtureFactory;
@@ -35,7 +35,8 @@ final class PhysicsRegistrationSystem implements System {
                 world,
                 bodyType,
                 worldPosition.vector2(),
-                shape
+                shape,
+                entity.component(Sensor.class) != null
             );
             fixture.setUserData(id);
             registryEdit.addComponents(id, new Physics(fixture));

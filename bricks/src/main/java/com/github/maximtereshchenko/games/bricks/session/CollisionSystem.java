@@ -26,11 +26,13 @@ abstract class CollisionSystem implements System {
     @Override
     public final void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var colliderEntity : colliderEntities) {
-            var colliderCollision = colliderEntity.component(Collision.class);
+            var colliderCollisions = colliderEntity.component(Collisions.class);
             for (var impactedEntity : impactedEntities) {
-                var impactedCollision = impactedEntity.component(Collision.class);
-                if (colliderCollision.entityId() == impactedEntity.id() &&
-                    impactedCollision.entityId() == colliderEntity.id()) {
+                var impactedCollisions = impactedEntity.component(Collisions.class);
+                if (
+                    contains(colliderCollisions, impactedEntity) &&
+                    contains(impactedCollisions, colliderEntity)
+                ) {
                     onCollision(registryEdit, colliderEntity, impactedEntity);
                 }
             }
@@ -43,9 +45,13 @@ abstract class CollisionSystem implements System {
         Entity impactedEntity
     );
 
+    private boolean contains(Collisions collisions, Entity entity) {
+        return collisions.entityIds().contains(entity.id());
+    }
+
     private Class<?>[] withCollision(Class<?>[] components) {
         var copy = Arrays.copyOf(components, components.length + 1);
-        copy[copy.length - 1] = Collision.class;
+        copy[copy.length - 1] = Collisions.class;
         return copy;
     }
 }
