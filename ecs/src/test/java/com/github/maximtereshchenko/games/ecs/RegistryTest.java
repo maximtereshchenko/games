@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.assertj.core.groups.Tuple.tuple;
 
 final class RegistryTest {
@@ -441,18 +442,13 @@ final class RegistryTest {
     }
 
     @Test
-    void givenEntityWithComponent_thenAccessingAbsentComponentThrowsException() {
+    void givenEntityWithComponent_thenAccessingAbsentComponentReturnsNull() {
         var registry = new Registry();
         var entityId = registry.createEntity();
         assertThat(registry.entities(new Query()))
             .singleElement()
-            .satisfies(
-                entity -> {
-                    assertThat(entity.id()).isEqualTo(entityId);
-                    assertThatIllegalArgumentException()
-                        .isThrownBy(() -> entity.component(String.class));
-                }
-            );
+            .extracting(Entity::id, entity -> entity.component(String.class))
+            .containsExactly(entityId, null);
     }
 
     @Test

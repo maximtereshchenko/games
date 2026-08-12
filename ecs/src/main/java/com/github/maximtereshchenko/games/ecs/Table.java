@@ -62,7 +62,7 @@ final class Table {
     Object component(int entityId, int componentTypeId) {
         var columnIndex = columnIndicesByComponentTypeId.element(componentTypeId);
         if (columnIndex == SparseIntArray.EMPTY_VALUE) {
-            throw new IllegalArgumentException();
+            return null;
         }
         return columns[columnIndex]
             .element(rowsByEntityId.element(entityId));

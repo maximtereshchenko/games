@@ -76,9 +76,7 @@ public final class Registry implements RegistryEdit {
                     mask.clear(componentTypeIdRegistry.get(type));
                 }
             },
-            _ -> {
-                //empty
-            },
+            _ -> {},
             (source, target) -> target.transfer(source, id, EMPTY_INT_ARRAY, EMPTY_OBJECT_ARRAY)
         );
     }
