@@ -106,6 +106,7 @@ public final class SessionFactory {
             Paddle.INSTANCE,
             BodyDef.BodyType.KinematicBody,
             paddleRectangle,
+            new MaxWidth(4),
             new WorldPosition(paddleVector2),
             new Velocity(new Vector2()),
             new Visible(Color.valueOf("#ff7f50"))

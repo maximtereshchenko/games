@@ -13,7 +13,7 @@ final class WidenPaddleSystem implements System {
             new Query().all(WidenPaddle.class, Removed.class)
         );
         this.paddleEntities = registry.entities(
-            new Query().all(Paddle.class, Rectangle.class)
+            new Query().all(Paddle.class, Rectangle.class, MaxWidth.class)
         );
     }
 
@@ -23,7 +23,11 @@ final class WidenPaddleSystem implements System {
             var widenPaddle = widenPaddleEntity.component(WidenPaddle.class);
             for (var paddleEntity : paddleEntities) {
                 var rectangle = paddleEntity.component(Rectangle.class);
-                rectangle.halfWidth += widenPaddle.extraWidth();
+                var maxWidth = paddleEntity.component(MaxWidth.class);
+                rectangle.halfWidth = Math.min(
+                    rectangle.halfWidth * 2 + widenPaddle.extraWidth(),
+                    maxWidth.value()
+                ) / 2;
                 registryEdit.addComponents(paddleEntity.id(), Resized.INSTANCE);
             }
         }
