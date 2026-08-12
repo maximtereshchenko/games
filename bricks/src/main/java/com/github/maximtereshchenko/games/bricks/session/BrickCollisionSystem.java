@@ -1,32 +1,25 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.github.maximtereshchenko.games.ecs.*;
-import com.github.maximtereshchenko.games.ecs.System;
+import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
-final class BrickCollisionSystem implements System {
-
-    private final Iterable<Entity> ballEntities;
-    private final Iterable<Entity> brickEntities;
+final class BrickCollisionSystem extends CollisionSystem {
 
     BrickCollisionSystem(Registry registry) {
-        this.ballEntities = registry.entities(
-            new Query().all(Ball.class, Collision.class)
-        );
-        this.brickEntities = registry.entities(
-            new Query().all(Brick.class, Collision.class)
+        super(
+            registry,
+            new Class[]{Ball.class},
+            new Class[]{Brick.class}
         );
     }
 
     @Override
-    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        for (var ballEntity : ballEntities) {
-            var ballCollision = ballEntity.component(Collision.class);
-            for (var brickEntity : brickEntities) {
-                var brickCollision = brickEntity.component(Collision.class);
-                if (ballCollision.entityId() == brickEntity.id() && brickCollision.entityId() == ballEntity.id()) {
-                    registryEdit.addComponents(brickEntity.id(), Destroyed.INSTANCE);
-                }
-            }
-        }
+    void onCollision(
+        RegistryEdit registryEdit,
+        Entity colliderEntity,
+        Entity impactedEntity
+    ) {
+        registryEdit.addComponents(impactedEntity.id(), Destroyed.INSTANCE);
     }
 }

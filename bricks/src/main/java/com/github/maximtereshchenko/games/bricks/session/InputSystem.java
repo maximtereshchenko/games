@@ -28,13 +28,14 @@ final class InputSystem implements System {
             var worldPosition = entity.component(WorldPosition.class);
             var velocity = entity.component(Velocity.class);
             var rectangle = entity.component(Rectangle.class);
-            float halfWidth = rectangle.width / 2f;
-            float clampedX = Math.clamp(
+            var halfWidth = rectangle.width / 2f;
+            var target = Math.clamp(
                 vector2.x,
                 halfWidth,
                 viewport.getWorldWidth() - halfWidth
             );
-            velocity.vector2().x = (clampedX - worldPosition.vector2().x) / deltaTimeSeconds;
+            velocity.vector2().x =
+                (target - worldPosition.vector2().x) / deltaTimeSeconds;
         }
     }
 }

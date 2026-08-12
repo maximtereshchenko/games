@@ -4,8 +4,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
 
-//It is impossibly hard to test LibGDX UI
-//Therefore, the whole package remains untested
 public final class ScreenFactory {
 
     private final SessionFactory sessionFactory;
@@ -15,8 +13,8 @@ public final class ScreenFactory {
     }
 
     public Screen sessionScreen() {
-        var viewport = new FitViewport(10.37f, 15.55f);
-        var physicsWorld = sessionFactory.physicsWorld(viewport);
+        var viewport = new FitViewport(10, 15);
+        var physicsWorld = sessionFactory.world(viewport);
         return new SessionScreen(
             viewport,
             sessionFactory.registry(viewport, physicsWorld),

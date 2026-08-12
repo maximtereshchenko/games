@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
+import com.github.maximtereshchenko.games.bricks.session.FixtureFactory;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
 
 final class BricksGameAdapter implements ApplicationListener {
@@ -18,7 +19,10 @@ final class BricksGameAdapter implements ApplicationListener {
     public void create() {
         var shapeRenderer = new ShapeRenderer();
         var screenFactory = new ScreenFactory(
-            new SessionFactory(shapeRenderer)
+            new SessionFactory(
+                shapeRenderer,
+                new FixtureFactory()
+            )
         );
         original = new BricksGame(shapeRenderer);
         original.setScreen(screenFactory.sessionScreen());

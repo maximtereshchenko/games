@@ -1,0 +1,36 @@
+package com.github.maximtereshchenko.games.bricks.session;
+
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.*;
+
+public final class FixtureFactory {
+
+    Fixture fixture(
+        World world,
+        BodyDef.BodyType bodyType,
+        Vector2 vector2,
+        Shape shape
+    ) {
+        return world.createBody(bodyDefinition(bodyType, vector2))
+            .createFixture(fixtureDefinition(shape));
+    }
+
+    private FixtureDef fixtureDefinition(Shape shape) {
+        var fixtureDefinition = new FixtureDef();
+        fixtureDefinition.shape = shape;
+        fixtureDefinition.density = 1;
+        fixtureDefinition.friction = 0;
+        fixtureDefinition.restitution = 1;
+        return fixtureDefinition;
+    }
+
+    private BodyDef bodyDefinition(
+        BodyDef.BodyType bodyType,
+        Vector2 vector2
+    ) {
+        var bodyDefinition = new BodyDef();
+        bodyDefinition.type = bodyType;
+        bodyDefinition.position.set(vector2);
+        return bodyDefinition;
+    }
+}

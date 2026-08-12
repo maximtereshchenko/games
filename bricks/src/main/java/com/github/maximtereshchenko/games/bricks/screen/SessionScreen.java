@@ -9,16 +9,16 @@ final class SessionScreen extends ScreenAdapter {
 
     private final Viewport viewport;
     private final Registry registry;
-    private final World physicsWorld;
+    private final World world;
 
     SessionScreen(
         Viewport viewport,
         Registry registry,
-        World physicsWorld
+        World world
     ) {
         this.viewport = viewport;
         this.registry = registry;
-        this.physicsWorld = physicsWorld;
+        this.world = world;
     }
 
     @Override
@@ -33,6 +33,6 @@ final class SessionScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        physicsWorld.dispose();
+        world.dispose();
     }
 }

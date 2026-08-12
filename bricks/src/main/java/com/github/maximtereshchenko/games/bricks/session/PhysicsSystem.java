@@ -6,16 +6,16 @@ import com.github.maximtereshchenko.games.ecs.System;
 
 final class PhysicsSystem implements System {
 
-    private final World physicsWorld;
+    private final World world;
 
-    PhysicsSystem(World physicsWorld) {
-        this.physicsWorld = physicsWorld;
+    PhysicsSystem(World world) {
+        this.world = world;
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        physicsWorld.step(deltaTimeSeconds, 16, 6);
-        for (var contact : physicsWorld.getContactList()) {
+        world.step(deltaTimeSeconds, 8, 3);
+        for (var contact : world.getContactList()) {
             if (contact.isTouching()) {
                 var firstUserData = contact.getFixtureA().getUserData();
                 var secondUserData = contact.getFixtureB().getUserData();

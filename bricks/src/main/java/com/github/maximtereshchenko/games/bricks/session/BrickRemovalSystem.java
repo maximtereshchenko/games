@@ -7,20 +7,20 @@ import com.github.maximtereshchenko.games.ecs.System;
 final class BrickRemovalSystem implements System {
 
     private final Iterable<Entity> entities;
-    private final World physicsWorld;
+    private final World world;
 
-    BrickRemovalSystem(Registry registry, World physicsWorld) {
+    BrickRemovalSystem(Registry registry, World world) {
         this.entities = registry.entities(
             new Query().all(Brick.class, Destroyed.class, Physics.class)
         );
-        this.physicsWorld = physicsWorld;
+        this.world = world;
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var entity : entities) {
             var physicsComponent = entity.component(Physics.class);
-            physicsWorld.destroyBody(physicsComponent.fixture().getBody());
+            world.destroyBody(physicsComponent.fixture().getBody());
             registryEdit.deleteEntity(entity.id());
         }
     }
