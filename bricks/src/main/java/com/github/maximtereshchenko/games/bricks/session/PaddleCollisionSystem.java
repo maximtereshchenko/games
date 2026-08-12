@@ -36,7 +36,7 @@ final class PaddleCollisionSystem extends CollisionSystem {
         var speed = vector2.len(); //TODO constant
         vector2.set(
             (ballWorldPosition.vector2().x - paddleWorldPosition.vector2().x) /
-            (paddleRectangle.width / 2f) * speed,
+            paddleRectangle.halfWidth * speed,
             speed
         );
         vector2.nor().scl(speed);

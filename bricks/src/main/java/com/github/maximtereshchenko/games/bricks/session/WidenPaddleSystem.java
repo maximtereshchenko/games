@@ -23,7 +23,7 @@ final class WidenPaddleSystem implements System {
             var widenPaddle = widenPaddleEntity.component(WidenPaddle.class);
             for (var paddleEntity : paddleEntities) {
                 var rectangle = paddleEntity.component(Rectangle.class);
-                rectangle.width += widenPaddle.extraWidth();
+                rectangle.halfWidth += widenPaddle.extraWidth();
                 registryEdit.addComponents(paddleEntity.id(), Resized.INSTANCE);
             }
         }

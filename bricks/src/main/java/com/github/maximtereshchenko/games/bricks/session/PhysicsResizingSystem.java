@@ -36,23 +36,26 @@ final class PhysicsResizingSystem implements System {
             var physics = entity.component(Physics.class);
             var rectangle = entity.component(Rectangle.class);
             var worldPosition = entity.component(WorldPosition.class);
+            var body = physics.fixture.getBody();
             var shape = shape(rectangle);
             var fixture = fixtureFactory.fixture(
                 world,
-                physics.fixture.getBody().getType(),
+                body.getType(),
                 worldPosition.vector2(),
                 shape,
                 false
             );
             fixture.setUserData(entity.id());
             physics.fixture = fixture;
+            world.destroyBody(body);
             shape.dispose();
         }
     }
 
+    //TODO
     private Shape shape(Rectangle rectangle) {
         var shape = new PolygonShape();
-        shape.setAsBox(rectangle.width / 2, rectangle.height / 2);
+        shape.setAsBox(rectangle.halfWidth, rectangle.halfHeight);
         return shape;
     }
 }

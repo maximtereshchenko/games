@@ -3,13 +3,18 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class WorldSynchronizationSystem implements System {
+final class RegistrySynchronizationSystem implements System {
 
     private final Iterable<Entity> entities;
 
-    WorldSynchronizationSystem(Registry registry) {
+    RegistrySynchronizationSystem(Registry registry) {
         this.entities = registry.entities(
-            new Query().all(Physics.class, WorldPosition.class, Velocity.class)
+            new Query()
+                .all(
+                    Physics.class,
+                    WorldPosition.class,
+                    Velocity.class
+                )
         );
     }
 

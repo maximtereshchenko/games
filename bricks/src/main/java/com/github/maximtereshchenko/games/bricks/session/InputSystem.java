@@ -14,7 +14,7 @@ final class InputSystem implements System {
 
     InputSystem(Registry registry, Viewport viewport) {
         this.entities = registry.entities(
-            new Query().all(Paddle.class, Rectangle.class, Velocity.class)
+            new Query().all(Paddle.class, Velocity.class)
         );
         this.viewport = viewport;
         this.vector2 = new Vector2();
@@ -27,12 +27,10 @@ final class InputSystem implements System {
         for (var entity : entities) {
             var worldPosition = entity.component(WorldPosition.class);
             var velocity = entity.component(Velocity.class);
-            var rectangle = entity.component(Rectangle.class);
-            var halfWidth = rectangle.width / 2f;
             var target = Math.clamp(
                 vector2.x,
-                halfWidth,
-                viewport.getWorldWidth() - halfWidth
+                0,
+                viewport.getWorldWidth()
             );
             velocity.vector2().x =
                 (target - worldPosition.vector2().x) / deltaTimeSeconds;

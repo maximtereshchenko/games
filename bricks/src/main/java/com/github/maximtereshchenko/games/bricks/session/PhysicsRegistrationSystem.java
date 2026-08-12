@@ -53,7 +53,7 @@ final class PhysicsRegistrationSystem implements System {
             return shape;
         }
         var shape = new PolygonShape();
-        shape.setAsBox(rectangle.width / 2, rectangle.height / 2);
+        shape.setAsBox(rectangle.halfWidth, rectangle.halfHeight);
         return shape;
     }
 }

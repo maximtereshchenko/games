@@ -57,10 +57,10 @@ final class WorldRenderingSystem implements System {
             );
         } else {
             shapeRenderer.rect(
-                vector2.x - rectangle.width / 2,
-                vector2.y - rectangle.height / 2,
-                rectangle.width,
-                rectangle.height
+                vector2.x - rectangle.halfWidth,
+                vector2.y - rectangle.halfHeight,
+                rectangle.halfWidth * 2,
+                rectangle.halfHeight * 2
             );
         }
     }

@@ -66,7 +66,7 @@ public final class SessionFactory {
             new InputSystem(registry, viewport),
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),
-            new WorldSynchronizationSystem(registry),
+            new RegistrySynchronizationSystem(registry),
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
@@ -83,7 +83,8 @@ public final class SessionFactory {
                 registry,
                 BodyDef.BodyType.class,
                 Sensor.class,
-                Collisions.class
+                Collisions.class,
+                Resized.class
             ),
             new WorldRenderingSystem(
                 registry,
@@ -94,7 +95,7 @@ public final class SessionFactory {
     }
 
     private void createCommon(Registry registry, Viewport viewport) {
-        var paddleRectangle = new Rectangle(2, 0.2f);
+        var paddleRectangle = new Rectangle(1, 0.1f);
         var paddleVector2 = new Vector2(
             viewport.getWorldWidth() / 2,
             2
@@ -117,7 +118,7 @@ public final class SessionFactory {
             new WorldPosition(
                 new Vector2(
                     paddleVector2.x,
-                    paddleVector2.y + paddleRectangle.height / 2 + ballCircle.radius()
+                    paddleVector2.y + paddleRectangle.halfHeight + ballCircle.radius()
                 )
             ),
             new Velocity(new Vector2(0, 5)),
@@ -152,7 +153,7 @@ public final class SessionFactory {
     }
 
     private void createBricks(Registry registry) {
-        var brickRectangle = new Rectangle(0.2f, 0.2f);
+        var brickRectangle = new Rectangle(0.1f, 0.1f);
         var sideColors = List.of(
             "#f7f7ed",
             "#fee883",
