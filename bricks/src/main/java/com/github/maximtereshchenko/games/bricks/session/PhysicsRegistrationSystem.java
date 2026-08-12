@@ -39,7 +39,7 @@ final class PhysicsRegistrationSystem implements System {
                 entity.component(Sensor.class) != null
             );
             fixture.setUserData(id);
-            registryEdit.addComponents(id, new Physics(fixture));
+            registryEdit.addComponents(id, fixture);
             shape.dispose();
         }
     }

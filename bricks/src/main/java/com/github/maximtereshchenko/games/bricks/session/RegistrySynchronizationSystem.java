@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
@@ -11,7 +12,7 @@ final class RegistrySynchronizationSystem implements System {
         this.entities = registry.entities(
             new Query()
                 .all(
-                    Physics.class,
+                    Fixture.class,
                     WorldPosition.class,
                     Velocity.class
                 )
@@ -21,10 +22,10 @@ final class RegistrySynchronizationSystem implements System {
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var entity : entities) {
-            var physics = entity.component(Physics.class);
+            var fixture = entity.component(Fixture.class);
             var worldPosition = entity.component(WorldPosition.class);
             var velocity = entity.component(Velocity.class);
-            var body = physics.fixture.getBody();
+            var body = fixture.getBody();
             worldPosition.vector2()
                 .set(
                     body.getTransform()

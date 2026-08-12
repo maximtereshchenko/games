@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -21,7 +22,7 @@ final class PhysicsResizingSystem implements System {
             new Query()
                 .all(
                     Resized.class,
-                    Physics.class,
+                    Fixture.class,
                     Rectangle.class,
                     WorldPosition.class
                 )
@@ -33,20 +34,20 @@ final class PhysicsResizingSystem implements System {
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var entity : entities) {
-            var physics = entity.component(Physics.class);
+            var fixture = entity.component(Fixture.class);
             var rectangle = entity.component(Rectangle.class);
             var worldPosition = entity.component(WorldPosition.class);
-            var body = physics.fixture.getBody();
+            var body = fixture.getBody();
             var shape = shape(rectangle);
-            var fixture = fixtureFactory.fixture(
+            var replacement = fixtureFactory.fixture(
                 world,
                 body.getType(),
                 worldPosition.vector2(),
                 shape,
                 false
             );
-            fixture.setUserData(entity.id());
-            physics.fixture = fixture;
+            replacement.setUserData(entity.id());
+            registryEdit.addComponents(entity.id(), replacement);
             world.destroyBody(body);
             shape.dispose();
         }
