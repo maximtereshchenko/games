@@ -20,7 +20,7 @@ final class EntityRemovalSystem implements System {
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var entity : entities) {
             var physicsComponent = entity.component(Physics.class);
-            world.destroyBody(physicsComponent.fixture().getBody());
+            world.destroyBody(physicsComponent.fixture.getBody());
             registryEdit.deleteEntity(entity.id());
         }
     }

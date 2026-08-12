@@ -21,7 +21,12 @@ final class BonusSpawningSystem implements System {
             new Query().all(BonusSpawnPolicy.class)
         );
         this.removedBrickEntities = registry.entities(
-            new Query().all(Brick.class, Removed.class, WorldPosition.class)
+            new Query()
+                .all(
+                    Brick.class,
+                    Removed.class,
+                    WorldPosition.class
+                )
         );
         this.random = random;
     }

@@ -71,6 +71,8 @@ public final class SessionFactory {
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
             new BonusSpawningSystem(registry, ThreadLocalRandom.current()),
+            new WidenPaddleSystem(registry),
+            new PhysicsResizingSystem(registry, world, fixtureFactory),
             new EntityRemovalSystem(registry, world),
             new PhysicsRegistrationSystem(
                 registry,
@@ -126,22 +128,24 @@ public final class SessionFactory {
             new BonusSpawnPolicy(
                 0.1f,
                 List.of(
-                    new Object[]{
-                        Bonus.MULTIPLY_BALLS,
-                        new Visible(Color.valueOf("#a6d81d"))
-                    },
-                    new Object[]{
-                        Bonus.ADD_BALLS,
-                        new Visible(Color.valueOf("#00cce4"))
-                    },
-                    new Object[]{
-                        Bonus.WIDEN_PADDLE,
-                        new Visible(Color.GREEN)
-                    },
-                    new Object[]{
-                        Bonus.SPAWN_PROTECTION,
-                        new Visible(Color.valueOf("#ff9859"))
+//                    new Object[]{
+//                        Bonus.MULTIPLY_BALLS,
+//                        new Visible(Color.valueOf("#a6d81d"))
+//                    },
+//                    new Object[]{
+//                        Bonus.ADD_BALLS,
+//                        new Visible(Color.valueOf("#00cce4"))
+//                    },
+                    new Object[][]{
+                        new Object[]{
+                            new WidenPaddle(0.5f),
+                            new Visible(Color.GREEN)
+                        }
                     }
+//                    new Object[]{
+//                        Bonus.SPAWN_PROTECTION,
+//                        new Visible(Color.valueOf("#ff9859"))
+//                    }
                 )
             )
         );

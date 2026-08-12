@@ -18,7 +18,7 @@ final class PhysicsSynchronizationSystem implements System {
         for (var entity : entities) {
             var physics = entity.component(Physics.class);
             var velocity = entity.component(Velocity.class);
-            physics.fixture()
+            physics.fixture
                 .getBody()
                 .setLinearVelocity(velocity.vector2());
         }

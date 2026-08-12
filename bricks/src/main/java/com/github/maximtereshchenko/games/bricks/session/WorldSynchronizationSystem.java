@@ -19,7 +19,7 @@ final class WorldSynchronizationSystem implements System {
             var physics = entity.component(Physics.class);
             var worldPosition = entity.component(WorldPosition.class);
             var velocity = entity.component(Velocity.class);
-            var body = physics.fixture().getBody();
+            var body = physics.fixture.getBody();
             worldPosition.vector2()
                 .set(
                     body.getTransform()

@@ -10,7 +10,7 @@ final class BonusCollisionSystem extends CollisionSystem {
         super(
             registry,
             new Class[]{Paddle.class},
-            new Class[]{Bonus.class}
+            new Class[]{WidenPaddle.class}
         );
     }
 
