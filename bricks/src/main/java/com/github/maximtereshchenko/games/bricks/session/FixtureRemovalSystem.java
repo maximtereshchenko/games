@@ -5,12 +5,12 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class EntityRemovalSystem implements System {
+final class FixtureRemovalSystem implements System {
 
     private final Iterable<Entity> entities;
     private final World world;
 
-    EntityRemovalSystem(Registry registry, World world) {
+    FixtureRemovalSystem(Registry registry, World world) {
         this.entities = registry.entities(
             new Query().all(Removed.class, Fixture.class)
         );

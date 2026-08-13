@@ -81,7 +81,8 @@ public final class SessionFactory {
             new BallMultiplicationSystem(registry),
             new BallSpawningSystem(registry),
             new PhysicsResizingSystem(registry, world, fixtureFactory),
-            new EntityRemovalSystem(registry, world),
+            new OutOfBoundsEntityRemovalSystem(registry, viewport),
+            new FixtureRemovalSystem(registry, world),
             new PhysicsRegistrationSystem(
                 registry,
                 world,
