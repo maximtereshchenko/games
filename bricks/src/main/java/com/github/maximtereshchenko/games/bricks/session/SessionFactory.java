@@ -71,6 +71,7 @@ public final class SessionFactory {
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
             new BonusSpawningSystem(registry, ThreadLocalRandom.current()),
+            new ResetWidthSystem(registry),
             new WidenPaddleSystem(registry),
             new PhysicsResizingSystem(registry, world, fixtureFactory),
             new EntityRemovalSystem(registry, world),
@@ -107,6 +108,8 @@ public final class SessionFactory {
             BodyDef.BodyType.KinematicBody,
             paddleRectangle,
             new MaxWidth(4),
+            new BaseWidth(paddleRectangle.halfWidth * 2),
+            new ResetWidthRemainingTime(0),
             new WorldPosition(paddleVector2),
             new Velocity(new Vector2()),
             new Visible(Color.valueOf("#ff7f50"))
@@ -138,12 +141,10 @@ public final class SessionFactory {
 //                        Bonus.ADD_BALLS,
 //                        new Visible(Color.valueOf("#00cce4"))
 //                    },
-                    new Object[][]{
-                        new Object[]{
-                            new WidenPaddle(0.5f),
-                            new Visible(Color.GREEN)
-                        }
-                    }
+                    List.of(
+                        new WidenPaddle(0.5f, 5),
+                        new Visible(Color.GREEN)
+                    )
 //                    new Object[]{
 //                        Bonus.SPAWN_PROTECTION,
 //                        new Visible(Color.valueOf("#ff9859"))

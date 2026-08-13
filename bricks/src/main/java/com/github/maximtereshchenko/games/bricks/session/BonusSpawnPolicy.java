@@ -4,5 +4,5 @@ import java.util.List;
 
 record BonusSpawnPolicy(
     float chance,
-    List<Object[]> components
+    List<List<Object>> components
 ) {}
