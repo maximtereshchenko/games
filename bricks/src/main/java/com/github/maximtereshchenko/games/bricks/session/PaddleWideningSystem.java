@@ -3,12 +3,12 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class WidenPaddleSystem implements System {
+final class PaddleWideningSystem implements System {
 
     private final Iterable<Entity> widenPaddleEntities;
     private final Iterable<Entity> paddleEntities;
 
-    WidenPaddleSystem(Registry registry) {
+    PaddleWideningSystem(Registry registry) {
         this.widenPaddleEntities = registry.entities(
             new Query().all(WidenPaddle.class, Removed.class)
         );

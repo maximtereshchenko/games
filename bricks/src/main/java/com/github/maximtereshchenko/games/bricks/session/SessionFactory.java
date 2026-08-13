@@ -71,8 +71,11 @@ public final class SessionFactory {
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
             new BonusSpawningSystem(registry, ThreadLocalRandom.current()),
-            new ResetWidthSystem(registry),
-            new WidenPaddleSystem(registry),
+            new PaddleWideningSystem(registry),
+            new WidthResettingSystem(registry),
+            new BarrierSpawningSystem(registry, viewport),
+            new BarrierTimeExtendingSystem(registry),
+            new BarrierRemovalSystem(registry),
             new PhysicsResizingSystem(registry, world, fixtureFactory),
             new EntityRemovalSystem(registry, world),
             new PhysicsRegistrationSystem(
@@ -142,13 +145,13 @@ public final class SessionFactory {
 //                        new Visible(Color.valueOf("#00cce4"))
 //                    },
                     List.of(
-                        new WidenPaddle(0.5f, 5),
+                        new WidenPaddle(0.5f, 10),
                         new Visible(Color.GREEN)
+                    ),
+                    List.of(
+                        new SpawnBarrier(10),
+                        new Visible(Color.valueOf("#ff9859"))
                     )
-//                    new Object[]{
-//                        Bonus.SPAWN_PROTECTION,
-//                        new Visible(Color.valueOf("#ff9859"))
-//                    }
                 )
             )
         );

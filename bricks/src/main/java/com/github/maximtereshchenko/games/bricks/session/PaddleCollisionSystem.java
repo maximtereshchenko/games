@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
@@ -9,16 +10,18 @@ final class PaddleCollisionSystem extends CollisionSystem {
     PaddleCollisionSystem(Registry registry) {
         super(
             registry,
-            new Class[]{
-                Paddle.class,
-                WorldPosition.class,
-                Rectangle.class
-            },
-            new Class[]{
-                Ball.class,
-                Velocity.class,
-                WorldPosition.class
-            }
+            new Query()
+                .all(
+                    Paddle.class,
+                    WorldPosition.class,
+                    Rectangle.class
+                ),
+            new Query()
+                .all(
+                    Ball.class,
+                    Velocity.class,
+                    WorldPosition.class
+                )
         );
     }
 

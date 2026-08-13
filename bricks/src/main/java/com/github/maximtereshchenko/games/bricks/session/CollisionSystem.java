@@ -3,8 +3,6 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-import java.util.Arrays;
-
 abstract class CollisionSystem implements System {
 
     private final Iterable<Entity> colliderEntities;
@@ -12,14 +10,14 @@ abstract class CollisionSystem implements System {
 
     CollisionSystem(
         Registry registry,
-        Class<?>[] colliderComponents,
-        Class<?>[] impactedComponents
+        Query colliderQuery,
+        Query impactedQuery
     ) {
         this.colliderEntities = registry.entities(
-            new Query().all(withCollision(colliderComponents))
+            colliderQuery.all(Collisions.class)
         );
         this.impactedEntities = registry.entities(
-            new Query().all(withCollision(impactedComponents))
+            impactedQuery.all(Collisions.class)
         );
     }
 
@@ -47,11 +45,5 @@ abstract class CollisionSystem implements System {
 
     private boolean contains(Collisions collisions, Entity entity) {
         return collisions.entityIds().contains(entity.id());
-    }
-
-    private Class<?>[] withCollision(Class<?>[] components) {
-        var copy = Arrays.copyOf(components, components.length + 1);
-        copy[copy.length - 1] = Collisions.class;
-        return copy;
     }
 }

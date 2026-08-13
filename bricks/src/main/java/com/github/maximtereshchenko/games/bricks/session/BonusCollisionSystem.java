@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
@@ -9,8 +10,8 @@ final class BonusCollisionSystem extends CollisionSystem {
     BonusCollisionSystem(Registry registry) {
         super(
             registry,
-            new Class[]{Paddle.class},
-            new Class[]{WidenPaddle.class}
+            new Query().all(Paddle.class),
+            new Query().one(WidenPaddle.class, SpawnBarrier.class)
         );
     }
 

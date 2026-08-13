@@ -3,11 +3,11 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class ResetWidthSystem implements System {
+final class WidthResettingSystem implements System {
 
     private final Iterable<Entity> entities;
 
-    ResetWidthSystem(Registry registry) {
+    WidthResettingSystem(Registry registry) {
         this.entities = registry.entities(
             new Query()
                 .all(
