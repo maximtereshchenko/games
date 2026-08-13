@@ -21,6 +21,7 @@ final class BallMultiplicationSystem implements System {
                     Circle.class,
                     WorldPosition.class,
                     Velocity.class,
+                    Speed.class,
                     Visible.class,
                     Fixture.class
                 )
@@ -39,6 +40,7 @@ final class BallMultiplicationSystem implements System {
                     WorldPosition.class
                 );
                 var velocity = ballsEntity.component(Velocity.class);
+                var speed = ballsEntity.component(Speed.class);
                 var visible = ballsEntity.component(Visible.class);
                 var fixture = ballsEntity.component(Fixture.class);
                 var angleStart = velocity.vector2().angleDeg() + 90;
@@ -56,6 +58,7 @@ final class BallMultiplicationSystem implements System {
                         circle,
                         new WorldPosition(new Vector2(worldPosition.vector2())),
                         new Velocity(vector2),
+                        speed,
                         visible
                     );
                 }

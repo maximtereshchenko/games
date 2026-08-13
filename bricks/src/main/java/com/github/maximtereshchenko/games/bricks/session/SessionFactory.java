@@ -68,6 +68,7 @@ public final class SessionFactory {
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),
             new RegistrySynchronizationSystem(registry),
+            new SpeedNormalizationSystem(registry),
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
@@ -130,10 +131,11 @@ public final class SessionFactory {
             new WorldPosition(
                 new Vector2(
                     paddleVector2.x,
-                    paddleVector2.y + paddleRectangle.halfHeight + ballCircle.radius()
+                    paddleVector2.y + (paddleRectangle.halfHeight + ballCircle.radius()) * 1.1f
                 )
             ),
             new Velocity(new Vector2(0, 5)),
+            new Speed(5),
             new Visible(Color.valueOf("#feffff"))
         );
         registry.addComponents(

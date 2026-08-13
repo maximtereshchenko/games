@@ -34,17 +34,16 @@ final class BallSpawningSystem implements System {
                     WorldPosition.class
                 );
                 var rectangle = paddleEntity.component(Rectangle.class);
+                var circle = new Circle(0.1f);
                 for (var i = 1; i <= spawnBalls.amount(); i++) {
                     var vector2 = new Vector2(worldPosition.vector2());
-                    vector2.y += rectangle.halfHeight * 2.5f;
+                    vector2.y += (rectangle.halfHeight + circle.radius()) * 1.1f;
                     registryEdit.addComponents(
                         registryEdit.createEntity(),
                         Ball.INSTANCE,
                         BodyDef.BodyType.DynamicBody,
-                        new CollisionGroupIndex(
-                            -1
-                        ),
-                        new Circle(0.1f),
+                        new CollisionGroupIndex(-1),
+                        circle,
                         new WorldPosition(vector2),
                         new Velocity(
                             new Vector2(0, 5)
@@ -54,6 +53,7 @@ final class BallSpawningSystem implements System {
                                     (spawnBalls.amount() + 1)
                                 )
                         ),
+                        new Speed(5),
                         new Visible(Color.valueOf("#feffff"))
                     );
                 }

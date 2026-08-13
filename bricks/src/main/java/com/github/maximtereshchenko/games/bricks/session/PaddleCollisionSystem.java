@@ -35,13 +35,11 @@ final class PaddleCollisionSystem extends CollisionSystem {
         var paddleRectangle = colliderEntity.component(Rectangle.class);
         var ballVelocity = impactedEntity.component(Velocity.class);
         var ballWorldPosition = impactedEntity.component(WorldPosition.class);
-        var vector2 = ballVelocity.vector2();
-        var speed = vector2.len(); //TODO constant
-        vector2.set(
-            (ballWorldPosition.vector2().x - paddleWorldPosition.vector2().x) /
-            paddleRectangle.halfWidth * speed,
-            speed
-        );
-        vector2.nor().scl(speed);
+        ballVelocity.vector2()
+            .setAngleDeg(
+                90 - 45 *
+                     (ballWorldPosition.vector2().x - paddleWorldPosition.vector2().x) /
+                     paddleRectangle.halfWidth
+            );
     }
 }
