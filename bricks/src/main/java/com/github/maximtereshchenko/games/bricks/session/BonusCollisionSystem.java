@@ -11,7 +11,12 @@ final class BonusCollisionSystem extends CollisionSystem {
         super(
             registry,
             new Query().all(Paddle.class),
-            new Query().one(WidenPaddle.class, SpawnBarrier.class)
+            new Query()
+                .one(
+                WidenPaddle.class,
+                SpawnBarrier.class,
+                MultiplyBalls.class
+            )
         );
     }
 

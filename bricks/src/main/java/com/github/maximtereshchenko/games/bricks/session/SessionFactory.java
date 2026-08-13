@@ -76,6 +76,7 @@ public final class SessionFactory {
             new BarrierSpawningSystem(registry, viewport),
             new BarrierTimeExtendingSystem(registry),
             new BarrierRemovalSystem(registry),
+            new BallMultiplicationSystem(registry),
             new PhysicsResizingSystem(registry, world, fixtureFactory),
             new EntityRemovalSystem(registry, world),
             new PhysicsRegistrationSystem(
@@ -134,12 +135,8 @@ public final class SessionFactory {
         registry.addComponents(
             registry.createEntity(),
             new BonusSpawnPolicy(
-                0.1f,
+                0.05f,
                 List.of(
-//                    new Object[]{
-//                        Bonus.MULTIPLY_BALLS,
-//                        new Visible(Color.valueOf("#a6d81d"))
-//                    },
 //                    new Object[]{
 //                        Bonus.ADD_BALLS,
 //                        new Visible(Color.valueOf("#00cce4"))
@@ -151,6 +148,10 @@ public final class SessionFactory {
                     List.of(
                         new SpawnBarrier(10),
                         new Visible(Color.valueOf("#ff9859"))
+                    ),
+                    List.of(
+                        new MultiplyBalls(3),
+                        new Visible(Color.valueOf("#a6d81d"))
                     )
                 )
             )
