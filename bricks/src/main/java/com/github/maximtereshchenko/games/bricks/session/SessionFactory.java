@@ -43,7 +43,8 @@ public final class SessionFactory {
             BodyDef.BodyType.StaticBody,
             new Vector2(),
             shape,
-            false
+            false,
+            0
         );
         shape.dispose();
         return world;
@@ -122,6 +123,7 @@ public final class SessionFactory {
             registry.createEntity(),
             Ball.INSTANCE,
             BodyDef.BodyType.DynamicBody,
+            new CollisionGroupIndex(-1),
             ballCircle,
             new WorldPosition(
                 new Vector2(

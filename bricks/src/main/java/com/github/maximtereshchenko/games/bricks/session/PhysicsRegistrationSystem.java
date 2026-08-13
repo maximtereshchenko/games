@@ -18,7 +18,12 @@ final class PhysicsRegistrationSystem implements System {
         this.entities = registry.entities(
             new Query()
                 .all(BodyDef.BodyType.class, WorldPosition.class)
-                .one(Rectangle.class, Circle.class, Sensor.class)
+                .one(
+                    Rectangle.class,
+                    Circle.class,
+                    Sensor.class,
+                    CollisionGroupIndex.class
+                )
         );
         this.world = world;
         this.fixtureFactory = fixtureFactory;
@@ -36,12 +41,23 @@ final class PhysicsRegistrationSystem implements System {
                 bodyType,
                 worldPosition.vector2(),
                 shape,
-                entity.component(Sensor.class) != null
+                entity.component(Sensor.class) != null,
+                collisionGroupIndex(entity)
             );
             fixture.setUserData(id);
             registryEdit.addComponents(id, fixture);
             shape.dispose();
         }
+    }
+
+    private int collisionGroupIndex(Entity entity) {
+        var collisionGroupIndex = entity.component(
+            CollisionGroupIndex.class
+        );
+        if (collisionGroupIndex == null) {
+            return 0;
+        }
+        return collisionGroupIndex.value();
     }
 
     private Shape shape(Entity entity) {

@@ -44,7 +44,8 @@ final class PhysicsResizingSystem implements System {
                 body.getType(),
                 worldPosition.vector2(),
                 shape,
-                false
+                false,
+                fixture.getFilterData().groupIndex
             );
             replacement.setUserData(entity.id());
             registryEdit.addComponents(entity.id(), replacement);
