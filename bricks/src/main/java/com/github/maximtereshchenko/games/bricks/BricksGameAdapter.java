@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.bricks;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.FixtureFactory;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
@@ -12,6 +13,7 @@ final class BricksGameAdapter implements ApplicationListener {
     private BricksGame original;
 
     static void main() {
+        World.setVelocityThreshold(0);
         new Lwjgl3Application(new BricksGameAdapter());
     }
 
