@@ -15,7 +15,8 @@ final class BonusCollisionSystem extends CollisionSystem {
                 .one(
                     WidenPaddle.class,
                     SpawnBarrier.class,
-                    MultiplyBalls.class
+                    MultiplyBalls.class,
+                    SpawnBalls.class
                 )
         );
     }
