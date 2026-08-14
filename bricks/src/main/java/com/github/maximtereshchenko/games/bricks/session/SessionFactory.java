@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.ecs.Registry;
@@ -17,36 +16,22 @@ import java.util.stream.Stream;
 public final class SessionFactory {
 
     private final ShapeRenderer shapeRenderer;
-    private final FixtureFactory fixtureFactory;
+    private final PhysicsObjectFactory physicsObjectFactory;
 
     public SessionFactory(
         ShapeRenderer shapeRenderer,
-        FixtureFactory fixtureFactory
+        PhysicsObjectFactory physicsObjectFactory
     ) {
         this.shapeRenderer = shapeRenderer;
-        this.fixtureFactory = fixtureFactory;
+        this.physicsObjectFactory = physicsObjectFactory;
     }
 
     public World world(Viewport viewport) {
         var world = new World(Vector2.Zero, true);
-        var shape = new ChainShape();
-        shape.createChain(
-            new float[]{
-                0, 0,
-                0, viewport.getWorldHeight(),
-                viewport.getWorldWidth(), viewport.getWorldHeight(),
-                viewport.getWorldWidth(), 0
-            }
-        );
-        fixtureFactory.fixture(
+        physicsObjectFactory.createBoundaries(
             world,
-            BodyDef.BodyType.StaticBody,
-            new Vector2(),
-            shape,
-            false,
-            0
+            viewport
         );
-        shape.dispose();
         return world;
     }
 
@@ -72,7 +57,10 @@ public final class SessionFactory {
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
-            new BonusSpawningSystem(registry, ThreadLocalRandom.current()),
+            new BonusSpawningSystem(
+                registry,
+                ThreadLocalRandom.current()
+            ),
             new PaddleWideningSystem(registry),
             new WidthResettingSystem(registry),
             new BarrierSpawningSystem(registry, viewport),
@@ -80,13 +68,30 @@ public final class SessionFactory {
             new BarrierRemovalSystem(registry),
             new BallMultiplicationSystem(registry),
             new BallSpawningSystem(registry),
-            new PhysicsResizingSystem(registry, world, fixtureFactory),
-            new OutOfBoundsEntityRemovalSystem(registry, viewport),
-            new FixtureRemovalSystem(registry, world),
-            new PhysicsRegistrationSystem(
+            new RectangleResizingSystem(
                 registry,
                 world,
-                fixtureFactory
+                physicsObjectFactory
+            ),
+            new OutOfBoundsEntityRemovalSystem(
+                registry,
+                viewport
+            ),
+            new FixtureRemovalSystem(registry, world),
+            new RectangleFixtureSystem(
+                registry,
+                world,
+                physicsObjectFactory
+            ),
+            new CircleFixtureSystem(
+                registry,
+                world,
+                physicsObjectFactory
+            ),
+            new SensorFixtureSystem(
+                registry,
+                world,
+                physicsObjectFactory
             ),
             new ComponentRemovalSystem(
                 registry,
