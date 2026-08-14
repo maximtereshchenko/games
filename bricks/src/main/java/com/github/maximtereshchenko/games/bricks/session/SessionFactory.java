@@ -93,11 +93,17 @@ public final class SessionFactory {
                 world,
                 physicsObjectFactory
             ),
+            new PaddleJointSystem(
+                registry,
+                world,
+                physicsObjectFactory
+            ),
             new ComponentRemovalSystem(
                 registry,
                 BodyDef.BodyType.class,
                 Sensor.class,
                 CollisionGroupIndex.class,
+                Attaching.class,
                 Collisions.class,
                 Resized.class
             ),
@@ -133,6 +139,7 @@ public final class SessionFactory {
             Ball.INSTANCE,
             BodyDef.BodyType.DynamicBody,
             new CollisionGroupIndex(-1),
+            Attaching.INSTANCE,
             ballCircle,
             new WorldPosition(
                 new Vector2(

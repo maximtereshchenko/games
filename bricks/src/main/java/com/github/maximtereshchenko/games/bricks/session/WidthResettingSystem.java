@@ -26,6 +26,9 @@ final class WidthResettingSystem implements System {
             );
             var baseWidth = entity.component(BaseWidth.class);
             var rectangle = entity.component(Rectangle.class);
+            if (resetWidthRemainingTime.seconds == 0) {
+                return;
+            }
             resetWidthRemainingTime.seconds = Math.max(
                 resetWidthRemainingTime.seconds - deltaTimeSeconds,
                 0

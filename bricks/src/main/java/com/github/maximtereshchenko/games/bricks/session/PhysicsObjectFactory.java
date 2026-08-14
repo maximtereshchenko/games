@@ -2,9 +2,26 @@ package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public final class PhysicsObjectFactory {
+
+    Joint joint(
+        World world,
+        Body first,
+        Body second
+    ) {
+        var weldJointDefinition = new WeldJointDef();
+        weldJointDefinition.initialize(
+            first,
+            second,
+            first.getPosition()
+        );
+        weldJointDefinition.frequencyHz = 0;
+        weldJointDefinition.dampingRatio = 0;
+        return world.createJoint(weldJointDefinition);
+    }
 
     Fixture fixture(
         World world,
