@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public final class PhysicsObjectFactory {
 
-    Joint joint(
+    Joint weldJoint(
         World world,
         Body first,
         Body second

@@ -49,7 +49,8 @@ public final class SessionFactory {
         Viewport viewport
     ) {
         registry.addSystems(
-            new InputSystem(registry, viewport),
+            new PaddleMovementSystem(registry, viewport),
+            new BallLaunchingSystem(registry, world),
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),
             new RegistrySynchronizationSystem(registry),

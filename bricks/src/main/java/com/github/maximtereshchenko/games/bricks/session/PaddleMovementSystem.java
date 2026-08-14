@@ -6,13 +6,13 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class InputSystem implements System {
+final class PaddleMovementSystem implements System {
 
     private final Iterable<Entity> entities;
     private final Viewport viewport;
     private final Vector2 vector2;
 
-    InputSystem(Registry registry, Viewport viewport) {
+    PaddleMovementSystem(Registry registry, Viewport viewport) {
         this.entities = registry.entities(
             new Query().all(Paddle.class, Velocity.class)
         );

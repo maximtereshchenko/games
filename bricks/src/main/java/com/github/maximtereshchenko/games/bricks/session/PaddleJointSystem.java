@@ -35,7 +35,7 @@ final class PaddleJointSystem implements System {
                 var paddleFixture = paddleEntity.component(Fixture.class);
                 registryEdit.addComponents(
                     attachingEntity.id(),
-                    physicsObjectFactory.joint(
+                    physicsObjectFactory.weldJoint(
                         world,
                         attachingFixture.getBody(),
                         paddleFixture.getBody()
