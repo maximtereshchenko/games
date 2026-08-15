@@ -31,7 +31,7 @@ final class OutOfBoundsEntityRemovalSystem implements System {
     }
 
     private boolean isOutOfBounds(float coordinate, float length) {
-        var offset = length * 0.1f;
+        var offset = length * 0.05f;
         return coordinate < -offset || coordinate > length + offset;
     }
 }

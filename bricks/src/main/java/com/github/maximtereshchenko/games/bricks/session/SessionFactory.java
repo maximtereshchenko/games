@@ -51,6 +51,7 @@ public final class SessionFactory {
         registry.addSystems(
             new PaddleMovementSystem(registry, viewport),
             new BallLaunchingSystem(registry, world),
+            new BallResettingSystem(registry),
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),
             new RegistrySynchronizationSystem(registry),
@@ -118,11 +119,6 @@ public final class SessionFactory {
 
     private void createCommon(Registry registry, Viewport viewport) {
         var paddleRectangle = new Rectangle(1, 0.1f);
-        var paddleVector2 = new Vector2(
-            viewport.getWorldWidth() / 2,
-            2
-        );
-        var ballCircle = new Circle(0.1f);
         registry.addComponents(
             registry.createEntity(),
             Paddle.INSTANCE,
@@ -131,26 +127,14 @@ public final class SessionFactory {
             new MaxWidth(4),
             new BaseWidth(paddleRectangle.halfWidth * 2),
             new ResetWidthRemainingTime(0),
-            new WorldPosition(paddleVector2),
-            new Velocity(new Vector2()),
-            new Visible(Color.valueOf("#ff7f50"))
-        );
-        registry.addComponents(
-            registry.createEntity(),
-            Ball.INSTANCE,
-            BodyDef.BodyType.DynamicBody,
-            new CollisionGroupIndex(-1),
-            Attaching.INSTANCE,
-            ballCircle,
             new WorldPosition(
                 new Vector2(
-                    paddleVector2.x,
-                    paddleVector2.y + (paddleRectangle.halfHeight + ballCircle.radius()) * 1.1f
+                    viewport.getWorldWidth() / 2,
+                    2
                 )
             ),
-            new Velocity(new Vector2(0, 5)),
-            new Speed(5),
-            new Visible(Color.valueOf("#feffff"))
+            new Velocity(new Vector2()),
+            new Visible(Color.valueOf("#ff7f50"))
         );
         registry.addComponents(
             registry.createEntity(),
