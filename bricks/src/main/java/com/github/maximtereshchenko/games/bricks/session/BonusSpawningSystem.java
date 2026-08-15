@@ -7,6 +7,7 @@ import com.github.maximtereshchenko.games.ecs.System;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 final class BonusSpawningSystem implements System {
@@ -44,7 +45,7 @@ final class BonusSpawningSystem implements System {
                     spawnBonus(
                         registryEdit,
                         worldPosition.vector2(),
-                        bonusSpawnPolicy.components()
+                        components(bonusSpawnPolicy.componentChances())
                     );
                 }
 
@@ -52,10 +53,21 @@ final class BonusSpawningSystem implements System {
         }
     }
 
+    private List<Object> components(Map<List<Object>, Float> componentChances) {
+        var chance = random.nextFloat();
+        for (var entry : componentChances.entrySet()) {
+            chance -= entry.getValue();
+            if (chance < 0) {
+                return entry.getKey();
+            }
+        }
+        return List.of();
+    }
+
     private void spawnBonus(
         RegistryEdit registryEdit,
         Vector2 vector2,
-        List<List<Object>> components
+        List<Object> components
     ) {
         var all = new ArrayList<>();
         all.add(BodyDef.BodyType.DynamicBody);
@@ -63,7 +75,7 @@ final class BonusSpawningSystem implements System {
         all.add(new Circle(0.2f));
         all.add(new WorldPosition(new Vector2(vector2)));
         all.add(new Velocity(new Vector2(0, -1)));
-        all.addAll(components.get(random.nextInt(components.size())));
+        all.addAll(components);
         registryEdit.addComponents(
             registryEdit.createEntity(),
             all.toArray()

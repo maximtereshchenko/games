@@ -12,6 +12,7 @@ import com.github.maximtereshchenko.games.event.EventBus;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
@@ -158,23 +159,27 @@ public final class SessionFactory {
             registry.createEntity(),
             new BonusSpawnPolicy(
                 0.05f,
-                List.of(
+                Map.of(
                     List.of(
                         new WidenPaddle(0.5f, 10),
                         new Visible(Color.GREEN)
                     ),
+                    0.25f,
                     List.of(
                         new SpawnBarrier(10),
                         new Visible(Color.valueOf("#ff9859"))
                     ),
+                    0.25f,
                     List.of(
                         new MultiplyBalls(3),
                         new Visible(Color.valueOf("#a6d81d"))
                     ),
+                    0.25f,
                     List.of(
                         new SpawnBalls(3),
                         new Visible(Color.valueOf("#00cce4"))
-                    )
+                    ),
+                    0.25f
                 )
             )
         );
