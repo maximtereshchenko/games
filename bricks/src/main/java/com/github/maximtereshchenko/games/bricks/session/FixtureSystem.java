@@ -11,15 +11,10 @@ abstract class FixtureSystem implements System {
 
     FixtureSystem(
         Registry registry,
-        Class<?>... components
+        Query query
     ) {
         this.entities = registry.entities(
-            new Query()
-                .all(
-                    BodyDef.BodyType.class,
-                    WorldPosition.class
-                )
-                .all(components)
+            query.all(BodyDef.BodyType.class, WorldPosition.class)
         );
     }
 

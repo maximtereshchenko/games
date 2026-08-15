@@ -10,19 +10,17 @@ final class PaddleMovementSystem implements System {
 
     private final Iterable<Entity> entities;
     private final Viewport viewport;
-    private final Vector2 vector2;
 
     PaddleMovementSystem(Registry registry, Viewport viewport) {
         this.entities = registry.entities(
             new Query().all(Paddle.class, Velocity.class)
         );
         this.viewport = viewport;
-        this.vector2 = new Vector2();
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        vector2.set(Gdx.input.getX(), Gdx.input.getY());
+        var vector2 = new Vector2(Gdx.input.getX(), Gdx.input.getY());
         viewport.unproject(vector2);
         for (var entity : entities) {
             var worldPosition = entity.component(WorldPosition.class);

@@ -29,7 +29,7 @@ public final class PhysicsObjectFactory {
         WorldPosition worldPosition,
         Rectangle rectangle
     ) {
-        var shape = shape(rectangle);
+        var shape = polygonShape(rectangle);
         var fixture = fixture(
             world,
             bodyType,
@@ -46,9 +46,9 @@ public final class PhysicsObjectFactory {
         World world,
         BodyDef.BodyType bodyType,
         WorldPosition worldPosition,
-        Circle circle
+        float radius
     ) {
-        var shape = shape(circle);
+        var shape = circleShape(radius);
         var fixture = fixture(
             world,
             bodyType,
@@ -68,7 +68,7 @@ public final class PhysicsObjectFactory {
         Circle circle,
         CollisionGroupIndex collisionGroupIndex
     ) {
-        var shape = shape(circle);
+        var shape = circleShape(circle.radius());
         var fixture = fixture(
             world,
             bodyType,
@@ -102,15 +102,15 @@ public final class PhysicsObjectFactory {
         shape.dispose();
     }
 
-    private Shape shape(Rectangle rectangle) {
+    private PolygonShape polygonShape(Rectangle rectangle) {
         var shape = new PolygonShape();
         shape.setAsBox(rectangle.halfWidth, rectangle.halfHeight);
         return shape;
     }
 
-    private Shape shape(Circle circle) {
+    private CircleShape circleShape(float radius) {
         var shape = new CircleShape();
-        shape.setRadius(circle.radius());
+        shape.setRadius(radius);
         return shape;
     }
 

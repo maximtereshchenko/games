@@ -22,7 +22,11 @@ final class WorldRenderingSystem implements System {
         this.entities = registry.entities(
             new Query()
                 .all(Visible.class, WorldPosition.class)
-                .one(Rectangle.class, Circle.class)
+                .one(
+                    Rectangle.class,
+                    Circle.class,
+                    Star.class
+                )
         );
         this.viewport = viewport;
         this.shapeRenderer = shapeRenderer;
@@ -47,21 +51,49 @@ final class WorldRenderingSystem implements System {
 
     private void draw(Entity entity, Vector2 vector2) {
         var rectangle = entity.component(Rectangle.class);
-        if (rectangle == null) {
-            var circle = entity.component(Circle.class);
-            shapeRenderer.circle(
-                vector2.x,
-                vector2.y,
-                circle.radius(),
-                16
-            );
-        } else {
-            shapeRenderer.rect(
-                vector2.x - rectangle.halfWidth,
-                vector2.y - rectangle.halfHeight,
-                rectangle.halfWidth * 2,
-                rectangle.halfHeight * 2
-            );
+        if (rectangle != null) {
+            draw(vector2, rectangle);
         }
+        var circle = entity.component(Circle.class);
+        if (circle != null) {
+            draw(vector2, circle);
+        }
+        var star = entity.component(Star.class);
+        if (star != null) {
+            draw(vector2, star);
+        }
+    }
+
+    private void draw(Vector2 vector2, Star star) {
+        var x = new float[5];
+        var y = new float[5];
+        for (var i = 0; i < 5; i++) {
+            var angle = Math.PI / 2 + (i * 2 * Math.PI / 5f);
+            x[i] = (float) (vector2.x + star.radius() * Math.cos(angle));
+            y[i] = (float) (vector2.y + star.radius() * Math.sin(angle));
+        }
+        for (var i = 0; i < 5; i++) {
+            var p2 = (i + 2) % 5;
+            var p3 = (i + 3) % 5;
+            shapeRenderer.triangle(x[i], y[i], x[p2], y[p2], x[p3], y[p3]);
+        }
+    }
+
+    private void draw(Vector2 vector2, Circle circle) {
+        shapeRenderer.circle(
+            vector2.x,
+            vector2.y,
+            circle.radius(),
+            16
+        );
+    }
+
+    private void draw(Vector2 vector2, Rectangle rectangle) {
+        shapeRenderer.rect(
+            vector2.x - rectangle.halfWidth,
+            vector2.y - rectangle.halfHeight,
+            rectangle.halfWidth * 2,
+            rectangle.halfHeight * 2
+        );
     }
 }

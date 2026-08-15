@@ -4,6 +4,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.ecs.Registry;
 
 final class RectangleFixtureSystem extends FixtureSystem {
@@ -16,7 +17,10 @@ final class RectangleFixtureSystem extends FixtureSystem {
         World world,
         PhysicsObjectFactory physicsObjectFactory
     ) {
-        super(registry, Rectangle.class);
+        super(
+            registry,
+            new Query().all(Rectangle.class)
+        );
         this.world = world;
         this.physicsObjectFactory = physicsObjectFactory;
     }

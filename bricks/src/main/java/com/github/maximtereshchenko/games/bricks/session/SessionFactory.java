@@ -48,6 +48,7 @@ public final class SessionFactory {
         World world,
         Viewport viewport
     ) {
+        var random = ThreadLocalRandom.current();
         registry.addSystems(
             new PaddleMovementSystem(registry, viewport),
             new BallLaunchingSystem(registry, world),
@@ -60,10 +61,8 @@ public final class SessionFactory {
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
-            new BonusSpawningSystem(
-                registry,
-                ThreadLocalRandom.current()
-            ),
+            new BonusSpawningSystem(registry, random),
+            new StarSpawningSystem(registry, random),
             new PaddleWideningSystem(registry),
             new WidthResettingSystem(registry),
             new BarrierSpawningSystem(registry, viewport),
@@ -135,6 +134,7 @@ public final class SessionFactory {
                 )
             ),
             new Velocity(new Vector2()),
+            new SpawnedStars(3, 0),
             new Visible(Color.valueOf("#ff7f50"))
         );
         registry.addComponents(
