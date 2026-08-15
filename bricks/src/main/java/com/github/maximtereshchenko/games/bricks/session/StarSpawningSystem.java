@@ -85,6 +85,7 @@ final class StarSpawningSystem implements System {
     ) {
         registryEdit.addComponents(
             registryEdit.createEntity(),
+            Bonus.INSTANCE,
             IncrementStars.INSTANCE,
             BodyDef.BodyType.DynamicBody,
             Sensor.INSTANCE,

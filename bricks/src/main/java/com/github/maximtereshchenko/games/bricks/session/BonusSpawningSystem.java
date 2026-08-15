@@ -69,7 +69,11 @@ final class BonusSpawningSystem implements System {
         Vector2 vector2,
         List<Object> components
     ) {
+        if (components.isEmpty()) {
+            return;
+        }
         var all = new ArrayList<>();
+        all.add(Bonus.INSTANCE);
         all.add(BodyDef.BodyType.DynamicBody);
         all.add(Sensor.INSTANCE);
         all.add(new Circle(0.2f));

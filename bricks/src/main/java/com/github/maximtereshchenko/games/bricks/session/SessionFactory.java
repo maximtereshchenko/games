@@ -161,25 +161,30 @@ public final class SessionFactory {
                 0.05f,
                 Map.of(
                     List.of(
+                        IncrementLives.INSTANCE,
+                        new Visible(Color.RED)
+                    ),
+                    0.05f,
+                    List.of(
                         new WidenPaddle(0.5f, 10),
                         new Visible(Color.GREEN)
                     ),
-                    0.25f,
+                    0.2375f,
                     List.of(
                         new SpawnBarrier(10),
                         new Visible(Color.valueOf("#ff9859"))
                     ),
-                    0.25f,
+                    0.2375f,
                     List.of(
                         new MultiplyBalls(3),
                         new Visible(Color.valueOf("#a6d81d"))
                     ),
-                    0.25f,
+                    0.2375f,
                     List.of(
                         new SpawnBalls(3),
                         new Visible(Color.valueOf("#00cce4"))
                     ),
-                    0.25f
+                    0.2375f
                 )
             )
         );

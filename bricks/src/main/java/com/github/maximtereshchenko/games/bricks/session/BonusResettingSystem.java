@@ -13,13 +13,7 @@ final class BonusResettingSystem implements System {
             new Query().all(Ball.class)
         );
         this.bonusEntities = registry.entities(
-            new Query()
-                .one(
-                    WidenPaddle.class,
-                    SpawnBarrier.class,
-                    MultiplyBalls.class,
-                    SpawnBalls.class
-                )
+            new Query().all(Bonus.class)
         );
     }
 
