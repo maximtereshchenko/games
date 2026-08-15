@@ -10,7 +10,7 @@ final class PaddleWideningSystem implements System {
 
     PaddleWideningSystem(Registry registry) {
         this.widenPaddleEntities = registry.entities(
-            new Query().all(WidenPaddle.class, Removed.class)
+            new Query().all(WidenPaddle.class, Activated.class)
         );
         this.paddleEntities = registry.entities(
             new Query()

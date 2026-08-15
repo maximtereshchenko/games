@@ -15,7 +15,7 @@ final class BarrierSpawningSystem implements System {
 
     BarrierSpawningSystem(Registry registry, Viewport viewport) {
         this.spawnBarrierEntities = registry.entities(
-            new Query().all(SpawnBarrier.class, Removed.class)
+            new Query().all(SpawnBarrier.class, Activated.class)
         );
         this.barrierEntities = registry.entities(
             new Query().all(Barrier.class)

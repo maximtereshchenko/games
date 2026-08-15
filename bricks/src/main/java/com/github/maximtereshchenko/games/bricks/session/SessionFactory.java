@@ -51,6 +51,7 @@ public final class SessionFactory {
         registry.addSystems(
             new PaddleMovementSystem(registry, viewport),
             new BallLaunchingSystem(registry, world),
+            new BonusResettingSystem(registry),
             new BallResettingSystem(registry),
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),

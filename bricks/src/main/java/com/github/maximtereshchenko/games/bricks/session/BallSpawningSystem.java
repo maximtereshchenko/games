@@ -13,7 +13,7 @@ final class BallSpawningSystem implements System {
 
     BallSpawningSystem(Registry registry) {
         this.spawnBallsEntities = registry.entities(
-            new Query().all(SpawnBalls.class, Removed.class)
+            new Query().all(SpawnBalls.class, Activated.class)
         );
         this.paddleEntities = registry.entities(
             new Query()

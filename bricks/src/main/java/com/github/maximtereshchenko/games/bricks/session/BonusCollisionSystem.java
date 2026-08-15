@@ -27,6 +27,10 @@ final class BonusCollisionSystem extends CollisionSystem {
         Entity colliderEntity,
         Entity impactedEntity
     ) {
-        registryEdit.addComponents(impactedEntity.id(), Removed.INSTANCE);
+        registryEdit.addComponents(
+            impactedEntity.id(),
+            Activated.INSTANCE,
+            Removed.INSTANCE
+        );
     }
 }

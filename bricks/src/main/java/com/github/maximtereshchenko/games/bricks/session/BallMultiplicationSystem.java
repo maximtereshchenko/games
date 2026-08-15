@@ -12,7 +12,7 @@ final class BallMultiplicationSystem implements System {
 
     BallMultiplicationSystem(Registry registry) {
         this.multiplyBallsEntities = registry.entities(
-            new Query().all(MultiplyBalls.class, Removed.class)
+            new Query().all(MultiplyBalls.class, Activated.class)
         );
         this.ballsEntities = registry.entities(
             new Query()
