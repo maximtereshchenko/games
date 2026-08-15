@@ -70,6 +70,7 @@ public final class SessionFactory {
             new BarrierRemovalSystem(registry),
             new BallMultiplicationSystem(registry),
             new BallSpawningSystem(registry),
+            new StarIncrementingSystem(registry),
             new RectangleResizingSystem(
                 registry,
                 world,
@@ -135,6 +136,7 @@ public final class SessionFactory {
             ),
             new Velocity(new Vector2()),
             new SpawnedStars(3, 0),
+            new StarCounter(0),
             new Visible(Color.valueOf("#ff7f50"))
         );
         registry.addComponents(

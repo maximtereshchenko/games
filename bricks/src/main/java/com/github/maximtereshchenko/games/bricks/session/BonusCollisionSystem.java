@@ -16,7 +16,8 @@ final class BonusCollisionSystem extends CollisionSystem {
                     WidenPaddle.class,
                     SpawnBarrier.class,
                     MultiplyBalls.class,
-                    SpawnBalls.class
+                    SpawnBalls.class,
+                    IncrementStars.class
                 )
         );
     }
