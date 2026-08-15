@@ -11,6 +11,7 @@
 
     <modules>
         <module>ecs</module>
+        <module>events</module>
         <module>snakes</module>
         <module>bricks</module>
     </modules>
