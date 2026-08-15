@@ -76,6 +76,7 @@ public final class SessionFactory {
             new BarrierRemovalSystem(registry),
             new BallMultiplicationSystem(registry),
             new BallSpawningSystem(registry),
+            new LifeIncrementingSystem(registry),
             new StarIncrementingSystem(registry),
             new RectangleResizingSystem(
                 registry,
