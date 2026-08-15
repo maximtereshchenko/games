@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.snakes;
 
+import com.github.maximtereshchenko.games.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.session.SessionMetric;
@@ -7,7 +8,7 @@ import com.github.maximtereshchenko.games.snakes.session.SessionMetric;
 import java.util.List;
 import java.util.Map;
 
-final class UpdateUserProfileMetrics implements Subscriber {
+final class UpdateUserProfileMetrics implements Subscriber<ApplicationEvent> {
 
     private final UserProfile userProfile;
     private final List<Mode> modes;

@@ -2,8 +2,9 @@ package com.github.maximtereshchenko.games.snakes.screen;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.github.maximtereshchenko.games.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
+import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;
 import com.github.maximtereshchenko.games.snakes.screen.view.LoadingView;
 
@@ -12,20 +13,20 @@ final class LoadingScreen implements Screen {
     private final Screen original;
     private final LoadingView loadingView;
     private final AssetManager assetManager;
-    private final ApplicationEvents applicationEvents;
+    private final EventBus<ApplicationEvent> eventBus;
     private final Assets assets;
 
     LoadingScreen(
         Screen original,
         LoadingView loadingView,
         AssetManager assetManager,
-        ApplicationEvents applicationEvents,
+        EventBus<ApplicationEvent> eventBus,
         Assets assets
     ) {
         this.original = original;
         this.loadingView = loadingView;
         this.assetManager = assetManager;
-        this.applicationEvents = applicationEvents;
+        this.eventBus = eventBus;
         this.assets = assets;
     }
 
@@ -41,7 +42,7 @@ final class LoadingScreen implements Screen {
         loadingView.updateProgress(assetManager.getProgress());
         original.render(delta);
         if (loaded) {
-            applicationEvents.publish(new AssetsLoaded());
+            eventBus.publish(new AssetsLoaded());
         }
     }
 

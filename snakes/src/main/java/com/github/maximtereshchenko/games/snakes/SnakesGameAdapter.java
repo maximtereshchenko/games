@@ -7,8 +7,9 @@ import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.github.maximtereshchenko.games.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.configuration.ConfigurationReader;
-import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
+import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.snakes.session.SessionFactory;
 
@@ -34,20 +35,20 @@ final class SnakesGameAdapter implements ApplicationListener {
         );
         var assets = configuration.assets();
         var modes = configuration.modes();
-        var applicationEvents = new ApplicationEvents();
+        var eventBus = new EventBus<ApplicationEvent>();
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
         var assetManager = new AssetManager(new ClasspathFileHandleResolver());
         assets.loadingAssets().forEach(assetManager::load);
         assetManager.finishLoading();
-        applicationEvents.subscribe(new StartMusic(userProfile, assetManager, assets));
-        applicationEvents.subscribe(new UpdateUserProfileMetrics(userProfile, modes));
-        applicationEvents.subscribe(new UnlockModes(userProfile, modes));
+        eventBus.subscribe(new StartMusic(userProfile, assetManager, assets));
+        eventBus.subscribe(new UpdateUserProfileMetrics(userProfile, modes));
+        eventBus.subscribe(new UnlockModes(userProfile, modes));
         var screenFactory = new ScreenFactory(
             assetManager,
             assets,
             spriteBatch,
-            applicationEvents,
+            eventBus,
             userProfile,
             new SessionFactory(
                 configurationReader,
@@ -67,7 +68,7 @@ final class SnakesGameAdapter implements ApplicationListener {
             ),
             userProfile
         );
-        applicationEvents.subscribe(original);
+        eventBus.subscribe(original);
         original.setScreen(screenFactory.loadingScreen());
     }
 

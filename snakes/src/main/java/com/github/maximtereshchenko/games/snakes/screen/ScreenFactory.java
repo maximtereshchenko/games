@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.github.maximtereshchenko.games.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.UserProfile;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
@@ -37,7 +38,7 @@ public final class ScreenFactory {
     private final AssetManager assetManager;
     private final Assets assets;
     private final SpriteBatch spriteBatch;
-    private final ApplicationEvents applicationEvents;
+    private final EventBus<ApplicationEvent> eventBus;
     private final UserProfile userProfile;
     private final SessionFactory sessionFactory;
     private final List<Mode> modes;
@@ -46,7 +47,7 @@ public final class ScreenFactory {
         AssetManager assetManager,
         Assets assets,
         SpriteBatch spriteBatch,
-        ApplicationEvents applicationEvents,
+        EventBus<ApplicationEvent> eventBus,
         UserProfile userProfile,
         SessionFactory sessionFactory,
         List<Mode> modes
@@ -54,7 +55,7 @@ public final class ScreenFactory {
         this.assetManager = assetManager;
         this.assets = assets;
         this.spriteBatch = spriteBatch;
-        this.applicationEvents = applicationEvents;
+        this.eventBus = eventBus;
         this.userProfile = userProfile;
         this.sessionFactory = sessionFactory;
         this.modes = modes;
@@ -69,7 +70,7 @@ public final class ScreenFactory {
             new StageScreen(stage(loadingView)),
             loadingView,
             assetManager,
-            applicationEvents,
+            eventBus,
             assets
         );
     }
@@ -97,7 +98,7 @@ public final class ScreenFactory {
 
                 @Override
                 public boolean keyDown(InputEvent event, int keycode) {
-                    applicationEvents.publish(new TitleScreenFinished());
+                    eventBus.publish(new TitleScreenFinished());
                     return true;
                 }
             }
@@ -129,7 +130,7 @@ public final class ScreenFactory {
         );
         return new SessionScreen(
             Set.of(gameViewport, interfaceViewport),
-            applicationEvents,
+            eventBus,
             sessionFactory.registry(
                 mode,
                 gameViewport,
@@ -145,7 +146,7 @@ public final class ScreenFactory {
             userProfile
         );
         statisticsView.onFinish(
-            () -> applicationEvents.publish(new StatisticsScreenFinished())
+            () -> eventBus.publish(new StatisticsScreenFinished())
         );
         return new StageScreen(stage(statisticsView));
     }
@@ -159,7 +160,7 @@ public final class ScreenFactory {
         );
         settingsView.onVolumeChange(volume -> setVolume(music, volume));
         settingsView.onFinish(
-            () -> applicationEvents.publish(new StatisticsScreenFinished())
+            () -> eventBus.publish(new StatisticsScreenFinished())
         );
         return new StageScreen(stage(settingsView));
     }
@@ -170,7 +171,7 @@ public final class ScreenFactory {
             assetManager.get(assets.skin())
         );
         creditsView.onFinish(
-            () -> applicationEvents.publish(new CreditsScreenFinished())
+            () -> eventBus.publish(new CreditsScreenFinished())
         );
         return new StageScreen(stage(creditsView));
     }
@@ -191,7 +192,7 @@ public final class ScreenFactory {
             )
         );
         navigationView.onClick(
-            target -> applicationEvents.publish(
+            target -> eventBus.publish(
                 switch (target) {
                     case STATISTICS -> new StatisticsRequested();
                     case SETTINGS -> new SettingsRequested();
@@ -215,7 +216,7 @@ public final class ScreenFactory {
             )
         );
         modesView.onClick(
-            modeButton -> applicationEvents.publish(new ModeSelected(modeButton.mode()))
+            modeButton -> eventBus.publish(new ModeSelected(modeButton.mode()))
         );
         return modesView;
     }

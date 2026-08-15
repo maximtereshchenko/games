@@ -1,12 +1,12 @@
 package com.github.maximtereshchenko.games.snakes;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.github.maximtereshchenko.games.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;
-import com.github.maximtereshchenko.games.snakes.event.Subscriber;
 
-final class StartMusic implements Subscriber {
+final class StartMusic implements Subscriber<ApplicationEvent> {
 
     private final UserProfile userProfile;
     private final AssetManager assetManager;

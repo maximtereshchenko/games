@@ -2,12 +2,13 @@ package com.github.maximtereshchenko.games.snakes;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.Disposable;
+import com.github.maximtereshchenko.games.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
 
 import java.util.Set;
 
-final class SnakesGame extends Game implements Subscriber {
+final class SnakesGame extends Game implements Subscriber<ApplicationEvent> {
 
     private final ScreenFactory screenFactory;
     private final Set<Disposable> disposables;

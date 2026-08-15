@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.snakes;
 
+import com.github.maximtereshchenko.games.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.configuration.ModeUnlockRequirements;
 import com.github.maximtereshchenko.games.snakes.event.*;
@@ -9,7 +10,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-final class UnlockModes implements Subscriber {
+final class UnlockModes implements Subscriber<ApplicationEvent> {
 
     private final UserProfile userProfile;
     private final List<Mode> modes;

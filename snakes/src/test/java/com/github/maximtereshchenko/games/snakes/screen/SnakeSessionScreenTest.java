@@ -3,7 +3,8 @@ package com.github.maximtereshchenko.games.snakes.screen;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.ecs.System;
 import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
+import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.SessionEnded;
 import com.github.maximtereshchenko.games.snakes.session.Dead;
 import com.github.maximtereshchenko.games.snakes.session.SessionMetric;
@@ -18,12 +19,12 @@ import static org.mockito.Mockito.*;
 final class SnakeSessionScreenTest {
 
     private final Viewport viewport = mock();
-    private final ApplicationEvents applicationEvents = mock();
+    private final EventBus<ApplicationEvent> eventBus = mock();
     private final Registry registry = new Registry();
     private final System system = mock();
     private final SessionScreen snakeSessionScreen = new SessionScreen(
         Set.of(viewport),
-        applicationEvents,
+        eventBus,
         registry
     );
 
@@ -32,7 +33,7 @@ final class SnakeSessionScreenTest {
         registry.addSystems(system);
         snakeSessionScreen.render(1);
         verify(system).update(any(), eq(1.0f));
-        verifyNoInteractions(applicationEvents);
+        verifyNoInteractions(eventBus);
     }
 
     @Test
@@ -42,7 +43,7 @@ final class SnakeSessionScreenTest {
         registry.addSystems(system);
         snakeSessionScreen.render(1.0f);
         verify(system).update(any(), eq(1.0f));
-        verify(applicationEvents)
+        verify(eventBus)
             .publish(
                 new SessionEnded(
                     Map.of(

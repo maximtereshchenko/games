@@ -4,7 +4,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.event.ApplicationEvents;
+import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;
 import com.github.maximtereshchenko.games.snakes.screen.view.LoadingView;
 import org.junit.jupiter.api.Test;
@@ -22,14 +23,14 @@ final class LoadingScreenTest {
     private final Screen screen = mock();
     private final LoadingView loadingView = mock();
     private final AssetManager assetManager = mock();
-    private final ApplicationEvents applicationEvents = mock();
+    private final EventBus<ApplicationEvent> eventBus = mock();
     private final Assets assets = mock();
     private final AssetDescriptor<?> assetDescriptor = mock();
     private final LoadingScreen loadingScreen = new LoadingScreen(
         screen,
         loadingView,
         assetManager,
-        applicationEvents,
+        eventBus,
         assets
     );
 
@@ -66,7 +67,7 @@ final class LoadingScreenTest {
         loadingScreen.render(1.0f);
         verify(loadingView).updateProgress(0.5f);
         verify(screen).render(1.0f);
-        verify(applicationEvents).publish(any(AssetsLoaded.class));
+        verify(eventBus).publish(any(AssetsLoaded.class));
 
     }
 
