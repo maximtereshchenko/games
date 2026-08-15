@@ -6,7 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.event.EventBus;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,13 +19,16 @@ public final class SessionFactory {
 
     private final ShapeRenderer shapeRenderer;
     private final PhysicsObjectFactory physicsObjectFactory;
+    private final EventBus<Event> eventBus;
 
     public SessionFactory(
         ShapeRenderer shapeRenderer,
-        PhysicsObjectFactory physicsObjectFactory
+        PhysicsObjectFactory physicsObjectFactory,
+        EventBus<Event> eventBus
     ) {
         this.shapeRenderer = shapeRenderer;
         this.physicsObjectFactory = physicsObjectFactory;
+        this.eventBus = eventBus;
     }
 
     public World world(Viewport viewport) {
@@ -102,6 +107,14 @@ public final class SessionFactory {
                 physicsObjectFactory
             ),
             new LifeDecrementingSystem(registry),
+            new LevelFailedPublishingSystem(
+                registry,
+                eventBus
+            ),
+            new LevelCompletedPublishingSystem(
+                registry,
+                eventBus
+            ),
             new ComponentRemovalSystem(
                 registry,
                 BodyDef.BodyType.class,

@@ -4,9 +4,11 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.PhysicsObjectFactory;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
+import com.github.maximtereshchenko.games.event.EventBus;
 
 final class BricksGameAdapter implements ApplicationListener {
 
@@ -20,13 +22,16 @@ final class BricksGameAdapter implements ApplicationListener {
     @Override
     public void create() {
         var shapeRenderer = new ShapeRenderer();
+        var eventBus = new EventBus<Event>();
         var screenFactory = new ScreenFactory(
             new SessionFactory(
                 shapeRenderer,
-                new PhysicsObjectFactory()
+                new PhysicsObjectFactory(),
+                eventBus
             )
         );
         original = new BricksGame(shapeRenderer);
+        eventBus.subscribe(original);
         original.setScreen(screenFactory.sessionScreen());
     }
 
