@@ -101,6 +101,7 @@ public final class SessionFactory {
                 world,
                 physicsObjectFactory
             ),
+            new LifeDecrementingSystem(registry),
             new ComponentRemovalSystem(
                 registry,
                 BodyDef.BodyType.class,
@@ -137,6 +138,7 @@ public final class SessionFactory {
             new Velocity(new Vector2()),
             new SpawnedStars(3, 0),
             new StarCounter(0),
+            new Lives(3),
             new Visible(Color.valueOf("#ff7f50"))
         );
         registry.addComponents(
