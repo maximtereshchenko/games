@@ -1,8 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
@@ -13,9 +12,14 @@ final class StarSpawningSystem implements System {
     private final Iterable<Entity> starsSpawnedEntities;
     private final Iterable<Entity> brickEntities;
     private final Iterable<Entity> removedBrickEntities;
+    private final Blueprints blueprints;
     private final Random random;
 
-    StarSpawningSystem(Registry registry, Random random) {
+    StarSpawningSystem(
+        Registry registry,
+        Blueprints blueprints,
+        Random random
+    ) {
         this.starsSpawnedEntities = registry.entities(
             new Query().all(SpawnedStars.class)
         );
@@ -30,6 +34,7 @@ final class StarSpawningSystem implements System {
                     WorldPosition.class
                 )
         );
+        this.blueprints = blueprints;
         this.random = random;
     }
 
@@ -85,14 +90,10 @@ final class StarSpawningSystem implements System {
     ) {
         registryEdit.addComponents(
             registryEdit.createEntity(),
-            Bonus.INSTANCE,
-            IncrementStars.INSTANCE,
-            BodyDef.BodyType.DynamicBody,
-            Sensor.INSTANCE,
-            new Star(0.2f),
-            new WorldPosition(new Vector2(vector2)),
-            new Velocity(new Vector2(0, -3)),
-            new Visible(Color.GOLD)
+            blueprints.components(
+                BricksBlueprints.STAR,
+                new WorldPosition(new Vector2(vector2))
+            )
         );
     }
 }

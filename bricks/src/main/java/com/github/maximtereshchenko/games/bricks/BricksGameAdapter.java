@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
+import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.PhysicsObjectFactory;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
 import com.github.maximtereshchenko.games.event.EventBus;
@@ -26,8 +27,9 @@ final class BricksGameAdapter implements ApplicationListener {
         var screenFactory = new ScreenFactory(
             new SessionFactory(
                 shapeRenderer,
+                eventBus,
                 new PhysicsObjectFactory(),
-                eventBus
+                new BricksBlueprints().blueprints()
             )
         );
         original = new BricksGame(shapeRenderer);

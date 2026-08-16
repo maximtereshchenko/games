@@ -1,8 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
@@ -10,8 +9,12 @@ final class BallResettingSystem implements System {
 
     private final Iterable<Entity> ballEntities;
     private final Iterable<Entity> paddleEntities;
+    private final Blueprints blueprints;
 
-    BallResettingSystem(Registry registry) {
+    BallResettingSystem(
+        Registry registry,
+        Blueprints blueprints
+    ) {
         this.ballEntities = registry.entities(
             new Query().all(Ball.class)
         );
@@ -20,9 +23,10 @@ final class BallResettingSystem implements System {
                 .all(
                     Paddle.class,
                     WorldPosition.class,
-                    Rectangle.class
+                    BallOffset.class
                 )
         );
+        this.blueprints = blueprints;
     }
 
     @Override
@@ -32,26 +36,16 @@ final class BallResettingSystem implements System {
         }
         for (var paddleEntity : paddleEntities) {
             var worldPosition = paddleEntity.component(WorldPosition.class);
-            var rectangle = paddleEntity.component(Rectangle.class);
-            var vector2 = worldPosition.vector2();
-            var ballCircle = new Circle(0.1f);
+            var ballOffset = paddleEntity.component(BallOffset.class);
+            var vector2 = new Vector2(worldPosition.vector2());
+            vector2.y += ballOffset.value();
             registryEdit.addComponents(
                 registryEdit.createEntity(),
-                Ball.INSTANCE,
-                BodyDef.BodyType.DynamicBody,
-                new CollisionGroupIndex(-1),
-                Attaching.INSTANCE,
-                ballCircle,
-                new WorldPosition(
-                    new Vector2(
-                        vector2.x,
-                        vector2.y +
-                        (rectangle.halfHeight + ballCircle.radius()) * 1.1f
-                    )
-                ),
-                new Velocity(new Vector2()),
-                new Speed(5),
-                new Visible(Color.valueOf("#feffff"))
+                blueprints.components(
+                    BricksBlueprints.BALL,
+                    Attaching.INSTANCE,
+                    new WorldPosition(vector2)
+                )
             );
         }
     }

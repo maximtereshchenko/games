@@ -1,7 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Fixture;
+import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
@@ -9,8 +9,12 @@ final class BallMultiplicationSystem implements System {
 
     private final Iterable<Entity> multiplyBallsEntities;
     private final Iterable<Entity> ballsEntities;
+    private final Blueprints blueprints;
 
-    BallMultiplicationSystem(Registry registry) {
+    BallMultiplicationSystem(
+        Registry registry,
+        Blueprints blueprints
+    ) {
         this.multiplyBallsEntities = registry.entities(
             new Query().all(MultiplyBalls.class, Activated.class)
         );
@@ -18,14 +22,11 @@ final class BallMultiplicationSystem implements System {
             new Query()
                 .all(
                     Ball.class,
-                    Circle.class,
                     WorldPosition.class,
-                    Velocity.class,
-                    Speed.class,
-                    Visible.class,
-                    Fixture.class
+                    Velocity.class
                 )
         );
+        this.blueprints = blueprints;
     }
 
     @Override
@@ -35,31 +36,24 @@ final class BallMultiplicationSystem implements System {
                 MultiplyBalls.class
             );
             for (var ballsEntity : ballsEntities) {
-                var circle = ballsEntity.component(Circle.class);
                 var worldPosition = ballsEntity.component(
                     WorldPosition.class
                 );
                 var velocity = ballsEntity.component(Velocity.class);
-                var speed = ballsEntity.component(Speed.class);
-                var visible = ballsEntity.component(Visible.class);
-                var fixture = ballsEntity.component(Fixture.class);
-                var angleStart = velocity.vector2().angleDeg() + 90;
-                var rotation = 180 / multiplyBalls.factor();
                 for (var i = 1; i < multiplyBalls.factor(); i++) {
                     var vector2 = new Vector2(velocity.vector2());
-                    vector2.setAngleDeg(angleStart - rotation * i);
+                    vector2.setAngleDeg(
+                        vector2.angleDeg() + 90 -
+                        180f * i / multiplyBalls.factor());
                     registryEdit.addComponents(
                         registryEdit.createEntity(),
-                        Ball.INSTANCE,
-                        fixture.getBody().getType(),
-                        new CollisionGroupIndex(
-                            fixture.getFilterData().groupIndex
-                        ),
-                        circle,
-                        new WorldPosition(new Vector2(worldPosition.vector2())),
-                        new Velocity(vector2),
-                        speed,
-                        visible
+                        blueprints.components(
+                            BricksBlueprints.BALL,
+                            new WorldPosition(
+                                new Vector2(worldPosition.vector2())
+                            ),
+                            new Velocity(vector2)
+                        )
                     );
                 }
             }

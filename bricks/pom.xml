@@ -43,5 +43,9 @@
             <artifactId>gdx-box2d-platform</artifactId>
             <classifier>natives-desktop</classifier>
         </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
     </dependencies>
 </project>

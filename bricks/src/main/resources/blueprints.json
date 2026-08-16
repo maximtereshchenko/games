@@ -1,0 +1,326 @@
+{
+  "paddle": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Paddle",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "KinematicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Rectangle",
+      "halfWidth": 1,
+      "halfHeight": 0.1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.MaxWidth",
+      "value": 4
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.BaseWidth",
+      "value": 2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.ResetWidthRemainingTime",
+      "seconds": 0
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnedStars",
+      "max": 3,
+      "accumulated": 0
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.StarCounter",
+      "value": 0
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Lives",
+      "value": 3
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.BallOffset",
+      "value": 0.25
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.BonusSpawnPolicy",
+      "chance": 0.05,
+      "bonusChances": {
+        "incrementLives": 0.05,
+        "widenPaddle": 0.2375,
+        "spawnBarrier": 0.2375,
+        "multiplyBalls": 0.2375,
+        "spawnBalls": 0.2375
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#ff7f50"
+    }
+  ],
+  "ball": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Ball",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.CollisionGroupIndex",
+      "value": -1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Speed",
+      "value": 5
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#feffff"
+    }
+  ],
+  "barrier": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Barrier",
+      "remainingTimeSeconds": 0
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "StaticBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Rectangle",
+      "halfWidth": 5,
+      "halfHeight": 0.1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.WorldPosition",
+      "vector2": {
+        "x": 5,
+        "y": 0.1
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#ff9859"
+    }
+  ],
+  "star": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.IncrementStars",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Star",
+      "radius": 0.2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -3
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#ffd700"
+    }
+  ],
+  "incrementLives": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.IncrementLives",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#ff0000"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  ],
+  "widenPaddle": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.WidenPaddle",
+      "extraWidth": 0.5,
+      "extraTimeSeconds": 10
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#00ff00"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  ],
+  "spawnBarrier": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnBarrier",
+      "extraTimeSeconds": 10
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#ff9859"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  ],
+  "multiplyBalls": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.MultiplyBalls",
+      "factor": 3
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#a6d81d"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  ],
+  "spawnBalls": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnBalls",
+      "amount": 3
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#00cce4"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.2
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -1
+      }
+    }
+  ]
+}

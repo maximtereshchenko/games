@@ -1,22 +1,26 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 final class BonusSpawningSystem implements System {
 
     private final Iterable<Entity> bonusSpawnPolicyEntities;
     private final Iterable<Entity> removedBrickEntities;
+    private final Blueprints blueprints;
     private final Random random;
 
-    BonusSpawningSystem(Registry registry, Random random) {
+    BonusSpawningSystem(
+        Registry registry,
+        Blueprints blueprints,
+        Random random
+    ) {
         this.bonusSpawnPolicyEntities = registry.entities(
             new Query().all(BonusSpawnPolicy.class)
         );
@@ -28,6 +32,7 @@ final class BonusSpawningSystem implements System {
                     WorldPosition.class
                 )
         );
+        this.blueprints = blueprints;
         this.random = random;
     }
 
@@ -44,45 +49,43 @@ final class BonusSpawningSystem implements System {
                 if (random.nextFloat() <= bonusSpawnPolicy.chance()) {
                     spawnBonus(
                         registryEdit,
-                        worldPosition.vector2(),
-                        components(bonusSpawnPolicy.componentChances())
+                        bonusSpawnPolicy,
+                        worldPosition
                     );
                 }
-
             }
         }
-    }
-
-    private List<Object> components(Map<List<Object>, Float> componentChances) {
-        var chance = random.nextFloat();
-        for (var entry : componentChances.entrySet()) {
-            chance -= entry.getValue();
-            if (chance < 0) {
-                return entry.getKey();
-            }
-        }
-        return List.of();
     }
 
     private void spawnBonus(
         RegistryEdit registryEdit,
-        Vector2 vector2,
-        List<Object> components
+        BonusSpawnPolicy bonusSpawnPolicy,
+        WorldPosition worldPosition
     ) {
-        if (components.isEmpty()) {
-            return;
+        blueprint(bonusSpawnPolicy.bonusChances())
+            .ifPresent(
+                blueprint -> registryEdit.addComponents(
+                    registryEdit.createEntity(),
+                    blueprints.components(
+                        blueprint,
+                        new WorldPosition(
+                            new Vector2(
+                                worldPosition.vector2()
+                            )
+                        )
+                    )
+                )
+            );
+    }
+
+    private Optional<String> blueprint(Map<String, Float> componentChances) {
+        var chance = random.nextFloat();
+        for (var entry : componentChances.entrySet()) {
+            chance -= entry.getValue();
+            if (chance < 0) {
+                return Optional.of(entry.getKey());
+            }
         }
-        var all = new ArrayList<>();
-        all.add(Bonus.INSTANCE);
-        all.add(BodyDef.BodyType.DynamicBody);
-        all.add(Sensor.INSTANCE);
-        all.add(new Circle(0.2f));
-        all.add(new WorldPosition(new Vector2(vector2)));
-        all.add(new Velocity(new Vector2(0, -1)));
-        all.addAll(components);
-        registryEdit.addComponents(
-            registryEdit.createEntity(),
-            all.toArray()
-        );
+        return Optional.empty();
     }
 }

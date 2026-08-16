@@ -6,30 +6,33 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.event.EventBus;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 public final class SessionFactory {
 
     private final ShapeRenderer shapeRenderer;
-    private final PhysicsObjectFactory physicsObjectFactory;
     private final EventBus<Event> eventBus;
+    private final PhysicsObjectFactory physicsObjectFactory;
+    private final Blueprints blueprints;
 
     public SessionFactory(
         ShapeRenderer shapeRenderer,
+        EventBus<Event> eventBus,
         PhysicsObjectFactory physicsObjectFactory,
-        EventBus<Event> eventBus
+        Blueprints blueprints
     ) {
         this.shapeRenderer = shapeRenderer;
-        this.physicsObjectFactory = physicsObjectFactory;
         this.eventBus = eventBus;
+        this.physicsObjectFactory = physicsObjectFactory;
+        this.blueprints = blueprints;
     }
 
     public World world(Viewport viewport) {
@@ -43,7 +46,18 @@ public final class SessionFactory {
 
     public Registry registry(Viewport viewport, World world) {
         var registry = new Registry();
-        createCommon(registry, viewport);
+        registry.addComponents(
+            registry.createEntity(),
+            blueprints.components(
+                BricksBlueprints.PADDLE,
+                new WorldPosition(
+                    new Vector2(
+                        viewport.getWorldWidth() / 2,
+                        2
+                    )
+                )
+            )
+        );
         createBricks(registry);
         addSystems(registry, world, viewport);
         return registry;
@@ -59,7 +73,7 @@ public final class SessionFactory {
             new PaddleMovementSystem(registry, viewport),
             new BallLaunchingSystem(registry, world),
             new BonusResettingSystem(registry),
-            new BallResettingSystem(registry),
+            new BallResettingSystem(registry, blueprints),
             new PhysicsSynchronizationSystem(registry),
             new PhysicsSystem(world),
             new RegistrySynchronizationSystem(registry),
@@ -67,15 +81,26 @@ public final class SessionFactory {
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
-            new BonusSpawningSystem(registry, random),
-            new StarSpawningSystem(registry, random),
+            new BonusSpawningSystem(
+                registry,
+                blueprints,
+                random
+            ),
+            new StarSpawningSystem(
+                registry,
+                blueprints,
+                random
+            ),
             new PaddleWideningSystem(registry),
             new WidthResettingSystem(registry),
-            new BarrierSpawningSystem(registry, viewport),
+            new BarrierSpawningSystem(registry, blueprints),
             new BarrierTimeExtendingSystem(registry),
             new BarrierRemovalSystem(registry),
-            new BallMultiplicationSystem(registry),
-            new BallSpawningSystem(registry),
+            new BallMultiplicationSystem(
+                registry,
+                blueprints
+            ),
+            new BallSpawningSystem(registry, blueprints),
             new LifeIncrementingSystem(registry),
             new StarIncrementingSystem(registry),
             new RectangleResizingSystem(
@@ -130,63 +155,6 @@ public final class SessionFactory {
                 registry,
                 viewport,
                 shapeRenderer
-            )
-        );
-    }
-
-    private void createCommon(Registry registry, Viewport viewport) {
-        var paddleRectangle = new Rectangle(1, 0.1f);
-        registry.addComponents(
-            registry.createEntity(),
-            Paddle.INSTANCE,
-            BodyDef.BodyType.KinematicBody,
-            paddleRectangle,
-            new MaxWidth(4),
-            new BaseWidth(paddleRectangle.halfWidth * 2),
-            new ResetWidthRemainingTime(0),
-            new WorldPosition(
-                new Vector2(
-                    viewport.getWorldWidth() / 2,
-                    2
-                )
-            ),
-            new Velocity(new Vector2()),
-            new SpawnedStars(3, 0),
-            new StarCounter(0),
-            new Lives(3),
-            new Visible(Color.valueOf("#ff7f50"))
-        );
-        registry.addComponents(
-            registry.createEntity(),
-            new BonusSpawnPolicy(
-                0.05f,
-                Map.of(
-                    List.of(
-                        IncrementLives.INSTANCE,
-                        new Visible(Color.RED)
-                    ),
-                    0.05f,
-                    List.of(
-                        new WidenPaddle(0.5f, 10),
-                        new Visible(Color.GREEN)
-                    ),
-                    0.2375f,
-                    List.of(
-                        new SpawnBarrier(10),
-                        new Visible(Color.valueOf("#ff9859"))
-                    ),
-                    0.2375f,
-                    List.of(
-                        new MultiplyBalls(3),
-                        new Visible(Color.valueOf("#a6d81d"))
-                    ),
-                    0.2375f,
-                    List.of(
-                        new SpawnBalls(3),
-                        new Visible(Color.valueOf("#00cce4"))
-                    ),
-                    0.2375f
-                )
             )
         );
     }
