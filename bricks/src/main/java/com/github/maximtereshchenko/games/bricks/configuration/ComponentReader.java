@@ -15,26 +15,32 @@ import java.io.UncheckedIOException;
 
 public final class ComponentReader {
 
-    private final JsonMapper jsonMapper = JsonMapper.builder()
-        .addModule(
-            new SimpleModule()
-                .setDeserializers(new ConfigurationDeserializers())
-        )
-        .activateDefaultTypingAsProperty(
-            BasicPolymorphicTypeValidator.builder()
-                .allowIfBaseType(Object.class)
-                .build(),
-            DefaultTyping.JAVA_LANG_OBJECT,
-            "type"
-        )
-        .constructorDetector(ConstructorDetector.USE_PROPERTIES_BASED)
-        .changeDefaultVisibility(
-            visibilityChecker -> visibilityChecker.withCreatorVisibility(
-                JsonAutoDetect.Visibility.ANY
+    private final JsonMapper jsonMapper;
+
+    public ComponentReader(
+        ConfigurationDeserializers configurationDeserializers
+    ) {
+        this.jsonMapper = JsonMapper.builder()
+            .addModule(
+                new SimpleModule()
+                    .setDeserializers(configurationDeserializers)
             )
-        )
-        .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-        .build();
+            .activateDefaultTypingAsProperty(
+                BasicPolymorphicTypeValidator.builder()
+                    .allowIfBaseType(Object.class)
+                    .build(),
+                DefaultTyping.JAVA_LANG_OBJECT,
+                "type"
+            )
+            .constructorDetector(ConstructorDetector.USE_PROPERTIES_BASED)
+            .changeDefaultVisibility(
+                visibilityChecker -> visibilityChecker.withCreatorVisibility(
+                    JsonAutoDetect.Visibility.ANY
+                )
+            )
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
+    }
 
     public <T> T value(String name, TypeReference<T> typeReference) {
         try (var reader = Gdx.files.classpath(name).reader()) {

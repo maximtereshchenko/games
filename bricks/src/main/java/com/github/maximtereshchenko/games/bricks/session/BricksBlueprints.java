@@ -14,13 +14,18 @@ public final class BricksBlueprints {
     static final String BARRIER = "barrier";
     static final String STAR = "star";
 
+    private final ComponentReader componentReader;
+
+    public BricksBlueprints(ComponentReader componentReader) {
+        this.componentReader = componentReader;
+    }
+
     public Blueprints blueprints() {
         return new Blueprints.Builder(
-            new ComponentReader()
-                .value(
-                    "blueprints.json",
-                    new TypeReference<>() {}
-                )
+            componentReader.value(
+                "blueprints.json",
+                new TypeReference<>() {}
+            )
         )
             .copyFunction(
                 Rectangle.class,

@@ -6,7 +6,7 @@ import tools.jackson.databind.JavaType;
 import tools.jackson.databind.ValueDeserializer;
 import tools.jackson.databind.module.SimpleDeserializers;
 
-final class ConfigurationDeserializers extends SimpleDeserializers {
+public final class ConfigurationDeserializers extends SimpleDeserializers {
 
     @Override
     public ValueDeserializer<?> findEnumDeserializer(

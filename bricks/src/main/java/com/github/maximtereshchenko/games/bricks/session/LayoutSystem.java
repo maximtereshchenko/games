@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
+import com.github.maximtereshchenko.games.bricks.configuration.*;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
