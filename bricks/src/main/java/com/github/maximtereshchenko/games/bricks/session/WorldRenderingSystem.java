@@ -21,7 +21,7 @@ final class WorldRenderingSystem implements System {
     ) {
         this.entities = registry.entities(
             new Query()
-                .all(Visible.class, WorldPosition.class)
+                .all(Color.class, WorldPosition.class)
                 .one(
                     Rectangle.class,
                     Circle.class,
@@ -41,9 +41,9 @@ final class WorldRenderingSystem implements System {
         shapeRenderer.getColor().set(Color.valueOf("#22004f"));
         shapeRenderer.rect(0, 0, viewport.getWorldWidth(), viewport.getWorldHeight());
         for (var entity : entities) {
-            var visible = entity.component(Visible.class);
+            var color = entity.component(Color.class);
             var worldPosition = entity.component(WorldPosition.class);
-            shapeRenderer.getColor().set(visible.color());
+            shapeRenderer.getColor().set(color);
             draw(entity, worldPosition.vector2());
         }
         shapeRenderer.end();

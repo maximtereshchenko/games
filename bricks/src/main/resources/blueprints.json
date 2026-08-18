@@ -73,8 +73,11 @@
       }
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#ff7f50"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0.498,
+      "b": 0.3137,
+      "a": 1
     }
   ],
   "ball": [
@@ -106,8 +109,11 @@
       "value": 35
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#feffff"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 0.9961,
+      "g": 1,
+      "b": 1,
+      "a": 1
     }
   ],
   "brick": [
@@ -126,8 +132,11 @@
       "value": "StaticBody"
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#3f3f3f"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 0.2471,
+      "g": 0.2471,
+      "b": 0.2471,
+      "a": 1
     }
   ],
   "barrier": [
@@ -152,8 +161,11 @@
       }
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#ff9859"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0.5961,
+      "b": 0.349,
+      "a": 1
     }
   ],
   "star": [
@@ -185,8 +197,11 @@
       }
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#ffd700"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0.8431,
+      "b": 0,
+      "a": 1
     }
   ],
   "incrementLives": [
@@ -195,8 +210,11 @@
       "value": "INSTANCE"
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#ff0000"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0,
+      "b": 0,
+      "a": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
@@ -229,8 +247,11 @@
       "extraTimeSeconds": 10
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#00ff00"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 0,
+      "g": 1,
+      "b": 0,
+      "a": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
@@ -262,8 +283,11 @@
       "extraTimeSeconds": 10
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#ff9859"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0.5961,
+      "b": 0.349,
+      "a": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
@@ -295,8 +319,11 @@
       "factor": 3
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#a6d81d"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 0.651,
+      "g": 0.8471,
+      "b": 0.1137,
+      "a": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
@@ -328,8 +355,11 @@
       "amount": 3
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
-      "color": "#00cce4"
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 0,
+      "g": 0.8,
+      "b": 0.8941,
+      "a": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",

@@ -68,7 +68,7 @@ final class LayoutSystem implements System {
                     BricksBlueprints.BRICK,
                     rectangle,
                     worldPosition,
-                    new Visible(brickDefinition.color())
+                    brickDefinition.color()
                 )
             );
             case WallDefinition _ -> registryEdit.addComponents(
