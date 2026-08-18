@@ -13,11 +13,11 @@ import tools.jackson.databind.module.SimpleModule;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-public final class ComponentReader {
+public final class ConfigurationReader {
 
     private final JsonMapper jsonMapper;
 
-    public ComponentReader(
+    public ConfigurationReader(
         ConfigurationDeserializers configurationDeserializers
     ) {
         this.jsonMapper = JsonMapper.builder()

@@ -19,18 +19,15 @@ public final class SessionFactory {
     private final ShapeRenderer shapeRenderer;
     private final EventBus<Event> eventBus;
     private final PhysicsObjectFactory physicsObjectFactory;
-    private final Blueprints blueprints;
 
     public SessionFactory(
         ShapeRenderer shapeRenderer,
         EventBus<Event> eventBus,
-        PhysicsObjectFactory physicsObjectFactory,
-        Blueprints blueprints
+        PhysicsObjectFactory physicsObjectFactory
     ) {
         this.shapeRenderer = shapeRenderer;
         this.eventBus = eventBus;
         this.physicsObjectFactory = physicsObjectFactory;
-        this.blueprints = blueprints;
     }
 
     public World world(Viewport viewport) {
@@ -44,6 +41,7 @@ public final class SessionFactory {
 
     public Registry registry(
         Viewport viewport,
+        Blueprints blueprints,
         List<List<CellDefinition>> cellDefinitions,
         World world
     ) {

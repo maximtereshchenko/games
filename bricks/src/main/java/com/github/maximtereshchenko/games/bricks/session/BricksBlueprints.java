@@ -2,8 +2,9 @@ package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
 import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
-import com.github.maximtereshchenko.games.bricks.configuration.ComponentReader;
-import tools.jackson.core.type.TypeReference;
+
+import java.util.List;
+import java.util.Map;
 
 public final class BricksBlueprints {
 
@@ -14,19 +15,8 @@ public final class BricksBlueprints {
     static final String BARRIER = "barrier";
     static final String STAR = "star";
 
-    private final ComponentReader componentReader;
-
-    public BricksBlueprints(ComponentReader componentReader) {
-        this.componentReader = componentReader;
-    }
-
-    public Blueprints blueprints() {
-        return new Blueprints.Builder(
-            componentReader.value(
-                "blueprints.json",
-                new TypeReference<>() {}
-            )
-        )
+    public Blueprints blueprints(Map<String, List<Object>> components) {
+        return new Blueprints.Builder(components)
             .copyFunction(
                 Rectangle.class,
                 original -> new Rectangle(

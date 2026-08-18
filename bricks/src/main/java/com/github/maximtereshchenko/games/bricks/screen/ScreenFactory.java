@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.bricks.screen;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
 
@@ -16,6 +17,7 @@ public final class ScreenFactory {
     }
 
     public Screen sessionScreen(
+        Blueprints blueprints,
         List<List<CellDefinition>> cellDefinitions
     ) {
         var viewport = new FitViewport(50, 75);
@@ -24,6 +26,7 @@ public final class ScreenFactory {
             viewport,
             sessionFactory.registry(
                 viewport,
+                blueprints,
                 cellDefinitions,
                 physicsWorld
             ),

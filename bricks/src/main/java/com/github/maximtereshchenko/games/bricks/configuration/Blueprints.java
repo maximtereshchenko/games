@@ -1,9 +1,12 @@
 package com.github.maximtereshchenko.games.bricks.configuration;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class Blueprints {
 
@@ -37,6 +40,27 @@ public final class Blueprints {
             extraComponents.length
         );
         return result;
+    }
+
+    public Blueprints merged(Map<String, List<Object>> components) {
+        return new Blueprints(
+            Stream.of(
+                    this.components,
+                    components
+                )
+                .map(Map::entrySet)
+                .flatMap(Collection::stream)
+                .collect(
+                    Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (first, second) -> Stream.of(first, second)
+                            .flatMap(Collection::stream)
+                            .toList()
+                    )
+                ),
+            copyFunctions
+        );
     }
 
     public static final class Builder {

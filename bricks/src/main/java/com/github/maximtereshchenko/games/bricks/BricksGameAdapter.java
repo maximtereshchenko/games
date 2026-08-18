@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
 import com.github.maximtereshchenko.games.bricks.configuration.CellDefinitionDeserializer;
-import com.github.maximtereshchenko.games.bricks.configuration.ComponentReader;
 import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationDeserializers;
+import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
@@ -35,23 +35,34 @@ final class BricksGameAdapter implements ApplicationListener {
             CellDefinition.class,
             new CellDefinitionDeserializer()
         );
-        var componentReader = new ComponentReader(
+        var configurationReader = new ConfigurationReader(
             configurationDeserializers
         );
         var screenFactory = new ScreenFactory(
             new SessionFactory(
                 shapeRenderer,
                 eventBus,
-                new PhysicsObjectFactory(),
-                new BricksBlueprints(componentReader)
-                    .blueprints()
+                new PhysicsObjectFactory()
             )
         );
         original = new BricksGame(shapeRenderer);
         eventBus.subscribe(original);
         original.setScreen(
             screenFactory.sessionScreen(
-                componentReader.value(
+                new BricksBlueprints()
+                    .blueprints(
+                        configurationReader.value(
+                            "common-blueprints.json",
+                            new TypeReference<>() {}
+                        )
+                    )
+                    .merged(
+                        configurationReader.value(
+                            "easy-difficulty-blueprints.json",
+                            new TypeReference<>() {}
+                        )
+                    ),
+                configurationReader.value(
                     "level-1.json",
                     new TypeReference<>() {}
                 )
