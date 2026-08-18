@@ -13,7 +13,7 @@ public final class ScreenFactory {
     }
 
     public Screen sessionScreen() {
-        var viewport = new FitViewport(10, 15);
+        var viewport = new FitViewport(50, 75);
         var physicsWorld = sessionFactory.world(viewport);
         return new SessionScreen(
             viewport,

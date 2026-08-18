@@ -9,6 +9,8 @@ public final class BricksBlueprints {
 
     static final String PADDLE = "paddle";
     static final String BALL = "ball";
+    static final String BRICK = "brick";
+    static final String WALL = "wall";
     static final String BARRIER = "barrier";
     static final String STAR = "star";
 
@@ -53,6 +55,10 @@ public final class BricksBlueprints {
             .copyFunction(
                 Lives.class,
                 original -> new Lives(original.value)
+            )
+            .copyFunction(
+                WorldPosition.class,
+                original -> new WorldPosition(new Vector2(original.vector2()))
             )
             .build();
     }

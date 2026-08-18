@@ -10,16 +10,16 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Rectangle",
-      "halfWidth": 1,
-      "halfHeight": 0.1
+      "halfWidth": 5,
+      "halfHeight": 0.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.MaxWidth",
-      "value": 4
+      "value": 20
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.BaseWidth",
-      "value": 2
+      "value": 10
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.ResetWidthRemainingTime",
@@ -47,7 +47,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.BallOffset",
-      "value": 0.25
+      "value": 1.1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.BonusSpawnPolicy",
@@ -58,6 +58,18 @@
         "spawnBarrier": 0.245,
         "multiplyBalls": 0.245,
         "spawnBalls": 0.245
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.LayoutPolicy",
+      "entitiesPerCellSide": 1,
+      "padding": 0.3
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.WorldPosition",
+      "vector2": {
+        "x": 25,
+        "y": 10
       }
     },
     {
@@ -80,7 +92,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 0.1
+      "radius": 0.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -91,11 +103,31 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Speed",
-      "value": 5
+      "value": 35
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
       "color": "#feffff"
+    }
+  ],
+  "brick": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Brick",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "StaticBody"
+    }
+  ],
+  "wall": [
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "StaticBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Visible",
+      "color": "#3f3f3f"
     }
   ],
   "barrier": [
@@ -109,14 +141,14 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Rectangle",
-      "halfWidth": 5,
-      "halfHeight": 0.1
+      "halfWidth": 25,
+      "halfHeight": 0.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.WorldPosition",
       "vector2": {
-        "x": 5,
-        "y": 0.1
+        "x": 25,
+        "y": 0.5
       }
     },
     {
@@ -143,13 +175,13 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Star",
-      "radius": 0.2
+      "radius": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
       "vector2": {
         "x": 0,
-        "y": -3
+        "y": -15
       }
     },
     {
@@ -180,20 +212,20 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 0.2
+      "radius": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
       "vector2": {
         "x": 0,
-        "y": -1
+        "y": -5
       }
     }
   ],
   "widenPaddle": [
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.WidenPaddle",
-      "extraWidth": 0.5,
+      "extraWidth": 2,
       "extraTimeSeconds": 10
     },
     {
@@ -214,13 +246,13 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 0.2
+      "radius": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
       "vector2": {
         "x": 0,
-        "y": -1
+        "y": -5
       }
     }
   ],
@@ -247,13 +279,13 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 0.2
+      "radius": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
       "vector2": {
         "x": 0,
-        "y": -1
+        "y": -5
       }
     }
   ],
@@ -280,13 +312,13 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 0.2
+      "radius": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
       "vector2": {
         "x": 0,
-        "y": -1
+        "y": -5
       }
     }
   ],
@@ -313,13 +345,13 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 0.2
+      "radius": 1
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
       "vector2": {
         "x": 0,
-        "y": -1
+        "y": -5
       }
     }
   ]

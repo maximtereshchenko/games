@@ -11,6 +11,7 @@ import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.event.EventBus;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -46,30 +47,15 @@ public final class SessionFactory {
 
     public Registry registry(Viewport viewport, World world) {
         var registry = new Registry();
-        registry.addComponents(
-            registry.createEntity(),
-            blueprints.components(
-                BricksBlueprints.PADDLE,
-                new WorldPosition(
-                    new Vector2(
-                        viewport.getWorldWidth() / 2,
-                        2
-                    )
-                )
-            )
-        );
-        createBricks(registry);
-        addSystems(registry, world, viewport);
-        return registry;
-    }
-
-    private void addSystems(
-        Registry registry,
-        World world,
-        Viewport viewport
-    ) {
         var random = ThreadLocalRandom.current();
         registry.addSystems(
+            new PaddleSpawningSystem(registry, blueprints),
+            new LayoutSystem(
+                registry,
+                cellDefinitions(),
+                blueprints,
+                viewport
+            ),
             new PaddleMovementSystem(registry, viewport),
             new BallLaunchingSystem(registry, world),
             new BonusResettingSystem(registry),
@@ -144,6 +130,7 @@ public final class SessionFactory {
             ),
             new ComponentRemovalSystem(
                 registry,
+                LayoutPolicy.class,
                 BodyDef.BodyType.class,
                 Sensor.class,
                 CollisionGroupIndex.class,
@@ -157,10 +144,10 @@ public final class SessionFactory {
                 shapeRenderer
             )
         );
+        return registry;
     }
 
-    private void createBricks(Registry registry) {
-        var brickRectangle = new Rectangle(0.1f, 0.1f);
+    private List<List<CellDefinition>> cellDefinitions() {
         var sideColors = List.of(
             "#f7f7ed",
             "#fee883",
@@ -176,21 +163,25 @@ public final class SessionFactory {
                 sideColors.reversed()
             )
             .flatMap(Collection::stream)
+            .map(Color::valueOf)
             .toList();
-        var x = 0.625f;
-        var startY = 6f;
-        for (var color : colors) {
-            for (var i = 0; i < 27; i++) {
-                registry.addComponents(
-                    registry.createEntity(),
-                    Brick.INSTANCE,
-                    BodyDef.BodyType.StaticBody,
-                    brickRectangle,
-                    new WorldPosition(new Vector2(x, startY + 0.1f + 0.3f * i)),
-                    new Visible(Color.valueOf(color))
-                );
+        var cellDefinitions = new ArrayList<List<CellDefinition>>();
+        for (var i = 0; i < 30; i++) {
+            var row = new ArrayList<CellDefinition>();
+            for (var j = 0; j < 31; j++) {
+                row.add(new EmptyCellDefinition());
             }
-            x += 0.625f;
+            cellDefinitions.add(row);
         }
+        for (var colorColumn = 0; colorColumn < colors.size(); colorColumn++) {
+            for (var brick = 0; brick < 27; brick++) {
+                cellDefinitions.get(3 + brick)
+                    .set(
+                        1 + 2 * colorColumn,
+                        new BrickDefinition(colors.get(colorColumn))
+                    );
+            }
+        }
+        return cellDefinitions;
     }
 }
