@@ -1,3 +1,3 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-record SpawnBalls(int amount) {}
+record SpawnBarrierBonus(float extraTimeSeconds) {}

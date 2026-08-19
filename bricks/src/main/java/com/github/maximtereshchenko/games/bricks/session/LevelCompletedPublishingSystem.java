@@ -17,7 +17,7 @@ final class LevelCompletedPublishingSystem implements System {
         EventBus<Event> eventBus
     ) {
         this.brickOrIncrementStarsEntities = registry.entities(
-            new Query().one(Brick.class, IncrementStars.class)
+            new Query().one(Brick.class, IncrementStarsBonus.class)
         );
         this.starCounterEntities = registry.entities(
             new Query().all(StarCounter.class)

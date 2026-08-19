@@ -91,7 +91,7 @@ final class StarSpawningSystem implements System {
         registryEdit.addComponents(
             registryEdit.createEntity(),
             blueprints.components(
-                BricksBlueprints.STAR,
+                BricksBlueprints.INCREMENT_STARS_BONUS,
                 new WorldPosition(new Vector2(vector2))
             )
         );

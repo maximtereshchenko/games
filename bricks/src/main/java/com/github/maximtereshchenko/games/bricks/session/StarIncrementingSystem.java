@@ -10,7 +10,7 @@ final class StarIncrementingSystem implements System {
 
     StarIncrementingSystem(Registry registry) {
         this.incrementStarEntities = registry.entities(
-            new Query().all(IncrementStars.class, Activated.class)
+            new Query().all(IncrementStarsBonus.class, Activated.class)
         );
         this.starCounterEntities = registry.entities(
             new Query().all(StarCounter.class)

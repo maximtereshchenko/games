@@ -144,13 +144,13 @@
       "a": 1
     }
   ],
-  "star": [
+  "incrementStarsBonus": [
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
       "value": "INSTANCE"
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.IncrementStars",
+      "type": "com.github.maximtereshchenko.games.bricks.session.IncrementStarsBonus",
       "value": "INSTANCE"
     },
     {
@@ -180,9 +180,13 @@
       "a": 1
     }
   ],
-  "incrementLives": [
+  "incrementLivesBonus": [
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.IncrementLives",
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.IncrementLivesBonus",
       "value": "INSTANCE"
     },
     {
@@ -191,10 +195,6 @@
       "g": 0,
       "b": 0,
       "a": 1
-    },
-    {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
-      "value": "INSTANCE"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -216,9 +216,49 @@
       }
     }
   ],
-  "widenPaddle": [
+  "decrementLivesBonus": [
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.WidenPaddle",
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.DecrementLivesBonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -5
+      }
+    }
+  ],
+  "widenPaddleBonus": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.WidenPaddleBonus",
       "addedHalfWidth": 1,
       "addedTimeSeconds": 10
     },
@@ -230,10 +270,6 @@
       "a": 1
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
-      "value": "INSTANCE"
-    },
-    {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
       "value": "DynamicBody"
     },
@@ -253,9 +289,13 @@
       }
     }
   ],
-  "shortenPaddle": [
+  "shortenPaddleBonus": [
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.ShortenPaddle",
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.ShortenPaddleBonus",
       "subtractedHalfWidth": 1,
       "addedTimeSeconds": 10
     },
@@ -267,10 +307,6 @@
       "a": 1
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
-      "value": "INSTANCE"
-    },
-    {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
       "value": "DynamicBody"
     },
@@ -290,9 +326,13 @@
       }
     }
   ],
-  "spawnBarrier": [
+  "spawnBarrierBonus": [
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnBarrier",
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnBarrierBonus",
       "extraTimeSeconds": 10
     },
     {
@@ -303,10 +343,6 @@
       "a": 1
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
-      "value": "INSTANCE"
-    },
-    {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
       "value": "DynamicBody"
     },
@@ -326,9 +362,13 @@
       }
     }
   ],
-  "multiplyBalls": [
+  "multiplyBallsBonus": [
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.MultiplyBalls",
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.MultiplyBallsBonus",
       "factor": 3
     },
     {
@@ -339,10 +379,6 @@
       "a": 1
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
-      "value": "INSTANCE"
-    },
-    {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
       "value": "DynamicBody"
     },
@@ -362,9 +398,13 @@
       }
     }
   ],
-  "spawnBalls": [
+  "spawnBallsBonus": [
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnBalls",
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.SpawnBallsBonus",
       "amount": 3
     },
     {
@@ -373,10 +413,6 @@
       "g": 0.8,
       "b": 0.8941,
       "a": 1
-    },
-    {
-      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
-      "value": "INSTANCE"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",

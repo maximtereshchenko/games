@@ -10,7 +10,7 @@ final class PaddleShorteningSystem implements System {
 
     PaddleShorteningSystem(Registry registry) {
         this.shortenPaddleEntities = registry.entities(
-            new Query().all(ShortenPaddle.class, Activated.class)
+            new Query().all(ShortenPaddleBonus.class, Activated.class)
         );
         this.paddleEntities = registry.entities(
             new Query()
@@ -26,7 +26,7 @@ final class PaddleShorteningSystem implements System {
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var shortenPaddleEntity : shortenPaddleEntities) {
-            var shortenPaddle = shortenPaddleEntity.component(ShortenPaddle.class);
+            var shortenPaddle = shortenPaddleEntity.component(ShortenPaddleBonus.class);
             for (var paddleEntity : paddleEntities) {
                 var rectangle = paddleEntity.component(Rectangle.class);
                 var minHalfWidth = paddleEntity.component(MinHalfWidth.class);

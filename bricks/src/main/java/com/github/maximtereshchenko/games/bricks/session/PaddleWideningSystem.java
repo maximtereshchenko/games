@@ -10,7 +10,7 @@ final class PaddleWideningSystem implements System {
 
     PaddleWideningSystem(Registry registry) {
         this.widenPaddleEntities = registry.entities(
-            new Query().all(WidenPaddle.class, Activated.class)
+            new Query().all(WidenPaddleBonus.class, Activated.class)
         );
         this.paddleEntities = registry.entities(
             new Query()
@@ -26,7 +26,7 @@ final class PaddleWideningSystem implements System {
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var widenPaddleEntity : widenPaddleEntities) {
-            var widenPaddle = widenPaddleEntity.component(WidenPaddle.class);
+            var widenPaddle = widenPaddleEntity.component(WidenPaddleBonus.class);
             for (var paddleEntity : paddleEntities) {
                 var rectangle = paddleEntity.component(Rectangle.class);
                 var maxHalfWidth = paddleEntity.component(MaxHalfWidth.class);

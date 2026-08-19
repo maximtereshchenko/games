@@ -3,14 +3,14 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class LifeIncrementingSystem implements System {
+final class DecrementLivesBonusSystem implements System {
 
-    private final Iterable<Entity> incrementLivesEntities;
+    private final Iterable<Entity> decrementLivesEntities;
     private final Iterable<Entity> livesEntities;
 
-    LifeIncrementingSystem(Registry registry) {
-        this.incrementLivesEntities = registry.entities(
-            new Query().all(IncrementLivesBonus.class, Activated.class)
+    DecrementLivesBonusSystem(Registry registry) {
+        this.decrementLivesEntities = registry.entities(
+            new Query().all(DecrementLivesBonus.class, Activated.class)
         );
         this.livesEntities = registry.entities(
             new Query().all(Lives.class)
@@ -19,10 +19,12 @@ final class LifeIncrementingSystem implements System {
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        for (var _ : incrementLivesEntities) {
+        for (var _ : decrementLivesEntities) {
             for (var livesEntity : livesEntities) {
-                var lives = livesEntity.component(Lives.class);
-                lives.value++;
+                registryEdit.addComponents(
+                    livesEntity.id(),
+                    DecrementLivesCommand.INSTANCE
+                );
             }
         }
     }

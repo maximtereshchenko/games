@@ -8,11 +8,11 @@
       "type": "com.github.maximtereshchenko.games.bricks.session.BonusSpawnPolicy",
       "chance": 0.03,
       "bonusChances": {
-        "incrementLives": 0.02,
-        "widenPaddle": 0.245,
-        "spawnBarrier": 0.245,
-        "multiplyBalls": 0.245,
-        "spawnBalls": 0.245
+        "incrementLivesBonus": 0.02,
+        "widenPaddleBonus": 0.245,
+        "spawnBarrierBonus": 0.245,
+        "multiplyBallsBonus": 0.245,
+        "spawnBallsBonus": 0.245
       }
     },
     {

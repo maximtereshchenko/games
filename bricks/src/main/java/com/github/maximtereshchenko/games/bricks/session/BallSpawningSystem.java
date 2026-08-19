@@ -13,7 +13,7 @@ final class BallSpawningSystem implements System {
 
     BallSpawningSystem(Registry registry, Blueprints blueprints) {
         this.spawnBallsEntities = registry.entities(
-            new Query().all(SpawnBalls.class, Activated.class)
+            new Query().all(SpawnBallsBonus.class, Activated.class)
         );
         this.paddleEntities = registry.entities(
             new Query()
@@ -29,7 +29,7 @@ final class BallSpawningSystem implements System {
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var spawnBallsEntity : spawnBallsEntities) {
-            var spawnBalls = spawnBallsEntity.component(SpawnBalls.class);
+            var spawnBalls = spawnBallsEntity.component(SpawnBallsBonus.class);
             for (var paddleEntity : paddleEntities) {
                 var worldPosition = paddleEntity.component(
                     WorldPosition.class

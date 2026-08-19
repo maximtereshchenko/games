@@ -13,7 +13,7 @@ public final class BricksBlueprints {
     static final String BRICK = "brick";
     static final String WALL = "wall";
     static final String BARRIER = "barrier";
-    static final String STAR = "star";
+    static final String INCREMENT_STARS_BONUS = "incrementStarsBonus";
 
     public Blueprints blueprints(Map<String, List<Object>> components) {
         return new Blueprints.Builder(components)

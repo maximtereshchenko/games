@@ -16,7 +16,7 @@ final class BallMultiplicationSystem implements System {
         Blueprints blueprints
     ) {
         this.multiplyBallsEntities = registry.entities(
-            new Query().all(MultiplyBalls.class, Activated.class)
+            new Query().all(MultiplyBallsBonus.class, Activated.class)
         );
         this.ballsEntities = registry.entities(
             new Query()
@@ -33,7 +33,7 @@ final class BallMultiplicationSystem implements System {
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var multiplyBallsEntity : multiplyBallsEntities) {
             var multiplyBalls = multiplyBallsEntity.component(
-                MultiplyBalls.class
+                MultiplyBallsBonus.class
             );
             for (var ballsEntity : ballsEntities) {
                 var worldPosition = ballsEntity.component(

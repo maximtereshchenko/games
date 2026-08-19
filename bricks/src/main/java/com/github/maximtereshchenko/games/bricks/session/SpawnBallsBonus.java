@@ -1,6 +1,3 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-enum IncrementStars {
-
-    INSTANCE
-}
+record SpawnBallsBonus(int amount) {}

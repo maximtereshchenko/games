@@ -89,6 +89,7 @@ public final class SessionFactory {
             ),
             new BallSpawningSystem(registry, blueprints),
             new LifeIncrementingSystem(registry),
+            new DecrementLivesBonusSystem(registry),
             new StarIncrementingSystem(registry),
             new FixtureWidthUpdatingSystem(
                 registry,
