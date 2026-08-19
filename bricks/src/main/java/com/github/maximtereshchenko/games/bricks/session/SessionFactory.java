@@ -61,7 +61,7 @@ public final class SessionFactory {
             new BonusResettingSystem(registry),
             new BallResettingSystem(registry, blueprints),
             new PhysicsSynchronizationSystem(registry),
-            new PhysicsSystem(world),
+            new PhysicsSystem(registry, world),
             new RegistrySynchronizationSystem(registry),
             new SpeedNormalizationSystem(registry),
             new PaddleCollisionSystem(registry),

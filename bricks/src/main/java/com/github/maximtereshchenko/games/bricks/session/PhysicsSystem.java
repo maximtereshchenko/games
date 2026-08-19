@@ -1,8 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.World;
-import com.github.maximtereshchenko.games.ecs.RegistryEdit;
+import com.badlogic.gdx.physics.box2d.*;
+import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
 import java.util.HashMap;
@@ -10,39 +9,45 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-final class PhysicsSystem implements System {
+final class PhysicsSystem implements System, ContactListener {
 
+    private final Iterable<Entity> entities;
     private final World world;
+    private final Map<Integer, Set<Integer>> collisions;
 
-    PhysicsSystem(World world) {
+    PhysicsSystem(Registry registry, World world) {
+        this.entities = registry.entities(
+            new Query().all(PhysicsPolicy.class)
+        );
         this.world = world;
+        this.collisions = new HashMap<>();
+        world.setContactListener(this);
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        world.step(deltaTimeSeconds, 8, 3);
-        for (var entry : collisions().entrySet()) {
+        for (var entity : entities) {
+            var physicsPolicy = entity.component(PhysicsPolicy.class);
+            physicsPolicy.accumulatedTimeSeconds += Math.min(
+                deltaTimeSeconds,
+                physicsPolicy.maxFrameTimeSeconds
+            );
+            while (physicsPolicy.accumulatedTimeSeconds >= physicsPolicy.stepTimeSeconds) {
+                physicsPolicy.accumulatedTimeSeconds -= physicsPolicy.stepTimeSeconds;
+                world.step(physicsPolicy.stepTimeSeconds, 8, 3);
+            }
+        }
+        for (var entry : collisions.entrySet()) {
             registryEdit.addComponents(
                 entry.getKey(),
                 new Collisions(entry.getValue())
             );
         }
+        collisions.clear();
     }
 
-    private Map<Integer, Set<Integer>> collisions() {
-        var collisions = new HashMap<Integer, Set<Integer>>();
-        for (var contact : world.getContactList()) {
-            if (contact.isTouching()) {
-                register(collisions, contact);
-            }
-        }
-        return collisions;
-    }
-
-    private void register(
-        Map<Integer, Set<Integer>> collisions,
-        Contact contact
-    ) {
+    @Override
+    public void beginContact(Contact contact) {
         var firstUserData = contact.getFixtureA().getUserData();
         var secondUserData = contact.getFixtureB().getUserData();
         if (firstUserData == null || secondUserData == null) {
@@ -52,6 +57,21 @@ final class PhysicsSystem implements System {
         var secondEntityId = (int) secondUserData;
         register(collisions, firstEntityId, secondEntityId);
         register(collisions, secondEntityId, firstEntityId);
+    }
+
+    @Override
+    public void endContact(Contact contact) {
+        //empty
+    }
+
+    @Override
+    public void preSolve(Contact contact, Manifold oldManifold) {
+        //empty
+    }
+
+    @Override
+    public void postSolve(Contact contact, ContactImpulse impulse) {
+        //empty
     }
 
     private void register(
