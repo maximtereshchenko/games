@@ -1,9 +1,11 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.github.maximtereshchenko.games.ecs.*;
-import com.github.maximtereshchenko.games.ecs.System;
+import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Query;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
-final class PaddleWideningSystem implements System {
+final class PaddleWideningSystem extends WidthResizingSystem {
 
     private final Iterable<Entity> widenPaddleEntities;
     private final Iterable<Entity> paddleEntities;
@@ -33,12 +35,16 @@ final class PaddleWideningSystem implements System {
                 var resetWidthRemainingTime = paddleEntity.component(
                     ResetWidthRemainingTime.class
                 );
-                rectangle.halfWidth = Math.min(
-                    rectangle.halfWidth * 2 + widenPaddle.extraWidth(),
-                    maxWidth.value()
-                ) / 2;
                 resetWidthRemainingTime.seconds += widenPaddle.extraTimeSeconds();
-                registryEdit.addComponents(paddleEntity.id(), Resized.INSTANCE);
+                resize(
+                    registryEdit,
+                    paddleEntity,
+                    rectangle,
+                    Math.min(
+                        rectangle.halfWidth * 2 + widenPaddle.extraWidth(),
+                        maxWidth.value()
+                    )
+                );
             }
         }
     }

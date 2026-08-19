@@ -1,9 +1,11 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.github.maximtereshchenko.games.ecs.*;
-import com.github.maximtereshchenko.games.ecs.System;
+import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Query;
+import com.github.maximtereshchenko.games.ecs.Registry;
+import com.github.maximtereshchenko.games.ecs.RegistryEdit;
 
-final class WidthResettingSystem implements System {
+final class WidthResettingSystem extends WidthResizingSystem {
 
     private final Iterable<Entity> entities;
 
@@ -26,16 +28,17 @@ final class WidthResettingSystem implements System {
             );
             var baseWidth = entity.component(BaseWidth.class);
             var rectangle = entity.component(Rectangle.class);
-            if (resetWidthRemainingTime.seconds == 0) {
-                return;
-            }
             resetWidthRemainingTime.seconds = Math.max(
                 resetWidthRemainingTime.seconds - deltaTimeSeconds,
                 0
             );
             if (resetWidthRemainingTime.seconds == 0) {
-                rectangle.halfWidth = baseWidth.value() / 2;
-                registryEdit.addComponents(entity.id(), Resized.INSTANCE);
+                resize(
+                    registryEdit,
+                    entity,
+                    rectangle,
+                    baseWidth.value()
+                );
             }
         }
     }
