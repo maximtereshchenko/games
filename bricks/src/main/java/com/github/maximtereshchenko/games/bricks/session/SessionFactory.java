@@ -56,6 +56,7 @@ public final class SessionFactory {
                 viewport
             ),
             new PaddleMovementSystem(registry, viewport),
+            new BallDetachingSystem(registry),
             new BallLaunchingSystem(registry, world),
             new BonusResettingSystem(registry),
             new BallResettingSystem(registry, blueprints),
@@ -89,7 +90,7 @@ public final class SessionFactory {
             new BallSpawningSystem(registry, blueprints),
             new LifeIncrementingSystem(registry),
             new StarIncrementingSystem(registry),
-            new RectangleResizingSystem(
+            new FixtureWidthUpdatingSystem(
                 registry,
                 world,
                 physicsObjectFactory
@@ -134,9 +135,8 @@ public final class SessionFactory {
                 BodyDef.BodyType.class,
                 Sensor.class,
                 CollisionGroupIndex.class,
-                Attaching.class,
                 Collisions.class,
-                Resized.class
+                UpdateWidthCommand.class
             ),
             new WorldRenderingSystem(
                 registry,

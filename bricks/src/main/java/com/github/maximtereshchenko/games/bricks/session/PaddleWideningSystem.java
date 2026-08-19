@@ -1,11 +1,9 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.github.maximtereshchenko.games.ecs.Entity;
-import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.ecs.RegistryEdit;
+import com.github.maximtereshchenko.games.ecs.*;
+import com.github.maximtereshchenko.games.ecs.System;
 
-final class PaddleWideningSystem extends WidthResizingSystem {
+final class PaddleWideningSystem implements System {
 
     private final Iterable<Entity> widenPaddleEntities;
     private final Iterable<Entity> paddleEntities;
@@ -19,7 +17,7 @@ final class PaddleWideningSystem extends WidthResizingSystem {
                 .all(
                     Paddle.class,
                     Rectangle.class,
-                    MaxWidth.class,
+                    MaxHalfWidth.class,
                     ResetWidthRemainingTime.class
                 )
         );
@@ -31,18 +29,18 @@ final class PaddleWideningSystem extends WidthResizingSystem {
             var widenPaddle = widenPaddleEntity.component(WidenPaddle.class);
             for (var paddleEntity : paddleEntities) {
                 var rectangle = paddleEntity.component(Rectangle.class);
-                var maxWidth = paddleEntity.component(MaxWidth.class);
+                var maxHalfWidth = paddleEntity.component(MaxHalfWidth.class);
                 var resetWidthRemainingTime = paddleEntity.component(
                     ResetWidthRemainingTime.class
                 );
-                resetWidthRemainingTime.seconds += widenPaddle.extraTimeSeconds();
-                resize(
-                    registryEdit,
-                    paddleEntity,
-                    rectangle,
-                    Math.min(
-                        rectangle.halfWidth * 2 + widenPaddle.extraWidth(),
-                        maxWidth.value()
+                resetWidthRemainingTime.seconds += widenPaddle.addedTimeSeconds();
+                registryEdit.addComponents(
+                    paddleEntity.id(),
+                    new UpdateWidthCommand(
+                        Math.min(
+                            rectangle.halfWidth + widenPaddle.addedHalfWidth(),
+                            maxHalfWidth.value()
+                        )
                     )
                 );
             }

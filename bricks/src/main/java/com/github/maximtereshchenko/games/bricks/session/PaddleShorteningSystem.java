@@ -1,11 +1,9 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.github.maximtereshchenko.games.ecs.Entity;
-import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.ecs.RegistryEdit;
+import com.github.maximtereshchenko.games.ecs.*;
+import com.github.maximtereshchenko.games.ecs.System;
 
-final class PaddleShorteningSystem extends WidthResizingSystem {
+final class PaddleShorteningSystem implements System {
 
     private final Iterable<Entity> shortenPaddleEntities;
     private final Iterable<Entity> paddleEntities;
@@ -19,7 +17,7 @@ final class PaddleShorteningSystem extends WidthResizingSystem {
                 .all(
                     Paddle.class,
                     Rectangle.class,
-                    MinWidth.class,
+                    MinHalfWidth.class,
                     ResetWidthRemainingTime.class
                 )
         );
@@ -31,18 +29,18 @@ final class PaddleShorteningSystem extends WidthResizingSystem {
             var shortenPaddle = shortenPaddleEntity.component(ShortenPaddle.class);
             for (var paddleEntity : paddleEntities) {
                 var rectangle = paddleEntity.component(Rectangle.class);
-                var minWidth = paddleEntity.component(MinWidth.class);
+                var minHalfWidth = paddleEntity.component(MinHalfWidth.class);
                 var resetWidthRemainingTime = paddleEntity.component(
                     ResetWidthRemainingTime.class
                 );
-                resetWidthRemainingTime.seconds += shortenPaddle.extraTimeSeconds();
-                resize(
-                    registryEdit,
-                    paddleEntity,
-                    rectangle,
-                    Math.max(
-                        rectangle.halfWidth * 2 - shortenPaddle.subtractedWidth(),
-                        minWidth.value()
+                resetWidthRemainingTime.seconds += shortenPaddle.addedTimeSeconds();
+                registryEdit.addComponents(
+                    paddleEntity.id(),
+                    new UpdateWidthCommand(
+                        Math.max(
+                            rectangle.halfWidth - shortenPaddle.subtractedHalfWidth(),
+                            minHalfWidth.value()
+                        )
                     )
                 );
             }

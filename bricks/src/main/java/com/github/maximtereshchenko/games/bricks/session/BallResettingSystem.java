@@ -43,7 +43,7 @@ final class BallResettingSystem implements System {
                 registryEdit.createEntity(),
                 blueprints.components(
                     BricksBlueprints.BALL,
-                    Attaching.INSTANCE,
+                    Attached.INSTANCE,
                     new WorldPosition(vector2)
                 )
             );

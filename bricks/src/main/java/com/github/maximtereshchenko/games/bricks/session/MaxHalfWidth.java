@@ -1,3 +1,3 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-record BaseWidth(float value) {}
+record MaxHalfWidth(float value) {}

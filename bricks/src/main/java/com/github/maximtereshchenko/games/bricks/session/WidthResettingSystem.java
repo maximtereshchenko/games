@@ -1,11 +1,9 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.github.maximtereshchenko.games.ecs.Entity;
-import com.github.maximtereshchenko.games.ecs.Query;
-import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.ecs.RegistryEdit;
+import com.github.maximtereshchenko.games.ecs.*;
+import com.github.maximtereshchenko.games.ecs.System;
 
-final class WidthResettingSystem extends WidthResizingSystem {
+final class WidthResettingSystem implements System {
 
     private final Iterable<Entity> entities;
 
@@ -14,8 +12,7 @@ final class WidthResettingSystem extends WidthResizingSystem {
             new Query()
                 .all(
                     ResetWidthRemainingTime.class,
-                    BaseWidth.class,
-                    Rectangle.class
+                    BaseHalfWidth.class
                 )
         );
     }
@@ -26,18 +23,15 @@ final class WidthResettingSystem extends WidthResizingSystem {
             var resetWidthRemainingTime = entity.component(
                 ResetWidthRemainingTime.class
             );
-            var baseWidth = entity.component(BaseWidth.class);
-            var rectangle = entity.component(Rectangle.class);
+            var baseHalfWidth = entity.component(BaseHalfWidth.class);
             resetWidthRemainingTime.seconds = Math.max(
                 resetWidthRemainingTime.seconds - deltaTimeSeconds,
                 0
             );
             if (resetWidthRemainingTime.seconds == 0) {
-                resize(
-                    registryEdit,
-                    entity,
-                    rectangle,
-                    baseWidth.value()
+                registryEdit.addComponents(
+                    entity.id(),
+                    new UpdateWidthCommand(baseHalfWidth.value())
                 );
             }
         }
