@@ -22,6 +22,10 @@
       "value": 10
     },
     {
+      "type": "com.github.maximtereshchenko.games.bricks.session.MinWidth",
+      "value": 5
+    },
+    {
       "type": "com.github.maximtereshchenko.games.bricks.session.ResetWidthRemainingTime",
       "seconds": 0
     },
@@ -222,6 +226,43 @@
       "type": "com.badlogic.gdx.graphics.Color",
       "r": 0,
       "g": 1,
+      "b": 0,
+      "a": 1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Bonus",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "DynamicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Sensor",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
+      "vector2": {
+        "x": 0,
+        "y": -5
+      }
+    }
+  ],
+  "shortenPaddle": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.ShortenPaddle",
+      "subtractedWidth": 2,
+      "extraTimeSeconds": 10
+    },
+    {
+      "type": "com.badlogic.gdx.graphics.Color",
+      "r": 1,
+      "g": 0,
       "b": 0,
       "a": 1
     },

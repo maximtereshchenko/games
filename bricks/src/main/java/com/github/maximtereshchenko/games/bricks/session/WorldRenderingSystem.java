@@ -38,7 +38,7 @@ final class WorldRenderingSystem implements System {
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.getColor().set(Color.valueOf("#1a1a1a")); //TODO
+        shapeRenderer.getColor().set(Color.valueOf("#21004e")); //TODO
         shapeRenderer.rect(0, 0, viewport.getWorldWidth(), viewport.getWorldHeight());
         for (var entity : entities) {
             var color = entity.component(Color.class);

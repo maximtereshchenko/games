@@ -77,6 +77,7 @@ public final class SessionFactory {
                 random
             ),
             new PaddleWideningSystem(registry),
+            new PaddleShorteningSystem(registry),
             new WidthResettingSystem(registry),
             new BarrierSpawningSystem(registry, blueprints),
             new BarrierTimeExtendingSystem(registry),
