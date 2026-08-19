@@ -1,20 +1,15 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
-import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class BallMultiplicationSystem implements System {
+final class MultiplyBallsBonusSystem implements System {
 
     private final Iterable<Entity> multiplyBallsEntities;
     private final Iterable<Entity> ballsEntities;
-    private final Blueprints blueprints;
 
-    BallMultiplicationSystem(
-        Registry registry,
-        Blueprints blueprints
-    ) {
+    MultiplyBallsBonusSystem(Registry registry) {
         this.multiplyBallsEntities = registry.entities(
             new Query().all(MultiplyBallsBonus.class, Activated.class)
         );
@@ -26,7 +21,6 @@ final class BallMultiplicationSystem implements System {
                     Velocity.class
                 )
         );
-        this.blueprints = blueprints;
     }
 
     @Override
@@ -47,8 +41,7 @@ final class BallMultiplicationSystem implements System {
                         180f * i / multiplyBalls.factor());
                     registryEdit.addComponents(
                         registryEdit.createEntity(),
-                        blueprints.components(
-                            BricksBlueprints.BALL,
+                        new SpawnBallCommand(
                             new WorldPosition(
                                 new Vector2(worldPosition.vector2())
                             ),

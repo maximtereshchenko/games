@@ -50,6 +50,10 @@
       "value": 3
     },
     {
+      "type": "com.github.maximtereshchenko.games.bricks.session.BallLimit",
+      "value": 3000
+    },
+    {
       "type": "com.github.maximtereshchenko.games.bricks.session.WorldPosition",
       "vector2": {
         "x": 25,

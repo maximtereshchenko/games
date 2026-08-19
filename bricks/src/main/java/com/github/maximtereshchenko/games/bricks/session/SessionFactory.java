@@ -83,10 +83,8 @@ public final class SessionFactory {
             new BarrierSpawningSystem(registry, blueprints),
             new BarrierTimeExtendingSystem(registry),
             new BarrierRemovalSystem(registry),
-            new BallMultiplicationSystem(
-                registry,
-                blueprints
-            ),
+            new MultiplyBallsBonusSystem(registry),
+            new SpawnBallsBonusSystem(registry),
             new BallSpawningSystem(registry, blueprints),
             new LifeIncrementingSystem(registry),
             new DecrementLivesBonusSystem(registry),

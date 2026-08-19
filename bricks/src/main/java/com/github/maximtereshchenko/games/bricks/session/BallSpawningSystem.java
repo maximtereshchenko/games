@@ -1,60 +1,59 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.badlogic.gdx.math.Vector2;
 import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
 final class BallSpawningSystem implements System {
 
-    private final Iterable<Entity> spawnBallsEntities;
-    private final Iterable<Entity> paddleEntities;
+    private final Iterable<Entity> spawnBallCommandEntities;
+    private final Iterable<Entity> ballLimitEntities;
+    private final Iterable<Entity> ballEntities;
     private final Blueprints blueprints;
 
     BallSpawningSystem(Registry registry, Blueprints blueprints) {
-        this.spawnBallsEntities = registry.entities(
-            new Query().all(SpawnBallsBonus.class, Activated.class)
+        this.spawnBallCommandEntities = registry.entities(
+            new Query().all(SpawnBallCommand.class)
         );
-        this.paddleEntities = registry.entities(
-            new Query()
-                .all(
-                    Paddle.class,
-                    WorldPosition.class,
-                    Rectangle.class
-                )
+        this.ballLimitEntities = registry.entities(
+            new Query().all(BallLimit.class)
+        );
+        this.ballEntities = registry.entities(
+            new Query().all(Ball.class)
         );
         this.blueprints = blueprints;
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        for (var spawnBallsEntity : spawnBallsEntities) {
-            var spawnBalls = spawnBallsEntity.component(SpawnBallsBonus.class);
-            for (var paddleEntity : paddleEntities) {
-                var worldPosition = paddleEntity.component(
-                    WorldPosition.class
+        var balls = balls();
+        for (var ballLimitEntity : ballLimitEntities) {
+            var ballLimit = ballLimitEntity.component(BallLimit.class);
+            for (var spawnBallCommandEntity : spawnBallCommandEntities) {
+                var spawnBallCommand = spawnBallCommandEntity.component(
+                    SpawnBallCommand.class
                 );
-                var ballOffset = paddleEntity.component(BallOffset.class);
-                for (var i = 1; i <= spawnBalls.amount(); i++) {
-                    var vector2 = new Vector2(worldPosition.vector2());
-                    vector2.y += ballOffset.value();
+                if (balls < ballLimit.value()) {
                     registryEdit.addComponents(
                         registryEdit.createEntity(),
                         blueprints.components(
                             BricksBlueprints.BALL,
-                            new WorldPosition(vector2),
-                            new Velocity(
-                                new Vector2(0, 5)
-                                    .rotateDeg(90)
-                                    .rotateDeg(
-                                        -180f * i /
-                                        (spawnBalls.amount() + 1)
-                                    )
-                            )
+                            spawnBallCommand.worldPosition(),
+                            spawnBallCommand.velocity()
                         )
                     );
+                    balls++;
                 }
+                registryEdit.deleteEntity(spawnBallCommandEntity.id());
             }
         }
+    }
+
+    private int balls() {
+        var count = 0;
+        for (var _ : ballEntities) {
+            count++;
+        }
+        return count;
     }
 }
