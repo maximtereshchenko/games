@@ -5,24 +5,17 @@ import com.github.maximtereshchenko.games.ecs.System;
 
 final class LifeDecrementingSystem implements System {
 
-    private final Iterable<Entity> ballEntities;
-    private final Iterable<Entity> livesEntities;
+    private final Iterable<Entity> entities;
 
     LifeDecrementingSystem(Registry registry) {
-        this.ballEntities = registry.entities(
-            new Query().all(Ball.class)
-        );
-        this.livesEntities = registry.entities(
-            new Query().all(Lives.class)
+        this.entities = registry.entities(
+            new Query().all(Lives.class, DecrementLivesCommand.class)
         );
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        if (ballEntities.iterator().hasNext()) {
-            return;
-        }
-        for (var livesEntity : livesEntities) {
+        for (var livesEntity : entities) {
             var lives = livesEntity.component(Lives.class);
             lives.value--;
         }

@@ -120,6 +120,7 @@ public final class SessionFactory {
                 world,
                 physicsObjectFactory
             ),
+            new BallLossLifeDecrementingSystem(registry),
             new LifeDecrementingSystem(registry),
             new LevelFailedPublishingSystem(
                 registry,
@@ -136,7 +137,8 @@ public final class SessionFactory {
                 Sensor.class,
                 CollisionGroupIndex.class,
                 Collisions.class,
-                UpdateWidthCommand.class
+                UpdateWidthCommand.class,
+                DecrementLivesCommand.class
             ),
             new WorldRenderingSystem(
                 registry,
