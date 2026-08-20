@@ -8,13 +8,13 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
-final class WorldRenderingSystem implements System {
+final class ShapeRenderingSystem implements System {
 
     private final Iterable<Entity> entities;
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
 
-    WorldRenderingSystem(
+    ShapeRenderingSystem(
         Registry registry,
         Viewport viewport,
         ShapeRenderer shapeRenderer
@@ -24,8 +24,7 @@ final class WorldRenderingSystem implements System {
                 .all(Color.class, WorldPosition.class)
                 .one(
                     Rectangle.class,
-                    Circle.class,
-                    Star.class
+                    Circle.class
                 )
         );
         this.viewport = viewport;
@@ -53,30 +52,10 @@ final class WorldRenderingSystem implements System {
         var rectangle = entity.component(Rectangle.class);
         if (rectangle != null) {
             draw(vector2, rectangle);
+            return;
         }
         var circle = entity.component(Circle.class);
-        if (circle != null) {
-            draw(vector2, circle);
-        }
-        var star = entity.component(Star.class);
-        if (star != null) {
-            draw(vector2, star);
-        }
-    }
-
-    private void draw(Vector2 vector2, Star star) {
-        var x = new float[5];
-        var y = new float[5];
-        for (var i = 0; i < 5; i++) {
-            var angle = Math.PI / 2 + (i * 2 * Math.PI / 5f);
-            x[i] = (float) (vector2.x + star.radius() * Math.cos(angle));
-            y[i] = (float) (vector2.y + star.radius() * Math.sin(angle));
-        }
-        for (var i = 0; i < 5; i++) {
-            var p2 = (i + 2) % 5;
-            var p3 = (i + 3) % 5;
-            shapeRenderer.triangle(x[i], y[i], x[p2], y[p2], x[p3], y[p3]);
-        }
+        draw(vector2, circle);
     }
 
     private void draw(Vector2 vector2, Circle circle) {

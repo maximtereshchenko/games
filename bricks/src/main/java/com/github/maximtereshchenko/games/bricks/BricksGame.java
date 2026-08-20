@@ -3,16 +3,18 @@ package com.github.maximtereshchenko.games.bricks;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Disposable;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.event.Subscriber;
 
+import java.util.Set;
+
 final class BricksGame extends Game implements Subscriber<Event> {
 
-    private final ShapeRenderer shapeRenderer;
+    private final Set<Disposable> disposables;
 
-    BricksGame(ShapeRenderer shapeRenderer) {
-        this.shapeRenderer = shapeRenderer;
+    BricksGame(Set<Disposable> disposables) {
+        this.disposables = disposables;
     }
 
     @Override
@@ -23,7 +25,7 @@ final class BricksGame extends Game implements Subscriber<Event> {
     @Override
     public void dispose() {
         disposeScreen();
-        shapeRenderer.dispose();
+        disposables.forEach(Disposable::dispose);
     }
 
     @Override

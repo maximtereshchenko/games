@@ -173,7 +173,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Star",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -183,11 +183,8 @@
       }
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0.8431,
-      "b": 0,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "star"
     }
   ],
   "incrementLivesBonus": [
@@ -200,11 +197,8 @@
       "value": "INSTANCE"
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0,
-      "b": 0,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "incrementLives"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -216,7 +210,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -236,11 +230,8 @@
       "value": "INSTANCE"
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0,
-      "b": 0,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "decrementLives"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -252,7 +243,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -273,11 +264,8 @@
       "addedTimeSeconds": 10
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 0,
-      "g": 1,
-      "b": 0,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "widenPaddle"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -289,7 +277,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -310,11 +298,8 @@
       "addedTimeSeconds": 10
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0,
-      "b": 0,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "shortenPaddle"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -326,7 +311,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -346,11 +331,8 @@
       "extraTimeSeconds": 10
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0.5961,
-      "b": 0.349,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "spawnBarrier"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -362,7 +344,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -382,11 +364,8 @@
       "factor": 3
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 0.651,
-      "g": 0.8471,
-      "b": 0.1137,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "multiplyBalls"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -398,7 +377,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",
@@ -418,11 +397,8 @@
       "amount": 3
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 0,
-      "g": 0.8,
-      "b": 0.8941,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "spawnBalls"
     },
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
@@ -434,7 +410,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
-      "radius": 1
+      "radius": 1.5
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Velocity",

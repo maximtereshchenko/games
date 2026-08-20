@@ -1,0 +1,68 @@
+textures.png
+size: 108,108
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+decrementLives
+  rotate: false
+  xy: 2, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+incrementLives
+  rotate: false
+  xy: 38, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+spawnBalls
+  rotate: false
+  xy: 74, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+multiplyBalls
+  rotate: false
+  xy: 2, 38
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+spawnBarrier
+  rotate: false
+  xy: 2, 74
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+widenPaddle
+  rotate: false
+  xy: 38, 38
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+shortenPaddle
+  rotate: false
+  xy: 74, 38
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 38, 74
+  size: 31, 26
+  orig: 31, 26
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 73, 74
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
