@@ -1,7 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.event.EventBus;
@@ -18,32 +19,32 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class SessionFactory {
 
-    private final ShapeRenderer shapeRenderer;
-    private final SpriteBatch spriteBatch;
-    private final TextureAtlas textureAtlas;
+    private final Configuration configuration;
+    private final AssetManager assetManager;
     private final EventBus<Event> eventBus;
     private final PhysicsObjectFactory physicsObjectFactory;
+    private final ShapeRenderer shapeRenderer;
+    private final SpriteBatch spriteBatch;
 
     public SessionFactory(
-        ShapeRenderer shapeRenderer,
-        SpriteBatch spriteBatch,
-        TextureAtlas textureAtlas,
+        Configuration configuration,
+        AssetManager assetManager,
         EventBus<Event> eventBus,
-        PhysicsObjectFactory physicsObjectFactory
+        PhysicsObjectFactory physicsObjectFactory,
+        ShapeRenderer shapeRenderer,
+        SpriteBatch spriteBatch
     ) {
-        this.shapeRenderer = shapeRenderer;
-        this.spriteBatch = spriteBatch;
-        this.textureAtlas = textureAtlas;
+        this.configuration = configuration;
+        this.assetManager = assetManager;
         this.eventBus = eventBus;
         this.physicsObjectFactory = physicsObjectFactory;
+        this.shapeRenderer = shapeRenderer;
+        this.spriteBatch = spriteBatch;
     }
 
-    public World world(Viewport viewport) {
+    public World world() {
         var world = new World(Vector2.Zero, true);
-        physicsObjectFactory.createBoundaries(
-            world,
-            viewport
-        );
+        physicsObjectFactory.createBoundaries(world);
         return world;
     }
 
@@ -59,11 +60,15 @@ public final class SessionFactory {
             new PaddleSpawningSystem(registry, blueprints),
             new LayoutSystem(
                 registry,
+                configuration,
                 cellDefinitions,
-                blueprints,
+                blueprints
+            ),
+            new PaddleMovementSystem(
+                registry,
+                configuration,
                 viewport
             ),
-            new PaddleMovementSystem(registry, viewport),
             new BallDetachingSystem(registry),
             new BallLaunchingSystem(registry, world),
             new BonusResettingSystem(registry),
@@ -104,7 +109,7 @@ public final class SessionFactory {
             ),
             new OutOfBoundsEntityRemovalSystem(
                 registry,
-                viewport
+                configuration
             ),
             new FixtureRemovalSystem(registry, world),
             new RectangleFixtureSystem(
@@ -149,13 +154,15 @@ public final class SessionFactory {
             ),
             new ShapeRenderingSystem(
                 registry,
+                configuration,
                 viewport,
                 shapeRenderer
             ),
             new TextureRenderingSystem(
                 registry,
+                configuration,
                 viewport,
-                textureAtlas,
+                assetManager,
                 spriteBatch
             )
         );

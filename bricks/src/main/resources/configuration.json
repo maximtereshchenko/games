@@ -1,0 +1,32 @@
+{
+  "difficulties": {
+    "easy": "easy-difficulty-blueprints.json",
+    "dense": "dense-difficulty-blueprints.json",
+    "hard": "hard-difficulty-blueprints.json",
+    "superHard": "super-hard-difficulty-blueprints.json"
+  },
+  "levels": [
+    "level-1.json",
+    "level-2.json",
+    "level-3.json",
+    "level-4.json",
+    "level-5.json"
+  ],
+  "assets": {
+    "textureAtlas": "textures.atlas",
+    "skin": "skin.json",
+    "loadingBundle": "loading",
+    "gameBundle": "game"
+  },
+  "world": {
+    "width": 50,
+    "height": 75
+  },
+  "commonBlueprints": "common-blueprints.json",
+  "background": {
+    "r": 0.1333,
+    "g": 0,
+    "b": 0.31,
+    "a": 1
+  }
+}

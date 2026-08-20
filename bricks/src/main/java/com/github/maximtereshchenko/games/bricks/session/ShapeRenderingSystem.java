@@ -5,17 +5,20 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
 final class ShapeRenderingSystem implements System {
 
     private final Iterable<Entity> entities;
+    private final Configuration configuration;
     private final Viewport viewport;
     private final ShapeRenderer shapeRenderer;
 
     ShapeRenderingSystem(
         Registry registry,
+        Configuration configuration,
         Viewport viewport,
         ShapeRenderer shapeRenderer
     ) {
@@ -27,6 +30,7 @@ final class ShapeRenderingSystem implements System {
                     Circle.class
                 )
         );
+        this.configuration = configuration;
         this.viewport = viewport;
         this.shapeRenderer = shapeRenderer;
     }
@@ -37,8 +41,9 @@ final class ShapeRenderingSystem implements System {
         viewport.apply();
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.getColor().set(Color.valueOf("#21004e")); //TODO
-        shapeRenderer.rect(0, 0, viewport.getWorldWidth(), viewport.getWorldHeight());
+        shapeRenderer.getColor().set(configuration.background());
+        var world = configuration.world();
+        shapeRenderer.rect(0, 0, world.width(), world.height());
         for (var entity : entities) {
             var color = entity.component(Color.class);
             var worldPosition = entity.component(WorldPosition.class);

@@ -3,18 +3,25 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
 final class PaddleMovementSystem implements System {
 
     private final Iterable<Entity> entities;
+    private final Configuration configuration;
     private final Viewport viewport;
 
-    PaddleMovementSystem(Registry registry, Viewport viewport) {
+    PaddleMovementSystem(
+        Registry registry,
+        Configuration configuration,
+        Viewport viewport
+    ) {
         this.entities = registry.entities(
             new Query().all(Paddle.class, Velocity.class)
         );
+        this.configuration = configuration;
         this.viewport = viewport;
     }
 
@@ -28,7 +35,7 @@ final class PaddleMovementSystem implements System {
             var target = Math.clamp(
                 vector2.x,
                 0,
-                viewport.getWorldWidth()
+                configuration.world().width()
             );
             velocity.vector2().x =
                 (target - worldPosition.vector2().x) / deltaTimeSeconds;

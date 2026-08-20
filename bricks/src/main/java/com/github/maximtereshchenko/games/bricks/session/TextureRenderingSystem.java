@@ -1,22 +1,25 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
 final class TextureRenderingSystem implements System {
 
     private final Iterable<Entity> entities;
+    private final Configuration configuration;
     private final Viewport viewport;
-    private final TextureAtlas textureAtlas;
+    private final AssetManager assetManager;
     private final SpriteBatch spriteBatch;
 
     TextureRenderingSystem(
         Registry registry,
+        Configuration configuration,
         Viewport viewport,
-        TextureAtlas textureAtlas,
+        AssetManager assetManager,
         SpriteBatch spriteBatch
     ) {
         this.entities = registry.entities(
@@ -27,8 +30,9 @@ final class TextureRenderingSystem implements System {
                     Star.class
                 )
         );
+        this.configuration = configuration;
         this.viewport = viewport;
-        this.textureAtlas = textureAtlas;
+        this.assetManager = assetManager;
         this.spriteBatch = spriteBatch;
     }
 
@@ -43,7 +47,8 @@ final class TextureRenderingSystem implements System {
             var radius = radius(entity);
             var vector2 = worldPosition.vector2();
             spriteBatch.draw(
-                textureAtlas.findRegion(texture.name()),
+                assetManager.get(configuration.assets().textureAtlas())
+                    .findRegion(texture.name()),
                 vector2.x - radius,
                 vector2.y - radius,
                 radius * 2,

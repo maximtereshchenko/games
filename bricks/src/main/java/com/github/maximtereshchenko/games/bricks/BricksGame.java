@@ -1,19 +1,24 @@
 package com.github.maximtereshchenko.games.bricks;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Disposable;
-import com.github.maximtereshchenko.games.bricks.event.Event;
+import com.github.maximtereshchenko.games.bricks.event.*;
+import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.event.Subscriber;
 
 import java.util.Set;
 
 final class BricksGame extends Game implements Subscriber<Event> {
 
+    private final ScreenFactory screenFactory;
     private final Set<Disposable> disposables;
 
-    BricksGame(Set<Disposable> disposables) {
+    BricksGame(
+        ScreenFactory screenFactory,
+        Set<Disposable> disposables
+    ) {
+        this.screenFactory = screenFactory;
         this.disposables = disposables;
     }
 
@@ -36,7 +41,21 @@ final class BricksGame extends Game implements Subscriber<Event> {
 
     @Override
     public void onEvent(Event event) {
-        Gdx.app.exit();
+        setScreen(
+            switch (event) {
+                case AssetsLoaded _ -> screenFactory.mainScreen();
+                case LevelCompleted _ -> screenFactory.mainScreen();
+                case LevelFailed _ -> screenFactory.mainScreen();
+                case DifficultySelected difficultySelected -> screenFactory.levelSelectionScreen(
+                    difficultySelected.name()
+                );
+                case LevelSelected levelSelected -> screenFactory.sessionScreen(
+                    levelSelected.difficulty(),
+                    levelSelected.level()
+                );
+                case DifficultySelectionRequested _ -> screenFactory.difficultySelectionScreen();
+            }
+        );
     }
 
     private void disposeScreen() {

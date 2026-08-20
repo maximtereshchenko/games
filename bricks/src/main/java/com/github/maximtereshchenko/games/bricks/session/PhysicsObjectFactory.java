@@ -3,9 +3,15 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 
 public final class PhysicsObjectFactory {
+
+    private final Configuration configuration;
+
+    public PhysicsObjectFactory(Configuration configuration) {
+        this.configuration = configuration;
+    }
 
     Joint weldJoint(
         World world,
@@ -81,14 +87,15 @@ public final class PhysicsObjectFactory {
         return fixture;
     }
 
-    void createBoundaries(World world, Viewport viewport) {
+    void createBoundaries(World world) {
         var shape = new ChainShape();
+        var worldDimensions = configuration.world();
         shape.createChain(
             new float[]{
                 0, 0,
-                0, viewport.getWorldHeight(),
-                viewport.getWorldWidth(), viewport.getWorldHeight(),
-                viewport.getWorldWidth(), 0
+                0, worldDimensions.height(),
+                worldDimensions.width(), worldDimensions.height(),
+                worldDimensions.width(), 0
             }
         );
         fixture(

@@ -1,16 +1,14 @@
 package com.github.maximtereshchenko.games.bricks;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
-import com.github.maximtereshchenko.games.bricks.configuration.CellDefinitionDeserializer;
-import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationDeserializers;
-import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationReader;
+import com.github.maximtereshchenko.games.bricks.configuration.*;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
@@ -34,7 +32,6 @@ final class BricksGameAdapter implements ApplicationListener {
     public void create() {
         var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
-        var textureAtlas = new TextureAtlas(Gdx.files.classpath("textures.atlas"));
         var eventBus = new EventBus<Event>();
         var configurationDeserializers =
             new ConfigurationDeserializers();
@@ -42,47 +39,50 @@ final class BricksGameAdapter implements ApplicationListener {
             CellDefinition.class,
             new CellDefinitionDeserializer()
         );
+        configurationDeserializers.addDeserializer(
+            AssetDescriptor.class,
+            new AssetDescriptorDeserializer()
+        );
         var configurationReader = new ConfigurationReader(
             configurationDeserializers
         );
+        var configuration = configurationReader.value(
+            "configuration.json",
+            new TypeReference<Configuration>() {}
+        );
+        var assetManager = new AssetManager(
+            new ClasspathFileHandleResolver()
+        );
+        configuration.assets()
+            .loadingAssets()
+            .forEach(assetManager::load);
+        assetManager.finishLoading();
         var screenFactory = new ScreenFactory(
+            configuration,
+            assetManager,
+            eventBus,
+            configurationReader,
+            new BricksBlueprints(),
             new SessionFactory(
-                shapeRenderer,
-                spriteBatch,
-                textureAtlas,
+                configuration,
+                assetManager,
                 eventBus,
-                new PhysicsObjectFactory()
-            )
+                new PhysicsObjectFactory(configuration),
+                shapeRenderer,
+                spriteBatch
+            ),
+            spriteBatch
         );
         original = new BricksGame(
+            screenFactory,
             Set.of(
                 shapeRenderer,
                 spriteBatch,
-                textureAtlas
+                assetManager
             )
         );
         eventBus.subscribe(original);
-        original.setScreen(
-            screenFactory.sessionScreen(
-                new BricksBlueprints()
-                    .blueprints(
-                        configurationReader.value(
-                            "common-blueprints.json",
-                            new TypeReference<>() {}
-                        )
-                    )
-                    .merged(
-                        configurationReader.value(
-                            "easy-difficulty-blueprints.json",
-                            new TypeReference<>() {}
-                        )
-                    ),
-                configurationReader.value(
-                    "level-1.json",
-                    new TypeReference<>() {}
-                )
-            )
-        );
+        original.setScreen(screenFactory.loadingScreen());
     }
 
     @Override
