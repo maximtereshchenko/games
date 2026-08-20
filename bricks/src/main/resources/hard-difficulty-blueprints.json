@@ -1,0 +1,36 @@
+{
+  "paddle": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.BallOffset",
+      "value": 1.1
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.BonusSpawnPolicy",
+      "chance": 0.03,
+      "bonusChances": {
+        "incrementLivesBonus": 0.07,
+        "decrementLivesBonus": 0.155,
+        "widenPaddleBonus": 0.155,
+        "shortenPaddleBonus": 0.155,
+        "spawnBarrierBonus": 0.155,
+        "multiplyBallsBonus": 0.155,
+        "spawnBallsBonus": 0.155
+      }
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.LayoutPolicy",
+      "entitiesPerCellSide": 1,
+      "padding": 0.2
+    }
+  ],
+  "ball": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Circle",
+      "radius": 0.5
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Speed",
+      "value": 45
+    }
+  ]
+}
