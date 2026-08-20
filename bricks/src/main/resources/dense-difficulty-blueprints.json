@@ -6,7 +6,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.BonusSpawnPolicy",
-      "chance": 0.03,
+      "chance": 0.02,
       "bonusChances": {
         "incrementLivesBonus": 0.02,
         "widenPaddleBonus": 0.245,
