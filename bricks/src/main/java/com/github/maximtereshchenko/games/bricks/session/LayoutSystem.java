@@ -33,7 +33,7 @@ final class LayoutSystem implements System {
         for (var entity : entities) {
             var layoutPolicy = entity.component(LayoutPolicy.class);
             var columns = columns(layoutPolicy);
-            var width = configuration.world().width() / columns;
+            var width = configuration.worldDimensions().width() / columns;
             var rectangleHalfWidth = width / 2 - layoutPolicy.padding();
             var rectangle = new Rectangle(rectangleHalfWidth, rectangleHalfWidth);
             for (var rowIndex = 0; rowIndex < rows(layoutPolicy); rowIndex++) {
@@ -101,7 +101,8 @@ final class LayoutSystem implements System {
         return new WorldPosition(
             new Vector2(
                 width * columnIndex + width / 2,
-                configuration.world().height() - width * rowIndex - width / 2
+                configuration.worldDimensions().height() -
+                width * rowIndex - width / 2
             )
         );
     }

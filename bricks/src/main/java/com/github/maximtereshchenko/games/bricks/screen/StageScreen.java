@@ -7,14 +7,26 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 
 final class StageScreen extends ScreenAdapter {
 
     private final Stage stage;
 
-    StageScreen(SpriteBatch spriteBatch, Table table) {
-        this.stage = new Stage(new ScreenViewport(), spriteBatch);
+    StageScreen(
+        Configuration configuration,
+        Table table,
+        SpriteBatch spriteBatch
+    ) {
+        var dimensions = configuration.interfaceDimensions();
+        this.stage = new Stage(
+            new FitViewport(
+                dimensions.width(),
+                dimensions.height()
+            ),
+            spriteBatch
+        );
         table.setFillParent(true);
         stage.addActor(table);
     }

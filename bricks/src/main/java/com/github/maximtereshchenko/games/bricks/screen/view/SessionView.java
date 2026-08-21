@@ -2,6 +2,8 @@ package com.github.maximtereshchenko.games.bricks.screen.view;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.session.TextureRenderer;
@@ -17,8 +19,13 @@ public final class SessionView extends Table {
         Registry registry,
         AssetManager assetManager
     ) {
-        add(starsIndicator);
-        add(livesIndicator).row();
+        add(starsIndicator)
+            .align(Align.left)
+            .pad(Value.percentHeight(0.01f, this));
+        add(livesIndicator)
+            .align(Align.right)
+            .pad(Value.percentHeight(0.01f, this))
+            .row();
         add(
             new SessionWidget(
                 viewport,

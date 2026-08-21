@@ -1,10 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.screen.view;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
@@ -23,7 +20,9 @@ public final class DifficultySelectionView extends Table {
         Configuration configuration
     ) {
         this.buttons = new HashMap<>();
-        defaults().pad(10).width(200);
+        defaults()
+            .pad(Value.percentHeight(0.01f, this))
+            .width(Value.percentWidth(0.6f, this));
         for (var difficulty : configuration.difficulties().keySet()) {
             var button = new TextButton(
                 bundle.get(

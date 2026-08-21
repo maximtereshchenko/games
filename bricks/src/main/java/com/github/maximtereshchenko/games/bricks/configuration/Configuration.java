@@ -14,7 +14,8 @@ public record Configuration(
     Map<String, String> difficulties,
     List<String> levels,
     Assets assets,
-    World world,
+    Dimensions worldDimensions,
+    Dimensions interfaceDimensions,
     String commonBlueprints,
     Background background,
     String livesIndicatorTexture,
@@ -37,7 +38,7 @@ public record Configuration(
         }
     }
 
-    public record World(float width, float height) {}
+    public record Dimensions(float width, float height) {}
 
     public record Background(Color color, String texture) {}
 }

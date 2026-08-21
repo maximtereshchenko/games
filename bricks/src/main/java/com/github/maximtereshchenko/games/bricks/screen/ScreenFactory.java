@@ -51,8 +51,9 @@ public final class ScreenFactory {
         );
         return new LoadingScreen(
             new StageScreen(
-                spriteBatch,
-                loadingView
+                configuration,
+                loadingView,
+                spriteBatch
             ),
             configuration,
             loadingView,
@@ -68,7 +69,7 @@ public final class ScreenFactory {
         mainView.onPlay(
             () -> eventBus.publish(new DifficultySelectionRequested())
         );
-        return new StageScreen(spriteBatch, mainView);
+        return new StageScreen(configuration, mainView, spriteBatch);
     }
 
     public Screen difficultySelectionScreen() {
@@ -82,7 +83,11 @@ public final class ScreenFactory {
                 new DifficultySelected(difficulty)
             )
         );
-        return new StageScreen(spriteBatch, difficultySelectionView);
+        return new StageScreen(
+            configuration,
+            difficultySelectionView,
+            spriteBatch
+        );
     }
 
     public Screen levelSelectionScreen(String difficulty) {
@@ -95,15 +100,22 @@ public final class ScreenFactory {
                 new LevelSelected(difficulty, level)
             )
         );
-        return new StageScreen(spriteBatch, levelSelectionView);
+        return new StageScreen(
+            configuration,
+            levelSelectionView,
+            spriteBatch
+        );
     }
 
     public Screen sessionScreen(
         String difficulty,
         int level
     ) {
-        var world = configuration.world();
-        var viewport = new FitViewport(world.width(), world.height());
+        var dimensions = configuration.worldDimensions();
+        var viewport = new FitViewport(
+            dimensions.width(),
+            dimensions.height()
+        );
         var physicsWorld = sessionFactory.world();
         var textureAtlas = assetManager.get(
             configuration.assets().textureAtlas()
@@ -120,7 +132,7 @@ public final class ScreenFactory {
         );
         return new SessionScreen(
             new StageScreen(
-                spriteBatch,
+                configuration,
                 new SessionView(
                     configuration,
                     starsIndicator,
@@ -151,7 +163,8 @@ public final class ScreenFactory {
                         physicsWorld
                     ),
                     assetManager
-                )
+                ),
+                spriteBatch
             ),
             physicsWorld
         );

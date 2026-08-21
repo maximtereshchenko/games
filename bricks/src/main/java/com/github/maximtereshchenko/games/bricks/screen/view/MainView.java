@@ -23,7 +23,9 @@ public final class MainView extends Table {
             bundle.get("screens.main.buttons.settings"),
             skin
         );
-        defaults().pad(10).width(200);
+        defaults()
+            .pad(Value.percentHeight(0.01f, this))
+            .width(Value.percentWidth(0.6f, this));
         var label = new Label(bundle.get("screens.main.title"), skin);
         label.setAlignment(Align.center);
         add(label).row();

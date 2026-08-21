@@ -18,9 +18,13 @@
     "loadingBundle": "loading",
     "gameBundle": "game"
   },
-  "world": {
+  "worldDimensions": {
     "width": 50,
     "height": 75
+  },
+  "interfaceDimensions": {
+    "width": 480,
+    "height": 720
   },
   "commonBlueprints": "common-blueprints.json",
   "background": {

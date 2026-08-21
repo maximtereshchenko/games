@@ -24,10 +24,10 @@ final class OutOfBoundsEntityRemovalSystem implements System {
         for (var entity : entities) {
             var worldPosition = entity.component(WorldPosition.class);
             var vector2 = worldPosition.vector2();
-            var world = configuration.world();
+            var dimensions = configuration.worldDimensions();
             if (
-                isOutOfBounds(vector2.x, world.width()) ||
-                isOutOfBounds(vector2.y, world.height())
+                isOutOfBounds(vector2.x, dimensions.width()) ||
+                isOutOfBounds(vector2.y, dimensions.height())
             ) {
                 registryEdit.addComponents(entity.id(), Removed.INSTANCE);
             }

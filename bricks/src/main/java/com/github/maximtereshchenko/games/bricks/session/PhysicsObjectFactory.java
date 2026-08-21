@@ -89,13 +89,13 @@ public final class PhysicsObjectFactory {
 
     void createBoundaries(World world) {
         var shape = new ChainShape();
-        var worldDimensions = configuration.world();
+        var dimensions = configuration.worldDimensions();
         shape.createChain(
             new float[]{
                 0, 0,
-                0, worldDimensions.height(),
-                worldDimensions.width(), worldDimensions.height(),
-                worldDimensions.width(), 0
+                0, dimensions.height(),
+                dimensions.width(), dimensions.height(),
+                dimensions.width(), 0
             }
         );
         fixture(

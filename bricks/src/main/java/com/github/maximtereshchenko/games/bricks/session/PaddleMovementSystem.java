@@ -35,7 +35,7 @@ final class PaddleMovementSystem implements System {
             var target = Math.clamp(
                 vector2.x,
                 0,
-                configuration.world().width()
+                configuration.worldDimensions().width()
             );
             velocity.vector2().x =
                 (target - worldPosition.vector2().x) / deltaTimeSeconds;

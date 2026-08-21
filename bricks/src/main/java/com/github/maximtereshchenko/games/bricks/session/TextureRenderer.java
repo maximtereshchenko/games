@@ -43,14 +43,14 @@ public final class TextureRenderer {
     private void drawBackground(Batch batch) {
         var background = configuration.background();
         batch.setColor(background.color());
-        var world = configuration.world();
+        var dimensions = configuration.worldDimensions();
         batch.draw(
             assetManager.get(configuration.assets().textureAtlas())
                 .findRegion(background.texture()),
             0,
             0,
-            world.width(),
-            world.height()
+            dimensions.width(),
+            dimensions.height()
         );
     }
 
