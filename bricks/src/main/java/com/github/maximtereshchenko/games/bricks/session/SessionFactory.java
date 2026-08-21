@@ -8,6 +8,7 @@ import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.event.Event;
+import com.github.maximtereshchenko.games.bricks.screen.view.Indicator;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.event.EventBus;
 
@@ -38,6 +39,8 @@ public final class SessionFactory {
 
     public Registry registry(
         Viewport viewport,
+        Indicator livesIndicator,
+        Indicator starsIndicator,
         Blueprints blueprints,
         List<List<CellDefinition>> cellDefinitions,
         World world
@@ -129,6 +132,18 @@ public final class SessionFactory {
             new LevelCompletedPublishingSystem(
                 registry,
                 eventBus
+            ),
+            new IndicatorSynchronizationSystem<>(
+                registry,
+                livesIndicator,
+                Lives.class,
+                lives -> lives.value
+            ),
+            new IndicatorSynchronizationSystem<>(
+                registry,
+                starsIndicator,
+                CollectedStars.class,
+                collectedStars -> collectedStars.value
             ),
             new ComponentRemovalSystem(
                 registry,

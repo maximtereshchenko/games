@@ -16,7 +16,9 @@ public record Configuration(
     Assets assets,
     World world,
     String commonBlueprints,
-    Color background
+    Background background,
+    String livesIndicatorTexture,
+    String starsIndicatorTexture
 ) {
 
     public record Assets(
@@ -36,4 +38,6 @@ public record Configuration(
     }
 
     public record World(float width, float height) {}
+
+    public record Background(Color color, String texture) {}
 }

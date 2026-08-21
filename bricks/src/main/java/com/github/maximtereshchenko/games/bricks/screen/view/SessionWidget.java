@@ -32,9 +32,12 @@ final class SessionWidget extends Widget {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+        batch.flush();
         updateViewport();
         batch.setProjectionMatrix(viewport.getCamera().combined);
         textureRenderer.draw(batch);
+        batch.flush();
+        restoreStageViewport(batch);
     }
 
     private void updateViewport() {
@@ -52,6 +55,12 @@ final class SessionWidget extends Widget {
             viewport.getScreenY() + Math.round(bottomLeft.y)
         );
         viewport.apply();
+    }
+
+    private void restoreStageViewport(Batch batch) {
+        var stageViewport = getStage().getViewport();
+        stageViewport.apply();
+        batch.setProjectionMatrix(stageViewport.getCamera().combined);
     }
 
     private void project(Vector2 vector2) {

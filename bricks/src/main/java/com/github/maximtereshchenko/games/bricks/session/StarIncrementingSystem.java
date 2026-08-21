@@ -6,25 +6,25 @@ import com.github.maximtereshchenko.games.ecs.System;
 final class StarIncrementingSystem implements System {
 
     private final Iterable<Entity> incrementStarEntities;
-    private final Iterable<Entity> starCounterEntities;
+    private final Iterable<Entity> collectedStarsEntities;
 
     StarIncrementingSystem(Registry registry) {
         this.incrementStarEntities = registry.entities(
             new Query().all(IncrementStarsBonus.class, Activated.class)
         );
-        this.starCounterEntities = registry.entities(
-            new Query().all(StarCounter.class)
+        this.collectedStarsEntities = registry.entities(
+            new Query().all(CollectedStars.class)
         );
     }
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
         for (var _ : incrementStarEntities) {
-            for (var starConterEntity : starCounterEntities) {
-                var starCounter = starConterEntity.component(
-                    StarCounter.class
+            for (var collectedStarsEntity : collectedStarsEntities) {
+                var collectedStars = collectedStarsEntity.component(
+                    CollectedStars.class
                 );
-                starCounter.value++;
+                collectedStars.value++;
             }
         }
     }

@@ -105,14 +105,31 @@ public final class ScreenFactory {
         var world = configuration.world();
         var viewport = new FitViewport(world.width(), world.height());
         var physicsWorld = sessionFactory.world();
+        var textureAtlas = assetManager.get(
+            configuration.assets().textureAtlas()
+        );
+        var livesIndicator = new Indicator(
+            textureAtlas.findRegion(
+                configuration.livesIndicatorTexture()
+            )
+        );
+        var starsIndicator = new Indicator(
+            textureAtlas.findRegion(
+                configuration.starsIndicatorTexture()
+            )
+        );
         return new SessionScreen(
             new StageScreen(
                 spriteBatch,
                 new SessionView(
                     configuration,
+                    starsIndicator,
+                    livesIndicator,
                     viewport,
                     sessionFactory.registry(
                         viewport,
+                        livesIndicator,
+                        starsIndicator,
                         bricksBlueprints.blueprints(
                                 configurationReader.value(
                                     configuration.commonBlueprints(),

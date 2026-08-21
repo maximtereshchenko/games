@@ -9,7 +9,7 @@ import com.github.maximtereshchenko.games.event.EventBus;
 final class LevelCompletedPublishingSystem implements System {
 
     private final Iterable<Entity> brickOrIncrementStarsEntities;
-    private final Iterable<Entity> starCounterEntities;
+    private final Iterable<Entity> collectedStarsEntities;
     private final EventBus<Event> eventBus;
 
     LevelCompletedPublishingSystem(
@@ -19,8 +19,8 @@ final class LevelCompletedPublishingSystem implements System {
         this.brickOrIncrementStarsEntities = registry.entities(
             new Query().one(Brick.class, IncrementStarsBonus.class)
         );
-        this.starCounterEntities = registry.entities(
-            new Query().all(StarCounter.class)
+        this.collectedStarsEntities = registry.entities(
+            new Query().all(CollectedStars.class)
         );
         this.eventBus = eventBus;
     }
@@ -30,11 +30,11 @@ final class LevelCompletedPublishingSystem implements System {
         if (brickOrIncrementStarsEntities.iterator().hasNext()) {
             return;
         }
-        for (var starCounterEntity : starCounterEntities) {
-            var starCounter = starCounterEntity.component(
-                StarCounter.class
+        for (var collectedStarsEntity : collectedStarsEntities) {
+            var collectedStars = collectedStarsEntity.component(
+                CollectedStars.class
             );
-            eventBus.publish(new LevelCompleted(starCounter.value));
+            eventBus.publish(new LevelCompleted(collectedStars.value));
         }
     }
 }

@@ -11,10 +11,14 @@ public final class SessionView extends Table {
 
     public SessionView(
         Configuration configuration,
+        Indicator starsIndicator,
+        Indicator livesIndicator,
         Viewport viewport,
         Registry registry,
         AssetManager assetManager
     ) {
+        add(starsIndicator);
+        add(livesIndicator).row();
         add(
             new SessionWidget(
                 viewport,
@@ -26,6 +30,7 @@ public final class SessionView extends Table {
                 )
             )
         )
+            .colspan(2)
             .expand()
             .fill();
     }

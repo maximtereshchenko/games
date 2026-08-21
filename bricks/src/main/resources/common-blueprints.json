@@ -42,7 +42,7 @@
       "accumulated": 0
     },
     {
-      "type": "com.github.maximtereshchenko.games.bricks.session.StarCounter",
+      "type": "com.github.maximtereshchenko.games.bricks.session.CollectedStars",
       "value": 0
     },
     {

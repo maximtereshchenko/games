@@ -1,10 +1,10 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-final class StarCounter {
+final class CollectedStars {
 
     int value;
 
-    StarCounter(int value) {
+    CollectedStars(int value) {
         this.value = value;
     }
 }

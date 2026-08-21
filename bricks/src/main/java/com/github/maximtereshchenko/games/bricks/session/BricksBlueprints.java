@@ -44,8 +44,8 @@ public final class BricksBlueprints {
                 )
             )
             .copyFunction(
-                StarCounter.class,
-                original -> new StarCounter(original.value)
+                CollectedStars.class,
+                original -> new CollectedStars(original.value)
             )
             .copyFunction(
                 Lives.class,

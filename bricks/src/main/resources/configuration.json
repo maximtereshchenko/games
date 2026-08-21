@@ -24,9 +24,14 @@
   },
   "commonBlueprints": "common-blueprints.json",
   "background": {
-    "r": 0.1333,
-    "g": 0,
-    "b": 0.31,
-    "a": 1
-  }
+    "color": {
+      "r": 0.1333,
+      "g": 0,
+      "b": 0.31,
+      "a": 1
+    },
+    "texture": "square"
+  },
+  "livesIndicatorTexture": "heart",
+  "starsIndicatorTexture": "star"
 }
