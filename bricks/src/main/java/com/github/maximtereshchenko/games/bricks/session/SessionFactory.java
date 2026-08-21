@@ -1,7 +1,5 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -19,23 +17,17 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class SessionFactory {
 
     private final Configuration configuration;
-    private final AssetManager assetManager;
     private final EventBus<Event> eventBus;
     private final PhysicsObjectFactory physicsObjectFactory;
-    private final SpriteBatch spriteBatch;
 
     public SessionFactory(
         Configuration configuration,
-        AssetManager assetManager,
         EventBus<Event> eventBus,
-        PhysicsObjectFactory physicsObjectFactory,
-        SpriteBatch spriteBatch
+        PhysicsObjectFactory physicsObjectFactory
     ) {
         this.configuration = configuration;
-        this.assetManager = assetManager;
         this.eventBus = eventBus;
         this.physicsObjectFactory = physicsObjectFactory;
-        this.spriteBatch = spriteBatch;
     }
 
     public World world() {
@@ -147,13 +139,6 @@ public final class SessionFactory {
                 Collisions.class,
                 UpdateWidthCommand.class,
                 DecrementLivesCommand.class
-            ),
-            new TextureRenderingSystem(
-                registry,
-                configuration,
-                viewport,
-                assetManager,
-                spriteBatch
             )
         );
         return registry;

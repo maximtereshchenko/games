@@ -2,27 +2,22 @@ package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
-import com.github.maximtereshchenko.games.ecs.*;
-import com.github.maximtereshchenko.games.ecs.System;
+import com.github.maximtereshchenko.games.ecs.Entity;
+import com.github.maximtereshchenko.games.ecs.Query;
+import com.github.maximtereshchenko.games.ecs.Registry;
 
-final class TextureRenderingSystem implements System {
+public final class TextureRenderer {
 
     private final Iterable<Entity> entities;
     private final Configuration configuration;
-    private final Viewport viewport;
     private final AssetManager assetManager;
-    private final SpriteBatch spriteBatch;
 
-    TextureRenderingSystem(
+    public TextureRenderer(
         Registry registry,
         Configuration configuration,
-        Viewport viewport,
-        AssetManager assetManager,
-        SpriteBatch spriteBatch
+        AssetManager assetManager
     ) {
         this.entities = registry.entities(
             new Query()
@@ -34,29 +29,21 @@ final class TextureRenderingSystem implements System {
                 )
         );
         this.configuration = configuration;
-        this.viewport = viewport;
         this.assetManager = assetManager;
-        this.spriteBatch = spriteBatch;
     }
 
-    @Override
-    public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        ScreenUtils.clear(Color.CLEAR);
-        viewport.apply();
-        spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
-        spriteBatch.begin();
-        drawBackground();
+    public void draw(Batch batch) {
+        drawBackground(batch);
         for (var entity : entities) {
-            spriteBatch.setColor(tint(entity));
-            draw(entity);
+            batch.setColor(tint(entity));
+            draw(batch, entity);
         }
-        spriteBatch.end();
     }
 
-    private void drawBackground() {
-        spriteBatch.setColor(configuration.background());
+    private void drawBackground(Batch batch) {
+        batch.setColor(configuration.background());
         var world = configuration.world();
-        spriteBatch.draw(
+        batch.draw(
             assetManager.get(configuration.assets().textureAtlas())
                 .findRegion("square"),
             0,
@@ -74,26 +61,41 @@ final class TextureRenderingSystem implements System {
         return color;
     }
 
-    private void draw(Entity entity) {
+    private void draw(Batch batch, Entity entity) {
         var rectangle = entity.component(Rectangle.class);
         if (rectangle != null) {
-            draw(entity, rectangle.halfWidth, rectangle.halfHeight);
+            draw(
+                batch,
+                entity,
+                rectangle.halfWidth,
+                rectangle.halfHeight
+            );
             return;
         }
         var circle = entity.component(Circle.class);
         if (circle != null) {
-            draw(entity, circle.radius(), circle.radius());
+            draw(
+                batch,
+                entity,
+                circle.radius(),
+                circle.radius()
+            );
             return;
         }
         var star = entity.component(Star.class);
-        draw(entity, star.radius(), star.radius());
+        draw(batch, entity, star.radius(), star.radius());
     }
 
-    private void draw(Entity entity, float halfWidth, float halfHeight) {
+    private void draw(
+        Batch batch,
+        Entity entity,
+        float halfWidth,
+        float halfHeight
+    ) {
         var texture = entity.component(Texture.class);
         var worldPosition = entity.component(WorldPosition.class);
         var vector2 = worldPosition.vector2();
-        spriteBatch.draw(
+        batch.draw(
             assetManager.get(configuration.assets().textureAtlas())
                 .findRegion(texture.name()),
             vector2.x - halfWidth,

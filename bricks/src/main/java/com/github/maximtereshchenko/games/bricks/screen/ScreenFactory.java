@@ -10,10 +10,7 @@ import com.github.maximtereshchenko.games.bricks.event.DifficultySelected;
 import com.github.maximtereshchenko.games.bricks.event.DifficultySelectionRequested;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.event.LevelSelected;
-import com.github.maximtereshchenko.games.bricks.screen.view.DifficultySelectionView;
-import com.github.maximtereshchenko.games.bricks.screen.view.LevelSelectionView;
-import com.github.maximtereshchenko.games.bricks.screen.view.LoadingView;
-import com.github.maximtereshchenko.games.bricks.screen.view.MainView;
+import com.github.maximtereshchenko.games.bricks.screen.view.*;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
 import com.github.maximtereshchenko.games.event.EventBus;
@@ -109,28 +106,35 @@ public final class ScreenFactory {
         var viewport = new FitViewport(world.width(), world.height());
         var physicsWorld = sessionFactory.world();
         return new SessionScreen(
-            viewport,
-            sessionFactory.registry(
-                viewport,
-                bricksBlueprints.blueprints(
+            new StageScreen(
+                spriteBatch,
+                new SessionView(
+                    configuration,
+                    viewport,
+                    sessionFactory.registry(
+                        viewport,
+                        bricksBlueprints.blueprints(
+                                configurationReader.value(
+                                    configuration.commonBlueprints(),
+                                    new TypeReference<>() {}
+                                )
+                            )
+                            .merged(
+                                configurationReader.value(
+                                    configuration.difficulties()
+                                        .get(difficulty),
+                                    new TypeReference<>() {}
+                                )
+                            ),
                         configurationReader.value(
-                            configuration.commonBlueprints(),
+                            configuration.levels()
+                                .get(level),
                             new TypeReference<>() {}
-                        )
-                    )
-                    .merged(
-                        configurationReader.value(
-                            configuration.difficulties()
-                                .get(difficulty),
-                            new TypeReference<>() {}
-                        )
+                        ),
+                        physicsWorld
                     ),
-                configurationReader.value(
-                    configuration.levels()
-                        .get(level),
-                    new TypeReference<>() {}
-                ),
-                physicsWorld
+                    assetManager
+                )
             ),
             physicsWorld
         );

@@ -34,13 +34,13 @@ final class BricksGameAdapter implements ApplicationListener {
         var configurationDeserializers =
             new ConfigurationDeserializers();
         configurationDeserializers.addDeserializer(
-            CellDefinition.class,
-            new CellDefinitionDeserializer()
-        );
-        configurationDeserializers.addDeserializer(
-            AssetDescriptor.class,
-            new AssetDescriptorDeserializer()
-        );
+                CellDefinition.class,
+                new CellDefinitionDeserializer()
+            )
+            .addDeserializer(
+                AssetDescriptor.class,
+                new AssetDescriptorDeserializer()
+            );
         var configurationReader = new ConfigurationReader(
             configurationDeserializers
         );
@@ -63,10 +63,8 @@ final class BricksGameAdapter implements ApplicationListener {
             new BricksBlueprints(),
             new SessionFactory(
                 configuration,
-                assetManager,
                 eventBus,
-                new PhysicsObjectFactory(configuration),
-                spriteBatch
+                new PhysicsObjectFactory(configuration)
             ),
             spriteBatch
         );
