@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.bricks;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
@@ -31,43 +32,22 @@ final class BricksGameAdapter implements ApplicationListener {
     public void create() {
         var spriteBatch = new SpriteBatch();
         var eventBus = new EventBus<Event>();
-        var configurationDeserializers =
-            new ConfigurationDeserializers();
-        configurationDeserializers.addDeserializer(
-                CellDefinition.class,
-                new CellDefinitionDeserializer()
-            )
-            .addDeserializer(
-                AssetDescriptor.class,
-                new AssetDescriptorDeserializer()
-            );
         var configurationReader = new ConfigurationReader(
-            configurationDeserializers
+            configurationDeserializers()
         );
         var configuration = configurationReader.value(
             "configuration.json",
             new TypeReference<Configuration>() {}
         );
-        var assetManager = new AssetManager(
-            new ClasspathFileHandleResolver()
-        );
-        configuration.assets()
-            .loadingAssets()
-            .forEach(assetManager::load);
-        assetManager.finishLoading();
-        var screenFactory = new ScreenFactory(
+        var assetManager = assetManager(configuration);
+        var screenFactory = screenFactory(
             configuration,
             assetManager,
             eventBus,
             configurationReader,
-            new BricksBlueprints(),
-            new SessionFactory(
-                configuration,
-                eventBus,
-                new PhysicsObjectFactory(configuration)
-            ),
             spriteBatch
         );
+        setWindowedMode(configuration);
         original = new BricksGame(
             screenFactory,
             Set.of(
@@ -102,5 +82,60 @@ final class BricksGameAdapter implements ApplicationListener {
     @Override
     public void dispose() {
         original.dispose();
+    }
+
+    private void setWindowedMode(Configuration configuration) {
+        var dimensions = configuration.interfaceDimensions();
+        Gdx.graphics.setWindowedMode(
+            Math.round(dimensions.width()),
+            Math.round(dimensions.height())
+        );
+    }
+
+    private ScreenFactory screenFactory(
+        Configuration configuration,
+        AssetManager assetManager,
+        EventBus<Event> eventBus,
+        ConfigurationReader configurationReader,
+        SpriteBatch spriteBatch
+    ) {
+        return new ScreenFactory(
+            configuration,
+            assetManager,
+            eventBus,
+            configurationReader,
+            new BricksBlueprints(),
+            new SessionFactory(
+                configuration,
+                eventBus,
+                new PhysicsObjectFactory(configuration)
+            ),
+            spriteBatch
+        );
+    }
+
+    private AssetManager assetManager(Configuration configuration) {
+        var assetManager = new AssetManager(
+            new ClasspathFileHandleResolver()
+        );
+        configuration.assets()
+            .loadingAssets()
+            .forEach(assetManager::load);
+        assetManager.finishLoading();
+        return assetManager;
+    }
+
+    private ConfigurationDeserializers configurationDeserializers() {
+        var configurationDeserializers =
+            new ConfigurationDeserializers();
+        configurationDeserializers.addDeserializer(
+                CellDefinition.class,
+                new CellDefinitionDeserializer()
+            )
+            .addDeserializer(
+                AssetDescriptor.class,
+                new AssetDescriptorDeserializer()
+            );
+        return configurationDeserializers;
     }
 }

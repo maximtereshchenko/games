@@ -12,9 +12,7 @@ public final class Indicator extends Table {
     public Indicator(TextureRegion textureRegion) {
         this.textureRegion = textureRegion;
         defaults()
-            .pad(Value.percentWidth(0.03f, this))
-            .fill()
-            .expand();
+            .pad(Value.percentWidth(0.02f, this));
     }
 
     public void update(int value) {
