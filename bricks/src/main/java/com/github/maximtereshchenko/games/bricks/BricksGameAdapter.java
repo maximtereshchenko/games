@@ -6,7 +6,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.bricks.configuration.*;
 import com.github.maximtereshchenko.games.bricks.event.Event;
@@ -30,7 +29,6 @@ final class BricksGameAdapter implements ApplicationListener {
 
     @Override
     public void create() {
-        var shapeRenderer = new ShapeRenderer();
         var spriteBatch = new SpriteBatch();
         var eventBus = new EventBus<Event>();
         var configurationDeserializers =
@@ -68,7 +66,6 @@ final class BricksGameAdapter implements ApplicationListener {
                 assetManager,
                 eventBus,
                 new PhysicsObjectFactory(configuration),
-                shapeRenderer,
                 spriteBatch
             ),
             spriteBatch
@@ -76,7 +73,6 @@ final class BricksGameAdapter implements ApplicationListener {
         original = new BricksGame(
             screenFactory,
             Set.of(
-                shapeRenderer,
                 spriteBatch,
                 assetManager
             )

@@ -2,7 +2,6 @@ package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -23,7 +22,6 @@ public final class SessionFactory {
     private final AssetManager assetManager;
     private final EventBus<Event> eventBus;
     private final PhysicsObjectFactory physicsObjectFactory;
-    private final ShapeRenderer shapeRenderer;
     private final SpriteBatch spriteBatch;
 
     public SessionFactory(
@@ -31,14 +29,12 @@ public final class SessionFactory {
         AssetManager assetManager,
         EventBus<Event> eventBus,
         PhysicsObjectFactory physicsObjectFactory,
-        ShapeRenderer shapeRenderer,
         SpriteBatch spriteBatch
     ) {
         this.configuration = configuration;
         this.assetManager = assetManager;
         this.eventBus = eventBus;
         this.physicsObjectFactory = physicsObjectFactory;
-        this.shapeRenderer = shapeRenderer;
         this.spriteBatch = spriteBatch;
     }
 
@@ -151,12 +147,6 @@ public final class SessionFactory {
                 Collisions.class,
                 UpdateWidthCommand.class,
                 DecrementLivesCommand.class
-            ),
-            new ShapeRenderingSystem(
-                registry,
-                configuration,
-                viewport,
-                shapeRenderer
             ),
             new TextureRenderingSystem(
                 registry,

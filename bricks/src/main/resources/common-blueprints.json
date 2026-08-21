@@ -67,11 +67,8 @@
       }
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0.498,
-      "b": 0.3137,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "rectangle"
     }
   ],
   "ball": [
@@ -95,11 +92,8 @@
       }
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 1,
-      "b": 1,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "ball"
     }
   ],
   "brick": [
@@ -110,12 +104,20 @@
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
       "value": "StaticBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "square"
     }
   ],
   "wall": [
     {
       "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
       "value": "StaticBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "square"
     },
     {
       "type": "com.badlogic.gdx.graphics.Color",
@@ -147,11 +149,8 @@
       }
     },
     {
-      "type": "com.badlogic.gdx.graphics.Color",
-      "r": 1,
-      "g": 0.5961,
-      "b": 0.349,
-      "a": 1
+      "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
+      "name": "rectangle"
     }
   ],
   "incrementStarsBonus": [
