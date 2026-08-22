@@ -13,7 +13,8 @@
     "level-4.json",
     "level-5.json",
     "level-6.json",
-    "level-7.json"
+    "level-7.json",
+    "level-8.json"
   ],
   "assets": {
     "textureAtlas": "textures.atlas",
