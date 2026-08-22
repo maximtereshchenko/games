@@ -9,10 +9,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.bricks.configuration.*;
-import com.github.maximtereshchenko.games.bricks.event.Event;
-import com.github.maximtereshchenko.games.bricks.event.UnlockFirstLevels;
-import com.github.maximtereshchenko.games.bricks.event.UnlockNextLevel;
-import com.github.maximtereshchenko.games.bricks.event.UpdateStars;
+import com.github.maximtereshchenko.games.bricks.event.*;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.PhysicsObjectFactory;
@@ -68,6 +65,18 @@ final class BricksGameAdapter implements ApplicationListener {
         );
         eventBus.subscribe(
             new UpdateStars(userProfile)
+        );
+        eventBus.subscribe(
+            new PlayMusic(
+                configuration,
+                assetManager
+            )
+        );
+        eventBus.subscribe(
+            new PlayWinSound(
+                configuration,
+                assetManager
+            )
         );
         original = new BricksGame(
             screenFactory,
@@ -132,7 +141,8 @@ final class BricksGameAdapter implements ApplicationListener {
             new SessionFactory(
                 configuration,
                 eventBus,
-                new PhysicsObjectFactory(configuration)
+                new PhysicsObjectFactory(configuration),
+                assetManager
             ),
             spriteBatch
         );

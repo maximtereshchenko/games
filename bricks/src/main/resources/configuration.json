@@ -17,7 +17,13 @@
     "textureAtlas": "textures.atlas",
     "skin": "skin.json",
     "loadingBundle": "loading",
-    "gameBundle": "game"
+    "gameBundle": "game",
+    "mainMusic": "main.mp3",
+    "sessionMusic": "session.mp3",
+    "ballSound": "ball.wav",
+    "bonusSound": "bonus.wav",
+    "loseSound": "lose.wav",
+    "winSound": "win.wav"
   },
   "worldDimensions": {
     "width": 50,

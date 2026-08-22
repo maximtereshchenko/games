@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -9,6 +10,7 @@ import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.view.Indicator;
+import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.event.EventBus;
 
@@ -20,15 +22,18 @@ public final class SessionFactory {
     private final Configuration configuration;
     private final EventBus<Event> eventBus;
     private final PhysicsObjectFactory physicsObjectFactory;
+    private final AssetManager assetManager;
 
     public SessionFactory(
         Configuration configuration,
         EventBus<Event> eventBus,
-        PhysicsObjectFactory physicsObjectFactory
+        PhysicsObjectFactory physicsObjectFactory,
+        AssetManager assetManager
     ) {
         this.configuration = configuration;
         this.eventBus = eventBus;
         this.physicsObjectFactory = physicsObjectFactory;
+        this.assetManager = assetManager;
     }
 
     public World world() {
@@ -49,6 +54,7 @@ public final class SessionFactory {
     ) {
         var registry = new Registry();
         var random = ThreadLocalRandom.current();
+        var assets = configuration.assets();
         registry.addSystems(
             new PaddleSpawningSystem(registry, blueprints),
             new LayoutSystem(
@@ -73,6 +79,18 @@ public final class SessionFactory {
             new PaddleCollisionSystem(registry),
             new BrickCollisionSystem(registry),
             new BonusCollisionSystem(registry),
+            new PlayBallSoundCollisionSystem(
+                registry,
+                configuration,
+                assetManager
+            ),
+            new PlaySoundSystem(
+                registry.entities(
+                    new Query().all(Bonus.class, Activated.class)
+                ),
+                assets.bonusSound(),
+                assetManager
+            ),
             new BonusSpawningSystem(
                 registry,
                 blueprints,
@@ -128,6 +146,13 @@ public final class SessionFactory {
             ),
             new BallLossLifeDecrementingSystem(registry),
             new LifeDecrementingSystem(registry),
+            new PlaySoundSystem(
+                registry.entities(
+                    new Query().all(DecrementLivesCommand.class)
+                ),
+                assets.loseSound(),
+                assetManager
+            ),
             new LevelFailedPublishingSystem(
                 registry,
                 eventBus

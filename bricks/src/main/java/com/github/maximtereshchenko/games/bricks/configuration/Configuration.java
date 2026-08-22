@@ -1,6 +1,8 @@
 package com.github.maximtereshchenko.games.bricks.configuration;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -29,7 +31,13 @@ public record Configuration(
         AssetDescriptor<TextureAtlas> textureAtlas,
         AssetDescriptor<Skin> skin,
         AssetDescriptor<I18NBundle> loadingBundle,
-        AssetDescriptor<I18NBundle> gameBundle
+        AssetDescriptor<I18NBundle> gameBundle,
+        AssetDescriptor<Music> mainMusic,
+        AssetDescriptor<Music> sessionMusic,
+        AssetDescriptor<Sound> ballSound,
+        AssetDescriptor<Sound> bonusSound,
+        AssetDescriptor<Sound> loseSound,
+        AssetDescriptor<Sound> winSound
     ) {
 
         public Set<AssetDescriptor<?>> loadingAssets() {
@@ -37,7 +45,16 @@ public record Configuration(
         }
 
         public Set<AssetDescriptor<?>> gameAssets() {
-            return Set.of(textureAtlas, gameBundle);
+            return Set.of(
+                textureAtlas,
+                gameBundle,
+                mainMusic,
+                sessionMusic,
+                ballSound,
+                bonusSound,
+                loseSound,
+                winSound
+            );
         }
     }
 
