@@ -87,18 +87,9 @@ public final class PhysicsObjectFactory {
         return fixture;
     }
 
-    void createBoundaries(World world) {
-        var shape = new ChainShape();
-        var dimensions = configuration.worldDimensions();
-        shape.createChain(
-            new float[]{
-                0, 0,
-                0, dimensions.height(),
-                dimensions.width(), dimensions.height(),
-                dimensions.width(), 0
-            }
-        );
-        fixture(
+    Fixture boundariesFixture(World world) {
+        var shape = chainShape();
+        var fixture = fixture(
             world,
             BodyDef.BodyType.StaticBody,
             new Vector2(),
@@ -107,6 +98,21 @@ public final class PhysicsObjectFactory {
             0
         );
         shape.dispose();
+        return fixture;
+    }
+
+    private ChainShape chainShape() {
+        var dimensions = configuration.worldDimensions();
+        var shape = new ChainShape();
+        shape.createChain(
+            new float[]{
+                0, 0,
+                0, dimensions.height(),
+                dimensions.width(), dimensions.height(),
+                dimensions.width(), 0
+            }
+        );
+        return shape;
     }
 
     private PolygonShape polygonShape(Rectangle rectangle) {

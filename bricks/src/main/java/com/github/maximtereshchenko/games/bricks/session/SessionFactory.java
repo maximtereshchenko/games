@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -38,12 +37,6 @@ public final class SessionFactory {
         this.physicsObjectFactory = physicsObjectFactory;
         this.assetManager = assetManager;
         this.userProfile = userProfile;
-    }
-
-    public World world() {
-        var world = new World(Vector2.Zero, true);
-        physicsObjectFactory.createBoundaries(world);
-        return world;
     }
 
     public Registry registry(
@@ -130,6 +123,11 @@ public final class SessionFactory {
                 configuration
             ),
             new FixtureRemovalSystem(registry, world),
+            new BoundariesFixtureSystem(
+                registry,
+                physicsObjectFactory,
+                world
+            ),
             new RectangleFixtureSystem(
                 registry,
                 world,

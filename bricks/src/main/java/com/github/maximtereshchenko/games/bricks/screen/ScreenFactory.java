@@ -3,6 +3,8 @@ package com.github.maximtereshchenko.games.bricks.screen;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
@@ -149,7 +151,7 @@ public final class ScreenFactory {
             dimensions.width(),
             dimensions.height()
         );
-        var physicsWorld = sessionFactory.world();
+        var physicsWorld = new World(Vector2.Zero, true);
         var textureAtlas = assetManager.get(
             configuration.assets().textureAtlas()
         );
