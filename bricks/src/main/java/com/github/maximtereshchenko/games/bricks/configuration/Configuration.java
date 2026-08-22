@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 public record Configuration(
+    String preferencesName,
     Map<String, String> difficulties,
     List<String> levels,
     Assets assets,

@@ -43,7 +43,9 @@ public final class SessionFactory {
         Indicator starsIndicator,
         Blueprints blueprints,
         List<List<CellDefinition>> cellDefinitions,
-        World world
+        World world,
+        String difficulty,
+        int level
     ) {
         var registry = new Registry();
         var random = ThreadLocalRandom.current();
@@ -131,7 +133,9 @@ public final class SessionFactory {
             ),
             new LevelCompletedPublishingSystem(
                 registry,
-                eventBus
+                eventBus,
+                difficulty,
+                level
             ),
             new IndicatorSynchronizationSystem<>(
                 registry,

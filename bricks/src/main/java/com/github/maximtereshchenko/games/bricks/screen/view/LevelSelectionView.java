@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.bricks.screen.view;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 
 import java.util.ArrayList;
@@ -15,7 +16,9 @@ public final class LevelSelectionView extends Table {
 
     public LevelSelectionView(
         Skin skin,
-        Configuration configuration
+        Configuration configuration,
+        UserProfile userProfile,
+        String difficulty
     ) {
         this.buttons = new ArrayList<>();
         defaults()
@@ -24,6 +27,12 @@ public final class LevelSelectionView extends Table {
         var levelFileNames = configuration.levels();
         for (var i = 0; i < levelFileNames.size(); i++) {
             var button = new TextButton(String.valueOf(i + 1), skin);
+            button.setDisabled(
+                !userProfile.isUnlocked(
+                    difficulty,
+                    i
+                )
+            );
             add(button).row();
             buttons.add(button);
         }

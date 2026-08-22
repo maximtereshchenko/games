@@ -1,4 +1,5 @@
 {
+  "preferencesName": "com.github.maximtereshchenko.games.bricks.UserProfile",
   "difficulties": {
     "easy": "easy-difficulty-blueprints.json",
     "dense": "dense-difficulty-blueprints.json",

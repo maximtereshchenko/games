@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.github.maximtereshchenko.games.bricks.configuration.*;
 import com.github.maximtereshchenko.games.bricks.event.Event;
+import com.github.maximtereshchenko.games.bricks.event.UnlockFirstLevels;
+import com.github.maximtereshchenko.games.bricks.event.UnlockNextLevel;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.PhysicsObjectFactory;
@@ -40,16 +42,32 @@ final class BricksGameAdapter implements ApplicationListener {
             new TypeReference<Configuration>() {}
         );
         var assetManager = assetManager(configuration);
+        var userProfile = new UserProfile(
+            Gdx.app.getPreferences(
+                configuration.preferencesName()
+            )
+        );
         var screenFactory = screenFactory(
             configuration,
+            userProfile,
             assetManager,
             eventBus,
             configurationReader,
             spriteBatch
         );
         setWindowedMode(configuration);
+        eventBus.subscribe(
+            new UnlockFirstLevels(
+                configuration,
+                userProfile
+            )
+        );
+        eventBus.subscribe(
+            new UnlockNextLevel(userProfile)
+        );
         original = new BricksGame(
             screenFactory,
+            userProfile,
             Set.of(
                 spriteBatch,
                 assetManager
@@ -94,6 +112,7 @@ final class BricksGameAdapter implements ApplicationListener {
 
     private ScreenFactory screenFactory(
         Configuration configuration,
+        UserProfile userProfile,
         AssetManager assetManager,
         EventBus<Event> eventBus,
         ConfigurationReader configurationReader,
@@ -101,6 +120,7 @@ final class BricksGameAdapter implements ApplicationListener {
     ) {
         return new ScreenFactory(
             configuration,
+            userProfile,
             assetManager,
             eventBus,
             configurationReader,

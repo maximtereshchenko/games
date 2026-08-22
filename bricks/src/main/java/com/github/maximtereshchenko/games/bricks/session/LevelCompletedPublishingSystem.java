@@ -11,10 +11,14 @@ final class LevelCompletedPublishingSystem implements System {
     private final Iterable<Entity> brickOrIncrementStarsEntities;
     private final Iterable<Entity> collectedStarsEntities;
     private final EventBus<Event> eventBus;
+    private final String difficulty;
+    private final int level;
 
     LevelCompletedPublishingSystem(
         Registry registry,
-        EventBus<Event> eventBus
+        EventBus<Event> eventBus,
+        String difficulty,
+        int level
     ) {
         this.brickOrIncrementStarsEntities = registry.entities(
             new Query().one(Brick.class, IncrementStarsBonus.class)
@@ -23,6 +27,8 @@ final class LevelCompletedPublishingSystem implements System {
             new Query().all(CollectedStars.class)
         );
         this.eventBus = eventBus;
+        this.difficulty = difficulty;
+        this.level = level;
     }
 
     @Override
@@ -34,7 +40,13 @@ final class LevelCompletedPublishingSystem implements System {
             var collectedStars = collectedStarsEntity.component(
                 CollectedStars.class
             );
-            eventBus.publish(new LevelCompleted(collectedStars.value));
+            eventBus.publish(
+                new LevelCompleted(
+                    difficulty,
+                    level,
+                    collectedStars.value
+                )
+            );
         }
     }
 }

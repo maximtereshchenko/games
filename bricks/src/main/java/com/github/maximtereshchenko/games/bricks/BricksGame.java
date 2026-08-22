@@ -12,13 +12,16 @@ import java.util.Set;
 final class BricksGame extends Game implements Subscriber<Event> {
 
     private final ScreenFactory screenFactory;
+    private final UserProfile userProfile;
     private final Set<Disposable> disposables;
 
     BricksGame(
         ScreenFactory screenFactory,
+        UserProfile userProfile,
         Set<Disposable> disposables
     ) {
         this.screenFactory = screenFactory;
+        this.userProfile = userProfile;
         this.disposables = disposables;
     }
 
@@ -31,6 +34,7 @@ final class BricksGame extends Game implements Subscriber<Event> {
     public void dispose() {
         disposeScreen();
         disposables.forEach(Disposable::dispose);
+        userProfile.save();
     }
 
     @Override
@@ -43,9 +47,9 @@ final class BricksGame extends Game implements Subscriber<Event> {
     public void onEvent(Event event) {
         setScreen(
             switch (event) {
-                case AssetsLoaded _ -> screenFactory.mainScreen();
-                case LevelCompleted _ -> screenFactory.mainScreen();
-                case LevelFailed _ -> screenFactory.mainScreen();
+                case AssetsLoaded _,
+                     LevelCompleted _,
+                     LevelFailed _ -> screenFactory.mainScreen();
                 case DifficultySelected difficultySelected -> screenFactory.levelSelectionScreen(
                     difficultySelected.name()
                 );

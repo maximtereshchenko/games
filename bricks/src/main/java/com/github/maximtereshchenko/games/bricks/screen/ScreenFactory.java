@@ -4,6 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.bricks.event.DifficultySelected;
@@ -19,6 +20,7 @@ import tools.jackson.core.type.TypeReference;
 public final class ScreenFactory {
 
     private final Configuration configuration;
+    private final UserProfile userProfile;
     private final AssetManager assetManager;
     private final EventBus<Event> eventBus;
     private final ConfigurationReader configurationReader;
@@ -28,6 +30,7 @@ public final class ScreenFactory {
 
     public ScreenFactory(
         Configuration configuration,
+        UserProfile userProfile,
         AssetManager assetManager,
         EventBus<Event> eventBus,
         ConfigurationReader configurationReader,
@@ -36,6 +39,7 @@ public final class ScreenFactory {
         SpriteBatch spriteBatch
     ) {
         this.configuration = configuration;
+        this.userProfile = userProfile;
         this.assetManager = assetManager;
         this.eventBus = eventBus;
         this.configurationReader = configurationReader;
@@ -93,7 +97,9 @@ public final class ScreenFactory {
     public Screen levelSelectionScreen(String difficulty) {
         var levelSelectionView = new LevelSelectionView(
             assetManager.get(configuration.assets().skin()),
-            configuration
+            configuration,
+            userProfile,
+            difficulty
         );
         levelSelectionView.onLevelSelected(
             level -> eventBus.publish(
@@ -160,7 +166,9 @@ public final class ScreenFactory {
                                 .get(level),
                             new TypeReference<>() {}
                         ),
-                        physicsWorld
+                        physicsWorld,
+                        difficulty,
+                        level
                     ),
                     assetManager
                 ),
