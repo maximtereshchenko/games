@@ -5,10 +5,10 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
+import com.github.maximtereshchenko.games.bricks.screen.view.Root;
 
 final class StageScreen extends ScreenAdapter {
 
@@ -16,7 +16,7 @@ final class StageScreen extends ScreenAdapter {
 
     StageScreen(
         Configuration configuration,
-        Table table,
+        Root root,
         SpriteBatch spriteBatch
     ) {
         var dimensions = configuration.interfaceDimensions();
@@ -27,8 +27,7 @@ final class StageScreen extends ScreenAdapter {
             ),
             spriteBatch
         );
-        table.setFillParent(true);
-        stage.addActor(table);
+        stage.addActor(root);
     }
 
     @Override

@@ -51,7 +51,9 @@ public final class ScreenFactory {
     public Screen loadingScreen() {
         var loadingView = new LoadingView(
             assetManager.get(configuration.assets().loadingBundle()),
-            assetManager.get(configuration.assets().skin())
+            assetManager.get(configuration.assets().skin()),
+            configuration,
+            assetManager
         );
         return new LoadingScreen(
             new StageScreen(
@@ -69,7 +71,12 @@ public final class ScreenFactory {
     public Screen mainScreen() {
         var bundle = assetManager.get(configuration.assets().gameBundle());
         var skin = assetManager.get(configuration.assets().skin());
-        var mainView = new MainView(bundle, skin);
+        var mainView = new MainView(
+            bundle,
+            skin,
+            configuration,
+            assetManager
+        );
         mainView.onPlay(
             () -> eventBus.publish(new DifficultySelectionRequested())
         );
@@ -80,7 +87,8 @@ public final class ScreenFactory {
         var difficultySelectionView = new DifficultySelectionView(
             assetManager.get(configuration.assets().gameBundle()),
             assetManager.get(configuration.assets().skin()),
-            configuration
+            configuration,
+            assetManager
         );
         difficultySelectionView.onDifficultySelected(
             difficulty -> eventBus.publish(

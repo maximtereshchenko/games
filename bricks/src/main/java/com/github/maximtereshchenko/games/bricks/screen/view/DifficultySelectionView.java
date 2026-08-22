@@ -1,7 +1,11 @@
 package com.github.maximtereshchenko.games.bricks.screen.view;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
@@ -10,15 +14,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public final class DifficultySelectionView extends Table {
+public final class DifficultySelectionView extends Root {
 
     private final Map<Button, String> buttons;
 
     public DifficultySelectionView(
         I18NBundle bundle,
         Skin skin,
-        Configuration configuration
+        Configuration configuration,
+        AssetManager assetManager
     ) {
+        super(configuration, assetManager);
         this.buttons = new HashMap<>();
         defaults()
             .pad(Value.percentHeight(0.01f, this))

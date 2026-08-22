@@ -2,7 +2,6 @@ package com.github.maximtereshchenko.games.bricks.screen.view;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.IntConsumer;
 
-public final class LevelSelectionView extends Table {
+public final class LevelSelectionView extends Root {
 
     private final List<LevelButton> levelButtons;
 
@@ -22,6 +21,7 @@ public final class LevelSelectionView extends Table {
         AssetManager assetManager,
         String difficulty
     ) {
+        super(configuration, assetManager);
         this.levelButtons = new ArrayList<>();
         defaults()
             .pad(Value.percentHeight(0.01f, this))

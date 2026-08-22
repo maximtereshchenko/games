@@ -1,20 +1,25 @@
 package com.github.maximtereshchenko.games.bricks.screen.view;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 
-public final class MainView extends Table {
+public final class MainView extends Root {
 
     private final Button playButton;
     private final Button settingsButton;
 
     public MainView(
         I18NBundle bundle,
-        Skin skin
+        Skin skin,
+        Configuration configuration,
+        AssetManager assetManager
     ) {
+        super(configuration, assetManager);
         this.playButton = new TextButton(
             bundle.get("screens.main.buttons.play"),
             skin

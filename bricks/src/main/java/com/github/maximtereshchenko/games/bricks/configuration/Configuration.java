@@ -41,12 +41,11 @@ public record Configuration(
     ) {
 
         public Set<AssetDescriptor<?>> loadingAssets() {
-            return Set.of(skin, loadingBundle);
+            return Set.of(textureAtlas, skin, loadingBundle);
         }
 
         public Set<AssetDescriptor<?>> gameAssets() {
             return Set.of(
-                textureAtlas,
                 gameBundle,
                 mainMusic,
                 sessionMusic,
@@ -60,7 +59,12 @@ public record Configuration(
 
     public record Dimensions(float width, float height) {}
 
-    public record Background(Color color, String texture) {}
+    public record Background(UserInterface userInterface, Session session) {
+
+        public record UserInterface(String texture, Color color) {}
+
+        public record Session(String texture, Color color) {}
+    }
 
     public record LevelStars(String collectedTexture, String missingTexture) {}
 }
