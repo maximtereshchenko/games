@@ -12,6 +12,7 @@ import com.github.maximtereshchenko.games.bricks.configuration.*;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.event.UnlockFirstLevels;
 import com.github.maximtereshchenko.games.bricks.event.UnlockNextLevel;
+import com.github.maximtereshchenko.games.bricks.event.UpdateStars;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.PhysicsObjectFactory;
@@ -64,6 +65,9 @@ final class BricksGameAdapter implements ApplicationListener {
         );
         eventBus.subscribe(
             new UnlockNextLevel(userProfile)
+        );
+        eventBus.subscribe(
+            new UpdateStars(userProfile)
         );
         original = new BricksGame(
             screenFactory,

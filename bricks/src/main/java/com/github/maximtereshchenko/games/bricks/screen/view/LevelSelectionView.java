@@ -1,8 +1,9 @@
 package com.github.maximtereshchenko.games.bricks.screen.view;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 
@@ -12,45 +13,37 @@ import java.util.function.IntConsumer;
 
 public final class LevelSelectionView extends Table {
 
-    private final List<Button> buttons;
+    private final List<LevelButton> levelButtons;
 
     public LevelSelectionView(
         Skin skin,
         Configuration configuration,
         UserProfile userProfile,
+        AssetManager assetManager,
         String difficulty
     ) {
-        this.buttons = new ArrayList<>();
+        this.levelButtons = new ArrayList<>();
         defaults()
             .pad(Value.percentHeight(0.01f, this))
             .width(Value.percentWidth(0.6f, this));
         var levelFileNames = configuration.levels();
         for (var i = 0; i < levelFileNames.size(); i++) {
-            var button = new TextButton(String.valueOf(i + 1), skin);
-            button.setDisabled(
-                !userProfile.isUnlocked(
-                    difficulty,
-                    i
-                )
+            var levelButton = new LevelButton(
+                skin,
+                configuration,
+                userProfile,
+                assetManager,
+                difficulty,
+                i
             );
-            add(button).row();
-            buttons.add(button);
+            add(levelButton).row();
+            levelButtons.add(levelButton);
         }
     }
 
     public void onLevelSelected(IntConsumer consumer) {
-        for (var i = 0; i < buttons.size(); i++) {
-            var level = i;
-            buttons.get(i)
-                .addListener(
-                    new ChangeListener() {
-
-                        @Override
-                        public void changed(ChangeEvent event, Actor actor) {
-                            consumer.accept(level);
-                        }
-                    }
-                );
-        }
+        levelButtons.forEach(
+            levelButton -> levelButton.onLevelSelected(consumer)
+        );
     }
 }

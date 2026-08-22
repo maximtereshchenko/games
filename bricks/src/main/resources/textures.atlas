@@ -1,89 +1,96 @@
 
 textures.png
-size: 128, 128
+size: 512, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 ball
   rotate: false
-  xy: 2, 92
+  xy: 2, 30
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 decrementLives
   rotate: false
-  xy: 2, 58
+  xy: 36, 30
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-heart
+emptyStar
   rotate: false
-  xy: 70, 30
-  size: 31, 26
-  orig: 31, 26
+  xy: 35, 2
+  size: 29, 26
+  orig: 29, 26
   offset: 0, 0
   index: -1
-incrementLives
-  rotate: false
-  xy: 36, 92
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-multiplyBalls
-  rotate: false
-  xy: 2, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-rectangle
-  rotate: false
-  xy: 2, 21
-  size: 32, 1
-  orig: 32, 1
-  offset: 0, 0
-  index: -1
-shortenPaddle
-  rotate: false
-  xy: 36, 58
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-spawnBalls
-  rotate: false
-  xy: 70, 92
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-spawnBarrier
-  rotate: false
-  xy: 36, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-square
-  rotate: false
-  xy: 104, 123
-  size: 1, 1
-  orig: 1, 1
-  offset: 0, 0
-  index: -1
-star
+fullStar
   rotate: false
   xy: 70, 2
   size: 29, 26
   orig: 29, 26
   offset: 0, 0
   index: -1
+heart
+  rotate: false
+  xy: 2, 2
+  size: 31, 26
+  orig: 31, 26
+  offset: 0, 0
+  index: -1
+incrementLives
+  rotate: false
+  xy: 70, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+multiplyBalls
+  rotate: false
+  xy: 104, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+rectangle
+  rotate: false
+  xy: 274, 61
+  size: 32, 1
+  orig: 32, 1
+  offset: 0, 0
+  index: -1
+shortenPaddle
+  rotate: false
+  xy: 138, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+spawnBalls
+  rotate: false
+  xy: 172, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+spawnBarrier
+  rotate: false
+  xy: 206, 30
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+square
+  rotate: false
+  xy: 101, 27
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
 widenPaddle
   rotate: false
-  xy: 70, 58
+  xy: 240, 30
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.math.Vector2;
 import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
+import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
 
@@ -12,11 +13,13 @@ final class StarSpawningSystem implements System {
     private final Iterable<Entity> starsSpawnedEntities;
     private final Iterable<Entity> brickEntities;
     private final Iterable<Entity> removedBrickEntities;
+    private final Configuration configuration;
     private final Blueprints blueprints;
     private final Random random;
 
     StarSpawningSystem(
         Registry registry,
+        Configuration configuration,
         Blueprints blueprints,
         Random random
     ) {
@@ -34,6 +37,7 @@ final class StarSpawningSystem implements System {
                     WorldPosition.class
                 )
         );
+        this.configuration = configuration;
         this.blueprints = blueprints;
         this.random = random;
     }
@@ -49,7 +53,7 @@ final class StarSpawningSystem implements System {
                 var worldPosition = removedBrickEntity.component(
                     WorldPosition.class
                 );
-                if (starsSpawned.accumulated == starsSpawned.max) {
+                if (starsSpawned.accumulated == configuration.maxStars()) {
                     continue;
                 }
                 if (shouldSpawn(starsSpawned, bricksCount)) {
@@ -72,7 +76,7 @@ final class StarSpawningSystem implements System {
     }
 
     private float chance(SpawnedStars starsSpawned, int bricksCount) {
-        return (float) (starsSpawned.max - starsSpawned.accumulated) /
+        return (float) (configuration.maxStars() - starsSpawned.accumulated) /
                bricksCount;
     }
 

@@ -80,6 +80,7 @@ public final class SessionFactory {
             ),
             new StarSpawningSystem(
                 registry,
+                configuration,
                 blueprints,
                 random
             ),

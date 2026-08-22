@@ -99,6 +99,7 @@ public final class ScreenFactory {
             assetManager.get(configuration.assets().skin()),
             configuration,
             userProfile,
+            assetManager,
             difficulty
         );
         levelSelectionView.onLevelSelected(

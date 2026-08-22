@@ -38,7 +38,6 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.SpawnedStars",
-      "max": 3,
       "accumulated": 0
     },
     {
@@ -183,7 +182,7 @@
     },
     {
       "type": "com.github.maximtereshchenko.games.bricks.session.Texture",
-      "name": "star"
+      "name": "fullStar"
     }
   ],
   "incrementLivesBonus": [

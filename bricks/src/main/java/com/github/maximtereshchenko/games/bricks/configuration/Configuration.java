@@ -19,8 +19,10 @@ public record Configuration(
     Dimensions interfaceDimensions,
     String commonBlueprints,
     Background background,
+    int maxStars,
     String livesIndicatorTexture,
-    String starsIndicatorTexture
+    String starsIndicatorTexture,
+    LevelStars levelStars
 ) {
 
     public record Assets(
@@ -42,4 +44,6 @@ public record Configuration(
     public record Dimensions(float width, float height) {}
 
     public record Background(Color color, String texture) {}
+
+    public record LevelStars(String collectedTexture, String missingTexture) {}
 }

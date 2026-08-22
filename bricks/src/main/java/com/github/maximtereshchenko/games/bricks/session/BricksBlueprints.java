@@ -39,7 +39,6 @@ public final class BricksBlueprints {
             .copyFunction(
                 SpawnedStars.class,
                 original -> new SpawnedStars(
-                    original.max,
                     original.accumulated
                 )
             )

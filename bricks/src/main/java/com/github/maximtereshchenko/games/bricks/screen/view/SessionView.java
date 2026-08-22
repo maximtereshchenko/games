@@ -37,7 +37,6 @@ public final class SessionView extends Table {
             )
         )
             .colspan(2)
-            .expand()
-            .fill();
+            .grow();
     }
 }

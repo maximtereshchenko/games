@@ -37,6 +37,11 @@
     },
     "texture": "square"
   },
+  "maxStars": 3,
   "livesIndicatorTexture": "heart",
-  "starsIndicatorTexture": "star"
+  "starsIndicatorTexture": "fullStar",
+  "levelStars": {
+    "collectedTexture": "fullStar",
+    "missingTexture": "emptyStar"
+  }
 }
