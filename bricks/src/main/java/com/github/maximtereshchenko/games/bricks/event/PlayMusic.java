@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.bricks.event;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.event.Subscriber;
 
@@ -11,14 +12,17 @@ import java.util.Optional;
 public final class PlayMusic implements Subscriber<Event> {
 
     private final Configuration configuration;
+    private final UserProfile userProfile;
     private final AssetManager assetManager;
     private Music music;
 
     public PlayMusic(
         Configuration configuration,
+        UserProfile userProfile,
         AssetManager assetManager
     ) {
         this.configuration = configuration;
+        this.userProfile = userProfile;
         this.assetManager = assetManager;
     }
 
@@ -34,6 +38,7 @@ public final class PlayMusic implements Subscriber<Event> {
         }
         music = assetManager.get(assetDescriptor);
         music.setLooping(true);
+        music.setVolume(userProfile.musicVolume());
         music.play();
     }
 

@@ -7,7 +7,7 @@ import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 
 public abstract class Root extends Table {
 
-    Root(
+    protected Root(
         Configuration configuration,
         AssetManager assetManager
     ) {

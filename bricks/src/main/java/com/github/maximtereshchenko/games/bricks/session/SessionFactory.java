@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.bricks.configuration.CellDefinition;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
@@ -23,17 +24,20 @@ public final class SessionFactory {
     private final EventBus<Event> eventBus;
     private final PhysicsObjectFactory physicsObjectFactory;
     private final AssetManager assetManager;
+    private final UserProfile userProfile;
 
     public SessionFactory(
         Configuration configuration,
         EventBus<Event> eventBus,
         PhysicsObjectFactory physicsObjectFactory,
-        AssetManager assetManager
+        AssetManager assetManager,
+        UserProfile userProfile
     ) {
         this.configuration = configuration;
         this.eventBus = eventBus;
         this.physicsObjectFactory = physicsObjectFactory;
         this.assetManager = assetManager;
+        this.userProfile = userProfile;
     }
 
     public World world() {
@@ -82,14 +86,16 @@ public final class SessionFactory {
             new PlayBallSoundCollisionSystem(
                 registry,
                 configuration,
-                assetManager
+                assetManager,
+                userProfile
             ),
             new PlaySoundSystem(
                 registry.entities(
                     new Query().all(Bonus.class, Activated.class)
                 ),
                 assets.bonusSound(),
-                assetManager
+                assetManager,
+                userProfile
             ),
             new BonusSpawningSystem(
                 registry,
@@ -151,7 +157,8 @@ public final class SessionFactory {
                     new Query().all(DecrementLivesCommand.class)
                 ),
                 assets.loseSound(),
-                assetManager
+                assetManager,
+                userProfile
             ),
             new LevelFailedPublishingSystem(
                 registry,

@@ -49,4 +49,16 @@ public final class MainView extends Root {
             }
         );
     }
+
+    public void onSettings(Runnable runnable) {
+        settingsButton.addListener(
+            new ChangeListener() {
+
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    runnable.run();
+                }
+            }
+        );
+    }
 }

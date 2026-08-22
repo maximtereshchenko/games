@@ -49,7 +49,8 @@ final class BricksGame extends Game implements Subscriber<Event> {
             switch (event) {
                 case AssetsLoaded _,
                      LevelCompleted _,
-                     LevelFailed _ -> screenFactory.mainScreen();
+                     LevelFailed _,
+                     SettingsScreenFinished _ -> screenFactory.mainScreen();
                 case DifficultySelected difficultySelected -> screenFactory.levelSelectionScreen(
                     difficultySelected.name()
                 );
@@ -58,6 +59,7 @@ final class BricksGame extends Game implements Subscriber<Event> {
                     levelSelected.level()
                 );
                 case DifficultySelectionRequested _ -> screenFactory.difficultySelectionScreen();
+                case SettingsRequested _ -> screenFactory.settingsScreen();
             }
         );
     }

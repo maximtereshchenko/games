@@ -24,7 +24,9 @@ public record Configuration(
     int maxStars,
     String livesIndicatorTexture,
     String starsIndicatorTexture,
-    LevelStars levelStars
+    LevelStars levelStars,
+    float defaultMusicVolume,
+    float defaultSoundVolume
 ) {
 
     public record Assets(

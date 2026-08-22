@@ -41,6 +41,7 @@ final class BricksGameAdapter implements ApplicationListener {
         );
         var assetManager = assetManager(configuration);
         var userProfile = new UserProfile(
+            configuration,
             Gdx.app.getPreferences(
                 configuration.preferencesName()
             )
@@ -69,12 +70,14 @@ final class BricksGameAdapter implements ApplicationListener {
         eventBus.subscribe(
             new PlayMusic(
                 configuration,
+                userProfile,
                 assetManager
             )
         );
         eventBus.subscribe(
             new PlayWinSound(
                 configuration,
+                userProfile,
                 assetManager
             )
         );
@@ -142,7 +145,8 @@ final class BricksGameAdapter implements ApplicationListener {
                 configuration,
                 eventBus,
                 new PhysicsObjectFactory(configuration),
-                assetManager
+                assetManager,
+                userProfile
             ),
             spriteBatch
         );

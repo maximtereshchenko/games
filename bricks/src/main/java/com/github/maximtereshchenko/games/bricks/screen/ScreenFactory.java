@@ -7,11 +7,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationReader;
-import com.github.maximtereshchenko.games.bricks.event.DifficultySelected;
-import com.github.maximtereshchenko.games.bricks.event.DifficultySelectionRequested;
-import com.github.maximtereshchenko.games.bricks.event.Event;
-import com.github.maximtereshchenko.games.bricks.event.LevelSelected;
+import com.github.maximtereshchenko.games.bricks.event.*;
 import com.github.maximtereshchenko.games.bricks.screen.view.*;
+import com.github.maximtereshchenko.games.bricks.screen.view.settings.SettingsView;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
 import com.github.maximtereshchenko.games.event.EventBus;
@@ -80,7 +78,27 @@ public final class ScreenFactory {
         mainView.onPlay(
             () -> eventBus.publish(new DifficultySelectionRequested())
         );
+        mainView.onSettings(
+            () -> eventBus.publish(new SettingsRequested())
+        );
         return new StageScreen(configuration, mainView, spriteBatch);
+    }
+
+    public Screen settingsScreen() {
+        var assets = configuration.assets();
+        var settingsView = new SettingsView(
+            assetManager.get(assets.gameBundle()),
+            assetManager.get(assets.skin()),
+            configuration,
+            userProfile,
+            assetManager
+        );
+        settingsView.onMusicVolumeChange(this::setMusicVolume);
+        settingsView.onSoundVolumeChange(userProfile::updateSoundVolume);
+        settingsView.onFinish(
+            () -> eventBus.publish(new SettingsScreenFinished())
+        );
+        return new StageScreen(configuration, settingsView, spriteBatch);
     }
 
     public Screen difficultySelectionScreen() {
@@ -185,5 +203,12 @@ public final class ScreenFactory {
             ),
             physicsWorld
         );
+    }
+
+    private void setMusicVolume(float volume) {
+        var assets = configuration.assets();
+        assetManager.get(assets.mainMusic()).setVolume(volume);
+        assetManager.get(assets.sessionMusic()).setVolume(volume);
+        userProfile.updateMusicVolume(volume);
     }
 }

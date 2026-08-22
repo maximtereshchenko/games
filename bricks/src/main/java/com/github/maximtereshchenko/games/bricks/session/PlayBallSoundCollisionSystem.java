@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.bricks.session;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
@@ -11,11 +12,13 @@ final class PlayBallSoundCollisionSystem extends CollisionSystem {
 
     private final Configuration configuration;
     private final AssetManager assetManager;
+    private final UserProfile userProfile;
 
     PlayBallSoundCollisionSystem(
         Registry registry,
         Configuration configuration,
-        AssetManager assetManager
+        AssetManager assetManager,
+        UserProfile userProfile
     ) {
         super(
             registry,
@@ -24,6 +27,7 @@ final class PlayBallSoundCollisionSystem extends CollisionSystem {
         );
         this.configuration = configuration;
         this.assetManager = assetManager;
+        this.userProfile = userProfile;
     }
 
     @Override
@@ -36,6 +40,6 @@ final class PlayBallSoundCollisionSystem extends CollisionSystem {
                 configuration.assets()
                     .ballSound()
             )
-            .play();
+            .play(userProfile.soundVolume());
     }
 }

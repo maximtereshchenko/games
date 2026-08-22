@@ -60,5 +60,7 @@
   "levelStars": {
     "collectedTexture": "fullStar",
     "missingTexture": "emptyStar"
-  }
+  },
+  "defaultMusicVolume": 1.0,
+  "defaultSoundVolume": 1.0
 }
