@@ -1,0 +1,17 @@
+{
+  "paddle": [
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Paddle",
+      "value": "INSTANCE"
+    },
+    {
+      "type": "com.badlogic.gdx.physics.box2d.BodyDef$BodyType",
+      "value": "KinematicBody"
+    },
+    {
+      "type": "com.github.maximtereshchenko.games.bricks.session.Rectangle",
+      "halfWidth": 5,
+      "halfHeight": 0.5
+    }
+  ]
+}
