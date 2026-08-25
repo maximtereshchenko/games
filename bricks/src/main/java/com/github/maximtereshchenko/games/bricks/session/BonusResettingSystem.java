@@ -9,10 +9,10 @@ final class BonusResettingSystem implements System {
     private final Iterable<Entity> bonusEntities;
 
     BonusResettingSystem(Registry registry) {
-        this.ballEntities = registry.entities(
+        this.ballEntities = registry.view(
             new Query().all(Ball.class)
         );
-        this.bonusEntities = registry.entities(
+        this.bonusEntities = registry.view(
             new Query().all(Bonus.class)
         );
     }

@@ -11,7 +11,7 @@ final class SegmentRemainingTurnsDecrementSystem extends TurnBasedSystem {
 
     SegmentRemainingTurnsDecrementSystem(Registry registry) {
         super(registry);
-        this.segmentEntities = registry.entities(
+        this.segmentEntities = registry.view(
             new Query().all(Segment.class)
         );
     }

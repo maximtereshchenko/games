@@ -19,7 +19,7 @@ final class InterfaceTextCenterAlignmentSystem implements System {
         ScaledFont scaledFont,
         GlyphLayout glyphLayout
     ) {
-        this.centerAlignedEntities = registry.entities(
+        this.centerAlignedEntities = registry.view(
             new Query()
                 .all(
                     CenterAligned.class,

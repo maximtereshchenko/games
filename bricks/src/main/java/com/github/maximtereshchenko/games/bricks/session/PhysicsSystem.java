@@ -16,7 +16,7 @@ final class PhysicsSystem implements System, ContactListener {
     private final Map<Integer, Set<Integer>> collisions;
 
     PhysicsSystem(Registry registry, World world) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(PhysicsPolicy.class)
         );
         this.world = world;

@@ -11,7 +11,7 @@ final class SidewaysMovementSystem extends TurnBasedSystem {
 
     SidewaysMovementSystem(Registry registry) {
         super(registry);
-        this.sidewaysMovementEntities = registry.entities(
+        this.sidewaysMovementEntities = registry.view(
             new Query()
                 .all(
                     SidewaysMovement.class,

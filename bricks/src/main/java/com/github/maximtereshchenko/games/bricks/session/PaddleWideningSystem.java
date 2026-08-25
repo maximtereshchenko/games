@@ -9,10 +9,10 @@ final class PaddleWideningSystem implements System {
     private final Iterable<Entity> paddleEntities;
 
     PaddleWideningSystem(Registry registry) {
-        this.widenPaddleEntities = registry.entities(
+        this.widenPaddleEntities = registry.view(
             new Query().all(WidenPaddleBonus.class, Activated.class)
         );
-        this.paddleEntities = registry.entities(
+        this.paddleEntities = registry.view(
             new Query()
                 .all(
                     Paddle.class,

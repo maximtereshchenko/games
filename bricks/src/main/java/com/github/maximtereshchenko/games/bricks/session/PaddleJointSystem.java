@@ -18,12 +18,12 @@ final class PaddleJointSystem implements System {
         World world,
         PhysicsObjectFactory physicsObjectFactory
     ) {
-        this.attachedEntities = registry.entities(
+        this.attachedEntities = registry.view(
             new Query()
                 .all(Attached.class, Fixture.class)
                 .none(WeldJoint.class)
         );
-        this.paddleEntities = registry.entities(
+        this.paddleEntities = registry.view(
             new Query().all(Paddle.class, Fixture.class)
         );
         this.world = world;

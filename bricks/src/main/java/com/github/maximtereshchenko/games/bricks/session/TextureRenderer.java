@@ -19,7 +19,7 @@ public final class TextureRenderer {
         Configuration configuration,
         AssetManager assetManager
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query()
                 .all(Texture.class, WorldPosition.class)
                 .one(

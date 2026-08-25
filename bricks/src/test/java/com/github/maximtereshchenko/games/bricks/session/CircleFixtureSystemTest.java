@@ -17,7 +17,7 @@ final class CircleFixtureSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> fixtureEntities =
-        registry.entities(new Query().all(Fixture.class));
+        registry.view(new Query().all(Fixture.class));
     private final World world = mock();
     private final PhysicsObjectFactory physicsObjectFactory = mock();
     private final Fixture fixture = mock();

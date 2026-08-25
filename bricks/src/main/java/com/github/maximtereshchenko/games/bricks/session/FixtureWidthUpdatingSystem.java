@@ -16,7 +16,7 @@ final class FixtureWidthUpdatingSystem implements System {
         World world,
         PhysicsObjectFactory physicsObjectFactory
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query()
                 .all(
                     UpdateWidthCommand.class,

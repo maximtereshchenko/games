@@ -12,10 +12,10 @@ final class HeadCollisionSystem extends TurnBasedSystem {
 
     HeadCollisionSystem(Registry registry) {
         super(registry);
-        this.headEntities = registry.entities(
+        this.headEntities = registry.view(
             new Query().all(Head.class, WorldPositionIntent.class)
         );
-        this.obstacleEntities = registry.entities(
+        this.obstacleEntities = registry.view(
             new Query()
                 .all(WorldPosition.class)
                 .one(Segment.class, Wall.class)

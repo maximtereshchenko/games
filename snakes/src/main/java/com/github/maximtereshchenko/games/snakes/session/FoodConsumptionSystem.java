@@ -12,10 +12,10 @@ final class FoodConsumptionSystem extends TurnBasedSystem {
 
     FoodConsumptionSystem(Registry registry) {
         super(registry);
-        this.headEntities = registry.entities(
+        this.headEntities = registry.view(
             new Query().all(Head.class, WorldPosition.class, Hitbox.class)
         );
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class, WorldPosition.class)
         );
     }

@@ -14,16 +14,16 @@ final class WarpingSystem extends TurnBasedSystem {
 
     WarpingSystem(Registry registry) {
         super(registry);
-        this.warpingEdgeEntities = registry.entities(
+        this.warpingEdgeEntities = registry.view(
             new Query().all(WarpingEdge.class, WorldPosition.class)
         );
-        this.warpingDestinationEntities = registry.entities(
+        this.warpingDestinationEntities = registry.view(
             new Query().all(WarpingDestinationEdge.class, WorldPositionIntent.class)
         );
-        this.worldDimensionsEntities = registry.entities(
+        this.worldDimensionsEntities = registry.view(
             new Query().all(WorldDimensions.class)
         );
-        this.warpingPolicyEntities = registry.entities(
+        this.warpingPolicyEntities = registry.view(
             new Query().all(WarpingPolicy.class)
         );
     }

@@ -16,7 +16,7 @@ final class FixtureRemovalSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> remainingEntities =
-        registry.entities(new Query().all(Removed.class));
+        registry.view(new Query().all(Removed.class));
     private final World world = mock();
     private final Fixture fixture = mock();
     private final Body body = mock();

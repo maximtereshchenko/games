@@ -20,10 +20,10 @@ final class LevelCompletedPublishingSystem implements System {
         String difficulty,
         int level
     ) {
-        this.brickOrIncrementStarsEntities = registry.entities(
+        this.brickOrIncrementStarsEntities = registry.view(
             new Query().one(Brick.class, IncrementStarsBonus.class)
         );
-        this.collectedStarsEntities = registry.entities(
+        this.collectedStarsEntities = registry.view(
             new Query().all(CollectedStars.class)
         );
         this.eventBus = eventBus;

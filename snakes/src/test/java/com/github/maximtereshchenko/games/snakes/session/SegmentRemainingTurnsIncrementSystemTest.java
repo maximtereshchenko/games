@@ -12,9 +12,9 @@ final class SegmentRemainingTurnsIncrementSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> segmentDefinitionEntities =
-        registry.entities(new Query().all(SegmentPolicy.class));
+        registry.view(new Query().all(SegmentPolicy.class));
     private final Iterable<Entity> segmentEntities =
-        registry.entities(new Query().all(Segment.class));
+        registry.view(new Query().all(Segment.class));
     private final SegmentRemainingTurnsIncrementSystem segmentRemainingTurnsIncrementSystem =
         new SegmentRemainingTurnsIncrementSystem(registry);
 

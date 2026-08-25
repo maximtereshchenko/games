@@ -12,11 +12,11 @@ final class SegmentSpawningSystem extends TurnBasedSystem {
 
     SegmentSpawningSystem(Registry registry) {
         super(registry);
-        this.headEntities = registry.entities(
+        this.headEntities = registry.view(
             new Query()
                 .all(Head.class, WorldPosition.class)
         );
-        this.segmentDefinitionEntities = registry.entities(
+        this.segmentDefinitionEntities = registry.view(
             new Query().all(SegmentPolicy.class)
         );
     }

@@ -18,7 +18,7 @@ final class InterfaceTextCenterAlignmentSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> centerAlignedEntities =
-        registry.entities(new Query().all(CenterAligned.class, InterfacePosition.class));
+        registry.view(new Query().all(CenterAligned.class, InterfacePosition.class));
     private final Viewport viewport = mock();
     private final BitmapFont bitmapFont = mock();
     private final ScaledFont scaledFont = mock();

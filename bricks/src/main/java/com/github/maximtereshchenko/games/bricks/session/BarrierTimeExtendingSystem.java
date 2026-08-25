@@ -9,10 +9,10 @@ final class BarrierTimeExtendingSystem implements System {
     private final Iterable<Entity> barrierEntities;
 
     BarrierTimeExtendingSystem(Registry registry) {
-        this.spawnBarrierEntities = registry.entities(
+        this.spawnBarrierEntities = registry.view(
             new Query().all(SpawnBarrierBonus.class, Activated.class)
         );
-        this.barrierEntities = registry.entities(
+        this.barrierEntities = registry.view(
             new Query().all(Barrier.class)
         );
     }

@@ -8,7 +8,7 @@ abstract class TurnBasedSystem implements System {
     private final Iterable<Entity> turnStartedEntities;
 
     TurnBasedSystem(Registry registry) {
-        this.turnStartedEntities = registry.entities(
+        this.turnStartedEntities = registry.view(
             new Query().all(TurnStarted.class)
         );
     }

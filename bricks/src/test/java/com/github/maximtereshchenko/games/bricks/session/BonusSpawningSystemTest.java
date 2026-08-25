@@ -20,7 +20,7 @@ final class BonusSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> bonusEntities =
-        registry.entities(new Query().all(Bonus.class, WorldPosition.class));
+        registry.view(new Query().all(Bonus.class, WorldPosition.class));
     private final Blueprints blueprints =
         new Blueprints.Builder(Map.of("life", List.of(Bonus.INSTANCE))).build();
     private final Random random = mock();

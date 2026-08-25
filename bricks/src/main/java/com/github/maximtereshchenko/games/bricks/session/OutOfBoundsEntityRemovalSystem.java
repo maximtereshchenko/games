@@ -13,7 +13,7 @@ final class OutOfBoundsEntityRemovalSystem implements System {
         Registry registry,
         Configuration configuration
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(WorldPosition.class)
         );
         this.configuration = configuration;

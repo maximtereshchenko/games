@@ -10,7 +10,7 @@ abstract class LocalizableInterfaceTextSystem implements System {
     private final Iterable<Entity> localizableInterfaceTextEntities;
 
     LocalizableInterfaceTextSystem(Registry registry, Class<?> tag) {
-        this.localizableInterfaceTextEntities = registry.entities(
+        this.localizableInterfaceTextEntities = registry.view(
             new Query().all(tag, LocalizableInterfaceText.class)
         );
     }

@@ -19,7 +19,7 @@ final class InputSystem implements System {
     private final Iterable<Entity> directionIntentEntities;
 
     InputSystem(Registry registry) {
-        this.directionIntentEntities = registry.entities(
+        this.directionIntentEntities = registry.view(
             new Query().all(DirectionIntent.class)
         );
     }

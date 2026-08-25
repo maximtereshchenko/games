@@ -12,11 +12,11 @@ final class AirSupplyDecrementSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> airSupplyEntities =
-        registry.entities(new Query().all(AirSupply.class));
+        registry.view(new Query().all(AirSupply.class));
     private final Iterable<Entity> deadEntities =
-        registry.entities(new Query().all(Dead.class));
+        registry.view(new Query().all(Dead.class));
     private final Iterable<Entity> deadAirSupplyEntities =
-        registry.entities(new Query().all(AirSupply.class, Dead.class));
+        registry.view(new Query().all(AirSupply.class, Dead.class));
     private final AirSupplyDecrementSystem airSupplyDecrementSystem =
         new AirSupplyDecrementSystem(registry);
 

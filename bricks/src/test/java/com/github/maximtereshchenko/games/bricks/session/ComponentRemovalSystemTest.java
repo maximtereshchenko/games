@@ -14,9 +14,9 @@ final class ComponentRemovalSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> collisionEntities =
-        registry.entities(new Query().all(Collisions.class));
+        registry.view(new Query().all(Collisions.class));
     private final Iterable<Entity> remainingEntities =
-        registry.entities(new Query().all(Paddle.class));
+        registry.view(new Query().all(Paddle.class));
     private final ComponentRemovalSystem componentRemovalSystem =
         new ComponentRemovalSystem(registry, Collisions.class);
 

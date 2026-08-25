@@ -13,7 +13,7 @@ final class MultiplyBallsBonusSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> commandEntities =
-        registry.entities(new Query().all(SpawnBallCommand.class));
+        registry.view(new Query().all(SpawnBallCommand.class));
     private final MultiplyBallsBonusSystem multiplyBallsBonusSystem =
         new MultiplyBallsBonusSystem(registry);
 

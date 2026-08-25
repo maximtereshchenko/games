@@ -9,7 +9,7 @@ final class ComponentRemovalSystem implements System {
     private final Class<?>[] types;
 
     ComponentRemovalSystem(Registry registry, Class<?>... types) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().one(types)
         );
         this.types = types;

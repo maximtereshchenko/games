@@ -16,7 +16,7 @@ final class SidewaysMovementSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> movingEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     SidewaysMovement.class,

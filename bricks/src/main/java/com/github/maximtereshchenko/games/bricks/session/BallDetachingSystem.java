@@ -10,7 +10,7 @@ final class BallDetachingSystem implements System {
     private final Iterable<Entity> entities;
 
     BallDetachingSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query()
                 .all(Ball.class, Attached.class)
         );

@@ -12,10 +12,10 @@ final class TurnLengthScalingSystem extends TurnBasedSystem {
 
     TurnLengthScalingSystem(Registry registry) {
         super(registry);
-        this.turnTimerEntities = registry.entities(
+        this.turnTimerEntities = registry.view(
             new Query().all(TurnTimer.class, TurnLengthScaling.class)
         );
-        this.statisticsEntities = registry.entities(
+        this.statisticsEntities = registry.view(
             new Query().all(Statistics.class)
         );
     }

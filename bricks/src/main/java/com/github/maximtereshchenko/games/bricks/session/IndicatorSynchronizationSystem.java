@@ -19,7 +19,7 @@ final class IndicatorSynchronizationSystem<T> implements System {
         Class<T> componentType,
         Function<T, Integer> function
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(componentType)
         );
         this.indicator = indicator;

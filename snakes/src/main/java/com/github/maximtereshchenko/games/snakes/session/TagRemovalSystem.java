@@ -9,7 +9,7 @@ final class TagRemovalSystem implements System {
     private final Class<?>[] types;
 
     TagRemovalSystem(Registry registry, Class<?>... types) {
-        this.taggedEntities = registry.entities(
+        this.taggedEntities = registry.view(
             new Query().one(types)
         );
         this.types = types;

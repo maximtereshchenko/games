@@ -11,7 +11,7 @@ final class DirectionIntentCommitSystem extends TurnBasedSystem {
 
     DirectionIntentCommitSystem(Registry registry) {
         super(registry);
-        this.directionIntentEntities = registry.entities(
+        this.directionIntentEntities = registry.view(
             new Query().all(DirectionIntent.class)
         );
     }

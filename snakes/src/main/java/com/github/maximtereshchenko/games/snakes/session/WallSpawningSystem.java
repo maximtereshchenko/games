@@ -12,10 +12,10 @@ final class WallSpawningSystem extends TurnBasedSystem {
 
     WallSpawningSystem(Registry registry) {
         super(registry);
-        this.foodConsumedEntities = registry.entities(
+        this.foodConsumedEntities = registry.view(
             new Query().all(FoodConsumed.class, WorldPosition.class)
         );
-        this.wallPolicyEntities = registry.entities(
+        this.wallPolicyEntities = registry.view(
             new Query().all(WallPolicy.class)
         );
     }

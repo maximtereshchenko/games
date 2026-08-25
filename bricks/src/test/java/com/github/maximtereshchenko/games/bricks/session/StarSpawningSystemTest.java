@@ -21,7 +21,7 @@ final class StarSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> starEntities =
-        registry.entities(new Query().all(IncrementStarsBonus.class, WorldPosition.class));
+        registry.view(new Query().all(IncrementStarsBonus.class, WorldPosition.class));
     private final Configuration configuration = mock();
     private final Blueprints blueprints =
         new Blueprints.Builder(

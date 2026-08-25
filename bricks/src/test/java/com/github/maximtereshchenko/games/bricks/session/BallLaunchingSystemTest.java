@@ -17,7 +17,7 @@ final class BallLaunchingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> jointEntities =
-        registry.entities(new Query().all(WeldJoint.class));
+        registry.view(new Query().all(WeldJoint.class));
     private final World world = mock();
     private final WeldJoint weldJoint = mock();
     private final BallLaunchingSystem ballLaunchingSystem =

@@ -15,9 +15,9 @@ final class ConstantAmountFoodSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        registry.entities(new Query().all(Food.class));
+        registry.view(new Query().all(Food.class));
     private final Iterable<Entity> spawnedFoodEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     Food.class,
@@ -30,7 +30,7 @@ final class ConstantAmountFoodSpawningSystemTest {
                 )
         );
     private final Iterable<Entity> foodWithPositionEntities =
-        registry.entities(new Query().all(Food.class, WorldPosition.class));
+        registry.view(new Query().all(Food.class, WorldPosition.class));
     private final ConstantAmountFoodSpawningSystem constantAmountFoodSpawningSystem =
         new ConstantAmountFoodSpawningSystem(registry, new Random(0));
 

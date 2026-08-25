@@ -40,7 +40,7 @@ final class FixtureWidthUpdatingSystemTest {
             new WorldPosition(new Vector2())
         );
         registry.update(0);
-        assertThat(registry.entities(new com.github.maximtereshchenko.games.ecs.Query().all(Fixture.class))
+        assertThat(registry.view(new com.github.maximtereshchenko.games.ecs.Query().all(Fixture.class))
             .iterator()
             .next()
             .component(Fixture.class)).isSameAs(fixture);
@@ -68,7 +68,7 @@ final class FixtureWidthUpdatingSystemTest {
             worldPosition
         );
         registry.update(0);
-        var storedFixture = registry.entities(
+        var storedFixture = registry.view(
                 new com.github.maximtereshchenko.games.ecs.Query().all(Fixture.class)
             )
             .iterator()

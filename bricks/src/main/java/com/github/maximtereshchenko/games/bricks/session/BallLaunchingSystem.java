@@ -11,7 +11,7 @@ final class BallLaunchingSystem implements System {
     private final World world;
 
     BallLaunchingSystem(Registry registry, World world) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query()
                 .all(
                     WeldJoint.class,

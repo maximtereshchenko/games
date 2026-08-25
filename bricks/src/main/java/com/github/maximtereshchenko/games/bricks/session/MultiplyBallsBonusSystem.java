@@ -10,10 +10,10 @@ final class MultiplyBallsBonusSystem implements System {
     private final Iterable<Entity> ballsEntities;
 
     MultiplyBallsBonusSystem(Registry registry) {
-        this.multiplyBallsEntities = registry.entities(
+        this.multiplyBallsEntities = registry.view(
             new Query().all(MultiplyBallsBonus.class, Activated.class)
         );
-        this.ballsEntities = registry.entities(
+        this.ballsEntities = registry.view(
             new Query()
                 .all(
                     Ball.class,

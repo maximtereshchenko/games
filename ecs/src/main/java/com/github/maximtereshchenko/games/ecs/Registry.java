@@ -81,7 +81,7 @@ public final class Registry implements RegistryEdit {
         );
     }
 
-    public Iterable<Entity> entities(Query query) {
+    public View view(Query query) {
         return views.computeIfAbsent(
             query.viewMask(componentTypeIdRegistry),
             this::newView

@@ -12,9 +12,9 @@ final class HeadCollisionSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> deadEntities =
-        registry.entities(new Query().all(Dead.class));
+        registry.view(new Query().all(Dead.class));
     private final Iterable<Entity> deadHeadEntities =
-        registry.entities(new Query().all(Head.class, Dead.class));
+        registry.view(new Query().all(Head.class, Dead.class));
     private final HeadCollisionSystem headCollisionSystem =
         new HeadCollisionSystem(registry);
 

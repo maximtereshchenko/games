@@ -13,7 +13,7 @@ final class DirectionIntentSystem extends TurnBasedSystem {
 
     DirectionIntentSystem(Registry registry) {
         super(registry);
-        this.directionEntities = registry.entities(
+        this.directionEntities = registry.view(
             new Query().all(
                 Direction.class,
                 DirectionIntent.class

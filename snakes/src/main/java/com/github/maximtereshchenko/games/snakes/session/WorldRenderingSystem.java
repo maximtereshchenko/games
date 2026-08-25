@@ -24,7 +24,7 @@ final class WorldRenderingSystem implements System {
         ShapeRenderer shapeRenderer,
         Mode mode
     ) {
-        this.backgroundEntities = registry.entities(
+        this.backgroundEntities = registry.view(
             new Query()
                 .all(
                     PaletteColor.class,
@@ -33,7 +33,7 @@ final class WorldRenderingSystem implements System {
                     Background.class
                 )
         );
-        this.foregroundEntities = registry.entities(
+        this.foregroundEntities = registry.view(
             new Query()
                 .all(PaletteColor.class, Opacity.class, WorldPosition.class)
                 .none(Background.class)

@@ -17,7 +17,7 @@ final class BallResettingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> ballEntities =
-        registry.entities(new Query().all(Ball.class, Attached.class, WorldPosition.class));
+        registry.view(new Query().all(Ball.class, Attached.class, WorldPosition.class));
     private final Blueprints blueprints =
         new Blueprints.Builder(Map.of(BricksBlueprints.BALL, List.of(Ball.INSTANCE))).build();
     private final BallResettingSystem ballResettingSystem =
@@ -54,6 +54,6 @@ final class BallResettingSystemTest {
             new BallOffset(2)
         );
         registry.update(0);
-        assertThat(registry.entities(new Query().all(Attached.class))).isEmpty();
+        assertThat(registry.view(new Query().all(Attached.class))).isEmpty();
     }
 }

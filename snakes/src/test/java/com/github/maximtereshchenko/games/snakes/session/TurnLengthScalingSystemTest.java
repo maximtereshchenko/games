@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 final class TurnLengthScalingSystemTest {
 
     private final Registry registry = new Registry();
-    private final Iterable<Entity> turnTimerEntities = registry.entities(
+    private final Iterable<Entity> turnTimerEntities = registry.view(
         new Query().all(TurnTimer.class)
     );
     private final TurnLengthScalingSystem turnLengthScalingSystem =

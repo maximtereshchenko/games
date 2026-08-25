@@ -13,7 +13,7 @@ final class AirSupplyInterfaceSynchronisationSystem
 
     AirSupplyInterfaceSynchronisationSystem(Registry registry) {
         super(registry, AirSupplyInterfaceElement.class);
-        this.airSupplyEntities = registry.entities(
+        this.airSupplyEntities = registry.view(
             new Query().all(AirSupply.class)
         );
     }

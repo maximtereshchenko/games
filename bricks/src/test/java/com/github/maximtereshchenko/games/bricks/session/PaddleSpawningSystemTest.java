@@ -16,7 +16,7 @@ final class PaddleSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> paddleEntities =
-        registry.entities(new Query().all(Paddle.class));
+        registry.view(new Query().all(Paddle.class));
     private final Blueprints blueprints =
         new Blueprints.Builder(Map.of(BricksBlueprints.PADDLE, List.of(Paddle.INSTANCE)))
             .build();

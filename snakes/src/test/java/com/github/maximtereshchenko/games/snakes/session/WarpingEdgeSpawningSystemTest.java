@@ -20,9 +20,9 @@ final class WarpingEdgeSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> warpingEdgeEntities =
-        registry.entities(new Query().all(WarpingEdge.class));
+        registry.view(new Query().all(WarpingEdge.class));
     private final Iterable<Entity> spawnedWarpingEdgeEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     WarpingEdge.class,
@@ -32,7 +32,7 @@ final class WarpingEdgeSpawningSystemTest {
                 )
         );
     private final Iterable<Entity> warpingPolicyEntities =
-        registry.entities(new Query().all(WarpingPolicy.class));
+        registry.view(new Query().all(WarpingPolicy.class));
     private final WarpingEdgeSpawningSystem warpingEdgeSpawningSystem =
         new WarpingEdgeSpawningSystem(registry);
 

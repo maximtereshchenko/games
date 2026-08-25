@@ -13,10 +13,10 @@ abstract class CollisionSystem implements System {
         Query colliderQuery,
         Query impactedQuery
     ) {
-        this.colliderEntities = registry.entities(
+        this.colliderEntities = registry.view(
             colliderQuery.all(Collisions.class)
         );
-        this.impactedEntities = registry.entities(
+        this.impactedEntities = registry.view(
             impactedQuery.all(Collisions.class)
         );
     }

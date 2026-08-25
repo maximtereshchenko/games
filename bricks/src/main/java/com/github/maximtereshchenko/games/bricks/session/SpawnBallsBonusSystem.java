@@ -10,10 +10,10 @@ final class SpawnBallsBonusSystem implements System {
     private final Iterable<Entity> paddleEntities;
 
     SpawnBallsBonusSystem(Registry registry) {
-        this.spawnBallsEntities = registry.entities(
+        this.spawnBallsEntities = registry.view(
             new Query().all(SpawnBallsBonus.class, Activated.class)
         );
-        this.paddleEntities = registry.entities(
+        this.paddleEntities = registry.view(
             new Query()
                 .all(
                     Paddle.class,

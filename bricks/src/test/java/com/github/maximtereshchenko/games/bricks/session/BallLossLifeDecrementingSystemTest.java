@@ -12,7 +12,7 @@ final class BallLossLifeDecrementingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> commandEntities =
-        registry.entities(new Query().all(Lives.class, DecrementLivesCommand.class));
+        registry.view(new Query().all(Lives.class, DecrementLivesCommand.class));
     private final BallLossLifeDecrementingSystem ballLossLifeDecrementingSystem =
         new BallLossLifeDecrementingSystem(registry);
 

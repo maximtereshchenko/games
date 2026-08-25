@@ -12,7 +12,7 @@ final class FoodOpacitySynchronisationSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        registry.entities(new Query().all(Food.class, Opacity.class));
+        registry.view(new Query().all(Food.class, Opacity.class));
     private final FoodOpacitySynchronisationSystem foodOpacitySynchronisationSystem =
         new FoodOpacitySynchronisationSystem(registry);
 

@@ -18,7 +18,7 @@ final class PaddleMovementSystem implements System {
         Configuration configuration,
         Viewport viewport
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Paddle.class, Velocity.class)
         );
         this.configuration = configuration;

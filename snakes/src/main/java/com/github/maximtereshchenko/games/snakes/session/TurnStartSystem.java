@@ -8,7 +8,7 @@ final class TurnStartSystem implements System {
     private final Iterable<Entity> turnTimerEntities;
 
     TurnStartSystem(Registry registry) {
-        this.turnTimerEntities = registry.entities(
+        this.turnTimerEntities = registry.view(
             new Query().all(TurnTimer.class)
         );
     }

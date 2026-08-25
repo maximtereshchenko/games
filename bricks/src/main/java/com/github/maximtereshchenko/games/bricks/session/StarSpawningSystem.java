@@ -23,13 +23,13 @@ final class StarSpawningSystem implements System {
         Blueprints blueprints,
         Random random
     ) {
-        this.starsSpawnedEntities = registry.entities(
+        this.starsSpawnedEntities = registry.view(
             new Query().all(SpawnedStars.class)
         );
-        this.brickEntities = registry.entities(
+        this.brickEntities = registry.view(
             new Query().all(Brick.class)
         );
-        this.removedBrickEntities = registry.entities(
+        this.removedBrickEntities = registry.view(
             new Query()
                 .all(
                     Brick.class,

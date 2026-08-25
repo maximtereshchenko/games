@@ -9,10 +9,10 @@ final class BallLossLifeDecrementingSystem implements System {
     private final Iterable<Entity> livesEntities;
 
     BallLossLifeDecrementingSystem(Registry registry) {
-        this.ballEntities = registry.entities(
+        this.ballEntities = registry.view(
             new Query().all(Ball.class)
         );
-        this.livesEntities = registry.entities(
+        this.livesEntities = registry.view(
             new Query().all(Lives.class)
         );
     }

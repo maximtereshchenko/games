@@ -15,7 +15,7 @@ final class WarpedRelativeDirectionSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> directionIntentEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     Warped.class,

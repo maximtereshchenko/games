@@ -15,7 +15,7 @@ final class BoundariesFixtureSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> boundaryEntities =
-        registry.entities(new Query().all(Boundaries.class, Fixture.class));
+        registry.view(new Query().all(Boundaries.class, Fixture.class));
     private final World world = mock();
     private final PhysicsObjectFactory physicsObjectFactory = mock();
     private final Fixture fixture = mock();

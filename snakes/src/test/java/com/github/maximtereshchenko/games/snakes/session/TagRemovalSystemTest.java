@@ -12,13 +12,13 @@ final class TagRemovalSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodConsumedEntities =
-        registry.entities(new Query().all(FoodConsumed.class));
+        registry.view(new Query().all(FoodConsumed.class));
     private final Iterable<Entity> turnStartedEntities =
-        registry.entities(new Query().all(TurnStarted.class));
+        registry.view(new Query().all(TurnStarted.class));
     private final Iterable<Entity> warpedEntities =
-        registry.entities(new Query().all(Warped.class));
+        registry.view(new Query().all(Warped.class));
     private final Iterable<Entity> remainingEntities =
-        registry.entities(new Query().all(Head.class));
+        registry.view(new Query().all(Head.class));
     private final TagRemovalSystem tagRemovalSystem =
         new TagRemovalSystem(registry, TurnStarted.class, FoodConsumed.class, Warped.class);
 

@@ -14,11 +14,11 @@ final class FoodConsumptionSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        registry.entities(new Query().all(Food.class));
+        registry.view(new Query().all(Food.class));
     private final Iterable<Entity> foodConsumedEntities =
-        registry.entities(new Query().all(FoodConsumed.class));
+        registry.view(new Query().all(FoodConsumed.class));
     private final Iterable<Entity> headFoodConsumedEntities =
-        registry.entities(new Query().all(Head.class, FoodConsumed.class));
+        registry.view(new Query().all(Head.class, FoodConsumed.class));
     private final FoodConsumptionSystem foodConsumptionSystem =
         new FoodConsumptionSystem(registry);
 

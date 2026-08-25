@@ -11,10 +11,10 @@ final class BarrierSpawningSystem implements System {
     private final Blueprints blueprints;
 
     BarrierSpawningSystem(Registry registry, Blueprints blueprints) {
-        this.spawnBarrierEntities = registry.entities(
+        this.spawnBarrierEntities = registry.view(
             new Query().all(SpawnBarrierBonus.class, Activated.class)
         );
-        this.barrierEntities = registry.entities(
+        this.barrierEntities = registry.view(
             new Query().all(Barrier.class)
         );
         this.blueprints = blueprints;

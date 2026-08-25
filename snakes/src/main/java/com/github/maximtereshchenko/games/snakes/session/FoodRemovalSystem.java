@@ -9,11 +9,11 @@ final class FoodRemovalSystem implements System {
     private final Iterable<Entity> foodEntities;
 
     FoodRemovalSystem(Registry registry) {
-        this.foodWarpingEntities = registry.entities(
+        this.foodWarpingEntities = registry.view(
             new Query()
                 .all(FoodConsumed.class, FoodWarping.class)
         );
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class)
         );
     }

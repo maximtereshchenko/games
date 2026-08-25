@@ -12,9 +12,9 @@ final class TurnStartSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> turnTimerEntities =
-        registry.entities(new Query().all(TurnTimer.class));
+        registry.view(new Query().all(TurnTimer.class));
     private final Iterable<Entity> turnStartedEntities =
-        registry.entities(new Query().all(TurnStarted.class));
+        registry.view(new Query().all(TurnStarted.class));
     private final TurnStartSystem turnStartSystem = new TurnStartSystem(registry);
 
     @BeforeEach

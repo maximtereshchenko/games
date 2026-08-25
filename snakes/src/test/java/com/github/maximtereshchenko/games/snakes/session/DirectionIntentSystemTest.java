@@ -15,7 +15,7 @@ final class DirectionIntentSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> directionIntentEntities =
-        registry.entities(new Query().all(Direction.class, DirectionIntent.class));
+        registry.view(new Query().all(Direction.class, DirectionIntent.class));
     private final DirectionIntentSystem directionIntentSystem =
         new DirectionIntentSystem(registry);
 

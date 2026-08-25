@@ -12,10 +12,10 @@ final class AirSupplyResetSystem extends TurnBasedSystem {
 
     AirSupplyResetSystem(Registry registry) {
         super(registry);
-        this.airSupplyEntities = registry.entities(
+        this.airSupplyEntities = registry.view(
             new Query().all(WorldPosition.class, AirSupply.class)
         );
-        this.airEntities = registry.entities(
+        this.airEntities = registry.view(
             new Query().all(Air.class, WorldPosition.class)
         );
     }

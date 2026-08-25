@@ -11,7 +11,7 @@ final class WorldPositionIntentCommitSystem extends TurnBasedSystem {
 
     WorldPositionIntentCommitSystem(Registry registry) {
         super(registry);
-        this.worldPositionIntentEntities = registry.entities(
+        this.worldPositionIntentEntities = registry.view(
             new Query().all(WorldPosition.class, WorldPositionIntent.class)
         );
     }

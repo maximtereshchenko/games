@@ -13,7 +13,7 @@ final class FoodConsumedInterfaceElementSynchronisationSystem
 
     FoodConsumedInterfaceElementSynchronisationSystem(Registry registry) {
         super(registry, FoodConsumedInterfaceElement.class);
-        this.statisticsEntities = registry.entities(
+        this.statisticsEntities = registry.view(
             new Query().all(Statistics.class)
         );
     }

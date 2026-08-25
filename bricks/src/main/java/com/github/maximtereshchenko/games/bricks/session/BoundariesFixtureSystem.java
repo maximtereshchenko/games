@@ -16,7 +16,7 @@ final class BoundariesFixtureSystem implements System {
         PhysicsObjectFactory physicsObjectFactory,
         World world
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Boundaries.class, Fixture.class)
         );
         this.physicsObjectFactory = physicsObjectFactory;

@@ -22,7 +22,7 @@ final class InputSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> directionIntentEntities =
-        registry.entities(new Query().all(DirectionIntent.class));
+        registry.view(new Query().all(DirectionIntent.class));
     private final InputSystem inputSystem = new InputSystem(registry);
 
     private static Stream<Arguments> directionChangedArguments() {

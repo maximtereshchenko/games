@@ -9,10 +9,10 @@ final class PaddleShorteningSystem implements System {
     private final Iterable<Entity> paddleEntities;
 
     PaddleShorteningSystem(Registry registry) {
-        this.shortenPaddleEntities = registry.entities(
+        this.shortenPaddleEntities = registry.view(
             new Query().all(ShortenPaddleBonus.class, Activated.class)
         );
-        this.paddleEntities = registry.entities(
+        this.paddleEntities = registry.view(
             new Query()
                 .all(
                     Paddle.class,

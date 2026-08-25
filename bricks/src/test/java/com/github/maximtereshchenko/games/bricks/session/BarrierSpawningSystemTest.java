@@ -16,7 +16,7 @@ final class BarrierSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> barrierEntities =
-        registry.entities(new Query().all(Barrier.class));
+        registry.view(new Query().all(Barrier.class));
     private final Blueprints blueprints =
         new Blueprints.Builder(
             Map.of(BricksBlueprints.BARRIER, List.of(new Barrier(1)))

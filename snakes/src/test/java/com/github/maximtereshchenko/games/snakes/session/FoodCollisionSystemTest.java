@@ -12,7 +12,7 @@ final class FoodCollisionSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodWorldPositionIntentEntities =
-        registry.entities(new Query().all(Food.class, WorldPositionIntent.class));
+        registry.view(new Query().all(Food.class, WorldPositionIntent.class));
     private final FoodCollisionSystem foodCollisionSystem =
         new FoodCollisionSystem(registry);
 

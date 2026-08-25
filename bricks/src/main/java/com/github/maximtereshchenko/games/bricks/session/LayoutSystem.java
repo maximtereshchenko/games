@@ -20,7 +20,7 @@ final class LayoutSystem implements System {
         List<List<CellDefinition>> cellDefinitions,
         Blueprints blueprints
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(LayoutPolicy.class)
         );
         this.configuration = configuration;

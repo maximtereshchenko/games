@@ -22,24 +22,24 @@ final class WallClusterFoodSpawningSystem implements System {
     private final Random random;
 
     WallClusterFoodSpawningSystem(Registry registry, Random random) {
-        this.turnStartedEntities = registry.entities(
+        this.turnStartedEntities = registry.view(
             new Query().all(TurnStarted.class)
         );
-        this.initializingEntities = registry.entities(
+        this.initializingEntities = registry.view(
             new Query().all(WallClusterFoodPolicy.class, Initializing.class)
         );
-        this.wallClusterFoodPolicyEntities = registry.entities(
+        this.wallClusterFoodPolicyEntities = registry.view(
             new Query().all(WallClusterFoodPolicy.class)
         );
-        this.nonBackgroundEntities = registry.entities(
+        this.nonBackgroundEntities = registry.view(
             new Query()
                 .all(WorldPosition.class)
                 .none(Background.class)
         );
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class)
         );
-        this.worldDimensionsEntities = registry.entities(
+        this.worldDimensionsEntities = registry.view(
             new Query().all(WorldDimensions.class)
         );
         this.random = random;

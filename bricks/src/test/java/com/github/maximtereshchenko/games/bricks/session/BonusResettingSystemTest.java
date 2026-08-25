@@ -12,7 +12,7 @@ final class BonusResettingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> removedBonusEntities =
-        registry.entities(new Query().all(Bonus.class, Removed.class));
+        registry.view(new Query().all(Bonus.class, Removed.class));
     private final BonusResettingSystem bonusResettingSystem =
         new BonusResettingSystem(registry);
 

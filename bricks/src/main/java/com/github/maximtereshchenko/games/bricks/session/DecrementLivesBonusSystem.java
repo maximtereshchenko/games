@@ -9,10 +9,10 @@ final class DecrementLivesBonusSystem implements System {
     private final Iterable<Entity> livesEntities;
 
     DecrementLivesBonusSystem(Registry registry) {
-        this.decrementLivesEntities = registry.entities(
+        this.decrementLivesEntities = registry.view(
             new Query().all(DecrementLivesBonus.class, Activated.class)
         );
-        this.livesEntities = registry.entities(
+        this.livesEntities = registry.view(
             new Query().all(Lives.class)
         );
     }

@@ -16,7 +16,7 @@ final class BallDetachingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> attachedEntities =
-        registry.entities(new Query().all(Attached.class));
+        registry.view(new Query().all(Attached.class));
     private final Input input = mock();
     private final BallDetachingSystem ballDetachingSystem =
         new BallDetachingSystem(registry);

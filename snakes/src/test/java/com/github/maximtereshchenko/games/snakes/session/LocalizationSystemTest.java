@@ -17,7 +17,7 @@ final class LocalizationSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> interfaceTextEntities =
-        registry.entities(new Query().all(InterfaceText.class));
+        registry.view(new Query().all(InterfaceText.class));
     private final I18NBundle bundle = mock();
     private final LocalizationSystem localizationSystem =
         new LocalizationSystem(registry, bundle);

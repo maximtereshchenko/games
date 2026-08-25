@@ -21,10 +21,10 @@ final class BonusSpawningSystem implements System {
         Blueprints blueprints,
         Random random
     ) {
-        this.bonusSpawnPolicyEntities = registry.entities(
+        this.bonusSpawnPolicyEntities = registry.view(
             new Query().all(BonusSpawnPolicy.class)
         );
-        this.removedBrickEntities = registry.entities(
+        this.removedBrickEntities = registry.view(
             new Query()
                 .all(
                     Brick.class,

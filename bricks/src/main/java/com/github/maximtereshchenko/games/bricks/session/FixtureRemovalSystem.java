@@ -11,7 +11,7 @@ final class FixtureRemovalSystem implements System {
     private final World world;
 
     FixtureRemovalSystem(Registry registry, World world) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Removed.class, Fixture.class)
         );
         this.world = world;

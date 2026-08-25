@@ -9,7 +9,7 @@ final class FoodWarpingSystem implements System {
     private final Iterable<Entity> foodEntities;
 
     FoodWarpingSystem(Registry registry) {
-        this.foodWarpingEntities = registry.entities(
+        this.foodWarpingEntities = registry.view(
             new Query()
                 .all(
                     FoodConsumed.class,
@@ -18,7 +18,7 @@ final class FoodWarpingSystem implements System {
                     WorldPositionIntent.class
                 )
         );
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class, WorldPosition.class)
         );
     }

@@ -20,9 +20,9 @@ final class LayoutSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> brickEntities =
-        registry.entities(new Query().all(Brick.class, Rectangle.class, WorldPosition.class, Color.class));
+        registry.view(new Query().all(Brick.class, Rectangle.class, WorldPosition.class, Color.class));
     private final Iterable<Entity> wallEntities =
-        registry.entities(new Query().all(WorldPosition.class).none(Brick.class, Color.class));
+        registry.view(new Query().all(WorldPosition.class).none(Brick.class, Color.class));
     private final Configuration configuration = mock();
     private final Blueprints blueprints =
         new Blueprints.Builder(

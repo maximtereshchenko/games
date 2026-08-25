@@ -10,7 +10,7 @@ final class LocalizationSystem implements System {
     private final I18NBundle bundle;
 
     LocalizationSystem(Registry registry, I18NBundle bundle) {
-        this.interfaceTextEntities = registry.entities(
+        this.interfaceTextEntities = registry.view(
             new Query().all(LocalizableInterfaceText.class, InterfaceText.class)
         );
         this.bundle = bundle;

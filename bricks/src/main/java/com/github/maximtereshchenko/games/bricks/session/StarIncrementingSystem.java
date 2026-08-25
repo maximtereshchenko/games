@@ -9,10 +9,10 @@ final class StarIncrementingSystem implements System {
     private final Iterable<Entity> collectedStarsEntities;
 
     StarIncrementingSystem(Registry registry) {
-        this.incrementStarEntities = registry.entities(
+        this.incrementStarEntities = registry.view(
             new Query().all(IncrementStarsBonus.class, Activated.class)
         );
-        this.collectedStarsEntities = registry.entities(
+        this.collectedStarsEntities = registry.view(
             new Query().all(CollectedStars.class)
         );
     }

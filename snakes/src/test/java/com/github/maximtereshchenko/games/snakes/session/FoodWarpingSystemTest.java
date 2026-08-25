@@ -12,7 +12,7 @@ final class FoodWarpingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodWarpingEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     FoodWarping.class,

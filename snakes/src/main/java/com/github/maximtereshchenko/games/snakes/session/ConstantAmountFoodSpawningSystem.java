@@ -18,24 +18,24 @@ final class ConstantAmountFoodSpawningSystem implements System {
     private final Random random;
 
     ConstantAmountFoodSpawningSystem(Registry registry, Random random) {
-        this.turnStartedEntities = registry.entities(
+        this.turnStartedEntities = registry.view(
             new Query().all(TurnStarted.class)
         );
-        this.initializingEntities = registry.entities(
+        this.initializingEntities = registry.view(
             new Query().all(ConstantAmountFoodPolicy.class, Initializing.class)
         );
-        this.constantAmountFoodPolicyEntities = registry.entities(
+        this.constantAmountFoodPolicyEntities = registry.view(
             new Query().all(ConstantAmountFoodPolicy.class)
         );
-        this.nonBackgroundEntities = registry.entities(
+        this.nonBackgroundEntities = registry.view(
             new Query()
                 .all(WorldPosition.class)
                 .none(Background.class)
         );
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class)
         );
-        this.worldDimensionsEntities = registry.entities(
+        this.worldDimensionsEntities = registry.view(
             new Query().all(WorldDimensions.class)
         );
         this.random = random;

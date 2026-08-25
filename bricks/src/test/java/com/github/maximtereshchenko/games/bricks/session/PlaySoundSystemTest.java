@@ -18,7 +18,7 @@ final class PlaySoundSystemTest {
     private final UserProfile userProfile = mock();
     private final Sound sound = mock();
     private final PlaySoundSystem playSoundSystem = new PlaySoundSystem(
-        registry.entities(new Query().all(Bonus.class, Activated.class)),
+        registry.view(new Query().all(Bonus.class, Activated.class)),
         assetDescriptor,
         assetManager,
         userProfile

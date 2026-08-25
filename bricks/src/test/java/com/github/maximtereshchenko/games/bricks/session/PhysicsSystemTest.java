@@ -16,7 +16,7 @@ final class PhysicsSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> collisionEntities =
-        registry.entities(new Query().all(Collisions.class));
+        registry.view(new Query().all(Collisions.class));
     private final World world = mock();
     private final Fixture first = mock();
     private final Fixture second = mock();
@@ -43,7 +43,7 @@ final class PhysicsSystemTest {
         physicsSystem.beginContact(contact);
         registry.update(0.016f);
         assertThat(collisionEntities).hasSize(2);
-        assertThat(registry.entities(new Query().all(Collisions.class)))
+        assertThat(registry.view(new Query().all(Collisions.class)))
             .allSatisfy(entity ->
                 assertThat(entity.component(Collisions.class).entityIds()).isNotEmpty()
             );

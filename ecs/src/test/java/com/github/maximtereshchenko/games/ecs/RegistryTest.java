@@ -14,7 +14,7 @@ final class RegistryTest {
     void givenEmptyRegistry_thenEntityCreated() {
         var registry = new Registry();
         var entityId = registry.createEntity();
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .singleElement()
             .extracting(Entity::id)
             .isEqualTo(entityId);
@@ -26,7 +26,7 @@ final class RegistryTest {
         var firstEntityId = registry.createEntity();
         var secondEntityId = registry.createEntity();
         assertThat(firstEntityId).isNotEqualTo(secondEntityId);
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .extracting(Entity::id)
             .containsExactly(firstEntityId, secondEntityId);
     }
@@ -35,7 +35,7 @@ final class RegistryTest {
     void givenEntityExists_thenEntityDeleted() {
         var registry = new Registry();
         registry.deleteEntity(registry.createEntity());
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .isEmpty();
     }
 
@@ -43,7 +43,7 @@ final class RegistryTest {
     void givenNoEntity_thenNothingDeleted() {
         var registry = new Registry();
         registry.deleteEntity(1);
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .isEmpty();
     }
 
@@ -61,7 +61,7 @@ final class RegistryTest {
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value");
         registry.deleteEntity(entityId);
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .isEmpty();
     }
 
@@ -83,7 +83,7 @@ final class RegistryTest {
         registry.addComponents(firstEntityId, "first");
         registry.addComponents(secondEntityId, "second");
         registry.deleteEntity(firstEntityId);
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -109,7 +109,7 @@ final class RegistryTest {
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value", 1, 1.0);
         registry.removeComponents(entityId, String.class, Integer.class);
-        assertThat(registry.entities(new Query().all(Double.class).none(String.class, Integer.class)))
+        assertThat(registry.view(new Query().all(Double.class).none(String.class, Integer.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -123,7 +123,7 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value");
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -156,7 +156,7 @@ final class RegistryTest {
         registry.addComponents(firstEntityId, "first");
         registry.addComponents(secondEntityId, "second");
         registry.addComponents(firstEntityId, "updated");
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .extracting(
                 Entity::id,
                 entity -> entity.component(String.class)
@@ -172,7 +172,7 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value", 1);
-        assertThat(registry.entities(new Query().all(String.class, Integer.class)))
+        assertThat(registry.view(new Query().all(String.class, Integer.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -188,7 +188,7 @@ final class RegistryTest {
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "first");
         registry.addComponents(entityId, "second");
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -204,7 +204,7 @@ final class RegistryTest {
         var secondEntityId = registry.createEntity();
         registry.addComponents(firstEntityId, "first");
         registry.addComponents(secondEntityId, "second");
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .extracting(
                 Entity::id,
                 entity -> entity.component(String.class)
@@ -221,7 +221,7 @@ final class RegistryTest {
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value", 1);
         registry.removeComponents(entityId, Integer.class);
-        assertThat(registry.entities(new Query().all(String.class).none(Integer.class)))
+        assertThat(registry.view(new Query().all(String.class).none(Integer.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -243,9 +243,9 @@ final class RegistryTest {
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value");
         registry.removeComponents(entityId, String.class);
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .isEmpty();
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .singleElement()
             .extracting(Entity::id)
             .isEqualTo(entityId);
@@ -257,7 +257,7 @@ final class RegistryTest {
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value", 1);
         registry.removeComponents(entityId, Integer.class);
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -271,7 +271,7 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.removeComponents(entityId, String.class);
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .singleElement()
             .extracting(Entity::id)
             .isEqualTo(entityId);
@@ -284,7 +284,7 @@ final class RegistryTest {
         var secondEntityId = registry.createEntity();
         registry.addComponents(firstEntityId, "value");
         registry.addComponents(secondEntityId, 1);
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -298,7 +298,7 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value", 1);
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -315,7 +315,7 @@ final class RegistryTest {
         var secondEntityId = registry.createEntity();
         registry.addComponents(firstEntityId, "first");
         registry.addComponents(secondEntityId, "second", 1);
-        assertThat(registry.entities(new Query().none(Integer.class)))
+        assertThat(registry.view(new Query().none(Integer.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -329,7 +329,7 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value", 1);
-        assertThat(registry.entities(new Query().all(String.class).none(Integer.class)))
+        assertThat(registry.view(new Query().all(String.class).none(Integer.class)))
             .isEmpty();
     }
 
@@ -342,7 +342,7 @@ final class RegistryTest {
         registry.addComponents(firstEntityId, "value");
         registry.addComponents(secondEntityId, 1);
         registry.addComponents(thirdEntityId, new Object());
-        assertThat(registry.entities(new Query().one(String.class, Integer.class)))
+        assertThat(registry.view(new Query().one(String.class, Integer.class)))
             .satisfiesExactly(
                 entity -> {
                     assertThat(entity.id()).isEqualTo(firstEntityId);
@@ -365,7 +365,7 @@ final class RegistryTest {
         registry.addComponents(secondEntityId, "second", 1.0);
         registry.addComponents(thirdEntityId, "third", new Object());
         assertThat(
-            registry.entities(
+            registry.view(
                 new Query()
                     .all(String.class)
                     .one(Integer.class, Double.class)
@@ -390,8 +390,8 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value");
-        assertThat(registry.entities(new Query().one(String.class)))
-            .hasSameElementsAs(registry.entities(new Query().all(String.class)));
+        assertThat(registry.view(new Query().one(String.class)))
+            .hasSameElementsAs(registry.view(new Query().all(String.class)));
     }
 
     @Test
@@ -401,7 +401,7 @@ final class RegistryTest {
         registry.addComponents(entityId, "value");
         registry.deleteEntity(entityId);
         registry.addComponents(registry.createEntity(), 1);
-        assertThat(registry.entities(new Query().all(Integer.class).none(String.class)))
+        assertThat(registry.view(new Query().all(Integer.class).none(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -415,7 +415,7 @@ final class RegistryTest {
         var registry = new Registry();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value");
-        assertThat(registry.entities(new Query().all(String.class)))
+        assertThat(registry.view(new Query().all(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -423,7 +423,7 @@ final class RegistryTest {
             )
             .containsExactly(entityId, "value");
         registry.addComponents(entityId, 1);
-        assertThat(registry.entities(new Query().all(String.class, Integer.class)))
+        assertThat(registry.view(new Query().all(String.class, Integer.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -432,7 +432,7 @@ final class RegistryTest {
             )
             .containsExactly(entityId, "value", 1);
         registry.removeComponents(entityId, String.class);
-        assertThat(registry.entities(new Query().all(Integer.class).none(String.class)))
+        assertThat(registry.view(new Query().all(Integer.class).none(String.class)))
             .singleElement()
             .extracting(
                 Entity::id,
@@ -445,7 +445,7 @@ final class RegistryTest {
     void givenEntityWithComponent_thenAccessingAbsentComponentReturnsNull() {
         var registry = new Registry();
         var entityId = registry.createEntity();
-        assertThat(registry.entities(new Query()))
+        assertThat(registry.view(new Query()))
             .singleElement()
             .extracting(Entity::id, entity -> entity.component(String.class))
             .containsExactly(entityId, null);
@@ -454,15 +454,15 @@ final class RegistryTest {
     @Test
     void givenSameQuery_thenSameView() {
         var registry = new Registry();
-        var first = registry.entities(new Query());
-        var second = registry.entities(new Query());
+        var first = registry.view(new Query());
+        var second = registry.view(new Query());
         assertThat(first).isSameAs(second);
     }
 
     @Test
     void givenRegistryUpdatedAfterViewCreated_thenViewContainsNewEntities() {
         var registry = new Registry();
-        var entities = registry.entities(new Query().all(String.class));
+        var entities = registry.view(new Query().all(String.class));
         assertThat(entities).isEmpty();
         var entityId = registry.createEntity();
         registry.addComponents(entityId, "value");
@@ -489,7 +489,7 @@ final class RegistryTest {
     @Test
     void givenSystemAddedComponents_thenNextSystemSeeChanges() {
         var registry = new Registry();
-        var entities = registry.entities(new Query().all(String.class));
+        var entities = registry.view(new Query().all(String.class));
         registry.addSystems(
             (registryEdit, _) -> registryEdit.addComponents(
                 registryEdit.createEntity(),
@@ -507,7 +507,7 @@ final class RegistryTest {
     void givenSystemRemovedComponents_thenNextSystemSeeChanges() {
         var registry = new Registry();
         registry.addComponents(registry.createEntity(), "value");
-        var entities = registry.entities(new Query().all(String.class));
+        var entities = registry.view(new Query().all(String.class));
         registry.addSystems(
             (registryEdit, _) -> {
                 for (var entity : entities) {
@@ -527,7 +527,7 @@ final class RegistryTest {
     void givenSystemDeletedEntity_thenNextSystemSeeChanges() {
         var registry = new Registry();
         registry.addComponents(registry.createEntity(), "value");
-        var entities = registry.entities(new Query());
+        var entities = registry.view(new Query());
         registry.addSystems(
             (registryEdit, _) -> {
                 for (var entity : entities) {
@@ -541,5 +541,26 @@ final class RegistryTest {
             (_, _) -> assertThat(entities).isEmpty()
         );
         registry.update(1);
+    }
+
+    @Test
+    void givenEmptyView_thenSizeEqualsTableSize() {
+        assertThat(new Registry().view(new Query()).size())
+            .isZero();
+    }
+
+    @Test
+    void givenViewForOneTable_thenSizeEqualsTableSize() {
+        var registry = new Registry();
+        registry.addComponents(registry.createEntity(), "value");
+        assertThat(registry.view(new Query()).size()).isOne();
+    }
+
+    @Test
+    void givenViewForManyTables_thenSizeEqualsTableSizeSum() {
+        var registry = new Registry();
+        registry.addComponents(registry.createEntity(), "value");
+        registry.addComponents(registry.createEntity(), 1);
+        assertThat(registry.view(new Query()).size()).isEqualTo(2);
     }
 }

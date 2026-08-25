@@ -22,7 +22,7 @@ final class InterfaceRenderingSystem implements System {
         ScaledFont scaledFont,
         Mode mode
     ) {
-        this.interfaceTextEntities = registry.entities(
+        this.interfaceTextEntities = registry.view(
             new Query()
                 .all(
                     InterfaceText.class,

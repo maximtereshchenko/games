@@ -11,7 +11,7 @@ final class DirectedMovementSystem extends TurnBasedSystem {
 
     DirectedMovementSystem(Registry registry) {
         super(registry);
-        this.movingEntities = registry.entities(
+        this.movingEntities = registry.view(
             new Query().all(
                 DirectedMovement.class,
                 Direction.class,

@@ -8,7 +8,7 @@ final class FoodConsumedIncrementSystem implements System {
     private final Iterable<Entity> statisticsEntities;
 
     FoodConsumedIncrementSystem(Registry registry) {
-        this.statisticsEntities = registry.entities(
+        this.statisticsEntities = registry.view(
             new Query().all(FoodConsumed.class, Statistics.class)
         );
     }

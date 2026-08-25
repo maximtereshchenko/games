@@ -11,7 +11,7 @@ final class LeftTurnsIncrementSystem extends TurnBasedSystem {
 
     LeftTurnsIncrementSystem(Registry registry) {
         super(registry);
-        this.statisticsEntities = registry.entities(
+        this.statisticsEntities = registry.view(
             new Query().all(Direction.class, DirectionIntent.class, Statistics.class)
         );
     }

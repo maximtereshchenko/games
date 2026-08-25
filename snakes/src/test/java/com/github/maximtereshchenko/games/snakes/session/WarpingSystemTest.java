@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 final class WarpingSystemTest {
 
     private final Registry registry = new Registry();
-    private final Iterable<Entity> warpedEntities = registry.entities(
+    private final Iterable<Entity> warpedEntities = registry.view(
         new Query().all(Warped.class, WorldPositionIntent.class)
     );
     private final WarpingSystem warpingSystem = new WarpingSystem(registry);

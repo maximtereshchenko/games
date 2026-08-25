@@ -15,7 +15,7 @@ final class AirSupplyInterfaceSynchronisationSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> localizableInterfaceTextEntities =
-        registry.entities(
+        registry.view(
             new Query().all(AirSupplyInterfaceElement.class, LocalizableInterfaceText.class)
         );
     private final AirSupplyInterfaceSynchronisationSystem system =

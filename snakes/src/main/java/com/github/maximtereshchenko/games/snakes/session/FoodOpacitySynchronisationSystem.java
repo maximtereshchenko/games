@@ -11,7 +11,7 @@ final class FoodOpacitySynchronisationSystem extends TurnBasedSystem {
 
     FoodOpacitySynchronisationSystem(Registry registry) {
         super(registry);
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class, Opacity.class)
         );
     }

@@ -83,7 +83,7 @@ public final class SessionFactory {
                 userProfile
             ),
             new PlaySoundSystem(
-                registry.entities(
+                registry.view(
                     new Query().all(Bonus.class, Activated.class)
                 ),
                 assets.bonusSound(),
@@ -151,7 +151,7 @@ public final class SessionFactory {
             new BallLossLifeDecrementingSystem(registry),
             new LifeDecrementingSystem(registry),
             new PlaySoundSystem(
-                registry.entities(
+                registry.view(
                     new Query().all(DecrementLivesCommand.class)
                 ),
                 assets.loseSound(),

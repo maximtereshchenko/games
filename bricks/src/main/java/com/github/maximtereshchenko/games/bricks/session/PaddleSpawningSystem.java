@@ -10,7 +10,7 @@ final class PaddleSpawningSystem implements System {
     private final Blueprints blueprints;
 
     PaddleSpawningSystem(Registry registry, Blueprints blueprints) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Paddle.class)
         );
         this.blueprints = blueprints;

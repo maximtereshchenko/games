@@ -13,16 +13,16 @@ final class WarpingEdgeSpawningSystem implements System {
     private final Iterable<Entity> warpingPolicyEntities;
 
     WarpingEdgeSpawningSystem(Registry registry) {
-        this.foodConsumedEntities = registry.entities(
+        this.foodConsumedEntities = registry.view(
             new Query().all(FoodConsumed.class)
         );
-        this.initializingEntities = registry.entities(
+        this.initializingEntities = registry.view(
             new Query().all(WarpingPolicy.class, Initializing.class)
         );
-        this.worldDimensionsEntities = registry.entities(
+        this.worldDimensionsEntities = registry.view(
             new Query().all(WorldDimensions.class)
         );
-        this.warpingPolicyEntities = registry.entities(
+        this.warpingPolicyEntities = registry.view(
             new Query().all(WarpingPolicy.class)
         );
     }

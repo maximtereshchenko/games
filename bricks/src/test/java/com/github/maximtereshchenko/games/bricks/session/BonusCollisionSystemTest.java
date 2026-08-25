@@ -14,7 +14,7 @@ final class BonusCollisionSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> activatedBonusEntities =
-        registry.entities(new Query().all(Bonus.class, Activated.class, Removed.class));
+        registry.view(new Query().all(Bonus.class, Activated.class, Removed.class));
     private final BonusCollisionSystem bonusCollisionSystem =
         new BonusCollisionSystem(registry);
 

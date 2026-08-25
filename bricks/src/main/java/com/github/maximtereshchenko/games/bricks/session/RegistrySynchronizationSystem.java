@@ -9,7 +9,7 @@ final class RegistrySynchronizationSystem implements System {
     private final Iterable<Entity> entities;
 
     RegistrySynchronizationSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query()
                 .all(
                     Fixture.class,

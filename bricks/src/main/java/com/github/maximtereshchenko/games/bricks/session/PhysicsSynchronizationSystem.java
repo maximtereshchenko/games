@@ -9,7 +9,7 @@ final class PhysicsSynchronizationSystem implements System {
     private final Iterable<Entity> entities;
 
     PhysicsSynchronizationSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Fixture.class, Velocity.class)
         );
     }

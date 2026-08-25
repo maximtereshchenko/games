@@ -12,7 +12,7 @@ final class PaddleWideningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> commandEntities =
-        registry.entities(new Query().all(UpdateWidthCommand.class));
+        registry.view(new Query().all(UpdateWidthCommand.class));
     private final PaddleWideningSystem paddleWideningSystem =
         new PaddleWideningSystem(registry);
 

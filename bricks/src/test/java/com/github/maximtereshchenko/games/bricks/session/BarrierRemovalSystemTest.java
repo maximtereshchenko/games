@@ -12,7 +12,7 @@ final class BarrierRemovalSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> removedBarrierEntities =
-        registry.entities(new Query().all(Barrier.class, Removed.class));
+        registry.view(new Query().all(Barrier.class, Removed.class));
     private final BarrierRemovalSystem barrierRemovalSystem =
         new BarrierRemovalSystem(registry);
 

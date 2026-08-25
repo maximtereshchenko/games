@@ -8,7 +8,7 @@ final class BarrierRemovalSystem implements System {
     private final Iterable<Entity> entities;
 
     BarrierRemovalSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Barrier.class)
         );
     }

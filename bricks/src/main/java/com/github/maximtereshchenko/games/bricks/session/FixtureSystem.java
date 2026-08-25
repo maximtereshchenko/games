@@ -13,7 +13,7 @@ abstract class FixtureSystem implements System {
         Registry registry,
         Query query
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             query.all(BodyDef.BodyType.class, WorldPosition.class)
         );
     }

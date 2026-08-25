@@ -8,7 +8,7 @@ final class WidthResettingSystem implements System {
     private final Iterable<Entity> entities;
 
     WidthResettingSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query()
                 .all(
                     ResetWidthRemainingTime.class,

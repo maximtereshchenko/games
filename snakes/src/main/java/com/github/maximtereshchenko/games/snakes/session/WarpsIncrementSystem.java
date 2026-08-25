@@ -11,7 +11,7 @@ final class WarpsIncrementSystem extends TurnBasedSystem {
 
     WarpsIncrementSystem(Registry registry) {
         super(registry);
-        this.statisticsEntities = registry.entities(
+        this.statisticsEntities = registry.view(
             new Query().all(Warped.class, Statistics.class)
         );
     }

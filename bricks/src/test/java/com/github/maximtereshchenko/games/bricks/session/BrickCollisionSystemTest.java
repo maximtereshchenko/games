@@ -14,7 +14,7 @@ final class BrickCollisionSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> removedBrickEntities =
-        registry.entities(new Query().all(Brick.class, Removed.class));
+        registry.view(new Query().all(Brick.class, Removed.class));
     private final BrickCollisionSystem brickCollisionSystem =
         new BrickCollisionSystem(registry);
 

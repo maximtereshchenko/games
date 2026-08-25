@@ -15,10 +15,10 @@ final class BallResettingSystem implements System {
         Registry registry,
         Blueprints blueprints
     ) {
-        this.ballEntities = registry.entities(
+        this.ballEntities = registry.view(
             new Query().all(Ball.class)
         );
-        this.paddleEntities = registry.entities(
+        this.paddleEntities = registry.view(
             new Query()
                 .all(
                     Paddle.class,

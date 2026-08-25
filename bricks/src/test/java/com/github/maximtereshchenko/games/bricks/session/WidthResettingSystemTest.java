@@ -12,7 +12,7 @@ final class WidthResettingSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> commandEntities =
-        registry.entities(new Query().all(UpdateWidthCommand.class));
+        registry.view(new Query().all(UpdateWidthCommand.class));
     private final WidthResettingSystem widthResettingSystem =
         new WidthResettingSystem(registry);
 

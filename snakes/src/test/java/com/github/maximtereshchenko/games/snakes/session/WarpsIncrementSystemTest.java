@@ -14,7 +14,7 @@ final class WarpsIncrementSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> statisticsEntities =
-        registry.entities(new Query().all(Statistics.class));
+        registry.view(new Query().all(Statistics.class));
     private final WarpsIncrementSystem warpsIncrementSystem =
         new WarpsIncrementSystem(registry);
 

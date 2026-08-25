@@ -13,13 +13,13 @@ final class SegmentRemainingTurnsIncrementSystem extends TurnBasedSystem {
 
     SegmentRemainingTurnsIncrementSystem(Registry registry) {
         super(registry);
-        this.foodConsumedEntities = registry.entities(
+        this.foodConsumedEntities = registry.view(
             new Query().all(FoodConsumed.class)
         );
-        this.segmentDefinitionEntities = registry.entities(
+        this.segmentDefinitionEntities = registry.view(
             new Query().all(SegmentPolicy.class)
         );
-        this.segmentEntities = registry.entities(
+        this.segmentEntities = registry.view(
             new Query().all(Segment.class)
         );
     }

@@ -8,7 +8,7 @@ final class SpeedNormalizationSystem implements System {
     private final Iterable<Entity> entities;
 
     SpeedNormalizationSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Speed.class, Velocity.class)
         );
     }

@@ -17,9 +17,9 @@ final class BallSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> ballEntities =
-        registry.entities(new Query().all(Ball.class));
+        registry.view(new Query().all(Ball.class));
     private final Iterable<Entity> commandEntities =
-        registry.entities(new Query().all(SpawnBallCommand.class));
+        registry.view(new Query().all(SpawnBallCommand.class));
     private final Blueprints blueprints =
         new Blueprints.Builder(Map.of(BricksBlueprints.BALL, List.of(Ball.INSTANCE))).build();
     private final BallSpawningSystem ballSpawningSystem =

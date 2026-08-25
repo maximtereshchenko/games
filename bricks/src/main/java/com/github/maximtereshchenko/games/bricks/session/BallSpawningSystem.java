@@ -12,13 +12,13 @@ final class BallSpawningSystem implements System {
     private final Blueprints blueprints;
 
     BallSpawningSystem(Registry registry, Blueprints blueprints) {
-        this.spawnBallCommandEntities = registry.entities(
+        this.spawnBallCommandEntities = registry.view(
             new Query().all(SpawnBallCommand.class)
         );
-        this.ballLimitEntities = registry.entities(
+        this.ballLimitEntities = registry.view(
             new Query().all(BallLimit.class)
         );
-        this.ballEntities = registry.entities(
+        this.ballEntities = registry.view(
             new Query().all(Ball.class)
         );
         this.blueprints = blueprints;

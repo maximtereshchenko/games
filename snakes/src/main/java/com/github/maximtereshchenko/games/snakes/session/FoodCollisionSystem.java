@@ -12,10 +12,10 @@ final class FoodCollisionSystem extends TurnBasedSystem {
 
     FoodCollisionSystem(Registry registry) {
         super(registry);
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class, WorldPosition.class, WorldPositionIntent.class)
         );
-        this.wallEntities = registry.entities(
+        this.wallEntities = registry.view(
             new Query().all(WorldPosition.class, Wall.class)
         );
     }

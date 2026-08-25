@@ -15,7 +15,7 @@ final class LevelFailedPublishingSystem implements System {
         Registry registry,
         EventBus<Event> eventBus
     ) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().one(Lives.class)
         );
         this.eventBus = eventBus;

@@ -11,7 +11,7 @@ final class AirSupplyDecrementSystem extends TurnBasedSystem {
 
     AirSupplyDecrementSystem(Registry registry) {
         super(registry);
-        this.airSupplyEntities = registry.entities(
+        this.airSupplyEntities = registry.view(
             new Query().all(AirSupply.class)
         );
     }

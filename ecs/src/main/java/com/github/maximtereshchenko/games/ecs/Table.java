@@ -26,6 +26,10 @@ final class Table {
         }
     }
 
+    int size() {
+        return entityIds.size();
+    }
+
     BitSet mask() {
         return mask;
     }

@@ -8,7 +8,7 @@ final class LifeDecrementingSystem implements System {
     private final Iterable<Entity> entities;
 
     LifeDecrementingSystem(Registry registry) {
-        this.entities = registry.entities(
+        this.entities = registry.view(
             new Query().all(Lives.class, DecrementLivesCommand.class)
         );
     }

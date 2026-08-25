@@ -56,7 +56,7 @@ final class SessionFactoryTest {
             .thenReturn(new Object[][]{new Object[]{component}});
         var registry = sessionFactory.registry(mode, viewport, viewport);
         Iterable<Entity> worldDimensionsEntities =
-            registry.entities(new Query().all(WorldDimensions.class));
+            registry.view(new Query().all(WorldDimensions.class));
         assertThat(worldDimensionsEntities)
             .singleElement()
             .extracting(entity -> entity.component(WorldDimensions.class))
@@ -75,9 +75,9 @@ final class SessionFactoryTest {
             );
         var registry = sessionFactory.registry(mode, viewport, viewport);
         Iterable<Entity> turnTimerEntities =
-            registry.entities(new Query().all(TurnTimer.class));
+            registry.view(new Query().all(TurnTimer.class));
         Iterable<Entity> worldDimensionsEntities =
-            registry.entities(new Query().all(WorldDimensions.class));
+            registry.view(new Query().all(WorldDimensions.class));
         assertThat(turnTimerEntities).hasSize(1);
         assertThat(worldDimensionsEntities)
             .singleElement()

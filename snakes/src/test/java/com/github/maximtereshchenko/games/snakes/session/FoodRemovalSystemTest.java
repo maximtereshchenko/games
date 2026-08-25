@@ -12,7 +12,7 @@ final class FoodRemovalSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        registry.entities(new Query().all(Food.class));
+        registry.view(new Query().all(Food.class));
     private final FoodRemovalSystem foodRemovalSystem =
         new FoodRemovalSystem(registry);
 

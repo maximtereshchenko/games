@@ -11,7 +11,7 @@ final class WarpedRelativeDirectionSystem extends TurnBasedSystem {
 
     WarpedRelativeDirectionSystem(Registry registry) {
         super(registry);
-        this.warpedEntities = registry.entities(
+        this.warpedEntities = registry.view(
             new Query()
                 .all(
                     Warped.class,

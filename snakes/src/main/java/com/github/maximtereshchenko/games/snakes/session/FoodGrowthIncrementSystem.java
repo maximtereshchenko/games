@@ -13,13 +13,13 @@ final class FoodGrowthIncrementSystem extends TurnBasedSystem {
 
     FoodGrowthIncrementSystem(Registry registry) {
         super(registry);
-        this.foodConsumedEntities = registry.entities(
+        this.foodConsumedEntities = registry.view(
             new Query().all(FoodConsumed.class)
         );
-        this.constantAmountFoodPolicyEntities = registry.entities(
+        this.constantAmountFoodPolicyEntities = registry.view(
             new Query().all(ConstantAmountFoodPolicy.class)
         );
-        this.foodEntities = registry.entities(
+        this.foodEntities = registry.view(
             new Query().all(Food.class)
         );
     }

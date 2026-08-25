@@ -9,10 +9,10 @@ final class LifeIncrementingSystem implements System {
     private final Iterable<Entity> livesEntities;
 
     LifeIncrementingSystem(Registry registry) {
-        this.incrementLivesEntities = registry.entities(
+        this.incrementLivesEntities = registry.view(
             new Query().all(IncrementLivesBonus.class, Activated.class)
         );
-        this.livesEntities = registry.entities(
+        this.livesEntities = registry.view(
             new Query().all(Lives.class)
         );
     }

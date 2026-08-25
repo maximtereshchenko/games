@@ -14,11 +14,11 @@ final class WallClusterFoodSpawningSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        registry.entities(new Query().all(Food.class));
+        registry.view(new Query().all(Food.class));
     private final Iterable<Entity> wallEntities =
-        registry.entities(new Query().all(Wall.class));
+        registry.view(new Query().all(Wall.class));
     private final Iterable<Entity> spawnedFoodEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     Food.class,
@@ -28,7 +28,7 @@ final class WallClusterFoodSpawningSystemTest {
                 )
         );
     private final Iterable<Entity> spawnedWallEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(
                     Wall.class,

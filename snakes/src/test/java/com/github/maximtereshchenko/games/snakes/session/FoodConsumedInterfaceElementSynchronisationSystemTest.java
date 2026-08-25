@@ -16,7 +16,7 @@ final class FoodConsumedInterfaceElementSynchronisationSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> localizableInterfaceTextEntities =
-        registry.entities(
+        registry.view(
             new Query()
                 .all(FoodConsumedInterfaceElement.class, LocalizableInterfaceText.class)
         );

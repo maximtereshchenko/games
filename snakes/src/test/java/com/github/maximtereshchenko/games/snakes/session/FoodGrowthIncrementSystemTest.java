@@ -14,7 +14,7 @@ final class FoodGrowthIncrementSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> foodEntities =
-        registry.entities(new Query().all(Food.class));
+        registry.view(new Query().all(Food.class));
     private final FoodGrowthIncrementSystem foodGrowthIncrementSystem =
         new FoodGrowthIncrementSystem(registry);
 

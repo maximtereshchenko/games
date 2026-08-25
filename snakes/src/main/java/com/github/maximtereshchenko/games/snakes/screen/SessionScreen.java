@@ -29,10 +29,10 @@ final class SessionScreen extends ScreenAdapter {
         this.viewports = viewports;
         this.eventBus = eventBus;
         this.registry = registry;
-        this.deadEntities = registry.entities(
+        this.deadEntities = registry.view(
             new Query().all(Dead.class)
         );
-        this.statisticsEntities = registry.entities(
+        this.statisticsEntities = registry.view(
             new Query().all(Statistics.class)
         );
     }

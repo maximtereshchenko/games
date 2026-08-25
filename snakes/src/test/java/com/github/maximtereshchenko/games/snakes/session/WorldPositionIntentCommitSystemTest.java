@@ -12,7 +12,7 @@ final class WorldPositionIntentCommitSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> worldPositionEntities =
-        registry.entities(new Query().all(WorldPosition.class));
+        registry.view(new Query().all(WorldPosition.class));
     private final WorldPositionIntentCommitSystem worldPositionIntentCommitSystem =
         new WorldPositionIntentCommitSystem(registry);
 

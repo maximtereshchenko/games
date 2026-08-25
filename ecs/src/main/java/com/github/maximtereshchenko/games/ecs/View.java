@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-final class View implements Iterable<Entity> {
+public final class View implements Iterable<Entity> {
 
     private final ViewMask queryMask;
     private final ComponentTypeIdRegistry componentTypeIdRegistry;
@@ -23,6 +23,12 @@ final class View implements Iterable<Entity> {
     @Override
     public Iterator<Entity> iterator() {
         return new EntityIterator();
+    }
+
+    public int size() {
+        return tables.stream()
+            .mapToInt(Table::size)
+            .sum();
     }
 
     void addTable(Table table) {

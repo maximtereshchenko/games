@@ -12,7 +12,7 @@ final class AirSupplyResetSystemTest {
 
     private final Registry registry = new Registry();
     private final Iterable<Entity> airSupplyEntities =
-        registry.entities(new Query().all(AirSupply.class));
+        registry.view(new Query().all(AirSupply.class));
     private final AirSupplyResetSystem airSupplyResetSystem =
         new AirSupplyResetSystem(registry);
 
