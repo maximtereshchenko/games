@@ -13,7 +13,7 @@ final class ConstantAmountFoodSpawningSystem implements System {
     private final Iterable<Entity> initializingEntities;
     private final Iterable<Entity> constantAmountFoodPolicyEntities;
     private final Iterable<Entity> nonBackgroundEntities;
-    private final Iterable<Entity> foodEntities;
+    private final View foodEntities;
     private final Iterable<Entity> worldDimensionsEntities;
     private final Random random;
 
@@ -57,7 +57,7 @@ final class ConstantAmountFoodSpawningSystem implements System {
                 var worldDimensions = worldDimensionsEntity.component(WorldDimensions.class);
                 var worldPositions = worldPositions();
                 for (
-                    var index = food();
+                    var index = foodEntities.size();
                     index < constantAmountFoodPolicy.max() &&
                     worldPositions.size() < space(worldDimensions);
                     index++
@@ -106,13 +106,5 @@ final class ConstantAmountFoodSpawningSystem implements System {
             worldPositions.add(entity.component(WorldPosition.class));
         }
         return worldPositions;
-    }
-
-    private int food() {
-        var food = 0;
-        for (var _ : foodEntities) {
-            food++;
-        }
-        return food;
     }
 }

@@ -8,7 +8,7 @@ final class BallSpawningSystem implements System {
 
     private final Iterable<Entity> spawnBallCommandEntities;
     private final Iterable<Entity> ballLimitEntities;
-    private final Iterable<Entity> ballEntities;
+    private final View ballEntities;
     private final Blueprints blueprints;
 
     BallSpawningSystem(Registry registry, Blueprints blueprints) {
@@ -26,7 +26,7 @@ final class BallSpawningSystem implements System {
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        var balls = balls();
+        var balls = ballEntities.size();
         for (var ballLimitEntity : ballLimitEntities) {
             var ballLimit = ballLimitEntity.component(BallLimit.class);
             for (var spawnBallCommandEntity : spawnBallCommandEntities) {
@@ -47,13 +47,5 @@ final class BallSpawningSystem implements System {
                 registryEdit.deleteEntity(spawnBallCommandEntity.id());
             }
         }
-    }
-
-    private int balls() {
-        var count = 0;
-        for (var _ : ballEntities) {
-            count++;
-        }
-        return count;
     }
 }

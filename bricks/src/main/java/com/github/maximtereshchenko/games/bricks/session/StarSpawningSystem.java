@@ -11,7 +11,7 @@ import java.util.Random;
 final class StarSpawningSystem implements System {
 
     private final Iterable<Entity> starsSpawnedEntities;
-    private final Iterable<Entity> brickEntities;
+    private final View brickEntities;
     private final Iterable<Entity> removedBrickEntities;
     private final Configuration configuration;
     private final Blueprints blueprints;
@@ -44,7 +44,7 @@ final class StarSpawningSystem implements System {
 
     @Override
     public void update(RegistryEdit registryEdit, float deltaTimeSeconds) {
-        var bricksCount = bricksCount();
+        var bricksCount = brickEntities.size();
         for (var starsSpawnedEntity : starsSpawnedEntities) {
             var starsSpawned = starsSpawnedEntity.component(
                 SpawnedStars.class
@@ -78,14 +78,6 @@ final class StarSpawningSystem implements System {
     private float chance(SpawnedStars starsSpawned, int bricksCount) {
         return (float) (configuration.maxStars() - starsSpawned.accumulated) /
                bricksCount;
-    }
-
-    private int bricksCount() {
-        var bricksCount = 0;
-        for (var _ : brickEntities) {
-            bricksCount++;
-        }
-        return bricksCount;
     }
 
     private void spawnStar(
