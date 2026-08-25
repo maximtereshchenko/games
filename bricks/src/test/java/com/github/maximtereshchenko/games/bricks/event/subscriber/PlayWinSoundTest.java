@@ -1,10 +1,12 @@
-package com.github.maximtereshchenko.games.bricks.event;
+package com.github.maximtereshchenko.games.bricks.event.subscriber;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
+import com.github.maximtereshchenko.games.bricks.event.LevelCompleted;
+import com.github.maximtereshchenko.games.bricks.event.LevelFailed;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

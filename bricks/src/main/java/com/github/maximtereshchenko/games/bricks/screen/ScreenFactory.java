@@ -5,16 +5,18 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
-import com.github.maximtereshchenko.games.bricks.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.bricks.event.*;
 import com.github.maximtereshchenko.games.bricks.screen.view.*;
 import com.github.maximtereshchenko.games.bricks.screen.view.settings.SettingsView;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
+import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import tools.jackson.core.type.TypeReference;
 
 public final class ScreenFactory {
@@ -56,11 +58,7 @@ public final class ScreenFactory {
             assetManager
         );
         return new LoadingScreen(
-            new StageScreen(
-                configuration,
-                loadingView,
-                spriteBatch
-            ),
+            stageScreen(loadingView),
             configuration,
             loadingView,
             assetManager,
@@ -83,7 +81,7 @@ public final class ScreenFactory {
         mainView.onSettings(
             () -> eventBus.publish(new SettingsRequested())
         );
-        return new StageScreen(configuration, mainView, spriteBatch);
+        return stageScreen(mainView);
     }
 
     public Screen settingsScreen() {
@@ -100,7 +98,7 @@ public final class ScreenFactory {
         settingsView.onFinish(
             () -> eventBus.publish(new SettingsScreenFinished())
         );
-        return new StageScreen(configuration, settingsView, spriteBatch);
+        return stageScreen(settingsView);
     }
 
     public Screen difficultySelectionScreen() {
@@ -115,11 +113,7 @@ public final class ScreenFactory {
                 new DifficultySelected(difficulty)
             )
         );
-        return new StageScreen(
-            configuration,
-            difficultySelectionView,
-            spriteBatch
-        );
+        return stageScreen(difficultySelectionView);
     }
 
     public Screen levelSelectionScreen(String difficulty) {
@@ -135,11 +129,7 @@ public final class ScreenFactory {
                 new LevelSelected(difficulty, level)
             )
         );
-        return new StageScreen(
-            configuration,
-            levelSelectionView,
-            spriteBatch
-        );
+        return stageScreen(levelSelectionView);
     }
 
     public Screen sessionScreen(
@@ -166,8 +156,7 @@ public final class ScreenFactory {
             )
         );
         return new SessionScreen(
-            new StageScreen(
-                configuration,
+            stageScreen(
                 new SessionView(
                     configuration,
                     starsIndicator,
@@ -200,8 +189,7 @@ public final class ScreenFactory {
                         level
                     ),
                     assetManager
-                ),
-                spriteBatch
+                )
             ),
             physicsWorld
         );
@@ -212,5 +200,18 @@ public final class ScreenFactory {
         assetManager.get(assets.mainMusic()).setVolume(volume);
         assetManager.get(assets.sessionMusic()).setVolume(volume);
         userProfile.updateMusicVolume(volume);
+    }
+
+    private Screen stageScreen(Root root) {
+        var dimensions = configuration.interfaceDimensions();
+        var stage = new Stage(
+            new FitViewport(
+                dimensions.width(),
+                dimensions.height()
+            ),
+            spriteBatch
+        );
+        stage.addActor(root);
+        return new StageScreen(stage);
     }
 }

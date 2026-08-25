@@ -1,6 +1,8 @@
-package com.github.maximtereshchenko.games.bricks.event;
+package com.github.maximtereshchenko.games.bricks.event.subscriber;
 
 import com.github.maximtereshchenko.games.bricks.UserProfile;
+import com.github.maximtereshchenko.games.bricks.event.LevelCompleted;
+import com.github.maximtereshchenko.games.bricks.event.LevelFailed;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

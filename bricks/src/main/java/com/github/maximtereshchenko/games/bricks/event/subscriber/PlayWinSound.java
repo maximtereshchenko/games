@@ -1,8 +1,10 @@
-package com.github.maximtereshchenko.games.bricks.event;
+package com.github.maximtereshchenko.games.bricks.event.subscriber;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
+import com.github.maximtereshchenko.games.bricks.event.Event;
+import com.github.maximtereshchenko.games.bricks.event.LevelCompleted;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 public final class PlayWinSound implements Subscriber<Event> {

@@ -19,16 +19,36 @@
     "level-10.json"
   ],
   "assets": {
-    "textureAtlas": "textures.atlas",
-    "skin": "skin.json",
-    "loadingBundle": "loading",
-    "gameBundle": "game",
-    "mainMusic": "main.mp3",
-    "sessionMusic": "session.mp3",
-    "ballSound": "ball.wav",
-    "bonusSound": "bonus.wav",
-    "loseSound": "lose.wav",
-    "winSound": "win.wav"
+    "textureAtlas": {
+      "fileName": "textures.atlas"
+    },
+    "skin": {
+      "fileName": "skin.json"
+    },
+    "loadingBundle": {
+      "fileName": "loading"
+    },
+    "gameBundle": {
+      "fileName": "game"
+    },
+    "mainMusic": {
+      "fileName": "main.mp3"
+    },
+    "sessionMusic": {
+      "fileName": "session.mp3"
+    },
+    "ballSound": {
+      "fileName": "ball.wav"
+    },
+    "bonusSound": {
+      "fileName": "bonus.wav"
+    },
+    "loseSound": {
+      "fileName": "lose.wav"
+    },
+    "winSound": {
+      "fileName": "win.wav"
+    }
   },
   "worldDimensions": {
     "width": 50,

@@ -1,10 +1,13 @@
-package com.github.maximtereshchenko.games.bricks.event;
+package com.github.maximtereshchenko.games.bricks.event.subscriber;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
+import com.github.maximtereshchenko.games.bricks.event.AssetsLoaded;
+import com.github.maximtereshchenko.games.bricks.event.LevelSelected;
+import com.github.maximtereshchenko.games.bricks.event.SettingsRequested;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

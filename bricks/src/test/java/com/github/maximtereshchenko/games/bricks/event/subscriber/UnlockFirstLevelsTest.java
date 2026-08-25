@@ -1,7 +1,9 @@
-package com.github.maximtereshchenko.games.bricks.event;
+package com.github.maximtereshchenko.games.bricks.event.subscriber;
 
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
+import com.github.maximtereshchenko.games.bricks.event.AssetsLoaded;
+import com.github.maximtereshchenko.games.bricks.event.SettingsRequested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
