@@ -5,10 +5,11 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.ecs.Registry;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
+import tools.jackson.core.type.TypeReference;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,7 +41,7 @@ public final class SessionFactory {
         Viewport interfaceViewport
     ) {
         var registry = new Registry();
-        for (var components : configurationReader.entities(mode)) {
+        for (var components : entities(mode)) {
             registry.addComponents(registry.createEntity(), components);
         }
         var scaledFont = new ScaledFont(assetManager.get(assets.bitmapFont()));
@@ -109,5 +110,12 @@ public final class SessionFactory {
             )
         );
         return registry;
+    }
+
+    private Object[][] entities(Mode mode) {
+        return configurationReader.value(
+            mode.entities(),
+            new TypeReference<>() {}
+        );
     }
 }

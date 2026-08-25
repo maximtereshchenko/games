@@ -7,15 +7,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -49,7 +51,8 @@ final class SessionFactoryTest {
     @Test
     void whenWorld_thenWorldWithEntities() {
         var component = new WorldDimensions(2, 3);
-        when(configurationReader.entities(mode))
+        when(mode.entities()).thenReturn("entities");
+        when(configurationReader.value(eq("entities"), any()))
             .thenReturn(new Object[][]{new Object[]{component}});
         var registry = sessionFactory.registry(mode, viewport, viewport);
         Iterable<Entity> worldDimensionsEntities =
@@ -62,7 +65,8 @@ final class SessionFactoryTest {
 
     @Test
     void whenWorld_thenDistinctConfiguredEntitiesCreated() {
-        when(configurationReader.entities(mode))
+        when(mode.entities()).thenReturn("entities");
+        when(configurationReader.value(eq("entities"), any()))
             .thenReturn(
                 new Object[][]{
                     new Object[]{new TurnTimer(1f, 0f)},

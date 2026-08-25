@@ -2,7 +2,10 @@ package com.github.maximtereshchenko.games.snakes;
 
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
-import com.github.maximtereshchenko.games.snakes.event.*;
+import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
+import com.github.maximtereshchenko.games.snakes.event.CreditsScreenFinished;
+import com.github.maximtereshchenko.games.snakes.event.SessionEnded;
+import com.github.maximtereshchenko.games.snakes.event.TitleScreenFinished;
 import com.github.maximtereshchenko.games.snakes.session.SessionMetric;
 
 import java.util.List;

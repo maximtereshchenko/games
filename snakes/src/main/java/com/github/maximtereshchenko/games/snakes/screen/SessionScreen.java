@@ -2,10 +2,10 @@ package com.github.maximtereshchenko.games.snakes.screen;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.ecs.Entity;
 import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.SessionEnded;
 import com.github.maximtereshchenko.games.snakes.session.Dead;

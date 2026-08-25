@@ -2,13 +2,13 @@ package com.github.maximtereshchenko.games.snakes.screen.view.settings;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
+import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.snakes.screen.view.BasicButton;
 
 import java.util.function.Consumer;
 
-public final class SettingsView extends Table {
+public final class SettingsView extends ScreenLayout {
 
     private final MusicVolumeSlider musicVolumeSlider;
     private final BasicButton backButton;
