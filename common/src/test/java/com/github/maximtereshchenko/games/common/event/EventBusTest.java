@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.event;
+package com.github.maximtereshchenko.games.common.event;
 
 import org.junit.jupiter.api.Test;
 

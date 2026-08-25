@@ -1,7 +1,7 @@
 package com.github.maximtereshchenko.games.snakes;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.github.maximtereshchenko.games.event.Subscriber;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;

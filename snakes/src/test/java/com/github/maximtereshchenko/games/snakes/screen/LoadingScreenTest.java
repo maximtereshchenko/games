@@ -4,7 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.event.AssetsLoaded;
 import com.github.maximtereshchenko.games.snakes.screen.view.LoadingView;

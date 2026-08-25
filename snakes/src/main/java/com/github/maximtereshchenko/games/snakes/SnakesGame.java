@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.snakes;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.Disposable;
-import com.github.maximtereshchenko.games.event.Subscriber;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.event.*;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;
 

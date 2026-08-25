@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.UserProfile;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;

@@ -14,7 +14,7 @@ import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.PhysicsObjectFactory;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import tools.jackson.core.type.TypeReference;
 
 import java.util.Set;

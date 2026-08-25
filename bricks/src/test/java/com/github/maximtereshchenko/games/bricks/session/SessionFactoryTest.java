@@ -13,7 +13,7 @@ import com.github.maximtereshchenko.games.bricks.configuration.Blueprints;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.view.Indicator;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

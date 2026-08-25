@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.bricks.event;
 
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
-import com.github.maximtereshchenko.games.event.Subscriber;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 public final class UnlockFirstLevels implements Subscriber<Event> {
 

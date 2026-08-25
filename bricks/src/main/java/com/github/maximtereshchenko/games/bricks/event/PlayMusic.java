@@ -5,7 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.github.maximtereshchenko.games.bricks.UserProfile;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
-import com.github.maximtereshchenko.games.event.Subscriber;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 import java.util.Optional;
 

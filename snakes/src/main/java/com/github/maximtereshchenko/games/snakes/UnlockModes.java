@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games.snakes;
 
-import com.github.maximtereshchenko.games.event.Subscriber;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.snakes.configuration.Mode;
 import com.github.maximtereshchenko.games.snakes.configuration.ModeUnlockRequirements;
 import com.github.maximtereshchenko.games.snakes.event.*;

@@ -12,7 +12,7 @@ import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.view.Indicator;
 import com.github.maximtereshchenko.games.ecs.Query;
 import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

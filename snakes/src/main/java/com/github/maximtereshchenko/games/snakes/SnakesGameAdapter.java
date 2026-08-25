@@ -7,7 +7,7 @@ import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.snakes.event.ApplicationEvent;
 import com.github.maximtereshchenko.games.snakes.screen.ScreenFactory;

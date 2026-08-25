@@ -6,7 +6,7 @@ import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
 import com.github.maximtereshchenko.games.bricks.event.AssetsLoaded;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.screen.view.LoadingView;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 
 final class LoadingScreen implements Screen {
 

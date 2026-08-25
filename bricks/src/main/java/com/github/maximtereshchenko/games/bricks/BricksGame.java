@@ -5,7 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Disposable;
 import com.github.maximtereshchenko.games.bricks.event.*;
 import com.github.maximtereshchenko.games.bricks.screen.ScreenFactory;
-import com.github.maximtereshchenko.games.event.Subscriber;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 import java.util.Set;
 

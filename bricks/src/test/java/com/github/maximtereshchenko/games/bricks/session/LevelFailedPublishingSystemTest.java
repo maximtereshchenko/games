@@ -3,7 +3,7 @@ package com.github.maximtereshchenko.games.bricks.session;
 import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.event.LevelFailed;
 import com.github.maximtereshchenko.games.ecs.Registry;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

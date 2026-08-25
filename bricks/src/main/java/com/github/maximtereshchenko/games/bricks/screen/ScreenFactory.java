@@ -14,7 +14,7 @@ import com.github.maximtereshchenko.games.bricks.screen.view.*;
 import com.github.maximtereshchenko.games.bricks.screen.view.settings.SettingsView;
 import com.github.maximtereshchenko.games.bricks.session.BricksBlueprints;
 import com.github.maximtereshchenko.games.bricks.session.SessionFactory;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import tools.jackson.core.type.TypeReference;
 
 public final class ScreenFactory {

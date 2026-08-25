@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.maximtereshchenko.games</groupId>
-            <artifactId>events</artifactId>
+            <artifactId>common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>

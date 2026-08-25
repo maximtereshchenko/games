@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.event;
+package com.github.maximtereshchenko.games.common.event;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

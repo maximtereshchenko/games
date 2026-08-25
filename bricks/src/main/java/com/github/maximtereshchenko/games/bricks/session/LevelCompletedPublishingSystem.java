@@ -4,7 +4,7 @@ import com.github.maximtereshchenko.games.bricks.event.Event;
 import com.github.maximtereshchenko.games.bricks.event.LevelCompleted;
 import com.github.maximtereshchenko.games.ecs.*;
 import com.github.maximtereshchenko.games.ecs.System;
-import com.github.maximtereshchenko.games.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 
 final class LevelCompletedPublishingSystem implements System {
 
