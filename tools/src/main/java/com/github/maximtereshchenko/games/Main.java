@@ -20,7 +20,8 @@ final class Main {
         switch (args[0]) {
             case "generateBitmapFont" -> generateBitmapFont(
                 args[1],
-                args[2]
+                args[2],
+                args[3]
             );
             case "slice" -> slice(
                 args[1],
@@ -33,13 +34,22 @@ final class Main {
             );
             case "generateTextureAtlas" -> generateTextureAtlas(
                 args[1],
-                args[2]
+                args[2],
+                args[3]
             );
         }
     }
 
-    private static void generateTextureAtlas(String directoryPath, String fileName) {
-        TexturePacker.process(directoryPath, directoryPath, fileName);
+    private static void generateTextureAtlas(
+        String inputDirectoryPath,
+        String outputDirectoryPath,
+        String fileName
+    ) {
+        TexturePacker.process(
+            inputDirectoryPath,
+            outputDirectoryPath,
+            fileName
+        );
     }
 
     private static void generateEmptyPixel(String path) {
@@ -97,7 +107,8 @@ final class Main {
 
     private static void generateBitmapFont(
         String fontPath,
-        String freeTypeFontParameterJson
+        String freeTypeFontParameterJson,
+        String directoryPath
     ) {
         var configuration = new Lwjgl3ApplicationConfiguration();
         configuration.setInitialVisible(false);
@@ -140,7 +151,7 @@ final class Main {
                         pixmaps,
                         Gdx.files.absolute(
                             "%s/%s.fnt".formatted(
-                                fontFile.parent().path(),
+                                directoryPath,
                                 fontFile.nameWithoutExtension()
                             )
                         ),
