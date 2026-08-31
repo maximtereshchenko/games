@@ -4,9 +4,12 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.tools.bmfont.BitmapFontWriter;
+import com.badlogic.gdx.utils.GdxNativesLoader;
 import com.badlogic.gdx.utils.Json;
 
 final class Main {
@@ -17,7 +20,53 @@ final class Main {
                 args[1],
                 args[2]
             );
+            case "slice" -> slice(
+                args[1],
+                Integer.parseInt(args[2]),
+                Integer.parseInt(args[3])
+            );
         }
+    }
+
+    private static void slice(String imagePath, int width, int height) {
+        var imageFile = new FileHandle(imagePath);
+        GdxNativesLoader.load();
+        var fullPixmap = new Pixmap(new FileHandle(imagePath));
+        var index = 0;
+        for (var row = 0; row < fullPixmap.getHeight(); row += height) {
+            for (var column = 0; column < fullPixmap.getWidth(); column += width) {
+                var pixmap = new Pixmap(width, height, fullPixmap.getFormat());
+                pixmap.drawPixmap(
+                    fullPixmap,
+                    column, row, width, height,
+                    0, 0, width, height
+                );
+                if (!isPixmapBlank(pixmap)) {
+                    PixmapIO.writePNG(
+                        new FileHandle(
+                            "%s%d.%s".formatted(
+                                imageFile.pathWithoutExtension(),
+                                index++,
+                                imageFile.extension()
+                            )
+                        ),
+                        pixmap
+                    );
+                }
+            }
+        }
+    }
+
+    private static boolean isPixmapBlank(Pixmap pixmap) {
+        for (int x = 0; x < pixmap.getWidth(); x++) {
+            for (int y = 0; y < pixmap.getHeight(); y++) {
+                int pixel = pixmap.getPixel(x, y);
+                if ((pixel & 0x000000ff) != 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private static void generateBitmapFont(
