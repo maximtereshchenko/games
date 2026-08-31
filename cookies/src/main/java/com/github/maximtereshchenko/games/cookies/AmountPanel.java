@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.cookies;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -31,8 +30,8 @@ final class AmountPanel extends Table {
                 }
             }
         );
-        buttonGroup(buy, sell);
-        buttonGroup(one, ten, hundred, all);
+        new RadioGroup(buy, sell);
+        new RadioGroup(one, ten, hundred, all);
         defaults().growX().uniformX();
         add(buySellTable(buy, sell));
         add(one);
@@ -41,19 +40,17 @@ final class AmountPanel extends Table {
         add(all);
     }
 
-    private void buttonGroup(CheckBox... checkBoxes) {
-        var amountGroup = new ButtonGroup<>(checkBoxes);
-        amountGroup.setMaxCheckCount(1);
-        amountGroup.setMinCheckCount(1);
-        amountGroup.setChecked(checkBoxes[0].getText().toString());
+    @Override
+    public float getPrefHeight() {
+        return getMinHeight();
     }
 
     private Table buySellTable(CheckBox buy, CheckBox sell) {
-        var buySell = new Table();
-        buySell.defaults().pad(5);
-        buySell.add(buy).row();
-        buySell.add(sell);
-        return buySell;
+        var table = new Table();
+        table.defaults().pad(5);
+        table.add(buy).row();
+        table.add(sell);
+        return table;
     }
 
     private CheckBox checkBox(Skin skin, String text) {

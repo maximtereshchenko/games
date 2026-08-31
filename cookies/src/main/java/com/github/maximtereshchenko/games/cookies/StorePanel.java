@@ -12,22 +12,22 @@ final class StorePanel extends Table {
         background(skin.getDrawable("tile_black_transparent50"));
         var label = new Label("Store", skin, "label_store");
         label.setAlignment(Align.center);
-        var upgradesSeparator = new StoreSeparator(skin, "Upgrades");
+        var upgradesBeam = new HorizontalBeam(skin, "Upgrades");
         var upgradePanel = new UpgradePanel(skin);
-        var buildingsSeparator = new StoreSeparator(skin, "Buildings");
+        var buildingsBeam = new HorizontalBeam(skin, "Buildings");
         var amountPanel = new AmountPanel(skin);
-        var buildingButton = new BuildingButton(skin);
-        upgradesSeparator.addListener(upgradePanel.eventListener());
-        upgradePanel.addListener(upgradesSeparator.eventListener());
-        amountPanel.addListener(buildingsSeparator.eventListener());
-        buildingButton.addListener(buildingsSeparator.eventListener());
+        var buildingButton = new GeneratorButton(skin);
+        upgradesBeam.addListener(upgradePanel.eventListener());
+        upgradePanel.addListener(upgradesBeam.eventListener());
+        amountPanel.addListener(buildingsBeam.eventListener());
+        buildingButton.addListener(buildingsBeam.eventListener());
         defaults().width(buildingButton.getPrefWidth())
             .height(Value.prefHeight);
         add(label).growX().row();
-        add(upgradesSeparator).row();
+        add(upgradesBeam).row();
         add(upgradePanel).row();
-        add(buildingsSeparator).row();
-        add(amountPanel).height(Value.minHeight).row();
+        add(buildingsBeam).row();
+        add(amountPanel).row();
         add(buildingButton);
         top();
     }

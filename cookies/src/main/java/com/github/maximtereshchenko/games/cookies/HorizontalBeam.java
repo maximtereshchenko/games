@@ -6,17 +6,19 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 
-final class StoreSeparator extends Stack {
+final class HorizontalBeam extends Stack {
 
     private final Label label;
 
-    StoreSeparator(Skin skin, String text) {
+    HorizontalBeam(Skin skin, String text) {
         this.label = new Label(text, skin, "label_separator");
         this.label.setVisible(false);
-        add(background(skin));
+        var container = new Container<>();
+        container.background(skin.getTiledDrawable("tile_beam_horizontal"));
+        add(container);
         add(new Image(skin, "gradient_left"));
         add(new Image(skin, "gradient_right"));
-        add(label());
+        add(new Container<>(label).left().padLeft(5));
         addListener(eventListener());
     }
 
@@ -47,18 +49,5 @@ final class StoreSeparator extends Stack {
                 }
             }
         };
-    }
-
-    private Container<Label> label() {
-        var container = new Container<>(label);
-        container.left();
-        container.padLeft(5);
-        return container;
-    }
-
-    private Container<?> background(Skin skin) {
-        var container = new Container<>();
-        container.background(skin.getTiledDrawable("tile_beam_horizontal"));
-        return container;
     }
 }

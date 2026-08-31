@@ -59,7 +59,7 @@ final class CookieButton extends Button {
             public void clicked(InputEvent event, float x, float y) {
                 var stage = getStage();
                 stage.addActor(
-                    new CookieParticle(
+                    new ClickCookieParticle(
                         skin,
                         random,
                         event.getStageX(),
@@ -67,7 +67,7 @@ final class CookieButton extends Button {
                     )
                 );
                 stage.addActor(
-                    new AmountParticle(
+                    new ClickAmountParticle(
                         skin,
                         random,
                         event.getStageX(),

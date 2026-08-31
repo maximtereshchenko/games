@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Align;
 import java.util.ArrayList;
 import java.util.List;
 
-final class CursorRingWidget extends WidgetGroup {
+final class CursorRingsWidget extends WidgetGroup {
 
     private static final int CURSORS_PER_RING = 50;
     private static final float DEGREES_PER_CURSOR = 360f / CURSORS_PER_RING;
@@ -17,7 +17,7 @@ final class CursorRingWidget extends WidgetGroup {
     private final List<Image> cursors;
     private float accumulatedTimeSeconds;
 
-    CursorRingWidget(Skin skin) {
+    CursorRingsWidget(Skin skin) {
         this.cursors = new ArrayList<>();
         setLayoutEnabled(false);
         for (int i = 0; i < 150; i++) {
@@ -31,7 +31,7 @@ final class CursorRingWidget extends WidgetGroup {
     @Override
     public void act(float delta) {
         super.act(delta);
-        accumulatedTimeSeconds = accumulatedTimeSeconds + delta;
+        accumulatedTimeSeconds += delta;
         for (var i = 0; i < cursors.size(); i++) {
             var cursor = cursors.get(i);
             var ringIndex = i / CURSORS_PER_RING;

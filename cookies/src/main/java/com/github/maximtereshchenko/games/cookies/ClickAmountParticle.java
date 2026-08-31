@@ -7,9 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.Random;
 
-final class AmountParticle extends Label {
+final class ClickAmountParticle extends Label {
 
-    AmountParticle(Skin skin, Random random, float x, float y) {
+    ClickAmountParticle(Skin skin, Random random, float x, float y) {
         super("+1", skin, "label_clickAmount");
         setTouchable(Touchable.disabled);
         setPosition(
