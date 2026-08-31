@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.tools.bmfont.BitmapFontWriter;
+import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.utils.GdxNativesLoader;
 import com.badlogic.gdx.utils.Json;
 
@@ -29,7 +30,15 @@ final class Main {
             case "generateEmptyPixel" -> generateEmptyPixel(
                 args[1]
             );
+            case "generateTextureAtlas" -> generateTextureAtlas(
+                args[1],
+                args[2]
+            );
         }
+    }
+
+    private static void generateTextureAtlas(String directoryPath, String fileName) {
+        TexturePacker.process(directoryPath, directoryPath, fileName);
     }
 
     private static void generateEmptyPixel(String path) {
