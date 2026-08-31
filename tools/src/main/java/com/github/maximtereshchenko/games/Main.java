@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -25,7 +26,21 @@ final class Main {
                 Integer.parseInt(args[2]),
                 Integer.parseInt(args[3])
             );
+            case "generateEmptyPixel" -> generateEmptyPixel(
+                args[1]
+            );
         }
+    }
+
+    private static void generateEmptyPixel(String path) {
+        GdxNativesLoader.load();
+        var pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
+        pixmap.setColor(Color.WHITE);
+        pixmap.fill();
+        PixmapIO.writePNG(
+            new FileHandle(path),
+            pixmap
+        );
     }
 
     private static void slice(String imagePath, int width, int height) {
