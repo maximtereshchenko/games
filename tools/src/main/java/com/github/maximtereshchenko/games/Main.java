@@ -25,7 +25,8 @@ final class Main {
             case "slice" -> slice(
                 args[1],
                 Integer.parseInt(args[2]),
-                Integer.parseInt(args[3])
+                Integer.parseInt(args[3]),
+                args[4]
             );
             case "generateEmptyPixel" -> generateEmptyPixel(
                 args[1]
@@ -52,7 +53,7 @@ final class Main {
         );
     }
 
-    private static void slice(String imagePath, int width, int height) {
+    private static void slice(String imagePath, int width, int height, String directoryPath) {
         var imageFile = new FileHandle(imagePath);
         GdxNativesLoader.load();
         var fullPixmap = new Pixmap(new FileHandle(imagePath));
@@ -68,8 +69,9 @@ final class Main {
                 if (!isPixmapBlank(pixmap)) {
                     PixmapIO.writePNG(
                         new FileHandle(
-                            "%s%d.%s".formatted(
-                                imageFile.pathWithoutExtension(),
+                            "%s/%s%d.%s".formatted(
+                                directoryPath,
+                                imageFile.nameWithoutExtension(),
                                 index++,
                                 imageFile.extension()
                             )
