@@ -37,6 +37,11 @@ final class Main {
                 args[2],
                 args[3]
             );
+            case "applyBordersGradient" -> applyBordersGradient(
+                args[1],
+                args[2],
+                args[3]
+            );
         }
     }
 
@@ -145,6 +150,7 @@ final class Main {
                     info.overrideMetrics(font.getData());
                     info.face = fontFile.nameWithoutExtension();
                     info.size = freeTypeFontParameter.size;
+                    info.ascent = 0;
                     info.descent = 0;
                     BitmapFontWriter.writeFont(
                         font.getData(),
@@ -171,5 +177,108 @@ final class Main {
             },
             configuration
         );
+    }
+
+    private static void applyBordersGradient(String imagePath, String colorJson, String outputPath) {
+        var blurRadius = 16;
+        GdxNativesLoader.load();
+        var sourcePixmap = new Pixmap(new FileHandle(imagePath));
+        var blackMask = generateGradientMask(sourcePixmap, blurRadius);
+        var blurredBlackMask = applyBlur(blackMask, blurRadius / 2);
+        var blackResult = compositeGradient(
+            sourcePixmap,
+            blurredBlackMask,
+            new Json().fromJson(Color.class, colorJson)
+        );
+        PixmapIO.writePNG(new FileHandle(outputPath), blackResult);
+    }
+
+    private static Pixmap generateGradientMask(
+        Pixmap sourcePixmap,
+        int blurRadius
+    ) {
+        var width = sourcePixmap.getWidth();
+        var height = sourcePixmap.getHeight();
+        var mask = new Pixmap(width, height, Pixmap.Format.RGBA8888);
+        mask.setBlending(Pixmap.Blending.None);
+        for (var x = 0; x < width; x++) {
+            for (var y = 0; y < height; y++) {
+                var color = sourcePixmap.getPixel(x, y);
+                var alpha = color & 0x000000FF;
+                if (alpha > 0) {
+                    var distToEdgeX = Math.min(x, width - 1 - x);
+                    var distToEdgeY = Math.min(y, height - 1 - y);
+                    var minEdgeDist = Math.min(distToEdgeX, distToEdgeY);
+                    if (minEdgeDist < blurRadius) {
+                        var progress = (float) minEdgeDist / blurRadius;
+                        var factor = 0.6f * (1.0f - progress);
+                        var shadowAlpha = (int) (factor * 255);
+                        mask.drawPixel(x, y, shadowAlpha);
+                    }
+                }
+            }
+        }
+        return mask;
+    }
+
+    private static Pixmap compositeGradient(
+        Pixmap sourcePixmap,
+        Pixmap shadowAlphaMask,
+        Color color
+    ) {
+        var width = sourcePixmap.getWidth();
+        var height = sourcePixmap.getHeight();
+        var result = new Pixmap(width, height, Pixmap.Format.RGBA8888);
+        result.setBlending(Pixmap.Blending.None);
+        result.drawPixmap(sourcePixmap, 0, 0);
+        result.setBlending(Pixmap.Blending.SourceOver);
+        for (var x = 0; x < width; x++) {
+            for (var y = 0; y < height; y++) {
+                var shadowAlpha = shadowAlphaMask.getPixel(x, y) & 0x000000FF;
+                if (shadowAlpha > 0) {
+                    var pixelColor = Color.rgba8888(color) | shadowAlpha;
+                    result.drawPixel(x, y, pixelColor);
+                }
+            }
+        }
+        return result;
+    }
+
+    private static Pixmap applyBlur(Pixmap src, int radius) {
+        var w = src.getWidth();
+        var h = src.getHeight();
+        var horizontalPass = new Pixmap(w, h, Pixmap.Format.RGBA8888);
+        horizontalPass.setBlending(Pixmap.Blending.None);
+        var finalPass = new Pixmap(w, h, Pixmap.Format.RGBA8888);
+        finalPass.setBlending(Pixmap.Blending.None);
+        for (var y = 0; y < h; y++) {
+            for (var x = 0; x < w; x++) {
+                var alphaSum = 0;
+                var count = 0;
+                for (var k = -radius; k <= radius; k++) {
+                    var sampleX = x + k;
+                    if (sampleX >= 0 && sampleX < w) {
+                        alphaSum += (src.getPixel(sampleX, y) & 0x000000FF);
+                        count++;
+                    }
+                }
+                horizontalPass.drawPixel(x, y, alphaSum / count);
+            }
+        }
+        for (var x = 0; x < w; x++) {
+            for (var y = 0; y < h; y++) {
+                var alphaSum = 0;
+                var count = 0;
+                for (var k = -radius; k <= radius; k++) {
+                    var sampleY = y + k;
+                    if (sampleY >= 0 && sampleY < h) {
+                        alphaSum += (horizontalPass.getPixel(x, sampleY) & 0x000000FF);
+                        count++;
+                    }
+                }
+                finalPass.drawPixel(x, y, alphaSum / count);
+            }
+        }
+        return finalPass;
     }
 }
