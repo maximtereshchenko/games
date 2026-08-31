@@ -15,6 +15,7 @@
         <module>snakes</module>
         <module>bricks</module>
         <module>tools</module>
+        <module>cookies</module>
     </modules>
 
     <properties>

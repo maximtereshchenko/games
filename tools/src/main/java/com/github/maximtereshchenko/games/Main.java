@@ -150,7 +150,6 @@ final class Main {
                     info.overrideMetrics(font.getData());
                     info.face = fontFile.nameWithoutExtension();
                     info.size = freeTypeFontParameter.size;
-                    info.ascent = 0;
                     info.descent = 0;
                     BitmapFontWriter.writeFont(
                         font.getData(),

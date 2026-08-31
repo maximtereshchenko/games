@@ -1,0 +1,200 @@
+
+skin.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+gradient_borders
+  rotate: false
+  xy: 538, 766
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+gradient_bottom
+  rotate: false
+  xy: 780, 700
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: -1
+gradient_bottom_long
+  rotate: false
+  xy: 534, 382
+  size: 2, 640
+  orig: 2, 640
+  offset: 0, 0
+  index: -1
+gradient_left
+  rotate: false
+  xy: 538, 308
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+gradient_right
+  rotate: false
+  xy: 538, 290
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+gradient_top
+  rotate: false
+  xy: 862, 828
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: -1
+gradient_top_long
+  rotate: false
+  xy: 926, 896
+  size: 2, 64
+  orig: 2, 64
+  offset: 0, 0
+  index: -1
+icon_cookie
+  rotate: false
+  xy: 488, 332
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_cookie_small
+  rotate: false
+  xy: 858, 810
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+icon_cursor
+  rotate: false
+  xy: 488, 282
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_cursor_tilted
+  rotate: false
+  xy: 796, 828
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+texture_cookie
+  rotate: false
+  xy: 2, 20
+  size: 484, 488
+  orig: 484, 488
+  offset: 0, 0
+  index: -1
+texture_cursor
+  rotate: false
+  xy: 988, 990
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+texture_flare
+  rotate: false
+  xy: 796, 894
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+texture_milk_plain
+  rotate: false
+  xy: 538, 524
+  size: 240, 240
+  orig: 240, 240
+  offset: 0, 0
+  index: -1
+tile_beam_horizontal
+  rotate: false
+  xy: 2, 2
+  size: 512, 16
+  orig: 512, 16
+  offset: 0, 0
+  index: -1
+tile_beam_vertical
+  rotate: false
+  xy: 516, 510
+  size: 16, 512
+  orig: 16, 512
+  offset: 0, 0
+  index: -1
+tile_cookies
+  rotate: false
+  xy: 2, 510
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+tile_empty
+  rotate: false
+  xy: 488, 507
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tile_frame_brown
+  rotate: false
+  xy: 926, 962
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+tile_frame_brownBright
+  rotate: false
+  xy: 796, 766
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+tile_marble
+  rotate: false
+  xy: 538, 458
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+tile_marble_gradientBlack
+  rotate: false
+  xy: 538, 392
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+tile_marble_gradientWhite
+  rotate: false
+  xy: 538, 326
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+
+skin2.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+tile_noise
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+
+skin3.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+tile_paper
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1

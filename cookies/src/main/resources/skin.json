@@ -1,0 +1,148 @@
+{
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+    "font_merriweather_10": {
+      "file": "merriweather.fnt",
+      "scaledSize": 10
+    },
+    "font_merriweather_16": {
+      "file": "merriweather.fnt",
+      "scaledSize": 16
+    },
+    "font_merriweather_25": {
+      "file": "merriweather.fnt",
+      "scaledSize": 25
+    },
+    "font_merriweather_40": {
+      "file": "merriweather.fnt",
+      "scaledSize": 36
+    },
+    "font_tahoma_8": {
+      "file": "tahoma.fnt",
+      "scaledSize": 8
+    }
+  },
+  "com.badlogic.gdx.graphics.Color": {
+    "color_white": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+    "color_green": {
+      "r": 0,
+      "g": 1,
+      "b": 0,
+      "a": 1
+    },
+    "color_brown": {
+      "r": 0.95,
+      "g": 0.85,
+      "b": 0.7,
+      "a": 1
+    },
+    "color_white_transparent50": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 0.5
+    },
+    "color_black_transparent20": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0.2
+    },
+    "color_black_transparent25": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0.25
+    },
+    "color_black_transparent40": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0.4
+    },
+    "color_black_transparent50": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0.5
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
+    "tile_black_transparent25": {
+      "name": "tile_empty",
+      "color": "color_black_transparent25"
+    },
+    "tile_black_transparent40": {
+      "name": "tile_empty",
+      "color": "color_black_transparent40"
+    },
+    "tile_black_transparent50": {
+      "name": "tile_empty",
+      "color": "color_black_transparent50"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+    "button_generator_0": {
+      "up": "tile_marble_0",
+      "down": "tile_marble_gradientBlack_0",
+      "over": "tile_marble_gradientWhite_0"
+    },
+    "button_cookie": {
+      "up": "texture_cookie"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
+    "button_amount": {
+      "font": "font_merriweather_10",
+      "fontColor": "color_white_transparent50",
+      "checkedFontColor": "color_white",
+      "overFontColor": "color_white"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+    "button_upgrade": {
+      "up": "tile_frame_brown",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "label_generator": {
+      "font": "font_merriweather_25",
+      "fontColor": "color_white"
+    },
+    "label_generatorCookies": {
+      "font": "font_merriweather_16",
+      "fontColor": "color_green"
+    },
+    "label_generatorAmount": {
+      "font": "font_merriweather_40",
+      "fontColor": "color_black_transparent20"
+    },
+    "label_store": {
+      "background": "gradient_top_long",
+      "font": "font_merriweather_25",
+      "fontColor": "color_white"
+    },
+    "label_separator": {
+      "font": "font_tahoma_8",
+      "fontColor": "color_brown"
+    },
+    "label_clickAmount": {
+      "font": "font_merriweather_16",
+      "fontColor": "color_white"
+    },
+    "label_cookies": {
+      "font": "font_merriweather_25",
+      "fontColor": "color_white"
+    },
+    "label_cookiesPerSecond": {
+      "font": "font_merriweather_10",
+      "fontColor": "color_white"
+    }
+  }
+}
