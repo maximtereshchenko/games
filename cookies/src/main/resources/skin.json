@@ -46,6 +46,12 @@
       "b": 1,
       "a": 0.5
     },
+    "color_white_transparent60": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 0.6
+    },
     "color_black_transparent20": {
       "r": 0,
       "g": 0,
@@ -69,6 +75,18 @@
       "g": 0,
       "b": 0,
       "a": 0.5
+    },
+    "color_black_transparent80": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0.8
+    },
+    "color_read_transparent40": {
+      "r": 1,
+      "g": 0,
+      "b": 0,
+      "a": 0.4
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -83,13 +101,18 @@
     "tile_black_transparent50": {
       "name": "tile_empty",
       "color": "color_black_transparent50"
+    },
+    "tile_marble_transparent60_0": {
+      "name": "tile_marble_0",
+      "color": "color_white_transparent60"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
     "button_generator_0": {
       "up": "tile_marble_0",
       "down": "tile_marble_gradientBlack_0",
-      "over": "tile_marble_gradientWhite_0"
+      "over": "tile_marble_gradientWhite_0",
+      "disabled": "tile_marble_transparent60_0"
     },
     "button_cookie": {
       "up": "texture_cookie"
@@ -111,13 +134,21 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
-    "label_generator": {
+    "label_generatorName": {
       "font": "font_merriweather_25",
       "fontColor": "color_white"
+    },
+    "label_generatorName_disabled": {
+      "font": "font_merriweather_25",
+      "fontColor": "color_white_transparent60"
     },
     "label_generatorCookies": {
       "font": "font_merriweather_16",
       "fontColor": "color_green"
+    },
+    "label_generatorCookies_disabled": {
+      "font": "font_merriweather_16",
+      "fontColor": "color_read_transparent40"
     },
     "label_generatorAmount": {
       "font": "font_merriweather_40",

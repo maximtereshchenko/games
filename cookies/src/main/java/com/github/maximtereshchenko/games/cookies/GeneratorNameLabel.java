@@ -1,30 +1,27 @@
 package com.github.maximtereshchenko.games.cookies;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
-final class GeneratorButton extends Button implements Subscriber<Event> {
+final class GeneratorNameLabel extends Label implements Subscriber<Event> {
 
+    private final Skin skin;
+    private final I18NBundle bundle;
     private final Generator generator;
 
-    GeneratorButton(
+    GeneratorNameLabel(
         Skin skin,
         I18NBundle bundle,
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        super(skin, "button_generator_0");
+        super("???", skin, "label_generatorName_disabled");
+        this.skin = skin;
+        this.bundle = bundle;
         this.generator = generator;
-        setDisabled(true);
-        add(new GeneratorIcon(skin, generator, eventBus));
-        add(new GeneratorDetailsPanel(skin, bundle, generator, eventBus))
-            .growX();
-        add(new Label("", skin, "label_generatorAmount"))
-            .padRight(4);
         eventBus.subscribe(this);
     }
 
@@ -34,7 +31,8 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
             event instanceof GeneratorUnlocked generatorUnlocked &&
             generatorUnlocked.value().equals(generator)
         ) {
-            setDisabled(false);
+            setStyle(skin.get("label_generatorName", LabelStyle.class));
+            setText(bundle.get("generators.%s.name".formatted(generator)));
         }
     }
 }

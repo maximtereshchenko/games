@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.cookies;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 
@@ -11,6 +12,7 @@ final class CookiesView extends ScreenLayout {
 
     CookiesView(
         Skin skin,
+        I18NBundle bundle,
         Random random,
         CookieService cookieService,
         EventBus<Event> eventBus
@@ -22,7 +24,7 @@ final class CookiesView extends ScreenLayout {
         addVerticalBeam(skin);
         add().growX();
         addVerticalBeam(skin);
-        add(new StorePanel(skin));
+        add(new StorePanel(skin, bundle, eventBus));
     }
 
     private void addVerticalBeam(Skin skin) {

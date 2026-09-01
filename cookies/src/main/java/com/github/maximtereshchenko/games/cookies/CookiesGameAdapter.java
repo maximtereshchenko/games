@@ -8,6 +8,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
@@ -29,7 +30,9 @@ final class CookiesGameAdapter implements ApplicationListener {
         var fileHandleResolver = new ClasspathFileHandleResolver();
         var assetManager = new AssetManager(fileHandleResolver);
         var skinAssetDescriptor = new AssetDescriptor<>("skin.json", Skin.class);
+        var gameBundleAssetDescriptor = new AssetDescriptor<>("game", I18NBundle.class);
         assetManager.load(skinAssetDescriptor);
+        assetManager.load(gameBundleAssetDescriptor);
         assetManager.finishLoading();
         var eventBus = new EventBus<Event>();
         var cookieService = new CookieService(eventBus);
@@ -39,6 +42,7 @@ final class CookiesGameAdapter implements ApplicationListener {
         stage.addActor(
             new CookiesView(
                 skin,
+                assetManager.get(gameBundleAssetDescriptor),
                 random,
                 cookieService,
                 eventBus

@@ -1,14 +1,24 @@
 package com.github.maximtereshchenko.games.cookies;
 
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.I18NBundle;
+import com.github.maximtereshchenko.games.common.event.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 final class StorePanel extends Table {
 
-    StorePanel(Skin skin) {
+    StorePanel(
+        Skin skin,
+        I18NBundle bundle,
+        EventBus<Event> eventBus
+    ) {
         background(skin.getDrawable("tile_black_transparent50"));
         var label = new Label("Store", skin, "label_store");
         label.setAlignment(Align.center);
@@ -16,19 +26,46 @@ final class StorePanel extends Table {
         var upgradePanel = new UpgradePanel(skin);
         var buildingsBeam = new HorizontalBeam(skin, "Buildings");
         var amountPanel = new AmountPanel(skin);
-        var buildingButton = new GeneratorButton(skin);
         upgradesBeam.addListener(upgradePanel.eventListener());
         upgradePanel.addListener(upgradesBeam.eventListener());
         amountPanel.addListener(buildingsBeam.eventListener());
-        buildingButton.addListener(buildingsBeam.eventListener());
-        defaults().width(buildingButton.getPrefWidth())
+        var generatorButtons = generatorButtons(
+            skin,
+            bundle,
+            eventBus,
+            buildingsBeam.eventListener()
+        );
+        defaults()
+            .width(generatorButtons.getFirst().getPrefWidth())
             .height(Value.prefHeight);
         add(label).growX().row();
         add(upgradesBeam).row();
         add(upgradePanel).row();
         add(buildingsBeam).row();
         add(amountPanel).row();
-        add(buildingButton);
+        for (var generatorButton : generatorButtons) {
+            add(generatorButton).row();
+        }
         top();
+    }
+
+    private List<GeneratorButton> generatorButtons(
+        Skin skin,
+        I18NBundle bundle,
+        EventBus<Event> eventBus,
+        EventListener eventListener
+    ) {
+        var generatorButtons = new ArrayList<GeneratorButton>();
+        for (var generator : Generator.values()) {
+            var generatorButton = new GeneratorButton(
+                skin,
+                bundle,
+                generator,
+                eventBus
+            );
+            generatorButton.addListener(eventListener);
+            generatorButtons.add(generatorButton);
+        }
+        return generatorButtons;
     }
 }

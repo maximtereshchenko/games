@@ -1,30 +1,23 @@
 package com.github.maximtereshchenko.games.cookies;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
-final class GeneratorButton extends Button implements Subscriber<Event> {
+final class GeneratorCookiesLabel extends Label implements Subscriber<Event> {
 
+    private final Skin skin;
     private final Generator generator;
 
-    GeneratorButton(
+    GeneratorCookiesLabel(
         Skin skin,
-        I18NBundle bundle,
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        super(skin, "button_generator_0");
+        super("15", skin, "label_generatorCookies_disabled");
+        this.skin = skin;
         this.generator = generator;
-        setDisabled(true);
-        add(new GeneratorIcon(skin, generator, eventBus));
-        add(new GeneratorDetailsPanel(skin, bundle, generator, eventBus))
-            .growX();
-        add(new Label("", skin, "label_generatorAmount"))
-            .padRight(4);
         eventBus.subscribe(this);
     }
 
@@ -34,7 +27,7 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
             event instanceof GeneratorUnlocked generatorUnlocked &&
             generatorUnlocked.value().equals(generator)
         ) {
-            setDisabled(false);
+            setStyle(skin.get("label_generatorCookies", LabelStyle.class));
         }
     }
 }

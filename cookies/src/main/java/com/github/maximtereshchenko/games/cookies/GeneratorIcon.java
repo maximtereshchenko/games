@@ -1,30 +1,29 @@
 package com.github.maximtereshchenko.games.cookies;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
-final class GeneratorButton extends Button implements Subscriber<Event> {
+final class GeneratorIcon extends Image implements Subscriber<Event> {
 
     private final Generator generator;
 
-    GeneratorButton(
+    GeneratorIcon(
         Skin skin,
-        I18NBundle bundle,
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        super(skin, "button_generator_0");
+        super(
+            skin,
+            switch (generator) {
+                case CURSOR -> "icon_cursor_tilted";
+            }
+        );
         this.generator = generator;
-        setDisabled(true);
-        add(new GeneratorIcon(skin, generator, eventBus));
-        add(new GeneratorDetailsPanel(skin, bundle, generator, eventBus))
-            .growX();
-        add(new Label("", skin, "label_generatorAmount"))
-            .padRight(4);
+        setColor(skin.getColor("color_black_transparent80"));
         eventBus.subscribe(this);
     }
 
@@ -34,7 +33,7 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
             event instanceof GeneratorUnlocked generatorUnlocked &&
             generatorUnlocked.value().equals(generator)
         ) {
-            setDisabled(false);
+            addAction(Actions.color(Color.WHITE, 0.5f));
         }
     }
 }
