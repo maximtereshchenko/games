@@ -3,12 +3,13 @@ package com.github.maximtereshchenko.games.cookies;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.EnumMap;
 import java.util.Map;
 
 final class CookieService {
 
-    private static final Map<Generator, BigDecimal> BASE_COST = Map.of(
+    private static final Map<Generator, BigDecimal> BASE_PRICES = Map.of(
         Generator.CURSOR, BigDecimal.valueOf(15)
     );
 
@@ -24,7 +25,7 @@ final class CookieService {
 
     void onStart() {
         eventBus.publish(new CookieAmountUpdated(cookies));
-        for (var entry : BASE_COST.entrySet()) {
+        for (var entry : BASE_PRICES.entrySet()) {
             eventBus.publish(
                 new GeneratorPriceUpdated(
                     entry.getKey(),
@@ -39,7 +40,7 @@ final class CookieService {
         cookies = cookies.add(clickPower);
         eventBus.publish(new CookiesClicked(clickPower));
         eventBus.publish(new CookieAmountUpdated(cookies));
-        for (var entry : BASE_COST.entrySet()) {
+        for (var entry : BASE_PRICES.entrySet()) {
             if (
                 !generators.containsKey(entry.getKey()) &&
                 cookies.compareTo(entry.getValue()) >= 0
@@ -53,12 +54,24 @@ final class CookieService {
     }
 
     void buyGenerator(Generator generator) {
-        cookies = cookies.subtract(BASE_COST.get(generator));
+        cookies = cookies.subtract(price(generator));
         var amount = generators.get(generator) + 1;
         generators.put(generator, amount);
         eventBus.publish(new CookieAmountUpdated(cookies));
         eventBus.publish(
             new GeneratorBought(generator, amount)
         );
+        eventBus.publish(
+            new GeneratorPriceUpdated(generator, price(generator))
+        );
+    }
+
+    private BigDecimal price(Generator generator) {
+        return BASE_PRICES.get(generator)
+            .multiply(
+                BigDecimal.valueOf(1.15)
+                    .pow(generators.get(generator))
+            )
+            .setScale(0, RoundingMode.CEILING);
     }
 }
