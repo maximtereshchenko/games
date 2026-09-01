@@ -51,7 +51,12 @@ final class CookiesGameAdapter implements ApplicationListener {
         eventBus.subscribe(new SpawnClickAmountParticle(skin, stage, random));
         cookieService.onStart();
         cookiesGame = new CookiesGame(Set.of(spriteBatch));
-        cookiesGame.setScreen(new StageScreen(stage));
+        cookiesGame.setScreen(
+            new CookiesScreen(
+                new StageScreen(stage),
+                cookieService
+            )
+        );
     }
 
     @Override
