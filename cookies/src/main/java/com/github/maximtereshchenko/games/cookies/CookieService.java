@@ -12,6 +12,9 @@ final class CookieService {
     private static final Map<Generator, BigDecimal> BASE_PRICES = Map.of(
         Generator.CURSOR, BigDecimal.valueOf(15)
     );
+    private static final Map<Generator, BigDecimal> BASE_GENERATION = Map.of(
+        Generator.CURSOR, BigDecimal.valueOf(0.1)
+    );
 
     private final EventBus<Event> eventBus;
     private final Map<Generator, Integer> generators;
@@ -25,6 +28,9 @@ final class CookieService {
 
     void onStart() {
         eventBus.publish(new CookieAmountUpdated(cookies));
+        eventBus.publish(
+            new CookiesPerSecondUpdated(cookiesPerSecond())
+        );
         for (var entry : BASE_PRICES.entrySet()) {
             eventBus.publish(
                 new GeneratorPriceUpdated(
@@ -33,6 +39,16 @@ final class CookieService {
                 )
             );
         }
+    }
+
+    void update(float deltaTimeSeconds) {
+        cookies = cookies.add(
+            cookiesPerSecond()
+                .multiply(
+                    BigDecimal.valueOf(deltaTimeSeconds)
+                )
+        );
+        eventBus.publish(new CookieAmountUpdated(cookies));
     }
 
     void onClick() {
@@ -64,6 +80,9 @@ final class CookieService {
         eventBus.publish(
             new GeneratorPriceUpdated(generator, price(generator))
         );
+        eventBus.publish(
+            new CookiesPerSecondUpdated(cookiesPerSecond())
+        );
     }
 
     private BigDecimal price(Generator generator) {
@@ -73,5 +92,16 @@ final class CookieService {
                     .pow(generators.get(generator))
             )
             .setScale(0, RoundingMode.CEILING);
+    }
+
+    private BigDecimal cookiesPerSecond() {
+        var cookiesPerSecond = BigDecimal.ZERO;
+        for (var entry : generators.entrySet()) {
+            cookiesPerSecond = cookiesPerSecond.add(
+                BASE_GENERATION.get(entry.getKey())
+                    .multiply(BigDecimal.valueOf(entry.getValue()))
+            );
+        }
+        return cookiesPerSecond;
     }
 }

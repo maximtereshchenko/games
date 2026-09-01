@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.cookies;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.util.Random;
@@ -11,6 +12,7 @@ final class CookiePanel extends Container<Stack> {
 
     CookiePanel(
         Skin skin,
+        I18NBundle bundle,
         Random random,
         CookieService cookieService,
         EventBus<Event> eventBus
@@ -34,7 +36,13 @@ final class CookiePanel extends Container<Stack> {
                 cookieService
             )
         );
-        stack.add(new CookiesPanelLayer(skin, eventBus));
+        stack.add(
+            new CookiesPanelLayer(
+                skin,
+                bundle,
+                eventBus
+            )
+        );
         stack.add(new FlowingMilkLayer(skin));
         setActor(stack);
     }

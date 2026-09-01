@@ -23,6 +23,7 @@ final class CookiesView extends ScreenLayout {
         add(
             new CookiePanel(
                 skin,
+                bundle,
                 random,
                 cookieService,
                 eventBus

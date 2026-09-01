@@ -3,15 +3,21 @@ package com.github.maximtereshchenko.games.cookies;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 
 final class CookiesPanelLayer extends Table {
 
-    CookiesPanelLayer(Skin skin, EventBus<Event> eventBus) {
+    CookiesPanelLayer(
+        Skin skin,
+        I18NBundle bundle,
+        EventBus<Event> eventBus
+    ) {
         add()
             .height(Value.percentHeight(0.1f, this))
             .row();
-        add(new CookieAmountPanel(skin, eventBus)).growX();
+        add(new CookieAmountPanel(skin, bundle, eventBus))
+            .growX();
         top();
     }
 }
