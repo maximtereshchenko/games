@@ -18,6 +18,7 @@ final class StorePanel extends Table {
     StorePanel(
         Skin skin,
         I18NBundle bundle,
+        CookieService cookieService,
         EventBus<Event> eventBus
     ) {
         background(skin.get(Style.class).background);
@@ -33,6 +34,7 @@ final class StorePanel extends Table {
         var generatorButtons = generatorButtons(
             skin,
             bundle,
+            cookieService,
             eventBus,
             buildingsBeam.eventListener()
         );
@@ -53,6 +55,7 @@ final class StorePanel extends Table {
     private List<GeneratorButton> generatorButtons(
         Skin skin,
         I18NBundle bundle,
+        CookieService cookieService,
         EventBus<Event> eventBus,
         EventListener eventListener
     ) {
@@ -62,6 +65,7 @@ final class StorePanel extends Table {
                 skin,
                 bundle,
                 generator,
+                cookieService,
                 eventBus
             );
             generatorButton.addListener(eventListener);

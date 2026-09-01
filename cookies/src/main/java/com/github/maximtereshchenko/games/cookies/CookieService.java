@@ -14,16 +14,16 @@ final class CookieService {
 
     private final EventBus<Event> eventBus;
     private final Map<Generator, Integer> generators;
-    private BigDecimal cookieAmount;
+    private BigDecimal cookies;
 
     CookieService(EventBus<Event> eventBus) {
         this.eventBus = eventBus;
         this.generators = new EnumMap<>(Generator.class);
-        this.cookieAmount = BigDecimal.ZERO;
+        this.cookies = BigDecimal.ZERO;
     }
 
     void onStart() {
-        eventBus.publish(new CookieAmountUpdated(cookieAmount));
+        eventBus.publish(new CookieAmountUpdated(cookies));
         for (var entry : BASE_COST.entrySet()) {
             eventBus.publish(
                 new GeneratorPriceUpdated(
@@ -36,13 +36,13 @@ final class CookieService {
 
     void onClick() {
         var clickPower = BigDecimal.ONE;
-        cookieAmount = cookieAmount.add(clickPower);
+        cookies = cookies.add(clickPower);
         eventBus.publish(new CookiesClicked(clickPower));
-        eventBus.publish(new CookieAmountUpdated(cookieAmount));
+        eventBus.publish(new CookieAmountUpdated(cookies));
         for (var entry : BASE_COST.entrySet()) {
             if (
                 !generators.containsKey(entry.getKey()) &&
-                cookieAmount.compareTo(entry.getValue()) >= 0
+                cookies.compareTo(entry.getValue()) >= 0
             ) {
                 generators.put(entry.getKey(), 0);
                 eventBus.publish(
@@ -50,5 +50,15 @@ final class CookieService {
                 );
             }
         }
+    }
+
+    void buyGenerator(Generator generator) {
+        cookies = cookies.subtract(BASE_COST.get(generator));
+        var amount = generators.get(generator) + 1;
+        generators.put(generator, amount);
+        eventBus.publish(new CookieAmountUpdated(cookies));
+        eventBus.publish(
+            new GeneratorBought(generator, amount)
+        );
     }
 }

@@ -20,12 +20,26 @@ final class CookiesView extends ScreenLayout {
     ) {
         setBackground(skin.get(Style.class).background);
         defaults().growY();
-        add(new CookiePanel(skin, random, cookieService, eventBus))
+        add(
+            new CookiePanel(
+                skin,
+                random,
+                cookieService,
+                eventBus
+            )
+        )
             .width(Value.percentWidth(0.3f, this));
         addVerticalBeam(skin);
         add().growX();
         addVerticalBeam(skin);
-        add(new StorePanel(skin, bundle, eventBus));
+        add(
+            new StorePanel(
+                skin,
+                bundle,
+                cookieService,
+                eventBus
+            )
+        );
     }
 
     private void addVerticalBeam(Skin skin) {
