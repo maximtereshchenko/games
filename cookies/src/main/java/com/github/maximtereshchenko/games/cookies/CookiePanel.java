@@ -20,7 +20,13 @@ final class CookiePanel extends Container<Stack> {
         var stack = new Stack();
         stack.add(new GradientPanelLayer(skin));
         stack.add(new StaticFallingCookiesWidget(skin));
-        stack.add(new DynamicFallingCookiesWidget(skin, random));
+        stack.add(
+            new DynamicFallingCookiesWidget(
+                skin,
+                random,
+                eventBus
+            )
+        );
         stack.add(
             new CookieButtonPanelLayer(
                 skin,
