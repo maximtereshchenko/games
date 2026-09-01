@@ -18,7 +18,11 @@ final class CookieButton extends Button {
     private static final float HOVERED_SCALE = 1.05f;
     private static final float PRESSED_SCALE = 0.98f;
 
-    CookieButton(Skin skin, Random random) {
+    CookieButton(
+        Skin skin,
+        Random random,
+        CookieService cookieService
+    ) {
         super(skin, "button_cookie");
         setTransform(true);
         addListener(new ClickListener() {
@@ -57,23 +61,16 @@ final class CookieButton extends Button {
 
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                var stage = getStage();
-                stage.addActor(
-                    new ClickCookieParticle(
-                        skin,
-                        random,
-                        event.getStageX(),
-                        event.getStageY()
-                    )
-                );
-                stage.addActor(
-                    new ClickAmountParticle(
-                        skin,
-                        random,
-                        event.getStageX(),
-                        event.getStageY()
-                    )
-                );
+                getStage()
+                    .addActor(
+                        new ClickCookieParticle(
+                            skin,
+                            random,
+                            event.getStageX(),
+                            event.getStageY()
+                        )
+                    );
+                cookieService.onClick();
             }
 
             private void scale(float scale) {

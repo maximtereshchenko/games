@@ -5,12 +5,23 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 final class ClickAmountParticle extends Label {
 
-    ClickAmountParticle(Skin skin, Random random, float x, float y) {
-        super("+1", skin, "label_clickAmount");
+    ClickAmountParticle(
+        Skin skin,
+        Random random,
+        float x,
+        float y,
+        BigDecimal bigDecimal
+    ) {
+        super(
+            "+" + bigDecimal.toPlainString(),
+            skin,
+            "label_clickAmount"
+        );
         setTouchable(Touchable.disabled);
         setPosition(
             x - getWidth() * random.nextFloat(),

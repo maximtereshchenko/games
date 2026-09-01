@@ -9,7 +9,11 @@ import java.util.Random;
 
 final class CookieButtonPanelLayer extends Container<Stack> {
 
-    CookieButtonPanelLayer(Skin skin, Random random) {
+    CookieButtonPanelLayer(
+        Skin skin,
+        Random random,
+        CookieService cookieService
+    ) {
         background(skin.getDrawable("gradient_borders"));
         size(Value.percentWidth(0.4f, this));
         var first = new Flare(skin);
@@ -19,7 +23,13 @@ final class CookieButtonPanelLayer extends Container<Stack> {
         stack.add(first);
         stack.add(second);
         stack.add(new CursorRingsWidget(skin));
-        stack.add(new CookieButton(skin, random));
+        stack.add(
+            new CookieButton(
+                skin,
+                random,
+                cookieService
+            )
+        );
         setActor(stack);
     }
 }

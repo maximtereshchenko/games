@@ -9,9 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 final class CookiesGameAdapter implements ApplicationListener {
 
@@ -26,11 +28,24 @@ final class CookiesGameAdapter implements ApplicationListener {
         var spriteBatch = new SpriteBatch();
         var fileHandleResolver = new ClasspathFileHandleResolver();
         var assetManager = new AssetManager(fileHandleResolver);
-        var skin = new AssetDescriptor<>("skin.json", Skin.class);
-        assetManager.load(skin);
+        var skinAssetDescriptor = new AssetDescriptor<>("skin.json", Skin.class);
+        assetManager.load(skinAssetDescriptor);
         assetManager.finishLoading();
+        var eventBus = new EventBus<Event>();
+        var cookieService = new CookieService(eventBus);
+        var skin = assetManager.get(skinAssetDescriptor);
+        var random = ThreadLocalRandom.current();
         var stage = new Stage(new ScreenViewport(), spriteBatch);
-        stage.addActor(new CookiesView(assetManager.get(skin)));
+        stage.addActor(
+            new CookiesView(
+                skin,
+                random,
+                cookieService,
+                eventBus
+            )
+        );
+        eventBus.subscribe(new SpawnClickAmountParticle(skin, stage, random));
+        cookieService.onStart();
         cookiesGame = new CookiesGame(Set.of(spriteBatch));
         cookiesGame.setScreen(new StageScreen(stage));
     }
