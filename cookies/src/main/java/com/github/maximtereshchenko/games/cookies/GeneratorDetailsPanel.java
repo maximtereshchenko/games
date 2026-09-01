@@ -1,12 +1,15 @@
 package com.github.maximtereshchenko.games.cookies;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 
 final class GeneratorDetailsPanel extends Table {
+
+    private final Label enabledCookiesLabel;
+    private final Label disabledCookiesLabel;
+    private final Cell<?> cell;
 
     GeneratorDetailsPanel(
         Skin skin,
@@ -14,16 +17,38 @@ final class GeneratorDetailsPanel extends Table {
         Generator generator,
         EventBus<Event> eventBus
     ) {
+        this.enabledCookiesLabel = new Label(
+            "15",
+            skin,
+            "label_generatorCookies"
+        );
+        this.disabledCookiesLabel = new Label(
+            "15",
+            skin,
+            "label_generatorCookies_disabled"
+        );
         add(new GeneratorNameLabel(skin, bundle, generator, eventBus))
             .colspan(2)
             .left()
             .padBottom(4)
             .row();
-        add(new SmallCookieIcon(skin, generator, eventBus))
+        add(new Image(skin.get(Style.class).icon))
             .width(Value.prefWidth)
             .padTop(2);
-        add(new GeneratorCookiesLabel(skin, generator, eventBus))
-            .expandX()
-            .left();
+        this.cell = this.add().expandX().left();
+        disable();
+    }
+
+    void enable() {
+        cell.setActor(enabledCookiesLabel);
+    }
+
+    void disable() {
+        cell.setActor(disabledCookiesLabel);
+    }
+
+    private static final class Style {
+
+        Drawable icon;
     }
 }

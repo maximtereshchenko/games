@@ -1,16 +1,17 @@
 package com.github.maximtereshchenko.games.cookies;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
-final class GeneratorIcon extends Image implements Subscriber<Event> {
+final class GeneratorIcon extends Stack implements Subscriber<Event> {
 
-    private final Style style;
+    private final Image disabled;
+    private final Image enabled;
     private final Generator generator;
 
     GeneratorIcon(
@@ -18,11 +19,13 @@ final class GeneratorIcon extends Image implements Subscriber<Event> {
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        var iconStyle = skin.get(generator.name(), Style.class);
-        super(iconStyle.drawable);
-        this.style = iconStyle;
+        var style = skin.get(generator.name(), Style.class);
+        this.disabled = new Image(style.disabled);
+        this.enabled = new Image(style.enabled);
         this.generator = generator;
-        setColor(style.disabledColor);
+        enabled.addAction(Actions.fadeOut(0));
+        add(disabled);
+        add(enabled);
         eventBus.subscribe(this);
     }
 
@@ -32,14 +35,15 @@ final class GeneratorIcon extends Image implements Subscriber<Event> {
             event instanceof GeneratorUnlocked generatorUnlocked &&
             generatorUnlocked.value().equals(generator)
         ) {
-            addAction(Actions.color(style.enabledColor, 0.5f));
+            var duration = 0.5f;
+            disabled.addAction(Actions.fadeOut(duration));
+            enabled.addAction(Actions.fadeIn(duration));
         }
     }
 
     private static final class Style {
 
-        Drawable drawable;
-        Color enabledColor;
-        Color disabledColor;
+        Drawable enabled;
+        Drawable disabled;
     }
 }

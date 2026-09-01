@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.cookies;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -9,6 +10,7 @@ import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 final class GeneratorButton extends Button implements Subscriber<Event> {
 
+    private final Style style;
     private final Generator generator;
 
     GeneratorButton(
@@ -17,7 +19,9 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        super(skin, "button_generator_0");
+        var buttonStyle = skin.get(Style.class);
+        super(buttonStyle);
+        this.style = buttonStyle;
         this.generator = generator;
         setDisabled(true);
         add(new GeneratorIcon(skin, generator, eventBus));
@@ -36,5 +40,24 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
         ) {
             setDisabled(false);
         }
+    }
+
+    @Override
+    public void setDisabled(boolean isDisabled) {
+        super.setDisabled(isDisabled);
+        setColor(color(isDisabled));
+    }
+
+    private Color color(boolean isDisabled) {
+        if (isDisabled) {
+            return style.disabledColor;
+        }
+        return style.enabledColor;
+    }
+
+    private static final class Style extends ButtonStyle {
+
+        Color enabledColor;
+        Color disabledColor;
     }
 }

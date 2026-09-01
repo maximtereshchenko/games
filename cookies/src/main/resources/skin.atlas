@@ -13,7 +13,7 @@ gradient_borders
   index: -1
 gradient_bottom
   rotate: false
-  xy: 780, 700
+  xy: 862, 828
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
@@ -27,28 +27,28 @@ gradient_bottom_long
   index: -1
 gradient_left
   rotate: false
-  xy: 538, 308
+  xy: 926, 940
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
 gradient_right
   rotate: false
-  xy: 538, 290
+  xy: 538, 308
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
 gradient_top
   rotate: false
-  xy: 862, 828
+  xy: 992, 958
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
 gradient_top_long
   rotate: false
-  xy: 926, 896
+  xy: 780, 638
   size: 2, 64
   orig: 2, 64
   offset: 0, 0
@@ -81,6 +81,13 @@ icon_cursor_tilted
   orig: 64, 64
   offset: 0, 0
   index: -1
+icon_cursor_tiltedBlack
+  rotate: false
+  xy: 926, 958
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 texture_cookie
   rotate: false
   xy: 2, 20
@@ -90,7 +97,7 @@ texture_cookie
   index: -1
 texture_cursor
   rotate: false
-  xy: 988, 990
+  xy: 488, 476
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -132,21 +139,21 @@ tile_cookies
   index: 0
 tile_empty
   rotate: false
-  xy: 488, 507
+  xy: 842, 763
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 tile_frame_brown
   rotate: false
-  xy: 926, 962
+  xy: 796, 766
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 tile_frame_brownBright
   rotate: false
-  xy: 796, 766
+  xy: 780, 704
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
