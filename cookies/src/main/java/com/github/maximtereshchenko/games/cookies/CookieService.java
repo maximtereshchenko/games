@@ -8,19 +8,18 @@ import java.util.Map;
 
 final class CookieService {
 
+    private static final Map<Generator, BigDecimal> BASE_COST = Map.of(
+        Generator.CURSOR, BigDecimal.valueOf(15)
+    );
+
     private final EventBus<Event> eventBus;
     private final Map<Generator, Integer> generators;
     private BigDecimal cookieAmount;
-    private final BigDecimal cookiesPerSecond;
 
     CookieService(EventBus<Event> eventBus) {
         this.eventBus = eventBus;
         this.generators = new EnumMap<>(Generator.class);
         this.cookieAmount = BigDecimal.ZERO;
-        this.cookiesPerSecond = BigDecimal.ZERO;
-        for (var generator : Generator.values()) {
-            generators.put(generator, 0);
-        }
     }
 
     void onStart() {
@@ -32,5 +31,14 @@ final class CookieService {
         cookieAmount = cookieAmount.add(clickPower);
         eventBus.publish(new CookiesClicked(clickPower));
         eventBus.publish(new CookieAmountUpdated(cookieAmount));
+        for (var entry : BASE_COST.entrySet()) {
+            if (
+                !generators.containsKey(entry.getKey()) &&
+                cookieAmount.compareTo(entry.getValue()) >= 0
+            ) {
+                generators.put(entry.getKey(), 0);
+                eventBus.publish(new GeneratorUnlocked(entry.getKey()));
+            }
+        }
     }
 }
