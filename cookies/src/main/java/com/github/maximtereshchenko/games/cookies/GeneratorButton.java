@@ -8,10 +8,15 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
+import java.math.BigDecimal;
+
 final class GeneratorButton extends Button implements Subscriber<Event> {
 
     private final Style style;
     private final Generator generator;
+    private final GeneratorDetailsPanel generatorDetailsPanel;
+    private BigDecimal cookies;
+    private BigDecimal priceCookies;
 
     GeneratorButton(
         Skin skin,
@@ -23,9 +28,16 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
         super(buttonStyle);
         this.style = buttonStyle;
         this.generator = generator;
-        setDisabled(true);
+        this.generatorDetailsPanel = new GeneratorDetailsPanel(
+            skin,
+            bundle,
+            generator,
+            eventBus
+        );
+        this.cookies = BigDecimal.ZERO;
+        this.priceCookies = BigDecimal.ZERO;
         add(new GeneratorIcon(skin, generator, eventBus));
-        add(new GeneratorDetailsPanel(skin, bundle, generator, eventBus))
+        add(generatorDetailsPanel)
             .growX();
         add(new Label("", skin, "label_generatorAmount"))
             .padRight(4);
@@ -34,11 +46,19 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
 
     @Override
     public void onEvent(Event event) {
-        if (
-            event instanceof GeneratorUnlocked generatorUnlocked &&
-            generatorUnlocked.value().equals(generator)
-        ) {
-            setDisabled(false);
+        switch (event) {
+            case CookieAmountUpdated cookieAmountUpdated -> {
+                cookies = cookieAmountUpdated.value();
+                setState();
+            }
+            case GeneratorPriceUpdated generatorPriceUpdated
+                when generatorPriceUpdated.generator() == generator -> {
+                priceCookies = generatorPriceUpdated.price();
+                setState();
+            }
+            default -> {
+                //empty
+            }
         }
     }
 
@@ -46,6 +66,11 @@ final class GeneratorButton extends Button implements Subscriber<Event> {
     public void setDisabled(boolean isDisabled) {
         super.setDisabled(isDisabled);
         setColor(color(isDisabled));
+        generatorDetailsPanel.setDisabled(isDisabled);
+    }
+
+    private void setState() {
+        setDisabled(cookies.compareTo(priceCookies) < 0);
     }
 
     private Color color(boolean isDisabled) {

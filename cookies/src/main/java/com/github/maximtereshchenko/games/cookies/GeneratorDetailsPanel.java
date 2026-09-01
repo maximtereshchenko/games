@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.cookies;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
@@ -36,15 +37,17 @@ final class GeneratorDetailsPanel extends Table {
             .width(Value.prefWidth)
             .padTop(2);
         this.cell = this.add().expandX().left();
-        disable();
     }
 
-    void enable() {
-        cell.setActor(enabledCookiesLabel);
+    void setDisabled(boolean isDisabled) {
+        cell.setActor(actor(isDisabled));
     }
 
-    void disable() {
-        cell.setActor(disabledCookiesLabel);
+    private Actor actor(boolean isDisabled) {
+        if (isDisabled) {
+            return disabledCookiesLabel;
+        }
+        return enabledCookiesLabel;
     }
 
     private static final class Style {

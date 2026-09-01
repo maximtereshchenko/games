@@ -244,6 +244,7 @@
   "com.github.maximtereshchenko.games.cookies.GeneratorButton$Style": {
     "default": {
       "up": "tile_marble_0",
+      "disabled": "tile_marble_0",
       "down": "tile_marble_gradientBlack_0",
       "over": "tile_marble_gradientWhite_0",
       "enabledColor": "color_white",

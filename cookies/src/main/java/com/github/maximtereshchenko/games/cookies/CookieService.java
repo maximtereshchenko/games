@@ -24,6 +24,14 @@ final class CookieService {
 
     void onStart() {
         eventBus.publish(new CookieAmountUpdated(cookieAmount));
+        for (var entry : BASE_COST.entrySet()) {
+            eventBus.publish(
+                new GeneratorPriceUpdated(
+                    entry.getKey(),
+                    entry.getValue()
+                )
+            );
+        }
     }
 
     void onClick() {
@@ -37,7 +45,9 @@ final class CookieService {
                 cookieAmount.compareTo(entry.getValue()) >= 0
             ) {
                 generators.put(entry.getKey(), 0);
-                eventBus.publish(new GeneratorUnlocked(entry.getKey()));
+                eventBus.publish(
+                    new GeneratorUnlocked(entry.getKey())
+                );
             }
         }
     }
