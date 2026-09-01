@@ -5,27 +5,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Align;
+import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
 
-final class CursorRingsWidget extends WidgetGroup {
+final class CursorRingsWidget extends WidgetGroup implements Subscriber<Event> {
 
     private static final int CURSORS_PER_RING = 50;
     private static final float DEGREES_PER_CURSOR = 360f / CURSORS_PER_RING;
 
+    private final Skin skin;
     private final List<Image> cursors;
     private float accumulatedTimeSeconds;
 
-    CursorRingsWidget(Skin skin) {
+    CursorRingsWidget(Skin skin, EventBus<Event> eventBus) {
+        this.skin = skin;
         this.cursors = new ArrayList<>();
         setLayoutEnabled(false);
-        for (int i = 0; i < 150; i++) {
-            var cursor = new Image(skin, "texture_cursor"); //TODO class
-            cursor.setOrigin(Align.center);
-            cursors.add(cursor);
-            addActor(cursor);
-        }
+        eventBus.subscribe(this);
     }
 
     @Override
@@ -58,6 +57,21 @@ final class CursorRingsWidget extends WidgetGroup {
             cursor.setScale(
                 getWidth() / (6 * cursor.getPrefWidth())
             );
+        }
+    }
+
+    @Override
+    public void onEvent(Event event) {
+        if (
+            event instanceof GeneratorBought generatorBought &&
+            generatorBought.generator() == Generator.CURSOR
+        ) {
+            for (var i = cursors.size(); i < generatorBought.newAmount(); i++) {
+                var cursor = new Image(skin, "texture_cursor");
+                cursor.setOrigin(Align.center);
+                cursors.add(cursor);
+                addActor(cursor);
+            }
         }
     }
 

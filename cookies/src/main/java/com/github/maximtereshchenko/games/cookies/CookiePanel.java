@@ -33,7 +33,8 @@ final class CookiePanel extends Container<Stack> {
             new CookieButtonPanelLayer(
                 skin,
                 random,
-                cookieService
+                cookieService,
+                eventBus
             )
         );
         stack.add(

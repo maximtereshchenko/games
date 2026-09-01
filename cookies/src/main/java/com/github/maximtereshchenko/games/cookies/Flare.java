@@ -21,14 +21,13 @@ final class Flare extends Image {
                     Actions.forever(
                         Actions.sequence(
                             Actions.scaleTo(4, 4, CYCLE_TIME),
-                            Actions.scaleTo(1, 1)
+                            Actions.scaleTo(2, 2)
                         )
                     ),
                     Actions.forever(
                         Actions.sequence(
-                            Actions.delay(CYCLE_TIME / 2),
-                            Actions.fadeOut(CYCLE_TIME / 2),
-                            Actions.fadeIn(0)
+                            Actions.fadeIn(CYCLE_TIME / 2),
+                            Actions.fadeOut(CYCLE_TIME / 2)
                         )
                     )
                 )

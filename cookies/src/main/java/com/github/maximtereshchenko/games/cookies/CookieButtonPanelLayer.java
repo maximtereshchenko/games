@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.util.Random;
 
@@ -13,7 +14,8 @@ final class CookieButtonPanelLayer extends Container<Stack> {
     CookieButtonPanelLayer(
         Skin skin,
         Random random,
-        CookieService cookieService
+        CookieService cookieService,
+        EventBus<Event> eventBus
     ) {
         background(skin.get(Style.class).background);
         size(Value.percentWidth(0.4f, this));
@@ -23,7 +25,7 @@ final class CookieButtonPanelLayer extends Container<Stack> {
         var stack = new Stack();
         stack.add(first);
         stack.add(second);
-        stack.add(new CursorRingsWidget(skin));
+        stack.add(new CursorRingsWidget(skin, eventBus));
         stack.add(
             new CookieButton(
                 skin,
