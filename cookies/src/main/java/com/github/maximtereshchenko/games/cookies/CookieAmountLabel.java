@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
-final class CookieAmountLabel extends CookieLabel implements Subscriber<Event> {
+final class CookieAmountLabel extends CookiesLabel implements Subscriber<Event> {
 
     CookieAmountLabel(Skin skin, EventBus<Event> eventBus) {
         super("", skin);

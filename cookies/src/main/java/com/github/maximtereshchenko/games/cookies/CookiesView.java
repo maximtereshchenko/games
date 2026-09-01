@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.cookies;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
@@ -17,7 +18,7 @@ final class CookiesView extends ScreenLayout {
         CookieService cookieService,
         EventBus<Event> eventBus
     ) {
-        setBackground(skin.getTiledDrawable("tile_paper"));
+        setBackground(skin.get(Style.class).background);
         defaults().growY();
         add(new CookiePanel(skin, random, cookieService, eventBus))
             .width(Value.percentWidth(0.3f, this));
@@ -29,5 +30,10 @@ final class CookiesView extends ScreenLayout {
 
     private void addVerticalBeam(Skin skin) {
         add(new VerticalBeam(skin)).width(Value.prefWidth);
+    }
+
+    private static final class Style {
+
+        Drawable background;
     }
 }

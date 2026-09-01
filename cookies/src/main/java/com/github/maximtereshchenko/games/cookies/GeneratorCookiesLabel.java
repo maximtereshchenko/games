@@ -1,5 +1,7 @@
 package com.github.maximtereshchenko.games.cookies;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.common.event.EventBus;
@@ -7,7 +9,7 @@ import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 final class GeneratorCookiesLabel extends Label implements Subscriber<Event> {
 
-    private final Skin skin;
+    private final Style style;
     private final Generator generator;
 
     GeneratorCookiesLabel(
@@ -15,8 +17,15 @@ final class GeneratorCookiesLabel extends Label implements Subscriber<Event> {
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        super("15", skin, "label_generatorCookies_disabled");
-        this.skin = skin;
+        var labelStyle = skin.get(Style.class);
+        super(
+            "15",
+            new LabelStyle(
+                labelStyle.font,
+                labelStyle.disabledFontColor
+            )
+        );
+        this.style = labelStyle;
         this.generator = generator;
         eventBus.subscribe(this);
     }
@@ -27,7 +36,14 @@ final class GeneratorCookiesLabel extends Label implements Subscriber<Event> {
             event instanceof GeneratorUnlocked generatorUnlocked &&
             generatorUnlocked.value().equals(generator)
         ) {
-            setStyle(skin.get("label_generatorCookies", LabelStyle.class));
+            setStyle(new LabelStyle(style.font, style.enabledFontColor));
         }
+    }
+
+    private static final class Style {
+
+        BitmapFont font;
+        Color enabledFontColor;
+        Color disabledFontColor;
     }
 }

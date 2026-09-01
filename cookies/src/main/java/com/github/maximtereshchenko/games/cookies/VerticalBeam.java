@@ -4,17 +4,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 final class VerticalBeam extends Stack {
 
     VerticalBeam(Skin skin) {
-        var tiledDrawable = skin.getTiledDrawable("tile_beam_vertical");
-        tiledDrawable.setAlign(Align.top);
+        var style = skin.get(Style.class);
         var container = new Container<>();
-        container.setBackground(tiledDrawable);
+        container.background(style.background);
         add(container);
-        add(new Image(skin, "gradient_top"));
-        add(new Image(skin, "gradient_bottom"));
+        for (var drawable : style.drawables) {
+            add(new Image(drawable));
+        }
+    }
+
+    private static final class Style {
+
+        Drawable background;
+        Drawable[] drawables;
     }
 }

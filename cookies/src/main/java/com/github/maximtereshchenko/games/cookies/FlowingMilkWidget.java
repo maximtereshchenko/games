@@ -7,11 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 final class FlowingMilkWidget extends Widget {
 
-    private final Drawable drawable;
+    private final Style style;
     private float offsetPercentage;
 
     FlowingMilkWidget(Skin skin) {
-        this.drawable = skin.getDrawable("texture_milk_plain");
+        this.style = skin.get(Style.class);
     }
 
     @Override
@@ -29,12 +29,17 @@ final class FlowingMilkWidget extends Widget {
     }
 
     private void drawShiftedLeft(Batch batch, float shift) {
-        drawable.draw(
+        style.drawable.draw(
             batch,
             getX() + getWidth() * offsetPercentage - shift,
-            getY() + getHeight() - drawable.getMinHeight(),
+            getY() + getHeight() - style.drawable.getMinHeight(),
             getWidth(),
-            drawable.getMinHeight()
+            style.drawable.getMinHeight()
         );
+    }
+
+    private static final class Style {
+
+        Drawable drawable;
     }
 }

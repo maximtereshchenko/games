@@ -3,11 +3,18 @@ package com.github.maximtereshchenko.games.cookies;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 final class UpgradeButton extends Container<ImageButton> {
 
     UpgradeButton(Skin skin) {
-        super(new ImageButton(skin, "button_upgrade"));
-        background(skin.getDrawable("tile_black_transparent25"));
+        var style = skin.get(Style.class);
+        super(new ImageButton(style));
+        background(style.background);
+    }
+
+    private static final class Style extends ImageButton.ImageButtonStyle {
+
+        Drawable background;
     }
 }

@@ -5,19 +5,22 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 final class HorizontalBeam extends Stack {
 
     private final Label label;
 
     HorizontalBeam(Skin skin, String text) {
-        this.label = new Label(text, skin, "label_separator");
+        this.label = new Label(text, skin, "label_horizontalBeam_store");
         this.label.setVisible(false);
+        var style = skin.get(Style.class);
         var container = new Container<>();
-        container.background(skin.getTiledDrawable("tile_beam_horizontal"));
+        container.background(style.background);
         add(container);
-        add(new Image(skin, "gradient_left"));
-        add(new Image(skin, "gradient_right"));
+        for (var drawable : style.drawables) {
+            add(new Image(drawable));
+        }
         add(new Container<>(label).left().padLeft(5));
         addListener(eventListener());
     }
@@ -49,5 +52,11 @@ final class HorizontalBeam extends Stack {
                 }
             }
         };
+    }
+
+    private static final class Style {
+
+        Drawable background;
+        Drawable[] drawables;
     }
 }

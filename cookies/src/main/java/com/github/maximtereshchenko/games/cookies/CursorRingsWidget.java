@@ -21,7 +21,7 @@ final class CursorRingsWidget extends WidgetGroup {
         this.cursors = new ArrayList<>();
         setLayoutEnabled(false);
         for (int i = 0; i < 150; i++) {
-            var cursor = new Image(skin, "texture_cursor");
+            var cursor = new Image(skin, "texture_cursor"); //TODO class
             cursor.setOrigin(Align.center);
             cursors.add(cursor);
             addActor(cursor);

@@ -4,11 +4,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 
 final class GeneratorIcon extends Image implements Subscriber<Event> {
 
+    private final Style style;
     private final Generator generator;
 
     GeneratorIcon(
@@ -16,14 +18,11 @@ final class GeneratorIcon extends Image implements Subscriber<Event> {
         Generator generator,
         EventBus<Event> eventBus
     ) {
-        super(
-            skin,
-            switch (generator) {
-                case CURSOR -> "icon_cursor_tilted";
-            }
-        );
+        var iconStyle = skin.get(generator.name(), Style.class);
+        super(iconStyle.drawable);
+        this.style = iconStyle;
         this.generator = generator;
-        setColor(skin.getColor("color_black_transparent80"));
+        setColor(style.disabledColor);
         eventBus.subscribe(this);
     }
 
@@ -33,7 +32,14 @@ final class GeneratorIcon extends Image implements Subscriber<Event> {
             event instanceof GeneratorUnlocked generatorUnlocked &&
             generatorUnlocked.value().equals(generator)
         ) {
-            addAction(Actions.color(Color.WHITE, 0.5f));
+            addAction(Actions.color(style.enabledColor, 0.5f));
         }
+    }
+
+    private static final class Style {
+
+        Drawable drawable;
+        Color enabledColor;
+        Color disabledColor;
     }
 }

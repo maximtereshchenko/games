@@ -7,18 +7,18 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 final class StaticFallingCookiesWidget extends Widget {
 
-    private final Drawable drawable;
+    private final Style style;
     private float offsetPercentage;
 
     StaticFallingCookiesWidget(Skin skin) {
-        this.drawable = skin.getTiledDrawable("tile_cookies_0");
+        this.style = skin.get(Style.class);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        var offset = drawable.getMinHeight() * offsetPercentage;
-        drawable.draw(
+        var offset = style.drawable.getMinHeight() * offsetPercentage;
+        style.drawable.draw(
             batch,
             getX(),
             getY() - offset,
@@ -32,5 +32,10 @@ final class StaticFallingCookiesWidget extends Widget {
         super.act(delta);
         offsetPercentage += delta / 10;
         offsetPercentage %= 1;
+    }
+
+    private static final class Style {
+
+        Drawable drawable;
     }
 }

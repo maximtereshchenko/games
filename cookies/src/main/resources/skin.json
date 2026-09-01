@@ -82,11 +82,26 @@
       "b": 0,
       "a": 0.8
     },
-    "color_read_transparent40": {
+    "color_red_transparent40": {
       "r": 1,
       "g": 0,
       "b": 0,
       "a": 0.4
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable": {
+    "tile_noise_repeated": {
+      "region": "tile_noise"
+    },
+    "tile_paper_repeated": {
+      "region": "tile_paper"
+    },
+    "tile_beam_horizontalRepeated": {
+      "region": "tile_beam_horizontal"
+    },
+    "tile_beam_verticalRepeated": {
+      "region": "tile_beam_vertical",
+      "align": 2
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -119,37 +134,14 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
-    "button_amount": {
+    "button_buySellAmount": {
       "font": "font_merriweather_10",
       "fontColor": "color_white_transparent50",
       "checkedFontColor": "color_white",
       "overFontColor": "color_white"
     }
   },
-  "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
-    "button_upgrade": {
-      "up": "tile_frame_brown",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor"
-    }
-  },
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
-    "label_generatorName": {
-      "font": "font_merriweather_25",
-      "fontColor": "color_white"
-    },
-    "label_generatorName_disabled": {
-      "font": "font_merriweather_25",
-      "fontColor": "color_white_transparent60"
-    },
-    "label_generatorCookies": {
-      "font": "font_merriweather_16",
-      "fontColor": "color_green"
-    },
-    "label_generatorCookies_disabled": {
-      "font": "font_merriweather_16",
-      "fontColor": "color_read_transparent40"
-    },
     "label_generatorAmount": {
       "font": "font_merriweather_40",
       "fontColor": "color_black_transparent20"
@@ -159,7 +151,7 @@
       "font": "font_merriweather_25",
       "fontColor": "color_white"
     },
-    "label_separator": {
+    "label_horizontalBeam_store": {
       "font": "font_tahoma_8",
       "fontColor": "color_brown"
     },
@@ -174,6 +166,115 @@
     "label_cookiesPerSecond": {
       "font": "font_merriweather_10",
       "fontColor": "color_white"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.AmountPanel$Style": {
+    "default": {
+      "background": "tile_noise_repeated"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.CookieAmountPanel$Style": {
+    "default": {
+      "background": "tile_black_transparent40"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.CookieButtonPanelLayer$Style": {
+    "default": {
+      "background": "gradient_borders"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.CookiesView$Style": {
+    "default": {
+      "background": "tile_paper_repeated"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.FlowingMilkWidget$Style": {
+    "default": {
+      "drawable": "texture_milk_plain"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.GeneratorCookiesLabel$Style": {
+    "default": {
+      "font": "font_merriweather_16",
+      "enabledFontColor": "color_green",
+      "disabledFontColor": "color_red_transparent40"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.GeneratorIcon$Style": {
+    "CURSOR": {
+      "drawable": "icon_cursor_tilted",
+      "enabledColor": "color_white",
+      "disabledColor": "color_black_transparent80"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.GeneratorNameLabel$Style": {
+    "CURSOR": {
+      "font": "font_merriweather_25",
+      "enabledFontColor": "color_white",
+      "disabledFontColor": "color_white_transparent60"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.GradientPanelLayer$Style": {
+    "default": {
+      "drawable": "gradient_bottom_long"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.ClickCookieParticle$Style": {
+    "default": {
+      "drawable": "icon_cookie"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.CookieIcon$Style": {
+    "default": {
+      "drawable": "icon_cookie"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.Flare$Style": {
+    "default": {
+      "drawable": "texture_flare"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.HorizontalBeam$Style": {
+    "default": {
+      "background": "tile_beam_horizontalRepeated",
+      "drawables": [
+        "gradient_left",
+        "gradient_right"
+      ]
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.SmallCookieIcon$Style": {
+    "default": {
+      "drawable": "icon_cookie_small",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent60"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.StaticFallingCookiesWidget$Style": {
+    "default": {
+      "drawable": "tile_cookies_0"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.StorePanel$Style": {
+    "default": {
+      "background": "tile_black_transparent50"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.UpgradeButton$Style": {
+    "default": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.VerticalBeam$Style": {
+    "default": {
+      "background": "tile_beam_verticalRepeated",
+      "drawables": [
+        "gradient_top",
+        "gradient_bottom"
+      ]
     }
   }
 }

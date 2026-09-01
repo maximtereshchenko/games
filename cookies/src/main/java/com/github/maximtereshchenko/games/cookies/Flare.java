@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.cookies;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 
 final class Flare extends Image {
@@ -10,7 +11,7 @@ final class Flare extends Image {
     static final float CYCLE_TIME = 4;
 
     Flare(Skin skin) {
-        super(skin, "texture_flare");
+        super(skin.get(Style.class).drawable);
         addAction(
             Actions.forever(
                 Actions.parallel(
@@ -39,5 +40,10 @@ final class Flare extends Image {
     public void sizeChanged() {
         super.sizeChanged();
         setOrigin(Align.center);
+    }
+
+    private static final class Style {
+
+        Drawable drawable;
     }
 }

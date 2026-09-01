@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 import java.util.Random;
 
@@ -14,7 +15,7 @@ final class CookieButtonPanelLayer extends Container<Stack> {
         Random random,
         CookieService cookieService
     ) {
-        background(skin.getDrawable("gradient_borders"));
+        background(skin.get(Style.class).background);
         size(Value.percentWidth(0.4f, this));
         var first = new Flare(skin);
         var second = new Flare(skin);
@@ -31,5 +32,10 @@ final class CookieButtonPanelLayer extends Container<Stack> {
             )
         );
         setActor(stack);
+    }
+
+    private static final class Style {
+
+        Drawable background;
     }
 }

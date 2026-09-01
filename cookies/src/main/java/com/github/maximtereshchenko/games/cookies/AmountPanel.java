@@ -5,11 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 final class AmountPanel extends Table {
 
     AmountPanel(Skin skin) {
-        background(skin.getTiledDrawable("tile_noise"));
+        background(skin.get(Style.class).background);
         var buy = checkBox(skin, "Buy");
         var sell = checkBox(skin, "Sell");
         var one = checkBox(skin, "1");
@@ -54,6 +55,11 @@ final class AmountPanel extends Table {
     }
 
     private CheckBox checkBox(Skin skin, String text) {
-        return new CheckBox(text, skin, "button_amount");
+        return new CheckBox(text, skin, "button_buySellAmount");
+    }
+
+    private static final class Style {
+
+        Drawable background;
     }
 }

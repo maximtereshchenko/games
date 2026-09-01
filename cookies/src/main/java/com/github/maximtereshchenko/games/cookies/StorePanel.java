@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
@@ -19,7 +20,7 @@ final class StorePanel extends Table {
         I18NBundle bundle,
         EventBus<Event> eventBus
     ) {
-        background(skin.getDrawable("tile_black_transparent50"));
+        background(skin.get(Style.class).background);
         var label = new Label("Store", skin, "label_store");
         label.setAlignment(Align.center);
         var upgradesBeam = new HorizontalBeam(skin, "Upgrades");
@@ -67,5 +68,10 @@ final class StorePanel extends Table {
             generatorButtons.add(generatorButton);
         }
         return generatorButtons;
+    }
+
+    private static final class Style {
+
+        Drawable background;
     }
 }

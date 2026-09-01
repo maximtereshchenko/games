@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 
 import java.util.Random;
@@ -12,7 +13,7 @@ import java.util.Random;
 final class ClickCookieParticle extends Image {
 
     ClickCookieParticle(Skin skin, Random random, float x, float y) {
-        super(skin, "icon_cookie");
+        super(skin.get(Style.class).drawable);
         setTouchable(Touchable.disabled);
         setOrigin(Align.center);
         setScale(random.nextFloat(0.8f, 1.2f));
@@ -38,5 +39,10 @@ final class ClickCookieParticle extends Image {
                 Actions.removeActor()
             )
         );
+    }
+
+    private static final class Style {
+
+        Drawable drawable;
     }
 }
