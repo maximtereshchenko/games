@@ -23,9 +23,9 @@ final class StorePanel extends Table {
         background(skin.get(Style.class).background);
         var label = new Label("Store", skin, "label_store");
         label.setAlignment(Align.center);
-        var upgradesBeam = new HorizontalBeam(skin, "Upgrades");
+        var upgradesBeam = new StoreBeam(skin, "Upgrades");
         var upgradePanel = new UpgradePanel(skin);
-        var buildingsBeam = new HorizontalBeam(skin, "Buildings");
+        var buildingsBeam = new StoreBeam(skin, "Buildings");
         var amountPanel = new AmountPanel(skin);
         upgradesBeam.addListener(upgradePanel.eventListener());
         upgradePanel.addListener(upgradesBeam.eventListener());

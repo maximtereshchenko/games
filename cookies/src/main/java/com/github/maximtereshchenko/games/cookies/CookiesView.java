@@ -29,7 +29,7 @@ final class CookiesView extends ScreenLayout {
     }
 
     private void addVerticalBeam(Skin skin) {
-        add(new VerticalBeam(skin)).width(Value.prefWidth);
+        add(new Beam(skin, "image_view")).width(Value.prefWidth);
     }
 
     private static final class Style {

@@ -3,7 +3,7 @@ package com.github.maximtereshchenko.games.cookies;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 
 final class StaticFallingCookiesWidget extends Widget {
 
@@ -12,6 +12,7 @@ final class StaticFallingCookiesWidget extends Widget {
 
     StaticFallingCookiesWidget(Skin skin) {
         this.style = skin.get(Style.class);
+        style.drawable.setRegion(style.drawable.getRegion());
     }
 
     @Override
@@ -36,6 +37,6 @@ final class StaticFallingCookiesWidget extends Widget {
 
     private static final class Style {
 
-        Drawable drawable;
+        TiledDrawable drawable;
     }
 }

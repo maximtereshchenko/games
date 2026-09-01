@@ -102,6 +102,9 @@
     "tile_beam_verticalRepeated": {
       "region": "tile_beam_vertical",
       "align": 2
+    },
+    "tile_cookies_repeated_0": {
+      "region": "tile_cookies_0"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -151,7 +154,7 @@
       "font": "font_merriweather_25",
       "fontColor": "color_white"
     },
-    "label_horizontalBeam_store": {
+    "label_beamStore": {
       "font": "font_tahoma_8",
       "fontColor": "color_brown"
     },
@@ -234,15 +237,6 @@
       "drawable": "texture_flare"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.HorizontalBeam$Style": {
-    "default": {
-      "background": "tile_beam_horizontalRepeated",
-      "drawables": [
-        "gradient_left",
-        "gradient_right"
-      ]
-    }
-  },
   "com.github.maximtereshchenko.games.cookies.SmallCookieIcon$Style": {
     "default": {
       "drawable": "icon_cookie_small",
@@ -252,7 +246,7 @@
   },
   "com.github.maximtereshchenko.games.cookies.StaticFallingCookiesWidget$Style": {
     "default": {
-      "drawable": "tile_cookies_0"
+      "drawable": "tile_cookies_repeated_0"
     }
   },
   "com.github.maximtereshchenko.games.cookies.StorePanel$Style": {
@@ -268,12 +262,19 @@
       "imageUp": "icon_cursor"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.VerticalBeam$Style": {
-    "default": {
+  "com.github.maximtereshchenko.games.cookies.Beam$Style": {
+    "image_view": {
       "background": "tile_beam_verticalRepeated",
       "drawables": [
         "gradient_top",
         "gradient_bottom"
+      ]
+    },
+    "image_beamStore": {
+      "background": "tile_beam_horizontalRepeated",
+      "drawables": [
+        "gradient_left",
+        "gradient_right"
       ]
     }
   }
