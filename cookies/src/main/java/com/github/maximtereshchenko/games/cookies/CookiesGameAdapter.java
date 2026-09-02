@@ -12,6 +12,11 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
+import com.github.maximtereshchenko.games.cookies.domain.CookieService;
+import com.github.maximtereshchenko.games.cookies.domain.Event;
+import com.github.maximtereshchenko.games.cookies.screen.CookiesScreen;
+import com.github.maximtereshchenko.games.cookies.screen.view.CookiesView;
+import com.github.maximtereshchenko.games.cookies.screen.view.SpawnClickAmountParticle;
 
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
