@@ -142,14 +142,6 @@
       "font": "font_merriweather_25",
       "fontColor": "color_white"
     },
-    "label_generatorCookies": {
-      "font": "font_merriweather_16",
-      "fontColor": "color_green"
-    },
-    "label_generatorCookies_disabled": {
-      "font": "font_merriweather_16",
-      "fontColor": "color_red"
-    },
     "label_generatorAmount": {
       "font": "font_merriweather_40",
       "fontColor": "color_black_transparent20"
@@ -167,73 +159,73 @@
       "fontColor": "color_white"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.generator.AmountPanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionModePanel$Style": {
     "default": {
       "background": "tile_noise_repeated"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.CookieAmountPanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BakingStatisticsPanel$Style": {
     "default": {
       "background": "tile_black_transparent40"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.CookieButtonPanelLayer$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.CookieWidget$Style": {
     "default": {
       "background": "gradient_borders"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.CookiesView$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.BakeryView$Style": {
     "default": {
       "background": "tile_paper_repeated"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.FlowingMilkWidget$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.MilkWidget$Style": {
     "default": {
       "drawable": "texture_milk_plain"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.generator.GeneratorIcon$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.GeneratorIcon$Style": {
     "CURSOR": {
       "enabled": "icon_cursor_tilted",
       "disabled": "icon_cursor_tiltedBlack"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.GradientPanelLayer$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
     "default": {
       "drawable": "gradient_bottom_long"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.ClickCookieParticle$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.CookieParticle$Style": {
     "default": {
       "drawable": "icon_cookie"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.CookieIcon$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FallingCookieWidget$Style": {
     "default": {
       "drawable": "icon_cookie"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.Flare$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FlareWidget$Style": {
     "default": {
       "drawable": "texture_flare"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.generator.GeneratorDetailsPanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionDetailsWidget$Style": {
     "default": {
       "icon": "icon_cookie_small"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.cookie.StaticFallingCookiesWidget$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FallingCookiesWidget$Style": {
     "default": {
       "drawable": "tile_cookies_repeated_0"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.generator.StorePanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel$Style": {
     "default": {
       "background": "tile_black_transparent50"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.generator.UpgradeButton$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeButton$Style": {
     "default": {
       "background": "tile_black_transparent25",
       "up": "tile_frame_brown",
@@ -241,7 +233,7 @@
       "imageUp": "icon_cursor"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.generator.GeneratorButton$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
     "default": {
       "up": "tile_marble_0",
       "disabled": "tile_marble_0",
@@ -249,6 +241,13 @@
       "over": "tile_marble_gradientWhite_0",
       "enabledColor": "color_white",
       "disabledColor": "color_white_transparent60"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionValueLabel$Style": {
+    "default": {
+      "font": "font_merriweather_16",
+      "enabledFontColor": "color_green",
+      "disabledFontColor": "color_red"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.Beam$Style": {

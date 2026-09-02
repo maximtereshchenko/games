@@ -1,0 +1,28 @@
+package com.github.maximtereshchenko.games.cookies.screen.view.bakery;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
+import com.github.maximtereshchenko.games.cookies.domain.CookieAmountUpdated;
+import com.github.maximtereshchenko.games.cookies.domain.Event;
+
+import java.math.RoundingMode;
+
+final class CookieBalanceLabel extends BaseCookiesLabel implements Subscriber<Event> {
+
+    CookieBalanceLabel(Skin skin, EventBus<Event> eventBus) {
+        super("", skin);
+        eventBus.subscribe(this);
+    }
+
+    @Override
+    public void onEvent(Event event) {
+        if (event instanceof CookieAmountUpdated cookieAmountUpdated) {
+            setText(
+                cookieAmountUpdated.value()
+                    .setScale(0, RoundingMode.FLOOR)
+                    .toPlainString()
+            );
+        }
+    }
+}

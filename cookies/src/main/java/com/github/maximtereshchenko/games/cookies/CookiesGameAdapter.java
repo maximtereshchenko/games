@@ -15,8 +15,7 @@ import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.CookieService;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 import com.github.maximtereshchenko.games.cookies.screen.CookiesScreen;
-import com.github.maximtereshchenko.games.cookies.screen.view.CookiesView;
-import com.github.maximtereshchenko.games.cookies.screen.view.SpawnClickAmountParticle;
+import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
 
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -45,7 +44,7 @@ final class CookiesGameAdapter implements ApplicationListener {
         var random = ThreadLocalRandom.current();
         var stage = new Stage(new ScreenViewport(), spriteBatch);
         stage.addActor(
-            new CookiesView(
+            new BakeryView(
                 skin,
                 assetManager.get(gameBundleAssetDescriptor),
                 random,
@@ -53,7 +52,6 @@ final class CookiesGameAdapter implements ApplicationListener {
                 eventBus
             )
         );
-        eventBus.subscribe(new SpawnClickAmountParticle(skin, stage, random));
         cookieService.onStart();
         cookiesGame = new CookiesGame(Set.of(spriteBatch));
         cookiesGame.setScreen(

@@ -9,20 +9,20 @@ import java.util.Map;
 
 public final class CookieService {
 
-    private static final Map<Generator, BigDecimal> BASE_PRICES = Map.of(
-        Generator.CURSOR, BigDecimal.valueOf(15)
+    private static final Map<Building, BigDecimal> BASE_PRICES = Map.of(
+        Building.CURSOR, BigDecimal.valueOf(15)
     );
-    private static final Map<Generator, BigDecimal> BASE_GENERATION = Map.of(
-        Generator.CURSOR, BigDecimal.valueOf(0.1)
+    private static final Map<Building, BigDecimal> BASE_GENERATION = Map.of(
+        Building.CURSOR, BigDecimal.valueOf(0.1)
     );
 
     private final EventBus<Event> eventBus;
-    private final Map<Generator, Integer> generators;
+    private final Map<Building, Integer> generators;
     private BigDecimal cookies;
 
     public CookieService(EventBus<Event> eventBus) {
         this.eventBus = eventBus;
-        this.generators = new EnumMap<>(Generator.class);
+        this.generators = new EnumMap<>(Building.class);
         this.cookies = BigDecimal.ZERO;
     }
 
@@ -69,7 +69,7 @@ public final class CookieService {
         }
     }
 
-    public void buyGenerator(Generator generator) {
+    public void buyGenerator(Building generator) {
         cookies = cookies.subtract(price(generator));
         var amount = generators.get(generator) + 1;
         generators.put(generator, amount);
@@ -85,7 +85,7 @@ public final class CookieService {
         );
     }
 
-    private BigDecimal price(Generator generator) {
+    private BigDecimal price(Building generator) {
         return BASE_PRICES.get(generator)
             .multiply(
                 BigDecimal.valueOf(1.15)
