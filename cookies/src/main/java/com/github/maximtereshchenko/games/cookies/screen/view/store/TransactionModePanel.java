@@ -55,7 +55,7 @@ final class TransactionModePanel extends Table {
     }
 
     private CheckBox checkBox(Skin skin, String text) {
-        return new CheckBox(text, skin, "button_buySellAmount");
+        return new CheckBox(text, skin, "button_transactionMode");
     }
 
     private static final class Style {

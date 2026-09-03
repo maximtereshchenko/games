@@ -121,7 +121,7 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
-    "button_buySellAmount": {
+    "button_transactionMode": {
       "font": "font_merriweather_10",
       "fontColor": "color_white_transparent50",
       "checkedFontColor": "color_white",
@@ -138,23 +138,23 @@
       "font": "font_tahoma_8",
       "fontColor": "color_brown"
     },
-    "label_generatorName_CURSOR": {
+    "label_buildingName": {
       "font": "font_merriweather_25",
       "fontColor": "color_white"
     },
-    "label_generatorAmount": {
+    "label_buildingCount": {
       "font": "font_merriweather_40",
       "fontColor": "color_black_transparent20"
     },
-    "label_clickAmount": {
+    "label_bakingPower": {
       "font": "font_merriweather_16",
       "fontColor": "color_white"
     },
-    "label_cookies": {
+    "label_cookieBalance": {
       "font": "font_merriweather_25",
       "fontColor": "color_white"
     },
-    "label_cookiesPerSecond": {
+    "label_bakingRate": {
       "font": "font_merriweather_10",
       "fontColor": "color_white"
     }
@@ -251,14 +251,14 @@
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.Beam$Style": {
-    "image_view": {
+    "widget_view": {
       "background": "tile_beam_verticalRepeated",
       "drawables": [
         "gradient_top",
         "gradient_bottom"
       ]
     },
-    "image_beamStore": {
+    "widget_beamStore": {
       "background": "tile_beam_horizontalRepeated",
       "drawables": [
         "gradient_left",

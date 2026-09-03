@@ -8,9 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import java.math.BigDecimal;
 import java.util.Random;
 
-final class BakedCountParticle extends Label {
+final class BakingPowerParticle extends Label {
 
-    BakedCountParticle(
+    BakingPowerParticle(
         Skin skin,
         Random random,
         float x,
@@ -20,7 +20,7 @@ final class BakedCountParticle extends Label {
         super(
             "+" + bigDecimal,
             skin,
-            "label_clickAmount"
+            "label_bakingPower"
         );
         setTouchable(Touchable.disabled);
         setPosition(

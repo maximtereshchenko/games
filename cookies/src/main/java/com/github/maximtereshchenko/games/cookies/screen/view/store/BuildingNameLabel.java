@@ -23,7 +23,7 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
         super(
             bundle.get("views.bakery.panels.store.buttons.building.locked.name"),
             skin,
-            "label_generatorName_" + building
+            "label_buildingName"
         );
         this.bundle = bundle;
         this.building = building;

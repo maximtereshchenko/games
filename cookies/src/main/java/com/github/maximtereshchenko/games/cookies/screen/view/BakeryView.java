@@ -34,9 +34,9 @@ public final class BakeryView extends ScreenLayout {
             )
         )
             .width(Value.percentWidth(0.3f, this));
-        addVerticalBeam(skin);
+        addBeam(skin);
         add().growX();
-        addVerticalBeam(skin);
+        addBeam(skin);
         add(
             new StorePanel(
                 skin,
@@ -47,8 +47,8 @@ public final class BakeryView extends ScreenLayout {
         );
     }
 
-    private void addVerticalBeam(Skin skin) {
-        add(new Beam(skin, "image_view")).width(Value.prefWidth);
+    private void addBeam(Skin skin) {
+        add(new Beam(skin, "widget_view")).width(Value.prefWidth);
     }
 
     private static final class Style {

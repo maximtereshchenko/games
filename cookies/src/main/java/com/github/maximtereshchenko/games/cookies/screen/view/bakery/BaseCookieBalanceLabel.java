@@ -4,10 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 
-abstract class BaseCookiesLabel extends Label {
+abstract class BaseCookieBalanceLabel extends Label {
 
-    BaseCookiesLabel(String text, Skin skin) {
-        super(text, skin, "label_cookies");
+    BaseCookieBalanceLabel(String text, Skin skin) {
+        super(text, skin, "label_cookieBalance");
         setAlignment(Align.center);
     }
 }

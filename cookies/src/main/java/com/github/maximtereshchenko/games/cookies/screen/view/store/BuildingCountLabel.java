@@ -17,7 +17,7 @@ final class BuildingCountLabel extends Label implements Subscriber<Event> {
         Building building,
         EventBus<Event> eventBus
     ) {
-        super("", skin, "label_generatorAmount");
+        super("", skin, "label_buildingCount");
         this.building = building;
         eventBus.subscribe(this);
     }

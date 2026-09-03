@@ -81,7 +81,7 @@ final class CookieButton extends Button implements Subscriber<Event> {
                     )
                 );
                 stage.addActor(
-                    new BakedCountParticle(
+                    new BakingPowerParticle(
                         skin,
                         random,
                         event.getStageX(),

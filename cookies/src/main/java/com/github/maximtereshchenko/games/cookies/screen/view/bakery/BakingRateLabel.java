@@ -21,7 +21,7 @@ final class BakingRateLabel extends Label implements Subscriber<Event> {
         super(
             "",
             skin,
-            "label_cookiesPerSecond"
+            "label_bakingRate"
         );
         this.bundle = bundle;
         setAlignment(Align.center);

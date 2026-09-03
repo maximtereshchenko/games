@@ -8,7 +8,7 @@ import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 import java.math.RoundingMode;
 
-final class CookieBalanceLabel extends BaseCookiesLabel implements Subscriber<Event> {
+final class CookieBalanceLabel extends BaseCookieBalanceLabel implements Subscriber<Event> {
 
     CookieBalanceLabel(Skin skin, EventBus<Event> eventBus) {
         super("", skin);

@@ -13,7 +13,7 @@ final class StoreBeam extends Beam {
     private final Label label;
 
     StoreBeam(Skin skin, String text) {
-        super(skin, "image_beamStore");
+        super(skin, "widget_beamStore");
         this.label = new Label(text, skin, "label_beamStore");
         label.setVisible(false);
         add(label);
