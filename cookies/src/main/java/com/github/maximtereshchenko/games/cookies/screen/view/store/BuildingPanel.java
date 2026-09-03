@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.domain.CookieService;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 final class BuildingPanel extends Table {
@@ -15,7 +15,7 @@ final class BuildingPanel extends Table {
         Skin skin,
         I18NBundle bundle,
         EventListener eventListener,
-        CookieService cookieService,
+        BakeryService bakeryService,
         EventBus<Event> eventBus
     ) {
         for (var generator : Building.values()) {
@@ -23,7 +23,7 @@ final class BuildingPanel extends Table {
                 skin,
                 bundle,
                 generator,
-                cookieService,
+                bakeryService,
                 eventBus
             );
             generatorButton.addListener(eventListener);

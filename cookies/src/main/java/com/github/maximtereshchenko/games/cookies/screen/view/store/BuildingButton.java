@@ -18,14 +18,14 @@ final class BuildingButton extends Button implements Subscriber<Event> {
     private final Style style;
     private final Building building;
     private final TransactionDetailsWidget transactionDetailsWidget;
-    private BigDecimal cookies;
-    private BigDecimal priceCookies;
+    private BigDecimal cookieBalance;
+    private BigDecimal transactionValue;
 
     BuildingButton(
         Skin skin,
         I18NBundle bundle,
         Building building,
-        CookieService cookieService,
+        BakeryService bakeryService,
         EventBus<Event> eventBus
     ) {
         var buttonStyle = skin.get(Style.class);
@@ -38,8 +38,8 @@ final class BuildingButton extends Button implements Subscriber<Event> {
             building,
             eventBus
         );
-        this.cookies = BigDecimal.ZERO;
-        this.priceCookies = BigDecimal.ZERO;
+        this.cookieBalance = BigDecimal.ZERO;
+        this.transactionValue = BigDecimal.ZERO;
         add(new BuildingIcon(skin, building, eventBus));
         add(transactionDetailsWidget).growX();
         add(new BuildingCountLabel(skin, building, eventBus))
@@ -49,7 +49,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
 
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    cookieService.buyGenerator(building);
+                    bakeryService.completeTransaction(building);
                 }
             }
         );
@@ -59,13 +59,13 @@ final class BuildingButton extends Button implements Subscriber<Event> {
     @Override
     public void onEvent(Event event) {
         switch (event) {
-            case CookieAmountUpdated cookieAmountUpdated -> {
-                cookies = cookieAmountUpdated.value();
+            case CookieBalanceUpdated cookieBalanceUpdated -> {
+                cookieBalance = cookieBalanceUpdated.value();
                 setState();
             }
-            case GeneratorPriceUpdated generatorPriceUpdated
-                when generatorPriceUpdated.generator() == building -> {
-                priceCookies = generatorPriceUpdated.price();
+            case TransactionValueUpdated transactionValueUpdated
+                when transactionValueUpdated.building() == building -> {
+                transactionValue = transactionValueUpdated.value();
                 setState();
             }
             default -> {
@@ -82,7 +82,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
     }
 
     private void setState() {
-        setDisabled(cookies.compareTo(priceCookies) < 0);
+        setDisabled(cookieBalance.compareTo(transactionValue) < 0);
     }
 
     private Color color(boolean isDisabled) {

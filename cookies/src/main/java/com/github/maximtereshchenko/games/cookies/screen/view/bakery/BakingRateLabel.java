@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
-import com.github.maximtereshchenko.games.cookies.domain.CookiesPerSecondUpdated;
+import com.github.maximtereshchenko.games.cookies.domain.BakingRateUpdated;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 final class BakingRateLabel extends Label implements Subscriber<Event> {
@@ -30,11 +30,11 @@ final class BakingRateLabel extends Label implements Subscriber<Event> {
 
     @Override
     public void onEvent(Event event) {
-        if (event instanceof CookiesPerSecondUpdated cookiesPerSecondUpdated) {
+        if (event instanceof BakingRateUpdated bakingRateUpdated) {
             setText(
                 bundle.format(
                     "cookies.cookiesPerSecond",
-                    cookiesPerSecondUpdated.value().toPlainString()
+                    bakingRateUpdated.value()
                 )
             );
         }

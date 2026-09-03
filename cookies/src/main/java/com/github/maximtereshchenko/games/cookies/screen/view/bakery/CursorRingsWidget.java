@@ -6,8 +6,8 @@ import com.badlogic.gdx.utils.Align;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.domain.BuildingCountUpdated;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.GeneratorBought;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +56,14 @@ final class CursorRingsWidget extends WidgetGroup implements Subscriber<Event> {
     @Override
     public void onEvent(Event event) {
         if (
-            event instanceof GeneratorBought generatorBought &&
-            generatorBought.generator() == Building.CURSOR
+            event instanceof BuildingCountUpdated buildingCountUpdated &&
+            buildingCountUpdated.building() == Building.CURSOR
         ) {
-            for (var i = cursorWidgets.size(); i < generatorBought.newAmount(); i++) {
+            for (
+                var i = cursorWidgets.size();
+                i < buildingCountUpdated.count();
+                i++
+            ) {
                 var cursorWidget = new CursorWidget(skin);
                 cursorWidget.scale(getWidth());
                 cursorWidgets.add(cursorWidget);

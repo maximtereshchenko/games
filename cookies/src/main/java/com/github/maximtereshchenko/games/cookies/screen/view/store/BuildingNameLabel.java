@@ -6,8 +6,8 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.domain.BuildingUnlocked;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.GeneratorUnlocked;
 
 final class BuildingNameLabel extends Label implements Subscriber<Event> {
 
@@ -33,8 +33,8 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
     @Override
     public void onEvent(Event event) {
         if (
-            event instanceof GeneratorUnlocked generatorUnlocked &&
-            generatorUnlocked.value().equals(building)
+            event instanceof BuildingUnlocked buildingUnlocked &&
+            buildingUnlocked.building().equals(building)
         ) {
             setText(bundle.get("generators.%s.name".formatted(building)));
         }

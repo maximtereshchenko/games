@@ -8,7 +8,7 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.GeneratorPriceUpdated;
+import com.github.maximtereshchenko.games.cookies.domain.TransactionValueUpdated;
 
 final class TransactionValueLabel extends Label implements Subscriber<Event> {
 
@@ -30,10 +30,10 @@ final class TransactionValueLabel extends Label implements Subscriber<Event> {
     @Override
     public void onEvent(Event event) {
         if (
-            event instanceof GeneratorPriceUpdated generatorPriceUpdated &&
-            generatorPriceUpdated.generator() == building
+            event instanceof TransactionValueUpdated transactionValueUpdated &&
+            transactionValueUpdated.building() == building
         ) {
-            setText(generatorPriceUpdated.price().toPlainString());
+            setText(transactionValueUpdated.value().toString());
         }
     }
 

@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
-import com.github.maximtereshchenko.games.cookies.domain.CookiesClicked;
+import com.github.maximtereshchenko.games.cookies.domain.CookiesBaked;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 import java.util.Random;
@@ -53,7 +53,7 @@ final class FallingCookiesWidget extends WidgetGroup implements Subscriber<Event
 
     @Override
     public void onEvent(Event event) {
-        if (event instanceof CookiesClicked) {
+        if (event instanceof CookiesBaked) {
             addActor(new FallingCookieWidget(skin, random, getWidth(), getHeight()));
         }
     }

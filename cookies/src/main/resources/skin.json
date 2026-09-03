@@ -184,7 +184,7 @@
       "drawable": "texture_milk_plain"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.GeneratorIcon$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingIcon$Style": {
     "CURSOR": {
       "enabled": "icon_cursor_tilted",
       "disabled": "icon_cursor_tiltedBlack"

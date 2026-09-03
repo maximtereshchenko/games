@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.domain.BuildingCountUpdated;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.GeneratorBought;
 
 final class BuildingCountLabel extends Label implements Subscriber<Event> {
 
@@ -25,10 +25,10 @@ final class BuildingCountLabel extends Label implements Subscriber<Event> {
     @Override
     public void onEvent(Event event) {
         if (
-            event instanceof GeneratorBought generatorBought &&
-            generatorBought.generator() == building
+            event instanceof BuildingCountUpdated buildingCountUpdated &&
+            buildingCountUpdated.building() == building
         ) {
-            setText(generatorBought.newAmount());
+            setText(buildingCountUpdated.count());
         }
     }
 }

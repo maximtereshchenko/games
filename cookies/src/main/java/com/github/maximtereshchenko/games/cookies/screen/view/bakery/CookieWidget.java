@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.cookies.domain.CookieService;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 import java.util.Random;
@@ -16,7 +16,7 @@ final class CookieWidget extends Container<Stack> {
     CookieWidget(
         Skin skin,
         Random random,
-        CookieService cookieService,
+        BakeryService bakeryService,
         EventBus<Event> eventBus
     ) {
         background(skin.get(Style.class).background);
@@ -32,7 +32,8 @@ final class CookieWidget extends Container<Stack> {
             new CookieButton(
                 skin,
                 random,
-                cookieService
+                bakeryService,
+                eventBus
             )
         );
         setActor(stack);

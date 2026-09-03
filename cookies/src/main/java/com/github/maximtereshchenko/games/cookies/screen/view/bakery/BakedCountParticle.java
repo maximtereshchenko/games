@@ -18,7 +18,7 @@ final class BakedCountParticle extends Label {
         BigDecimal bigDecimal
     ) {
         super(
-            "+" + bigDecimal.toPlainString(),
+            "+" + bigDecimal,
             skin,
             "label_clickAmount"
         );

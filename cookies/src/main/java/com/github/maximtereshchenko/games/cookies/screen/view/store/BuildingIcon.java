@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.domain.BuildingUnlocked;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.GeneratorUnlocked;
 
 final class BuildingIcon extends Stack implements Subscriber<Event> {
 
@@ -35,8 +35,8 @@ final class BuildingIcon extends Stack implements Subscriber<Event> {
     @Override
     public void onEvent(Event event) {
         if (
-            event instanceof GeneratorUnlocked generatorUnlocked &&
-            generatorUnlocked.value().equals(building)
+            event instanceof BuildingUnlocked buildingUnlocked &&
+            buildingUnlocked.building() == building
         ) {
             var duration = 0.5f;
             disabled.addAction(Actions.fadeOut(duration));

@@ -1,8 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
-public sealed interface Event permits CookieAmountUpdated,
-    CookiesClicked,
-    CookiesPerSecondUpdated,
-    GeneratorBought,
-    GeneratorPriceUpdated,
-    GeneratorUnlocked {}
+public sealed interface Event
+    permits CookieBalanceUpdated,
+    BakingRateUpdated,
+    BakingPowerUpdated,
+    BuildingUnlocked,
+    TransactionModeUpdated,
+    TransactionValueUpdated,
+    BuildingCountUpdated,
+    CookiesBaked {}

@@ -1,16 +1,16 @@
 package com.github.maximtereshchenko.games.cookies.screen;
 
 import com.badlogic.gdx.Screen;
-import com.github.maximtereshchenko.games.cookies.domain.CookieService;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
 public final class CookiesScreen implements Screen {
 
     private final Screen original;
-    private final CookieService cookieService;
+    private final BakeryService bakeryService;
 
-    public CookiesScreen(Screen original, CookieService cookieService) {
+    public CookiesScreen(Screen original, BakeryService bakeryService) {
         this.original = original;
-        this.cookieService = cookieService;
+        this.bakeryService = bakeryService;
     }
 
     @Override
@@ -20,7 +20,7 @@ public final class CookiesScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        cookieService.update(delta);
+        bakeryService.update(delta);
         original.render(delta);
     }
 
