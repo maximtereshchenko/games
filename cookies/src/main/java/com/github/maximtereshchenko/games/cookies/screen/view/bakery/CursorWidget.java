@@ -21,7 +21,7 @@ final class CursorWidget extends Image {
         int cursorIndex,
         int cursorsPerRing,
         float baseAngleDegrees,
-        float accumulatedTimeSeconds,
+        double accumulatedTimeSeconds,
         float originX,
         float originY
     ) {
@@ -49,19 +49,19 @@ final class CursorWidget extends Image {
         int ringIndex,
         int cursorIndex,
         float baseAngleDegrees,
-        float accumulatedTimeSeconds
+        double accumulatedTimeSeconds
     ) {
         var ringDegrees = baseAngleDegrees * ringIndex / 2;
         var cursorDegrees = baseAngleDegrees * cursorIndex;
         var timeDegrees = 3 * accumulatedTimeSeconds;
-        return ringDegrees + cursorDegrees + timeDegrees;
+        return (float) ((ringDegrees + cursorDegrees + timeDegrees) % 360);
     }
 
     private Vector2 vector2(
         int ringIndex,
         int cursorIndex,
         int cursorsPerRing,
-        float accumulatedTimeSeconds,
+        double accumulatedTimeSeconds,
         float angleDegrees
     ) {
         var baseDistance = 3.75f * getWidth();
@@ -85,12 +85,12 @@ final class CursorWidget extends Image {
         int ringIndex,
         int cursorIndex,
         int cursorsPerRing,
-        float accumulatedTimeSeconds
+        double accumulatedTimeSeconds
     ) {
         var timePhase = accumulatedTimeSeconds * 0.75f;
         var sinIndex = cursorIndex + ringIndex * cursorsPerRing / 4f;
         var offsetCursors = cursorsPerRing / 2f;
-        var percentage = sinIndex % (offsetCursors) / (offsetCursors);
+        var percentage = sinIndex % offsetCursors / offsetCursors;
         var sin = Math.sin(timePhase + percentage * Math.toRadians(360));
         if (sin > 0.997f) {
             return -getWidth() * 0.2f;
@@ -103,7 +103,7 @@ final class CursorWidget extends Image {
 
     private float waveDistance(
         int ringIndex,
-        float accumulatedTimeSeconds
+        double accumulatedTimeSeconds
     ) {
         var timePhase = accumulatedTimeSeconds * 0.3f;
         var totalDegrees = (ringIndex + timePhase) * 90f;

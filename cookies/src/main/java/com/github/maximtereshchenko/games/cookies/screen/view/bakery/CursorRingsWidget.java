@@ -16,7 +16,7 @@ final class CursorRingsWidget extends WidgetGroup implements Subscriber<Event> {
 
     private final Skin skin;
     private final List<CursorWidget> cursorWidgets;
-    private float accumulatedTimeSeconds; //TODO
+    private double accumulatedTimeSeconds;
 
     CursorRingsWidget(Skin skin, EventBus<Event> eventBus) {
         this.skin = skin;
