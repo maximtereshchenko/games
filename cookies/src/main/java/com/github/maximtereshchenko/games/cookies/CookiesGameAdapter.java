@@ -14,7 +14,7 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.screen.CookiesScreen;
+import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
 
 import java.util.Set;
@@ -55,7 +55,7 @@ final class CookiesGameAdapter implements ApplicationListener {
         bakeryService.onStart();
         cookiesGame = new CookiesGame(Set.of(spriteBatch));
         cookiesGame.setScreen(
-            new CookiesScreen(
+            new BakeryScreen(
                 new StageScreen(stage),
                 bakeryService
             )

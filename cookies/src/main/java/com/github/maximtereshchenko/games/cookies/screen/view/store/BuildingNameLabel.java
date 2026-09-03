@@ -21,7 +21,7 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
         EventBus<Event> eventBus
     ) {
         super(
-            bundle.get("generators.locked.name"),
+            bundle.get("views.bakery.panels.store.buttons.building.locked.name"),
             skin,
             "label_generatorName_" + building
         );
@@ -36,7 +36,12 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
             event instanceof BuildingUnlocked buildingUnlocked &&
             buildingUnlocked.building().equals(building)
         ) {
-            setText(bundle.get("generators.%s.name".formatted(building)));
+            setText(
+                bundle.get(
+                    "views.bakery.panels.store.buttons.building.%s.name"
+                        .formatted(building)
+                )
+            );
         }
     }
 }

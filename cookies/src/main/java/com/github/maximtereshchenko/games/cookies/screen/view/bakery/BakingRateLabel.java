@@ -33,7 +33,7 @@ final class BakingRateLabel extends Label implements Subscriber<Event> {
         if (event instanceof BakingRateUpdated bakingRateUpdated) {
             setText(
                 bundle.format(
-                    "cookies.cookiesPerSecond",
+                    "views.bakery.panels.bakery.labels.bakingRate",
                     bakingRateUpdated.value()
                 )
             );

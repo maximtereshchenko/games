@@ -8,7 +8,11 @@ import com.badlogic.gdx.utils.I18NBundle;
 final class StoreLabel extends Label {
 
     StoreLabel(Skin skin, I18NBundle bundle) {
-        super(bundle.get("store"), skin, "label_store");
+        super(
+            bundle.get("views.bakery.panels.store.labels.name"),
+            skin,
+            "label_store"
+        );
         setAlignment(Align.center);
     }
 }

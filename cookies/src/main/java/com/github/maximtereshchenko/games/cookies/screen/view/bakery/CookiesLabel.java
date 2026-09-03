@@ -6,6 +6,6 @@ import com.badlogic.gdx.utils.I18NBundle;
 final class CookiesLabel extends BaseCookiesLabel {
 
     CookiesLabel(Skin skin, I18NBundle bundle) {
-        super(bundle.get("cookies.name"), skin);
+        super(bundle.get("views.bakery.panels.bakery.labels.cookies"), skin);
     }
 }

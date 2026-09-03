@@ -3,12 +3,12 @@ package com.github.maximtereshchenko.games.cookies.screen;
 import com.badlogic.gdx.Screen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-public final class CookiesScreen implements Screen {
+public final class BakeryScreen implements Screen {
 
     private final Screen original;
     private final BakeryService bakeryService;
 
-    public CookiesScreen(Screen original, BakeryService bakeryService) {
+    public BakeryScreen(Screen original, BakeryService bakeryService) {
         this.original = original;
         this.bakeryService = bakeryService;
     }
