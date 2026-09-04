@@ -4,29 +4,24 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
 
 public final class BakeryService {
 
     private final Configuration configuration;
+    private final PlayerProgress playerProgress;
     private final EventBus<Event> eventBus;
-    private final Set<Building> unlockedBuildings;
-    private final Map<Building, Integer> buildings;
-    private BigDecimal balance;
 
     public BakeryService(EventBus<Event> eventBus) {
         this.configuration = new Configuration();
+        this.playerProgress = new PlayerProgress();
         this.eventBus = eventBus;
-        this.unlockedBuildings = new HashSet<>();
-        this.buildings = new EnumMap<>(Building.class);
-        this.balance = BigDecimal.ZERO;
-        for (var building : Building.values()) {
-            buildings.put(building, 0);
-        }
+
     }
 
     public void onStart() {
-        eventBus.publish(new CookieBalanceUpdated(balance));
+        eventBus.publish(
+            new CookieBalanceUpdated(playerProgress.balance())
+        );
         eventBus.publish(new BakingRateUpdated(productionRate()));
         eventBus.publish(new BakingPowerUpdated(BigDecimal.ONE));
         for (var building : Building.values()) {
@@ -55,15 +50,11 @@ public final class BakeryService {
 
     public void completeTransaction(Building building) {
         addToBalance(price(building).negate());
+        playerProgress.add(building, 1);
         eventBus.publish(
             new BuildingCountUpdated(
                 building,
-                Objects.requireNonNull(
-                    buildings.computeIfPresent(
-                        building,
-                        (_, current) -> current + 1
-                    )
-                )
+                playerProgress.count(building)
             )
         );
         eventBus.publish(
@@ -75,14 +66,16 @@ public final class BakeryService {
     }
 
     private void addToBalance(BigDecimal amount) {
-        balance = balance.add(amount);
-        eventBus.publish(new CookieBalanceUpdated(balance));
+        playerProgress.addToBalance(amount);
+        eventBus.publish(
+            new CookieBalanceUpdated(playerProgress.balance())
+        );
         for (var building : Building.values()) {
             if (
-                !unlockedBuildings.contains(building) &&
-                balance.compareTo(configuration.basePrice(building)) >= 0
+                !playerProgress.isUnlocked(building) &&
+                balanceGreaterThanBasePrice(building)
             ) {
-                unlockedBuildings.add(building);
+                playerProgress.unlock(building);
                 eventBus.publish(
                     new BuildingUnlocked(building)
                 );
@@ -90,21 +83,29 @@ public final class BakeryService {
         }
     }
 
+    private boolean balanceGreaterThanBasePrice(Building building) {
+        return playerProgress.balance().compareTo(configuration.basePrice(building)) >= 0;
+    }
+
     private BigDecimal price(Building building) {
         return configuration.basePrice(building)
             .multiply(
                 BigDecimal.valueOf(1.15)
-                    .pow(buildings.get(building))
+                    .pow(playerProgress.count(building))
             )
             .setScale(0, RoundingMode.CEILING);
     }
 
     private BigDecimal productionRate() {
         var productionRate = BigDecimal.ZERO;
-        for (var entry : buildings.entrySet()) {
+        for (var building : Building.values()) {
             productionRate = productionRate.add(
-                configuration.baseProductionRate(entry.getKey())
-                    .multiply(BigDecimal.valueOf(entry.getValue()))
+                configuration.baseProductionRate(building)
+                    .multiply(
+                        BigDecimal.valueOf(
+                            playerProgress.count(building)
+                        )
+                    )
             );
         }
         return productionRate;
