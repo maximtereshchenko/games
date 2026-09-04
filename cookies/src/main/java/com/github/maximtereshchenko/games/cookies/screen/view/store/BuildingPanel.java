@@ -18,16 +18,16 @@ final class BuildingPanel extends Table {
         BakeryService bakeryService,
         EventBus<Event> eventBus
     ) {
-        for (var generator : Building.values()) {
-            var generatorButton = new BuildingButton(
+        for (var building : Building.values()) {
+            var buildingButton = new BuildingButton(
                 skin,
                 bundle,
-                generator,
+                building,
                 bakeryService,
                 eventBus
             );
-            generatorButton.addListener(eventListener);
-            add(generatorButton).row();
+            buildingButton.addListener(eventListener);
+            add(buildingButton).row();
         }
     }
 }

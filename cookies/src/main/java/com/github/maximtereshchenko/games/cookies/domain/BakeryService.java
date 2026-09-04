@@ -4,38 +4,36 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public final class BakeryService {
 
-    private static final Map<Building, BigDecimal> BASE_PRICES = Map.of(
-        Building.CURSOR, BigDecimal.valueOf(15)
-    );
-    private static final Map<Building, BigDecimal> BASE_PRODUCTION = Map.of(
-        Building.CURSOR, BigDecimal.valueOf(0.1)
-    );
-
+    private final Configuration configuration;
     private final EventBus<Event> eventBus;
+    private final Set<Building> unlockedBuildings;
     private final Map<Building, Integer> buildings;
     private BigDecimal balance;
 
     public BakeryService(EventBus<Event> eventBus) {
+        this.configuration = new Configuration();
         this.eventBus = eventBus;
+        this.unlockedBuildings = new HashSet<>();
         this.buildings = new EnumMap<>(Building.class);
         this.balance = BigDecimal.ZERO;
+        for (var building : Building.values()) {
+            buildings.put(building, 0);
+        }
     }
 
     public void onStart() {
         eventBus.publish(new CookieBalanceUpdated(balance));
         eventBus.publish(new BakingRateUpdated(productionRate()));
         eventBus.publish(new BakingPowerUpdated(BigDecimal.ONE));
-        for (var entry : BASE_PRICES.entrySet()) {
+        for (var building : Building.values()) {
             eventBus.publish(
                 new TransactionValueUpdated(
-                    entry.getKey(),
-                    entry.getValue()
+                    building,
+                    configuration.basePrice(building)
                 )
             );
         }
@@ -79,24 +77,24 @@ public final class BakeryService {
     private void addToBalance(BigDecimal amount) {
         balance = balance.add(amount);
         eventBus.publish(new CookieBalanceUpdated(balance));
-        for (var entry : BASE_PRICES.entrySet()) {
+        for (var building : Building.values()) {
             if (
-                !buildings.containsKey(entry.getKey()) &&
-                balance.compareTo(entry.getValue()) >= 0
+                !unlockedBuildings.contains(building) &&
+                balance.compareTo(configuration.basePrice(building)) >= 0
             ) {
-                buildings.put(entry.getKey(), 0);
+                unlockedBuildings.add(building);
                 eventBus.publish(
-                    new BuildingUnlocked(entry.getKey())
+                    new BuildingUnlocked(building)
                 );
             }
         }
     }
 
-    private BigDecimal price(Building generator) {
-        return BASE_PRICES.get(generator)
+    private BigDecimal price(Building building) {
+        return configuration.basePrice(building)
             .multiply(
                 BigDecimal.valueOf(1.15)
-                    .pow(buildings.get(generator))
+                    .pow(buildings.get(building))
             )
             .setScale(0, RoundingMode.CEILING);
     }
@@ -105,7 +103,7 @@ public final class BakeryService {
         var productionRate = BigDecimal.ZERO;
         for (var entry : buildings.entrySet()) {
             productionRate = productionRate.add(
-                BASE_PRODUCTION.get(entry.getKey())
+                configuration.baseProductionRate(entry.getKey())
                     .multiply(BigDecimal.valueOf(entry.getValue()))
             );
         }
