@@ -10,4 +10,4 @@ public sealed interface Event
     BuildingCountUpdated,
     CookiesBaked,
     UpgradeUnlocked,
-    UpgradePriceUpdated{}
+    UpgradePriceUpdated {}

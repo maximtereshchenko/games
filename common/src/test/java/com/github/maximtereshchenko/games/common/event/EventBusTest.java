@@ -8,6 +8,7 @@ final class EventBusTest {
 
     private final Subscriber<String> first = mock();
     private final Subscriber<String> second = mock();
+    private final Subscriber<String> third = mock();
     private final EventBus<String> eventBus = new EventBus<>();
 
     @Test
@@ -49,5 +50,21 @@ final class EventBusTest {
         eventBus.publish("event");
         verifyNoInteractions(first);
         verifyNoInteractions(second);
+    }
+
+    @Test
+    void givenNewSubscriberJoins_whenPublish_thenNoException() {
+        doAnswer(
+            _ -> {
+                eventBus.subscribe(third);
+                return null;
+            }
+        )
+            .when(first).onEvent("event");
+        eventBus.subscribe(first);
+        eventBus.subscribe(second);
+        eventBus.publish("event");
+        verify(second).onEvent("event");
+        verifyNoInteractions(third);
     }
 }

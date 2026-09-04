@@ -7,31 +7,54 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.common.event.Subscriber;
+import com.github.maximtereshchenko.games.cookies.domain.Event;
+import com.github.maximtereshchenko.games.cookies.domain.UpgradeUnlocked;
 
-final class UpgradePanel extends Container<Table> {
+final class UpgradePanel extends Container<Table> implements Subscriber<Event> {
 
+    private final Skin skin;
+    private final EventBus<Event> eventBus;
     private boolean isExpanded = false;
 
-    UpgradePanel(Skin skin) {
+    UpgradePanel(Skin skin, EventBus<Event> eventBus) {
         super(new Table());
+        this.skin = skin;
+        this.eventBus = eventBus;
         clip();
         top();
-        for (var i = 0; i < 6; i++) {
-            getActor().add(new UpgradeButton(skin));
-            if (i % 5 == 4) {
-                getActor().row();
-            }
-        }
+        left();
         setTransform(true);
         addListener(eventListener());
+        eventBus.subscribe(this);
     }
 
     @Override
     public float getPrefHeight() {
-        if (isExpanded) {
+        var table = getActor();
+        if (isExpanded || !table.hasChildren()) {
             return super.getPrefHeight();
         }
-        return getActor().getRowPrefHeight(0);
+        return table.getRowPrefHeight(0);
+    }
+
+    @Override
+    public void onEvent(Event event) {
+        if (!(event instanceof UpgradeUnlocked upgradeUnlocked)) {
+            return;
+        }
+        var table = getActor();
+        table.add(
+            new UpgradeButton(
+                skin,
+                upgradeUnlocked.upgrade(),
+                eventBus
+            )
+        );
+        if (table.getChildren().size % 5 == 0) {
+            table.row();
+        }
     }
 
     EventListener eventListener() {

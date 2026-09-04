@@ -22,7 +22,7 @@ public final class StorePanel extends Table {
             skin,
             bundle.get("views.bakery.panels.store.labels.upgrades")
         );
-        var upgradePanel = new UpgradePanel(skin);
+        var upgradePanel = new UpgradePanel(skin, eventBus);
         var buildingsBeam = new StoreBeam(
             skin,
             bundle.get("views.bakery.panels.store.labels.buildings")

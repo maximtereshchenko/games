@@ -226,11 +226,59 @@
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeButton$Style": {
-    "default": {
+    "CURSOR_TIER_0": {
       "background": "tile_black_transparent25",
       "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
       "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor"
+      "imageUp": "icon_cursor_plain",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "CURSOR_TIER_1": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor_berrylium",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "CURSOR_TIER_2": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor_blueberrylium",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "CURSOR_TIER_3": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor_chalcedhoney",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "CURSOR_TIER_4": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor_buttergold",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "CURSOR_TIER_5": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_cursor_sugarmuck",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {

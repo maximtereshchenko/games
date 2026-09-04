@@ -21,7 +21,7 @@ public final class BakeryService {
         eventBus.publish(
             new CookieBalanceUpdated(playerProgress.balance())
         );
-        eventBus.publish(new BakingRateUpdated(productionRate()));
+        eventBus.publish(new BakingRateUpdated(bakingRate()));
         eventBus.publish(new BakingPowerUpdated(BigDecimal.ONE));
         for (var building : Building.values()) {
             eventBus.publish(
@@ -38,7 +38,7 @@ public final class BakeryService {
 
     public void update(float deltaTimeSeconds) {
         addToBalance(
-            productionRate()
+            bakingRate()
                 .multiply(
                     BigDecimal.valueOf(deltaTimeSeconds)
                 )
@@ -80,7 +80,7 @@ public final class BakeryService {
             )
         );
         eventBus.publish(
-            new BakingRateUpdated(productionRate())
+            new BakingRateUpdated(bakingRate())
         );
     }
 
@@ -140,7 +140,7 @@ public final class BakeryService {
                    ) >= 0;
     }
 
-    private BigDecimal productionRate() {
+    private BigDecimal bakingRate() {
         var productionRate = BigDecimal.ZERO;
         for (var building : Building.values()) {
             productionRate = productionRate.add(
