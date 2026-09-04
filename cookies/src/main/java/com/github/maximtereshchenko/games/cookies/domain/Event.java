@@ -8,4 +8,6 @@ public sealed interface Event
     TransactionModeUpdated,
     TransactionValueUpdated,
     BuildingCountUpdated,
-    CookiesBaked {}
+    CookiesBaked,
+    UpgradeUnlocked,
+    UpgradePriceUpdated{}
