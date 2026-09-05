@@ -78,6 +78,14 @@ public final class BakeryService {
         );
     }
 
+    public void buyUpgrade(Upgrade upgrade) {
+        addToBalance(
+            configuration.price(upgrade)
+                .negate()
+        );
+        playerProgress.activate(upgrade);
+    }
+
     private void unlockUpgrades() {
         for (var upgrade : Upgrade.values()) {
             if (

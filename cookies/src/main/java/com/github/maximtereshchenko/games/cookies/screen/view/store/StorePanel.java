@@ -25,6 +25,7 @@ public final class StorePanel extends Table {
         var upgradePanel = new UpgradePanel(
             skin,
             bundle,
+            bakeryService,
             eventBus
         );
         var buildingsBeam = new StoreBeamWidget(

@@ -9,14 +9,16 @@ import java.util.Set;
 final class PlayerProgress {
 
     private final Set<Building> unlockedBuildings;
-    private final Set<Upgrade> unlockedUpgrades;
     private final Map<Building, Integer> buildings;
+    private final Set<Upgrade> unlockedUpgrades;
+    private final Set<Upgrade> activeUpgrades;
     private BigDecimal balance;
 
     PlayerProgress() {
         this.unlockedBuildings = new HashSet<>();
-        this.unlockedUpgrades = new HashSet<>();
         this.buildings = new EnumMap<>(Building.class);
+        this.unlockedUpgrades = new HashSet<>();
+        this.activeUpgrades = new HashSet<>();
         this.balance = BigDecimal.ZERO;
         for (var building : Building.values()) {
             buildings.put(building, 0);
@@ -56,5 +58,10 @@ final class PlayerProgress {
             building,
             (_, current) -> current + count
         );
+    }
+
+    void activate(Upgrade upgrade) {
+        unlockedUpgrades.remove(upgrade);
+        activeUpgrades.add(upgrade);
     }
 }

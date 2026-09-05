@@ -1,17 +1,16 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
-import com.github.maximtereshchenko.games.cookies.domain.CookieBalanceUpdated;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
-import com.github.maximtereshchenko.games.cookies.domain.UpgradePriceUpdated;
+import com.github.maximtereshchenko.games.cookies.domain.*;
 
 import java.math.BigDecimal;
 
@@ -27,6 +26,7 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
         Skin skin,
         I18NBundle bundle,
         Upgrade upgrade,
+        BakeryService bakeryService,
         EventBus<Event> eventBus
     ) {
         var buttonStyle = skin.get(upgrade.name(), Style.class);
@@ -43,6 +43,16 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
         this.price = BigDecimal.ZERO;
         background(style.background);
         addListener(new TooltipWidget(skin, upgradeTooltip));
+        addListener(
+            new ChangeListener() {
+
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    bakeryService.buyUpgrade(upgrade);
+                    remove();
+                }
+            }
+        );
         eventBus.subscribe(this);
     }
 
