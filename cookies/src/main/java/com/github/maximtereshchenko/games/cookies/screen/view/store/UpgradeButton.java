@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.CookieBalanceUpdated;
@@ -18,11 +19,13 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
 
     private final Upgrade upgrade;
     private final Style style;
+    private final UpgradeTooltip upgradeTooltip;
     private BigDecimal cookieBalance;
     private BigDecimal price;
 
     UpgradeButton(
         Skin skin,
+        I18NBundle bundle,
         Upgrade upgrade,
         EventBus<Event> eventBus
     ) {
@@ -30,9 +33,16 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
         super(new ImageButton(buttonStyle));
         this.upgrade = upgrade;
         this.style = buttonStyle;
+        this.upgradeTooltip = new UpgradeTooltip(
+            skin,
+            bundle,
+            upgrade,
+            eventBus
+        );
         this.cookieBalance = BigDecimal.ZERO;
         this.price = BigDecimal.ZERO;
         background(style.background);
+        addListener(new TooltipWidget(skin, upgradeTooltip));
         eventBus.subscribe(this);
     }
 
@@ -55,10 +65,14 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
     }
 
     private void setState() {
-        var isDisabled = cookieBalance.compareTo(price) < 0;
+        setDisabled(cookieBalance.compareTo(price) < 0);
+    }
+
+    private void setDisabled(boolean isDisabled) {
         var imageButton = getActor();
         imageButton.setDisabled(isDisabled);
         imageButton.getImage().setColor(color(isDisabled));
+        upgradeTooltip.setDisabled(isDisabled);
     }
 
     private Color color(boolean isDisabled) {

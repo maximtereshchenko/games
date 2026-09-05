@@ -168,11 +168,20 @@
       "font": "font_tahoma_11",
       "fontColor": "color_white"
     },
+    "label_upgradeName": {
+      "font": "font_tahoma_11",
+      "fontColor": "color_white"
+    },
     "label_buildingCount_button": {
       "font": "font_merriweather_40",
       "fontColor": "color_black_transparent20"
     },
     "label_buildingCount_tooltip": {
+      "font": "font_tahoma_8",
+      "fontColor": "color_black",
+      "background": "tile_circle_whiteTransparent50"
+    },
+    "label_upgrade": {
       "font": "font_tahoma_8",
       "fontColor": "color_black",
       "background": "tile_circle_whiteTransparent50"
@@ -369,6 +378,44 @@
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltip$Style": {
     "default": {
       "drawable": "tile_gradient_line"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradePriceLabel$Style": {
+    "default": {
+      "font": "font_tahoma_10",
+      "enabledFontColor": "color_green",
+      "disabledFontColor": "color_red"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltipHeader$Style": {
+    "default": {
+      "icon": "icon_cookie_small"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltip$Style": {
+    "CURSOR_TIER_0": {
+      "upgradeIcon": "icon_cursor_plain",
+      "separator": "tile_gradient_line"
+    },
+    "CURSOR_TIER_1": {
+      "upgradeIcon": "icon_cursor_berrylium",
+      "separator": "tile_gradient_line"
+    },
+    "CURSOR_TIER_2": {
+      "upgradeIcon": "icon_cursor_blueberrylium",
+      "separator": "tile_gradient_line"
+    },
+    "CURSOR_TIER_3": {
+      "upgradeIcon": "icon_cursor_chalcedhoney",
+      "separator": "tile_gradient_line"
+    },
+    "CURSOR_TIER_4": {
+      "upgradeIcon": "icon_cursor_buttergold",
+      "separator": "tile_gradient_line"
+    },
+    "CURSOR_TIER_5": {
+      "upgradeIcon": "icon_cursor_sugarmuck",
+      "separator": "tile_gradient_line"
     }
   }
 }

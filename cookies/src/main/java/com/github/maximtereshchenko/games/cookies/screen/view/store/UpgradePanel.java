@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
@@ -15,12 +16,18 @@ import com.github.maximtereshchenko.games.cookies.domain.UpgradeUnlocked;
 final class UpgradePanel extends Container<Table> implements Subscriber<Event> {
 
     private final Skin skin;
+    private final I18NBundle bundle;
     private final EventBus<Event> eventBus;
     private boolean isExpanded = false;
 
-    UpgradePanel(Skin skin, EventBus<Event> eventBus) {
+    UpgradePanel(
+        Skin skin,
+        I18NBundle bundle,
+        EventBus<Event> eventBus
+    ) {
         super(new Table());
         this.skin = skin;
+        this.bundle = bundle;
         this.eventBus = eventBus;
         clip();
         top();
@@ -48,6 +55,7 @@ final class UpgradePanel extends Container<Table> implements Subscriber<Event> {
         table.add(
             new UpgradeButton(
                 skin,
+                bundle,
                 upgradeUnlocked.upgrade(),
                 eventBus
             )

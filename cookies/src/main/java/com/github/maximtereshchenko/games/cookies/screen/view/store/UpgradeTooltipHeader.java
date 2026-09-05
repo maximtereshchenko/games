@@ -7,54 +7,41 @@ import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
+import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 
-final class BuildingTooltipHeader extends Table {
+final class UpgradeTooltipHeader extends Table {
 
-    private final TransactionValueLabel transactionValueLabel;
+    private final UpgradePriceLabel upgradePriceLabel;
 
-    BuildingTooltipHeader(
+    UpgradeTooltipHeader(
         Skin skin,
         I18NBundle bundle,
-        Building building,
+        Upgrade upgrade,
         EventBus<Event> eventBus
     ) {
-        this.transactionValueLabel = new TransactionValueLabel(
+        this.upgradePriceLabel = new UpgradePriceLabel(
             skin,
-            building,
+            upgrade,
             eventBus
         );
         add(
-            new BuildingNameLabel(
+            new UpgradeNameLabel(
                 skin,
-                "label_buildingName_tooltip",
                 bundle,
-                building,
-                eventBus
+                upgrade
             )
         )
             .left();
         add().growX();
         add(new Image(skin.get(Style.class).icon))
             .width(Value.prefWidth);
-        add(transactionValueLabel).row();
-        add(
-            new BuildingCountLabel(
-                skin,
-                "label_buildingCount_tooltip",
-                bundle,
-                "buildings.counts.tooltip.zero",
-                "buildings.counts.tooltip",
-                building,
-                eventBus
-            )
-        )
-            .left();
+        add(upgradePriceLabel).row();
+        add(new UpgradeLabel(skin, bundle)).left();
     }
 
     void setDisabled(boolean isDisabled) {
-        transactionValueLabel.setDisabled(isDisabled);
+        upgradePriceLabel.setDisabled(isDisabled);
     }
 
     private static final class Style {
