@@ -10,11 +10,11 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 
-final class UpgradeTooltip extends Table {
+final class UpgradeTooltipPanel extends Table {
 
     private final UpgradeTooltipHeader upgradeTooltipHeader;
 
-    UpgradeTooltip(
+    UpgradeTooltipPanel(
         Skin skin,
         I18NBundle bundle,
         Upgrade upgrade,

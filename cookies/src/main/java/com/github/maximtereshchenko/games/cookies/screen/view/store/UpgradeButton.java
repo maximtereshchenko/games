@@ -19,7 +19,7 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
 
     private final Upgrade upgrade;
     private final Style style;
-    private final UpgradeTooltip upgradeTooltip;
+    private final UpgradeTooltipPanel upgradeTooltip;
     private BigDecimal cookieBalance;
     private BigDecimal price;
 
@@ -33,7 +33,7 @@ final class UpgradeButton extends Container<ImageButton> implements Subscriber<E
         super(new ImageButton(buttonStyle));
         this.upgrade = upgrade;
         this.style = buttonStyle;
-        this.upgradeTooltip = new UpgradeTooltip(
+        this.upgradeTooltip = new UpgradeTooltipPanel(
             skin,
             bundle,
             upgrade,

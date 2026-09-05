@@ -10,12 +10,12 @@ import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.BuildingUnlocked;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 
-final class BuildingDescription extends Label implements Subscriber<Event> {
+final class BuildingFlavorTextLabel extends Label implements Subscriber<Event> {
 
     private final I18NBundle bundle;
     private final Building building;
 
-    BuildingDescription(
+    BuildingFlavorTextLabel(
         Skin skin,
         I18NBundle bundle,
         Building building,
@@ -23,10 +23,10 @@ final class BuildingDescription extends Label implements Subscriber<Event> {
     ) {
         super(
             bundle.get(
-                "buildings.descriptions.locked"
+                "buildings.flavorTexts.locked"
             ),
             skin,
-            "label_buildingDescription"
+            "label_buildingFlavorText"
         );
         this.bundle = bundle;
         this.building = building;
@@ -40,7 +40,7 @@ final class BuildingDescription extends Label implements Subscriber<Event> {
             event instanceof BuildingUnlocked buildingUnlocked &&
             buildingUnlocked.building().equals(building)
         ) {
-            setText(bundle.get("buildings.descriptions." + building.name()));
+            setText(bundle.get("buildings.flavorTexts." + building.name()));
         }
     }
 }

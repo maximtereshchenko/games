@@ -6,13 +6,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.github.maximtereshchenko.games.cookies.screen.view.Beam;
+import com.github.maximtereshchenko.games.cookies.screen.view.BeamWidget;
 
-final class StoreBeam extends Beam {
+final class StoreBeamWidget extends BeamWidget {
 
     private final Label label;
 
-    StoreBeam(Skin skin, String text) {
+    StoreBeamWidget(Skin skin, String text) {
         super(skin, "widget_beamStore");
         this.label = new Label(text, skin, "label_beamStore");
         label.setVisible(false);

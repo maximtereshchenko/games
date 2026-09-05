@@ -186,7 +186,7 @@
       "fontColor": "color_black",
       "background": "tile_circle_whiteTransparent50"
     },
-    "label_buildingDescription": {
+    "label_buildingFlavorText": {
       "font": "font_georgia_9",
       "fontColor": "color_white_transparent50"
     },
@@ -351,7 +351,7 @@
       "disabledFontColor": "color_red"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.Beam$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.BeamWidget$Style": {
     "widget_view": {
       "background": "tile_beam_verticalRepeated",
       "drawables": [
@@ -375,7 +375,7 @@
       ]
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltip$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltipPanel$Style": {
     "default": {
       "drawable": "tile_gradient_line"
     }
@@ -392,7 +392,7 @@
       "icon": "icon_cookie_small"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltip$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltipPanel$Style": {
     "CURSOR_TIER_0": {
       "upgradeIcon": "icon_cursor_plain",
       "separator": "tile_gradient_line"

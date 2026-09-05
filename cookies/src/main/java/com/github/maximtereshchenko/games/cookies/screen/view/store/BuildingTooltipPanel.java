@@ -10,11 +10,11 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 
-final class BuildingTooltip extends Table {
+final class BuildingTooltipPanel extends Table {
 
     private final BuildingTooltipHeader buildingTooltipHeader;
 
-    BuildingTooltip(
+    BuildingTooltipPanel(
         Skin skin,
         I18NBundle bundle,
         Building building,
@@ -43,7 +43,7 @@ final class BuildingTooltip extends Table {
             .growX()
             .row();
         add(
-            new BuildingDescription(
+            new BuildingFlavorTextLabel(
                 skin,
                 bundle,
                 building,

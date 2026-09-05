@@ -18,7 +18,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
     private final Style style;
     private final Building building;
     private final TransactionDetailsWidget transactionDetailsWidget;
-    private final BuildingTooltip buildingTooltip;
+    private final BuildingTooltipPanel buildingTooltip;
     private BigDecimal cookieBalance;
     private BigDecimal transactionValue;
 
@@ -39,7 +39,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
             building,
             eventBus
         );
-        this.buildingTooltip = new BuildingTooltip(
+        this.buildingTooltip = new BuildingTooltipPanel(
             skin,
             bundle,
             building,

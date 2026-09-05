@@ -18,7 +18,7 @@ public final class StorePanel extends Table {
         EventBus<Event> eventBus
     ) {
         background(skin.get(Style.class).background);
-        var upgradesBeam = new StoreBeam(
+        var upgradesBeam = new StoreBeamWidget(
             skin,
             bundle.get("upgrades")
         );
@@ -27,7 +27,7 @@ public final class StorePanel extends Table {
             bundle,
             eventBus
         );
-        var buildingsBeam = new StoreBeam(
+        var buildingsBeam = new StoreBeamWidget(
             skin,
             bundle.get("buildings")
         );
