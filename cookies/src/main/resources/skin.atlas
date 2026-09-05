@@ -13,49 +13,49 @@ icon_cookie
   index: -1
 icon_cookie_small
   rotate: false
-  xy: 780, 586
+  xy: 780, 536
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 icon_cursor_berrylium
   rotate: false
-  xy: 488, 282
+  xy: 926, 908
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_blueberrylium
   rotate: false
-  xy: 926, 908
+  xy: 780, 654
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_buttergold
   rotate: false
-  xy: 780, 654
+  xy: 780, 604
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_chalcedhoney
   rotate: false
-  xy: 488, 232
+  xy: 780, 554
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_plain
   rotate: false
-  xy: 538, 276
+  xy: 488, 273
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_sugarmuck
   rotate: false
-  xy: 780, 604
+  xy: 488, 223
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -76,7 +76,7 @@ icon_cursor_tiltedBlack
   index: -1
 icon_questionMark
   rotate: false
-  xy: 488, 182
+  xy: 538, 273
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -140,7 +140,7 @@ tile_cookies
   index: 0
 tile_empty
   rotate: false
-  xy: 858, 825
+  xy: 719, 323
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -197,14 +197,22 @@ tile_gradient_bottomLong
   index: -1
 tile_gradient_left
   rotate: false
-  xy: 588, 308
+  xy: 588, 305
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
+tile_gradient_line
+  rotate: false
+  xy: 516, 323
+  size: 201, 1
+  split: 100, 100, 0, 1
+  orig: 201, 1
+  offset: 0, 0
+  index: -1
 tile_gradient_right
   rotate: false
-  xy: 588, 290
+  xy: 588, 287
   size: 64, 16
   orig: 64, 16
   offset: 0, 0

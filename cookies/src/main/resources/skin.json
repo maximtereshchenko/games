@@ -16,16 +16,20 @@
       "file": "merriweather.fnt",
       "scaledSize": 36
     },
-    "font_tahoma_6": {
-      "file": "tahoma.fnt",
-      "scaledSize": 6
-    },
     "font_tahoma_8": {
       "file": "tahoma.fnt",
       "scaledSize": 8
     },
-    "font_tahoma_9": {
+    "font_tahoma_10": {
       "file": "tahoma.fnt",
+      "scaledSize": 10
+    },
+    "font_tahoma_11": {
+      "file": "tahoma.fnt",
+      "scaledSize": 11
+    },
+    "font_georgia_9": {
+      "file": "georgia.fnt",
       "scaledSize": 9
     }
   },
@@ -153,7 +157,7 @@
       "fontColor": "color_white"
     },
     "label_beamStore": {
-      "font": "font_tahoma_8",
+      "font": "font_tahoma_10",
       "fontColor": "color_brown"
     },
     "label_buildingName_button": {
@@ -161,7 +165,7 @@
       "fontColor": "color_white"
     },
     "label_buildingName_tooltip": {
-      "font": "font_tahoma_9",
+      "font": "font_tahoma_11",
       "fontColor": "color_white"
     },
     "label_buildingCount_button": {
@@ -169,9 +173,13 @@
       "fontColor": "color_black_transparent20"
     },
     "label_buildingCount_tooltip": {
-      "font": "font_tahoma_6",
+      "font": "font_tahoma_8",
       "fontColor": "color_black",
       "background": "tile_circle_whiteTransparent50"
+    },
+    "label_buildingDescription": {
+      "font": "font_georgia_9",
+      "fontColor": "color_white_transparent50"
     },
     "label_bakingPower": {
       "font": "font_merriweather_16",
@@ -329,7 +337,7 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionValueLabel$Style": {
     "default": {
-      "font": "font_tahoma_8",
+      "font": "font_tahoma_10",
       "enabledFontColor": "color_green",
       "disabledFontColor": "color_red"
     }
@@ -356,6 +364,11 @@
         "tile_noise_repeated",
         "tile_borders"
       ]
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltip$Style": {
+    "default": {
+      "drawable": "tile_gradient_line"
     }
   }
 }
