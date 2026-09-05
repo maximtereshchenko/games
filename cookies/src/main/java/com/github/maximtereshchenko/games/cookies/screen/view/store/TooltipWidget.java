@@ -15,7 +15,11 @@ final class TooltipWidget extends Tooltip<Stack> {
         for (var drawable : style.drawables) {
             stack.add(new Image(drawable));
         }
-        stack.add(new Container<>(table).fill().pad(8, 16, 8, 16));
+        stack.add(
+            new Container<>(table)
+                .fill()
+                .pad(8, 16, 8, 16)
+        );
         getContainer().minWidth(380);
     }
 

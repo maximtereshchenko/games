@@ -186,7 +186,15 @@
       "fontColor": "color_black",
       "background": "tile_circle_whiteTransparent50"
     },
+    "label_upgradeDescription": {
+      "font": "font_tahoma_10",
+      "fontColor": "color_white"
+    },
     "label_buildingFlavorText": {
+      "font": "font_georgia_9",
+      "fontColor": "color_white_transparent50"
+    },
+    "label_upgradeFlavorText": {
       "font": "font_georgia_9",
       "fontColor": "color_white_transparent50"
     },
@@ -201,6 +209,10 @@
     "label_bakingRate": {
       "font": "font_merriweather_10",
       "fontColor": "color_white"
+    },
+    "label_upgradeTooltipFooter": {
+      "font": "font_tahoma_10",
+      "fontColor": "color_white_transparent60"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionModePanel$Style": {
@@ -377,7 +389,7 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltipPanel$Style": {
     "default": {
-      "drawable": "tile_gradient_line"
+      "separator": "tile_gradient_line"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradePriceLabel$Style": {

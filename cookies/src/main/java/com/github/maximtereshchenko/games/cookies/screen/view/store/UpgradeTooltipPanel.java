@@ -31,14 +31,43 @@ final class UpgradeTooltipPanel extends Table {
         add(new Image(style.upgradeIcon))
             .width(Value.prefWidth);
         add(upgradeTooltipHeader).growX().row();
-        add(new Image(style.separator))
+        addSeparator(style);
+        add(
+            new UpgradeDescriptionLabel(
+                skin,
+                bundle,
+                upgrade
+            )
+        )
             .colspan(2)
-            .growX()
+            .left()
             .row();
+        add(
+            new UpgradeFlavorTextLabel(
+                skin,
+                bundle,
+                upgrade
+            )
+        )
+            .colspan(2)
+            .right()
+            .row();
+        addSeparator(style);
+        add(new UpgradeTooltipFooterLabel(skin, bundle))
+            .colspan(2);
     }
 
     void setDisabled(boolean isDisabled) {
         upgradeTooltipHeader.setDisabled(isDisabled);
+    }
+
+    private void addSeparator(Style style) {
+        add(new Image(style.separator))
+            .colspan(2)
+            .growX()
+            .padTop(8)
+            .padBottom(16)
+            .row();
     }
 
     private static final class Style {

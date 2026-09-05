@@ -2,7 +2,6 @@ package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.event.Subscriber;
@@ -30,7 +29,6 @@ final class BuildingFlavorTextLabel extends Label implements Subscriber<Event> {
         );
         this.bundle = bundle;
         this.building = building;
-        setAlignment(Align.right);
         eventBus.subscribe(this);
     }
 

@@ -38,9 +38,11 @@ final class BuildingTooltipPanel extends Table {
         )
             .width(Value.prefWidth);
         add(buildingTooltipHeader).growX().row();
-        add(new Image(skin.get(Style.class).drawable))
+        add(new Image(skin.get(Style.class).separator))
             .colspan(2)
             .growX()
+            .padTop(8)
+            .padBottom(16)
             .row();
         add(
             new BuildingFlavorTextLabel(
@@ -51,7 +53,7 @@ final class BuildingTooltipPanel extends Table {
             )
         )
             .colspan(2)
-            .growX();
+            .right();
     }
 
     void setDisabled(boolean isDisabled) {
@@ -60,6 +62,6 @@ final class BuildingTooltipPanel extends Table {
 
     private static final class Style {
 
-        Drawable drawable;
+        Drawable separator;
     }
 }
