@@ -61,7 +61,10 @@ final class PlayerProgress {
     }
 
     void activate(Upgrade upgrade) {
-        unlockedUpgrades.remove(upgrade);
         activeUpgrades.add(upgrade);
+    }
+
+    boolean isActive(Upgrade upgrade) {
+        return activeUpgrades.contains(upgrade);
     }
 }

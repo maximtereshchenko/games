@@ -9,7 +9,7 @@ final class Configuration {
         Map.of(
             Building.CURSOR, BigDecimal.valueOf(15)
         );
-    private final Map<Building, BigDecimal> buildingBaseProductionRates =
+    private final Map<Building, BigDecimal> buildingBaseBakingRates =
         Map.of(
             Building.CURSOR, BigDecimal.valueOf(0.1)
         );
@@ -42,8 +42,8 @@ final class Configuration {
         return buildingBasePrices.get(building);
     }
 
-    BigDecimal baseProductionRate(Building building) {
-        return buildingBaseProductionRates.get(building);
+    BigDecimal baseBakingRate(Building building) {
+        return buildingBaseBakingRates.get(building);
     }
 
     UnlockRequirement unlockRequirement(Upgrade upgrade) {

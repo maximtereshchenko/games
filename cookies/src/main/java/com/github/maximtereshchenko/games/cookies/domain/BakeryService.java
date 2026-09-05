@@ -4,6 +4,7 @@ import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Set;
 
 public final class BakeryService {
 
@@ -22,7 +23,7 @@ public final class BakeryService {
             new CookieBalanceUpdated(playerProgress.balance())
         );
         eventBus.publish(new BakingRateUpdated(bakingRate()));
-        eventBus.publish(new BakingPowerUpdated(BigDecimal.ONE));
+        eventBus.publish(new BakingPowerUpdated(bakingPower()));
         for (var building : Building.values()) {
             eventBus.publish(
                 new BuildingCountUpdated(
@@ -50,7 +51,7 @@ public final class BakeryService {
     }
 
     public void bake() {
-        addToBalance(BigDecimal.ONE);
+        addToBalance(bakingPower());
         unlockBuildings();
         eventBus.publish(new CookiesBaked());
     }
@@ -84,6 +85,14 @@ public final class BakeryService {
                 .negate()
         );
         playerProgress.activate(upgrade);
+        eventBus.publish(
+            new BakingRateUpdated(bakingRate())
+        );
+        eventBus.publish(new BakingPowerUpdated(bakingPower()));
+    }
+
+    private BigDecimal bakingPower() {
+        return cursorBakingRate(BigDecimal.ONE);
     }
 
     private void unlockUpgrades() {
@@ -143,7 +152,7 @@ public final class BakeryService {
         var productionRate = BigDecimal.ZERO;
         for (var building : Building.values()) {
             productionRate = productionRate.add(
-                configuration.baseProductionRate(building)
+                bakingRate(building)
                     .multiply(
                         BigDecimal.valueOf(
                             playerProgress.count(building)
@@ -152,6 +161,48 @@ public final class BakeryService {
             );
         }
         return productionRate;
+    }
+
+    private BigDecimal bakingRate(Building building) {
+        var baseBakingRate = configuration.baseBakingRate(building);
+        return switch (building) {
+            case CURSOR -> cursorBakingRate(baseBakingRate);
+        };
+    }
+
+    private BigDecimal cursorBakingRate(BigDecimal baseBakingRate) {
+        var bakingRate = baseBakingRate;
+        for (var upgrade : Set.of(Upgrade.CURSOR_TIER_0, Upgrade.CURSOR_TIER_1, Upgrade.CURSOR_TIER_2)) {
+            if (playerProgress.isActive(upgrade)) {
+                bakingRate = bakingRate.multiply(BigDecimal.TWO);
+            }
+        }
+        return bakingRate.add(nonCursorBuildingBonus());
+    }
+
+    private BigDecimal nonCursorBuildingBonus() {
+        if (!playerProgress.isUnlocked(Upgrade.CURSOR_TIER_3)) {
+            return BigDecimal.ZERO;
+        }
+        var bonus = BigDecimal.valueOf(0.1)
+            .multiply(BigDecimal.valueOf(nonCursorBuildingCount()));
+        if (playerProgress.isUnlocked(Upgrade.CURSOR_TIER_4)) {
+            bonus = bonus.multiply(BigDecimal.valueOf(5));
+        }
+        if (playerProgress.isUnlocked(Upgrade.CURSOR_TIER_5)) {
+            bonus = bonus.multiply(BigDecimal.valueOf(10));
+        }
+        return bonus;
+    }
+
+    private int nonCursorBuildingCount() {
+        var count = 0;
+        for (var building : Building.values()) {
+            if (building != Building.CURSOR) {
+                count += playerProgress.count(building);
+            }
+        }
+        return count;
     }
 
     private BigDecimal price(Building building) {
