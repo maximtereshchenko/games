@@ -15,16 +15,20 @@ final class BuildingIcon extends Stack implements Subscriber<Event> {
 
     private final Image disabled;
     private final Image enabled;
+    private final float animationDurationSeconds;
     private final Building building;
 
     BuildingIcon(
         Skin skin,
+        String styleName,
+        float animationDurationSeconds,
         Building building,
         EventBus<Event> eventBus
     ) {
-        var style = skin.get(building.name(), Style.class);
+        var style = skin.get(styleName, Style.class);
         this.disabled = new Image(style.disabled);
         this.enabled = new Image(style.enabled);
+        this.animationDurationSeconds = animationDurationSeconds;
         this.building = building;
         enabled.addAction(Actions.fadeOut(0));
         add(disabled);
@@ -38,9 +42,8 @@ final class BuildingIcon extends Stack implements Subscriber<Event> {
             event instanceof BuildingUnlocked buildingUnlocked &&
             buildingUnlocked.building() == building
         ) {
-            var duration = 0.5f;
-            disabled.addAction(Actions.fadeOut(duration));
-            enabled.addAction(Actions.fadeIn(duration));
+            disabled.addAction(Actions.fadeOut(animationDurationSeconds));
+            enabled.addAction(Actions.fadeIn(animationDurationSeconds));
         }
     }
 

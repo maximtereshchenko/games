@@ -16,14 +16,15 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
 
     BuildingNameLabel(
         Skin skin,
+        String styleName,
         I18NBundle bundle,
         Building building,
         EventBus<Event> eventBus
     ) {
         super(
-            bundle.get("views.bakery.panels.store.buttons.building.locked.name"),
+            bundle.get("views.bakery.buildings.locked.name"),
             skin,
-            "label_buildingName"
+            styleName
         );
         this.bundle = bundle;
         this.building = building;
@@ -38,7 +39,7 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
         ) {
             setText(
                 bundle.get(
-                    "views.bakery.panels.store.buttons.building.%s.name"
+                    "views.bakery.buildings.%s.name"
                         .formatted(building)
                 )
             );

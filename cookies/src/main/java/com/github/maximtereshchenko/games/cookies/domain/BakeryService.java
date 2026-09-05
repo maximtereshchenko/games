@@ -14,7 +14,6 @@ public final class BakeryService {
         this.configuration = new Configuration();
         this.playerProgress = new PlayerProgress();
         this.eventBus = eventBus;
-
     }
 
     public void onStart() {

@@ -28,6 +28,7 @@ final class TransactionDetailsWidget extends Table {
         add(
             new BuildingNameLabel(
                 skin,
+                "label_buildingName_button",
                 bundle,
                 building,
                 eventBus

@@ -4,55 +4,6 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-gradient_borders
-  rotate: false
-  xy: 538, 766
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-gradient_bottom
-  rotate: false
-  xy: 992, 958
-  size: 16, 64
-  orig: 16, 64
-  offset: 0, 0
-  index: -1
-gradient_bottom_long
-  rotate: false
-  xy: 534, 382
-  size: 2, 640
-  orig: 2, 640
-  offset: 0, 0
-  index: -1
-gradient_left
-  rotate: false
-  xy: 588, 308
-  size: 64, 16
-  orig: 64, 16
-  offset: 0, 0
-  index: -1
-gradient_right
-  rotate: false
-  xy: 588, 290
-  size: 64, 16
-  orig: 64, 16
-  offset: 0, 0
-  index: -1
-gradient_top
-  rotate: false
-  xy: 488, 444
-  size: 16, 64
-  orig: 16, 64
-  offset: 0, 0
-  index: -1
-gradient_top_long
-  rotate: false
-  xy: 830, 638
-  size: 2, 64
-  orig: 2, 64
-  offset: 0, 0
-  index: -1
 icon_cookie
   rotate: false
   xy: 488, 332
@@ -62,54 +13,40 @@ icon_cookie
   index: -1
 icon_cookie_small
   rotate: false
-  xy: 488, 214
+  xy: 780, 586
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
-icon_cursor
-  rotate: false
-  xy: 488, 282
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_plain
-  rotate: false
-  xy: 488, 282
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
 icon_cursor_berrylium
   rotate: false
-  xy: 926, 908
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_pink
-  rotate: false
-  xy: 926, 908
+  xy: 488, 282
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_blueberrylium
   rotate: false
-  xy: 780, 654
+  xy: 926, 908
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_buttergold
   rotate: false
-  xy: 488, 232
+  xy: 780, 654
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_chalcedhoney
+  rotate: false
+  xy: 488, 232
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_cursor_plain
   rotate: false
   xy: 538, 276
   size: 48, 48
@@ -135,6 +72,13 @@ icon_cursor_tiltedBlack
   xy: 926, 958
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+icon_questionMark
+  rotate: false
+  xy: 488, 182
+  size: 48, 48
+  orig: 48, 48
   offset: 0, 0
   index: -1
 texture_cookie
@@ -179,6 +123,14 @@ tile_beam_vertical
   orig: 16, 512
   offset: 0, 0
   index: -1
+tile_borders
+  rotate: false
+  xy: 842, 755
+  size: 9, 9
+  split: 3, 3, 3, 3
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
 tile_cookies
   rotate: false
   xy: 2, 510
@@ -212,6 +164,55 @@ tile_frame_brownDark
   xy: 862, 832
   size: 60, 60
   orig: 60, 60
+  offset: 0, 0
+  index: -1
+tile_gradient_borders
+  rotate: false
+  xy: 538, 766
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+tile_gradient_bottom
+  rotate: false
+  xy: 992, 958
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: -1
+tile_gradient_bottomLong
+  rotate: false
+  xy: 534, 382
+  size: 2, 640
+  orig: 2, 640
+  offset: 0, 0
+  index: -1
+tile_gradient_left
+  rotate: false
+  xy: 588, 308
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+tile_gradient_right
+  rotate: false
+  xy: 588, 290
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+tile_gradient_top
+  rotate: false
+  xy: 488, 444
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: -1
+tile_gradient_topLong
+  rotate: false
+  xy: 830, 638
+  size: 2, 64
+  orig: 2, 64
   offset: 0, 0
   index: -1
 tile_marble

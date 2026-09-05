@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.tools.bmfont.BitmapFontWriter;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.utils.GdxNativesLoader;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.utils.Json;
 final class Main {
 
     static void main(String[] args) {
+        GdxNativesLoader.load();
         switch (args[0]) {
             case "generateBitmapFont" -> generateBitmapFont(
                 args[1],
@@ -30,6 +32,12 @@ final class Main {
                 args[4]
             );
             case "generateEmptyPixel" -> generateEmptyPixel(
+                args[1]
+            );
+            case "generateLinearGradient" -> generateLinearGradient(
+                args[1]
+            );
+            case "generateEmptyCircle" -> generateEmptyCircle(
                 args[1]
             );
             case "generateTextureAtlas" -> generateTextureAtlas(
@@ -57,8 +65,36 @@ final class Main {
         );
     }
 
+    private static void generateLinearGradient(
+        String outputPath
+    ) {
+        var pixmap = new Pixmap(203, 3, Pixmap.Format.RGBA8888);
+        for (int x = 1; x < pixmap.getWidth() - 1; x++) {
+            var progress = (float) (x - 1) / (pixmap.getWidth() - 3);
+            float alpha;
+            if (progress <= 0.5f) {
+                alpha = MathUtils.lerp(0.0f, 0.25f, progress * 2f);
+            } else {
+                alpha = MathUtils.lerp(0.25f, 0.0f, (progress - 0.5f) * 2f);
+            }
+            pixmap.drawPixel(x, 1, Color.rgba8888(1f, 1f, 1f, alpha));
+        }
+        pixmap.drawPixel(pixmap.getWidth() / 2, 0, Color.rgba8888(0, 0, 0, 1));
+        PixmapIO.writePNG(new FileHandle(outputPath), pixmap);
+    }
+
+    private static void generateEmptyCircle(
+        String outputPath
+    ) {
+        var pixmap = new Pixmap(11, 11, Pixmap.Format.RGBA8888);
+        pixmap.setColor(Color.WHITE);
+        pixmap.fillCircle(pixmap.getWidth() / 2, pixmap.getHeight() / 2, pixmap.getWidth() / 2 - 1);
+        pixmap.drawPixel(pixmap.getWidth() / 2, 0, Color.rgba8888(0, 0, 0, 1));
+        pixmap.drawPixel(0, pixmap.getHeight() / 2, Color.rgba8888(0, 0, 0, 1));
+        PixmapIO.writePNG(new FileHandle(outputPath), pixmap);
+    }
+
     private static void generateEmptyPixel(String path) {
-        GdxNativesLoader.load();
         var pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
@@ -70,7 +106,6 @@ final class Main {
 
     private static void slice(String imagePath, int width, int height, String directoryPath) {
         var imageFile = new FileHandle(imagePath);
-        GdxNativesLoader.load();
         var fullPixmap = new Pixmap(new FileHandle(imagePath));
         var index = 0;
         for (var row = 0; row < fullPixmap.getHeight(); row += height) {
@@ -180,7 +215,6 @@ final class Main {
 
     private static void applyBordersGradient(String imagePath, String colorJson, String outputPath) {
         var blurRadius = 16;
-        GdxNativesLoader.load();
         var sourcePixmap = new Pixmap(new FileHandle(imagePath));
         var blackMask = generateGradientMask(sourcePixmap, blurRadius);
         var blurredBlackMask = applyBlur(blackMask, blurRadius / 2);

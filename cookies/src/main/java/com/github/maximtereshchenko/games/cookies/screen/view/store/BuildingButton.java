@@ -18,6 +18,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
     private final Style style;
     private final Building building;
     private final TransactionDetailsWidget transactionDetailsWidget;
+    private final BuildingTooltip buildingTooltip;
     private BigDecimal cookieBalance;
     private BigDecimal transactionValue;
 
@@ -38,9 +39,23 @@ final class BuildingButton extends Button implements Subscriber<Event> {
             building,
             eventBus
         );
+        this.buildingTooltip = new BuildingTooltip(
+            skin,
+            bundle,
+            building,
+            eventBus
+        );
         this.cookieBalance = BigDecimal.ZERO;
         this.transactionValue = BigDecimal.ZERO;
-        add(new BuildingIcon(skin, building, eventBus));
+        add(
+            new BuildingIcon(
+                skin,
+                "icon_%s_buildingButton".formatted(building.name()),
+                0.5f,
+                building,
+                eventBus
+            )
+        );
         add(transactionDetailsWidget).growX();
         add(new BuildingCountLabel(skin, building, eventBus))
             .padRight(4);
@@ -53,6 +68,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
                 }
             }
         );
+        addListener(new TooltipWidget(skin, buildingTooltip));
         eventBus.subscribe(this);
     }
 
@@ -79,6 +95,7 @@ final class BuildingButton extends Button implements Subscriber<Event> {
         super.setDisabled(isDisabled);
         addAction(Actions.color(color(isDisabled), 0.5f));
         transactionDetailsWidget.setDisabled(isDisabled);
+        buildingTooltip.setDisabled(isDisabled);
     }
 
     private void setState() {
