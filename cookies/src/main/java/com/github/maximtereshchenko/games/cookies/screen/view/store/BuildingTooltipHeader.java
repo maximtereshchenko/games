@@ -12,12 +12,19 @@ import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 final class BuildingTooltipHeader extends Table {
 
+    private final TransactionValueLabel transactionValueLabel;
+
     BuildingTooltipHeader(
         Skin skin,
         I18NBundle bundle,
         Building building,
         EventBus<Event> eventBus
     ) {
+        this.transactionValueLabel = new TransactionValueLabel(
+            skin,
+            building,
+            eventBus
+        );
         add(
             new BuildingNameLabel(
                 skin,
@@ -31,10 +38,11 @@ final class BuildingTooltipHeader extends Table {
         add().growX();
         add(new Image(skin.get(Style.class).icon))
             .width(Value.prefWidth);
+        add(transactionValueLabel);
     }
 
     void setDisabled(boolean isDisabled) {
-
+        transactionValueLabel.setDisabled(isDisabled);
     }
 
     private static final class Style {
