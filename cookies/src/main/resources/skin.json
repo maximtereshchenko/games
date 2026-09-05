@@ -19,6 +19,10 @@
     "font_tahoma_8": {
       "file": "tahoma.fnt",
       "scaledSize": 8
+    },
+    "font_tahoma_9": {
+      "file": "tahoma.fnt",
+      "scaledSize": 9
     }
   },
   "com.badlogic.gdx.graphics.Color": {
@@ -142,6 +146,10 @@
       "font": "font_merriweather_25",
       "fontColor": "color_white"
     },
+    "label_buildingName_tooltip": {
+      "font": "font_tahoma_9",
+      "fontColor": "color_white"
+    },
     "label_buildingCount": {
       "font": "font_merriweather_40",
       "fontColor": "color_black_transparent20"
@@ -219,7 +227,7 @@
       "icon": "icon_cookie_small"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.TooltipHeader$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltipHeader$Style": {
     "default": {
       "icon": "icon_cookie_small"
     }

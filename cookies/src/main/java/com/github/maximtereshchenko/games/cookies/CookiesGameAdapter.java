@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -25,7 +26,16 @@ final class CookiesGameAdapter implements ApplicationListener {
     private CookiesGame cookiesGame;
 
     static void main() {
-        new Lwjgl3Application(new CookiesGameAdapter());
+        var displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode();
+        var configuration = new Lwjgl3ApplicationConfiguration();
+        configuration.setWindowedMode(
+            displayMode.width,
+            displayMode.height
+        );
+        new Lwjgl3Application(
+            new CookiesGameAdapter(),
+            configuration
+        );
     }
 
     @Override
