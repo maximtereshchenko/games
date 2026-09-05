@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Map;
 
 final class Configuration {
@@ -39,13 +38,8 @@ final class Configuration {
             Upgrade.CURSOR_TIER_5, BigDecimal.valueOf(100000000)
         );
 
-    BigDecimal price(Building building, int count) {
-        return buildingBasePrices.get(building)
-            .multiply(
-                BigDecimal.valueOf(1.15)
-                    .pow(count)
-            )
-            .setScale(0, RoundingMode.CEILING);
+    BigDecimal basePrice(Building building) {
+        return buildingBasePrices.get(building);
     }
 
     BigDecimal baseProductionRate(Building building) {

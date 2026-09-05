@@ -22,7 +22,7 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
         EventBus<Event> eventBus
     ) {
         super(
-            bundle.get("views.bakery.buildings.locked.name"),
+            bundle.get("buildings.names.locked"),
             skin,
             styleName
         );
@@ -37,12 +37,7 @@ final class BuildingNameLabel extends Label implements Subscriber<Event> {
             event instanceof BuildingUnlocked buildingUnlocked &&
             buildingUnlocked.building().equals(building)
         ) {
-            setText(
-                bundle.get(
-                    "views.bakery.buildings.%s.name"
-                        .formatted(building)
-                )
-            );
+            setText(bundle.get("buildings.names." + building.name()));
         }
     }
 }

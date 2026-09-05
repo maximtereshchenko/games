@@ -16,6 +16,10 @@
       "file": "merriweather.fnt",
       "scaledSize": 36
     },
+    "font_tahoma_6": {
+      "file": "tahoma.fnt",
+      "scaledSize": 6
+    },
     "font_tahoma_8": {
       "file": "tahoma.fnt",
       "scaledSize": 8
@@ -30,6 +34,12 @@
       "r": 1,
       "g": 1,
       "b": 1,
+      "a": 1
+    },
+    "color_black": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 1
     },
     "color_green": {
@@ -117,6 +127,10 @@
     "tile_black_transparent50": {
       "name": "tile_empty",
       "color": "color_black_transparent50"
+    },
+    "tile_circle_whiteTransparent50": {
+      "name": "tile_empty_circle",
+      "color": "color_white_transparent50"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
@@ -150,9 +164,14 @@
       "font": "font_tahoma_9",
       "fontColor": "color_white"
     },
-    "label_buildingCount": {
+    "label_buildingCount_button": {
       "font": "font_merriweather_40",
       "fontColor": "color_black_transparent20"
+    },
+    "label_buildingCount_tooltip": {
+      "font": "font_tahoma_6",
+      "fontColor": "color_black",
+      "background": "tile_circle_whiteTransparent50"
     },
     "label_bakingPower": {
       "font": "font_merriweather_16",

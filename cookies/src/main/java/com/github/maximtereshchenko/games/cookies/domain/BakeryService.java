@@ -3,6 +3,7 @@ package com.github.maximtereshchenko.games.cookies.domain;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public final class BakeryService {
 
@@ -24,12 +25,15 @@ public final class BakeryService {
         eventBus.publish(new BakingPowerUpdated(BigDecimal.ONE));
         for (var building : Building.values()) {
             eventBus.publish(
+                new BuildingCountUpdated(
+                    building,
+                    playerProgress.count(building)
+                )
+            );
+            eventBus.publish(
                 new TransactionValueUpdated(
                     building,
-                    configuration.price(
-                        building,
-                        playerProgress.count(building)
-                    )
+                    price(building)
                 )
             );
         }
@@ -52,13 +56,7 @@ public final class BakeryService {
     }
 
     public void completeTransaction(Building building) {
-        addToBalance(
-            configuration.price(
-                    building,
-                    playerProgress.count(building)
-                )
-                .negate()
-        );
+        addToBalance(price(building).negate());
         playerProgress.add(building, 1);
         var count = playerProgress.count(building);
         unlockBuildings();
@@ -72,10 +70,7 @@ public final class BakeryService {
         eventBus.publish(
             new TransactionValueUpdated(
                 building,
-                configuration.price(
-                    building,
-                    count
-                )
+                price(building)
             )
         );
         eventBus.publish(
@@ -129,14 +124,11 @@ public final class BakeryService {
         }
     }
 
-    private boolean balanceGreaterThanBasePrice(Building building) {
+    private boolean balanceGreaterThanBasePrice(
+        Building building
+    ) {
         return playerProgress.balance()
-                   .compareTo(
-                       configuration.price(
-                           building,
-                           playerProgress.count(building)
-                       )
-                   ) >= 0;
+                   .compareTo(price(building)) >= 0;
     }
 
     private BigDecimal bakingRate() {
@@ -152,5 +144,14 @@ public final class BakeryService {
             );
         }
         return productionRate;
+    }
+
+    private BigDecimal price(Building building) {
+        return configuration.basePrice(building)
+            .multiply(
+                BigDecimal.valueOf(1.15)
+                    .pow(playerProgress.count(building))
+            )
+            .setScale(0, RoundingMode.CEILING);
     }
 }

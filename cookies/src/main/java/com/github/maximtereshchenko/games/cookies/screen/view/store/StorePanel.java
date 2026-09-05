@@ -20,12 +20,12 @@ public final class StorePanel extends Table {
         background(skin.get(Style.class).background);
         var upgradesBeam = new StoreBeam(
             skin,
-            bundle.get("views.bakery.panels.store.labels.upgrades")
+            bundle.get("upgrades")
         );
         var upgradePanel = new UpgradePanel(skin, eventBus);
         var buildingsBeam = new StoreBeam(
             skin,
-            bundle.get("views.bakery.panels.store.labels.buildings")
+            bundle.get("buildings")
         );
         var transactionModePanel = new TransactionModePanel(skin);
         upgradesBeam.addListener(upgradePanel.eventListener());

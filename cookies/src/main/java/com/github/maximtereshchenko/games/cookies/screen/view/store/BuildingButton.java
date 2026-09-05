@@ -57,7 +57,17 @@ final class BuildingButton extends Button implements Subscriber<Event> {
             )
         );
         add(transactionDetailsWidget).growX();
-        add(new BuildingCountLabel(skin, building, eventBus))
+        add(
+            new BuildingCountLabel(
+                skin,
+                "label_buildingCount_button",
+                bundle,
+                "buildings.counts.button.zero",
+                "buildings.counts.button",
+                building,
+                eventBus
+            )
+        )
             .padRight(4);
         addListener(
             new ChangeListener() {

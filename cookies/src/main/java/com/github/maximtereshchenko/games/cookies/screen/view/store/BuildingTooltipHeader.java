@@ -38,7 +38,18 @@ final class BuildingTooltipHeader extends Table {
         add().growX();
         add(new Image(skin.get(Style.class).icon))
             .width(Value.prefWidth);
-        add(transactionValueLabel);
+        add(transactionValueLabel).row();
+        add(
+            new BuildingCountLabel(
+                skin,
+                "label_buildingCount_tooltip",
+                bundle,
+                "buildings.counts.tooltip.zero",
+                "buildings.counts.tooltip",
+                building,
+                eventBus
+            )
+        );
     }
 
     void setDisabled(boolean isDisabled) {
