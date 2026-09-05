@@ -7,11 +7,13 @@ final class Configuration {
 
     private final Map<Building, BigDecimal> buildingBasePrices =
         Map.of(
-            Building.CURSOR, BigDecimal.valueOf(15)
+            Building.CURSOR, BigDecimal.valueOf(15),
+            Building.GRANDMA, BigDecimal.valueOf(100)
         );
     private final Map<Building, BigDecimal> buildingBaseBakingRates =
         Map.of(
-            Building.CURSOR, BigDecimal.valueOf(0.1)
+            Building.CURSOR, BigDecimal.valueOf(0.1),
+            Building.GRANDMA, BigDecimal.valueOf(1)
         );
     private final Map<Upgrade, UnlockRequirement> upgradeUnlockRequirements =
         Map.of(

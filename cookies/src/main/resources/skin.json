@@ -248,6 +248,14 @@
     "icon_CURSOR_buildingTooltip": {
       "enabled": "icon_cursor_plain",
       "disabled": "icon_questionMark"
+    },
+    "icon_GRANDMA_buildingButton": {
+      "enabled": "icon_grandma",
+      "disabled": "icon_grandmaBlack"
+    },
+    "icon_GRANDMA_buildingTooltip": {
+      "enabled": "icon_rollingPin_plain",
+      "disabled": "icon_questionMark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {

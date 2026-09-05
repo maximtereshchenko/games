@@ -13,49 +13,49 @@ icon_cookie
   index: -1
 icon_cookie_small
   rotate: false
-  xy: 780, 536
+  xy: 988, 940
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 icon_cursor_berrylium
   rotate: false
-  xy: 926, 908
+  xy: 780, 712
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_blueberrylium
   rotate: false
-  xy: 780, 654
+  xy: 780, 662
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_buttergold
   rotate: false
-  xy: 780, 604
+  xy: 780, 612
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_chalcedhoney
   rotate: false
-  xy: 780, 554
+  xy: 780, 562
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_plain
   rotate: false
-  xy: 488, 273
+  xy: 830, 712
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 icon_cursor_sugarmuck
   rotate: false
-  xy: 488, 223
+  xy: 830, 662
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -74,9 +74,65 @@ icon_cursor_tiltedBlack
   orig: 64, 64
   offset: 0, 0
   index: -1
+icon_grandma
+  rotate: false
+  xy: 862, 828
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+icon_grandmaBlack
+  rotate: false
+  xy: 796, 762
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 icon_questionMark
   rotate: false
-  xy: 538, 273
+  xy: 830, 612
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_rollingPin_berrylium
+  rotate: false
+  xy: 830, 562
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_rollingPin_blueberrylium
+  rotate: false
+  xy: 880, 716
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_rollingPin_buttergold
+  rotate: false
+  xy: 880, 666
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_rollingPin_chalcedhoney
+  rotate: false
+  xy: 880, 616
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_rollingPin_plain
+  rotate: false
+  xy: 880, 566
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+icon_rollingPin_sugarmuck
+  rotate: false
+  xy: 488, 273
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -90,7 +146,7 @@ texture_cookie
   index: -1
 texture_cursor
   rotate: false
-  xy: 976, 924
+  xy: 846, 528
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -125,7 +181,7 @@ tile_beam_vertical
   index: -1
 tile_borders
   rotate: false
-  xy: 842, 755
+  xy: 488, 433
   size: 9, 9
   split: 3, 3, 3, 3
   orig: 9, 9
@@ -147,7 +203,7 @@ tile_empty
   index: -1
 tile_empty_circle
   rotate: false
-  xy: 926, 897
+  xy: 506, 499
   size: 9, 9
   split: 4, 4, 4, 4
   orig: 9, 9
@@ -155,21 +211,21 @@ tile_empty_circle
   index: -1
 tile_frame_brown
   rotate: false
-  xy: 796, 766
+  xy: 926, 896
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 tile_frame_brownBright
   rotate: false
-  xy: 780, 704
+  xy: 862, 766
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 tile_frame_brownDark
   rotate: false
-  xy: 862, 832
+  xy: 928, 834
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
@@ -197,7 +253,7 @@ tile_gradient_bottomLong
   index: -1
 tile_gradient_left
   rotate: false
-  xy: 588, 305
+  xy: 780, 544
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
@@ -212,7 +268,7 @@ tile_gradient_line
   index: -1
 tile_gradient_right
   rotate: false
-  xy: 588, 287
+  xy: 780, 526
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
@@ -226,7 +282,7 @@ tile_gradient_top
   index: -1
 tile_gradient_topLong
   rotate: false
-  xy: 830, 638
+  xy: 1010, 958
   size: 2, 64
   orig: 2, 64
   offset: 0, 0

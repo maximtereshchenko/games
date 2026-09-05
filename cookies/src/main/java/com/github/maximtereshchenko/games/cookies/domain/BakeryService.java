@@ -167,6 +167,7 @@ public final class BakeryService {
         var baseBakingRate = configuration.baseBakingRate(building);
         return switch (building) {
             case CURSOR -> cursorBakingRate(baseBakingRate);
+            case GRANDMA -> baseBakingRate;
         };
     }
 
