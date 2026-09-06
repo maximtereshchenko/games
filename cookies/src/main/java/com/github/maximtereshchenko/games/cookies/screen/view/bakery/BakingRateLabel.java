@@ -18,7 +18,7 @@ final class BakingRateLabel extends Label {
         super(
             "",
             skin,
-            "label_bakingRate"
+            "baking-rate"
         );
         this.bundle = bundle;
         this.bakeryService = bakeryService;
@@ -29,7 +29,7 @@ final class BakingRateLabel extends Label {
         super.act(delta);
         setText(
             bundle.format(
-                "bakingRate",
+                "bakery.baking-rate",
                 bakeryService.bakingRate()
             )
         );

@@ -17,10 +17,11 @@ final class BuildingTooltipHeader extends Table {
         BakeryService bakeryService,
         Building building
     ) {
+        var key = "store.building.count.owned";
         add(
             new BuildingNameLabel(
                 skin,
-                "label_buildingName_tooltip",
+                "building-name-tooltip",
                 bundle,
                 bakeryService,
                 building
@@ -41,10 +42,10 @@ final class BuildingTooltipHeader extends Table {
         add(
             new BuildingCountLabel(
                 skin,
-                "label_buildingCount_tooltip",
+                "building-count-tooltip",
                 bundle,
-                "buildings.counts.tooltip.zero",
-                "buildings.counts.tooltip",
+                key,
+                key,
                 bakeryService,
                 building
             )

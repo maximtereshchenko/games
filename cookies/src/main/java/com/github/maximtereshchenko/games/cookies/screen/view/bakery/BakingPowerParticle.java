@@ -20,7 +20,7 @@ final class BakingPowerParticle extends Label {
         super(
             "+" + bigDecimal,
             skin,
-            "label_bakingPower"
+            "baking-power"
         );
         setTouchable(Touchable.disabled);
         setPosition(

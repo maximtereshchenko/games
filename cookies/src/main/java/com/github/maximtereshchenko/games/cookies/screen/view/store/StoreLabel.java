@@ -9,9 +9,9 @@ final class StoreLabel extends Label {
 
     StoreLabel(Skin skin, I18NBundle bundle) {
         super(
-            bundle.get("store"),
+            bundle.get("store.title"),
             skin,
-            "label_store"
+            "store"
         );
         setAlignment(Align.center);
     }

@@ -17,10 +17,10 @@ final class BuildingFlavorTextLabel extends Label {
     ) {
         super(
             bundle.get(
-                "buildings.flavorTexts.locked"
+                "store.building.locked.flavor-text"
             ),
             skin,
-            "label_buildingFlavorText"
+            "building-flavor-text"
         );
         addAction(
             new UnlockBuildingAction(
@@ -28,7 +28,7 @@ final class BuildingFlavorTextLabel extends Label {
                 building,
                 Actions.run(
                     () -> setText(
-                        bundle.get("buildings.flavorTexts." + building.name())
+                        bundle.get("store.building.%s.flavor-text".formatted(building.name()))
                     )
                 )
             )

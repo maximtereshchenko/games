@@ -9,9 +9,9 @@ final class UpgradeDescriptionLabel extends Label {
 
     UpgradeDescriptionLabel(Skin skin, I18NBundle bundle, Upgrade upgrade) {
         super(
-            bundle.get("upgrades.descriptions." + upgrade.name()),
+            bundle.get("store.upgrade.%s.description".formatted(upgrade.name())),
             skin,
-            "label_upgradeDescription"
+            "upgrade-description"
         );
     }
 }

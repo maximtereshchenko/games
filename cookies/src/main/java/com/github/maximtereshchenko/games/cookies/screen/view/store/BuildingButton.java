@@ -30,7 +30,7 @@ final class BuildingButton extends Button {
         add(
             new BuildingIcon(
                 skin,
-                "icon_%s_buildingButton".formatted(building.name()),
+                "%s-button".formatted(building.name().toLowerCase()),
                 bakeryService,
                 building,
                 0.5f
@@ -47,10 +47,10 @@ final class BuildingButton extends Button {
         add(
             new BuildingCountLabel(
                 skin,
-                "label_buildingCount_button",
+                "building-count-button",
                 bundle,
-                "buildings.counts.button.zero",
-                "buildings.counts.button",
+                "store.building.count",
+                "store.building.count.value",
                 bakeryService,
                 building
             )

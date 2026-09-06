@@ -13,8 +13,8 @@ final class StoreBeamWidget extends BeamWidget {
     private final Label label;
 
     StoreBeamWidget(Skin skin, String text) {
-        super(skin, "widget_beamStore");
-        this.label = new Label(text, skin, "label_beamStore");
+        super(skin, "store");
+        this.label = new Label(text, skin, "beam-store");
         label.setVisible(false);
         add(label);
         addListener(eventListener());

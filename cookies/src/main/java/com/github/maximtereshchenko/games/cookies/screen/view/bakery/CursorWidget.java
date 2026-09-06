@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Align;
 final class CursorWidget extends Image {
 
     CursorWidget(Skin skin) {
-        super(skin, "texture_cursor");
+        super(skin, "cursor");
         setOrigin(Align.center);
     }
 

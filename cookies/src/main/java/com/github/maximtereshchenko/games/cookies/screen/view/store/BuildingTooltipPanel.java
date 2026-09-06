@@ -21,7 +21,7 @@ final class BuildingTooltipPanel extends Table {
         add(
             new BuildingIcon(
                 skin,
-                "icon_%s_buildingTooltip".formatted(building.name()),
+                "%s-tooltip".formatted(building.name().toLowerCase()),
                 bakeryService,
                 building,
                 0

@@ -24,7 +24,7 @@ final class CookieButton extends Button {
         Random random,
         BakeryService bakeryService
     ) {
-        super(skin, "button_cookie");
+        super(skin, "cookie");
         setTransform(true);
         addListener(new ClickListener() {
 

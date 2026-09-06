@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
@@ -55,7 +56,6 @@ final class UpgradePanel extends Container<Table> {
         for (var upgrade : Upgrade.values()) {
             addUpgradeButton(upgrade);
         }
-
     }
 
     EventListener eventListener() {
@@ -97,17 +97,29 @@ final class UpgradePanel extends Container<Table> {
             return;
         }
         var table = getActor();
-        table.add(
-            new UpgradeButton(
-                skin,
-                bundle,
-                bakeryService,
-                upgrade
-            )
-        );
+        table.add(upgradeButton(upgrade));
         if (table.getChildren().size % 5 == 0) {
             table.row();
         }
         upgrades.add(upgrade);
+    }
+
+    private UpgradeButton upgradeButton(Upgrade upgrade) {
+        var upgradeButton = new UpgradeButton(
+            skin,
+            bundle,
+            bakeryService,
+            upgrade
+        );
+        upgradeButton.addListener(
+            new ChangeListener() {
+
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    upgrades.remove(upgrade);
+                }
+            }
+        );
+        return upgradeButton;
     }
 }

@@ -17,7 +17,7 @@ final class BuildingNameLabel extends Label {
         Building building
     ) {
         super(
-            bundle.get("buildings.names.locked"),
+            bundle.get("store.building.locked.name"),
             skin,
             styleName
         );
@@ -27,7 +27,7 @@ final class BuildingNameLabel extends Label {
                 building,
                 Actions.run(
                     () -> setText(
-                        bundle.get("buildings.names." + building.name())
+                        bundle.get("store.building.%s.name".formatted(building.name()))
                     )
                 )
             )

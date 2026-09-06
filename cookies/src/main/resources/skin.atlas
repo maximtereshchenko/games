@@ -4,182 +4,21 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-icon_cookie
-  rotate: false
-  xy: 488, 332
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cookie_small
-  rotate: false
-  xy: 988, 940
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
-icon_cursor_berrylium
-  rotate: false
-  xy: 780, 712
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_blueberrylium
-  rotate: false
-  xy: 780, 662
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_buttergold
-  rotate: false
-  xy: 780, 612
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_chalcedhoney
-  rotate: false
-  xy: 780, 562
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_plain
-  rotate: false
-  xy: 830, 712
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_sugarmuck
-  rotate: false
-  xy: 830, 662
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_cursor_tilted
-  rotate: false
-  xy: 796, 828
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_cursor_tiltedBlack
-  rotate: false
-  xy: 926, 958
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_grandma
-  rotate: false
-  xy: 862, 828
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_grandmaBlack
-  rotate: false
-  xy: 796, 762
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_questionMark
-  rotate: false
-  xy: 830, 612
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_rollingPin_berrylium
-  rotate: false
-  xy: 830, 562
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_rollingPin_blueberrylium
-  rotate: false
-  xy: 880, 716
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_rollingPin_buttergold
-  rotate: false
-  xy: 880, 666
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_rollingPin_chalcedhoney
-  rotate: false
-  xy: 880, 616
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_rollingPin_plain
-  rotate: false
-  xy: 880, 566
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-icon_rollingPin_sugarmuck
-  rotate: false
-  xy: 488, 273
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-texture_cookie
-  rotate: false
-  xy: 2, 20
-  size: 484, 488
-  orig: 484, 488
-  offset: 0, 0
-  index: -1
-texture_cursor
-  rotate: false
-  xy: 846, 528
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-texture_flare
-  rotate: false
-  xy: 796, 894
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-texture_milk_plain
-  rotate: false
-  xy: 538, 524
-  size: 240, 240
-  orig: 240, 240
-  offset: 0, 0
-  index: -1
-tile_beam_horizontal
+beam-horizontal
   rotate: false
   xy: 2, 2
   size: 512, 16
   orig: 512, 16
   offset: 0, 0
   index: -1
-tile_beam_vertical
+beam-vertical
   rotate: false
   xy: 516, 510
   size: 16, 512
   orig: 16, 512
   offset: 0, 0
   index: -1
-tile_borders
+borders
   rotate: false
   xy: 488, 433
   size: 9, 9
@@ -187,78 +26,154 @@ tile_borders
   orig: 9, 9
   offset: 0, 0
   index: -1
-tile_cookies
+cookie
+  rotate: false
+  xy: 2, 20
+  size: 484, 488
+  orig: 484, 488
+  offset: 0, 0
+  index: -1
+cookie-medium
+  rotate: false
+  xy: 488, 332
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+cookie-small
+  rotate: false
+  xy: 988, 940
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+cookies
   rotate: false
   xy: 2, 510
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 0
-tile_empty
+cursor
   rotate: false
-  xy: 719, 323
-  size: 1, 1
-  orig: 1, 1
+  xy: 846, 528
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
-tile_empty_circle
+cursor-berrylium
   rotate: false
-  xy: 506, 499
-  size: 9, 9
-  split: 4, 4, 4, 4
-  orig: 9, 9
+  xy: 780, 712
+  size: 48, 48
+  orig: 48, 48
   offset: 0, 0
   index: -1
-tile_frame_brown
+cursor-blueberrylium
+  rotate: false
+  xy: 780, 662
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+cursor-buttergold
+  rotate: false
+  xy: 780, 612
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+cursor-chalcedhoney
+  rotate: false
+  xy: 780, 562
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+cursor-plain
+  rotate: false
+  xy: 830, 712
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+cursor-sugarmuck
+  rotate: false
+  xy: 830, 662
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+cursor-tilted
+  rotate: false
+  xy: 796, 828
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+cursor-tilted-disabled
+  rotate: false
+  xy: 926, 958
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+flare
+  rotate: false
+  xy: 796, 894
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+frame-brown
   rotate: false
   xy: 926, 896
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-tile_frame_brownBright
+frame-brown-bright
   rotate: false
   xy: 862, 766
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-tile_frame_brownDark
+frame-brown-dark
   rotate: false
   xy: 928, 834
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-tile_gradient_borders
+gradient-borders
   rotate: false
   xy: 538, 766
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
-tile_gradient_bottom
+gradient-bottom
   rotate: false
   xy: 992, 958
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
-tile_gradient_bottomLong
+gradient-bottom-long
   rotate: false
   xy: 534, 382
   size: 2, 640
   orig: 2, 640
   offset: 0, 0
   index: -1
-tile_gradient_left
+gradient-left
   rotate: false
   xy: 780, 544
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
-tile_gradient_line
+gradient-line
   rotate: false
   xy: 516, 323
   size: 201, 1
@@ -266,55 +181,140 @@ tile_gradient_line
   orig: 201, 1
   offset: 0, 0
   index: -1
-tile_gradient_right
+gradient-right
   rotate: false
   xy: 780, 526
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
-tile_gradient_top
+gradient-top
   rotate: false
   xy: 488, 444
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
-tile_gradient_topLong
+gradient-top-long
   rotate: false
   xy: 1010, 958
   size: 2, 64
   orig: 2, 64
   offset: 0, 0
   index: -1
-tile_marble
+grandma
   rotate: false
-  xy: 538, 458
-  size: 300, 64
-  orig: 300, 64
+  xy: 862, 828
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
-  index: 0
-tile_marble_gradientBlack
+  index: -1
+grandma-disabled
   rotate: false
-  xy: 538, 392
-  size: 300, 64
-  orig: 300, 64
+  xy: 796, 762
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
-  index: 0
-tile_marble_gradientWhite
+  index: -1
+marble
   rotate: false
   xy: 538, 326
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
+marble-gradient-black
+  rotate: false
+  xy: 538, 458
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+marble-gradient-white
+  rotate: false
+  xy: 538, 392
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+milk-plain
+  rotate: false
+  xy: 538, 524
+  size: 240, 240
+  orig: 240, 240
+  offset: 0, 0
+  index: -1
+pixel
+  rotate: false
+  xy: 719, 323
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+pixel-circle
+  rotate: false
+  xy: 506, 499
+  size: 9, 9
+  split: 4, 4, 4, 4
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+question-mark
+  rotate: false
+  xy: 830, 612
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+rolling-pin-berrylium
+  rotate: false
+  xy: 830, 562
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+rolling-pin-blueberrylium
+  rotate: false
+  xy: 880, 716
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+rolling-pin-buttergold
+  rotate: false
+  xy: 880, 666
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+rolling-pin-chalcedhoney
+  rotate: false
+  xy: 880, 616
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+rolling-pin-plain
+  rotate: false
+  xy: 880, 566
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+rolling-pin-sugarmuck
+  rotate: false
+  xy: 488, 273
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
 
 skin2.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-tile_noise
+noise
   rotate: false
   xy: 2, 2
   size: 512, 512
@@ -327,7 +327,7 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-tile_paper
+paper
   rotate: false
   xy: 2, 2
   size: 512, 512

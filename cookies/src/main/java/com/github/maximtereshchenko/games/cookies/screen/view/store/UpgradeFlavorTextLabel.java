@@ -14,10 +14,10 @@ final class UpgradeFlavorTextLabel extends Label {
     ) {
         super(
             bundle.get(
-                "upgrades.flavorTexts." + upgrade
+                "store.upgrade.%s.flavor-text".formatted(upgrade.name())
             ),
             skin,
-            "label_upgradeFlavorText"
+            "upgrade-flavor-text"
         );
     }
 }

@@ -43,7 +43,7 @@ public final class BakeryView extends ScreenLayout {
     }
 
     private void addBeam(Skin skin) {
-        add(new BeamWidget(skin, "widget_view")).width(Value.prefWidth);
+        add(new BeamWidget(skin, "vertical")).width(Value.prefWidth);
     }
 
     private static final class Style {

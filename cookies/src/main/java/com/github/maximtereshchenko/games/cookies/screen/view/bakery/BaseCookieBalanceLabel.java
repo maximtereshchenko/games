@@ -6,6 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 abstract class BaseCookieBalanceLabel extends Label {
 
     BaseCookieBalanceLabel(String text, Skin skin) {
-        super(text, skin, "label_cookieBalance");
+        super(text, skin, "cookie-balance");
     }
 }

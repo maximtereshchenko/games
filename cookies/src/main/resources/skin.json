@@ -1,100 +1,100 @@
 {
   "com.badlogic.gdx.graphics.g2d.BitmapFont": {
-    "font_merriweather_10": {
+    "merriweather-10": {
       "file": "merriweather.fnt",
       "scaledSize": 10
     },
-    "font_merriweather_16": {
+    "merriweather-16": {
       "file": "merriweather.fnt",
       "scaledSize": 16
     },
-    "font_merriweather_25": {
+    "merriweather-25": {
       "file": "merriweather.fnt",
       "scaledSize": 25
     },
-    "font_merriweather_40": {
+    "merriweather-40": {
       "file": "merriweather.fnt",
       "scaledSize": 36
     },
-    "font_tahoma_8": {
+    "tahoma-8": {
       "file": "tahoma.fnt",
       "scaledSize": 8
     },
-    "font_tahoma_10": {
+    "tahoma-10": {
       "file": "tahoma.fnt",
       "scaledSize": 10
     },
-    "font_tahoma_11": {
+    "tahoma-11": {
       "file": "tahoma.fnt",
       "scaledSize": 11
     },
-    "font_georgia_9": {
+    "georgia-9": {
       "file": "georgia.fnt",
       "scaledSize": 9
     }
   },
   "com.badlogic.gdx.graphics.Color": {
-    "color_white": {
+    "white": {
       "r": 1,
       "g": 1,
       "b": 1,
       "a": 1
     },
-    "color_black": {
+    "black": {
       "r": 0,
       "g": 0,
       "b": 0,
       "a": 1
     },
-    "color_green": {
+    "green": {
       "r": 0,
       "g": 1,
       "b": 0,
       "a": 1
     },
-    "color_brown": {
+    "brown": {
       "r": 0.95,
       "g": 0.85,
       "b": 0.7,
       "a": 1
     },
-    "color_red": {
+    "red": {
       "r": 1,
       "g": 0,
       "b": 0,
       "a": 1
     },
-    "color_white_transparent50": {
+    "white-transparent-50": {
       "r": 1,
       "g": 1,
       "b": 1,
       "a": 0.5
     },
-    "color_white_transparent60": {
+    "white-transparent-60": {
       "r": 1,
       "g": 1,
       "b": 1,
       "a": 0.6
     },
-    "color_black_transparent20": {
+    "black-transparent-20": {
       "r": 0,
       "g": 0,
       "b": 0,
       "a": 0.2
     },
-    "color_black_transparent25": {
+    "black-transparent-25": {
       "r": 0,
       "g": 0,
       "b": 0,
       "a": 0.25
     },
-    "color_black_transparent40": {
+    "black-transparent-40": {
       "r": 0,
       "g": 0,
       "b": 0,
       "a": 0.4
     },
-    "color_black_transparent50": {
+    "black-transparent-50": {
       "r": 0,
       "g": 0,
       "b": 0,
@@ -102,418 +102,418 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable": {
-    "tile_noise_repeated": {
-      "region": "tile_noise"
+    "noise-tiled": {
+      "region": "noise"
     },
-    "tile_paper_repeated": {
-      "region": "tile_paper"
+    "paper-tiled": {
+      "region": "paper"
     },
-    "tile_beam_horizontalRepeated": {
-      "region": "tile_beam_horizontal"
+    "beam-horizontal-tiled": {
+      "region": "beam-horizontal"
     },
-    "tile_beam_verticalRepeated": {
-      "region": "tile_beam_vertical",
+    "beam-vertical-tiled": {
+      "region": "beam-vertical",
       "align": 2
     },
-    "tile_cookies_repeated_0": {
-      "region": "tile_cookies_0"
+    "cookies-tiled-0": {
+      "region": "cookies_0"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
-    "tile_black_transparent25": {
-      "name": "tile_empty",
-      "color": "color_black_transparent25"
+    "pixel-black-transparent-25": {
+      "name": "pixel",
+      "color": "black-transparent-25"
     },
-    "tile_black_transparent40": {
-      "name": "tile_empty",
-      "color": "color_black_transparent40"
+    "pixel-black-transparent-40": {
+      "name": "pixel",
+      "color": "black-transparent-40"
     },
-    "tile_black_transparent50": {
-      "name": "tile_empty",
-      "color": "color_black_transparent50"
+    "pixel-black-transparent-50": {
+      "name": "pixel",
+      "color": "black-transparent-50"
     },
-    "tile_circle_whiteTransparent50": {
-      "name": "tile_empty_circle",
-      "color": "color_white_transparent50"
+    "pixel-circle-white-transparent-50": {
+      "name": "pixel-circle",
+      "color": "white-transparent-50"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
-    "button_cookie": {
-      "up": "texture_cookie"
+    "cookie": {
+      "up": "cookie"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
-    "button_transactionMode": {
-      "font": "font_merriweather_10",
-      "fontColor": "color_white_transparent50",
-      "checkedFontColor": "color_white",
-      "overFontColor": "color_white"
+    "transaction-mode": {
+      "font": "merriweather-10",
+      "fontColor": "white-transparent-50",
+      "checkedFontColor": "white",
+      "overFontColor": "white"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
-    "label_store": {
-      "background": "tile_gradient_topLong",
-      "font": "font_merriweather_25",
-      "fontColor": "color_white"
+    "store": {
+      "background": "gradient-top-long",
+      "font": "merriweather-25",
+      "fontColor": "white"
     },
-    "label_beamStore": {
-      "font": "font_tahoma_10",
-      "fontColor": "color_brown"
+    "beam-store": {
+      "font": "tahoma-10",
+      "fontColor": "brown"
     },
-    "label_buildingName_button": {
-      "font": "font_merriweather_25",
-      "fontColor": "color_white"
+    "building-name-button": {
+      "font": "merriweather-25",
+      "fontColor": "white"
     },
-    "label_buildingName_tooltip": {
-      "font": "font_tahoma_11",
-      "fontColor": "color_white"
+    "building-name-tooltip": {
+      "font": "tahoma-11",
+      "fontColor": "white"
     },
-    "label_upgradeName": {
-      "font": "font_tahoma_11",
-      "fontColor": "color_white"
+    "upgrade-name": {
+      "font": "tahoma-11",
+      "fontColor": "white"
     },
-    "label_buildingCount_button": {
-      "font": "font_merriweather_40",
-      "fontColor": "color_black_transparent20"
+    "building-count-button": {
+      "font": "merriweather-40",
+      "fontColor": "black-transparent-20"
     },
-    "label_buildingCount_tooltip": {
-      "font": "font_tahoma_8",
-      "fontColor": "color_black",
-      "background": "tile_circle_whiteTransparent50"
+    "building-count-tooltip": {
+      "font": "tahoma-8",
+      "fontColor": "black",
+      "background": "pixel-circle-white-transparent-50"
     },
-    "label_upgrade": {
-      "font": "font_tahoma_8",
-      "fontColor": "color_black",
-      "background": "tile_circle_whiteTransparent50"
+    "upgrade": {
+      "font": "tahoma-8",
+      "fontColor": "black",
+      "background": "pixel-circle-white-transparent-50"
     },
-    "label_upgradeDescription": {
-      "font": "font_tahoma_10",
-      "fontColor": "color_white"
+    "upgrade-description": {
+      "font": "tahoma-10",
+      "fontColor": "white"
     },
-    "label_buildingFlavorText": {
-      "font": "font_georgia_9",
-      "fontColor": "color_white_transparent50"
+    "building-flavor-text": {
+      "font": "georgia-9",
+      "fontColor": "white-transparent-50"
     },
-    "label_upgradeFlavorText": {
-      "font": "font_georgia_9",
-      "fontColor": "color_white_transparent50"
+    "upgrade-flavor-text": {
+      "font": "georgia-9",
+      "fontColor": "white-transparent-50"
     },
-    "label_bakingPower": {
-      "font": "font_merriweather_16",
-      "fontColor": "color_white"
+    "baking-power": {
+      "font": "merriweather-16",
+      "fontColor": "white"
     },
-    "label_cookieBalance": {
-      "font": "font_merriweather_25",
-      "fontColor": "color_white"
+    "cookie-balance": {
+      "font": "merriweather-25",
+      "fontColor": "white"
     },
-    "label_bakingRate": {
-      "font": "font_merriweather_10",
-      "fontColor": "color_white"
+    "baking-rate": {
+      "font": "merriweather-10",
+      "fontColor": "white"
     },
-    "label_upgradeTooltipFooter": {
-      "font": "font_tahoma_10",
-      "fontColor": "color_white_transparent60"
+    "upgrade-tooltip-footer": {
+      "font": "tahoma-10",
+      "fontColor": "white-transparent-60"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionModePanel$Style": {
     "default": {
-      "background": "tile_noise_repeated"
+      "background": "noise-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BakingStatisticsPanel$Style": {
     "default": {
-      "background": "tile_black_transparent40"
+      "background": "pixel-black-transparent-40"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.CookieWidget$Style": {
     "default": {
-      "background": "tile_gradient_borders"
+      "background": "gradient-borders"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.BakeryView$Style": {
     "default": {
-      "background": "tile_paper_repeated"
+      "background": "paper-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.MilkWidget$Style": {
     "default": {
-      "drawable": "texture_milk_plain"
+      "drawable": "milk-plain"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingIcon$Style": {
-    "icon_CURSOR_buildingButton": {
-      "enabled": "icon_cursor_tilted",
-      "disabled": "icon_cursor_tiltedBlack"
+    "cursor-button": {
+      "enabled": "cursor-tilted",
+      "disabled": "cursor-tilted-disabled"
     },
-    "icon_CURSOR_buildingTooltip": {
-      "enabled": "icon_cursor_plain",
-      "disabled": "icon_questionMark"
+    "cursor-tooltip": {
+      "enabled": "cursor-plain",
+      "disabled": "question-mark"
     },
-    "icon_GRANDMA_buildingButton": {
-      "enabled": "icon_grandma",
-      "disabled": "icon_grandmaBlack"
+    "grandma-button": {
+      "enabled": "grandma",
+      "disabled": "grandma-disabled"
     },
-    "icon_GRANDMA_buildingTooltip": {
-      "enabled": "icon_rollingPin_plain",
-      "disabled": "icon_questionMark"
+    "grandma-tooltip": {
+      "enabled": "rolling-pin-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
     "default": {
-      "drawable": "tile_gradient_bottomLong"
+      "drawable": "gradient-bottom-long"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.CookieParticle$Style": {
     "default": {
-      "drawable": "icon_cookie"
+      "drawable": "cookie-medium"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FallingCookieWidget$Style": {
     "default": {
-      "drawable": "icon_cookie"
+      "drawable": "cookie-medium"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FlareWidget$Style": {
     "default": {
-      "drawable": "texture_flare"
+      "drawable": "flare"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionDetailsWidget$Style": {
     "default": {
-      "icon": "icon_cookie_small"
+      "icon": "cookie-small"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltipHeader$Style": {
     "default": {
-      "icon": "icon_cookie_small"
+      "icon": "cookie-small"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FallingCookiesWidget$Style": {
     "default": {
-      "drawable": "tile_cookies_repeated_0"
+      "drawable": "cookies-tiled-0"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel$Style": {
     "default": {
-      "background": "tile_black_transparent50"
+      "background": "pixel-black-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeButton$Style": {
     "CURSOR_TIER_0": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor_plain",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "cursor-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_1": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor_berrylium",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "cursor-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_2": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor_blueberrylium",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "cursor-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_3": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor_chalcedhoney",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "cursor-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_4": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor_buttergold",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "cursor-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_5": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_cursor_sugarmuck",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "cursor-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_0": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_rollingPin_plain",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_1": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_rollingPin_berrylium",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_2": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_rollingPin_blueberrylium",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_3": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_rollingPin_chalcedhoney",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_4": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_rollingPin_buttergold",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_5": {
-      "background": "tile_black_transparent25",
-      "up": "tile_frame_brown",
-      "disabled": "tile_frame_brownDark",
-      "over": "tile_frame_brownBright",
-      "imageUp": "icon_rollingPin_sugarmuck",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent50"
+      "background": "pixel-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
     "default": {
-      "up": "tile_marble_0",
-      "disabled": "tile_marble_0",
-      "down": "tile_marble_gradientBlack_0",
-      "over": "tile_marble_gradientWhite_0",
-      "enabledColor": "color_white",
-      "disabledColor": "color_white_transparent60"
+      "up": "marble_0",
+      "disabled": "marble_0",
+      "down": "marble-gradient-black_0",
+      "over": "marble-gradient-white_0",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-60"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionValueLabel$Style": {
     "default": {
-      "font": "font_tahoma_10",
-      "enabledFontColor": "color_green",
-      "disabledFontColor": "color_red"
+      "font": "tahoma-10",
+      "enabledFontColor": "green",
+      "disabledFontColor": "red"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.BeamWidget$Style": {
-    "widget_view": {
-      "background": "tile_beam_verticalRepeated",
+    "vertical": {
+      "background": "beam-vertical-tiled",
       "drawables": [
-        "tile_gradient_top",
-        "tile_gradient_bottom"
+        "gradient-top",
+        "gradient-bottom"
       ]
     },
-    "widget_beamStore": {
-      "background": "tile_beam_horizontalRepeated",
+    "store": {
+      "background": "beam-horizontal-tiled",
       "drawables": [
-        "tile_gradient_left",
-        "tile_gradient_right"
+        "gradient-left",
+        "gradient-right"
       ]
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TooltipWidget$Style": {
     "default": {
       "drawables": [
-        "tile_noise_repeated",
-        "tile_borders"
+        "noise-tiled",
+        "borders"
       ]
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingTooltipPanel$Style": {
     "default": {
-      "separator": "tile_gradient_line"
+      "separator": "gradient-line"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradePriceLabel$Style": {
     "default": {
-      "font": "font_tahoma_10",
-      "enabledFontColor": "color_green",
-      "disabledFontColor": "color_red"
+      "font": "tahoma-10",
+      "enabledFontColor": "green",
+      "disabledFontColor": "red"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltipHeader$Style": {
     "default": {
-      "icon": "icon_cookie_small"
+      "icon": "cookie-small"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltipPanel$Style": {
     "CURSOR_TIER_0": {
-      "upgradeIcon": "icon_cursor_plain",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "cursor-plain",
+      "separator": "gradient-line"
     },
     "CURSOR_TIER_1": {
-      "upgradeIcon": "icon_cursor_berrylium",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "cursor-berrylium",
+      "separator": "gradient-line"
     },
     "CURSOR_TIER_2": {
-      "upgradeIcon": "icon_cursor_blueberrylium",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "cursor-blueberrylium",
+      "separator": "gradient-line"
     },
     "CURSOR_TIER_3": {
-      "upgradeIcon": "icon_cursor_chalcedhoney",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "cursor-chalcedhoney",
+      "separator": "gradient-line"
     },
     "CURSOR_TIER_4": {
-      "upgradeIcon": "icon_cursor_buttergold",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "cursor-buttergold",
+      "separator": "gradient-line"
     },
     "CURSOR_TIER_5": {
-      "upgradeIcon": "icon_cursor_sugarmuck",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "cursor-sugarmuck",
+      "separator": "gradient-line"
     },
     "GRANDMA_TIER_0": {
-      "upgradeIcon": "icon_rollingPin_plain",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "rolling-pin-plain",
+      "separator": "gradient-line"
     },
     "GRANDMA_TIER_1": {
-      "upgradeIcon": "icon_rollingPin_berrylium",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "rolling-pin-berrylium",
+      "separator": "gradient-line"
     },
     "GRANDMA_TIER_2": {
-      "upgradeIcon": "icon_rollingPin_blueberrylium",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "rolling-pin-blueberrylium",
+      "separator": "gradient-line"
     },
     "GRANDMA_TIER_3": {
-      "upgradeIcon": "icon_rollingPin_chalcedhoney",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "rolling-pin-chalcedhoney",
+      "separator": "gradient-line"
     },
     "GRANDMA_TIER_4": {
-      "upgradeIcon": "icon_rollingPin_buttergold",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "rolling-pin-buttergold",
+      "separator": "gradient-line"
     },
     "GRANDMA_TIER_5": {
-      "upgradeIcon": "icon_rollingPin_sugarmuck",
-      "separator": "tile_gradient_line"
+      "upgradeIcon": "rolling-pin-sugarmuck",
+      "separator": "gradient-line"
     }
   }
 }
