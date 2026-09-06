@@ -352,6 +352,60 @@
       "imageUp": "icon_cursor_sugarmuck",
       "enabledColor": "color_white",
       "disabledColor": "color_white_transparent50"
+    },
+    "GRANDMA_TIER_0": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_rollingPin_plain",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "GRANDMA_TIER_1": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_rollingPin_berrylium",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "GRANDMA_TIER_2": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_rollingPin_blueberrylium",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "GRANDMA_TIER_3": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_rollingPin_chalcedhoney",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "GRANDMA_TIER_4": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_rollingPin_buttergold",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
+    },
+    "GRANDMA_TIER_5": {
+      "background": "tile_black_transparent25",
+      "up": "tile_frame_brown",
+      "disabled": "tile_frame_brownDark",
+      "over": "tile_frame_brownBright",
+      "imageUp": "icon_rollingPin_sugarmuck",
+      "enabledColor": "color_white",
+      "disabledColor": "color_white_transparent50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -435,6 +489,30 @@
     },
     "CURSOR_TIER_5": {
       "upgradeIcon": "icon_cursor_sugarmuck",
+      "separator": "tile_gradient_line"
+    },
+    "GRANDMA_TIER_0": {
+      "upgradeIcon": "icon_rollingPin_plain",
+      "separator": "tile_gradient_line"
+    },
+    "GRANDMA_TIER_1": {
+      "upgradeIcon": "icon_rollingPin_berrylium",
+      "separator": "tile_gradient_line"
+    },
+    "GRANDMA_TIER_2": {
+      "upgradeIcon": "icon_rollingPin_blueberrylium",
+      "separator": "tile_gradient_line"
+    },
+    "GRANDMA_TIER_3": {
+      "upgradeIcon": "icon_rollingPin_chalcedhoney",
+      "separator": "tile_gradient_line"
+    },
+    "GRANDMA_TIER_4": {
+      "upgradeIcon": "icon_rollingPin_buttergold",
+      "separator": "tile_gradient_line"
+    },
+    "GRANDMA_TIER_5": {
+      "upgradeIcon": "icon_rollingPin_sugarmuck",
       "separator": "tile_gradient_line"
     }
   }

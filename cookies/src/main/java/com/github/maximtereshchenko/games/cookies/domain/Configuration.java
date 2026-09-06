@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
+import java.util.EnumMap;
 import java.util.Map;
 
 final class Configuration {
@@ -16,29 +17,9 @@ final class Configuration {
             Building.GRANDMA, BigDecimal.valueOf(1)
         );
     private final Map<Upgrade, UnlockRequirement> upgradeUnlockRequirements =
-        Map.of(
-            Upgrade.CURSOR_TIER_0,
-            new BuildingCountRequirement(Building.CURSOR, 1),
-            Upgrade.CURSOR_TIER_1,
-            new BuildingCountRequirement(Building.CURSOR, 1),
-            Upgrade.CURSOR_TIER_2,
-            new BuildingCountRequirement(Building.CURSOR, 10),
-            Upgrade.CURSOR_TIER_3,
-            new BuildingCountRequirement(Building.CURSOR, 25),
-            Upgrade.CURSOR_TIER_4,
-            new BuildingCountRequirement(Building.CURSOR, 50),
-            Upgrade.CURSOR_TIER_5,
-            new BuildingCountRequirement(Building.CURSOR, 100)
-        );
+        upgradeUnlockRequirements();
     private final Map<Upgrade, BigDecimal> upgradePrices =
-        Map.of(
-            Upgrade.CURSOR_TIER_0, BigDecimal.valueOf(100),
-            Upgrade.CURSOR_TIER_1, BigDecimal.valueOf(500),
-            Upgrade.CURSOR_TIER_2, BigDecimal.valueOf(10000),
-            Upgrade.CURSOR_TIER_3, BigDecimal.valueOf(100000),
-            Upgrade.CURSOR_TIER_4, BigDecimal.valueOf(10000000),
-            Upgrade.CURSOR_TIER_5, BigDecimal.valueOf(100000000)
-        );
+        upgradePrices();
 
     BigDecimal basePrice(Building building) {
         return buildingBasePrices.get(building);
@@ -54,5 +35,111 @@ final class Configuration {
 
     BigDecimal price(Upgrade upgrade) {
         return upgradePrices.get(upgrade);
+    }
+
+    private Map<Upgrade, UnlockRequirement> upgradeUnlockRequirements() {
+        var map = new EnumMap<Upgrade, UnlockRequirement>(Upgrade.class);
+        map.put(
+            Upgrade.CURSOR_TIER_0,
+            new BuildingCountRequirement(Building.CURSOR, 1)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_1,
+            new BuildingCountRequirement(Building.CURSOR, 1)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_2,
+            new BuildingCountRequirement(Building.CURSOR, 10)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_3,
+            new BuildingCountRequirement(Building.CURSOR, 25)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_4,
+            new BuildingCountRequirement(Building.CURSOR, 50)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_5,
+            new BuildingCountRequirement(Building.CURSOR, 100)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_0,
+            new BuildingCountRequirement(Building.GRANDMA, 1)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_1,
+            new BuildingCountRequirement(Building.GRANDMA, 5)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_2,
+            new BuildingCountRequirement(Building.GRANDMA, 25)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_3,
+            new BuildingCountRequirement(Building.GRANDMA, 50)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_4,
+            new BuildingCountRequirement(Building.GRANDMA, 100)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_5,
+            new BuildingCountRequirement(Building.GRANDMA, 150)
+        );
+        return map;
+    }
+
+    private Map<Upgrade, BigDecimal> upgradePrices() {
+        var map = new EnumMap<Upgrade, BigDecimal>(Upgrade.class);
+        map.put(
+            Upgrade.CURSOR_TIER_0,
+            BigDecimal.valueOf(100)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_1,
+            BigDecimal.valueOf(500)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_2,
+            BigDecimal.valueOf(10000)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_3,
+            BigDecimal.valueOf(100000)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_4,
+            BigDecimal.valueOf(10000000)
+        );
+        map.put(
+            Upgrade.CURSOR_TIER_5,
+            BigDecimal.valueOf(100000000)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_0,
+            BigDecimal.valueOf(1000)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_1,
+            BigDecimal.valueOf(5000)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_2,
+            BigDecimal.valueOf(50000)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_3,
+            BigDecimal.valueOf(5000000)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_4,
+            BigDecimal.valueOf(500000000)
+        );
+        map.put(
+            Upgrade.GRANDMA_TIER_5,
+            new BigDecimal("50000000000")
+        );
+        return map;
     }
 }

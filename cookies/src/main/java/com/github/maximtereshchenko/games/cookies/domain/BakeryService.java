@@ -77,6 +77,7 @@ public final class BakeryService {
         eventBus.publish(
             new BakingRateUpdated(bakingRate())
         );
+        eventBus.publish(new BakingPowerUpdated(bakingPower()));
     }
 
     public void buyUpgrade(Upgrade upgrade) {
@@ -149,9 +150,9 @@ public final class BakeryService {
     }
 
     private BigDecimal bakingRate() {
-        var productionRate = BigDecimal.ZERO;
+        var bakingRate = BigDecimal.ZERO;
         for (var building : Building.values()) {
-            productionRate = productionRate.add(
+            bakingRate = bakingRate.add(
                 bakingRate(building)
                     .multiply(
                         BigDecimal.valueOf(
@@ -160,15 +161,25 @@ public final class BakeryService {
                     )
             );
         }
-        return productionRate;
+        return bakingRate;
     }
 
     private BigDecimal bakingRate(Building building) {
         var baseBakingRate = configuration.baseBakingRate(building);
         return switch (building) {
             case CURSOR -> cursorBakingRate(baseBakingRate);
-            case GRANDMA -> baseBakingRate;
+            case GRANDMA -> grandmaBakingRate(baseBakingRate);
         };
+    }
+
+    private BigDecimal grandmaBakingRate(BigDecimal baseBakingRate) {
+        var bakingRate = baseBakingRate;
+        for (var upgrade : Set.of(Upgrade.GRANDMA_TIER_0, Upgrade.GRANDMA_TIER_1, Upgrade.GRANDMA_TIER_2, Upgrade.GRANDMA_TIER_3, Upgrade.GRANDMA_TIER_4, Upgrade.GRANDMA_TIER_5)) {
+            if (playerProgress.isActive(upgrade)) {
+                bakingRate = bakingRate.multiply(BigDecimal.TWO);
+            }
+        }
+        return bakingRate;
     }
 
     private BigDecimal cursorBakingRate(BigDecimal baseBakingRate) {
@@ -182,15 +193,15 @@ public final class BakeryService {
     }
 
     private BigDecimal nonCursorBuildingBonus() {
-        if (!playerProgress.isUnlocked(Upgrade.CURSOR_TIER_3)) {
+        if (!playerProgress.isActive(Upgrade.CURSOR_TIER_3)) {
             return BigDecimal.ZERO;
         }
         var bonus = BigDecimal.valueOf(0.1)
             .multiply(BigDecimal.valueOf(nonCursorBuildingCount()));
-        if (playerProgress.isUnlocked(Upgrade.CURSOR_TIER_4)) {
+        if (playerProgress.isActive(Upgrade.CURSOR_TIER_4)) {
             bonus = bonus.multiply(BigDecimal.valueOf(5));
         }
-        if (playerProgress.isUnlocked(Upgrade.CURSOR_TIER_5)) {
+        if (playerProgress.isActive(Upgrade.CURSOR_TIER_5)) {
             bonus = bonus.multiply(BigDecimal.valueOf(10));
         }
         return bonus;
