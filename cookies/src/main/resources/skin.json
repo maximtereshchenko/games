@@ -126,20 +126,20 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
-    "pixel-black-transparent-25": {
-      "name": "pixel",
+    "empty-black-transparent-25": {
+      "name": "empty",
       "color": "black-transparent-25"
     },
-    "pixel-black-transparent-40": {
-      "name": "pixel",
+    "empty-black-transparent-40": {
+      "name": "empty",
       "color": "black-transparent-40"
     },
-    "pixel-black-transparent-50": {
-      "name": "pixel",
+    "empty-black-transparent-50": {
+      "name": "empty",
       "color": "black-transparent-50"
     },
-    "pixel-circle-white-transparent-50": {
-      "name": "pixel-circle",
+    "empty-circle-white-transparent-50": {
+      "name": "empty-circle",
       "color": "white-transparent-50"
     }
   },
@@ -185,12 +185,12 @@
     "building-count-tooltip": {
       "font": "tahoma-8",
       "fontColor": "black",
-      "background": "pixel-circle-white-transparent-50"
+      "background": "empty-circle-white-transparent-50"
     },
     "upgrade": {
       "font": "tahoma-8",
       "fontColor": "black",
-      "background": "pixel-circle-white-transparent-50"
+      "background": "empty-circle-white-transparent-50"
     },
     "upgrade-description": {
       "font": "tahoma-10",
@@ -228,7 +228,7 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BakingStatisticsPanel$Style": {
     "default": {
-      "background": "pixel-black-transparent-40"
+      "background": "empty-black-transparent-40"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.CookieWidget$Style": {
@@ -303,12 +303,12 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel$Style": {
     "default": {
-      "background": "pixel-black-transparent-50"
+      "background": "empty-black-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeButton$Style": {
     "CURSOR_TIER_0": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -317,7 +317,7 @@
       "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_1": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -326,7 +326,7 @@
       "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_2": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -335,7 +335,7 @@
       "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_3": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -344,7 +344,7 @@
       "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_4": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -353,7 +353,7 @@
       "disabledColor": "white-transparent-50"
     },
     "CURSOR_TIER_5": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -362,7 +362,7 @@
       "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_0": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -371,7 +371,7 @@
       "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_1": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -380,7 +380,7 @@
       "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_2": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -389,7 +389,7 @@
       "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_3": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -398,7 +398,7 @@
       "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_4": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
@@ -407,7 +407,7 @@
       "disabledColor": "white-transparent-50"
     },
     "GRANDMA_TIER_5": {
-      "background": "pixel-black-transparent-25",
+      "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",

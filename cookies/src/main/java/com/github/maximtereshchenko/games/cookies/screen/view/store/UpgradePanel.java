@@ -28,15 +28,15 @@ final class UpgradePanel extends Container<Table> {
         I18NBundle bundle,
         BakeryService bakeryService
     ) {
-        super(new Table());
+        super(new Table().left());
         this.skin = skin;
         this.bundle = bundle;
         this.bakeryService = bakeryService;
         this.upgrades = new HashSet<>();
         this.isExpanded = false;
         clip();
+        fill();
         top();
-        left();
         setTransform(true);
         addListener(eventListener());
     }

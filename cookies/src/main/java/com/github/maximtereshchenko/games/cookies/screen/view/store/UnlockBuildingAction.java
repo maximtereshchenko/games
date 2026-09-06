@@ -24,10 +24,17 @@ final class UnlockBuildingAction extends DelegateAction {
 
     @Override
     protected boolean delegate(float delta) {
-        isUnlocked = isUnlocked || bakeryService.canAfford(building);
+        isUnlocked = isUnlocked || cumulativeBakedGreaterThanTransactionValue();
         if (isUnlocked) {
             return action.act(delta);
         }
         return false;
+    }
+
+    private boolean cumulativeBakedGreaterThanTransactionValue() {
+        return bakeryService.cumulativeBaked()
+                   .compareTo(
+                       bakeryService.transactionValue(building)
+                   ) >= 0;
     }
 }

@@ -117,6 +117,21 @@ cursor-tilted-disabled
   orig: 64, 64
   offset: 0, 0
   index: -1
+empty
+  rotate: false
+  xy: 719, 323
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+empty-circle
+  rotate: false
+  xy: 506, 499
+  size: 9, 9
+  split: 4, 4, 4, 4
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
 flare
   rotate: false
   xy: 796, 894
@@ -242,21 +257,6 @@ milk-plain
   xy: 538, 524
   size: 240, 240
   orig: 240, 240
-  offset: 0, 0
-  index: -1
-pixel
-  rotate: false
-  xy: 719, 323
-  size: 1, 1
-  orig: 1, 1
-  offset: 0, 0
-  index: -1
-pixel-circle
-  rotate: false
-  xy: 506, 499
-  size: 9, 9
-  split: 4, 4, 4, 4
-  orig: 9, 9
   offset: 0, 0
   index: -1
 question-mark

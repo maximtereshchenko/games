@@ -15,17 +15,19 @@ public final class BakeryService {
     }
 
     public void update(float deltaTimeSeconds) {
-        addToBalance(
-            bakingRate()
-                .multiply(
-                    BigDecimal.valueOf(deltaTimeSeconds)
-                )
-        );
+        var amount = bakingRate()
+            .multiply(
+                BigDecimal.valueOf(deltaTimeSeconds)
+            );
+        addToBalance(amount);
+        addToCumulativeBaked(amount);
         unlockUpgrades();
     }
 
     public void bake() {
-        addToBalance(bakingPower());
+        var amount = bakingPower();
+        addToBalance(amount);
+        addToCumulativeBaked(amount);
     }
 
     public void completeTransaction(Building building) {
@@ -104,6 +106,10 @@ public final class BakeryService {
         return canAfford(price(upgrade));
     }
 
+    public BigDecimal cumulativeBaked() {
+        return playerProgress.cumulativeBaked();
+    }
+
     private boolean canAfford(BigDecimal value) {
         return balance().compareTo(value) >= 0;
     }
@@ -111,6 +117,13 @@ public final class BakeryService {
     private void addToBalance(BigDecimal amount) {
         playerProgress.setBalance(
             playerProgress.balance()
+                .add(amount)
+        );
+    }
+
+    private void addToCumulativeBaked(BigDecimal amount) {
+        playerProgress.setCumulativeBaked(
+            playerProgress.cumulativeBaked()
                 .add(amount)
         );
     }

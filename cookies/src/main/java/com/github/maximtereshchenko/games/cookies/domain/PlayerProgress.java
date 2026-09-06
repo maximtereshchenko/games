@@ -12,12 +12,14 @@ final class PlayerProgress {
     private final Set<Upgrade> unlockedUpgrades;
     private final Set<Upgrade> activeUpgrades;
     private BigDecimal balance;
+    private BigDecimal cumulativeBaked;
 
     PlayerProgress() {
         this.buildings = new EnumMap<>(Building.class);
         this.unlockedUpgrades = new HashSet<>();
         this.activeUpgrades = new HashSet<>();
         this.balance = BigDecimal.ZERO;
+        this.cumulativeBaked = BigDecimal.ZERO;
         for (var building : Building.values()) {
             buildings.put(building, 0);
         }
@@ -41,5 +43,13 @@ final class PlayerProgress {
 
     void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+    BigDecimal cumulativeBaked() {
+        return cumulativeBaked;
+    }
+
+    void setCumulativeBaked(BigDecimal cumulativeBaked) {
+        this.cumulativeBaked = cumulativeBaked;
     }
 }
