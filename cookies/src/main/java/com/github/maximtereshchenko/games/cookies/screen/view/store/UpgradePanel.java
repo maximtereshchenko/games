@@ -96,11 +96,7 @@ final class UpgradePanel extends Container<Table> {
         ) {
             return;
         }
-        var table = getActor();
-        table.add(upgradeButton(upgrade));
-        if (table.getChildren().size % 5 == 0) {
-            table.row();
-        }
+        addActors(upgradeButton(upgrade));
         upgrades.add(upgrade);
     }
 
@@ -116,10 +112,24 @@ final class UpgradePanel extends Container<Table> {
 
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
+                    var table = getActor();
+                    var children = table.getChildren().begin();
+                    table.clearChildren();
+                    addActors(children);
                     upgrades.remove(upgrade);
                 }
             }
         );
         return upgradeButton;
+    }
+
+    private void addActors(Actor... actors) {
+        var table = getActor();
+        for (var actor : actors) {
+            table.add(actor);
+            if (table.getChildren().size % 5 == 0) {
+                table.row();
+            }
+        }
     }
 }
