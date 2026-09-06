@@ -153,6 +153,7 @@ public final class BakeryService {
         return switch (building) {
             case CURSOR -> cursorBakingRate(baseBakingRate);
             case GRANDMA -> grandmaBakingRate(baseBakingRate);
+            case FARM -> baseBakingRate; //TODO
         };
     }
 

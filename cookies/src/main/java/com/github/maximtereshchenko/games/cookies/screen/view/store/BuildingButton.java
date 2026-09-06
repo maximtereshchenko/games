@@ -34,7 +34,7 @@ final class BuildingButton extends Button {
         add(
             new BuildingIcon(
                 skin,
-                "%s-button".formatted(building.name().toLowerCase()),
+                "%s-button".formatted(building.name()),
                 bakeryService,
                 building,
                 0.5f

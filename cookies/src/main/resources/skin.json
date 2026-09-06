@@ -247,20 +247,28 @@
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingIcon$Style": {
-    "cursor-button": {
+    "CURSOR-button": {
       "enabled": "cursor-tilted",
       "disabled": "cursor-tilted-disabled"
     },
-    "cursor-tooltip": {
+    "CURSOR-tooltip": {
       "enabled": "cursor-plain",
       "disabled": "question-mark"
     },
-    "grandma-button": {
+    "GRANDMA-button": {
       "enabled": "grandma",
       "disabled": "grandma-disabled"
     },
-    "grandma-tooltip": {
+    "GRANDMA-tooltip": {
       "enabled": "rolling-pin-plain",
+      "disabled": "question-mark"
+    },
+    "FARM-button": {
+      "enabled": "farm",
+      "disabled": "farm-disabled"
+    },
+    "FARM-tooltip": {
+      "enabled": "watering-pot-plain",
       "disabled": "question-mark"
     }
   },

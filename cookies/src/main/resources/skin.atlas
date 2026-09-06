@@ -77,28 +77,28 @@ cursor-blueberrylium
   index: -1
 cursor-buttergold
   rotate: false
-  xy: 686, 136
+  xy: 856, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-chalcedhoney
   rotate: false
-  xy: 790, 218
+  xy: 904, 168
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-plain
   rotate: false
-  xy: 840, 218
+  xy: 906, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-sugarmuck
   rotate: false
-  xy: 890, 218
+  xy: 904, 118
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -130,6 +130,20 @@ empty-circle
   size: 9, 9
   split: 4, 4, 4, 4
   orig: 9, 9
+  offset: 0, 0
+  index: -1
+farm
+  rotate: false
+  xy: 620, 120
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+farm-disabled
+  rotate: false
+  xy: 674, 54
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 flare
@@ -219,14 +233,14 @@ gradient-top-long
   index: -1
 grandma
   rotate: false
-  xy: 620, 120
+  xy: 686, 120
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 grandma-disabled
   rotate: false
-  xy: 674, 54
+  xy: 790, 202
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -240,49 +254,49 @@ marble-gradient-black
   index: 0
 marble-gradient-black
   rotate: false
-  xy: 516, 958
+  xy: 516, 908
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 1
 marble-gradient-black
   rotate: false
-  xy: 516, 892
+  xy: 516, 842
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 2
 marble-gradient-black
   rotate: false
-  xy: 516, 826
+  xy: 516, 776
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 3
 marble-gradient-white
   rotate: false
-  xy: 516, 760
+  xy: 516, 710
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble-gradient-white
   rotate: false
-  xy: 516, 694
+  xy: 516, 644
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 1
 marble-gradient-white
   rotate: false
-  xy: 516, 628
+  xy: 516, 578
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 2
 marble-gradient-white
   rotate: false
-  xy: 516, 562
+  xy: 516, 512
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
@@ -296,49 +310,91 @@ milk-plain
   index: -1
 question-mark
   rotate: false
-  xy: 904, 168
+  xy: 904, 68
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-berrylium
   rotate: false
-  xy: 940, 218
+  xy: 924, 18
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-blueberrylium
   rotate: false
-  xy: 904, 118
+  xy: 954, 168
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-buttergold
   rotate: false
-  xy: 904, 68
+  xy: 956, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-chalcedhoney
   rotate: false
-  xy: 924, 18
+  xy: 954, 118
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-plain
   rotate: false
-  xy: 954, 168
+  xy: 954, 68
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-sugarmuck
   rotate: false
-  xy: 954, 118
+  xy: 974, 18
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+watering-pot-berrylium
+  rotate: false
+  xy: 774, 974
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+watering-pot-blueberrylium
+  rotate: false
+  xy: 516, 974
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+watering-pot-buttergold
+  rotate: false
+  xy: 566, 974
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+watering-pot-chalcedhoney
+  rotate: false
+  xy: 616, 974
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+watering-pot-plain
+  rotate: false
+  xy: 666, 974
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+watering-pot-sugarmuck
+  rotate: false
+  xy: 716, 974
   size: 48, 48
   orig: 48, 48
   offset: 0, 0

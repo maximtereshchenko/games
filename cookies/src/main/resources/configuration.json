@@ -2,11 +2,13 @@
   "baseBakingPower": "1",
   "buildingBasePrices": {
     "CURSOR": "15",
-    "GRANDMA": "100"
+    "GRANDMA": "100",
+    "FARM": "1100"
   },
   "buildingBaseBakingRates": {
     "CURSOR": "0.1",
-    "GRANDMA": "1"
+    "GRANDMA": "1",
+    "FARM": "8"
   },
   "upgradeUnlockRequirements": {
     "CURSOR_TIER_0": {
