@@ -4,41 +4,32 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
-import com.github.maximtereshchenko.games.cookies.domain.UpgradePriceUpdated;
 
-final class UpgradePriceLabel extends Label implements Subscriber<Event> {
+final class UpgradePriceLabel extends Label {
 
     private final Style style;
+    private final BakeryService bakeryService;
     private final Upgrade upgrade;
 
     UpgradePriceLabel(
         Skin skin,
-        Upgrade upgrade,
-        EventBus<Event> eventBus
+        BakeryService bakeryService,
+        Upgrade upgrade
     ) {
         var labelStyle = skin.get(Style.class);
-        super("", labelStyle.labelStyle(true));
+        super("", labelStyle.labelStyle(bakeryService, upgrade));
         this.style = labelStyle;
+        this.bakeryService = bakeryService;
         this.upgrade = upgrade;
-        eventBus.subscribe(this);
+        setText(bakeryService.price(upgrade).toString());
     }
 
     @Override
-    public void onEvent(Event event) {
-        if (
-            event instanceof UpgradePriceUpdated upgradePriceUpdated &&
-            upgradePriceUpdated.upgrade() == upgrade
-        ) {
-            setText(upgradePriceUpdated.price().toString());
-        }
-    }
-
-    void setDisabled(boolean isDisabled) {
-        setStyle(style.labelStyle(isDisabled));
+    public void act(float delta) {
+        super.act(delta);
+        setStyle(style.labelStyle(bakeryService, upgrade));
     }
 
     private static final class Style {
@@ -47,15 +38,34 @@ final class UpgradePriceLabel extends Label implements Subscriber<Event> {
         private Color enabledFontColor;
         private Color disabledFontColor;
 
-        LabelStyle labelStyle(boolean isDisabled) {
-            return new LabelStyle(font, color(isDisabled));
+        LabelStyle labelStyle(
+            BakeryService bakeryService,
+            Upgrade upgrade
+        ) {
+            return new LabelStyle(
+                font,
+                color(bakeryService, upgrade)
+            );
         }
 
-        private Color color(boolean isDisabled) {
-            if (isDisabled) {
-                return disabledFontColor;
+        private Color color(
+            BakeryService bakeryService,
+            Upgrade upgrade
+        ) {
+            if (balanceGreaterThanPrice(bakeryService, upgrade)) {
+                return enabledFontColor;
             }
-            return enabledFontColor;
+            return disabledFontColor;
+        }
+
+        private boolean balanceGreaterThanPrice(
+            BakeryService bakeryService,
+            Upgrade upgrade
+        ) {
+            return bakeryService.balance()
+                       .compareTo(
+                           bakeryService.price(upgrade)
+                       ) >= 0;
         }
     }
 }

@@ -12,10 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
-import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
 import tools.jackson.core.type.TypeReference;
@@ -50,14 +48,12 @@ final class CookiesGameAdapter implements ApplicationListener {
         assetManager.load(skinAssetDescriptor);
         assetManager.load(gameBundleAssetDescriptor);
         assetManager.finishLoading();
-        var eventBus = new EventBus<Event>();
         var bakeryService = new BakeryService(
             new ConfigurationReader()
                 .value(
                     "configuration.json",
                     new TypeReference<>() {}
-                ),
-            eventBus
+                )
         );
         var skin = assetManager.get(skinAssetDescriptor);
         var random = ThreadLocalRandom.current();
@@ -67,11 +63,9 @@ final class CookiesGameAdapter implements ApplicationListener {
                 skin,
                 assetManager.get(gameBundleAssetDescriptor),
                 random,
-                bakeryService,
-                eventBus
+                bakeryService
             )
         );
-        bakeryService.onStart();
         cookiesGame = new CookiesGame(Set.of(spriteBatch));
         cookiesGame.setScreen(
             new BakeryScreen(

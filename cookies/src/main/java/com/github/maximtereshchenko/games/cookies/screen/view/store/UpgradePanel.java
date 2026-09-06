@@ -8,37 +8,36 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.UpgradeUnlocked;
+import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 
-final class UpgradePanel extends Container<Table> implements Subscriber<Event> {
+import java.util.HashSet;
+import java.util.Set;
+
+final class UpgradePanel extends Container<Table> {
 
     private final Skin skin;
     private final I18NBundle bundle;
     private final BakeryService bakeryService;
-    private final EventBus<Event> eventBus;
-    private boolean isExpanded = false;
+    private final Set<Upgrade> upgrades;
+    private boolean isExpanded;
 
     UpgradePanel(
         Skin skin,
         I18NBundle bundle,
-        BakeryService bakeryService,
-        EventBus<Event> eventBus
+        BakeryService bakeryService
     ) {
         super(new Table());
         this.skin = skin;
         this.bundle = bundle;
         this.bakeryService = bakeryService;
-        this.eventBus = eventBus;
+        this.upgrades = new HashSet<>();
+        this.isExpanded = false;
         clip();
         top();
         left();
         setTransform(true);
         addListener(eventListener());
-        eventBus.subscribe(this);
     }
 
     @Override
@@ -51,23 +50,12 @@ final class UpgradePanel extends Container<Table> implements Subscriber<Event> {
     }
 
     @Override
-    public void onEvent(Event event) {
-        if (!(event instanceof UpgradeUnlocked upgradeUnlocked)) {
-            return;
+    public void act(float delta) {
+        super.act(delta);
+        for (var upgrade : Upgrade.values()) {
+            addUpgradeButton(upgrade);
         }
-        var table = getActor();
-        table.add(
-            new UpgradeButton(
-                skin,
-                bundle,
-                upgradeUnlocked.upgrade(),
-                bakeryService,
-                eventBus
-            )
-        );
-        if (table.getChildren().size % 5 == 0) {
-            table.row();
-        }
+
     }
 
     EventListener eventListener() {
@@ -99,5 +87,27 @@ final class UpgradePanel extends Container<Table> implements Subscriber<Event> {
                 }
             }
         };
+    }
+
+    private void addUpgradeButton(Upgrade upgrade) {
+        if (
+            !bakeryService.isUnlocked(upgrade) ||
+            upgrades.contains(upgrade)
+        ) {
+            return;
+        }
+        var table = getActor();
+        table.add(
+            new UpgradeButton(
+                skin,
+                bundle,
+                bakeryService,
+                upgrade
+            )
+        );
+        if (table.getChildren().size % 5 == 0) {
+            table.row();
+        }
+        upgrades.add(upgrade);
     }
 }

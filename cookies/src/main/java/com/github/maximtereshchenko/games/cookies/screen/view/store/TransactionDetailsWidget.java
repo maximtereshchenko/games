@@ -6,32 +6,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 final class TransactionDetailsWidget extends Table {
-
-    private final TransactionValueLabel transactionValueLabel;
 
     TransactionDetailsWidget(
         Skin skin,
         I18NBundle bundle,
-        Building building,
-        EventBus<Event> eventBus
+        BakeryService bakeryService,
+        Building building
     ) {
-        this.transactionValueLabel = new TransactionValueLabel(
-            skin,
-            building,
-            eventBus
-        );
         add(
             new BuildingNameLabel(
                 skin,
                 "label_buildingName_button",
                 bundle,
-                building,
-                eventBus
+                bakeryService,
+                building
             )
         )
             .colspan(2)
@@ -41,11 +33,15 @@ final class TransactionDetailsWidget extends Table {
         add(new Image(skin.get(Style.class).icon))
             .width(Value.prefWidth)
             .padTop(2);
-        add(transactionValueLabel).expandX().left();
-    }
-
-    void setDisabled(boolean isDisabled) {
-        transactionValueLabel.setDisabled(isDisabled);
+        add(
+            new TransactionValueLabel(
+                skin,
+                bakeryService,
+                building
+            )
+        )
+            .expandX()
+            .left();
     }
 
     private static final class Style {

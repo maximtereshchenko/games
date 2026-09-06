@@ -6,39 +6,38 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 final class BuildingTooltipHeader extends Table {
-
-    private final TransactionValueLabel transactionValueLabel;
 
     BuildingTooltipHeader(
         Skin skin,
         I18NBundle bundle,
-        Building building,
-        EventBus<Event> eventBus
+        BakeryService bakeryService,
+        Building building
     ) {
-        this.transactionValueLabel = new TransactionValueLabel(
-            skin,
-            building,
-            eventBus
-        );
         add(
             new BuildingNameLabel(
                 skin,
                 "label_buildingName_tooltip",
                 bundle,
-                building,
-                eventBus
+                bakeryService,
+                building
             )
         )
             .left();
         add().growX();
         add(new Image(skin.get(Style.class).icon))
             .width(Value.prefWidth);
-        add(transactionValueLabel).row();
+        add(
+            new TransactionValueLabel(
+                skin,
+                bakeryService,
+                building
+            )
+        )
+            .row();
         add(
             new BuildingCountLabel(
                 skin,
@@ -46,15 +45,11 @@ final class BuildingTooltipHeader extends Table {
                 bundle,
                 "buildings.counts.tooltip.zero",
                 "buildings.counts.tooltip",
-                building,
-                eventBus
+                bakeryService,
+                building
             )
         )
             .left();
-    }
-
-    void setDisabled(boolean isDisabled) {
-        transactionValueLabel.setDisabled(isDisabled);
     }
 
     private static final class Style {

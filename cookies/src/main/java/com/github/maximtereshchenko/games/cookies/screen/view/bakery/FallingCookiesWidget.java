@@ -4,14 +4,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
-import com.github.maximtereshchenko.games.cookies.domain.CookiesBaked;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 import java.util.Random;
 
-final class FallingCookiesWidget extends WidgetGroup implements Subscriber<Event> {
+final class FallingCookiesWidget extends WidgetGroup {
 
     private final Skin skin;
     private final Style style;
@@ -20,15 +16,13 @@ final class FallingCookiesWidget extends WidgetGroup implements Subscriber<Event
 
     FallingCookiesWidget(
         Skin skin,
-        Random random,
-        EventBus<Event> eventBus
+        Random random
     ) {
         this.skin = skin;
         this.style = skin.get(Style.class);
         this.random = random;
         style.drawable.setRegion(style.drawable.getRegion());
         setLayoutEnabled(false);
-        eventBus.subscribe(this);
     }
 
     @Override
@@ -51,11 +45,8 @@ final class FallingCookiesWidget extends WidgetGroup implements Subscriber<Event
         offsetPercentage %= 1;
     }
 
-    @Override
-    public void onEvent(Event event) {
-        if (event instanceof CookiesBaked) {
-            addActor(new FallingCookieWidget(skin, random, getWidth(), getHeight()));
-        }
+    void addFallingCookieWidget() {
+        addActor(new FallingCookieWidget(skin, random, getWidth(), getHeight()));
     }
 
     private static final class Style {

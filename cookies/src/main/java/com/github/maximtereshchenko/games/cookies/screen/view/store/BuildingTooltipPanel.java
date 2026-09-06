@@ -6,38 +6,38 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.common.event.EventBus;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 final class BuildingTooltipPanel extends Table {
-
-    private final BuildingTooltipHeader buildingTooltipHeader;
 
     BuildingTooltipPanel(
         Skin skin,
         I18NBundle bundle,
-        Building building,
-        EventBus<Event> eventBus
+        BakeryService bakeryService,
+        Building building
     ) {
-        this.buildingTooltipHeader = new BuildingTooltipHeader(
-            skin,
-            bundle,
-            building,
-            eventBus
-        );
         defaults().padBottom(8);
         add(
             new BuildingIcon(
                 skin,
                 "icon_%s_buildingTooltip".formatted(building.name()),
-                0,
+                bakeryService,
                 building,
-                eventBus
+                0
             )
         )
             .width(Value.prefWidth);
-        add(buildingTooltipHeader).growX().row();
+        add(
+            new BuildingTooltipHeader(
+                skin,
+                bundle,
+                bakeryService,
+                building
+            )
+        )
+            .growX()
+            .row();
         add(new Image(skin.get(Style.class).separator))
             .colspan(2)
             .growX()
@@ -48,16 +48,12 @@ final class BuildingTooltipPanel extends Table {
             new BuildingFlavorTextLabel(
                 skin,
                 bundle,
-                building,
-                eventBus
+                bakeryService,
+                building
             )
         )
             .colspan(2)
             .right();
-    }
-
-    void setDisabled(boolean isDisabled) {
-        buildingTooltipHeader.setDisabled(isDisabled);
     }
 
     private static final class Style {

@@ -3,32 +3,44 @@ package com.github.maximtereshchenko.games.cookies.screen.view.bakery;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Align;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.domain.BuildingCountUpdated;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 import java.util.ArrayList;
 import java.util.List;
 
-final class CursorRingsWidget extends WidgetGroup implements Subscriber<Event> {
+final class CursorRingsWidget extends WidgetGroup {
 
     private final Skin skin;
+    private final BakeryService bakeryService;
     private final List<CursorWidget> cursorWidgets;
     private double accumulatedTimeSeconds;
 
-    CursorRingsWidget(Skin skin, EventBus<Event> eventBus) {
+    CursorRingsWidget(Skin skin, BakeryService bakeryService) {
         this.skin = skin;
+        this.bakeryService = bakeryService;
         this.cursorWidgets = new ArrayList<>();
         setLayoutEnabled(false);
-        eventBus.subscribe(this);
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
         accumulatedTimeSeconds += delta;
+        addCursors();
+        transformCursors();
+    }
+
+    @Override
+    public void sizeChanged() {
+        super.sizeChanged();
+        setOrigin(Align.center);
+        for (var cursor : cursorWidgets) {
+            cursor.scale(getWidth());
+        }
+    }
+
+    private void transformCursors() {
         var cursorsPerRing = 50;
         for (var i = 0; i < cursorWidgets.size(); i++) {
             cursorWidgets.get(i)
@@ -44,31 +56,16 @@ final class CursorRingsWidget extends WidgetGroup implements Subscriber<Event> {
         }
     }
 
-    @Override
-    public void sizeChanged() {
-        super.sizeChanged();
-        setOrigin(Align.center);
-        for (var cursor : cursorWidgets) {
-            cursor.scale(getWidth());
-        }
-    }
-
-    @Override
-    public void onEvent(Event event) {
-        if (
-            event instanceof BuildingCountUpdated buildingCountUpdated &&
-            buildingCountUpdated.building() == Building.CURSOR
+    private void addCursors() {
+        for (
+            var i = cursorWidgets.size();
+            i < bakeryService.count(Building.CURSOR);
+            i++
         ) {
-            for (
-                var i = cursorWidgets.size();
-                i < buildingCountUpdated.count();
-                i++
-            ) {
-                var cursorWidget = new CursorWidget(skin);
-                cursorWidget.scale(getWidth());
-                cursorWidgets.add(cursorWidget);
-                addActor(cursorWidget);
-            }
+            var cursorWidget = new CursorWidget(skin);
+            cursorWidget.scale(getWidth());
+            cursorWidgets.add(cursorWidget);
+            addActor(cursorWidget);
         }
     }
 }

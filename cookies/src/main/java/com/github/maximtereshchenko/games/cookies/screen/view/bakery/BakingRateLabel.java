@@ -2,21 +2,18 @@ package com.github.maximtereshchenko.games.cookies.screen.view.bakery;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
-import com.github.maximtereshchenko.games.cookies.domain.BakingRateUpdated;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-final class BakingRateLabel extends Label implements Subscriber<Event> {
+final class BakingRateLabel extends Label {
 
     private final I18NBundle bundle;
+    private final BakeryService bakeryService;
 
     BakingRateLabel(
         Skin skin,
         I18NBundle bundle,
-        EventBus<Event> eventBus
+        BakeryService bakeryService
     ) {
         super(
             "",
@@ -24,19 +21,17 @@ final class BakingRateLabel extends Label implements Subscriber<Event> {
             "label_bakingRate"
         );
         this.bundle = bundle;
-        setAlignment(Align.center);
-        eventBus.subscribe(this);
+        this.bakeryService = bakeryService;
     }
 
     @Override
-    public void onEvent(Event event) {
-        if (event instanceof BakingRateUpdated bakingRateUpdated) {
-            setText(
-                bundle.format(
-                    "bakingRate",
-                    bakingRateUpdated.value()
-                )
-            );
-        }
+    public void act(float delta) {
+        super.act(delta);
+        setText(
+            bundle.format(
+                "bakingRate",
+                bakeryService.bakingRate()
+            )
+        );
     }
 }

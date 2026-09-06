@@ -4,41 +4,38 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
-import com.github.maximtereshchenko.games.cookies.domain.TransactionValueUpdated;
 
-final class TransactionValueLabel extends Label implements Subscriber<Event> {
+final class TransactionValueLabel extends Label {
 
     private final Style style;
+    private final BakeryService bakeryService;
     private final Building building;
 
     TransactionValueLabel(
         Skin skin,
-        Building building,
-        EventBus<Event> eventBus
+        BakeryService bakeryService,
+        Building building
     ) {
         var labelStyle = skin.get(Style.class);
-        super("", labelStyle.labelStyle(true));
+        super(
+            "",
+            labelStyle.labelStyle(bakeryService, building)
+        );
         this.style = labelStyle;
+        this.bakeryService = bakeryService;
         this.building = building;
-        eventBus.subscribe(this);
     }
 
     @Override
-    public void onEvent(Event event) {
-        if (
-            event instanceof TransactionValueUpdated transactionValueUpdated &&
-            transactionValueUpdated.building() == building
-        ) {
-            setText(transactionValueUpdated.value().toString());
-        }
-    }
-
-    void setDisabled(boolean isDisabled) {
-        setStyle(style.labelStyle(isDisabled));
+    public void act(float delta) {
+        super.act(delta);
+        setText(
+            bakeryService.transactionValue(building)
+                .toString()
+        );
+        setStyle(style.labelStyle(bakeryService, building));
     }
 
     private static final class Style {
@@ -47,15 +44,31 @@ final class TransactionValueLabel extends Label implements Subscriber<Event> {
         private Color enabledFontColor;
         private Color disabledFontColor;
 
-        LabelStyle labelStyle(boolean isDisabled) {
-            return new LabelStyle(font, color(isDisabled));
+        LabelStyle labelStyle(
+            BakeryService bakeryService,
+            Building building
+        ) {
+            return new LabelStyle(font, color(bakeryService, building));
         }
 
-        private Color color(boolean isDisabled) {
-            if (isDisabled) {
-                return disabledFontColor;
+        private Color color(
+            BakeryService bakeryService,
+            Building building
+        ) {
+            if (balanceGreaterThanTransactionValue(bakeryService, building)) {
+                return enabledFontColor;
             }
-            return enabledFontColor;
+            return disabledFontColor;
+        }
+
+        private boolean balanceGreaterThanTransactionValue(
+            BakeryService bakeryService,
+            Building building
+        ) {
+            return bakeryService.balance()
+                       .compareTo(
+                           bakeryService.transactionValue(building)
+                       ) >= 0;
         }
     }
 }

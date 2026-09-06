@@ -9,31 +9,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
-import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.event.Subscriber;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.BakingPowerUpdated;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
-import java.math.BigDecimal;
 import java.util.Random;
 
-final class CookieButton extends Button implements Subscriber<Event> {
+final class CookieButton extends Button {
 
     private static final float NORMAL_SCALE = 1;
     private static final float HOVERED_SCALE = 1.05f;
     private static final float PRESSED_SCALE = 0.98f;
 
-    private BigDecimal bakingPower;
-
     CookieButton(
         Skin skin,
         Random random,
-        BakeryService bakeryService,
-        EventBus<Event> eventBus
+        BakeryService bakeryService
     ) {
         super(skin, "button_cookie");
-        this.bakingPower = BigDecimal.ZERO;
         setTransform(true);
         addListener(new ClickListener() {
 
@@ -86,7 +77,7 @@ final class CookieButton extends Button implements Subscriber<Event> {
                         random,
                         event.getStageX(),
                         event.getStageY(),
-                        bakingPower
+                        bakeryService.bakingPower()
                     )
                 );
                 bakeryService.bake();
@@ -104,7 +95,6 @@ final class CookieButton extends Button implements Subscriber<Event> {
                 );
             }
         });
-        eventBus.subscribe(this);
     }
 
     @Override
@@ -124,12 +114,5 @@ final class CookieButton extends Button implements Subscriber<Event> {
     public void sizeChanged() {
         super.sizeChanged();
         setOrigin(Align.center);
-    }
-
-    @Override
-    public void onEvent(Event event) {
-        if (event instanceof BakingPowerUpdated bakingPowerUpdated) {
-            bakingPower = bakingPowerUpdated.value();
-        }
     }
 }

@@ -12,6 +12,7 @@ final class BuildingCountRequirement implements UnlockRequirement {
 
     @Override
     public boolean isSatisfied(PlayerProgress playerProgress) {
-        return playerProgress.count(building) >= count;
+        return playerProgress.buildings()
+                   .get(building) >= count;
     }
 }

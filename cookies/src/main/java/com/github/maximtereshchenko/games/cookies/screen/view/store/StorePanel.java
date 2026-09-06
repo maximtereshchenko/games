@@ -5,17 +5,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.Event;
 
 public final class StorePanel extends Table {
 
     public StorePanel(
         Skin skin,
         I18NBundle bundle,
-        BakeryService bakeryService,
-        EventBus<Event> eventBus
+        BakeryService bakeryService
     ) {
         background(skin.get(Style.class).background);
         var upgradesBeam = new StoreBeamWidget(
@@ -25,8 +22,7 @@ public final class StorePanel extends Table {
         var upgradePanel = new UpgradePanel(
             skin,
             bundle,
-            bakeryService,
-            eventBus
+            bakeryService
         );
         var buildingsBeam = new StoreBeamWidget(
             skin,
@@ -40,8 +36,7 @@ public final class StorePanel extends Table {
             skin,
             bundle,
             buildingsBeam.eventListener(),
-            bakeryService,
-            eventBus
+            bakeryService
         );
         defaults()
             .width(buildingPanel.getPrefWidth())
