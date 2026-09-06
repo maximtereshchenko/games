@@ -27,6 +27,7 @@ public final class BakeryPanel extends Container<Stack> {
         );
         var fallingCookiesWidget = new FallingCookiesWidget(
             skin,
+            bakeryService,
             random
         );
         cookieWidget.addListener(

@@ -314,6 +314,32 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+cookies
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+
+skin3.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+cookies
+  rotate: false
+  xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
+
+skin4.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
 noise
   rotate: false
   xy: 2, 2
@@ -322,7 +348,7 @@ noise
   offset: 0, 0
   index: -1
 
-skin3.png
+skin5.png
 size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest

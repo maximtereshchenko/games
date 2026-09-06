@@ -117,6 +117,12 @@
     },
     "cookies-tiled-0": {
       "region": "cookies_0"
+    },
+    "cookies-tiled-1": {
+      "region": "cookies_1"
+    },
+    "cookies-tiled-2": {
+      "region": "cookies_2"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -290,7 +296,9 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.FallingCookiesWidget$Style": {
     "default": {
-      "drawable": "cookies-tiled-0"
+      "lowAmount": "cookies-tiled-0",
+      "mediumAmount": "cookies-tiled-1",
+      "highAmount": "cookies-tiled-2"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel$Style": {
