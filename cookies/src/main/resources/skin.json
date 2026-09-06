@@ -417,11 +417,35 @@
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
-    "default": {
+    "0": {
       "up": "marble_0",
       "disabled": "marble_0",
       "down": "marble-gradient-black_0",
       "over": "marble-gradient-white_0",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-60"
+    },
+    "1": {
+      "up": "marble_1",
+      "disabled": "marble_1",
+      "down": "marble-gradient-black_1",
+      "over": "marble-gradient-white_1",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-60"
+    },
+    "2": {
+      "up": "marble_2",
+      "disabled": "marble_2",
+      "down": "marble-gradient-black_2",
+      "over": "marble-gradient-white_2",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-60"
+    },
+    "3": {
+      "up": "marble_3",
+      "disabled": "marble_3",
+      "down": "marble-gradient-black_3",
+      "over": "marble-gradient-white_3",
       "enabledColor": "white",
       "disabledColor": "white-transparent-60"
     }

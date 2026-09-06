@@ -15,12 +15,14 @@ final class BuildingPanel extends Table {
         EventListener eventListener,
         BakeryService bakeryService
     ) {
-        for (var building : Building.values()) {
+        var buildings = Building.values();
+        for (var i = 0; i < buildings.length; i++) {
             var buildingButton = new BuildingButton(
                 skin,
                 bundle,
                 bakeryService,
-                building
+                buildings[i],
+                i
             );
             buildingButton.addListener(eventListener);
             add(buildingButton).row();

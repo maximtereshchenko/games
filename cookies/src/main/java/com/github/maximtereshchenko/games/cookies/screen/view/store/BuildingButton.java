@@ -20,9 +20,13 @@ final class BuildingButton extends Button {
         Skin skin,
         I18NBundle bundle,
         BakeryService bakeryService,
-        Building building
+        Building building,
+        int index
     ) {
-        var buttonStyle = skin.get(Style.class);
+        var buttonStyle = skin.get(
+            String.valueOf(index % 4),
+            Style.class
+        );
         super(buttonStyle);
         this.style = buttonStyle;
         this.bakeryService = bakeryService;

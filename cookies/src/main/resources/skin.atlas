@@ -13,14 +13,14 @@ beam-horizontal
   index: -1
 beam-vertical
   rotate: false
-  xy: 516, 510
+  xy: 977, 510
   size: 16, 512
   orig: 16, 512
   offset: 0, 0
   index: -1
 borders
   rotate: false
-  xy: 488, 433
+  xy: 488, 349
   size: 9, 9
   split: 3, 3, 3, 3
   orig: 9, 9
@@ -35,14 +35,14 @@ cookie
   index: -1
 cookie-medium
   rotate: false
-  xy: 488, 332
+  xy: 774, 6
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-small
   rotate: false
-  xy: 988, 940
+  xy: 488, 360
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -56,77 +56,77 @@ cookies
   index: 0
 cursor
   rotate: false
-  xy: 846, 528
+  xy: 674, 20
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 cursor-berrylium
   rotate: false
-  xy: 780, 712
+  xy: 824, 6
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-blueberrylium
   rotate: false
-  xy: 780, 662
+  xy: 874, 6
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-buttergold
   rotate: false
-  xy: 780, 612
+  xy: 686, 136
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-chalcedhoney
   rotate: false
-  xy: 780, 562
+  xy: 790, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-plain
   rotate: false
-  xy: 830, 712
+  xy: 840, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-sugarmuck
   rotate: false
-  xy: 830, 662
+  xy: 890, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cursor-tilted
   rotate: false
-  xy: 796, 828
+  xy: 554, 120
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cursor-tilted-disabled
   rotate: false
-  xy: 926, 958
+  xy: 488, 120
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 empty
   rotate: false
-  xy: 719, 323
+  xy: 510, 507
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 empty-circle
   rotate: false
-  xy: 506, 499
+  xy: 499, 349
   size: 9, 9
   split: 4, 4, 4, 4
   orig: 9, 9
@@ -134,63 +134,63 @@ empty-circle
   index: -1
 flare
   rotate: false
-  xy: 796, 894
+  xy: 774, 56
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 frame-brown
   rotate: false
-  xy: 926, 896
+  xy: 488, 58
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 frame-brown-bright
   rotate: false
-  xy: 862, 766
+  xy: 550, 58
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 frame-brown-dark
   rotate: false
-  xy: 928, 834
+  xy: 612, 58
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 gradient-borders
   rotate: false
-  xy: 538, 766
+  xy: 516, 252
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 gradient-bottom
   rotate: false
-  xy: 992, 958
+  xy: 488, 444
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
 gradient-bottom-long
   rotate: false
-  xy: 534, 382
+  xy: 1016, 382
   size: 2, 640
   orig: 2, 640
   offset: 0, 0
   index: -1
 gradient-left
   rotate: false
-  xy: 780, 544
+  xy: 488, 38
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
 gradient-line
   rotate: false
-  xy: 516, 323
+  xy: 774, 3
   size: 201, 1
   split: 100, 100, 0, 1
   orig: 201, 1
@@ -198,112 +198,147 @@ gradient-line
   index: -1
 gradient-right
   rotate: false
-  xy: 780, 526
+  xy: 554, 40
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
 gradient-top
   rotate: false
-  xy: 488, 444
+  xy: 488, 378
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
 gradient-top-long
   rotate: false
-  xy: 1010, 958
+  xy: 506, 444
   size: 2, 64
   orig: 2, 64
   offset: 0, 0
   index: -1
 grandma
   rotate: false
-  xy: 862, 828
+  xy: 620, 120
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 grandma-disabled
   rotate: false
-  xy: 796, 762
+  xy: 674, 54
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-marble
+marble-gradient-black
   rotate: false
-  xy: 538, 326
+  xy: 488, 186
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble-gradient-black
   rotate: false
-  xy: 538, 458
+  xy: 516, 958
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 1
+marble-gradient-black
+  rotate: false
+  xy: 516, 892
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 2
+marble-gradient-black
+  rotate: false
+  xy: 516, 826
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 3
+marble-gradient-white
+  rotate: false
+  xy: 516, 760
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble-gradient-white
   rotate: false
-  xy: 538, 392
+  xy: 516, 694
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
-  index: 0
+  index: 1
+marble-gradient-white
+  rotate: false
+  xy: 516, 628
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 2
+marble-gradient-white
+  rotate: false
+  xy: 516, 562
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 3
 milk-plain
   rotate: false
-  xy: 538, 524
+  xy: 774, 268
   size: 240, 240
   orig: 240, 240
   offset: 0, 0
   index: -1
 question-mark
   rotate: false
-  xy: 830, 612
+  xy: 904, 168
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-berrylium
   rotate: false
-  xy: 830, 562
+  xy: 940, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-blueberrylium
   rotate: false
-  xy: 880, 716
+  xy: 904, 118
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-buttergold
   rotate: false
-  xy: 880, 666
+  xy: 904, 68
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-chalcedhoney
   rotate: false
-  xy: 880, 616
+  xy: 924, 18
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-plain
   rotate: false
-  xy: 880, 566
+  xy: 954, 168
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 rolling-pin-sugarmuck
   rotate: false
-  xy: 488, 273
+  xy: 954, 118
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -316,11 +351,39 @@ filter: Nearest, Nearest
 repeat: none
 cookies
   rotate: false
-  xy: 2, 2
+  xy: 2, 134
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
+marble
+  rotate: false
+  xy: 2, 68
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+marble
+  rotate: false
+  xy: 516, 582
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 1
+marble
+  rotate: false
+  xy: 2, 2
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 2
+marble
+  rotate: false
+  xy: 516, 516
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 3
 
 skin3.png
 size: 1024, 1024
