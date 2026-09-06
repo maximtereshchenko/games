@@ -10,13 +10,6 @@ import com.github.maximtereshchenko.games.cookies.domain.Building;
 
 final class BuildingIcon extends Stack {
 
-    private final BakeryService bakeryService;
-    private final Building building;
-    private final Image disabled;
-    private final Image enabled;
-    private final float animationDurationSeconds;
-    private boolean isLocked;
-
     BuildingIcon(
         Skin skin,
         String styleName,
@@ -25,32 +18,21 @@ final class BuildingIcon extends Stack {
         float animationDurationSeconds
     ) {
         var style = skin.get(styleName, Style.class);
-        this.bakeryService = bakeryService;
-        this.building = building;
-        this.disabled = new Image(style.disabled);
-        this.enabled = new Image(style.enabled);
-        this.animationDurationSeconds = animationDurationSeconds;
-        this.isLocked = true;
+        var disabled = new Image(style.disabled);
+        var enabled = new Image(style.enabled);
         enabled.addAction(Actions.fadeOut(0));
+        addAction(
+            new UnlockBuildingAction(
+                bakeryService,
+                building,
+                Actions.parallel(
+                    Actions.addAction(Actions.fadeOut(animationDurationSeconds), disabled),
+                    Actions.addAction(Actions.fadeIn(animationDurationSeconds), enabled)
+                )
+            )
+        );
         add(disabled);
         add(enabled);
-    }
-
-    @Override
-    public void act(float delta) {
-        super.act(delta);
-        if (isLocked && balanceGreaterThanTransactionValue()) {
-            disabled.addAction(Actions.fadeOut(animationDurationSeconds));
-            enabled.addAction(Actions.fadeIn(animationDurationSeconds));
-            isLocked = false;
-        }
-    }
-
-    private boolean balanceGreaterThanTransactionValue() {
-        return bakeryService.balance()
-                   .compareTo(
-                       bakeryService.transactionValue(building)
-                   ) >= 0;
     }
 
     private static final class Style {

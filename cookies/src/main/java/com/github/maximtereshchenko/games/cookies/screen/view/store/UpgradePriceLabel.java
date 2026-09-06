@@ -52,20 +52,10 @@ final class UpgradePriceLabel extends Label {
             BakeryService bakeryService,
             Upgrade upgrade
         ) {
-            if (balanceGreaterThanPrice(bakeryService, upgrade)) {
+            if (bakeryService.canAfford(upgrade)) {
                 return enabledFontColor;
             }
             return disabledFontColor;
-        }
-
-        private boolean balanceGreaterThanPrice(
-            BakeryService bakeryService,
-            Upgrade upgrade
-        ) {
-            return bakeryService.balance()
-                       .compareTo(
-                           bakeryService.price(upgrade)
-                       ) >= 0;
         }
     }
 }

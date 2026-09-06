@@ -55,10 +55,7 @@ final class UpgradeButton extends Container<ImageButton> {
     @Override
     public void act(float delta) {
         super.act(delta);
-        var isDisabled = bakeryService.balance()
-                             .compareTo(
-                                 bakeryService.price(upgrade)
-                             ) < 0;
+        var isDisabled = !bakeryService.canAfford(upgrade);
         var imageButton = getActor();
         imageButton.setDisabled(isDisabled);
         imageButton.getImage().setColor(color(isDisabled));

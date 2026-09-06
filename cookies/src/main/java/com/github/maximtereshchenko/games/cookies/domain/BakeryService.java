@@ -96,6 +96,18 @@ public final class BakeryService {
             .get(upgrade);
     }
 
+    public boolean canAfford(Building building) {
+        return canAfford(transactionValue(building));
+    }
+
+    public boolean canAfford(Upgrade upgrade) {
+        return canAfford(price(upgrade));
+    }
+
+    private boolean canAfford(BigDecimal value) {
+        return balance().compareTo(value) >= 0;
+    }
+
     private void addToBalance(BigDecimal amount) {
         playerProgress.setBalance(
             playerProgress.balance()

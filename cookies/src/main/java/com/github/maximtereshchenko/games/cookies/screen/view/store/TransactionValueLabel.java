@@ -55,20 +55,10 @@ final class TransactionValueLabel extends Label {
             BakeryService bakeryService,
             Building building
         ) {
-            if (balanceGreaterThanTransactionValue(bakeryService, building)) {
+            if (bakeryService.canAfford(building)) {
                 return enabledFontColor;
             }
             return disabledFontColor;
-        }
-
-        private boolean balanceGreaterThanTransactionValue(
-            BakeryService bakeryService,
-            Building building
-        ) {
-            return bakeryService.balance()
-                       .compareTo(
-                           bakeryService.transactionValue(building)
-                       ) >= 0;
         }
     }
 }

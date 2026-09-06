@@ -81,17 +81,11 @@ final class BuildingButton extends Button {
     @Override
     public void act(float delta) {
         super.act(delta);
-        setDisabled(
-            bakeryService.balance()
-                .compareTo(
-                    bakeryService.transactionValue(building)
-                ) < 0
-        );
-    }
-
-    @Override
-    public void setDisabled(boolean isDisabled) {
-        super.setDisabled(isDisabled);
+        var isDisabled = !bakeryService.canAfford(building);
+        if (isDisabled() == isDisabled) {
+            return;
+        }
+        setDisabled(isDisabled);
         addAction(Actions.color(color(isDisabled), 0.5f));
     }
 
