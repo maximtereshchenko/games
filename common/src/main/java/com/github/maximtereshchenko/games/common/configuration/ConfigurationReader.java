@@ -3,11 +3,9 @@ package com.github.maximtereshchenko.games.common.configuration;
 import com.badlogic.gdx.Gdx;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.DefaultTyping;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.cfg.ConstructorDetector;
 import tools.jackson.databind.json.JsonMapper;
-import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import tools.jackson.databind.module.SimpleModule;
 
 import java.io.IOException;
@@ -17,20 +15,14 @@ public final class ConfigurationReader {
 
     private final JsonMapper jsonMapper;
 
-    public ConfigurationReader(
-        ConfigurationDeserializers configurationDeserializers
-    ) {
+    public ConfigurationReader() {
         this.jsonMapper = JsonMapper.builder()
             .addModule(
                 new SimpleModule()
-                    .setDeserializers(configurationDeserializers)
+                    .setDeserializers(new ConfigurationDeserializers())
             )
-            .activateDefaultTypingAsProperty(
-                BasicPolymorphicTypeValidator.builder()
-                    .allowIfBaseType(Object.class)
-                    .build(),
-                DefaultTyping.JAVA_LANG_OBJECT,
-                "type"
+            .setDefaultTyping(
+                new NonCollectionTypeResolverBuilder()
             )
             .constructorDetector(ConstructorDetector.USE_PROPERTIES_BASED)
             .changeDefaultVisibility(

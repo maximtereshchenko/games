@@ -11,12 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Event;
 import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
+import tools.jackson.core.type.TypeReference;
 
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -49,7 +51,14 @@ final class CookiesGameAdapter implements ApplicationListener {
         assetManager.load(gameBundleAssetDescriptor);
         assetManager.finishLoading();
         var eventBus = new EventBus<Event>();
-        var bakeryService = new BakeryService(eventBus);
+        var bakeryService = new BakeryService(
+            new ConfigurationReader()
+                .value(
+                    "configuration.json",
+                    new TypeReference<>() {}
+                ),
+            eventBus
+        );
         var skin = assetManager.get(skinAssetDescriptor);
         var random = ThreadLocalRandom.current();
         var stage = new Stage(new ScreenViewport(), spriteBatch);

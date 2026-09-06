@@ -12,8 +12,11 @@ public final class BakeryService {
     private final PlayerProgress playerProgress;
     private final EventBus<Event> eventBus;
 
-    public BakeryService(EventBus<Event> eventBus) {
-        this.configuration = new Configuration();
+    public BakeryService(
+        Configuration configuration,
+        EventBus<Event> eventBus
+    ) {
+        this.configuration = configuration;
         this.playerProgress = new PlayerProgress();
         this.eventBus = eventBus;
     }
@@ -82,7 +85,8 @@ public final class BakeryService {
 
     public void buyUpgrade(Upgrade upgrade) {
         addToBalance(
-            configuration.price(upgrade)
+            configuration.upgradePrices()
+                .get(upgrade)
                 .negate()
         );
         playerProgress.activate(upgrade);
@@ -109,7 +113,8 @@ public final class BakeryService {
                 eventBus.publish(
                     new UpgradePriceUpdated(
                         upgrade,
-                        configuration.price(upgrade)
+                        configuration.upgradePrices()
+                            .get(upgrade)
                     )
                 );
             }
@@ -117,7 +122,8 @@ public final class BakeryService {
     }
 
     private boolean isRequirementSatisfied(Upgrade upgrade) {
-        return configuration.unlockRequirement(upgrade)
+        return configuration.upgradeUnlockRequirements()
+            .get(upgrade)
             .isSatisfied(playerProgress);
     }
 
@@ -165,7 +171,8 @@ public final class BakeryService {
     }
 
     private BigDecimal bakingRate(Building building) {
-        var baseBakingRate = configuration.baseBakingRate(building);
+        var baseBakingRate = configuration.buildingBaseBakingRates()
+            .get(building);
         return switch (building) {
             case CURSOR -> cursorBakingRate(baseBakingRate);
             case GRANDMA -> grandmaBakingRate(baseBakingRate);
@@ -218,7 +225,8 @@ public final class BakeryService {
     }
 
     private BigDecimal price(Building building) {
-        return configuration.basePrice(building)
+        return configuration.buildingBasePrices()
+            .get(building)
             .multiply(
                 BigDecimal.valueOf(1.15)
                     .pow(playerProgress.count(building))

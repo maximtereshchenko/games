@@ -7,7 +7,6 @@ import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.github.maximtereshchenko.games.common.configuration.ConfigurationDeserializers;
 import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.common.event.EventBus;
 import com.github.maximtereshchenko.games.snakes.configuration.Configuration;
@@ -28,9 +27,7 @@ final class SnakesGameAdapter implements ApplicationListener {
 
     @Override
     public void create() {
-        var configurationReader = new ConfigurationReader(
-            new ConfigurationDeserializers()
-        );
+        var configurationReader = new ConfigurationReader();
         var configuration = configurationReader.value(
             "configuration.json",
             new TypeReference<Configuration>() {}

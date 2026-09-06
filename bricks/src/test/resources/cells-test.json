@@ -1,7 +1,7 @@
 [
   [
     {
-      "type": "brick",
+      "type": "com.github.maximtereshchenko.games.bricks.configuration.BrickDefinition",
       "color": {
         "r": 1,
         "g": 0,
@@ -10,10 +10,10 @@
       }
     },
     {
-      "type": "wall"
+      "type": "com.github.maximtereshchenko.games.bricks.configuration.WallDefinition"
     },
     {
-      "type": "empty"
+      "type": "com.github.maximtereshchenko.games.bricks.configuration.EmptyCellDefinition"
     }
   ]
 ]

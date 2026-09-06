@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.bricks.configuration;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Files;
 import com.badlogic.gdx.graphics.Color;
-import com.github.maximtereshchenko.games.common.configuration.ConfigurationDeserializers;
 import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,12 +18,7 @@ final class ConfigurationReaderTest {
 
     @BeforeEach
     void setUp() {
-        var configurationDeserializers = new ConfigurationDeserializers();
-        configurationDeserializers.addDeserializer(
-            CellDefinition.class,
-            new CellDefinitionDeserializer()
-        );
-        configurationReader = new ConfigurationReader(configurationDeserializers);
+        configurationReader = new ConfigurationReader();
         Gdx.files = new Lwjgl3Files();
     }
 

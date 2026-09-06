@@ -13,6 +13,8 @@ import tools.jackson.core.type.TypeReference;
 
 import java.io.StringReader;
 import java.nio.file.AccessMode;
+import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -24,7 +26,7 @@ final class ConfigurationReaderTest {
     private final Files files = mock();
     private final FileHandle fileHandle = mock();
     private final ConfigurationReader configurationReader =
-        new ConfigurationReader(new ConfigurationDeserializers());
+        new ConfigurationReader();
 
     @BeforeEach
     void setUp() {
@@ -36,13 +38,15 @@ final class ConfigurationReaderTest {
     void givenAssetDescriptorWithoutParams_thenAssetDescriptorDeserialized() {
         when(fileHandle.reader())
             .thenReturn(
-                new StringReader("""
-                                 {
-                                    "assetDescriptor": {
-                                        "fileName": "file"
-                                    }
-                                 }
-                                 """)
+                new StringReader(
+                    """
+                    {
+                       "assetDescriptor": {
+                           "fileName": "file"
+                       }
+                    }
+                    """
+                )
             );
         assertThat(
             configurationReader.value(
@@ -62,16 +66,18 @@ final class ConfigurationReaderTest {
     void givenAssetDescriptorWithParams_thenAssetDescriptorDeserialized() {
         when(fileHandle.reader())
             .thenReturn(
-                new StringReader("""
-                                 {
-                                    "assetDescriptor": {
-                                        "fileName": "file",
-                                        "params": {
-                                            "atlasName": "atlas"
-                                        }
-                                    }
-                                 }
-                                 """)
+                new StringReader(
+                    """
+                    {
+                       "assetDescriptor": {
+                           "fileName": "file",
+                           "params": {
+                               "atlasName": "atlas"
+                           }
+                       }
+                    }
+                    """
+                )
             );
         var params = new BitmapFontLoader.BitmapFontParameter();
         params.atlasName = "atlas";
@@ -97,11 +103,13 @@ final class ConfigurationReaderTest {
     void givenEnumString_thenEnumDeserialized() {
         when(fileHandle.reader())
             .thenReturn(
-                new StringReader("""
-                                 {
-                                    "value": "EXECUTE"
-                                 }
-                                 """)
+                new StringReader(
+                    """
+                    {
+                       "value": "EXECUTE"
+                    }
+                    """
+                )
             );
         assertThat(
             configurationReader.value(
@@ -117,14 +125,16 @@ final class ConfigurationReaderTest {
     void givenEnumObject_thenEnumDeserialized() {
         when(fileHandle.reader())
             .thenReturn(
-                new StringReader("""
-                                 {
-                                    "value": {
-                                        "type": "java.nio.file.AccessMode",
-                                        "value": "EXECUTE"
-                                    }
-                                 }
-                                 """)
+                new StringReader(
+                    """
+                    {
+                       "value": {
+                           "type": "java.nio.file.AccessMode",
+                           "value": "EXECUTE"
+                       }
+                    }
+                    """
+                )
             );
         assertThat(
             configurationReader.value(
@@ -136,7 +146,74 @@ final class ConfigurationReaderTest {
             .isEqualTo(new WithEnum<>(AccessMode.EXECUTE));
     }
 
+    @Test
+    void givenCollection_thenCollectionDeserialized() {
+        when(fileHandle.reader())
+            .thenReturn(
+                new StringReader(
+                    """
+                    ["value"]
+                    """
+                )
+            );
+        assertThat(
+            configurationReader.value(
+                "",
+                new TypeReference<List<String>>() {}
+            )
+        )
+            .containsExactly("value");
+    }
+
+    @Test
+    void givenMap_thenMapDeserialized() {
+        when(fileHandle.reader())
+            .thenReturn(
+                new StringReader(
+                    """
+                    {
+                       "a": 1,
+                       "b": 2
+                    }
+                    """
+                )
+            );
+        assertThat(
+            configurationReader.value(
+                "",
+                new TypeReference<Map<String, Integer>>() {}
+            )
+        )
+            .hasSize(2)
+            .containsEntry("a", 1)
+            .containsEntry("b", 2);
+    }
+
+    @Test
+    void givenObjectWithType_thenObjectDeserialized() {
+        when(fileHandle.reader())
+            .thenReturn(
+                new StringReader(
+                    """
+                    {
+                       "type": "com.github.maximtereshchenko.games.common.configuration.ConfigurationReaderTest$SimpleRecord",
+                       "value": "value"
+                    }
+                    """
+                )
+            );
+        assertThat(
+            configurationReader.value(
+                "",
+                new TypeReference<Object>() {}
+            )
+        )
+            .isEqualTo(new SimpleRecord("value"));
+    }
+
     record WithAssetDescriptor<T>(AssetDescriptor<T> assetDescriptor) {}
 
     record WithEnum<T extends Enum<T>>(T value) {}
+
+    record SimpleRecord(String value) {}
 }
