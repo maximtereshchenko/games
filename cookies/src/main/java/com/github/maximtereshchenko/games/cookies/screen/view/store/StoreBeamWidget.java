@@ -10,9 +10,11 @@ import com.github.maximtereshchenko.games.cookies.screen.view.BeamWidget;
 
 final class StoreBeamWidget extends BeamWidget {
 
+    private final Label label;
+
     StoreBeamWidget(Skin skin, String text) {
         super(skin, "store");
-        var label = new Label(text, skin, "beam-store");
+        this.label = new Label(text, skin, "beam-store");
         label.setVisible(false);
         add(label);
         addListener(eventListener());
@@ -62,7 +64,7 @@ final class StoreBeamWidget extends BeamWidget {
         boolean isVisible
     ) {
         if (pointer == -1 && !isInside(related, listenerActor)) {
-            setVisible(isVisible);
+            label.setVisible(isVisible);
         }
     }
 

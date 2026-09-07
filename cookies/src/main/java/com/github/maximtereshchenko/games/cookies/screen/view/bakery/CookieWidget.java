@@ -20,7 +20,7 @@ final class CookieWidget extends Container<Stack> {
         size(Value.percentWidth(0.4f, this));
         var first = new FlareWidget(skin);
         var second = new FlareWidget(skin);
-        second.act(FlareWidget.CYCLE_TIME / 2);
+        second.act(FlareWidget.CYCLE_TIME_SECONDS);
         var stack = new Stack();
         stack.add(first);
         stack.add(second);
