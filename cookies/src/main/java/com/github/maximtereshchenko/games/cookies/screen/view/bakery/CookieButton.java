@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 import java.util.Random;
 
@@ -22,6 +23,7 @@ final class CookieButton extends Button {
 
     CookieButton(
         Skin skin,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random
     ) {
@@ -91,7 +93,9 @@ final class CookieButton extends Button {
                         random,
                         mousePointer.x,
                         mousePointer.y,
-                        bakeryService.bakingPower()
+                        "+" + bigDecimalFormatter.string(
+                            bakeryService.bakingPower()
+                        )
                     )
                 );
                 bakeryService.click();

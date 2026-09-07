@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-import java.math.BigDecimal;
 import java.util.Random;
 
 final class BakingPowerParticle extends Label {
@@ -15,10 +14,10 @@ final class BakingPowerParticle extends Label {
         Random random,
         float x,
         float y,
-        BigDecimal bigDecimal
+        String text
     ) {
         super(
-            "+" + bigDecimal,
+            text,
             skin,
             "baking-power"
         );
