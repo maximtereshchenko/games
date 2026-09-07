@@ -1,5 +1,4 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
 sealed interface UnlockRequirement
-    permits BuildingCountUnlockRequirement,
-    TieredUnlockRequirement {}
+    permits BuildingCountUnlockRequirement, ManuallyBakedUnlockRequirement, TieredUnlockRequirement {}

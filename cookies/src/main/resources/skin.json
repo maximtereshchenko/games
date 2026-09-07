@@ -248,11 +248,11 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingIcon$Style": {
     "CURSOR-button": {
-      "enabled": "cursor-tilted",
-      "disabled": "cursor-tilted-disabled"
+      "enabled": "hand-tilted",
+      "disabled": "hand-tilted-disabled"
     },
     "CURSOR-tooltip": {
-      "enabled": "cursor-plain",
+      "enabled": "hand-plain",
       "disabled": "question-mark"
     },
     "GRANDMA-button": {
@@ -315,12 +315,147 @@
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeButton$Style": {
+    "CLICK_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CLICK_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "mouse-pointer-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
     "CURSOR_TIER_0": {
       "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
-      "imageUp": "cursor-plain",
+      "imageUp": "hand-plain",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
@@ -329,7 +464,7 @@
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
-      "imageUp": "cursor-berrylium",
+      "imageUp": "hand-berrylium",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
@@ -338,7 +473,7 @@
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
-      "imageUp": "cursor-blueberrylium",
+      "imageUp": "hand-blueberrylium",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
@@ -347,7 +482,7 @@
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
-      "imageUp": "cursor-chalcedhoney",
+      "imageUp": "hand-chalcedhoney",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
@@ -356,7 +491,7 @@
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
-      "imageUp": "cursor-buttergold",
+      "imageUp": "hand-buttergold",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
@@ -365,7 +500,88 @@
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
-      "imageUp": "cursor-sugarmuck",
+      "imageUp": "hand-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "CURSOR_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "hand-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
@@ -423,6 +639,87 @@
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     },
+    "GRANDMA_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "GRANDMA_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rolling-pin-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
     "FARM_TIER_0": {
       "background": "empty-black-transparent-25",
       "up": "frame-brown",
@@ -474,6 +771,87 @@
       "disabled": "frame-brown-dark",
       "over": "frame-brown-bright",
       "imageUp": "watering-pot-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
     }
@@ -561,28 +939,124 @@
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltipPanel$Style": {
+    "CLICK_TIER_0": {
+      "upgradeIcon": "mouse-pointer-plain",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_1": {
+      "upgradeIcon": "mouse-pointer-berrylium",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_2": {
+      "upgradeIcon": "mouse-pointer-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_3": {
+      "upgradeIcon": "mouse-pointer-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_4": {
+      "upgradeIcon": "mouse-pointer-buttergold",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_5": {
+      "upgradeIcon": "mouse-pointer-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_6": {
+      "upgradeIcon": "mouse-pointer-jetmint",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_7": {
+      "upgradeIcon": "mouse-pointer-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_8": {
+      "upgradeIcon": "mouse-pointer-hazelrald",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_9": {
+      "upgradeIcon": "mouse-pointer-mooncandy",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_10": {
+      "upgradeIcon": "mouse-pointer-astrofudge",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_11": {
+      "upgradeIcon": "mouse-pointer-alabascream",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_12": {
+      "upgradeIcon": "mouse-pointer-iridyum",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_13": {
+      "upgradeIcon": "mouse-pointer-glucosmium",
+      "separator": "gradient-line"
+    },
+    "CLICK_TIER_14": {
+      "upgradeIcon": "mouse-pointer-glimmeringue",
+      "separator": "gradient-line"
+    },
     "CURSOR_TIER_0": {
-      "upgradeIcon": "cursor-plain",
+      "upgradeIcon": "hand-plain",
       "separator": "gradient-line"
     },
     "CURSOR_TIER_1": {
-      "upgradeIcon": "cursor-berrylium",
+      "upgradeIcon": "hand-berrylium",
       "separator": "gradient-line"
     },
     "CURSOR_TIER_2": {
-      "upgradeIcon": "cursor-blueberrylium",
+      "upgradeIcon": "hand-blueberrylium",
       "separator": "gradient-line"
     },
     "CURSOR_TIER_3": {
-      "upgradeIcon": "cursor-chalcedhoney",
+      "upgradeIcon": "hand-chalcedhoney",
       "separator": "gradient-line"
     },
     "CURSOR_TIER_4": {
-      "upgradeIcon": "cursor-buttergold",
+      "upgradeIcon": "hand-buttergold",
       "separator": "gradient-line"
     },
     "CURSOR_TIER_5": {
-      "upgradeIcon": "cursor-sugarmuck",
+      "upgradeIcon": "hand-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_6": {
+      "upgradeIcon": "hand-jetmint",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_7": {
+      "upgradeIcon": "hand-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_8": {
+      "upgradeIcon": "hand-hazelrald",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_9": {
+      "upgradeIcon": "hand-mooncandy",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_10": {
+      "upgradeIcon": "hand-astrofudge",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_11": {
+      "upgradeIcon": "hand-alabascream",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_12": {
+      "upgradeIcon": "hand-iridyum",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_13": {
+      "upgradeIcon": "hand-glucosmium",
+      "separator": "gradient-line"
+    },
+    "CURSOR_TIER_14": {
+      "upgradeIcon": "hand-glimmeringue",
       "separator": "gradient-line"
     },
     "GRANDMA_TIER_0": {
@@ -609,6 +1083,42 @@
       "upgradeIcon": "rolling-pin-sugarmuck",
       "separator": "gradient-line"
     },
+    "GRANDMA_TIER_6": {
+      "upgradeIcon": "rolling-pin-jetmint",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_7": {
+      "upgradeIcon": "rolling-pin-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_8": {
+      "upgradeIcon": "rolling-pin-hazelrald",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_9": {
+      "upgradeIcon": "rolling-pin-mooncandy",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_10": {
+      "upgradeIcon": "rolling-pin-astrofudge",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_11": {
+      "upgradeIcon": "rolling-pin-alabascream",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_12": {
+      "upgradeIcon": "rolling-pin-iridyum",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_13": {
+      "upgradeIcon": "rolling-pin-glucosmium",
+      "separator": "gradient-line"
+    },
+    "GRANDMA_TIER_14": {
+      "upgradeIcon": "rolling-pin-glimmeringue",
+      "separator": "gradient-line"
+    },
     "FARM_TIER_0": {
       "upgradeIcon": "watering-pot-plain",
       "separator": "gradient-line"
@@ -631,6 +1141,42 @@
     },
     "FARM_TIER_5": {
       "upgradeIcon": "watering-pot-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_6": {
+      "upgradeIcon": "watering-pot-jetmint",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_7": {
+      "upgradeIcon": "watering-pot-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_8": {
+      "upgradeIcon": "watering-pot-hazelrald",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_9": {
+      "upgradeIcon": "watering-pot-mooncandy",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_10": {
+      "upgradeIcon": "watering-pot-astrofudge",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_11": {
+      "upgradeIcon": "watering-pot-alabascream",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_12": {
+      "upgradeIcon": "watering-pot-iridyum",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_13": {
+      "upgradeIcon": "watering-pot-glucosmium",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_14": {
+      "upgradeIcon": "watering-pot-glimmeringue",
       "separator": "gradient-line"
     }
   }

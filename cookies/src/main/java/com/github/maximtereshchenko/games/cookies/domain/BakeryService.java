@@ -2,6 +2,9 @@ package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public final class BakeryService {
 
@@ -18,21 +21,43 @@ public final class BakeryService {
             .multiply(
                 BigDecimal.valueOf(deltaTimeSeconds)
             );
-        addToBalance(amount);
-        addToCumulativeBaked(amount);
+        add(
+            amount,
+            playerProgress::balance,
+            playerProgress::setBalance
+        );
+        add(
+            amount,
+            playerProgress::cumulativeBaked,
+            playerProgress::setCumulativeBaked
+        );
         unlockUpgrades();
     }
 
-    public void bake() {
+    public void click() {
         var amount = bakingPower();
-        addToBalance(amount);
-        addToCumulativeBaked(amount);
+        add(
+            amount,
+            playerProgress::balance,
+            playerProgress::setBalance
+        );
+        add(
+            amount,
+            playerProgress::cumulativeBaked,
+            playerProgress::setCumulativeBaked
+        );
+        add(
+            amount,
+            playerProgress::cumulativeManuallyBaked,
+            playerProgress::setCumulativeManuallyBaked
+        );
     }
 
     public void completeTransaction(Building building) {
-        addToBalance(
-            transactionValue(building)
-                .negate()
+        add(
+            transactionValue(building).negate(),
+            playerProgress::balance,
+            playerProgress::setBalance
         );
         playerProgress.buildings()
             .computeIfPresent(
@@ -42,7 +67,11 @@ public final class BakeryService {
     }
 
     public void buyUpgrade(Upgrade upgrade) {
-        addToBalance(price(upgrade).negate());
+        add(
+            price(upgrade).negate(),
+            playerProgress::balance,
+            playerProgress::setBalance
+        );
         playerProgress.unlockedUpgrades()
             .remove(upgrade);
         playerProgress.activeUpgrades()
@@ -89,7 +118,30 @@ public final class BakeryService {
     }
 
     public BigDecimal bakingPower() {
-        return cursorBakingRate(configuration.baseBakingPower());
+        return cursorBakingRate(configuration.baseBakingPower())
+            .add(
+                calculated(
+                    BigDecimal.ZERO,
+                    BigDecimal::add,
+                    bakingRate()
+                        .multiply(BigDecimal.valueOf(0.01)),
+                    Upgrade.CLICK_TIER_0,
+                    Upgrade.CLICK_TIER_1,
+                    Upgrade.CLICK_TIER_2,
+                    Upgrade.CLICK_TIER_3,
+                    Upgrade.CLICK_TIER_4,
+                    Upgrade.CLICK_TIER_5,
+                    Upgrade.CLICK_TIER_6,
+                    Upgrade.CLICK_TIER_7,
+                    Upgrade.CLICK_TIER_8,
+                    Upgrade.CLICK_TIER_9,
+                    Upgrade.CLICK_TIER_10,
+                    Upgrade.CLICK_TIER_11,
+                    Upgrade.CLICK_TIER_12,
+                    Upgrade.CLICK_TIER_13,
+                    Upgrade.CLICK_TIER_14
+                )
+            );
     }
 
     public BigDecimal price(Upgrade upgrade) {
@@ -121,18 +173,12 @@ public final class BakeryService {
         return balance().compareTo(value) >= 0;
     }
 
-    private void addToBalance(BigDecimal amount) {
-        playerProgress.setBalance(
-            playerProgress.balance()
-                .add(amount)
-        );
-    }
-
-    private void addToCumulativeBaked(BigDecimal amount) {
-        playerProgress.setCumulativeBaked(
-            playerProgress.cumulativeBaked()
-                .add(amount)
-        );
+    private void add(
+        BigDecimal amount,
+        Supplier<BigDecimal> getter,
+        Consumer<BigDecimal> setter
+    ) {
+        setter.accept(getter.get().add(amount));
     }
 
     private void unlockUpgrades() {
@@ -152,7 +198,15 @@ public final class BakeryService {
         return switch (configuration.upgradeUnlockRequirements().get(upgrade)) {
             case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(requirement);
             case TieredUnlockRequirement requirement -> isRequirementSatisfied(requirement);
+            case ManuallyBakedUnlockRequirement requirement -> isRequirementSatisfied(requirement);
         };
+    }
+
+    private boolean isRequirementSatisfied(
+        ManuallyBakedUnlockRequirement requirement
+    ) {
+        return playerProgress.cumulativeManuallyBaked()
+                   .compareTo(requirement.count()) >= 0;
     }
 
     private boolean isRequirementSatisfied(
@@ -184,7 +238,16 @@ public final class BakeryService {
                 Upgrade.GRANDMA_TIER_2,
                 Upgrade.GRANDMA_TIER_3,
                 Upgrade.GRANDMA_TIER_4,
-                Upgrade.GRANDMA_TIER_5
+                Upgrade.GRANDMA_TIER_5,
+                Upgrade.GRANDMA_TIER_6,
+                Upgrade.GRANDMA_TIER_7,
+                Upgrade.GRANDMA_TIER_8,
+                Upgrade.GRANDMA_TIER_9,
+                Upgrade.GRANDMA_TIER_10,
+                Upgrade.GRANDMA_TIER_11,
+                Upgrade.GRANDMA_TIER_12,
+                Upgrade.GRANDMA_TIER_13,
+                Upgrade.GRANDMA_TIER_14
             );
             case FARM -> doubled(
                 baseBakingRate,
@@ -193,19 +256,25 @@ public final class BakeryService {
                 Upgrade.FARM_TIER_2,
                 Upgrade.FARM_TIER_3,
                 Upgrade.FARM_TIER_4,
-                Upgrade.FARM_TIER_5
+                Upgrade.FARM_TIER_5,
+                Upgrade.FARM_TIER_6,
+                Upgrade.FARM_TIER_7,
+                Upgrade.FARM_TIER_8,
+                Upgrade.FARM_TIER_9,
+                Upgrade.FARM_TIER_10,
+                Upgrade.FARM_TIER_11,
+                Upgrade.FARM_TIER_12,
+                Upgrade.FARM_TIER_13,
+                Upgrade.FARM_TIER_14
             );
         };
     }
 
-    private BigDecimal doubled(BigDecimal baseBakingRate, Upgrade... upgrades) {
-        var bakingRate = baseBakingRate;
-        for (var upgrade : upgrades) {
-            if (playerProgress.activeUpgrades().contains(upgrade)) {
-                bakingRate = bakingRate.multiply(BigDecimal.TWO);
-            }
-        }
-        return bakingRate;
+    private BigDecimal doubled(
+        BigDecimal baseBakingRate,
+        Upgrade... upgrades
+    ) {
+        return multiplied(baseBakingRate, BigDecimal.TWO, upgrades);
     }
 
     private BigDecimal cursorBakingRate(BigDecimal baseBakingRate) {
@@ -219,19 +288,59 @@ public final class BakeryService {
     }
 
     private BigDecimal nonCursorBuildingBonus() {
-        var activeUpgrades = playerProgress.activeUpgrades();
-        if (!activeUpgrades.contains(Upgrade.CURSOR_TIER_3)) {
+        if (!playerProgress.activeUpgrades().contains(Upgrade.CURSOR_TIER_3)) {
             return BigDecimal.ZERO;
         }
-        var bonus = BigDecimal.valueOf(0.1)
-            .multiply(BigDecimal.valueOf(nonCursorBuildingCount()));
-        if (activeUpgrades.contains(Upgrade.CURSOR_TIER_4)) {
-            bonus = bonus.multiply(BigDecimal.valueOf(5));
+        return multiplied(
+            multiplied(
+                multiplied(
+                    BigDecimal.valueOf(0.1)
+                        .multiply(BigDecimal.valueOf(nonCursorBuildingCount())),
+                    BigDecimal.valueOf(5),
+                    Upgrade.CURSOR_TIER_4
+                ),
+                BigDecimal.valueOf(10),
+                Upgrade.CURSOR_TIER_5
+            ),
+            BigDecimal.valueOf(20),
+            Upgrade.CURSOR_TIER_6,
+            Upgrade.CURSOR_TIER_7,
+            Upgrade.CURSOR_TIER_8,
+            Upgrade.CURSOR_TIER_9,
+            Upgrade.CURSOR_TIER_10,
+            Upgrade.CURSOR_TIER_11,
+            Upgrade.CURSOR_TIER_12,
+            Upgrade.CURSOR_TIER_13,
+            Upgrade.CURSOR_TIER_14
+        );
+    }
+
+    private BigDecimal multiplied(
+        BigDecimal base,
+        BigDecimal multiplier,
+        Upgrade... upgrades
+    ) {
+        return calculated(
+            base,
+            BigDecimal::multiply,
+            multiplier,
+            upgrades
+        );
+    }
+
+    private BigDecimal calculated(
+        BigDecimal base,
+        BinaryOperator<BigDecimal> operator,
+        BigDecimal operand,
+        Upgrade... upgrades
+    ) {
+        var calculated = base;
+        for (var upgrade : upgrades) {
+            if (playerProgress.activeUpgrades().contains(upgrade)) {
+                calculated = operator.apply(calculated, operand);
+            }
         }
-        if (activeUpgrades.contains(Upgrade.CURSOR_TIER_5)) {
-            bonus = bonus.multiply(BigDecimal.valueOf(10));
-        }
-        return bonus;
+        return calculated;
     }
 
     private int nonCursorBuildingCount() {

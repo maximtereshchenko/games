@@ -80,7 +80,7 @@ final class CookieButton extends Button {
                         bakeryService.bakingPower()
                     )
                 );
-                bakeryService.bake();
+                bakeryService.click();
             }
 
             private void scale(float scale) {
