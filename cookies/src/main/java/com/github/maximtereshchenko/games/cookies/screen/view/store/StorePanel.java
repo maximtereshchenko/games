@@ -6,12 +6,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 public final class StorePanel extends Table {
 
     public StorePanel(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         background(skin.get(Style.class).background);
@@ -22,6 +24,7 @@ public final class StorePanel extends Table {
         var upgradePanel = new UpgradePanel(
             skin,
             bundle,
+            bigDecimalFormatter,
             bakeryService
         );
         var buildingsBeam = new StoreBeamWidget(
@@ -36,6 +39,7 @@ public final class StorePanel extends Table {
             skin,
             bundle,
             buildingsBeam.eventListener(),
+            bigDecimalFormatter,
             bakeryService
         );
         defaults()

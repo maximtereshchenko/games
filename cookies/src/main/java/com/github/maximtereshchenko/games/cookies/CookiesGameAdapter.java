@@ -15,6 +15,7 @@ import com.github.maximtereshchenko.games.common.configuration.ConfigurationRead
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
 import tools.jackson.core.type.TypeReference;
 
@@ -62,8 +63,9 @@ final class CookiesGameAdapter implements ApplicationListener {
             new BakeryView(
                 skin,
                 assetManager.get(gameBundleAssetDescriptor),
-                random,
-                bakeryService
+                new BigDecimalFormatter(),
+                bakeryService,
+                random
             )
         );
         cookiesGame = new CookiesGame(Set.of(spriteBatch));

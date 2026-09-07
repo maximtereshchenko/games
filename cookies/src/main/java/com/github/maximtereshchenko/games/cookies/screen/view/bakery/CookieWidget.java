@@ -13,8 +13,8 @@ final class CookieWidget extends Container<Stack> {
 
     CookieWidget(
         Skin skin,
-        Random random,
-        BakeryService bakeryService
+        BakeryService bakeryService,
+        Random random
     ) {
         background(skin.get(Style.class).background);
         size(Value.percentWidth(0.4f, this));
@@ -28,8 +28,8 @@ final class CookieWidget extends Container<Stack> {
         stack.add(
             new CookieButton(
                 skin,
-                random,
-                bakeryService
+                bakeryService,
+                random
             )
         );
         setActor(stack);

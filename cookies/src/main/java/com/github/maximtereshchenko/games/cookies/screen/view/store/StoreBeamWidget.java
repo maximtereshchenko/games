@@ -10,11 +10,9 @@ import com.github.maximtereshchenko.games.cookies.screen.view.BeamWidget;
 
 final class StoreBeamWidget extends BeamWidget {
 
-    private final Label label;
-
     StoreBeamWidget(Skin skin, String text) {
         super(skin, "store");
-        this.label = new Label(text, skin, "beam-store");
+        var label = new Label(text, skin, "beam-store");
         label.setVisible(false);
         add(label);
         addListener(eventListener());
@@ -31,7 +29,12 @@ final class StoreBeamWidget extends BeamWidget {
                 int pointer,
                 Actor fromActor
             ) {
-                label.setVisible(true);
+                setVisible(
+                    pointer,
+                    fromActor,
+                    event.getListenerActor(),
+                    true
+                );
             }
 
             @Override
@@ -42,10 +45,28 @@ final class StoreBeamWidget extends BeamWidget {
                 int pointer,
                 Actor toActor
             ) {
-                if (pointer == -1) {
-                    label.setVisible(false);
-                }
+                setVisible(
+                    pointer,
+                    toActor,
+                    event.getListenerActor(),
+                    false
+                );
             }
         };
+    }
+
+    private void setVisible(
+        int pointer,
+        Actor related,
+        Actor listenerActor,
+        boolean isVisible
+    ) {
+        if (pointer == -1 && !isInside(related, listenerActor)) {
+            setVisible(isVisible);
+        }
+    }
+
+    private boolean isInside(Actor related, Actor listenerActor) {
+        return related != null && related.isDescendantOf(listenerActor);
     }
 }

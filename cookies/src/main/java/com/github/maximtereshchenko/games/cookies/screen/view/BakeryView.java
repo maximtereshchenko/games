@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.bakery.BakeryPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel;
 
@@ -16,8 +17,9 @@ public final class BakeryView extends ScreenLayout {
     public BakeryView(
         Skin skin,
         I18NBundle bundle,
-        Random random,
-        BakeryService bakeryService
+        BigDecimalFormatter bigDecimalFormatter,
+        BakeryService bakeryService,
+        Random random
     ) {
         setBackground(skin.get(Style.class).background);
         defaults().growY();
@@ -25,8 +27,9 @@ public final class BakeryView extends ScreenLayout {
             new BakeryPanel(
                 skin,
                 bundle,
-                random,
-                bakeryService
+                bigDecimalFormatter,
+                bakeryService,
+                random
             )
         )
             .width(Value.percentWidth(0.3f, this));
@@ -37,6 +40,7 @@ public final class BakeryView extends ScreenLayout {
             new StorePanel(
                 skin,
                 bundle,
+                bigDecimalFormatter,
                 bakeryService
             )
         );

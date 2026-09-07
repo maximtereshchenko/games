@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +20,7 @@ final class UpgradePanel extends Container<Table> {
 
     private final Skin skin;
     private final I18NBundle bundle;
+    private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
     private final Set<Upgrade> upgrades;
     private boolean isExpanded;
@@ -26,11 +28,13 @@ final class UpgradePanel extends Container<Table> {
     UpgradePanel(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         super(new Table().left());
         this.skin = skin;
         this.bundle = bundle;
+        this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.upgrades = new HashSet<>();
         this.isExpanded = false;
@@ -69,8 +73,12 @@ final class UpgradePanel extends Container<Table> {
                 int pointer,
                 Actor fromActor
             ) {
-                isExpanded = true;
-                invalidateHierarchy();
+                setExpanded(
+                    pointer,
+                    fromActor,
+                    event.getListenerActor(),
+                    true
+                );
             }
 
             @Override
@@ -81,12 +89,34 @@ final class UpgradePanel extends Container<Table> {
                 int pointer,
                 Actor toActor
             ) {
-                if (pointer == -1) {
-                    isExpanded = false;
-                    invalidateHierarchy();
-                }
+                setExpanded(
+                    pointer,
+                    toActor,
+                    event.getListenerActor(),
+                    false
+                );
             }
         };
+    }
+
+    private void setExpanded(
+        int pointer,
+        Actor related,
+        Actor listenerActor,
+        boolean isExpanded
+    ) {
+        if (
+            pointer == -1 &&
+            !isInside(related, listenerActor) &&
+            this.isExpanded != isExpanded
+        ) {
+            this.isExpanded = isExpanded;
+            invalidateHierarchy();
+        }
+    }
+
+    private boolean isInside(Actor related, Actor listenerActor) {
+        return related != null && related.isDescendantOf(listenerActor);
     }
 
     private void addUpgradeButton(Upgrade upgrade) {
@@ -104,6 +134,7 @@ final class UpgradePanel extends Container<Table> {
         var upgradeButton = new UpgradeButton(
             skin,
             bundle,
+            bigDecimalFormatter,
             bakeryService,
             upgrade
         );
@@ -113,7 +144,7 @@ final class UpgradePanel extends Container<Table> {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     var table = getActor();
-                    var children = table.getChildren().begin();
+                    var children = table.getChildren().toArray();
                     table.clearChildren();
                     addActors(children);
                     upgrades.remove(upgrade);

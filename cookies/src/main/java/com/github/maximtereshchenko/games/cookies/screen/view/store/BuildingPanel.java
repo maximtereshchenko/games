@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class BuildingPanel extends Table {
 
@@ -13,6 +14,7 @@ final class BuildingPanel extends Table {
         Skin skin,
         I18NBundle bundle,
         EventListener eventListener,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         var buildings = Building.values();
@@ -20,6 +22,7 @@ final class BuildingPanel extends Table {
             var buildingButton = new BuildingButton(
                 skin,
                 bundle,
+                bigDecimalFormatter,
                 bakeryService,
                 buildings[i],
                 i

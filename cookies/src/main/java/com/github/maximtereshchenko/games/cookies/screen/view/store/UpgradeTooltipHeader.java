@@ -8,12 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class UpgradeTooltipHeader extends Table {
 
     UpgradeTooltipHeader(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
@@ -31,6 +33,7 @@ final class UpgradeTooltipHeader extends Table {
         add(
             new UpgradePriceLabel(
                 skin,
+                bigDecimalFormatter,
                 bakeryService,
                 upgrade
             )

@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class UpgradeButton extends Container<ImageButton> {
 
@@ -20,6 +21,7 @@ final class UpgradeButton extends Container<ImageButton> {
     UpgradeButton(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
@@ -35,6 +37,7 @@ final class UpgradeButton extends Container<ImageButton> {
                 new UpgradeTooltipPanel(
                     skin,
                     bundle,
+                    bigDecimalFormatter,
                     bakeryService,
                     upgrade
                 )

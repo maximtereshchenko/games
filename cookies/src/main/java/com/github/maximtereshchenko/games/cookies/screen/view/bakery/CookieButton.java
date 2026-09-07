@@ -21,8 +21,8 @@ final class CookieButton extends Button {
 
     CookieButton(
         Skin skin,
-        Random random,
-        BakeryService bakeryService
+        BakeryService bakeryService,
+        Random random
     ) {
         super(skin, "cookie");
         setTransform(true);

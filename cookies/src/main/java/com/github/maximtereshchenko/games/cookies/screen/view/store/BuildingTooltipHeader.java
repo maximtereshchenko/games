@@ -8,12 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class BuildingTooltipHeader extends Table {
 
     BuildingTooltipHeader(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Building building
     ) {
@@ -34,6 +36,7 @@ final class BuildingTooltipHeader extends Table {
         add(
             new TransactionValueLabel(
                 skin,
+                bigDecimalFormatter,
                 bakeryService,
                 building
             )

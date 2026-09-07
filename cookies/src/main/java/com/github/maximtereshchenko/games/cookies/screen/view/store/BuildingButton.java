@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class BuildingButton extends Button {
 
@@ -19,6 +20,7 @@ final class BuildingButton extends Button {
     BuildingButton(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Building building,
         int index
@@ -44,6 +46,7 @@ final class BuildingButton extends Button {
             new TransactionDetailsWidget(
                 skin,
                 bundle,
+                bigDecimalFormatter,
                 bakeryService,
                 building
             )
@@ -75,6 +78,7 @@ final class BuildingButton extends Button {
                 new BuildingTooltipPanel(
                     skin,
                     bundle,
+                    bigDecimalFormatter,
                     bakeryService,
                     building
                 )

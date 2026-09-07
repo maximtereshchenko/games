@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class UpgradePriceLabel extends Label {
 
@@ -15,6 +16,7 @@ final class UpgradePriceLabel extends Label {
 
     UpgradePriceLabel(
         Skin skin,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
@@ -23,7 +25,11 @@ final class UpgradePriceLabel extends Label {
         this.style = labelStyle;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
-        setText(bakeryService.price(upgrade).toString());
+        setText(
+            bigDecimalFormatter.string(
+                bakeryService.price(upgrade)
+            )
+        );
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 import java.util.Random;
 
@@ -15,15 +16,16 @@ public final class BakeryPanel extends Container<Stack> {
     public BakeryPanel(
         Skin skin,
         I18NBundle bundle,
-        Random random,
-        BakeryService bakeryService
+        BigDecimalFormatter bigDecimalFormatter,
+        BakeryService bakeryService,
+        Random random
     ) {
         fill();
         clip();
         var cookieWidget = new CookieWidget(
             skin,
-            random,
-            bakeryService
+            bakeryService,
+            random
         );
         var fallingCookiesWidget = new FallingCookiesWidget(
             skin,
@@ -47,6 +49,7 @@ public final class BakeryPanel extends Container<Stack> {
             new BakingStatisticsWidget(
                 skin,
                 bundle,
+                bigDecimalFormatter,
                 bakeryService
             )
         );
