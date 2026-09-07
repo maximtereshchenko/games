@@ -10,80 +10,148 @@
     "GRANDMA": "1",
     "FARM": "8"
   },
+  "upgradeTiers": [
+    {
+      "buildingCount": 1,
+      "basePriceMultiplier": "10"
+    },
+    {
+      "buildingCount": 5,
+      "basePriceMultiplier": "50"
+    },
+    {
+      "buildingCount": 25,
+      "basePriceMultiplier": "500"
+    },
+    {
+      "buildingCount": 50,
+      "basePriceMultiplier": "5E4"
+    },
+    {
+      "buildingCount": 100,
+      "basePriceMultiplier": "5E6"
+    },
+    {
+      "buildingCount": 150,
+      "basePriceMultiplier": "5E8"
+    }
+  ],
   "upgradeUnlockRequirements": {
     "CURSOR_TIER_0": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountUnlockRequirement",
       "building": "CURSOR",
       "count": 1
     },
     "CURSOR_TIER_1": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountUnlockRequirement",
       "building": "CURSOR",
       "count": 1
     },
     "CURSOR_TIER_2": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountUnlockRequirement",
       "building": "CURSOR",
       "count": 10
     },
     "CURSOR_TIER_3": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountUnlockRequirement",
       "building": "CURSOR",
       "count": 25
     },
     "CURSOR_TIER_4": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountUnlockRequirement",
       "building": "CURSOR",
       "count": 50
     },
     "CURSOR_TIER_5": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountUnlockRequirement",
       "building": "CURSOR",
       "count": 100
     },
     "GRANDMA_TIER_0": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
-      "count": 1
+      "tier": 0
     },
     "GRANDMA_TIER_1": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
-      "count": 5
+      "tier": 1
     },
     "GRANDMA_TIER_2": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
-      "count": 25
+      "tier": 2
     },
     "GRANDMA_TIER_3": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
-      "count": 50
+      "tier": 3
     },
     "GRANDMA_TIER_4": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
-      "count": 100
+      "tier": 4
     },
     "GRANDMA_TIER_5": {
-      "type": "com.github.maximtereshchenko.games.cookies.domain.BuildingCountRequirement",
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
-      "count": 150
+      "tier": 5
     }
   },
   "upgradePrices": {
-    "CURSOR_TIER_0": "100",
-    "CURSOR_TIER_1": "500",
-    "CURSOR_TIER_2": "1E4",
-    "CURSOR_TIER_3": "1E5",
-    "CURSOR_TIER_4": "1E8",
-    "CURSOR_TIER_5": "1E9",
-    "GRANDMA_TIER_0": "1E3",
-    "GRANDMA_TIER_1": "5E3",
-    "GRANDMA_TIER_2": "5E4",
-    "GRANDMA_TIER_3": "5E6",
-    "GRANDMA_TIER_4": "5E8",
-    "GRANDMA_TIER_5": "5E10"
+    "CURSOR_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+      "value": "100"
+    },
+    "CURSOR_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+      "value": "500"
+    },
+    "CURSOR_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+      "value": "1E4"
+    },
+    "CURSOR_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+      "value": "1E5"
+    },
+    "CURSOR_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+      "value": "1E7"
+    },
+    "CURSOR_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+      "value": "1E8"
+    },
+    "GRANDMA_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "GRANDMA",
+      "tier": 0
+    },
+    "GRANDMA_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "GRANDMA",
+      "tier": 1
+    },
+    "GRANDMA_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "GRANDMA",
+      "tier": 2
+    },
+    "GRANDMA_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "GRANDMA",
+      "tier": 3
+    },
+    "GRANDMA_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "GRANDMA",
+      "tier": 4
+    },
+    "GRANDMA_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "GRANDMA",
+      "tier": 5
+    }
   }
 }

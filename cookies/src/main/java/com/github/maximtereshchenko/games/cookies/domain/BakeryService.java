@@ -94,8 +94,16 @@ public final class BakeryService {
     }
 
     public BigDecimal price(Upgrade upgrade) {
-        return configuration.upgradePrices()
-            .get(upgrade);
+        return switch (configuration.upgradePrices().get(upgrade)) {
+            case ExactPrice exactPrice -> exactPrice.value();
+            case TieredPrice tieredPrice -> configuration.upgradeTiers()
+                .get(tieredPrice.tier())
+                .basePriceMultiplier()
+                .multiply(
+                    configuration.buildingBasePrices()
+                        .get(tieredPrice.building())
+                );
+        };
     }
 
     public boolean canAfford(Building building) {
@@ -142,9 +150,27 @@ public final class BakeryService {
     }
 
     private boolean isRequirementSatisfied(Upgrade upgrade) {
-        return configuration.upgradeUnlockRequirements()
-            .get(upgrade)
-            .isSatisfied(playerProgress);
+        return switch (configuration.upgradeUnlockRequirements().get(upgrade)) {
+            case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(requirement);
+            case TieredUnlockRequirement requirement -> isRequirementSatisfied(requirement);
+        };
+    }
+
+    private boolean isRequirementSatisfied(
+        TieredUnlockRequirement requirement
+    ) {
+        return playerProgress.buildings()
+                   .get(requirement.building()) >=
+               configuration.upgradeTiers()
+                   .get(requirement.tier())
+                   .buildingCount();
+    }
+
+    private boolean isRequirementSatisfied(
+        BuildingCountUnlockRequirement requirement
+    ) {
+        return playerProgress.buildings()
+                   .get(requirement.building()) >= requirement.count();
     }
 
     private BigDecimal bakingRate(Building building) {

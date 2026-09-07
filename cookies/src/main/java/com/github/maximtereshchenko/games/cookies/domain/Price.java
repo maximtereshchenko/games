@@ -1,6 +1,3 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
-public enum TransactionType {
-
-    BUY, SELL
-}
+sealed interface Price permits ExactPrice, TieredPrice {}
