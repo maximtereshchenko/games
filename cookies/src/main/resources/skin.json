@@ -422,6 +422,60 @@
       "imageUp": "rolling-pin-sugarmuck",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FARM_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "watering-pot-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -553,6 +607,30 @@
     },
     "GRANDMA_TIER_5": {
       "upgradeIcon": "rolling-pin-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_0": {
+      "upgradeIcon": "watering-pot-plain",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_1": {
+      "upgradeIcon": "watering-pot-berrylium",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_2": {
+      "upgradeIcon": "watering-pot-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_3": {
+      "upgradeIcon": "watering-pot-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_4": {
+      "upgradeIcon": "watering-pot-buttergold",
+      "separator": "gradient-line"
+    },
+    "FARM_TIER_5": {
+      "upgradeIcon": "watering-pot-sugarmuck",
       "separator": "gradient-line"
     }
   }

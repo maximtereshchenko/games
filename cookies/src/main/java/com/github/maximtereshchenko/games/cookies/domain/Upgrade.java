@@ -13,5 +13,11 @@ public enum Upgrade {
     GRANDMA_TIER_2,
     GRANDMA_TIER_3,
     GRANDMA_TIER_4,
-    GRANDMA_TIER_5
+    GRANDMA_TIER_5,
+    FARM_TIER_0,
+    FARM_TIER_1,
+    FARM_TIER_2,
+    FARM_TIER_3,
+    FARM_TIER_4,
+    FARM_TIER_5
 }

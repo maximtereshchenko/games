@@ -1,5 +1,5 @@
 {
-  "baseBakingPower": "1",
+  "baseBakingPower": "1E20",
   "buildingBasePrices": {
     "CURSOR": "15",
     "GRANDMA": "100",
@@ -96,6 +96,36 @@
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "GRANDMA",
       "tier": 5
+    },
+    "FARM_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "FARM",
+      "tier": 0
+    },
+    "FARM_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "FARM",
+      "tier": 1
+    },
+    "FARM_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "FARM",
+      "tier": 2
+    },
+    "FARM_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "FARM",
+      "tier": 3
+    },
+    "FARM_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "FARM",
+      "tier": 4
+    },
+    "FARM_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "FARM",
+      "tier": 5
     }
   },
   "upgradePrices": {
@@ -151,6 +181,36 @@
     "GRANDMA_TIER_5": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
       "building": "GRANDMA",
+      "tier": 5
+    },
+    "FARM_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "FARM",
+      "tier": 0
+    },
+    "FARM_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "FARM",
+      "tier": 1
+    },
+    "FARM_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "FARM",
+      "tier": 2
+    },
+    "FARM_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "FARM",
+      "tier": 3
+    },
+    "FARM_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "FARM",
+      "tier": 4
+    },
+    "FARM_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "FARM",
       "tier": 5
     }
   }

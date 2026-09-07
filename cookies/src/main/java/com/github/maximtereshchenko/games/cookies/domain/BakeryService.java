@@ -2,7 +2,6 @@ package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Set;
 
 public final class BakeryService {
 
@@ -178,14 +177,30 @@ public final class BakeryService {
             .get(building);
         return switch (building) {
             case CURSOR -> cursorBakingRate(baseBakingRate);
-            case GRANDMA -> grandmaBakingRate(baseBakingRate);
-            case FARM -> baseBakingRate; //TODO
+            case GRANDMA -> doubled(
+                baseBakingRate,
+                Upgrade.GRANDMA_TIER_0,
+                Upgrade.GRANDMA_TIER_1,
+                Upgrade.GRANDMA_TIER_2,
+                Upgrade.GRANDMA_TIER_3,
+                Upgrade.GRANDMA_TIER_4,
+                Upgrade.GRANDMA_TIER_5
+            );
+            case FARM -> doubled(
+                baseBakingRate,
+                Upgrade.FARM_TIER_0,
+                Upgrade.FARM_TIER_1,
+                Upgrade.FARM_TIER_2,
+                Upgrade.FARM_TIER_3,
+                Upgrade.FARM_TIER_4,
+                Upgrade.FARM_TIER_5
+            );
         };
     }
 
-    private BigDecimal grandmaBakingRate(BigDecimal baseBakingRate) {
+    private BigDecimal doubled(BigDecimal baseBakingRate, Upgrade... upgrades) {
         var bakingRate = baseBakingRate;
-        for (var upgrade : Set.of(Upgrade.GRANDMA_TIER_0, Upgrade.GRANDMA_TIER_1, Upgrade.GRANDMA_TIER_2, Upgrade.GRANDMA_TIER_3, Upgrade.GRANDMA_TIER_4, Upgrade.GRANDMA_TIER_5)) {
+        for (var upgrade : upgrades) {
             if (playerProgress.activeUpgrades().contains(upgrade)) {
                 bakingRate = bakingRate.multiply(BigDecimal.TWO);
             }
@@ -194,13 +209,13 @@ public final class BakeryService {
     }
 
     private BigDecimal cursorBakingRate(BigDecimal baseBakingRate) {
-        var bakingRate = baseBakingRate;
-        for (var upgrade : Set.of(Upgrade.CURSOR_TIER_0, Upgrade.CURSOR_TIER_1, Upgrade.CURSOR_TIER_2)) {
-            if (playerProgress.activeUpgrades().contains(upgrade)) {
-                bakingRate = bakingRate.multiply(BigDecimal.TWO);
-            }
-        }
-        return bakingRate.add(nonCursorBuildingBonus());
+        return doubled(
+            baseBakingRate,
+            Upgrade.CURSOR_TIER_0,
+            Upgrade.CURSOR_TIER_1,
+            Upgrade.CURSOR_TIER_2
+        )
+            .add(nonCursorBuildingBonus());
     }
 
     private BigDecimal nonCursorBuildingBonus() {
