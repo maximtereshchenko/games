@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
@@ -43,7 +44,13 @@ public final class StorePanel extends Table {
             bakeryService
         );
         defaults()
-            .width(buildingPanel.getPrefWidth())
+            .width(new Value() {
+
+                @Override
+                public float get(Actor context) {
+                    return buildingPanel.getPrefWidth();
+                }
+            })
             .height(Value.prefHeight);
         add(new StoreLabel(skin, bundle)).growX().row();
         add(upgradesBeam).row();

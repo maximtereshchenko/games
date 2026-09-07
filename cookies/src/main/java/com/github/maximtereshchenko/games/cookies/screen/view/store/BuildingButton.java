@@ -84,6 +84,12 @@ final class BuildingButton extends Button {
                 )
             )
         );
+        addAction(
+            Actions.sequence(
+                Actions.fadeOut(0),
+                Actions.fadeIn(0.5f)
+            )
+        );
     }
 
     @Override
