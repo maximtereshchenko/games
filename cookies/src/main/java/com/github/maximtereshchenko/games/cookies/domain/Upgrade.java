@@ -61,5 +61,20 @@ public enum Upgrade {
     FARM_TIER_11,
     FARM_TIER_12,
     FARM_TIER_13,
-    FARM_TIER_14
+    FARM_TIER_14,
+    MINE_TIER_0,
+    MINE_TIER_1,
+    MINE_TIER_2,
+    MINE_TIER_3,
+    MINE_TIER_4,
+    MINE_TIER_5,
+    MINE_TIER_6,
+    MINE_TIER_7,
+    MINE_TIER_8,
+    MINE_TIER_9,
+    MINE_TIER_10,
+    MINE_TIER_11,
+    MINE_TIER_12,
+    MINE_TIER_13,
+    MINE_TIER_14
 }

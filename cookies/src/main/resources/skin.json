@@ -270,6 +270,14 @@
     "FARM-tooltip": {
       "enabled": "watering-pot-plain",
       "disabled": "question-mark"
+    },
+    "MINE-button": {
+      "enabled": "mine",
+      "disabled": "mine-disabled"
+    },
+    "MINE-tooltip": {
+      "enabled": "pickaxe-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -854,6 +862,141 @@
       "imageUp": "watering-pot-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "MINE_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "pickaxe-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -1177,6 +1320,66 @@
     },
     "FARM_TIER_14": {
       "upgradeIcon": "watering-pot-glimmeringue",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_0": {
+      "upgradeIcon": "pickaxe-plain",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_1": {
+      "upgradeIcon": "pickaxe-berrylium",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_2": {
+      "upgradeIcon": "pickaxe-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_3": {
+      "upgradeIcon": "pickaxe-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_4": {
+      "upgradeIcon": "pickaxe-buttergold",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_5": {
+      "upgradeIcon": "pickaxe-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_6": {
+      "upgradeIcon": "pickaxe-jetmint",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_7": {
+      "upgradeIcon": "pickaxe-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_8": {
+      "upgradeIcon": "pickaxe-hazelrald",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_9": {
+      "upgradeIcon": "pickaxe-mooncandy",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_10": {
+      "upgradeIcon": "pickaxe-astrofudge",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_11": {
+      "upgradeIcon": "pickaxe-alabascream",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_12": {
+      "upgradeIcon": "pickaxe-iridyum",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_13": {
+      "upgradeIcon": "pickaxe-glucosmium",
+      "separator": "gradient-line"
+    },
+    "MINE_TIER_14": {
+      "upgradeIcon": "pickaxe-glimmeringue",
       "separator": "gradient-line"
     }
   }

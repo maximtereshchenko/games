@@ -3,12 +3,14 @@
   "buildingBasePrices": {
     "CURSOR": "15",
     "GRANDMA": "100",
-    "FARM": "1100"
+    "FARM": "1100",
+    "MINE": "12000"
   },
   "buildingBaseBakingRates": {
     "CURSOR": "0.1",
     "GRANDMA": "1",
-    "FARM": "8"
+    "FARM": "8",
+    "MINE": "47"
   },
   "upgradeTiers": [
     {
@@ -357,6 +359,81 @@
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "FARM",
       "tier": 14
+    },
+    "MINE_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 0
+    },
+    "MINE_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 1
+    },
+    "MINE_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 2
+    },
+    "MINE_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 3
+    },
+    "MINE_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 4
+    },
+    "MINE_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 5
+    },
+    "MINE_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 6
+    },
+    "MINE_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 7
+    },
+    "MINE_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 8
+    },
+    "MINE_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 9
+    },
+    "MINE_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 10
+    },
+    "MINE_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 11
+    },
+    "MINE_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 12
+    },
+    "MINE_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 13
+    },
+    "MINE_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "MINE",
+      "tier": 14
     }
   },
   "upgradePrices": {
@@ -628,6 +705,81 @@
     "FARM_TIER_14": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
       "building": "FARM",
+      "tier": 14
+    },
+    "MINE_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 0
+    },
+    "MINE_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 1
+    },
+    "MINE_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 2
+    },
+    "MINE_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 3
+    },
+    "MINE_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 4
+    },
+    "MINE_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 5
+    },
+    "MINE_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 6
+    },
+    "MINE_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 7
+    },
+    "MINE_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 8
+    },
+    "MINE_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 9
+    },
+    "MINE_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 10
+    },
+    "MINE_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 11
+    },
+    "MINE_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 12
+    },
+    "MINE_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
+      "tier": 13
+    },
+    "MINE_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "MINE",
       "tier": 14
     }
   }
