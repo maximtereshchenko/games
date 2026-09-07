@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.bakery;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -26,11 +27,20 @@ final class CookieButton extends Button {
     ) {
         super(skin, "cookie");
         setTransform(true);
+        removeListener(getClickListener());
         addListener(new ClickListener() {
 
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 scale(PRESSED_SCALE);
+                addAction(
+                    Actions.forever(
+                        Actions.sequence(
+                            Actions.run(this::click),
+                            Actions.delay(0.1f)
+                        )
+                    )
+                );
                 return super.touchDown(event, x, y, pointer, button);
             }
 
@@ -60,27 +70,32 @@ final class CookieButton extends Button {
                 }
             }
 
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
+            private void click() {
+                var mousePointer = new Vector2(
+                    Gdx.input.getX(),
+                    Gdx.input.getY()
+                );
                 var stage = getStage();
+                stage.screenToStageCoordinates(mousePointer);
                 stage.addActor(
                     new CookieParticle(
                         skin,
                         random,
-                        event.getStageX(),
-                        event.getStageY()
+                        mousePointer.x,
+                        mousePointer.y
                     )
                 );
                 stage.addActor(
                     new BakingPowerParticle(
                         skin,
                         random,
-                        event.getStageX(),
-                        event.getStageY(),
+                        mousePointer.x,
+                        mousePointer.y,
                         bakeryService.bakingPower()
                     )
                 );
                 bakeryService.click();
+                toggle();
             }
 
             private void scale(float scale) {
