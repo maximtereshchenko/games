@@ -4,15 +4,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
 final class BakingRateLabel extends Label {
 
     private final I18NBundle bundle;
+    private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
 
     BakingRateLabel(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         super(
@@ -21,6 +24,7 @@ final class BakingRateLabel extends Label {
             "baking-rate"
         );
         this.bundle = bundle;
+        this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
     }
 
@@ -30,7 +34,9 @@ final class BakingRateLabel extends Label {
         setText(
             bundle.format(
                 "bakery.baking-rate",
-                bakeryService.bakingRate()
+                bigDecimalFormatter.string(
+                    bakeryService.bakingRate()
+                )
             )
         );
     }

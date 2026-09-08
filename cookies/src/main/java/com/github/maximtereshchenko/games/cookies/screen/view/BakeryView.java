@@ -8,6 +8,7 @@ import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.bakery.BakeryPanel;
+import com.github.maximtereshchenko.games.cookies.screen.view.display.BuildingDisplayPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel;
 
 import java.util.Random;
@@ -34,14 +35,27 @@ public final class BakeryView extends ScreenLayout {
         )
             .width(Value.percentWidth(0.3f, this));
         addBeam(skin);
-        add().growX();
+        add(
+            new FocusableScrollPane<>(
+                skin,
+                new BuildingDisplayPanel(
+                    skin,
+                    bakeryService,
+                    random
+                )
+            )
+        )
+            .growX();
         addBeam(skin);
         add(
-            new StorePanel(
+            new FocusableScrollPane<>(
                 skin,
-                bundle,
-                bigDecimalFormatter,
-                bakeryService
+                new StorePanel(
+                    skin,
+                    bundle,
+                    bigDecimalFormatter,
+                    bakeryService
+                )
             )
         );
     }

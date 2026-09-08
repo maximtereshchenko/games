@@ -26,7 +26,14 @@ final class BakingStatisticsPanel extends Table {
         )
             .row();
         add(new CookiesLabel(skin, bundle)).row();
-        add(new BakingRateLabel(skin, bundle, bakeryService))
+        add(
+            new BakingRateLabel(
+                skin,
+                bundle,
+                bigDecimalFormatter,
+                bakeryService
+            )
+        )
             .row();
     }
 

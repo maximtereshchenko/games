@@ -8,13 +8,13 @@
       "file": "merriweather.fnt",
       "scaledSize": 16
     },
-    "merriweather-25": {
+    "merriweather-20": {
       "file": "merriweather.fnt",
-      "scaledSize": 25
+      "scaledSize": 20
     },
-    "merriweather-40": {
+    "merriweather-30": {
       "file": "merriweather.fnt",
-      "scaledSize": 36
+      "scaledSize": 30
     },
     "tahoma-8": {
       "file": "tahoma.fnt",
@@ -103,7 +103,9 @@
   },
   "com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable": {
     "noise-tiled": {
-      "region": "noise"
+      "region": "noise",
+      "minWidth": 0,
+      "minHeight": 0
     },
     "paper-tiled": {
       "region": "paper"
@@ -123,6 +125,33 @@
     },
     "cookies-tiled-2": {
       "region": "cookies_2"
+    },
+    "kitchen-tiled": {
+      "region": "kitchen"
+    },
+    "grassland-tiled": {
+      "region": "grassland"
+    },
+    "mountains-tiled": {
+      "region": "mountains"
+    },
+    "industrial-zone-tiled": {
+      "region": "industrial-zone"
+    },
+    "cash-storage-tiled": {
+      "region": "cash-storage"
+    },
+    "jungle-tiled": {
+      "region": "jungle"
+    },
+    "barrens-tiled": {
+      "region": "barrens"
+    },
+    "night-forest-tiled": {
+      "region": "night-forest"
+    },
+    "wooden-interior-tiled": {
+      "region": "wooden-interior"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -159,7 +188,7 @@
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
     "store": {
       "background": "gradient-top-long",
-      "font": "merriweather-25",
+      "font": "merriweather-20",
       "fontColor": "white"
     },
     "beam-store": {
@@ -167,7 +196,7 @@
       "fontColor": "brown"
     },
     "building-name-button": {
-      "font": "merriweather-25",
+      "font": "merriweather-20",
       "fontColor": "white"
     },
     "building-name-tooltip": {
@@ -179,7 +208,7 @@
       "fontColor": "white"
     },
     "building-count-button": {
-      "font": "merriweather-40",
+      "font": "merriweather-30",
       "fontColor": "black-transparent-20"
     },
     "building-count-tooltip": {
@@ -209,7 +238,7 @@
       "fontColor": "white"
     },
     "cookie-balance": {
-      "font": "merriweather-25",
+      "font": "merriweather-20",
       "fontColor": "white"
     },
     "baking-rate": {
@@ -219,6 +248,11 @@
     "upgrade-tooltip-footer": {
       "font": "tahoma-10",
       "fontColor": "white-transparent-60"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
+    "default": {
+      "vScrollKnob": "empty-circle-white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionModePanel$Style": {
@@ -256,8 +290,8 @@
       "disabled": "question-mark"
     },
     "GRANDMA-button": {
-      "enabled": "grandma",
-      "disabled": "grandma-disabled"
+      "enabled": "grandma-face",
+      "disabled": "grandma-face-disabled"
     },
     "GRANDMA-tooltip": {
       "enabled": "rolling-pin-plain",
@@ -1906,6 +1940,13 @@
         "gradient-bottom"
       ]
     },
+    "horizontal": {
+      "background": "beam-horizontal-tiled",
+      "drawables": [
+        "gradient-left",
+        "gradient-right"
+      ]
+    },
     "store": {
       "background": "beam-horizontal-tiled",
       "drawables": [
@@ -2599,6 +2640,73 @@
     "ALCHEMY_LAB_TIER_14": {
       "upgradeIcon": "alembic-glimmeringue",
       "separator": "gradient-line"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.display.BuildingDisplayWidget$Style": {
+    "GRANDMA": {
+      "background": "kitchen-tiled"
+    },
+    "FARM": {
+      "background": "grassland-tiled"
+    },
+    "MINE": {
+      "background": "mountains-tiled"
+    },
+    "FACTORY": {
+      "background": "industrial-zone-tiled"
+    },
+    "BANK": {
+      "background": "cash-storage-tiled"
+    },
+    "TEMPLE": {
+      "background": "jungle-tiled"
+    },
+    "WIZARD_TOWER": {
+      "background": "barrens-tiled"
+    },
+    "SHIPMENT": {
+      "background": "night-forest-tiled"
+    },
+    "ALCHEMY_LAB": {
+      "background": "wooden-interior-tiled"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.display.BuildingImage$Style": {
+    "GRANDMA": {
+      "drawable": "grandma",
+      "rows": 3
+    },
+    "FARM": {
+      "drawable": "garden-bed",
+      "rows": 2
+    },
+    "MINE": {
+      "drawable": "mine-entrance",
+      "rows": 2
+    },
+    "FACTORY": {
+      "drawable": "factory-building",
+      "rows": 1
+    },
+    "BANK": {
+      "drawable": "bank-building",
+      "rows": 1
+    },
+    "TEMPLE": {
+      "drawable": "temple-building",
+      "rows": 2
+    },
+    "WIZARD_TOWER": {
+      "drawable": "tower",
+      "rows": 2
+    },
+    "SHIPMENT": {
+      "drawable": "rocket-building",
+      "rows": 1
+    },
+    "ALCHEMY_LAB": {
+      "drawable": "alchemy-device",
+      "rows": 2
     }
   }
 }

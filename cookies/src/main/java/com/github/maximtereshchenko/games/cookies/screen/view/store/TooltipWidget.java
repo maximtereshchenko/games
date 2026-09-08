@@ -40,8 +40,11 @@ final class TooltipWidget extends Tooltip<Stack> {
         var container = getContainer();
         var vector = new Vector2(0, actor.getHeight());
         actor.getParent().localToStageCoordinates(vector);
+        var x = vector.x - container.getWidth() - 30;
+        vector.y = actor.getHeight();
+        actor.localToStageCoordinates(vector);
         container.setPosition(
-            vector.x - container.getWidth() - 30,
+            x,
             vector.y - container.getHeight()
         );
     }

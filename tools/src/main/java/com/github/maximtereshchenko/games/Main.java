@@ -50,7 +50,43 @@ final class Main {
                 args[2],
                 args[3]
             );
+            case "stripEmptyBorders" -> stripEmptyBorders(
+                args[1],
+                args[2]
+            );
         }
+    }
+
+    private static void stripEmptyBorders(String inputPath, String outputPath) {
+        var sourcePixmap = new Pixmap(new FileHandle(inputPath));
+        var width = sourcePixmap.getWidth();
+        var height = sourcePixmap.getHeight();
+        var minX = width;
+        var minY = height;
+        var maxX = -1;
+        var maxY = -1;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                int pixel = sourcePixmap.getPixel(x, y);
+                int alpha = pixel & 0x000000FF;
+                if (alpha > 0) {
+                    if (x < minX) minX = x;
+                    if (x > maxX) maxX = x;
+                    if (y < minY) minY = y;
+                    if (y > maxY) maxY = y;
+                }
+            }
+        }
+        var croppedWidth = maxX - minX + 1;
+        var croppedHeight = maxY - minY + 1;
+        var croppedPixmap = new Pixmap(croppedWidth, croppedHeight, sourcePixmap.getFormat());
+        croppedPixmap.setBlending(Pixmap.Blending.None);
+        croppedPixmap.drawPixmap(
+            sourcePixmap,
+            minX, minY, croppedWidth, croppedHeight,
+            0, 0, croppedWidth, croppedHeight
+        );
+        PixmapIO.writePNG(new FileHandle(outputPath), croppedPixmap);
     }
 
     private static void generateTextureAtlas(
