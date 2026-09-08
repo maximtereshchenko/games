@@ -302,6 +302,14 @@
     "TEMPLE-tooltip": {
       "enabled": "idol-plain",
       "disabled": "question-mark"
+    },
+    "WIZARD_TOWER-button": {
+      "enabled": "wizard-tower",
+      "disabled": "wizard-tower-disabled"
+    },
+    "WIZARD_TOWER-tooltip": {
+      "enabled": "wizard-hat-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -1426,6 +1434,141 @@
       "imageUp": "idol-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "WIZARD_TOWER_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "wizard-hat-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -1989,6 +2132,66 @@
     },
     "TEMPLE_TIER_14": {
       "upgradeIcon": "idol-glimmeringue",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_0": {
+      "upgradeIcon": "wizard-hat-plain",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_1": {
+      "upgradeIcon": "wizard-hat-berrylium",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_2": {
+      "upgradeIcon": "wizard-hat-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_3": {
+      "upgradeIcon": "wizard-hat-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_4": {
+      "upgradeIcon": "wizard-hat-buttergold",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_5": {
+      "upgradeIcon": "wizard-hat-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_6": {
+      "upgradeIcon": "wizard-hat-jetmint",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_7": {
+      "upgradeIcon": "wizard-hat-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_8": {
+      "upgradeIcon": "wizard-hat-hazelrald",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_9": {
+      "upgradeIcon": "wizard-hat-mooncandy",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_10": {
+      "upgradeIcon": "wizard-hat-astrofudge",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_11": {
+      "upgradeIcon": "wizard-hat-alabascream",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_12": {
+      "upgradeIcon": "wizard-hat-iridyum",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_13": {
+      "upgradeIcon": "wizard-hat-glucosmium",
+      "separator": "gradient-line"
+    },
+    "WIZARD_TOWER_TIER_14": {
+      "upgradeIcon": "wizard-hat-glimmeringue",
       "separator": "gradient-line"
     }
   }

@@ -339,6 +339,24 @@ public final class BakeryService {
                 Upgrade.TEMPLE_TIER_13,
                 Upgrade.TEMPLE_TIER_14
             );
+            case WIZARD_TOWER -> doubled(
+                baseBakingRate,
+                Upgrade.WIZARD_TOWER_TIER_0,
+                Upgrade.WIZARD_TOWER_TIER_1,
+                Upgrade.WIZARD_TOWER_TIER_2,
+                Upgrade.WIZARD_TOWER_TIER_3,
+                Upgrade.WIZARD_TOWER_TIER_4,
+                Upgrade.WIZARD_TOWER_TIER_5,
+                Upgrade.WIZARD_TOWER_TIER_6,
+                Upgrade.WIZARD_TOWER_TIER_7,
+                Upgrade.WIZARD_TOWER_TIER_8,
+                Upgrade.WIZARD_TOWER_TIER_9,
+                Upgrade.WIZARD_TOWER_TIER_10,
+                Upgrade.WIZARD_TOWER_TIER_11,
+                Upgrade.WIZARD_TOWER_TIER_12,
+                Upgrade.WIZARD_TOWER_TIER_13,
+                Upgrade.WIZARD_TOWER_TIER_14
+            );
         };
     }
 

@@ -7,7 +7,8 @@
     "MINE": "1.2E4",
     "FACTORY": "1.3E5",
     "BANK": "1.4E6",
-    "TEMPLE": "2E7"
+    "TEMPLE": "2E7",
+    "WIZARD_TOWER": "3.3E8"
   },
   "buildingBaseBakingRates": {
     "CURSOR": "0.1",
@@ -16,7 +17,8 @@
     "MINE": "47",
     "FACTORY": "260",
     "BANK": "1400",
-    "TEMPLE": "7800"
+    "TEMPLE": "7800",
+    "WIZARD_TOWER": "44000"
   },
   "upgradeTiers": [
     {
@@ -665,6 +667,81 @@
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "TEMPLE",
       "tier": 14
+    },
+    "WIZARD_TOWER_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 0
+    },
+    "WIZARD_TOWER_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 1
+    },
+    "WIZARD_TOWER_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 2
+    },
+    "WIZARD_TOWER_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 3
+    },
+    "WIZARD_TOWER_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 4
+    },
+    "WIZARD_TOWER_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 5
+    },
+    "WIZARD_TOWER_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 6
+    },
+    "WIZARD_TOWER_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 7
+    },
+    "WIZARD_TOWER_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 8
+    },
+    "WIZARD_TOWER_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 9
+    },
+    "WIZARD_TOWER_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 10
+    },
+    "WIZARD_TOWER_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 11
+    },
+    "WIZARD_TOWER_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 12
+    },
+    "WIZARD_TOWER_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 13
+    },
+    "WIZARD_TOWER_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "WIZARD_TOWER",
+      "tier": 14
     }
   },
   "upgradePrices": {
@@ -1236,6 +1313,81 @@
     "TEMPLE_TIER_14": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
       "building": "TEMPLE",
+      "tier": 14
+    },
+    "WIZARD_TOWER_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 0
+    },
+    "WIZARD_TOWER_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 1
+    },
+    "WIZARD_TOWER_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 2
+    },
+    "WIZARD_TOWER_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 3
+    },
+    "WIZARD_TOWER_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 4
+    },
+    "WIZARD_TOWER_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 5
+    },
+    "WIZARD_TOWER_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 6
+    },
+    "WIZARD_TOWER_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 7
+    },
+    "WIZARD_TOWER_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 8
+    },
+    "WIZARD_TOWER_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 9
+    },
+    "WIZARD_TOWER_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 10
+    },
+    "WIZARD_TOWER_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 11
+    },
+    "WIZARD_TOWER_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 12
+    },
+    "WIZARD_TOWER_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
+      "tier": 13
+    },
+    "WIZARD_TOWER_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "WIZARD_TOWER",
       "tier": 14
     }
   }
