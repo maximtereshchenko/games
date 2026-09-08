@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.screen.view.BeamWidget;
+import com.github.maximtereshchenko.games.cookies.screen.view.HorizontalBeamWidget;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -63,7 +63,7 @@ public final class BuildingDisplayPanel extends Table {
         clearChildren();
         for (var buildingDisplayWidget : buildingDisplayWidgets.values()) {
             add(buildingDisplayWidget).row();
-            add(new BeamWidget(skin, "horizontal")).row();
+            add(new HorizontalBeamWidget(skin)).row();
         }
     }
 }

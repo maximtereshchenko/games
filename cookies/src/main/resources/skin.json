@@ -255,6 +255,20 @@
       "vScrollKnob": "empty-circle-white-transparent-50"
     }
   },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+    "left-bottom": {
+      "font": "merriweather-16",
+      "fontColor": "white-transparent-60",
+      "up": "wooden-logs-left-bottom",
+      "over": "wooden-logs-left-bottom-bright"
+    },
+    "right-bottom": {
+      "font": "merriweather-16",
+      "fontColor": "white-transparent-60",
+      "up": "wooden-logs-right-bottom",
+      "over": "wooden-logs-right-bottom-bright"
+    }
+  },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.TransactionModePanel$Style": {
     "default": {
       "background": "noise-tiled"
