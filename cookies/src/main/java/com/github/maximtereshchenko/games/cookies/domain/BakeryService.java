@@ -285,6 +285,24 @@ public final class BakeryService {
                 Upgrade.MINE_TIER_13,
                 Upgrade.MINE_TIER_14
             );
+            case FACTORY -> doubled(
+                baseBakingRate,
+                Upgrade.FACTORY_TIER_0,
+                Upgrade.FACTORY_TIER_1,
+                Upgrade.FACTORY_TIER_2,
+                Upgrade.FACTORY_TIER_3,
+                Upgrade.FACTORY_TIER_4,
+                Upgrade.FACTORY_TIER_5,
+                Upgrade.FACTORY_TIER_6,
+                Upgrade.FACTORY_TIER_7,
+                Upgrade.FACTORY_TIER_8,
+                Upgrade.FACTORY_TIER_9,
+                Upgrade.FACTORY_TIER_10,
+                Upgrade.FACTORY_TIER_11,
+                Upgrade.FACTORY_TIER_12,
+                Upgrade.FACTORY_TIER_13,
+                Upgrade.FACTORY_TIER_14
+            );
         };
     }
 

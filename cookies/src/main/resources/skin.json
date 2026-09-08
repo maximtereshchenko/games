@@ -278,6 +278,14 @@
     "MINE-tooltip": {
       "enabled": "pickaxe-plain",
       "disabled": "question-mark"
+    },
+    "FACTORY-button": {
+      "enabled": "factory",
+      "disabled": "factory-disabled"
+    },
+    "FACTORY-tooltip": {
+      "enabled": "gears-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -997,6 +1005,141 @@
       "imageUp": "pickaxe-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "FACTORY_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "gears-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -1380,6 +1523,66 @@
     },
     "MINE_TIER_14": {
       "upgradeIcon": "pickaxe-glimmeringue",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_0": {
+      "upgradeIcon": "gears-plain",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_1": {
+      "upgradeIcon": "gears-berrylium",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_2": {
+      "upgradeIcon": "gears-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_3": {
+      "upgradeIcon": "gears-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_4": {
+      "upgradeIcon": "gears-buttergold",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_5": {
+      "upgradeIcon": "gears-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_6": {
+      "upgradeIcon": "gears-jetmint",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_7": {
+      "upgradeIcon": "gears-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_8": {
+      "upgradeIcon": "gears-hazelrald",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_9": {
+      "upgradeIcon": "gears-mooncandy",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_10": {
+      "upgradeIcon": "gears-astrofudge",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_11": {
+      "upgradeIcon": "gears-alabascream",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_12": {
+      "upgradeIcon": "gears-iridyum",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_13": {
+      "upgradeIcon": "gears-glucosmium",
+      "separator": "gradient-line"
+    },
+    "FACTORY_TIER_14": {
+      "upgradeIcon": "gears-glimmeringue",
       "separator": "gradient-line"
     }
   }

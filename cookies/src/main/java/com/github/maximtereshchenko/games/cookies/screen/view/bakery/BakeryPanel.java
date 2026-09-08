@@ -24,6 +24,7 @@ public final class BakeryPanel extends Container<Stack> {
         clip();
         var cookieWidget = new CookieWidget(
             skin,
+            bigDecimalFormatter,
             bakeryService,
             random
         );

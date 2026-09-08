@@ -2,5 +2,9 @@ package com.github.maximtereshchenko.games.cookies.domain;
 
 public enum Building {
 
-    CURSOR, GRANDMA, FARM, MINE
+    CURSOR,
+    GRANDMA,
+    FARM,
+    MINE,
+    FACTORY
 }
