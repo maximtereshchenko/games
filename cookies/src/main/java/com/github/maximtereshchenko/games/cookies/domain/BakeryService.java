@@ -375,6 +375,24 @@ public final class BakeryService {
                 Upgrade.SHIPMENT_TIER_13,
                 Upgrade.SHIPMENT_TIER_14
             );
+            case ALCHEMY_LAB -> doubled(
+                baseBakingRate,
+                Upgrade.ALCHEMY_LAB_TIER_0,
+                Upgrade.ALCHEMY_LAB_TIER_1,
+                Upgrade.ALCHEMY_LAB_TIER_2,
+                Upgrade.ALCHEMY_LAB_TIER_3,
+                Upgrade.ALCHEMY_LAB_TIER_4,
+                Upgrade.ALCHEMY_LAB_TIER_5,
+                Upgrade.ALCHEMY_LAB_TIER_6,
+                Upgrade.ALCHEMY_LAB_TIER_7,
+                Upgrade.ALCHEMY_LAB_TIER_8,
+                Upgrade.ALCHEMY_LAB_TIER_9,
+                Upgrade.ALCHEMY_LAB_TIER_10,
+                Upgrade.ALCHEMY_LAB_TIER_11,
+                Upgrade.ALCHEMY_LAB_TIER_12,
+                Upgrade.ALCHEMY_LAB_TIER_13,
+                Upgrade.ALCHEMY_LAB_TIER_14
+            );
         };
     }
 

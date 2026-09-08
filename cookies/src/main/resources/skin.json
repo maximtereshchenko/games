@@ -318,6 +318,14 @@
     "SHIPMENT-tooltip": {
       "enabled": "rocket-plain",
       "disabled": "question-mark"
+    },
+    "ALCHEMY_LAB-button": {
+      "enabled": "alchemy-lab",
+      "disabled": "alchemy-lab-disabled"
+    },
+    "ALCHEMY_LAB-tooltip": {
+      "enabled": "alembic-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -1712,6 +1720,141 @@
       "imageUp": "rocket-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "ALCHEMY_LAB_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "alembic-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -2395,6 +2538,66 @@
     },
     "SHIPMENT_TIER_14": {
       "upgradeIcon": "rocket-glimmeringue",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_0": {
+      "upgradeIcon": "alembic-plain",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_1": {
+      "upgradeIcon": "alembic-berrylium",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_2": {
+      "upgradeIcon": "alembic-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_3": {
+      "upgradeIcon": "alembic-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_4": {
+      "upgradeIcon": "alembic-buttergold",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_5": {
+      "upgradeIcon": "alembic-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_6": {
+      "upgradeIcon": "alembic-jetmint",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_7": {
+      "upgradeIcon": "alembic-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_8": {
+      "upgradeIcon": "alembic-hazelrald",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_9": {
+      "upgradeIcon": "alembic-mooncandy",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_10": {
+      "upgradeIcon": "alembic-astrofudge",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_11": {
+      "upgradeIcon": "alembic-alabascream",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_12": {
+      "upgradeIcon": "alembic-iridyum",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_13": {
+      "upgradeIcon": "alembic-glucosmium",
+      "separator": "gradient-line"
+    },
+    "ALCHEMY_LAB_TIER_14": {
+      "upgradeIcon": "alembic-glimmeringue",
       "separator": "gradient-line"
     }
   }

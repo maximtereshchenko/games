@@ -9,7 +9,8 @@
     "BANK": "1.4E6",
     "TEMPLE": "2E7",
     "WIZARD_TOWER": "3.3E8",
-    "SHIPMENT": "5.1E9"
+    "SHIPMENT": "5.1E9",
+    "ALCHEMY_LAB": "7.5E10"
   },
   "buildingBaseBakingRates": {
     "CURSOR": "0.1",
@@ -20,7 +21,8 @@
     "BANK": "1400",
     "TEMPLE": "7800",
     "WIZARD_TOWER": "44000",
-    "SHIPMENT": "260000"
+    "SHIPMENT": "260000",
+    "ALCHEMY_LAB": "1.6E6"
   },
   "upgradeTiers": [
     {
@@ -819,6 +821,81 @@
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
       "building": "SHIPMENT",
       "tier": 14
+    },
+    "ALCHEMY_LAB_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 0
+    },
+    "ALCHEMY_LAB_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 1
+    },
+    "ALCHEMY_LAB_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 2
+    },
+    "ALCHEMY_LAB_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 3
+    },
+    "ALCHEMY_LAB_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 4
+    },
+    "ALCHEMY_LAB_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 5
+    },
+    "ALCHEMY_LAB_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 6
+    },
+    "ALCHEMY_LAB_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 7
+    },
+    "ALCHEMY_LAB_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 8
+    },
+    "ALCHEMY_LAB_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 9
+    },
+    "ALCHEMY_LAB_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 10
+    },
+    "ALCHEMY_LAB_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 11
+    },
+    "ALCHEMY_LAB_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 12
+    },
+    "ALCHEMY_LAB_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 13
+    },
+    "ALCHEMY_LAB_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+      "building": "ALCHEMY_LAB",
+      "tier": 14
     }
   },
   "upgradePrices": {
@@ -1540,6 +1617,81 @@
     "SHIPMENT_TIER_14": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
       "building": "SHIPMENT",
+      "tier": 14
+    },
+    "ALCHEMY_LAB_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 0
+    },
+    "ALCHEMY_LAB_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 1
+    },
+    "ALCHEMY_LAB_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 2
+    },
+    "ALCHEMY_LAB_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 3
+    },
+    "ALCHEMY_LAB_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 4
+    },
+    "ALCHEMY_LAB_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 5
+    },
+    "ALCHEMY_LAB_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 6
+    },
+    "ALCHEMY_LAB_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 7
+    },
+    "ALCHEMY_LAB_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 8
+    },
+    "ALCHEMY_LAB_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 9
+    },
+    "ALCHEMY_LAB_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 10
+    },
+    "ALCHEMY_LAB_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 11
+    },
+    "ALCHEMY_LAB_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 12
+    },
+    "ALCHEMY_LAB_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
+      "tier": 13
+    },
+    "ALCHEMY_LAB_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+      "building": "ALCHEMY_LAB",
       "tier": 14
     }
   }
