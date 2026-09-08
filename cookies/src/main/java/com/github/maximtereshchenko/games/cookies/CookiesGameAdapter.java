@@ -44,8 +44,18 @@ final class CookiesGameAdapter implements ApplicationListener {
         var spriteBatch = new SpriteBatch();
         var fileHandleResolver = new ClasspathFileHandleResolver();
         var assetManager = new AssetManager(fileHandleResolver);
-        var skinAssetDescriptor = new AssetDescriptor<>("skin.json", Skin.class);
-        var gameBundleAssetDescriptor = new AssetDescriptor<>("game", I18NBundle.class);
+        assetManager.setLoader(
+            Skin.class,
+            new CookiesSkinLoader(fileHandleResolver)
+        );
+        var skinAssetDescriptor = new AssetDescriptor<>(
+            "skin.json",
+            Skin.class
+        );
+        var gameBundleAssetDescriptor = new AssetDescriptor<>(
+            "game",
+            I18NBundle.class
+        );
         assetManager.load(skinAssetDescriptor);
         assetManager.load(gameBundleAssetDescriptor);
         assetManager.finishLoading();

@@ -28,7 +28,6 @@ final class FallingCookiesWidget extends WidgetGroup {
         this.style = skin.get(Style.class);
         this.bakeryService = bakeryService;
         this.random = random;
-        style.fixTiling();
         setLayoutEnabled(false);
     }
 
@@ -90,11 +89,5 @@ final class FallingCookiesWidget extends WidgetGroup {
         TiledDrawable lowAmount;
         TiledDrawable mediumAmount;
         TiledDrawable highAmount;
-
-        void fixTiling() {
-            lowAmount.setRegion(lowAmount.getRegion());
-            mediumAmount.setRegion(mediumAmount.getRegion());
-            highAmount.setRegion(highAmount.getRegion());
-        }
     }
 }

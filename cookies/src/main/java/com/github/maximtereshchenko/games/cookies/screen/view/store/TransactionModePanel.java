@@ -41,11 +41,6 @@ final class TransactionModePanel extends Table {
         add(all);
     }
 
-    @Override
-    public float getPrefHeight() {
-        return getMinHeight();
-    }
-
     private Table buySellTable(CheckBox buy, CheckBox sell) {
         var table = new Table();
         table.defaults().pad(5);
