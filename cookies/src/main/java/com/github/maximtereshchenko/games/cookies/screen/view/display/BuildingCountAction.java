@@ -1,13 +1,13 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.store;
+package com.github.maximtereshchenko.games.cookies.screen.view.display;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.screen.view.LatchAction;
 
-final class UnlockBuildingAction extends LatchAction {
+final class BuildingCountAction extends LatchAction {
 
-    UnlockBuildingAction(
+    BuildingCountAction(
         BakeryService bakeryService,
         Building building,
         Action action
@@ -20,9 +20,6 @@ final class UnlockBuildingAction extends LatchAction {
         BakeryService bakeryService,
         Building building
     ) {
-        return bakeryService.cumulativeBaked()
-                   .compareTo(
-                       bakeryService.transactionValue(building)
-                   ) >= 0;
+        return bakeryService.count(building) > 0;
     }
 }
