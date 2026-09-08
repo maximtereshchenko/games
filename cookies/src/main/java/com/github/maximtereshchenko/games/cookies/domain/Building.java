@@ -9,5 +9,6 @@ public enum Building {
     FACTORY,
     BANK,
     TEMPLE,
-    WIZARD_TOWER
+    WIZARD_TOWER,
+    SHIPMENT
 }

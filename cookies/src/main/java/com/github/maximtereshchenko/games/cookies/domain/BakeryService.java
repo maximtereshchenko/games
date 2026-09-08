@@ -357,6 +357,24 @@ public final class BakeryService {
                 Upgrade.WIZARD_TOWER_TIER_13,
                 Upgrade.WIZARD_TOWER_TIER_14
             );
+            case SHIPMENT -> doubled(
+                baseBakingRate,
+                Upgrade.SHIPMENT_TIER_0,
+                Upgrade.SHIPMENT_TIER_1,
+                Upgrade.SHIPMENT_TIER_2,
+                Upgrade.SHIPMENT_TIER_3,
+                Upgrade.SHIPMENT_TIER_4,
+                Upgrade.SHIPMENT_TIER_5,
+                Upgrade.SHIPMENT_TIER_6,
+                Upgrade.SHIPMENT_TIER_7,
+                Upgrade.SHIPMENT_TIER_8,
+                Upgrade.SHIPMENT_TIER_9,
+                Upgrade.SHIPMENT_TIER_10,
+                Upgrade.SHIPMENT_TIER_11,
+                Upgrade.SHIPMENT_TIER_12,
+                Upgrade.SHIPMENT_TIER_13,
+                Upgrade.SHIPMENT_TIER_14
+            );
         };
     }
 

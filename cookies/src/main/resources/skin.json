@@ -310,6 +310,14 @@
     "WIZARD_TOWER-tooltip": {
       "enabled": "wizard-hat-plain",
       "disabled": "question-mark"
+    },
+    "SHIPMENT-button": {
+      "enabled": "shipment",
+      "disabled": "shipment-disabled"
+    },
+    "SHIPMENT-tooltip": {
+      "enabled": "rocket-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -1569,6 +1577,141 @@
       "imageUp": "wizard-hat-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "SHIPMENT_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "rocket-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -2192,6 +2335,66 @@
     },
     "WIZARD_TOWER_TIER_14": {
       "upgradeIcon": "wizard-hat-glimmeringue",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_0": {
+      "upgradeIcon": "rocket-plain",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_1": {
+      "upgradeIcon": "rocket-berrylium",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_2": {
+      "upgradeIcon": "rocket-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_3": {
+      "upgradeIcon": "rocket-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_4": {
+      "upgradeIcon": "rocket-buttergold",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_5": {
+      "upgradeIcon": "rocket-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_6": {
+      "upgradeIcon": "rocket-jetmint",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_7": {
+      "upgradeIcon": "rocket-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_8": {
+      "upgradeIcon": "rocket-hazelrald",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_9": {
+      "upgradeIcon": "rocket-mooncandy",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_10": {
+      "upgradeIcon": "rocket-astrofudge",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_11": {
+      "upgradeIcon": "rocket-alabascream",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_12": {
+      "upgradeIcon": "rocket-iridyum",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_13": {
+      "upgradeIcon": "rocket-glucosmium",
+      "separator": "gradient-line"
+    },
+    "SHIPMENT_TIER_14": {
+      "upgradeIcon": "rocket-glimmeringue",
       "separator": "gradient-line"
     }
   }
