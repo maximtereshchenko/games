@@ -6,5 +6,6 @@ public enum Building {
     GRANDMA,
     FARM,
     MINE,
-    FACTORY
+    FACTORY,
+    BANK
 }

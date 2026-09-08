@@ -91,5 +91,20 @@ public enum Upgrade {
     FACTORY_TIER_11,
     FACTORY_TIER_12,
     FACTORY_TIER_13,
-    FACTORY_TIER_14
+    FACTORY_TIER_14,
+    BANK_TIER_0,
+    BANK_TIER_1,
+    BANK_TIER_2,
+    BANK_TIER_3,
+    BANK_TIER_4,
+    BANK_TIER_5,
+    BANK_TIER_6,
+    BANK_TIER_7,
+    BANK_TIER_8,
+    BANK_TIER_9,
+    BANK_TIER_10,
+    BANK_TIER_11,
+    BANK_TIER_12,
+    BANK_TIER_13,
+    BANK_TIER_14
 }

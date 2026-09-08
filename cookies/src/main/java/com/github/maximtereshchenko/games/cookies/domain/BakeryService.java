@@ -303,6 +303,24 @@ public final class BakeryService {
                 Upgrade.FACTORY_TIER_13,
                 Upgrade.FACTORY_TIER_14
             );
+            case BANK -> doubled(
+                baseBakingRate,
+                Upgrade.BANK_TIER_0,
+                Upgrade.BANK_TIER_1,
+                Upgrade.BANK_TIER_2,
+                Upgrade.BANK_TIER_3,
+                Upgrade.BANK_TIER_4,
+                Upgrade.BANK_TIER_5,
+                Upgrade.BANK_TIER_6,
+                Upgrade.BANK_TIER_7,
+                Upgrade.BANK_TIER_8,
+                Upgrade.BANK_TIER_9,
+                Upgrade.BANK_TIER_10,
+                Upgrade.BANK_TIER_11,
+                Upgrade.BANK_TIER_12,
+                Upgrade.BANK_TIER_13,
+                Upgrade.BANK_TIER_14
+            );
         };
     }
 

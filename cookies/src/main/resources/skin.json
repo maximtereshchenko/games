@@ -286,6 +286,14 @@
     "FACTORY-tooltip": {
       "enabled": "gears-plain",
       "disabled": "question-mark"
+    },
+    "BANK-button": {
+      "enabled": "bank",
+      "disabled": "bank-disabled"
+    },
+    "BANK-tooltip": {
+      "enabled": "bag-plain",
+      "disabled": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -1140,6 +1148,141 @@
       "imageUp": "gears-glimmeringue",
       "enabledColor": "white",
       "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_0": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-plain",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_1": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-berrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_2": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-blueberrylium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_3": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-chalcedhoney",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_4": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-buttergold",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_5": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-sugarmuck",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_6": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-jetmint",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_7": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-cherrysilver",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_8": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-hazelrald",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_9": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-mooncandy",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_10": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-astrofudge",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_11": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-alabascream",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_12": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-iridyum",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_13": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-glucosmium",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
+    },
+    "BANK_TIER_14": {
+      "background": "empty-black-transparent-25",
+      "up": "frame-brown",
+      "disabled": "frame-brown-dark",
+      "over": "frame-brown-bright",
+      "imageUp": "bag-glimmeringue",
+      "enabledColor": "white",
+      "disabledColor": "white-transparent-50"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingButton$Style": {
@@ -1583,6 +1726,66 @@
     },
     "FACTORY_TIER_14": {
       "upgradeIcon": "gears-glimmeringue",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_0": {
+      "upgradeIcon": "bag-plain",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_1": {
+      "upgradeIcon": "bag-berrylium",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_2": {
+      "upgradeIcon": "bag-blueberrylium",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_3": {
+      "upgradeIcon": "bag-chalcedhoney",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_4": {
+      "upgradeIcon": "bag-buttergold",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_5": {
+      "upgradeIcon": "bag-sugarmuck",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_6": {
+      "upgradeIcon": "bag-jetmint",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_7": {
+      "upgradeIcon": "bag-cherrysilver",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_8": {
+      "upgradeIcon": "bag-hazelrald",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_9": {
+      "upgradeIcon": "bag-mooncandy",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_10": {
+      "upgradeIcon": "bag-astrofudge",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_11": {
+      "upgradeIcon": "bag-alabascream",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_12": {
+      "upgradeIcon": "bag-iridyum",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_13": {
+      "upgradeIcon": "bag-glucosmium",
+      "separator": "gradient-line"
+    },
+    "BANK_TIER_14": {
+      "upgradeIcon": "bag-glimmeringue",
       "separator": "gradient-line"
     }
   }
