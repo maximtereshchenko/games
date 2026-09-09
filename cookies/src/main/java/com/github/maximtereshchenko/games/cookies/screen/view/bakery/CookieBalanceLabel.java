@@ -4,8 +4,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 
-import java.math.RoundingMode;
-
 final class CookieBalanceLabel extends BaseCookieBalanceLabel {
 
     private final BigDecimalFormatter bigDecimalFormatter;
@@ -27,7 +25,6 @@ final class CookieBalanceLabel extends BaseCookieBalanceLabel {
         setText(
             bigDecimalFormatter.string(
                 bakeryService.balance()
-                    .setScale(0, RoundingMode.FLOOR)
             )
         );
     }

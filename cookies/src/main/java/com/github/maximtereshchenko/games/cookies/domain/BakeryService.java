@@ -56,6 +56,9 @@ public final class BakeryService {
             playerProgress::cumulativeManuallyBaked,
             playerProgress::setCumulativeManuallyBaked
         );
+        playerProgress.setCumulativeClicks(
+            playerProgress.cumulativeClicks() + 1
+        );
     }
 
     public void completeTransaction(Building building) {
@@ -89,7 +92,7 @@ public final class BakeryService {
     }
 
     public BigDecimal balance() {
-        return playerProgress.balance();
+        return rounded(playerProgress.balance());
     }
 
     public BigDecimal transactionValue(Building building) {
@@ -171,11 +174,23 @@ public final class BakeryService {
     }
 
     public BigDecimal cumulativeBaked() {
-        return playerProgress.cumulativeBaked();
+        return rounded(playerProgress.cumulativeBaked());
     }
 
     public Instant timestamp() {
         return playerProgress.timestamp();
+    }
+
+    public long cumulativeClicks() {
+        return playerProgress.cumulativeClicks();
+    }
+
+    public BigDecimal cumulativeManuallyBaked() {
+        return playerProgress.cumulativeManuallyBaked();
+    }
+
+    private BigDecimal rounded(BigDecimal value) {
+        return value.setScale(0, RoundingMode.FLOOR);
     }
 
     private boolean canAfford(BigDecimal value) {

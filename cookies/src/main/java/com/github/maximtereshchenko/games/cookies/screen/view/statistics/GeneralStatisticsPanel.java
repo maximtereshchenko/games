@@ -22,7 +22,7 @@ final class GeneralStatisticsPanel extends Table {
         Clock clock
     ) {
         var icon = skin.get(Style.class).icon;
-        defaults().left();
+        defaults().left().padBottom(4);
         addLine(
             skin,
             bundle.get("statistics.balance"),
@@ -51,6 +51,52 @@ final class GeneralStatisticsPanel extends Table {
                 bundle,
                 bakeryService,
                 clock
+            )
+        );
+        addLine(
+            skin,
+            bundle.get("statistics.buildings-count"),
+            new BuildingsCountStatisticsLabel(
+                skin,
+                bakeryService
+            )
+        );
+        addLine(
+            skin,
+            bundle.get("statistics.baking-rate"),
+            new Image(icon),
+            new BakingRateStatisticsLabel(
+                skin,
+                bigDecimalFormatter,
+                bakeryService
+            )
+        );
+        addLine(
+            skin,
+            bundle.get("statistics.baking-power"),
+            new Image(icon),
+            new BakingPowerStatisticsLabel(
+                skin,
+                bigDecimalFormatter,
+                bakeryService
+            )
+        );
+        addLine(
+            skin,
+            bundle.get("statistics.cumulative-clicks"),
+            new CumulativeClicksStatisticsLabel(
+                skin,
+                bakeryService
+            )
+        );
+        addLine(
+            skin,
+            bundle.get("statistics.cumulative-manually-baked"),
+            new Image(icon),
+            new CumulativeManuallyBakedStatisticsLabel(
+                skin,
+                bigDecimalFormatter,
+                bakeryService
             )
         );
     }

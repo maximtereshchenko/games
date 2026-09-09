@@ -17,6 +17,7 @@ final class PlayerProgress {
     private BigDecimal balance;
     private BigDecimal cumulativeBaked;
     private BigDecimal cumulativeManuallyBaked;
+    private long cumulativeClicks;
 
     PlayerProgress(Clock clock) {
         this.buildings = new EnumMap<>(Building.class);
@@ -26,6 +27,7 @@ final class PlayerProgress {
         this.balance = BigDecimal.ZERO;
         this.cumulativeBaked = BigDecimal.ZERO;
         this.cumulativeManuallyBaked = BigDecimal.ZERO;
+        this.cumulativeClicks = 0;
         for (var building : Building.values()) {
             buildings.put(building, 0);
         }
@@ -69,5 +71,13 @@ final class PlayerProgress {
 
     void setCumulativeManuallyBaked(BigDecimal cumulativeManuallyBaked) {
         this.cumulativeManuallyBaked = cumulativeManuallyBaked;
+    }
+
+    long cumulativeClicks() {
+        return cumulativeClicks;
+    }
+
+    void setCumulativeClicks(long cumulativeClicks) {
+        this.cumulativeClicks = cumulativeClicks;
     }
 }
