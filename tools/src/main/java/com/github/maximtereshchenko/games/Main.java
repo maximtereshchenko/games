@@ -1,6 +1,6 @@
 package com.github.maximtereshchenko.games;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
@@ -32,6 +32,9 @@ final class Main {
                 args[4]
             );
             case "generateEmptyPixel" -> generateEmptyPixel(
+                args[1]
+            );
+            case "generateDoubleEndedLinearGradient" -> generateDoubleEndedLinearGradient(
                 args[1]
             );
             case "generateLinearGradient" -> generateLinearGradient(
@@ -101,22 +104,81 @@ final class Main {
         );
     }
 
-    private static void generateLinearGradient(
+    private static void generateDoubleEndedLinearGradient(
         String outputPath
     ) {
         var pixmap = new Pixmap(203, 3, Pixmap.Format.RGBA8888);
-        for (int x = 1; x < pixmap.getWidth() - 1; x++) {
-            var progress = (float) (x - 1) / (pixmap.getWidth() - 3);
-            float alpha;
-            if (progress <= 0.5f) {
-                alpha = MathUtils.lerp(0.0f, 0.25f, progress * 2f);
-            } else {
-                alpha = MathUtils.lerp(0.25f, 0.0f, (progress - 0.5f) * 2f);
-            }
-            pixmap.drawPixel(x, 1, Color.rgba8888(1f, 1f, 1f, alpha));
-        }
-        pixmap.drawPixel(pixmap.getWidth() / 2, 0, Color.rgba8888(0, 0, 0, 1));
+        var maxAlpha = 0.25f;
+        var middle = pixmap.getWidth() / 2;
+        generateLinearGradient(
+            pixmap,
+            1, middle,
+            0, maxAlpha
+        );
+        pixmap.drawPixel(
+            middle,
+            1,
+            Color.rgba8888(1, 1, 1, maxAlpha)
+        );
+        generateLinearGradient(
+            pixmap,
+            middle + 1, pixmap.getWidth() - 1,
+            maxAlpha, 0
+        );
+        pixmap.drawPixel(
+            middle,
+            0,
+            Color.rgba8888(0, 0, 0, 1)
+        );
         PixmapIO.writePNG(new FileHandle(outputPath), pixmap);
+    }
+
+    private static void generateLinearGradient(
+        String outputPath
+    ) {
+        var pixmap = new Pixmap(104, 3, Pixmap.Format.RGBA8888);
+        var maxAlpha = 0.25f;
+        pixmap.drawPixel(
+            1,
+            1,
+            Color.rgba8888(1, 1, 1, maxAlpha)
+        );
+        generateLinearGradient(
+            pixmap,
+            2, pixmap.getWidth() - 1,
+            maxAlpha, 0
+        );
+        pixmap.drawPixel(
+            2,
+            0,
+            Color.rgba8888(0, 0, 0, 1)
+        );
+        PixmapIO.writePNG(new FileHandle(outputPath), pixmap);
+    }
+
+    private static void generateLinearGradient(
+        Pixmap pixmap,
+        int fromX,
+        int toX,
+        float fromAlpha,
+        float toAlpha
+    ) {
+        for (int x = fromX; x < toX; x++) {
+            pixmap.drawPixel(
+                x,
+                1,
+                Color.rgba8888(
+                    1f,
+                    1f,
+                    1f,
+                    MathUtils.lerp(
+                        fromAlpha,
+                        toAlpha,
+                        (float) (x - fromX) / Math.abs(fromX - toX)
+                    )
+                )
+            );
+        }
     }
 
     private static void generateEmptyCircle(
@@ -189,13 +251,7 @@ final class Main {
         var configuration = new Lwjgl3ApplicationConfiguration();
         configuration.setInitialVisible(false);
         new Lwjgl3Application(
-            new ApplicationListener() {
-
-                @Override
-                public void create() {}
-
-                @Override
-                public void resize(int width, int height) {}
+            new ApplicationAdapter() {
 
                 @Override
                 public void render() {
@@ -235,15 +291,6 @@ final class Main {
                     );
                     Gdx.app.exit();
                 }
-
-                @Override
-                public void pause() {}
-
-                @Override
-                public void resume() {}
-
-                @Override
-                public void dispose() {}
             },
             configuration
         );

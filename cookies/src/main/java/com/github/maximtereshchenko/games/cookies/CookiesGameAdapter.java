@@ -19,6 +19,7 @@ import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
 import tools.jackson.core.type.TypeReference;
 
+import java.time.Clock;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -59,12 +60,14 @@ final class CookiesGameAdapter implements ApplicationListener {
         assetManager.load(skinAssetDescriptor);
         assetManager.load(gameBundleAssetDescriptor);
         assetManager.finishLoading();
+        var clock = Clock.systemDefaultZone();
         var bakeryService = new BakeryService(
             new ConfigurationReader()
                 .value(
                     "configuration.json",
                     new TypeReference<>() {}
-                )
+                ),
+            clock
         );
         var skin = assetManager.get(skinAssetDescriptor);
         var random = ThreadLocalRandom.current();
@@ -75,7 +78,8 @@ final class CookiesGameAdapter implements ApplicationListener {
                 assetManager.get(gameBundleAssetDescriptor),
                 new BigDecimalFormatter(),
                 bakeryService,
-                random
+                random,
+                clock
             )
         );
         cookiesGame = new CookiesGame(Set.of(spriteBatch));

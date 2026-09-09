@@ -2,6 +2,8 @@ package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.Clock;
+import java.time.Instant;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -11,9 +13,12 @@ public final class BakeryService {
     private final Configuration configuration;
     private final PlayerProgress playerProgress;
 
-    public BakeryService(Configuration configuration) {
+    public BakeryService(
+        Configuration configuration,
+        Clock clock
+    ) {
         this.configuration = configuration;
-        this.playerProgress = new PlayerProgress();
+        this.playerProgress = new PlayerProgress(clock);
     }
 
     public void update(float deltaTimeSeconds) {
@@ -167,6 +172,10 @@ public final class BakeryService {
 
     public BigDecimal cumulativeBaked() {
         return playerProgress.cumulativeBaked();
+    }
+
+    public Instant timestamp() {
+        return playerProgress.timestamp();
     }
 
     private boolean canAfford(BigDecimal value) {
