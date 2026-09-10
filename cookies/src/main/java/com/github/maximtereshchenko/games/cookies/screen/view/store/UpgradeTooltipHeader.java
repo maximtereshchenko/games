@@ -1,14 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
 
 final class UpgradeTooltipHeader extends Table {
 
@@ -28,7 +27,7 @@ final class UpgradeTooltipHeader extends Table {
         )
             .left();
         add().growX();
-        add(new Image(skin.get(Style.class).icon))
+        add(new SmallCookieIcon(skin))
             .width(Value.prefWidth);
         add(
             new UpgradePriceLabel(
@@ -40,10 +39,5 @@ final class UpgradeTooltipHeader extends Table {
         )
             .row();
         add(new UpgradeLabel(skin, bundle)).left();
-    }
-
-    private static final class Style {
-
-        Drawable icon;
     }
 }

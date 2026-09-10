@@ -1,36 +1,35 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 
-final class BuildingFlavorTextLabel extends FlavorTextLabel {
+final class BuildingTooltipIcon extends Image {
 
-    BuildingFlavorTextLabel(
+    BuildingTooltipIcon(
         Skin skin,
-        I18NBundle bundle,
         BakeryService bakeryService,
         Building building
     ) {
-        super(
-            skin,
-            bundle.get("store.building.locked.flavor-text")
-        );
+        var style = skin.get(building.name(), Style.class);
+        super(style.disabled);
         addAction(
             new UnlockBuildingAction(
                 bakeryService,
                 building,
-                Actions.run(
-                    () -> setText(
-                        bundle.get(
-                            "store.building.%s.flavor-text"
-                                .formatted(building.name())
-                        )
-                    )
+                Actions.sequence(
+                    Actions.run(() -> setDrawable(style.enabled))
                 )
             )
         );
+    }
+
+    private static final class Style {
+
+        Drawable enabled;
+        Drawable disabled;
     }
 }

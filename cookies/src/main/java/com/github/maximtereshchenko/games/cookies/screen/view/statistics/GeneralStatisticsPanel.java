@@ -1,14 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
 
 import java.time.Clock;
 
@@ -21,12 +20,11 @@ final class GeneralStatisticsPanel extends Table {
         BakeryService bakeryService,
         Clock clock
     ) {
-        var icon = skin.get(Style.class).icon;
         defaults().left().padBottom(4);
         addLine(
             skin,
             bundle.get("statistics.balance"),
-            new Image(icon),
+            new SmallCookieIcon(skin),
             new BalanceStatisticsLabel(
                 skin,
                 bigDecimalFormatter,
@@ -36,7 +34,7 @@ final class GeneralStatisticsPanel extends Table {
         addLine(
             skin,
             bundle.get("statistics.cumulative-baked"),
-            new Image(icon),
+            new SmallCookieIcon(skin),
             new CumulativeBakedStatisticsLabel(
                 skin,
                 bigDecimalFormatter,
@@ -64,7 +62,7 @@ final class GeneralStatisticsPanel extends Table {
         addLine(
             skin,
             bundle.get("statistics.baking-rate"),
-            new Image(icon),
+            new SmallCookieIcon(skin),
             new BakingRateStatisticsLabel(
                 skin,
                 bigDecimalFormatter,
@@ -74,7 +72,7 @@ final class GeneralStatisticsPanel extends Table {
         addLine(
             skin,
             bundle.get("statistics.baking-power"),
-            new Image(icon),
+            new SmallCookieIcon(skin),
             new BakingPowerStatisticsLabel(
                 skin,
                 bigDecimalFormatter,
@@ -92,7 +90,7 @@ final class GeneralStatisticsPanel extends Table {
         addLine(
             skin,
             bundle.get("statistics.cumulative-manually-baked"),
-            new Image(icon),
+            new SmallCookieIcon(skin),
             new CumulativeManuallyBakedStatisticsLabel(
                 skin,
                 bigDecimalFormatter,
@@ -121,10 +119,5 @@ final class GeneralStatisticsPanel extends Table {
             skin,
             "statistics-key"
         );
-    }
-
-    private static final class Style {
-
-        Drawable icon;
     }
 }

@@ -1,16 +1,23 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.Value;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
 
-final class BuildingTooltipPanel extends Table {
+import java.util.List;
+import java.util.Optional;
+
+final class BuildingTooltipPanel extends TooltipPanel {
+
+    private final BakeryService bakeryService;
+    private final Building building;
 
     BuildingTooltipPanel(
         Skin skin,
@@ -19,48 +26,86 @@ final class BuildingTooltipPanel extends Table {
         BakeryService bakeryService,
         Building building
     ) {
-        defaults().padBottom(8);
-        add(
-            new BuildingIcon(
+        this.bakeryService = bakeryService;
+        this.building = building;
+        super(skin, bundle, bigDecimalFormatter);
+    }
+
+    @Override
+    Image icon(Skin skin) {
+        return new BuildingTooltipIcon(
+            skin,
+            bakeryService,
+            building
+        );
+    }
+
+    @Override
+    Label name(Skin skin, I18NBundle bundle) {
+        return new BuildingNameLabel(
+            skin,
+            "building-name-tooltip",
+            bundle,
+            bakeryService,
+            building
+        );
+    }
+
+    @Override
+    Optional<Table> value(
+        Skin skin,
+        BigDecimalFormatter bigDecimalFormatter
+    ) {
+        var table = new Table();
+        table.add(new SmallCookieIcon(skin));
+        table.add(
+            new TransactionValueLabel(
                 skin,
-                "%s-tooltip".formatted(building.name()),
-                bakeryService,
-                building,
-                0
-            )
-        )
-            .width(Value.prefWidth);
-        add(
-            new BuildingTooltipHeader(
-                skin,
-                bundle,
                 bigDecimalFormatter,
                 bakeryService,
                 building
             )
-        )
-            .growX()
-            .row();
-        add(new Image(skin.get(Style.class).separator))
-            .colspan(2)
-            .growX()
-            .padTop(8)
-            .padBottom(16)
-            .row();
-        add(
+        );
+        return Optional.of(table);
+    }
+
+    @Override
+    List<Badge> badges(
+        Skin skin,
+        I18NBundle bundle
+    ) {
+        return List.of(
+            new BuildingCountBadge(
+                skin,
+                bundle,
+                bakeryService,
+                building
+            )
+        );
+    }
+
+    @Override
+    Optional<Label> description() {
+        return Optional.empty();
+    }
+
+    @Override
+    Optional<FlavorTextLabel> flavorText(
+        Skin skin,
+        I18NBundle bundle
+    ) {
+        return Optional.of(
             new BuildingFlavorTextLabel(
                 skin,
                 bundle,
                 bakeryService,
                 building
             )
-        )
-            .colspan(2)
-            .right();
+        );
     }
 
-    private static final class Style {
-
-        Drawable separator;
+    @Override
+    Optional<Actor> footer() {
+        return Optional.empty();
     }
 }

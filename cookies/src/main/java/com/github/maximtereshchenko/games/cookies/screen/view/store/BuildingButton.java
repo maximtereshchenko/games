@@ -54,10 +54,6 @@ final class BuildingButton extends Button {
         add(
             new BuildingCountLabel(
                 skin,
-                "building-count-button",
-                bundle,
-                "store.building.count",
-                "store.building.count.value",
                 bakeryService,
                 building
             )
