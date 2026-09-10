@@ -18,8 +18,8 @@ final class BuildingIcon extends Stack {
         float animationDurationSeconds
     ) {
         var style = skin.get(styleName, Style.class);
-        var disabled = new Image(style.disabled);
-        var enabled = new Image(style.enabled);
+        var disabled = new Image(style.locked);
+        var enabled = new Image(style.unlocked);
         enabled.addAction(Actions.fadeOut(0));
         addAction(
             new UnlockBuildingAction(
@@ -37,7 +37,7 @@ final class BuildingIcon extends Stack {
 
     private static final class Style {
 
-        Drawable enabled;
-        Drawable disabled;
+        Drawable unlocked;
+        Drawable locked;
     }
 }

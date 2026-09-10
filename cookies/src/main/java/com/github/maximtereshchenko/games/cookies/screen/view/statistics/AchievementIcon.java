@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-final class AchievementIcon extends Image {
+class AchievementIcon extends Image {
 
     private final Style style;
     private final BakeryService bakeryService;
@@ -24,21 +24,21 @@ final class AchievementIcon extends Image {
     }
 
     @Override
-    public void act(float delta) {
+    public final void act(float delta) {
         super.act(delta);
         setDrawable(drawable());
     }
 
     private Drawable drawable() {
         if (bakeryService.isUnlocked(achievement)) {
-            return style.enabled;
+            return style.unlocked;
         }
-        return style.disabled;
+        return style.locked;
     }
 
     private static final class Style {
 
-        Drawable enabled;
-        Drawable disabled;
+        Drawable unlocked;
+        Drawable locked;
     }
 }

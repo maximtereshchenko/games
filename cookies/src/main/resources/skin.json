@@ -324,44 +324,44 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.store.BuildingIcon$Style": {
     "CURSOR-button": {
-      "enabled": "hand-tilted",
-      "disabled": "hand-tilted-disabled"
+      "unlocked": "hand-tilted",
+      "locked": "hand-tilted-disabled"
     },
     "GRANDMA-button": {
-      "enabled": "grandma-face",
-      "disabled": "grandma-face-disabled"
+      "unlocked": "grandma-face",
+      "locked": "grandma-face-disabled"
     },
     "FARM-button": {
-      "enabled": "farm",
-      "disabled": "farm-disabled"
+      "unlocked": "farm",
+      "locked": "farm-disabled"
     },
     "MINE-button": {
-      "enabled": "mine",
-      "disabled": "mine-disabled"
+      "unlocked": "mine",
+      "locked": "mine-disabled"
     },
     "FACTORY-button": {
-      "enabled": "factory",
-      "disabled": "factory-disabled"
+      "unlocked": "factory",
+      "locked": "factory-disabled"
     },
     "BANK-button": {
-      "enabled": "bank",
-      "disabled": "bank-disabled"
+      "unlocked": "bank",
+      "locked": "bank-disabled"
     },
     "TEMPLE-button": {
-      "enabled": "temple",
-      "disabled": "temple-disabled"
+      "unlocked": "temple",
+      "locked": "temple-disabled"
     },
     "WIZARD_TOWER-button": {
-      "enabled": "wizard-tower",
-      "disabled": "wizard-tower-disabled"
+      "unlocked": "wizard-tower",
+      "locked": "wizard-tower-disabled"
     },
     "SHIPMENT-button": {
-      "enabled": "shipment",
-      "disabled": "shipment-disabled"
+      "unlocked": "shipment",
+      "locked": "shipment-disabled"
     },
     "ALCHEMY_LAB-button": {
-      "enabled": "alchemy-lab",
-      "disabled": "alchemy-lab-disabled"
+      "unlocked": "alchemy-lab",
+      "locked": "alchemy-lab-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.bakery.BottomOverlayWidget$Style": {
@@ -2588,196 +2588,203 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.statistics.AchievementIcon$Style": {
     "CUMULATIVE_BAKED_TIER_0": {
-      "enabled": "cookie-cyan-outline_0",
-      "disabled": "question-mark"
+      "unlocked": "cookie-cyan-outline_0",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_1": {
-      "enabled": "cookie-cyan-outline_1",
-      "disabled": "question-mark"
+      "unlocked": "cookie-cyan-outline_1",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_2": {
-      "enabled": "cookie-cyan-outline_2",
-      "disabled": "question-mark"
+      "unlocked": "cookie-cyan-outline_2",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_3": {
-      "enabled": "cookie-cyan-outline_3",
-      "disabled": "question-mark"
+      "unlocked": "cookie-cyan-outline_3",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_4": {
-      "enabled": "cookie-halo-cyan",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-cyan",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_5": {
-      "enabled": "cookie-halo-green",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-green",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_6": {
-      "enabled": "cookie-halo-yellow",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-yellow",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_7": {
-      "enabled": "cookie-halo-orange",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-orange",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_8": {
-      "enabled": "cookie-halo-pink",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-pink",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_9": {
-      "enabled": "cookie-halo-blue",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-blue",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_10": {
-      "enabled": "cookie-halo-matrix-green",
-      "disabled": "question-mark"
+      "unlocked": "cookie-halo-matrix-green",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_11": {
-      "enabled": "cookie-cosmic-sparkles",
-      "disabled": "question-mark"
+      "unlocked": "cookie-cosmic-sparkles",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_12": {
-      "enabled": "cookie-eyeball-red-hypnotic",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-red-hypnotic",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_13": {
-      "enabled": "cookie-eyeball-large-red-ring",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-large-red-ring",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_14": {
-      "enabled": "cookie-eyeball-cluster",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-cluster",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_15": {
-      "enabled": "cookie-eyeball-brown-white-ring",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-brown-white-ring",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_16": {
-      "enabled": "cookie-eyeball-pink",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-pink",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_17": {
-      "enabled": "cookie-eyeball-green",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-green",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_18": {
-      "enabled": "cookie-eyeball-floral-frame",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-floral-frame",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_19": {
-      "enabled": "cookie-eyeball-yellow-orange",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-yellow-orange",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_20": {
-      "enabled": "cookie-eyeball-teal-blue",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-teal-blue",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_21": {
-      "enabled": "cookie-eyeball-red-cyan-ring",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-red-cyan-ring",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_22": {
-      "enabled": "cookie-eyeball-red-yellow-ring",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-red-yellow-ring",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_23": {
-      "enabled": "cookie-eyeball-brown-yellow-iris",
-      "disabled": "question-mark"
+      "unlocked": "cookie-eyeball-brown-yellow-iris",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_24": {
-      "enabled": "stone-bust-neutral",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-neutral",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_25": {
-      "enabled": "stone-bust-shadowed",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-shadowed",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_26": {
-      "enabled": "stone-bust-crimson",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-crimson",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_27": {
-      "enabled": "stone-bust-neon",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-neon",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_28": {
-      "enabled": "stone-bust-verdant",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-verdant",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_29": {
-      "enabled": "stone-bust-azure",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-azure",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_30": {
-      "enabled": "stone-bust-porcelain",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-porcelain",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_31": {
-      "enabled": "stone-bust-terracotta",
-      "disabled": "question-mark"
+      "unlocked": "stone-bust-terracotta",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_32": {
-      "enabled": "shadow-bust-glowing-eyes",
-      "disabled": "question-mark"
+      "unlocked": "shadow-bust-glowing-eyes",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_33": {
-      "enabled": "landscape-farm-daytime",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-daytime",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_34": {
-      "enabled": "landscape-farm-night",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-night",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_35": {
-      "enabled": "landscape-farm-desert",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-desert",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_36": {
-      "enabled": "landscape-farm-frost",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-frost",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_37": {
-      "enabled": "landscape-farm-monochrome",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-monochrome",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_38": {
-      "enabled": "landscape-farm-infernal",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-infernal",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_39": {
-      "enabled": "landscape-farm-psychedelic",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-psychedelic",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_40": {
-      "enabled": "landscape-farm-golden",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-golden",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_41": {
-      "enabled": "landscape-farm-alien-orb",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-alien-orb",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_42": {
-      "enabled": "landscape-farm-giant-eyeball",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-giant-eyeball",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_43": {
-      "enabled": "landscape-farm-molten-core",
-      "disabled": "question-mark"
+      "unlocked": "landscape-farm-molten-core",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_44": {
-      "enabled": "cosmic-starburst-field",
-      "disabled": "question-mark"
+      "unlocked": "cosmic-starburst-field",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_45": {
-      "enabled": "deep-space-nebula",
-      "disabled": "question-mark"
+      "unlocked": "deep-space-nebula",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_46": {
-      "enabled": "deep-space-cyan-orb",
-      "disabled": "question-mark"
+      "unlocked": "deep-space-cyan-orb",
+      "locked": "question-mark"
     },
     "CUMULATIVE_BAKED_TIER_47": {
-      "enabled": "deep-space-crimson-orb",
-      "disabled": "question-mark"
+      "unlocked": "deep-space-crimson-orb",
+      "locked": "question-mark"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.statistics.HoverableAchievementIcon$Style": {
+    "default": {
+      "locked": "white-transparent-50",
+      "unlocked": "white",
+      "over": "white"
     }
   }
 }

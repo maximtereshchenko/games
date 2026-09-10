@@ -17,7 +17,7 @@ final class AchievementIconPanel extends HorizontalGroup {
         wrap();
         rowAlign(Align.left);
         for (var achievement : Achievement.values()) {
-            var achievementIcon = new AchievementIcon(
+            var achievementIcon = new HoverableAchievementIcon(
                 skin,
                 bakeryService,
                 achievement
