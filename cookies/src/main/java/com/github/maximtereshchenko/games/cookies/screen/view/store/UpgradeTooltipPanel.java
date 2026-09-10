@@ -8,8 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
+import com.github.maximtereshchenko.games.cookies.screen.view.UpgradeIcon;
 
 import java.util.List;
 import java.util.Optional;

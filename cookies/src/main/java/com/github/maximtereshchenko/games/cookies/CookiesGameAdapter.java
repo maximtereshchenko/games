@@ -15,8 +15,8 @@ import com.github.maximtereshchenko.games.common.configuration.ConfigurationRead
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 import tools.jackson.core.type.TypeReference;
 
 import java.time.Clock;

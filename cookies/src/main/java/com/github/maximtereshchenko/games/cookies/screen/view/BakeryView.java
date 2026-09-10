@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.bakery.BakeryPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.store.StorePanel;
 

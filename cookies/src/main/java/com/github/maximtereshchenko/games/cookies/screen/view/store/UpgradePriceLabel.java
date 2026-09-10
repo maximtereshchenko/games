@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
 final class UpgradePriceLabel extends Label {
 

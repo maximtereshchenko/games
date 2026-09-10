@@ -1950,7 +1950,7 @@
       "disabledFontColor": "red"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeIcon$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.UpgradeIcon$Style": {
     "CLICK_TIER_0": {
       "drawable": "mouse-pointer-plain"
     },

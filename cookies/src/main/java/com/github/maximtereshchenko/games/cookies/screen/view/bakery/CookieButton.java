@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
 import java.util.Random;
 

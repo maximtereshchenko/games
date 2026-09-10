@@ -2,7 +2,7 @@ package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
 import java.math.BigDecimal;
 

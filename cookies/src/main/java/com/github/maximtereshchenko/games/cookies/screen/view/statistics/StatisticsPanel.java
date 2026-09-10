@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
 import java.time.Clock;
 
@@ -27,24 +27,49 @@ public final class StatisticsPanel extends Container<Table> {
         table.top();
         addTitle(skin, bundle, table, style);
         table.add().pad(12).row();
+        addPanel(
+            skin,
+            table,
+            style,
+            bundle.get("statistics.sub-title.general"),
+            new GeneralStatisticsPanel(
+                skin,
+                bundle,
+                bigDecimalFormatter,
+                bakeryService,
+                clock
+            )
+        );
+        addPanel(
+            skin,
+            table,
+            style,
+            bundle.get("statistics.sub-title.upgrades"),
+            new ActiveUpgradePanel(
+                skin,
+                bundle,
+                bakeryService
+            )
+        );
+    }
+
+    private void addPanel(
+        Skin skin,
+        Table table,
+        Style style,
+        String subTitle,
+        Table panel
+    ) {
         addSubTitle(
             skin,
             table,
             style,
-            bundle.get("statistics.sub-title.general")
+            subTitle
         );
-        table.add(
-                new GeneralStatisticsPanel(
-                    skin,
-                    bundle,
-                    bigDecimalFormatter,
-                    bakeryService,
-                    clock
-                )
-            )
+        table.add(panel)
             .colspan(4)
             .pad(12)
-            .left()
+            .growX()
             .row();
     }
 

@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.cookies.screen;
+package com.github.maximtereshchenko.games.cookies.screen.view;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

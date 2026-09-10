@@ -3,7 +3,7 @@ package com.github.maximtereshchenko.games.cookies.screen.view.store;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
 import java.util.List;
 import java.util.Optional;

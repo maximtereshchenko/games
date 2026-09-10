@@ -176,6 +176,10 @@ public final class BakeryService {
         return playerProgress.cumulativeManuallyBaked;
     }
 
+    public boolean isActive(Upgrade upgrade) {
+        return playerProgress.activeUpgrades.contains(upgrade);
+    }
+
     private BigDecimal rounded(BigDecimal value) {
         return value.setScale(0, RoundingMode.FLOOR);
     }

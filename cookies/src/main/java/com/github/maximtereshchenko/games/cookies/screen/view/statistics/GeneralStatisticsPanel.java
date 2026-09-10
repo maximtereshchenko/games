@@ -1,12 +1,10 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
 
 import java.time.Clock;
@@ -20,104 +18,107 @@ final class GeneralStatisticsPanel extends Table {
         BakeryService bakeryService,
         Clock clock
     ) {
+        left();
         defaults().left().padBottom(4);
-        addLine(
-            skin,
-            bundle.get("statistics.balance"),
-            new SmallCookieIcon(skin),
-            new BalanceStatisticsLabel(
+        add(
+            new StatisticsLine(
                 skin,
-                bigDecimalFormatter,
-                bakeryService
+                bundle.get("statistics.general.balance"),
+                new SmallCookieIcon(skin),
+                new BalanceStatisticsLabel(
+                    skin,
+                    bigDecimalFormatter,
+                    bakeryService
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.cumulative-baked"),
-            new SmallCookieIcon(skin),
-            new CumulativeBakedStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bigDecimalFormatter,
-                bakeryService
+                bundle.get("statistics.general.cumulative-baked"),
+                new SmallCookieIcon(skin),
+                new CumulativeBakedStatisticsLabel(
+                    skin,
+                    bigDecimalFormatter,
+                    bakeryService
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.time-passed"),
-            new TimePassedStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bundle,
-                bakeryService,
-                clock
+                bundle.get("statistics.general.time-passed"),
+                new TimePassedStatisticsLabel(
+                    skin,
+                    bundle,
+                    bakeryService,
+                    clock
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.buildings-count"),
-            new BuildingsCountStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bakeryService
+                bundle.get("statistics.general.buildings-count"),
+                new BuildingsCountStatisticsLabel(
+                    skin,
+                    bakeryService
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.baking-rate"),
-            new SmallCookieIcon(skin),
-            new BakingRateStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bigDecimalFormatter,
-                bakeryService
+                bundle.get("statistics.general.baking-rate"),
+                new SmallCookieIcon(skin),
+                new BakingRateStatisticsLabel(
+                    skin,
+                    bigDecimalFormatter,
+                    bakeryService
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.baking-power"),
-            new SmallCookieIcon(skin),
-            new BakingPowerStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bigDecimalFormatter,
-                bakeryService
+                bundle.get("statistics.general.baking-power"),
+                new SmallCookieIcon(skin),
+                new BakingPowerStatisticsLabel(
+                    skin,
+                    bigDecimalFormatter,
+                    bakeryService
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.cumulative-clicks"),
-            new CumulativeClicksStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bakeryService
+                bundle.get("statistics.general.cumulative-clicks"),
+                new CumulativeClicksStatisticsLabel(
+                    skin,
+                    bakeryService
+                )
             )
-        );
-        addLine(
-            skin,
-            bundle.get("statistics.cumulative-manually-baked"),
-            new SmallCookieIcon(skin),
-            new CumulativeManuallyBakedStatisticsLabel(
+        )
+            .row();
+        add(
+            new StatisticsLine(
                 skin,
-                bigDecimalFormatter,
-                bakeryService
+                bundle.get("statistics.general.cumulative-manually-baked"),
+                new SmallCookieIcon(skin),
+                new CumulativeManuallyBakedStatisticsLabel(
+                    skin,
+                    bigDecimalFormatter,
+                    bakeryService
+                )
             )
-        );
-    }
-
-    private void addLine(
-        Skin skin,
-        String keyText,
-        Actor... actors
-    ) {
-        var line = new Table();
-        line.defaults().padRight(4);
-        line.add(keyLabel(skin, keyText));
-        for (var actor : actors) {
-            line.add(actor);
-        }
-        add(line).row();
-    }
-
-    private Label keyLabel(Skin skin, String text) {
-        return new Label(
-            text,
-            skin,
-            "statistics-key"
-        );
+        )
+            .row();
     }
 }

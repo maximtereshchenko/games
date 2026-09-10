@@ -31,7 +31,7 @@ final class TimePassedStatisticsLabel extends StatisticsValueLabel {
             Instant.now(clock)
         );
         return bundle.format(
-            "statistics.time-passed.format",
+            "statistics.general.time-passed.value",
             duration.toHours(),
             duration.toMinutesPart(),
             duration.toSecondsPart()
