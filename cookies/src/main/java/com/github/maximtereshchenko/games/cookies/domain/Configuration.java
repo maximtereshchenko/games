@@ -9,6 +9,7 @@ public record Configuration(
     Map<Building, BigDecimal> buildingBasePrices,
     Map<Building, BigDecimal> buildingBaseBakingRates,
     List<UpgradeTier> upgradeTiers,
-    Map<Upgrade, UnlockRequirement> upgradeUnlockRequirements,
-    Map<Upgrade, Price> upgradePrices
+    Map<Upgrade, UpgradeUnlockRequirement> upgradeUnlockRequirements,
+    Map<Upgrade, Price> upgradePrices,
+    Map<Achievement, AchievementUnlockRequirement> achievementUnlockRequirements
 ) {}

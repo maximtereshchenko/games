@@ -6,9 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.github.maximtereshchenko.games.cookies.screen.view.TooltipWidget;
 
-final class ActiveUpgradeTooltipWidget extends TooltipWidget {
+final class StatisticsTooltipWidget extends TooltipWidget {
 
-    ActiveUpgradeTooltipWidget(Skin skin, Table table) {
+    StatisticsTooltipWidget(Skin skin, Table table) {
         super(skin, table);
     }
 

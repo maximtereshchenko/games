@@ -268,6 +268,14 @@
     "upgrade-price-tooltip": {
       "font": "tahoma-10",
       "fontColor": "green"
+    },
+    "achievement-name": {
+      "font": "tahoma-11",
+      "fontColor": "white"
+    },
+    "achievement-description": {
+      "font": "tahoma-10",
+      "fontColor": "white"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {

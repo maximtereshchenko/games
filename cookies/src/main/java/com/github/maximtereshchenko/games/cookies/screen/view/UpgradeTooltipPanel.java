@@ -13,6 +13,7 @@ import java.util.Optional;
 
 public abstract class UpgradeTooltipPanel extends TooltipPanel {
 
+    private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
     private final Upgrade upgrade;
 
@@ -23,9 +24,10 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
+        this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
-        super(skin, bundle, bigDecimalFormatter);
+        super(skin, bundle);
     }
 
     @Override
@@ -44,8 +46,7 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
 
     @Override
     protected final Optional<Table> value(
-        Skin skin,
-        BigDecimalFormatter bigDecimalFormatter
+        Skin skin
     ) {
         var table = new Table();
         table.add(new SmallCookieIcon(skin));

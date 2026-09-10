@@ -11,12 +11,11 @@ public abstract class TooltipPanel extends Table {
 
     protected TooltipPanel(
         Skin skin,
-        I18NBundle bundle,
-        BigDecimalFormatter bigDecimalFormatter
+        I18NBundle bundle
     ) {
         add(icon(skin))
             .width(Value.prefWidth);
-        add(header(skin, bundle, bigDecimalFormatter))
+        add(header(skin, bundle))
             .growX()
             .row();
         addSeparator(skin);
@@ -45,8 +44,7 @@ public abstract class TooltipPanel extends Table {
     protected abstract Label name(Skin skin, I18NBundle bundle);
 
     protected abstract Optional<Table> value(
-        Skin skin,
-        BigDecimalFormatter bigDecimalFormatter
+        Skin skin
     );
 
     protected abstract List<Badge> badges(
@@ -86,17 +84,13 @@ public abstract class TooltipPanel extends Table {
 
     private Table header(
         Skin skin,
-        I18NBundle bundle,
-        BigDecimalFormatter bigDecimalFormatter
+        I18NBundle bundle
     ) {
         var table = new Table();
         table.add(name(skin, bundle))
             .left();
         table.add().growX();
-        table.add(
-                value(skin, bigDecimalFormatter)
-                    .orElse(null)
-            )
+        table.add(value(skin).orElse(null))
             .row();
         table.add(badgeLine(skin, bundle))
             .colspan(3)

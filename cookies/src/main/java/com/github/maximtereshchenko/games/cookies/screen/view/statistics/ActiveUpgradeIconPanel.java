@@ -57,7 +57,7 @@ final class ActiveUpgradeIconPanel extends HorizontalGroup {
                 upgrade
             );
             upgradeIcon.addListener(
-                new ActiveUpgradeTooltipWidget(
+                new StatisticsTooltipWidget(
                     skin,
                     new ActiveUpgradeTooltipPanel(
                         skin,

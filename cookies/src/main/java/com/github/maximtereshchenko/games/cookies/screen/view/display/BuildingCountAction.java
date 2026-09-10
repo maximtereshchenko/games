@@ -7,18 +7,20 @@ import com.github.maximtereshchenko.games.cookies.screen.view.LatchAction;
 
 final class BuildingCountAction extends LatchAction {
 
+    private final Building building;
+
     BuildingCountAction(
         BakeryService bakeryService,
         Building building,
         Action action
     ) {
-        super(bakeryService, building, action);
+        super(bakeryService, action);
+        this.building = building;
     }
 
     @Override
     protected boolean isFinished(
-        BakeryService bakeryService,
-        Building building
+        BakeryService bakeryService
     ) {
         return bakeryService.count(building) > 0;
     }

@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.store;
+package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -6,67 +6,56 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
+import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.screen.view.*;
+import com.github.maximtereshchenko.games.cookies.screen.view.Badge;
+import com.github.maximtereshchenko.games.cookies.screen.view.FlavorTextLabel;
+import com.github.maximtereshchenko.games.cookies.screen.view.TooltipPanel;
 
 import java.util.List;
 import java.util.Optional;
 
-final class BuildingTooltipPanel extends TooltipPanel {
+final class AchievementTooltipPanel extends TooltipPanel {
 
-    private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
-    private final Building building;
+    private final Achievement achievement;
 
-    BuildingTooltipPanel(
+    AchievementTooltipPanel(
         Skin skin,
         I18NBundle bundle,
-        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
-        Building building
+        Achievement achievement
     ) {
-        this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
-        this.building = building;
+        this.achievement = achievement;
         super(skin, bundle);
     }
 
     @Override
     protected Image icon(Skin skin) {
-        return new BuildingTooltipIcon(
+        return new AchievementIcon(
             skin,
             bakeryService,
-            building
+            achievement
         );
     }
 
     @Override
-    protected Label name(Skin skin, I18NBundle bundle) {
-        return new BuildingNameLabel(
+    protected Label name(
+        Skin skin,
+        I18NBundle bundle
+    ) {
+        return new AchievementNameLabel(
             skin,
-            "building-name-tooltip",
             bundle,
             bakeryService,
-            building
+            achievement
         );
     }
 
     @Override
-    protected Optional<Table> value(
-        Skin skin
-    ) {
-        var table = new Table();
-        table.add(new SmallCookieIcon(skin));
-        table.add(
-            new TransactionValueLabel(
-                skin,
-                bigDecimalFormatter,
-                bakeryService,
-                building
-            )
-        );
-        return Optional.of(table);
+    protected Optional<Table> value(Skin skin) {
+        return Optional.empty();
     }
 
     @Override
@@ -75,11 +64,17 @@ final class BuildingTooltipPanel extends TooltipPanel {
         I18NBundle bundle
     ) {
         return List.of(
-            new BuildingCountBadge(
+            new Badge(
+                skin,
+                bundle.get(
+                    "statistics.achievement.tooltip.badge"
+                )
+            ),
+            new AchievementBadge(
                 skin,
                 bundle,
                 bakeryService,
-                building
+                achievement
             )
         );
     }
@@ -89,7 +84,14 @@ final class BuildingTooltipPanel extends TooltipPanel {
         Skin skin,
         I18NBundle bundle
     ) {
-        return Optional.empty();
+        return Optional.of(
+            new AchievementDescriptionLabel(
+                skin,
+                bundle,
+                bakeryService,
+                achievement
+            )
+        );
     }
 
     @Override
@@ -97,14 +99,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
         Skin skin,
         I18NBundle bundle
     ) {
-        return Optional.of(
-            new BuildingFlavorTextLabel(
-                skin,
-                bundle,
-                bakeryService,
-                building
-            )
-        );
+        return Optional.empty();
     }
 
     @Override
@@ -114,4 +109,5 @@ final class BuildingTooltipPanel extends TooltipPanel {
     ) {
         return Optional.empty();
     }
+
 }

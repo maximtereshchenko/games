@@ -15,7 +15,7 @@ final class AchievementPanel extends StatisticLinePanel {
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.achievements.unlocked"),
-                new UpgradeStatisticsLabel(
+                new AchievementStatisticsLabel(
                     skin,
                     bundle,
                     bakeryService
@@ -25,6 +25,7 @@ final class AchievementPanel extends StatisticLinePanel {
         add(
             new AchievementIconPanel(
                 skin,
+                bundle,
                 bakeryService
             )
         )

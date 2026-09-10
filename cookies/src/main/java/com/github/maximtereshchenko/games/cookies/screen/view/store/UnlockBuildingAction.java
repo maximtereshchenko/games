@@ -7,18 +7,20 @@ import com.github.maximtereshchenko.games.cookies.screen.view.LatchAction;
 
 final class UnlockBuildingAction extends LatchAction {
 
+    private final Building building;
+
     UnlockBuildingAction(
         BakeryService bakeryService,
         Building building,
         Action action
     ) {
-        super(bakeryService, building, action);
+        super(bakeryService, action);
+        this.building = building;
     }
 
     @Override
     protected boolean isFinished(
-        BakeryService bakeryService,
-        Building building
+        BakeryService bakeryService
     ) {
         return bakeryService.cumulativeBaked()
                    .compareTo(

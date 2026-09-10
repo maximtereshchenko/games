@@ -20,6 +20,7 @@ final class AchievementIcon extends Image {
         this.style = skin.get(achievement.name(), Style.class);
         this.bakeryService = bakeryService;
         this.achievement = achievement;
+        setDrawable(drawable());
     }
 
     @Override

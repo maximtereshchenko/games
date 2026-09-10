@@ -1679,5 +1679,11 @@
       "building": "ALCHEMY_LAB",
       "tier": 14
     }
+  },
+  "achievementUnlockRequirements": {
+    "CUMULATIVE_BAKED_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1"
+    }
   }
 }

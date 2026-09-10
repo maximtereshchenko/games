@@ -34,6 +34,7 @@ public final class BakeryService {
                 amount
             );
         unlockUpgrades();
+        unlockAchievements();
     }
 
     public void click() {
@@ -184,6 +185,30 @@ public final class BakeryService {
     public boolean isUnlocked(Achievement achievement) {
         return playerProgress.unlockedAchievements
             .contains(achievement);
+    }
+
+    private void unlockAchievements() {
+        for (var achievement : Achievement.values()) {
+            if (isRequirementSatisfied(achievement)) {
+                playerProgress.unlockedAchievements
+                    .add(achievement);
+            }
+        }
+    }
+
+    private boolean isRequirementSatisfied(Achievement achievement) {
+        return switch (configuration.achievementUnlockRequirements().get(achievement)) {
+            case CumulativeBakedUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
+        };
+    }
+
+    private boolean isRequirementSatisfied(
+        CumulativeBakedUnlockRequirement requirement
+    ) {
+        return playerProgress.cumulativeBaked
+                   .compareTo(requirement.value()) >= 0;
     }
 
     private BigDecimal rounded(BigDecimal value) {
