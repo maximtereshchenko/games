@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.time.Clock;
 import java.time.Instant;
@@ -200,15 +201,23 @@ public final class BakeryService {
         return switch (configuration.upgradeUnlockRequirements().get(upgrade)) {
             case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(requirement);
             case TieredUnlockRequirement requirement -> isRequirementSatisfied(requirement);
-            case ManuallyBakedUnlockRequirement requirement -> isRequirementSatisfied(requirement);
+            case ManuallyBakedUnlockRequirement _ -> isManuallyBakedUnlockRequirementSatisfied(
+                upgrade
+            );
         };
     }
 
-    private boolean isRequirementSatisfied(
-        ManuallyBakedUnlockRequirement requirement
+    private boolean isManuallyBakedUnlockRequirementSatisfied(
+        Upgrade upgrade
     ) {
         return playerProgress.cumulativeManuallyBaked
-                   .compareTo(requirement.count()) >= 0;
+                   .compareTo(
+                       price(upgrade)
+                           .divide(
+                               BigDecimal.valueOf(50),
+                               MathContext.UNLIMITED
+                           )
+                   ) >= 0;
     }
 
     private boolean isRequirementSatisfied(
