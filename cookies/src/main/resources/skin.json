@@ -264,6 +264,10 @@
     "flavor-text": {
       "font": "georgia-9",
       "fontColor": "white-transparent-50"
+    },
+    "upgrade-price-tooltip": {
+      "font": "tahoma-10",
+      "fontColor": "green"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
@@ -1935,7 +1939,7 @@
       ]
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.TooltipWidget$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.TooltipWidget$Style": {
     "default": {
       "drawables": [
         "noise-tiled",
@@ -2569,7 +2573,7 @@
       "drawable": "cookie-small"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.TooltipSeparator$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.TooltipSeparator$Style": {
     "default": {
       "drawable": "gradient-line-left-right"
     }

@@ -69,7 +69,7 @@ final class BuildingButton extends Button {
             }
         );
         addListener(
-            new TooltipWidget(
+            new BuildingTooltipWidget(
                 skin,
                 new BuildingTooltipPanel(
                     skin,

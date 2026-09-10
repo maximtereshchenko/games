@@ -21,15 +21,15 @@ final class UpgradePriceLabel extends Label {
         Upgrade upgrade
     ) {
         var labelStyle = skin.get(Style.class);
-        super("", labelStyle.labelStyle(bakeryService, upgrade));
+        super(
+            bigDecimalFormatter.string(
+                bakeryService.price(upgrade)
+            ),
+            labelStyle.labelStyle(bakeryService, upgrade)
+        );
         this.style = labelStyle;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
-        setText(
-            bigDecimalFormatter.string(
-                bakeryService.price(upgrade)
-            )
-        );
     }
 
     @Override

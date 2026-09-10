@@ -1,11 +1,11 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.store;
+package com.github.maximtereshchenko.games.cookies.screen.view;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-class Badge extends Label {
+public class Badge extends Label {
 
-    Badge(Skin skin, String text) {
+    public Badge(Skin skin, String text) {
         super(text, skin, "badge");
     }
 }

@@ -32,9 +32,9 @@ final class UpgradeButton extends Container<ImageButton> {
         this.upgrade = upgrade;
         background(style.background);
         addListener(
-            new TooltipWidget(
+            new UpgradeTooltipWidget(
                 skin,
-                new UpgradeTooltipPanel(
+                new UnlockedUpgradeTooltipPanel(
                     skin,
                     bundle,
                     bigDecimalFormatter,

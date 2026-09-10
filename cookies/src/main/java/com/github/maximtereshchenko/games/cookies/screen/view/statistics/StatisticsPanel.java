@@ -48,6 +48,7 @@ public final class StatisticsPanel extends Container<Table> {
             new ActiveUpgradePanel(
                 skin,
                 bundle,
+                bigDecimalFormatter,
                 bakeryService
             )
         );

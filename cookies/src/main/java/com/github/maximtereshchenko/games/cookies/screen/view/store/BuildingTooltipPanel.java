@@ -8,8 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
-import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
-import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
+import com.github.maximtereshchenko.games.cookies.screen.view.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +31,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Image icon(Skin skin) {
+    protected Image icon(Skin skin) {
         return new BuildingTooltipIcon(
             skin,
             bakeryService,
@@ -41,7 +40,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Label name(Skin skin, I18NBundle bundle) {
+    protected Label name(Skin skin, I18NBundle bundle) {
         return new BuildingNameLabel(
             skin,
             "building-name-tooltip",
@@ -52,7 +51,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Optional<Table> value(
+    protected Optional<Table> value(
         Skin skin,
         BigDecimalFormatter bigDecimalFormatter
     ) {
@@ -70,7 +69,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    List<Badge> badges(
+    protected List<Badge> badges(
         Skin skin,
         I18NBundle bundle
     ) {
@@ -85,7 +84,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Optional<Label> description(
+    protected Optional<Label> description(
         Skin skin,
         I18NBundle bundle
     ) {
@@ -93,7 +92,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Optional<FlavorTextLabel> flavorText(
+    protected Optional<FlavorTextLabel> flavorText(
         Skin skin,
         I18NBundle bundle
     ) {
@@ -108,7 +107,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Optional<Actor> footer(
+    protected Optional<Actor> footer(
         Skin skin,
         I18NBundle bundle
     ) {

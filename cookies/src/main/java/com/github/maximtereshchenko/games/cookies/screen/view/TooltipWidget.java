@@ -1,14 +1,13 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.store;
+package com.github.maximtereshchenko.games.cookies.screen.view;
 
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
-final class TooltipWidget extends Tooltip<Stack> {
+public abstract class TooltipWidget extends Tooltip<Stack> {
 
-    TooltipWidget(Skin skin, Table table) {
+    protected TooltipWidget(Skin skin, Table table) {
         super(new Stack(), new InstantTooltipManager());
         var style = skin.get(Style.class);
         var stack = getActor();
@@ -26,27 +25,26 @@ final class TooltipWidget extends Tooltip<Stack> {
     @Override
     public boolean mouseMoved(InputEvent event, float x, float y) {
         var isHandled = super.mouseMoved(event, x, y);
-        setPosition(event.getListenerActor());
+        setPosition(event);
         return isHandled;
     }
 
     @Override
     public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
         super.enter(event, x, y, pointer, fromActor);
-        setPosition(event.getListenerActor());
+        setPosition(event);
     }
 
-    private void setPosition(Actor actor) {
-        var container = getContainer();
-        var vector = new Vector2(0, actor.getHeight());
-        actor.getParent().localToStageCoordinates(vector);
-        var x = vector.x - container.getWidth() - 30;
-        vector.y = actor.getHeight();
-        actor.localToStageCoordinates(vector);
-        container.setPosition(
-            x,
-            vector.y - container.getHeight()
-        );
+    protected abstract float x(Actor actor);
+
+    protected abstract float y(Actor actor, float stageY);
+
+    private void setPosition(InputEvent event) {
+        getContainer()
+            .setPosition(
+                x(event.getListenerActor()),
+                y(event.getListenerActor(), event.getStageY())
+            );
     }
 
     private static final class InstantTooltipManager extends TooltipManager {

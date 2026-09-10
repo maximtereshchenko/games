@@ -1,16 +1,15 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.store;
+package com.github.maximtereshchenko.games.cookies.screen.view;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
 import java.util.List;
 import java.util.Optional;
 
-abstract class TooltipPanel extends Table {
+public abstract class TooltipPanel extends Table {
 
-    TooltipPanel(
+    protected TooltipPanel(
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter
@@ -41,31 +40,31 @@ abstract class TooltipPanel extends Table {
             .ifPresent(footer -> addFooter(skin, footer));
     }
 
-    abstract Image icon(Skin skin);
+    protected abstract Image icon(Skin skin);
 
-    abstract Label name(Skin skin, I18NBundle bundle);
+    protected abstract Label name(Skin skin, I18NBundle bundle);
 
-    abstract Optional<Table> value(
+    protected abstract Optional<Table> value(
         Skin skin,
         BigDecimalFormatter bigDecimalFormatter
     );
 
-    abstract List<Badge> badges(
+    protected abstract List<Badge> badges(
         Skin skin,
         I18NBundle bundle
     );
 
-    abstract Optional<Label> description(
+    protected abstract Optional<Label> description(
         Skin skin,
         I18NBundle bundle
     );
 
-    abstract Optional<FlavorTextLabel> flavorText(
+    protected abstract Optional<FlavorTextLabel> flavorText(
         Skin skin,
         I18NBundle bundle
     );
 
-    abstract Optional<Actor> footer(
+    protected abstract Optional<Actor> footer(
         Skin skin,
         I18NBundle bundle
     );
@@ -111,7 +110,7 @@ abstract class TooltipPanel extends Table {
     ) {
         var table = new Table();
         for (var badge : badges(skin, bundle)) {
-            table.add(badge);
+            table.add(badge).padRight(4);
         }
         return table;
     }
