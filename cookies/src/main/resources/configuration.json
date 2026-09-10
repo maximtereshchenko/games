@@ -1684,6 +1684,194 @@
     "CUMULATIVE_BAKED_TIER_0": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
       "value": "1"
+    },
+    "CUMULATIVE_BAKED_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E3"
+    },
+    "CUMULATIVE_BAKED_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E5"
+    },
+    "CUMULATIVE_BAKED_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E6"
+    },
+    "CUMULATIVE_BAKED_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E8"
+    },
+    "CUMULATIVE_BAKED_TIER_5": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E9"
+    },
+    "CUMULATIVE_BAKED_TIER_6": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E11"
+    },
+    "CUMULATIVE_BAKED_TIER_7": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E12"
+    },
+    "CUMULATIVE_BAKED_TIER_8": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E14"
+    },
+    "CUMULATIVE_BAKED_TIER_9": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E15"
+    },
+    "CUMULATIVE_BAKED_TIER_10": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E17"
+    },
+    "CUMULATIVE_BAKED_TIER_11": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E18"
+    },
+    "CUMULATIVE_BAKED_TIER_12": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E20"
+    },
+    "CUMULATIVE_BAKED_TIER_13": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E21"
+    },
+    "CUMULATIVE_BAKED_TIER_14": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E23"
+    },
+    "CUMULATIVE_BAKED_TIER_15": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E24"
+    },
+    "CUMULATIVE_BAKED_TIER_16": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E26"
+    },
+    "CUMULATIVE_BAKED_TIER_17": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E27"
+    },
+    "CUMULATIVE_BAKED_TIER_18": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E29"
+    },
+    "CUMULATIVE_BAKED_TIER_19": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E30"
+    },
+    "CUMULATIVE_BAKED_TIER_20": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E32"
+    },
+    "CUMULATIVE_BAKED_TIER_21": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E33"
+    },
+    "CUMULATIVE_BAKED_TIER_22": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E35"
+    },
+    "CUMULATIVE_BAKED_TIER_23": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E36"
+    },
+    "CUMULATIVE_BAKED_TIER_24": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E38"
+    },
+    "CUMULATIVE_BAKED_TIER_25": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E39"
+    },
+    "CUMULATIVE_BAKED_TIER_26": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E41"
+    },
+    "CUMULATIVE_BAKED_TIER_27": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E42"
+    },
+    "CUMULATIVE_BAKED_TIER_28": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E44"
+    },
+    "CUMULATIVE_BAKED_TIER_29": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E45"
+    },
+    "CUMULATIVE_BAKED_TIER_30": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E47"
+    },
+    "CUMULATIVE_BAKED_TIER_31": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E48"
+    },
+    "CUMULATIVE_BAKED_TIER_32": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E50"
+    },
+    "CUMULATIVE_BAKED_TIER_33": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E51"
+    },
+    "CUMULATIVE_BAKED_TIER_34": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E53"
+    },
+    "CUMULATIVE_BAKED_TIER_35": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E54"
+    },
+    "CUMULATIVE_BAKED_TIER_36": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E56"
+    },
+    "CUMULATIVE_BAKED_TIER_37": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E57"
+    },
+    "CUMULATIVE_BAKED_TIER_38": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E59"
+    },
+    "CUMULATIVE_BAKED_TIER_39": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E60"
+    },
+    "CUMULATIVE_BAKED_TIER_40": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E62"
+    },
+    "CUMULATIVE_BAKED_TIER_41": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E63"
+    },
+    "CUMULATIVE_BAKED_TIER_42": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E65"
+    },
+    "CUMULATIVE_BAKED_TIER_43": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E66"
+    },
+    "CUMULATIVE_BAKED_TIER_44": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E68"
+    },
+    "CUMULATIVE_BAKED_TIER_45": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E69"
+    },
+    "CUMULATIVE_BAKED_TIER_46": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E71"
+    },
+    "CUMULATIVE_BAKED_TIER_47": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
+      "value": "1E72"
     }
   }
 }
