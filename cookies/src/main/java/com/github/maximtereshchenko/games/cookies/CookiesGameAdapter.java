@@ -11,13 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.github.maximtereshchenko.games.common.configuration.ConfigurationReader;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.domain.Configuration;
 import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
 import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
 import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
-import tools.jackson.core.type.TypeReference;
 
 import java.time.Clock;
 import java.util.Set;
@@ -49,6 +48,10 @@ final class CookiesGameAdapter implements ApplicationListener {
             Skin.class,
             new CookiesSkinLoader(fileHandleResolver)
         );
+        assetManager.setLoader(
+            Configuration.class,
+            new ConfigurationLoader(fileHandleResolver)
+        );
         var skinAssetDescriptor = new AssetDescriptor<>(
             "skin.json",
             Skin.class
@@ -57,16 +60,17 @@ final class CookiesGameAdapter implements ApplicationListener {
             "game",
             I18NBundle.class
         );
+        var configurationAssetDescriptor = new AssetDescriptor<>(
+            "configuration.json",
+            Configuration.class
+        );
         assetManager.load(skinAssetDescriptor);
         assetManager.load(gameBundleAssetDescriptor);
+        assetManager.load(configurationAssetDescriptor);
         assetManager.finishLoading();
         var clock = Clock.systemDefaultZone();
         var bakeryService = new BakeryService(
-            new ConfigurationReader()
-                .value(
-                    "configuration.json",
-                    new TypeReference<>() {}
-                ),
+            assetManager.get(configurationAssetDescriptor),
             clock
         );
         var skin = assetManager.get(skinAssetDescriptor);

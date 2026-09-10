@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.common.configuration;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.DeserializationFeature;
@@ -35,7 +36,11 @@ public final class ConfigurationReader {
     }
 
     public <T> T value(String name, TypeReference<T> typeReference) {
-        try (var reader = Gdx.files.classpath(name).reader()) {
+        return value(Gdx.files.classpath(name), typeReference);
+    }
+
+    public <T> T value(FileHandle fileHandle, TypeReference<T> typeReference) {
+        try (var reader = fileHandle.reader()) {
             return jsonMapper.readValue(reader, typeReference);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
