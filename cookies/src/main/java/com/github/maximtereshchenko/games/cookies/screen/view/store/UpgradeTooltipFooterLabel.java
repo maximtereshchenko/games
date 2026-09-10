@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.cookies.screen.view.store;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 
 final class UpgradeTooltipFooterLabel extends Label {
@@ -12,5 +13,6 @@ final class UpgradeTooltipFooterLabel extends Label {
             skin,
             "upgrade-tooltip-footer"
         );
+        setAlignment(Align.center);
     }
 }

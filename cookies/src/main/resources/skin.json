@@ -1950,666 +1950,501 @@
       "disabledFontColor": "red"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeTooltipPanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.store.UpgradeIcon$Style": {
     "CLICK_TIER_0": {
-      "upgradeIcon": "mouse-pointer-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-plain"
     },
     "CLICK_TIER_1": {
-      "upgradeIcon": "mouse-pointer-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-berrylium"
     },
     "CLICK_TIER_2": {
-      "upgradeIcon": "mouse-pointer-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-blueberrylium"
     },
     "CLICK_TIER_3": {
-      "upgradeIcon": "mouse-pointer-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-chalcedhoney"
     },
     "CLICK_TIER_4": {
-      "upgradeIcon": "mouse-pointer-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-buttergold"
     },
     "CLICK_TIER_5": {
-      "upgradeIcon": "mouse-pointer-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-sugarmuck"
     },
     "CLICK_TIER_6": {
-      "upgradeIcon": "mouse-pointer-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-jetmint"
     },
     "CLICK_TIER_7": {
-      "upgradeIcon": "mouse-pointer-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-cherrysilver"
     },
     "CLICK_TIER_8": {
-      "upgradeIcon": "mouse-pointer-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-hazelrald"
     },
     "CLICK_TIER_9": {
-      "upgradeIcon": "mouse-pointer-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-mooncandy"
     },
     "CLICK_TIER_10": {
-      "upgradeIcon": "mouse-pointer-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-astrofudge"
     },
     "CLICK_TIER_11": {
-      "upgradeIcon": "mouse-pointer-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-alabascream"
     },
     "CLICK_TIER_12": {
-      "upgradeIcon": "mouse-pointer-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-iridyum"
     },
     "CLICK_TIER_13": {
-      "upgradeIcon": "mouse-pointer-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-glucosmium"
     },
     "CLICK_TIER_14": {
-      "upgradeIcon": "mouse-pointer-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "mouse-pointer-glimmeringue"
     },
     "CURSOR_TIER_0": {
-      "upgradeIcon": "hand-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-plain"
     },
     "CURSOR_TIER_1": {
-      "upgradeIcon": "hand-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-berrylium"
     },
     "CURSOR_TIER_2": {
-      "upgradeIcon": "hand-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-blueberrylium"
     },
     "CURSOR_TIER_3": {
-      "upgradeIcon": "hand-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-chalcedhoney"
     },
     "CURSOR_TIER_4": {
-      "upgradeIcon": "hand-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-buttergold"
     },
     "CURSOR_TIER_5": {
-      "upgradeIcon": "hand-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-sugarmuck"
     },
     "CURSOR_TIER_6": {
-      "upgradeIcon": "hand-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-jetmint"
     },
     "CURSOR_TIER_7": {
-      "upgradeIcon": "hand-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-cherrysilver"
     },
     "CURSOR_TIER_8": {
-      "upgradeIcon": "hand-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-hazelrald"
     },
     "CURSOR_TIER_9": {
-      "upgradeIcon": "hand-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-mooncandy"
     },
     "CURSOR_TIER_10": {
-      "upgradeIcon": "hand-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-astrofudge"
     },
     "CURSOR_TIER_11": {
-      "upgradeIcon": "hand-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-alabascream"
     },
     "CURSOR_TIER_12": {
-      "upgradeIcon": "hand-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-iridyum"
     },
     "CURSOR_TIER_13": {
-      "upgradeIcon": "hand-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-glucosmium"
     },
     "CURSOR_TIER_14": {
-      "upgradeIcon": "hand-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "hand-glimmeringue"
     },
     "GRANDMA_TIER_0": {
-      "upgradeIcon": "rolling-pin-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-plain"
     },
     "GRANDMA_TIER_1": {
-      "upgradeIcon": "rolling-pin-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-berrylium"
     },
     "GRANDMA_TIER_2": {
-      "upgradeIcon": "rolling-pin-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-blueberrylium"
     },
     "GRANDMA_TIER_3": {
-      "upgradeIcon": "rolling-pin-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-chalcedhoney"
     },
     "GRANDMA_TIER_4": {
-      "upgradeIcon": "rolling-pin-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-buttergold"
     },
     "GRANDMA_TIER_5": {
-      "upgradeIcon": "rolling-pin-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-sugarmuck"
     },
     "GRANDMA_TIER_6": {
-      "upgradeIcon": "rolling-pin-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-jetmint"
     },
     "GRANDMA_TIER_7": {
-      "upgradeIcon": "rolling-pin-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-cherrysilver"
     },
     "GRANDMA_TIER_8": {
-      "upgradeIcon": "rolling-pin-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-hazelrald"
     },
     "GRANDMA_TIER_9": {
-      "upgradeIcon": "rolling-pin-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-mooncandy"
     },
     "GRANDMA_TIER_10": {
-      "upgradeIcon": "rolling-pin-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-astrofudge"
     },
     "GRANDMA_TIER_11": {
-      "upgradeIcon": "rolling-pin-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-alabascream"
     },
     "GRANDMA_TIER_12": {
-      "upgradeIcon": "rolling-pin-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-iridyum"
     },
     "GRANDMA_TIER_13": {
-      "upgradeIcon": "rolling-pin-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-glucosmium"
     },
     "GRANDMA_TIER_14": {
-      "upgradeIcon": "rolling-pin-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "rolling-pin-glimmeringue"
     },
     "FARM_TIER_0": {
-      "upgradeIcon": "watering-pot-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-plain"
     },
     "FARM_TIER_1": {
-      "upgradeIcon": "watering-pot-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-berrylium"
     },
     "FARM_TIER_2": {
-      "upgradeIcon": "watering-pot-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-blueberrylium"
     },
     "FARM_TIER_3": {
-      "upgradeIcon": "watering-pot-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-chalcedhoney"
     },
     "FARM_TIER_4": {
-      "upgradeIcon": "watering-pot-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-buttergold"
     },
     "FARM_TIER_5": {
-      "upgradeIcon": "watering-pot-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-sugarmuck"
     },
     "FARM_TIER_6": {
-      "upgradeIcon": "watering-pot-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-jetmint"
     },
     "FARM_TIER_7": {
-      "upgradeIcon": "watering-pot-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-cherrysilver"
     },
     "FARM_TIER_8": {
-      "upgradeIcon": "watering-pot-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-hazelrald"
     },
     "FARM_TIER_9": {
-      "upgradeIcon": "watering-pot-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-mooncandy"
     },
     "FARM_TIER_10": {
-      "upgradeIcon": "watering-pot-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-astrofudge"
     },
     "FARM_TIER_11": {
-      "upgradeIcon": "watering-pot-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-alabascream"
     },
     "FARM_TIER_12": {
-      "upgradeIcon": "watering-pot-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-iridyum"
     },
     "FARM_TIER_13": {
-      "upgradeIcon": "watering-pot-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-glucosmium"
     },
     "FARM_TIER_14": {
-      "upgradeIcon": "watering-pot-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "watering-pot-glimmeringue"
     },
     "MINE_TIER_0": {
-      "upgradeIcon": "pickaxe-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-plain"
     },
     "MINE_TIER_1": {
-      "upgradeIcon": "pickaxe-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-berrylium"
     },
     "MINE_TIER_2": {
-      "upgradeIcon": "pickaxe-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-blueberrylium"
     },
     "MINE_TIER_3": {
-      "upgradeIcon": "pickaxe-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-chalcedhoney"
     },
     "MINE_TIER_4": {
-      "upgradeIcon": "pickaxe-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-buttergold"
     },
     "MINE_TIER_5": {
-      "upgradeIcon": "pickaxe-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-sugarmuck"
     },
     "MINE_TIER_6": {
-      "upgradeIcon": "pickaxe-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-jetmint"
     },
     "MINE_TIER_7": {
-      "upgradeIcon": "pickaxe-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-cherrysilver"
     },
     "MINE_TIER_8": {
-      "upgradeIcon": "pickaxe-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-hazelrald"
     },
     "MINE_TIER_9": {
-      "upgradeIcon": "pickaxe-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-mooncandy"
     },
     "MINE_TIER_10": {
-      "upgradeIcon": "pickaxe-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-astrofudge"
     },
     "MINE_TIER_11": {
-      "upgradeIcon": "pickaxe-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-alabascream"
     },
     "MINE_TIER_12": {
-      "upgradeIcon": "pickaxe-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-iridyum"
     },
     "MINE_TIER_13": {
-      "upgradeIcon": "pickaxe-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-glucosmium"
     },
     "MINE_TIER_14": {
-      "upgradeIcon": "pickaxe-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "pickaxe-glimmeringue"
     },
     "FACTORY_TIER_0": {
-      "upgradeIcon": "gears-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-plain"
     },
     "FACTORY_TIER_1": {
-      "upgradeIcon": "gears-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-berrylium"
     },
     "FACTORY_TIER_2": {
-      "upgradeIcon": "gears-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-blueberrylium"
     },
     "FACTORY_TIER_3": {
-      "upgradeIcon": "gears-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-chalcedhoney"
     },
     "FACTORY_TIER_4": {
-      "upgradeIcon": "gears-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-buttergold"
     },
     "FACTORY_TIER_5": {
-      "upgradeIcon": "gears-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-sugarmuck"
     },
     "FACTORY_TIER_6": {
-      "upgradeIcon": "gears-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-jetmint"
     },
     "FACTORY_TIER_7": {
-      "upgradeIcon": "gears-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-cherrysilver"
     },
     "FACTORY_TIER_8": {
-      "upgradeIcon": "gears-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-hazelrald"
     },
     "FACTORY_TIER_9": {
-      "upgradeIcon": "gears-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-mooncandy"
     },
     "FACTORY_TIER_10": {
-      "upgradeIcon": "gears-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-astrofudge"
     },
     "FACTORY_TIER_11": {
-      "upgradeIcon": "gears-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-alabascream"
     },
     "FACTORY_TIER_12": {
-      "upgradeIcon": "gears-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-iridyum"
     },
     "FACTORY_TIER_13": {
-      "upgradeIcon": "gears-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-glucosmium"
     },
     "FACTORY_TIER_14": {
-      "upgradeIcon": "gears-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "gears-glimmeringue"
     },
     "BANK_TIER_0": {
-      "upgradeIcon": "bag-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-plain"
     },
     "BANK_TIER_1": {
-      "upgradeIcon": "bag-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-berrylium"
     },
     "BANK_TIER_2": {
-      "upgradeIcon": "bag-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-blueberrylium"
     },
     "BANK_TIER_3": {
-      "upgradeIcon": "bag-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-chalcedhoney"
     },
     "BANK_TIER_4": {
-      "upgradeIcon": "bag-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-buttergold"
     },
     "BANK_TIER_5": {
-      "upgradeIcon": "bag-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-sugarmuck"
     },
     "BANK_TIER_6": {
-      "upgradeIcon": "bag-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-jetmint"
     },
     "BANK_TIER_7": {
-      "upgradeIcon": "bag-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-cherrysilver"
     },
     "BANK_TIER_8": {
-      "upgradeIcon": "bag-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-hazelrald"
     },
     "BANK_TIER_9": {
-      "upgradeIcon": "bag-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-mooncandy"
     },
     "BANK_TIER_10": {
-      "upgradeIcon": "bag-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-astrofudge"
     },
     "BANK_TIER_11": {
-      "upgradeIcon": "bag-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-alabascream"
     },
     "BANK_TIER_12": {
-      "upgradeIcon": "bag-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-iridyum"
     },
     "BANK_TIER_13": {
-      "upgradeIcon": "bag-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-glucosmium"
     },
     "BANK_TIER_14": {
-      "upgradeIcon": "bag-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "bag-glimmeringue"
     },
     "TEMPLE_TIER_0": {
-      "upgradeIcon": "idol-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-plain"
     },
     "TEMPLE_TIER_1": {
-      "upgradeIcon": "idol-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-berrylium"
     },
     "TEMPLE_TIER_2": {
-      "upgradeIcon": "idol-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-blueberrylium"
     },
     "TEMPLE_TIER_3": {
-      "upgradeIcon": "idol-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-chalcedhoney"
     },
     "TEMPLE_TIER_4": {
-      "upgradeIcon": "idol-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-buttergold"
     },
     "TEMPLE_TIER_5": {
-      "upgradeIcon": "idol-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-sugarmuck"
     },
     "TEMPLE_TIER_6": {
-      "upgradeIcon": "idol-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-jetmint"
     },
     "TEMPLE_TIER_7": {
-      "upgradeIcon": "idol-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-cherrysilver"
     },
     "TEMPLE_TIER_8": {
-      "upgradeIcon": "idol-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-hazelrald"
     },
     "TEMPLE_TIER_9": {
-      "upgradeIcon": "idol-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-mooncandy"
     },
     "TEMPLE_TIER_10": {
-      "upgradeIcon": "idol-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-astrofudge"
     },
     "TEMPLE_TIER_11": {
-      "upgradeIcon": "idol-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-alabascream"
     },
     "TEMPLE_TIER_12": {
-      "upgradeIcon": "idol-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-iridyum"
     },
     "TEMPLE_TIER_13": {
-      "upgradeIcon": "idol-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-glucosmium"
     },
     "TEMPLE_TIER_14": {
-      "upgradeIcon": "idol-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "idol-glimmeringue"
     },
     "WIZARD_TOWER_TIER_0": {
-      "upgradeIcon": "wizard-hat-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-plain"
     },
     "WIZARD_TOWER_TIER_1": {
-      "upgradeIcon": "wizard-hat-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-berrylium"
     },
     "WIZARD_TOWER_TIER_2": {
-      "upgradeIcon": "wizard-hat-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-blueberrylium"
     },
     "WIZARD_TOWER_TIER_3": {
-      "upgradeIcon": "wizard-hat-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-chalcedhoney"
     },
     "WIZARD_TOWER_TIER_4": {
-      "upgradeIcon": "wizard-hat-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-buttergold"
     },
     "WIZARD_TOWER_TIER_5": {
-      "upgradeIcon": "wizard-hat-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-sugarmuck"
     },
     "WIZARD_TOWER_TIER_6": {
-      "upgradeIcon": "wizard-hat-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-jetmint"
     },
     "WIZARD_TOWER_TIER_7": {
-      "upgradeIcon": "wizard-hat-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-cherrysilver"
     },
     "WIZARD_TOWER_TIER_8": {
-      "upgradeIcon": "wizard-hat-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-hazelrald"
     },
     "WIZARD_TOWER_TIER_9": {
-      "upgradeIcon": "wizard-hat-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-mooncandy"
     },
     "WIZARD_TOWER_TIER_10": {
-      "upgradeIcon": "wizard-hat-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-astrofudge"
     },
     "WIZARD_TOWER_TIER_11": {
-      "upgradeIcon": "wizard-hat-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-alabascream"
     },
     "WIZARD_TOWER_TIER_12": {
-      "upgradeIcon": "wizard-hat-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-iridyum"
     },
     "WIZARD_TOWER_TIER_13": {
-      "upgradeIcon": "wizard-hat-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-glucosmium"
     },
     "WIZARD_TOWER_TIER_14": {
-      "upgradeIcon": "wizard-hat-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "wizard-hat-glimmeringue"
     },
     "SHIPMENT_TIER_0": {
-      "upgradeIcon": "rocket-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-plain"
     },
     "SHIPMENT_TIER_1": {
-      "upgradeIcon": "rocket-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-berrylium"
     },
     "SHIPMENT_TIER_2": {
-      "upgradeIcon": "rocket-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-blueberrylium"
     },
     "SHIPMENT_TIER_3": {
-      "upgradeIcon": "rocket-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-chalcedhoney"
     },
     "SHIPMENT_TIER_4": {
-      "upgradeIcon": "rocket-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-buttergold"
     },
     "SHIPMENT_TIER_5": {
-      "upgradeIcon": "rocket-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-sugarmuck"
     },
     "SHIPMENT_TIER_6": {
-      "upgradeIcon": "rocket-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-jetmint"
     },
     "SHIPMENT_TIER_7": {
-      "upgradeIcon": "rocket-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-cherrysilver"
     },
     "SHIPMENT_TIER_8": {
-      "upgradeIcon": "rocket-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-hazelrald"
     },
     "SHIPMENT_TIER_9": {
-      "upgradeIcon": "rocket-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-mooncandy"
     },
     "SHIPMENT_TIER_10": {
-      "upgradeIcon": "rocket-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-astrofudge"
     },
     "SHIPMENT_TIER_11": {
-      "upgradeIcon": "rocket-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-alabascream"
     },
     "SHIPMENT_TIER_12": {
-      "upgradeIcon": "rocket-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-iridyum"
     },
     "SHIPMENT_TIER_13": {
-      "upgradeIcon": "rocket-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-glucosmium"
     },
     "SHIPMENT_TIER_14": {
-      "upgradeIcon": "rocket-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "rocket-glimmeringue"
     },
     "ALCHEMY_LAB_TIER_0": {
-      "upgradeIcon": "alembic-plain",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-plain"
     },
     "ALCHEMY_LAB_TIER_1": {
-      "upgradeIcon": "alembic-berrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-berrylium"
     },
     "ALCHEMY_LAB_TIER_2": {
-      "upgradeIcon": "alembic-blueberrylium",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-blueberrylium"
     },
     "ALCHEMY_LAB_TIER_3": {
-      "upgradeIcon": "alembic-chalcedhoney",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-chalcedhoney"
     },
     "ALCHEMY_LAB_TIER_4": {
-      "upgradeIcon": "alembic-buttergold",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-buttergold"
     },
     "ALCHEMY_LAB_TIER_5": {
-      "upgradeIcon": "alembic-sugarmuck",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-sugarmuck"
     },
     "ALCHEMY_LAB_TIER_6": {
-      "upgradeIcon": "alembic-jetmint",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-jetmint"
     },
     "ALCHEMY_LAB_TIER_7": {
-      "upgradeIcon": "alembic-cherrysilver",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-cherrysilver"
     },
     "ALCHEMY_LAB_TIER_8": {
-      "upgradeIcon": "alembic-hazelrald",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-hazelrald"
     },
     "ALCHEMY_LAB_TIER_9": {
-      "upgradeIcon": "alembic-mooncandy",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-mooncandy"
     },
     "ALCHEMY_LAB_TIER_10": {
-      "upgradeIcon": "alembic-astrofudge",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-astrofudge"
     },
     "ALCHEMY_LAB_TIER_11": {
-      "upgradeIcon": "alembic-alabascream",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-alabascream"
     },
     "ALCHEMY_LAB_TIER_12": {
-      "upgradeIcon": "alembic-iridyum",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-iridyum"
     },
     "ALCHEMY_LAB_TIER_13": {
-      "upgradeIcon": "alembic-glucosmium",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-glucosmium"
     },
     "ALCHEMY_LAB_TIER_14": {
-      "upgradeIcon": "alembic-glimmeringue",
-      "separator": "gradient-line-left-right"
+      "drawable": "alembic-glimmeringue"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.display.BuildingDisplayWidget$Style": {

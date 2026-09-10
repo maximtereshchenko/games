@@ -21,11 +21,12 @@ abstract class TooltipPanel extends Table {
             .growX()
             .row();
         addSeparator(skin);
-        description()
+        description(skin, bundle)
             .ifPresent(
                 description -> add(description)
                     .colspan(2)
                     .left()
+                    .padBottom(8)
                     .row()
             );
         flavorText(skin, bundle)
@@ -33,9 +34,10 @@ abstract class TooltipPanel extends Table {
                 flavorText -> add(flavorText)
                     .colspan(2)
                     .right()
+                    .padBottom(8)
                     .row()
             );
-        footer()
+        footer(skin, bundle)
             .ifPresent(footer -> addFooter(skin, footer));
     }
 
@@ -53,14 +55,20 @@ abstract class TooltipPanel extends Table {
         I18NBundle bundle
     );
 
-    abstract Optional<Label> description();
+    abstract Optional<Label> description(
+        Skin skin,
+        I18NBundle bundle
+    );
 
     abstract Optional<FlavorTextLabel> flavorText(
         Skin skin,
         I18NBundle bundle
     );
 
-    abstract Optional<Actor> footer();
+    abstract Optional<Actor> footer(
+        Skin skin,
+        I18NBundle bundle
+    );
 
     private void addSeparator(Skin skin) {
         add(new TooltipSeparator(skin))
@@ -91,7 +99,9 @@ abstract class TooltipPanel extends Table {
                     .orElse(null)
             )
             .row();
-        table.add(badgeLine(skin, bundle));
+        table.add(badgeLine(skin, bundle))
+            .colspan(3)
+            .left();
         return table;
     }
 

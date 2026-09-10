@@ -85,7 +85,10 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Optional<Label> description() {
+    Optional<Label> description(
+        Skin skin,
+        I18NBundle bundle
+    ) {
         return Optional.empty();
     }
 
@@ -105,7 +108,10 @@ final class BuildingTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    Optional<Actor> footer() {
+    Optional<Actor> footer(
+        Skin skin,
+        I18NBundle bundle
+    ) {
         return Optional.empty();
     }
 }
