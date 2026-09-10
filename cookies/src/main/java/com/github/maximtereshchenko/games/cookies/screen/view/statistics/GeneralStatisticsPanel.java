@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
@@ -9,7 +8,7 @@ import com.github.maximtereshchenko.games.cookies.screen.view.SmallCookieIcon;
 
 import java.time.Clock;
 
-final class GeneralStatisticsPanel extends Table {
+final class GeneralStatisticsPanel extends StatisticLinePanel {
 
     GeneralStatisticsPanel(
         Skin skin,
@@ -18,9 +17,7 @@ final class GeneralStatisticsPanel extends Table {
         BakeryService bakeryService,
         Clock clock
     ) {
-        left();
-        defaults().left().padBottom(4);
-        add(
+        super(
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.balance"),
@@ -30,10 +27,7 @@ final class GeneralStatisticsPanel extends Table {
                     bigDecimalFormatter,
                     bakeryService
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.cumulative-baked"),
@@ -43,10 +37,7 @@ final class GeneralStatisticsPanel extends Table {
                     bigDecimalFormatter,
                     bakeryService
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.time-passed"),
@@ -56,10 +47,7 @@ final class GeneralStatisticsPanel extends Table {
                     bakeryService,
                     clock
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.buildings-count"),
@@ -67,10 +55,7 @@ final class GeneralStatisticsPanel extends Table {
                     skin,
                     bakeryService
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.baking-rate"),
@@ -80,10 +65,7 @@ final class GeneralStatisticsPanel extends Table {
                     bigDecimalFormatter,
                     bakeryService
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.baking-power"),
@@ -93,10 +75,7 @@ final class GeneralStatisticsPanel extends Table {
                     bigDecimalFormatter,
                     bakeryService
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.cumulative-clicks"),
@@ -104,10 +83,7 @@ final class GeneralStatisticsPanel extends Table {
                     skin,
                     bakeryService
                 )
-            )
-        )
-            .row();
-        add(
+            ),
             new StatisticsLine(
                 skin,
                 bundle.get("statistics.general.cumulative-manually-baked"),
@@ -118,7 +94,6 @@ final class GeneralStatisticsPanel extends Table {
                     bakeryService
                 )
             )
-        )
-            .row();
+        );
     }
 }

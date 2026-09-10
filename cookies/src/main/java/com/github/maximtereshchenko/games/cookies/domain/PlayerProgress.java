@@ -13,6 +13,7 @@ final class PlayerProgress {
     final Map<Building, Integer> buildings;
     final Set<Upgrade> unlockedUpgrades;
     final Set<Upgrade> activeUpgrades;
+    final Set<Achievement> unlockedAchievements;
     final Instant timestamp;
     BigDecimal balance;
     BigDecimal cumulativeBaked;
@@ -23,6 +24,7 @@ final class PlayerProgress {
         this.buildings = new EnumMap<>(Building.class);
         this.unlockedUpgrades = new HashSet<>();
         this.activeUpgrades = new HashSet<>();
+        this.unlockedAchievements = new HashSet<>();
         this.timestamp = Instant.now(clock);
         this.balance = BigDecimal.ZERO;
         this.cumulativeBaked = BigDecimal.ZERO;

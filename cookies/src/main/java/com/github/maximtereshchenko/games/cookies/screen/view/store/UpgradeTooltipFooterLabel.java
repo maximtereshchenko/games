@@ -9,7 +9,7 @@ final class UpgradeTooltipFooterLabel extends Label {
 
     UpgradeTooltipFooterLabel(Skin skin, I18NBundle bundle) {
         super(
-            bundle.get("store.upgrade.purchase-hint"),
+            bundle.get("upgrade.tooltip.purchase-hint"),
             skin,
             "upgrade-tooltip-footer"
         );

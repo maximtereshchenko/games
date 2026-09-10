@@ -3,20 +3,18 @@ package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
 
-final class ActiveUpgradePanel extends StatisticLinePanel {
+final class AchievementPanel extends StatisticLinePanel {
 
-    ActiveUpgradePanel(
+    AchievementPanel(
         Skin skin,
         I18NBundle bundle,
-        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         super(
             new StatisticsLine(
                 skin,
-                bundle.get("statistics.upgrades.active"),
+                bundle.get("statistics.achievements.unlocked"),
                 new UpgradeStatisticsLabel(
                     skin,
                     bundle,
@@ -25,10 +23,8 @@ final class ActiveUpgradePanel extends StatisticLinePanel {
             )
         );
         add(
-            new ActiveUpgradeIconPanel(
+            new AchievementIconPanel(
                 skin,
-                bundle,
-                bigDecimalFormatter,
                 bakeryService
             )
         )

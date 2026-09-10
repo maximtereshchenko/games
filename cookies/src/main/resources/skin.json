@@ -2577,5 +2577,11 @@
     "default": {
       "drawable": "gradient-line-left-right"
     }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.statistics.AchievementIcon$Style": {
+    "CUMULATIVE_BAKED_TIER_0": {
+      "enabled": "cookie-blue-outline_0",
+      "disabled": "question-mark"
+    }
   }
 }

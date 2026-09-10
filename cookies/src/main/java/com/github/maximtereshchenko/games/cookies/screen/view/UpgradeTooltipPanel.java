@@ -65,7 +65,7 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
         return List.of(
             new Badge(
                 skin,
-                bundle.get("store.upgrade.badge")
+                bundle.get("upgrade.tooltip.badge")
             )
         );
     }

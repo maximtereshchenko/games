@@ -177,7 +177,13 @@ public final class BakeryService {
     }
 
     public boolean isActive(Upgrade upgrade) {
-        return playerProgress.activeUpgrades.contains(upgrade);
+        return playerProgress.activeUpgrades
+            .contains(upgrade);
+    }
+
+    public boolean isUnlocked(Achievement achievement) {
+        return playerProgress.unlockedAchievements
+            .contains(achievement);
     }
 
     private BigDecimal rounded(BigDecimal value) {

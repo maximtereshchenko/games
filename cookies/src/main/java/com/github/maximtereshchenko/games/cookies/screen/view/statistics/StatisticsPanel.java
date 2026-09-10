@@ -52,6 +52,17 @@ public final class StatisticsPanel extends Container<Table> {
                 bakeryService
             )
         );
+        addPanel(
+            skin,
+            table,
+            style,
+            bundle.get("statistics.sub-title.achievements"),
+            new AchievementPanel(
+                skin,
+                bundle,
+                bakeryService
+            )
+        );
     }
 
     private void addPanel(

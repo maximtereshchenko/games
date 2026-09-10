@@ -2,12 +2,12 @@ package com.github.maximtereshchenko.games.cookies.screen.view.statistics;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
+import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 
-final class UpgradeStatisticsLabel extends PercentStatisticsLabel<Upgrade> {
+final class AchievementStatisticsLabel extends PercentStatisticsLabel<Achievement> {
 
-    UpgradeStatisticsLabel(
+    AchievementStatisticsLabel(
         Skin skin,
         I18NBundle bundle,
         BakeryService bakeryService
@@ -15,14 +15,14 @@ final class UpgradeStatisticsLabel extends PercentStatisticsLabel<Upgrade> {
         super(
             skin,
             bundle,
-            "statistics.upgrades.active.value",
+            "statistics.achievements.unlocked.value",
             bakeryService,
-            Upgrade.values()
+            Achievement.values()
         );
     }
 
     @Override
-    boolean isCounted(BakeryService bakeryService, Upgrade value) {
-        return bakeryService.isActive(value);
+    boolean isCounted(BakeryService bakeryService, Achievement value) {
+        return bakeryService.isUnlocked(value);
     }
 }
