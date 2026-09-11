@@ -23,8 +23,6 @@ final class UnlockBuildingAction extends LatchAction {
         BakeryService bakeryService
     ) {
         return bakeryService.cumulativeBaked()
-                   .compareTo(
-                       bakeryService.transactionValue(building)
-                   ) >= 0;
+                   .compareTo(bakeryService.basePrice(building)) >= 0;
     }
 }

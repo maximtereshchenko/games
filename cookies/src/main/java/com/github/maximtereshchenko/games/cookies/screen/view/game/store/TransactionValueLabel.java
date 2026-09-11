@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
@@ -12,23 +11,26 @@ final class TransactionValueLabel extends Label {
 
     private final Style style;
     private final BigDecimalFormatter bigDecimalFormatter;
-    private final BakeryService bakeryService;
+    private final Transaction transaction;
     private final Building building;
 
     TransactionValueLabel(
         Skin skin,
         BigDecimalFormatter bigDecimalFormatter,
-        BakeryService bakeryService,
+        Transaction transaction,
         Building building
     ) {
         var labelStyle = skin.get(Style.class);
         super(
             "",
-            labelStyle.labelStyle(bakeryService, building)
+            new LabelStyle(
+                labelStyle.font,
+                labelStyle.disabledFontColor
+            )
         );
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.style = labelStyle;
-        this.bakeryService = bakeryService;
+        this.transaction = transaction;
         this.building = building;
     }
 
@@ -37,33 +39,25 @@ final class TransactionValueLabel extends Label {
         super.act(delta);
         setText(
             bigDecimalFormatter.string(
-                bakeryService.transactionValue(building)
+                transaction.value(
+                    building
+                )
             )
         );
-        setStyle(style.labelStyle(bakeryService, building));
+        setStyle(new LabelStyle(style.font, color()));
+    }
+
+    private Color color() {
+        if (transaction.canAfford(building)) {
+            return style.enabledFontColor;
+        }
+        return style.disabledFontColor;
     }
 
     private static final class Style {
 
-        private BitmapFont font;
-        private Color enabledFontColor;
-        private Color disabledFontColor;
-
-        LabelStyle labelStyle(
-            BakeryService bakeryService,
-            Building building
-        ) {
-            return new LabelStyle(font, color(bakeryService, building));
-        }
-
-        private Color color(
-            BakeryService bakeryService,
-            Building building
-        ) {
-            if (bakeryService.canAfford(building)) {
-                return enabledFontColor;
-            }
-            return disabledFontColor;
-        }
+        BitmapFont font;
+        Color enabledFontColor;
+        Color disabledFontColor;
     }
 }

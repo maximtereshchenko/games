@@ -15,6 +15,7 @@ final class TransactionDetailsWidget extends Table {
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
+        Transaction transaction,
         BakeryService bakeryService,
         Building building
     ) {
@@ -38,7 +39,7 @@ final class TransactionDetailsWidget extends Table {
             new TransactionValueLabel(
                 skin,
                 bigDecimalFormatter,
-                bakeryService,
+                transaction,
                 building
             )
         )

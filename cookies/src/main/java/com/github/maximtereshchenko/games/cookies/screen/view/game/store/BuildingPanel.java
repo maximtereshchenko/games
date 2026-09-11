@@ -17,6 +17,7 @@ final class BuildingPanel extends Table {
         I18NBundle bundle,
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
+        Transaction transaction,
         BakeryService bakeryService
     ) {
         var buildings = Building.values();
@@ -26,6 +27,7 @@ final class BuildingPanel extends Table {
                 bundle,
                 eventListener,
                 bigDecimalFormatter,
+                transaction,
                 bakeryService,
                 buildings,
                 i
@@ -38,6 +40,7 @@ final class BuildingPanel extends Table {
         I18NBundle bundle,
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
+        Transaction transaction,
         BakeryService bakeryService,
         Building[] buildings,
         int index
@@ -51,6 +54,7 @@ final class BuildingPanel extends Table {
                             bundle,
                             eventListener,
                             bigDecimalFormatter,
+                            transaction,
                             bakeryService,
                             buildings,
                             index
@@ -87,6 +91,7 @@ final class BuildingPanel extends Table {
         I18NBundle bundle,
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
+        Transaction transaction,
         BakeryService bakeryService,
         Building[] buildings,
         int index
@@ -95,6 +100,7 @@ final class BuildingPanel extends Table {
             skin,
             bundle,
             bigDecimalFormatter,
+            transaction,
             bakeryService,
             buildings[index],
             index

@@ -178,7 +178,7 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
-    "transaction-mode": {
+    "transaction-configuration": {
       "font": "merriweather-10",
       "fontColor": "white-transparent-50",
       "checkedFontColor": "white",
@@ -297,7 +297,7 @@
       "over": "wooden-logs-right-bottom-bright"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.game.store.TransactionModePanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.store.TransactionConfigurationPanel$Style": {
     "default": {
       "background": "noise-tiled"
     }

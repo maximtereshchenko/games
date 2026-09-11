@@ -14,13 +14,14 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFor
 final class BuildingButton extends Button {
 
     private final Style style;
-    private final BakeryService bakeryService;
+    private final Transaction transaction;
     private final Building building;
 
     BuildingButton(
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
+        Transaction transaction,
         BakeryService bakeryService,
         Building building,
         int index
@@ -31,7 +32,7 @@ final class BuildingButton extends Button {
         );
         super(buttonStyle);
         this.style = buttonStyle;
-        this.bakeryService = bakeryService;
+        this.transaction = transaction;
         this.building = building;
         add(
             new BuildingIcon(
@@ -47,6 +48,7 @@ final class BuildingButton extends Button {
                 skin,
                 bundle,
                 bigDecimalFormatter,
+                transaction,
                 bakeryService,
                 building
             )
@@ -64,7 +66,7 @@ final class BuildingButton extends Button {
 
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    bakeryService.completeTransaction(building);
+                    transaction.complete(building);
                 }
             }
         );
@@ -75,6 +77,7 @@ final class BuildingButton extends Button {
                     skin,
                     bundle,
                     bigDecimalFormatter,
+                    transaction,
                     bakeryService,
                     building
                 )
@@ -91,7 +94,7 @@ final class BuildingButton extends Button {
     @Override
     public void act(float delta) {
         super.act(delta);
-        var isDisabled = !bakeryService.canAfford(building);
+        var isDisabled = !transaction.canAfford(building);
         if (isDisabled() == isDisabled) {
             return;
         }

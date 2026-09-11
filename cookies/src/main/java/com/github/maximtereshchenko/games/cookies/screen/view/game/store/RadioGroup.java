@@ -1,11 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 
-final class RadioGroup extends ButtonGroup<CheckBox> {
+final class RadioGroup<T extends TransactionConfigurationCheckbox> extends ButtonGroup<T> {
 
-    RadioGroup(CheckBox... checkBoxes) {
+    @SafeVarargs
+    RadioGroup(T... checkBoxes) {
         super(checkBoxes);
         setMaxCheckCount(1);
         setMinCheckCount(1);

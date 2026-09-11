@@ -32,15 +32,21 @@ public final class StorePanel extends Table {
             skin,
             bundle.get("store.section.buildings")
         );
-        var transactionModePanel = new TransactionModePanel(skin);
+        var transaction = new Transaction(bakeryService);
+        var transactionPanel = new TransactionConfigurationPanel(
+            skin,
+            bundle,
+            transaction
+        );
         upgradesBeam.addListener(upgradePanel.eventListener());
         upgradePanel.addListener(upgradesBeam.eventListener());
-        transactionModePanel.addListener(buildingsBeam.eventListener());
+        transactionPanel.addListener(buildingsBeam.eventListener());
         var buildingPanel = new BuildingPanel(
             skin,
             bundle,
             buildingsBeam.eventListener(),
             bigDecimalFormatter,
+            transaction,
             bakeryService
         );
         defaults()
@@ -56,7 +62,7 @@ public final class StorePanel extends Table {
         add(upgradesBeam).row();
         add(upgradePanel).row();
         add(buildingsBeam).row();
-        add(transactionModePanel).row();
+        add(transactionPanel).row();
         add(buildingPanel);
         top();
     }

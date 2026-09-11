@@ -15,6 +15,7 @@ import java.util.Optional;
 
 final class BuildingTooltipPanel extends TooltipPanel {
 
+    private final Transaction transaction;
     private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
     private final Building building;
@@ -23,9 +24,11 @@ final class BuildingTooltipPanel extends TooltipPanel {
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
+        Transaction transaction,
         BakeryService bakeryService,
         Building building
     ) {
+        this.transaction = transaction;
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.building = building;
@@ -62,7 +65,7 @@ final class BuildingTooltipPanel extends TooltipPanel {
             new TransactionValueLabel(
                 skin,
                 bigDecimalFormatter,
-                bakeryService,
+                transaction,
                 building
             )
         );

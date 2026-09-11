@@ -53,15 +53,23 @@ public final class BakeryService {
         playerProgress.cumulativeClicks++;
     }
 
-    public void completeTransaction(Building building) {
+    public void completeTransaction(
+        Building building,
+        TransactionMode transactionMode,
+        int amount
+    ) {
         playerProgress.balance =
             playerProgress.balance.subtract(
-                transactionValue(building)
+                transactionValue(
+                    building,
+                    transactionMode,
+                    amount
+                )
             );
         playerProgress.buildingCounts
             .computeIfPresent(
                 building,
-                (_, current) -> current + 1
+                (_, current) -> current + amount
             );
     }
 
@@ -82,14 +90,20 @@ public final class BakeryService {
         return rounded(playerProgress.balance);
     }
 
-    public BigDecimal transactionValue(Building building) {
-        return configuration.buildingBasePrices()
-            .get(building)
-            .multiply(
-                BigDecimal.valueOf(1.15)
-                    .pow(count(building))
-            )
-            .setScale(0, RoundingMode.CEILING);
+    public BigDecimal transactionValue(
+        Building building,
+        TransactionMode transactionMode,
+        int amount
+    ) {
+        var count = count(building);
+        return switch (transactionMode) {
+            case BUY -> price(
+                building,
+                count,
+                count + amount
+            );
+            case SELL -> throw new IllegalArgumentException();
+        };
     }
 
     public boolean isUnlocked(Upgrade upgrade) {
@@ -152,8 +166,21 @@ public final class BakeryService {
         };
     }
 
-    public boolean canAfford(Building building) {
-        return canAfford(transactionValue(building));
+    public boolean canAfford(
+        Building building,
+        TransactionMode transactionMode,
+        int amount
+    ) {
+        return switch (transactionMode) {
+            case BUY -> canAfford(
+                transactionValue(
+                    building,
+                    transactionMode,
+                    amount
+                )
+            );
+            case SELL -> true;
+        };
     }
 
     public boolean canAfford(Upgrade upgrade) {
@@ -184,6 +211,26 @@ public final class BakeryService {
     public boolean isUnlocked(Achievement achievement) {
         return playerProgress.unlockedAchievements
             .contains(achievement);
+    }
+
+    public BigDecimal basePrice(Building building) {
+        return price(building, 0, 1);
+    }
+
+    private BigDecimal price(Building building, int from, int to) {
+        var price = BigDecimal.ZERO;
+        for (var i = from; i < to; i++) {
+            price = price.add(
+                configuration.buildingBasePrices()
+                    .get(building)
+                    .multiply(
+                        BigDecimal.valueOf(1.15)
+                            .pow(i)
+                    )
+                    .setScale(0, RoundingMode.CEILING)
+            );
+        }
+        return price;
     }
 
     private void unlockAchievements() {
