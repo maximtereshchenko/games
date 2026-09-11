@@ -7,20 +7,13 @@ import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.github.maximtereshchenko.games.common.screen.StageScreen;
-import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Configuration;
-import com.github.maximtereshchenko.games.cookies.screen.BakeryScreen;
-import com.github.maximtereshchenko.games.cookies.screen.view.BakeryView;
-import com.github.maximtereshchenko.games.cookies.screen.view.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
+import com.github.maximtereshchenko.games.cookies.screen.ScreenFactory;
 
-import java.time.Clock;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 final class CookiesGameAdapter implements ApplicationListener {
 
@@ -52,47 +45,41 @@ final class CookiesGameAdapter implements ApplicationListener {
             Configuration.class,
             new ConfigurationLoader(fileHandleResolver)
         );
-        var skinAssetDescriptor = new AssetDescriptor<>(
-            "skin.json",
-            Skin.class
+        cookiesGame = new CookiesGame(
+            Set.of(spriteBatch, assetManager)
         );
-        var gameBundleAssetDescriptor = new AssetDescriptor<>(
-            "game",
-            I18NBundle.class
+        var screenFactory = new ScreenFactory(
+            spriteBatch,
+            assetManager,
+            new Assets(
+                new Assets.Loading(
+                    new AssetDescriptor<>(
+                        "loading.json",
+                        Skin.class
+                    ),
+                    new AssetDescriptor<>(
+                        "loading",
+                        I18NBundle.class
+                    )
+                ),
+                new Assets.Game(
+                    new AssetDescriptor<>(
+                        "configuration.json",
+                        Configuration.class
+                    ),
+                    new AssetDescriptor<>(
+                        "game.json",
+                        Skin.class
+                    ),
+                    new AssetDescriptor<>(
+                        "game",
+                        I18NBundle.class
+                    )
+                )
+            ),
+            cookiesGame
         );
-        var configurationAssetDescriptor = new AssetDescriptor<>(
-            "configuration.json",
-            Configuration.class
-        );
-        assetManager.load(skinAssetDescriptor);
-        assetManager.load(gameBundleAssetDescriptor);
-        assetManager.load(configurationAssetDescriptor);
-        assetManager.finishLoading();
-        var clock = Clock.systemDefaultZone();
-        var bakeryService = new BakeryService(
-            assetManager.get(configurationAssetDescriptor),
-            clock
-        );
-        var skin = assetManager.get(skinAssetDescriptor);
-        var random = ThreadLocalRandom.current();
-        var stage = new Stage(new ScreenViewport(), spriteBatch);
-        stage.addActor(
-            new BakeryView(
-                skin,
-                assetManager.get(gameBundleAssetDescriptor),
-                new BigDecimalFormatter(),
-                bakeryService,
-                random,
-                clock
-            )
-        );
-        cookiesGame = new CookiesGame(Set.of(spriteBatch));
-        cookiesGame.setScreen(
-            new BakeryScreen(
-                new StageScreen(stage),
-                bakeryService
-            )
-        );
+        cookiesGame.setScreen(screenFactory.loadingScreen());
     }
 
     @Override

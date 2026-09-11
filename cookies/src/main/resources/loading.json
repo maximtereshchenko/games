@@ -1,0 +1,38 @@
+{
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+    "merriweather": {
+      "file": "merriweather.fnt",
+      "scaledSize": 20
+    }
+  },
+  "com.badlogic.gdx.graphics.Color": {
+    "white": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.loading.LoadingView$Style": {
+    "default": {
+      "background": "noise"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.loading.LoadingPanel$Style": {
+    "default": {
+      "background": "gradient-borders"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.loading.Spinner$Style": {
+    "bottom": {
+      "drawable": "orbs-big",
+      "top": "orbs-small"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": {
+      "font": "merriweather",
+      "fontColor": "white"
+    }
+  }
+}
