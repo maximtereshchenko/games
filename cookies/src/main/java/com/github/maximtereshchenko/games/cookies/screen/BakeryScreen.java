@@ -2,15 +2,22 @@ package com.github.maximtereshchenko.games.cookies.screen;
 
 import com.badlogic.gdx.Screen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.domain.PlayerProgress;
 
 public final class BakeryScreen implements Screen {
 
     private final Screen original;
     private final BakeryService bakeryService;
+    private final PlayerProgress playerProgress;
 
-    public BakeryScreen(Screen original, BakeryService bakeryService) {
+    public BakeryScreen(
+        Screen original,
+        BakeryService bakeryService,
+        PlayerProgress playerProgress
+    ) {
         this.original = original;
         this.bakeryService = bakeryService;
+        this.playerProgress = playerProgress;
     }
 
     @Override
@@ -47,5 +54,6 @@ public final class BakeryScreen implements Screen {
     @Override
     public void dispose() {
         original.dispose();
+        playerProgress.flush();
     }
 }

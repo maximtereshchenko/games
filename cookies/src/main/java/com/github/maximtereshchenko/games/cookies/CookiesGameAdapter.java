@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.cookies;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
@@ -45,6 +46,10 @@ final class CookiesGameAdapter implements ApplicationListener {
             Configuration.class,
             new ConfigurationLoader(fileHandleResolver)
         );
+        assetManager.setLoader(
+            Preferences.class,
+            new PreferencesLoader(fileHandleResolver)
+        );
         cookiesGame = new CookiesGame(
             Set.of(spriteBatch, assetManager)
         );
@@ -66,6 +71,10 @@ final class CookiesGameAdapter implements ApplicationListener {
                     new AssetDescriptor<>(
                         "configuration.json",
                         Configuration.class
+                    ),
+                    new AssetDescriptor<>(
+                        "com.github.maximtereshchenko.games.cookies.domain.PlayerProgress",
+                        Preferences.class
                     ),
                     new AssetDescriptor<>(
                         "game.json",

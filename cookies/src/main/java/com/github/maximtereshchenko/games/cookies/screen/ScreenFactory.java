@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.domain.PlayerProgress;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BakeryView;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.loading.LoadingView;
@@ -56,22 +57,35 @@ public final class ScreenFactory {
     Screen bakeryScreen() {
         var gameAssets = assets.game();
         var clock = Clock.systemDefaultZone();
-        var bakeryService = new BakeryService(
-            assetManager.get(gameAssets.configuration()),
+        var playerProgress = new PlayerProgress(
+            assetManager.get(
+                gameAssets.preferences()
+            ),
             clock
+        );
+        var bakeryService = new BakeryService(
+            assetManager.get(
+                gameAssets.configuration()
+            ),
+            playerProgress
         );
         return new BakeryScreen(
             stageScreen(
                 new BakeryView(
-                    assetManager.get(gameAssets.skin()),
-                    assetManager.get(gameAssets.bundle()),
+                    assetManager.get(
+                        gameAssets.skin()
+                    ),
+                    assetManager.get(
+                        gameAssets.bundle()
+                    ),
                     new BigDecimalFormatter(),
                     bakeryService,
                     ThreadLocalRandom.current(),
                     clock
                 )
             ),
-            bakeryService
+            bakeryService,
+            playerProgress
         );
     }
 

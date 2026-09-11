@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.cookies.domain;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.time.Clock;
 import java.time.Instant;
 import java.util.function.BinaryOperator;
 
@@ -14,10 +13,10 @@ public final class BakeryService {
 
     public BakeryService(
         Configuration configuration,
-        Clock clock
+        PlayerProgress playerProgress
     ) {
         this.configuration = configuration;
-        this.playerProgress = new PlayerProgress(clock);
+        this.playerProgress = playerProgress;
     }
 
     public void update(float deltaTimeSeconds) {
@@ -59,7 +58,7 @@ public final class BakeryService {
             playerProgress.balance.subtract(
                 transactionValue(building)
             );
-        playerProgress.buildings
+        playerProgress.buildingCounts
             .computeIfPresent(
                 building,
                 (_, current) -> current + 1
@@ -76,7 +75,7 @@ public final class BakeryService {
     }
 
     public int count(Building building) {
-        return playerProgress.buildings.get(building);
+        return playerProgress.buildingCounts.get(building);
     }
 
     public BigDecimal balance() {
@@ -258,7 +257,7 @@ public final class BakeryService {
     private boolean isRequirementSatisfied(
         TieredUnlockRequirement requirement
     ) {
-        return playerProgress.buildings
+        return playerProgress.buildingCounts
                    .get(requirement.building()) >=
                configuration.upgradeTiers()
                    .get(requirement.tier())
@@ -268,7 +267,7 @@ public final class BakeryService {
     private boolean isRequirementSatisfied(
         BuildingCountUnlockRequirement requirement
     ) {
-        return playerProgress.buildings
+        return playerProgress.buildingCounts
                    .get(requirement.building()) >= requirement.count();
     }
 
