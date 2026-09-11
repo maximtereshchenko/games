@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
+import java.math.BigDecimal;
+
 final class TransactionValueLabel extends Label {
 
     private final Style style;
@@ -48,7 +50,10 @@ final class TransactionValueLabel extends Label {
     }
 
     private Color color() {
-        if (transaction.canAfford(building)) {
+        if (
+            transaction.canAfford(building) &&
+            transaction.value(building).compareTo(BigDecimal.ZERO) > 0
+        ) {
             return style.enabledFontColor;
         }
         return style.disabledFontColor;

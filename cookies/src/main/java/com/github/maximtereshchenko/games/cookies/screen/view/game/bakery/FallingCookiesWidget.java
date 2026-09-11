@@ -81,7 +81,7 @@ final class FallingCookiesWidget extends WidgetGroup {
     }
 
     private boolean greaterThan(BigDecimal bigDecimal, int value) {
-        return bigDecimal.compareTo(BigDecimal.valueOf(value)) >= 0;
+        return bigDecimal.compareTo(new BigDecimal(value)) >= 0;
     }
 
     private static final class Style {

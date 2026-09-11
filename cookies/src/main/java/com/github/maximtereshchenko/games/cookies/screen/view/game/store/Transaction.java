@@ -23,6 +23,10 @@ final class Transaction {
         this.amount = amount;
     }
 
+    TransactionMode mode() {
+        return mode;
+    }
+
     BigDecimal value(Building building) {
         return bakeryService.transactionValue(
             building,

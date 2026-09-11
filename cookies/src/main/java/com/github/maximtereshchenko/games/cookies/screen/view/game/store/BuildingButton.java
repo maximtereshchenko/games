@@ -9,12 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.domain.TransactionMode;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class BuildingButton extends Button {
 
     private final Style style;
     private final Transaction transaction;
+    private final BakeryService bakeryService;
     private final Building building;
 
     BuildingButton(
@@ -33,6 +35,7 @@ final class BuildingButton extends Button {
         super(buttonStyle);
         this.style = buttonStyle;
         this.transaction = transaction;
+        this.bakeryService = bakeryService;
         this.building = building;
         add(
             new BuildingIcon(
@@ -94,12 +97,18 @@ final class BuildingButton extends Button {
     @Override
     public void act(float delta) {
         super.act(delta);
-        var isDisabled = !transaction.canAfford(building);
+        var isDisabled = shouldDisable();
         if (isDisabled() == isDisabled) {
             return;
         }
         setDisabled(isDisabled);
         addAction(Actions.color(color(isDisabled), 0.5f));
+    }
+
+    private boolean shouldDisable() {
+        return !transaction.canAfford(building) ||
+               (transaction.mode() == TransactionMode.SELL &&
+                bakeryService.count(building) == 0);
     }
 
     private Color color(boolean isDisabled) {

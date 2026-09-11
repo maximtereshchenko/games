@@ -58,18 +58,26 @@ public final class BakeryService {
         TransactionMode transactionMode,
         int amount
     ) {
+        var transactionValue = transactionValue(
+            building,
+            transactionMode,
+            amount
+        );
         playerProgress.balance =
-            playerProgress.balance.subtract(
-                transactionValue(
-                    building,
-                    transactionMode,
-                    amount
-                )
+            playerProgress.balance.add(
+                switch (transactionMode) {
+                    case BUY -> transactionValue.negate();
+                    case SELL -> transactionValue;
+                }
+
             );
         playerProgress.buildingCounts
             .computeIfPresent(
                 building,
-                (_, current) -> current + amount
+                (_, current) -> switch (transactionMode) {
+                    case BUY -> current + amount;
+                    case SELL -> Math.max(0, current - amount);
+                }
             );
     }
 
@@ -87,7 +95,10 @@ public final class BakeryService {
     }
 
     public BigDecimal balance() {
-        return rounded(playerProgress.balance);
+        return rounded(
+            playerProgress.balance,
+            RoundingMode.FLOOR
+        );
     }
 
     public BigDecimal transactionValue(
@@ -102,7 +113,15 @@ public final class BakeryService {
                 count,
                 count + amount
             );
-            case SELL -> throw new IllegalArgumentException();
+            case SELL -> rounded(
+                price(
+                    building,
+                    Math.max(0, count - amount),
+                    count
+                )
+                    .multiply(BigDecimal.valueOf(0.25)),
+                RoundingMode.CEILING
+            );
         };
     }
 
@@ -117,9 +136,7 @@ public final class BakeryService {
             bakingRate = bakingRate.add(
                 bakingRate(building)
                     .multiply(
-                        BigDecimal.valueOf(
-                            count(building)
-                        )
+                        new BigDecimal(count(building))
                     )
             );
         }
@@ -188,7 +205,10 @@ public final class BakeryService {
     }
 
     public BigDecimal cumulativeBaked() {
-        return rounded(playerProgress.cumulativeBaked);
+        return rounded(
+            playerProgress.cumulativeBaked,
+            RoundingMode.FLOOR
+        );
     }
 
     public Instant timestamp() {
@@ -221,13 +241,15 @@ public final class BakeryService {
         var price = BigDecimal.ZERO;
         for (var i = from; i < to; i++) {
             price = price.add(
-                configuration.buildingBasePrices()
-                    .get(building)
-                    .multiply(
-                        BigDecimal.valueOf(1.15)
-                            .pow(i)
-                    )
-                    .setScale(0, RoundingMode.CEILING)
+                rounded(
+                    configuration.buildingBasePrices()
+                        .get(building)
+                        .multiply(
+                            BigDecimal.valueOf(1.15)
+                                .pow(i)
+                        ),
+                    RoundingMode.CEILING
+                )
             );
         }
         return price;
@@ -257,8 +279,11 @@ public final class BakeryService {
                    .compareTo(requirement.value()) >= 0;
     }
 
-    private BigDecimal rounded(BigDecimal value) {
-        return value.setScale(0, RoundingMode.FLOOR);
+    private BigDecimal rounded(
+        BigDecimal value,
+        RoundingMode roundingMode
+    ) {
+        return value.setScale(0, roundingMode);
     }
 
     private boolean canAfford(BigDecimal value) {
@@ -295,7 +320,7 @@ public final class BakeryService {
                    .compareTo(
                        price(upgrade)
                            .divide(
-                               BigDecimal.valueOf(50),
+                               new BigDecimal(50),
                                MathContext.UNLIMITED
                            )
                    ) >= 0;
@@ -513,14 +538,14 @@ public final class BakeryService {
             multiplied(
                 multiplied(
                     BigDecimal.valueOf(0.1)
-                        .multiply(BigDecimal.valueOf(nonCursorBuildingCount())),
-                    BigDecimal.valueOf(5),
+                        .multiply(new BigDecimal(nonCursorBuildingCount())),
+                    new BigDecimal(5),
                     Upgrade.CURSOR_TIER_4
                 ),
-                BigDecimal.valueOf(10),
+                new BigDecimal(10),
                 Upgrade.CURSOR_TIER_5
             ),
-            BigDecimal.valueOf(20),
+            new BigDecimal(20),
             Upgrade.CURSOR_TIER_6,
             Upgrade.CURSOR_TIER_7,
             Upgrade.CURSOR_TIER_8,
