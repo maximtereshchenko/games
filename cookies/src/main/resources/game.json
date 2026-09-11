@@ -1885,34 +1885,58 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.store.BuildingButton$Style": {
     "0": {
-      "up": "marble_0",
-      "disabled": "marble_0",
-      "down": "marble-gradient-black_0",
-      "over": "marble-gradient-white_0",
+      "buy": {
+        "up": "marble_0",
+        "down": "marble-gradient-black_0",
+        "over": "marble-gradient-white_0"
+      },
+      "sell": {
+        "up": "marble-gradient-red_0",
+        "down": "marble-gradient-blush_0",
+        "over": "marble-gradient-coral_0"
+      },
       "enabledColor": "white",
       "disabledColor": "white-transparent-60"
     },
     "1": {
-      "up": "marble_1",
-      "disabled": "marble_1",
-      "down": "marble-gradient-black_1",
-      "over": "marble-gradient-white_1",
+      "buy": {
+        "up": "marble_1",
+        "down": "marble-gradient-black_1",
+        "over": "marble-gradient-white_1"
+      },
+      "sell": {
+        "up": "marble-gradient-red_1",
+        "down": "marble-gradient-blush_1",
+        "over": "marble-gradient-coral_1"
+      },
       "enabledColor": "white",
       "disabledColor": "white-transparent-60"
     },
     "2": {
-      "up": "marble_2",
-      "disabled": "marble_2",
-      "down": "marble-gradient-black_2",
-      "over": "marble-gradient-white_2",
+      "buy": {
+        "up": "marble_2",
+        "down": "marble-gradient-black_2",
+        "over": "marble-gradient-white_2"
+      },
+      "sell": {
+        "up": "marble-gradient-red_2",
+        "down": "marble-gradient-blush_2",
+        "over": "marble-gradient-coral_2"
+      },
       "enabledColor": "white",
       "disabledColor": "white-transparent-60"
     },
     "3": {
-      "up": "marble_3",
-      "disabled": "marble_3",
-      "down": "marble-gradient-black_3",
-      "over": "marble-gradient-white_3",
+      "buy": {
+        "up": "marble_3",
+        "down": "marble-gradient-black_3",
+        "over": "marble-gradient-white_3"
+      },
+      "sell": {
+        "up": "marble-gradient-red_3",
+        "down": "marble-gradient-blush_3",
+        "over": "marble-gradient-coral_3"
+      },
       "enabledColor": "white",
       "disabledColor": "white-transparent-60"
     }

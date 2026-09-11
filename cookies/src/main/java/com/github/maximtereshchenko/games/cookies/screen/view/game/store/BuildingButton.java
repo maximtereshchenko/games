@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
@@ -28,12 +29,10 @@ final class BuildingButton extends Button {
         Building building,
         int index
     ) {
-        var buttonStyle = skin.get(
+        this.style = skin.get(
             String.valueOf(index % 4),
             Style.class
         );
-        super(buttonStyle);
-        this.style = buttonStyle;
         this.transaction = transaction;
         this.bakeryService = bakeryService;
         this.building = building;
@@ -97,12 +96,33 @@ final class BuildingButton extends Button {
     @Override
     public void act(float delta) {
         super.act(delta);
+        setStyle(buttonStyle());
         var isDisabled = shouldDisable();
         if (isDisabled() == isDisabled) {
             return;
         }
         setDisabled(isDisabled);
         addAction(Actions.color(color(isDisabled), 0.5f));
+    }
+
+    private ButtonStyle buttonStyle() {
+        return buttonStyle(
+            switch (transaction.mode()) {
+                case BUY -> style.buy;
+                case SELL -> style.sell;
+            }
+        );
+    }
+
+    private ButtonStyle buttonStyle(
+        Style.TransactionModeStyle transactionModeStyle
+    ) {
+        var buttonStyle = new ButtonStyle();
+        buttonStyle.up = transactionModeStyle.up;
+        buttonStyle.disabled = transactionModeStyle.up;
+        buttonStyle.down = transactionModeStyle.down;
+        buttonStyle.over = transactionModeStyle.over;
+        return buttonStyle;
     }
 
     private boolean shouldDisable() {
@@ -118,9 +138,18 @@ final class BuildingButton extends Button {
         return style.enabledColor;
     }
 
-    private static final class Style extends ButtonStyle {
+    private static final class Style {
 
+        TransactionModeStyle buy;
+        TransactionModeStyle sell;
         Color enabledColor;
         Color disabledColor;
+
+        private static final class TransactionModeStyle {
+
+            Drawable up;
+            Drawable down;
+            Drawable over;
+        }
     }
 }
