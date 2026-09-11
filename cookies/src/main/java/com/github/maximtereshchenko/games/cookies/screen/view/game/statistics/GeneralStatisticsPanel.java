@@ -6,16 +6,13 @@ import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.SmallCookieIcon;
 
-import java.time.Clock;
-
 final class GeneralStatisticsPanel extends StatisticLinePanel {
 
     GeneralStatisticsPanel(
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
-        BakeryService bakeryService,
-        Clock clock
+        BakeryService bakeryService
     ) {
         super(
             new StatisticsLine(
@@ -44,8 +41,7 @@ final class GeneralStatisticsPanel extends StatisticLinePanel {
                 new TimePassedStatisticsLabel(
                     skin,
                     bundle,
-                    bakeryService,
-                    clock
+                    bakeryService
                 )
             ),
             new StatisticsLine(

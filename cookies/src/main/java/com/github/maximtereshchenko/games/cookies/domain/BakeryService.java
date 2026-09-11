@@ -3,26 +3,43 @@ package com.github.maximtereshchenko.games.cookies.domain;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BinaryOperator;
 
 public final class BakeryService {
 
     private final Configuration configuration;
     private final PlayerProgress playerProgress;
+    private final Clock clock;
 
     public BakeryService(
         Configuration configuration,
-        PlayerProgress playerProgress
+        PlayerProgress playerProgress,
+        Clock clock
     ) {
         this.configuration = configuration;
         this.playerProgress = playerProgress;
+        this.clock = clock;
     }
 
-    public void update(float deltaTimeSeconds) {
+    public void update() {
+        var now = Instant.now(clock);
         var amount = bakingRate()
             .multiply(
-                BigDecimal.valueOf(deltaTimeSeconds)
+                new BigDecimal(
+                    Duration.between(
+                            playerProgress.lastUpdatedTimestamp,
+                            now
+                        )
+                        .toMillis()
+                )
+                    .divide(
+                        new BigDecimal(TimeUnit.SECONDS.toMillis(1)),
+                        MathContext.UNLIMITED
+                    )
             );
         playerProgress.balance =
             playerProgress.balance.add(
@@ -32,6 +49,7 @@ public final class BakeryService {
             playerProgress.cumulativeBaked.add(
                 amount
             );
+        playerProgress.lastUpdatedTimestamp = now;
         unlockUpgrades();
         unlockAchievements();
     }
@@ -211,8 +229,12 @@ public final class BakeryService {
         );
     }
 
-    public Instant timestamp() {
-        return playerProgress.timestamp;
+    public Instant createdTimestamp() {
+        return playerProgress.createdTimestamp;
+    }
+
+    public Instant lastUpdatedTimestamp() {
+        return playerProgress.lastUpdatedTimestamp;
     }
 
     public long cumulativeClicks() {

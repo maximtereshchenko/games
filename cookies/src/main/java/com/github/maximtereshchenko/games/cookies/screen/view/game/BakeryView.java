@@ -9,7 +9,6 @@ import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BakeryPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.store.StorePanel;
 
-import java.time.Clock;
 import java.util.Random;
 
 public final class BakeryView extends ScreenLayout {
@@ -19,8 +18,7 @@ public final class BakeryView extends ScreenLayout {
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
-        Random random,
-        Clock clock
+        Random random
     ) {
         setBackground(skin.get(Style.class).background);
         defaults().growY();
@@ -41,8 +39,7 @@ public final class BakeryView extends ScreenLayout {
                 bundle,
                 bigDecimalFormatter,
                 bakeryService,
-                random,
-                clock
+                random
             )
         )
             .growX();

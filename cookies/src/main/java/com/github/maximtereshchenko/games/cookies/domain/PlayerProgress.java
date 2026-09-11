@@ -16,7 +16,8 @@ public final class PlayerProgress {
     private static final String UPGRADE_UNLOCKED_KEY = "upgrades.%s.unlocked";
     private static final String UPGRADE_ACTIVE_KEY = "upgrades.%s.active";
     private static final String ACHIEVEMENT_UNLOCKED_KEY = "achievements.%s.unlocked";
-    private static final String TIMESTAMP_KEY = "timestamp";
+    private static final String CREATED_TIMESTAMP_KEY = "created-timestamp";
+    private static final String LAST_UPDATED_TIMESTAMP_KEY = "last-updated-timestamp";
     private static final String BALANCE_KEY = "balance";
     private static final String CUMULATIVE_BAKED_KEY = "cumulative-baked";
     private static final String CUMULATIVE_MANUALLY_BAKED_KEY = "cumulative-manually-baked";
@@ -26,8 +27,9 @@ public final class PlayerProgress {
     final Set<Upgrade> unlockedUpgrades;
     final Set<Upgrade> activeUpgrades;
     final Set<Achievement> unlockedAchievements;
-    final Instant timestamp;
+    final Instant createdTimestamp;
     private final Preferences preferences;
+    Instant lastUpdatedTimestamp;
     BigDecimal balance;
     BigDecimal cumulativeBaked;
     BigDecimal cumulativeManuallyBaked;
@@ -39,7 +41,14 @@ public final class PlayerProgress {
         this.unlockedUpgrades = new HashSet<>();
         this.activeUpgrades = new HashSet<>();
         this.unlockedAchievements = new HashSet<>();
-        this.timestamp = timestamp(clock);
+        this.createdTimestamp = timestamp(
+            CREATED_TIMESTAMP_KEY,
+            clock
+        );
+        this.lastUpdatedTimestamp = timestamp(
+            LAST_UPDATED_TIMESTAMP_KEY,
+            clock
+        );
         this.balance = bigDecimal(BALANCE_KEY);
         this.cumulativeBaked = bigDecimal(
             CUMULATIVE_BAKED_KEY
@@ -69,6 +78,7 @@ public final class PlayerProgress {
     }
 
     public void flush() {
+        preferences.clear();
         for (var building : Building.values()) {
             preferences.putInteger(
                 BUILDING_COUNT_KEY.formatted(building),
@@ -79,8 +89,12 @@ public final class PlayerProgress {
         putTrue(activeUpgrades, UPGRADE_ACTIVE_KEY);
         putTrue(unlockedAchievements, ACHIEVEMENT_UNLOCKED_KEY);
         preferences.putString(
-            TIMESTAMP_KEY,
-            timestamp.toString()
+            CREATED_TIMESTAMP_KEY,
+            createdTimestamp.toString()
+        );
+        preferences.putString(
+            LAST_UPDATED_TIMESTAMP_KEY,
+            lastUpdatedTimestamp.toString()
         );
         preferences.putString(
             BALANCE_KEY,
@@ -120,10 +134,11 @@ public final class PlayerProgress {
     }
 
     private Instant timestamp(
+        String key,
         Clock clock
     ) {
-        if (preferences.contains(TIMESTAMP_KEY)) {
-            return Instant.parse(preferences.getString(TIMESTAMP_KEY));
+        if (preferences.contains(key)) {
+            return Instant.parse(preferences.getString(key));
         }
         return Instant.now(clock);
     }

@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-import java.time.Clock;
 import java.util.Random;
 
 final class NavigablePanel extends Table {
@@ -17,16 +16,14 @@ final class NavigablePanel extends Table {
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
-        Random random,
-        Clock clock
+        Random random
     ) {
         var mainPanel = new MainPanel(
             skin,
             bundle,
             bigDecimalFormatter,
             bakeryService,
-            random,
-            clock
+            random
         );
         defaults().growX();
         add(

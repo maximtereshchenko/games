@@ -67,7 +67,8 @@ public final class ScreenFactory {
             assetManager.get(
                 gameAssets.configuration()
             ),
-            playerProgress
+            playerProgress,
+            clock
         );
         return new BakeryScreen(
             stageScreen(
@@ -80,8 +81,7 @@ public final class ScreenFactory {
                     ),
                     new BigDecimalFormatter(),
                     bakeryService,
-                    ThreadLocalRandom.current(),
-                    clock
+                    ThreadLocalRandom.current()
                 )
             ),
             bakeryService,
