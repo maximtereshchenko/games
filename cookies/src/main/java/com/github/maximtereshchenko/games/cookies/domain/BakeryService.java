@@ -259,6 +259,11 @@ public final class BakeryService {
         return price(building, 0, 1);
     }
 
+    public float milk() {
+        return configuration.milkPercentPerUnlockedAchievement() *
+               playerProgress.unlockedAchievements.size();
+    }
+
     private BigDecimal price(Building building, int from, int to) {
         var price = BigDecimal.ZERO;
         for (var i = from; i < to; i++) {

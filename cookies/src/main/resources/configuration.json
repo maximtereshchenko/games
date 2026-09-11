@@ -1873,5 +1873,6 @@
       "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeBakedUnlockRequirement",
       "value": "1E72"
     }
-  }
+  },
+  "milkPercentPerUnlockedAchievement": 0.04
 }

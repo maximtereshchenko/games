@@ -5,14 +5,17 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
 final class MilkWidget extends Widget {
 
     private final Style style;
+    private final BakeryService bakeryService;
     private float offsetPercentage;
 
-    MilkWidget(Skin skin) {
+    MilkWidget(Skin skin, BakeryService bakeryService) {
         this.style = skin.get(Style.class);
+        this.bakeryService = bakeryService;
         setTouchable(Touchable.disabled);
     }
 
@@ -34,7 +37,8 @@ final class MilkWidget extends Widget {
         style.drawable.draw(
             batch,
             getX() + getWidth() * offsetPercentage - shift,
-            getY() - 0.6f * style.drawable.getMinHeight(),
+            getY() - Math.max(0, 1 - bakeryService.milk()) *
+                     style.drawable.getMinHeight(),
             getWidth(),
             style.drawable.getMinHeight()
         );

@@ -11,5 +11,6 @@ public record Configuration(
     List<UpgradeTier> upgradeTiers,
     Map<Upgrade, UpgradeUnlockRequirement> upgradeUnlockRequirements,
     Map<Upgrade, Price> upgradePrices,
-    Map<Achievement, AchievementUnlockRequirement> achievementUnlockRequirements
+    Map<Achievement, AchievementUnlockRequirement> achievementUnlockRequirements,
+    float milkPercentPerUnlockedAchievement
 ) {}

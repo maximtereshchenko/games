@@ -54,7 +54,7 @@ public final class BakeryPanel extends Container<Stack> {
                 bakeryService
             )
         );
-        stack.add(new MilkWidget(skin));
+        stack.add(new MilkWidget(skin, bakeryService));
         setActor(stack);
     }
 }
