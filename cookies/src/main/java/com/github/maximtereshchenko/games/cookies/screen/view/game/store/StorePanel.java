@@ -38,13 +38,13 @@ public final class StorePanel extends Table {
             bundle,
             transaction
         );
-        upgradesBeam.addListener(upgradePanel.eventListener());
-        upgradePanel.addListener(upgradesBeam.eventListener());
-        transactionPanel.addListener(buildingsBeam.eventListener());
+        upgradesBeam.addListener(upgradePanel);
+        upgradePanel.addListener(upgradesBeam);
+        transactionPanel.addListener(buildingsBeam);
         var buildingPanel = new BuildingPanel(
             skin,
             bundle,
-            buildingsBeam.eventListener(),
+            buildingsBeam,
             bigDecimalFormatter,
             transaction,
             bakeryService

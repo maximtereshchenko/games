@@ -1,9 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -16,13 +13,14 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFor
 import java.util.HashSet;
 import java.util.Set;
 
-final class UpgradePanel extends Container<Table> {
+final class UpgradePanel extends Container<Table> implements EventListener {
 
     private final Skin skin;
     private final I18NBundle bundle;
     private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
     private final Set<Upgrade> upgrades;
+    private final EventListener delegateListener;
     private boolean isExpanded;
 
     UpgradePanel(
@@ -37,12 +35,13 @@ final class UpgradePanel extends Container<Table> {
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.upgrades = new HashSet<>();
+        this.delegateListener = new DelegateListener();
         this.isExpanded = false;
         clip();
         fill();
         top();
         setTransform(true);
-        addListener(eventListener());
+        addListener(this);
     }
 
     @Override
@@ -62,61 +61,9 @@ final class UpgradePanel extends Container<Table> {
         }
     }
 
-    EventListener eventListener() {
-        return new InputListener() {
-
-            @Override
-            public void enter(
-                InputEvent event,
-                float x,
-                float y,
-                int pointer,
-                Actor fromActor
-            ) {
-                setExpanded(
-                    pointer,
-                    fromActor,
-                    event.getListenerActor(),
-                    true
-                );
-            }
-
-            @Override
-            public void exit(
-                InputEvent event,
-                float x,
-                float y,
-                int pointer,
-                Actor toActor
-            ) {
-                setExpanded(
-                    pointer,
-                    toActor,
-                    event.getListenerActor(),
-                    false
-                );
-            }
-        };
-    }
-
-    private void setExpanded(
-        int pointer,
-        Actor related,
-        Actor listenerActor,
-        boolean isExpanded
-    ) {
-        if (
-            pointer == -1 &&
-            !isInside(related, listenerActor) &&
-            this.isExpanded != isExpanded
-        ) {
-            this.isExpanded = isExpanded;
-            invalidateHierarchy();
-        }
-    }
-
-    private boolean isInside(Actor related, Actor listenerActor) {
-        return related != null && related.isDescendantOf(listenerActor);
+    @Override
+    public boolean handle(Event event) {
+        return delegateListener.handle(event);
     }
 
     private void addUpgradeButton(Upgrade upgrade) {
@@ -161,6 +108,61 @@ final class UpgradePanel extends Container<Table> {
             if (table.getChildren().size % 5 == 0) {
                 table.row();
             }
+        }
+    }
+
+    private final class DelegateListener extends InputListener {
+
+        @Override
+        public void enter(
+            InputEvent event,
+            float x,
+            float y,
+            int pointer,
+            Actor fromActor
+        ) {
+            setExpanded(
+                pointer,
+                fromActor,
+                event.getListenerActor(),
+                true
+            );
+        }
+
+        @Override
+        public void exit(
+            InputEvent event,
+            float x,
+            float y,
+            int pointer,
+            Actor toActor
+        ) {
+            setExpanded(
+                pointer,
+                toActor,
+                event.getListenerActor(),
+                false
+            );
+        }
+
+        private void setExpanded(
+            int pointer,
+            Actor related,
+            Actor listenerActor,
+            boolean isExpanded
+        ) {
+            if (
+                pointer == -1 &&
+                !isInside(related, listenerActor) &&
+                UpgradePanel.this.isExpanded != isExpanded
+            ) {
+                UpgradePanel.this.isExpanded = isExpanded;
+                invalidateHierarchy();
+            }
+        }
+
+        private boolean isInside(Actor related, Actor listenerActor) {
+            return related != null && related.isDescendantOf(listenerActor);
         }
     }
 }
