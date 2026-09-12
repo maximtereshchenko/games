@@ -1,13 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 
 final class BuildingTooltipWidget extends ParentLeftTooltipWidget {
 
-    BuildingTooltipWidget(Skin skin, Table table) {
-        super(skin, table);
+    BuildingTooltipWidget(PopUpFrame popUpFrame) {
+        super(popUpFrame);
     }
 
     @Override

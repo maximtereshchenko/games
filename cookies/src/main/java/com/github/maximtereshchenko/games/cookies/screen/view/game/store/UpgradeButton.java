@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 
 final class UpgradeButton extends Container<ImageButton> {
 
@@ -33,13 +34,15 @@ final class UpgradeButton extends Container<ImageButton> {
         background(style.background);
         addListener(
             new UpgradeTooltipWidget(
-                skin,
-                new UnlockedUpgradeTooltipPanel(
+                new PopUpFrame(
                     skin,
-                    bundle,
-                    bigDecimalFormatter,
-                    bakeryService,
-                    upgrade
+                    new UnlockedUpgradeTooltipPanel(
+                        skin,
+                        bundle,
+                        bigDecimalFormatter,
+                        bakeryService,
+                        upgrade
+                    )
                 )
             )
         );

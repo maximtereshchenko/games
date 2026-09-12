@@ -12,6 +12,7 @@ import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.TransactionMode;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 
 final class BuildingButton extends Button {
 
@@ -74,14 +75,16 @@ final class BuildingButton extends Button {
         );
         addListener(
             new BuildingTooltipWidget(
-                skin,
-                new BuildingTooltipPanel(
+                new PopUpFrame(
                     skin,
-                    bundle,
-                    bigDecimalFormatter,
-                    transaction,
-                    bakeryService,
-                    building
+                    new BuildingTooltipPanel(
+                        skin,
+                        bundle,
+                        bigDecimalFormatter,
+                        transaction,
+                        bakeryService,
+                        building
+                    )
                 )
             )
         );

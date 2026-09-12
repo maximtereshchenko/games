@@ -2,23 +2,13 @@ package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.ui.Tooltip;
+import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 
-public abstract class TooltipWidget extends Tooltip<Stack> {
+public abstract class TooltipWidget extends Tooltip<PopUpFrame> {
 
-    protected TooltipWidget(Skin skin, Table table) {
-        super(new Stack(), new InstantTooltipManager());
-        var style = skin.get(Style.class);
-        var stack = getActor();
-        for (var drawable : style.drawables) {
-            stack.add(new Image(drawable));
-        }
-        stack.add(
-            new Container<>(table)
-                .fill()
-                .pad(8, 16, 8, 16)
-        );
+    protected TooltipWidget(PopUpFrame popUpFrame) {
+        super(popUpFrame, new InstantTooltipManager());
         getContainer().minWidth(380);
     }
 
@@ -66,10 +56,5 @@ public abstract class TooltipWidget extends Tooltip<Stack> {
         protected void hideAction(Tooltip tooltip) {
             tooltip.getContainer().remove();
         }
-    }
-
-    private static final class Style {
-
-        Drawable[] drawables;
     }
 }

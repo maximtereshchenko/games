@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeIcon;
 
 import java.util.HashSet;
@@ -58,13 +59,15 @@ final class ActiveUpgradeIconPanel extends HorizontalGroup {
             );
             upgradeIcon.addListener(
                 new StatisticsTooltipWidget(
-                    skin,
-                    new ActiveUpgradeTooltipPanel(
+                    new PopUpFrame(
                         skin,
-                        bundle,
-                        bigDecimalFormatter,
-                        bakeryService,
-                        upgrade
+                        new ActiveUpgradeTooltipPanel(
+                            skin,
+                            bundle,
+                            bigDecimalFormatter,
+                            bakeryService,
+                            upgrade
+                        )
                     )
                 )
             );

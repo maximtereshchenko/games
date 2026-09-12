@@ -1981,7 +1981,7 @@
       ]
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.game.TooltipWidget$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame$Style": {
     "default": {
       "drawables": [
         "noise-tiled",
