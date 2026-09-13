@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementIcon;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.UnlockAchievementAction;
 
 final class HoverableAchievementIcon extends AchievementIcon {
 

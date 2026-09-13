@@ -13,7 +13,6 @@ public final class PopUpFrame extends Stack {
         add(
             new Container<>(table)
                 .fill()
-                .pad(8, 16, 8, 16)
         );
     }
 

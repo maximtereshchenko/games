@@ -2,10 +2,13 @@ package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Align;
 
 public class FlavorTextLabel extends Label {
 
     public FlavorTextLabel(Skin skin, String text) {
         super(text, skin, "flavor-text");
+        setAlignment(Align.right);
+        setWrap(true);
     }
 }

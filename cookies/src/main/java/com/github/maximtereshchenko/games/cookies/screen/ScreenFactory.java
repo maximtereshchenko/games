@@ -5,8 +5,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.PlayerProgress;
@@ -89,9 +89,10 @@ public final class ScreenFactory {
         );
     }
 
-    private Screen stageScreen(ScreenLayout screenLayout) {
+    private Screen stageScreen(WidgetGroup widgetGroup) {
+        widgetGroup.setFillParent(true);
         var stage = new Stage(new ScreenViewport(), spriteBatch);
-        stage.addActor(screenLayout);
+        stage.addActor(widgetGroup);
         return new StageScreen(stage);
     }
 }

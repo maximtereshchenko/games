@@ -4,9 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
-final class TooltipSeparator extends Image {
+public final class PopUpSeparator extends Image {
 
-    TooltipSeparator(Skin skin) {
+    public PopUpSeparator(Skin skin) {
         super(skin.get(Style.class).drawable);
     }
 

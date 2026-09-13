@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
+package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -6,13 +6,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-class AchievementIcon extends Image {
+public class AchievementIcon extends Image {
 
     private final Style style;
     private final BakeryService bakeryService;
     private final Achievement achievement;
 
-    AchievementIcon(
+    public AchievementIcon(
         Skin skin,
         BakeryService bakeryService,
         Achievement achievement

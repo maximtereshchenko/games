@@ -2,9 +2,8 @@ package com.github.maximtereshchenko.games.snakes.screen.view.main;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
-import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 
-public final class MainView extends ScreenLayout {
+public final class MainView extends Table {
 
     public MainView(
         ModesView modesView,

@@ -8,11 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.maximtereshchenko.games.common.event.EventBus;
-import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 import com.github.maximtereshchenko.games.common.screen.StageScreen;
 import com.github.maximtereshchenko.games.snakes.UserProfile;
 import com.github.maximtereshchenko.games.snakes.configuration.Assets;
@@ -234,9 +234,10 @@ public final class ScreenFactory {
         userProfile.updateMusicVolume(volume);
     }
 
-    private Stage stage(ScreenLayout screenLayout) {
+    private Stage stage(WidgetGroup widgetGroup) {
+        widgetGroup.setFillParent(true);
         var stage = new Stage(new ScreenViewport(), spriteBatch);
-        stage.addActor(screenLayout);
+        stage.addActor(widgetGroup);
         return stage;
     }
 }

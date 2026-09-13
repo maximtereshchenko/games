@@ -1,13 +1,11 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
+package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.TooltipWidget;
 
-final class StatisticsTooltipWidget extends TooltipWidget {
+public final class TopCenterTooltipWidget extends TooltipWidget {
 
-    StatisticsTooltipWidget(PopUpFrame popUpFrame) {
+    public TopCenterTooltipWidget(PopUpFrame popUpFrame) {
         super(popUpFrame);
     }
 

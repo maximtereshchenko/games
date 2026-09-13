@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
+package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -8,19 +8,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.Badge;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.FlavorTextLabel;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.TooltipPanel;
 
 import java.util.List;
 import java.util.Optional;
 
-final class AchievementTooltipPanel extends TooltipPanel {
+public final class AchievementTooltipPanel extends TooltipPanel {
 
     private final BakeryService bakeryService;
     private final Achievement achievement;
 
-    AchievementTooltipPanel(
+    public AchievementTooltipPanel(
         Skin skin,
         I18NBundle bundle,
         BakeryService bakeryService,
@@ -66,9 +63,7 @@ final class AchievementTooltipPanel extends TooltipPanel {
         return List.of(
             new Badge(
                 skin,
-                bundle.get(
-                    "statistics.achievement.tooltip.badge"
-                )
+                bundle.get("achievement.tooltip.badge")
             ),
             new AchievementBadge(
                 skin,

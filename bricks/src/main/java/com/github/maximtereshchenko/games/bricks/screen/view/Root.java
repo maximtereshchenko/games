@@ -1,11 +1,11 @@
 package com.github.maximtereshchenko.games.bricks.screen.view;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.github.maximtereshchenko.games.bricks.configuration.Configuration;
-import com.github.maximtereshchenko.games.common.screen.ScreenLayout;
 
-public abstract class Root extends ScreenLayout {
+public abstract class Root extends Table {
 
     protected Root(
         Configuration configuration,
@@ -23,5 +23,6 @@ public abstract class Root extends ScreenLayout {
             )
                 .tint(userInterface.color())
         );
+        setFillParent(true);
     }
 }

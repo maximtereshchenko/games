@@ -1,4 +1,4 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
+package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -7,16 +7,16 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-final class AchievementNameLabel extends Label {
+public final class AchievementNameLabel extends Label {
 
-    AchievementNameLabel(
+    public AchievementNameLabel(
         Skin skin,
         I18NBundle bundle,
         BakeryService bakeryService,
         Achievement achievement
     ) {
         super(
-            bundle.get("statistics.achievement.tooltip.locked.name"),
+            bundle.get("achievement.locked.name"),
             skin,
             "achievement-name"
         );
@@ -27,7 +27,7 @@ final class AchievementNameLabel extends Label {
                 Actions.run(
                     () -> setText(
                         bundle.get(
-                            "statistics.achievement.%s.name"
+                            "achievement.%s.name"
                                 .formatted(achievement.name())
                         )
                     )

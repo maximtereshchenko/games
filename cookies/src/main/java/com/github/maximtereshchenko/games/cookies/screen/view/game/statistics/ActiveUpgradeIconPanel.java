@@ -8,6 +8,7 @@ import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTooltipWidget;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeIcon;
 
 import java.util.HashSet;
@@ -58,7 +59,7 @@ final class ActiveUpgradeIconPanel extends HorizontalGroup {
                 upgrade
             );
             upgradeIcon.addListener(
-                new StatisticsTooltipWidget(
+                new TopCenterTooltipWidget(
                     new PopUpFrame(
                         skin,
                         new ActiveUpgradeTooltipPanel(

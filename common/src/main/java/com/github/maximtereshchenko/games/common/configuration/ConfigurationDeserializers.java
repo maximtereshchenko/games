@@ -7,9 +7,9 @@ import tools.jackson.databind.JavaType;
 import tools.jackson.databind.ValueDeserializer;
 import tools.jackson.databind.module.SimpleDeserializers;
 
- final class ConfigurationDeserializers extends SimpleDeserializers {
+final class ConfigurationDeserializers extends SimpleDeserializers {
 
-     ConfigurationDeserializers() {
+    ConfigurationDeserializers() {
         addDeserializer(AssetDescriptor.class, new AssetDescriptorDeserializer());
     }
 

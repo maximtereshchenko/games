@@ -1,24 +1,22 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
+package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
-final class AchievementDescriptionLabel extends Label {
+final class AchievementBadge extends Badge {
 
-    AchievementDescriptionLabel(
+    AchievementBadge(
         Skin skin,
         I18NBundle bundle,
         BakeryService bakeryService,
         Achievement achievement
     ) {
         super(
-            bundle.get("statistics.achievement.tooltip.locked.description"),
             skin,
-            "achievement-description"
+            bundle.get("achievement.tooltip.badge.locked")
         );
         addAction(
             new UnlockAchievementAction(
@@ -27,8 +25,7 @@ final class AchievementDescriptionLabel extends Label {
                 Actions.run(
                     () -> setText(
                         bundle.get(
-                            "statistics.achievement.%s.description"
-                                .formatted(achievement.name())
+                            "achievement.tooltip.badge.unlocked"
                         )
                     )
                 )

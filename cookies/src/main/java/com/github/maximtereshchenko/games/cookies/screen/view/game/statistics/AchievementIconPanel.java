@@ -6,7 +6,9 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementTooltipPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTooltipWidget;
 
 final class AchievementIconPanel extends HorizontalGroup {
 
@@ -24,7 +26,7 @@ final class AchievementIconPanel extends HorizontalGroup {
                 achievement
             );
             achievementIcon.addListener(
-                new StatisticsTooltipWidget(
+                new TopCenterTooltipWidget(
                     new PopUpFrame(
                         skin,
                         new AchievementTooltipPanel(

@@ -13,6 +13,7 @@ public abstract class TooltipPanel extends Table {
         Skin skin,
         I18NBundle bundle
     ) {
+        pad(8, 16, 8, 16);
         add(icon(skin))
             .width(Value.prefWidth);
         add(header(skin, bundle))
@@ -31,12 +32,13 @@ public abstract class TooltipPanel extends Table {
             .ifPresent(
                 flavorText -> add(flavorText)
                     .colspan(2)
-                    .right()
                     .padBottom(8)
+                    .growX()
                     .row()
             );
         footer(skin, bundle)
             .ifPresent(footer -> addFooter(skin, footer));
+
     }
 
     protected abstract Image icon(Skin skin);
@@ -68,7 +70,7 @@ public abstract class TooltipPanel extends Table {
     );
 
     private void addSeparator(Skin skin) {
-        add(new TooltipSeparator(skin))
+        add(new PopUpSeparator(skin))
             .colspan(2)
             .growX()
             .padBottom(8)

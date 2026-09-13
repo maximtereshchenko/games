@@ -82,6 +82,12 @@
       "b": 1,
       "a": 0.9
     },
+    "black-transparent-0": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    },
     "black-transparent-20": {
       "r": 0,
       "g": 0,
@@ -161,6 +167,10 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
+    "empty-black-transparent-0": {
+      "name": "empty",
+      "color": "black-transparent-0"
+    },
     "empty-black-transparent-25": {
       "name": "empty",
       "color": "black-transparent-25"
@@ -286,6 +296,10 @@
     "achievement-description": {
       "font": "tahoma-10",
       "fontColor": "white"
+    },
+    "achievement-unlocked": {
+      "font": "tahoma-10",
+      "fontColor": "white"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
@@ -305,6 +319,11 @@
       "fontColor": "white-transparent-60",
       "up": "wooden-logs-right-bottom",
       "over": "wooden-logs-right-bottom-bright"
+    },
+    "close": {
+      "font": "merriweather-10",
+      "fontColor": "white",
+      "up": "empty-black-transparent-0"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.store.TransactionConfigurationPanel$Style": {
@@ -2615,12 +2634,12 @@
       "drawable": "cookie-small"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.game.TooltipSeparator$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpSeparator$Style": {
     "default": {
       "drawable": "gradient-line-left-right"
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.AchievementIcon$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementIcon$Style": {
     "CUMULATIVE_BAKED_TIER_0": {
       "unlocked": "cookie-cyan-outline_0",
       "locked": "question-mark"
