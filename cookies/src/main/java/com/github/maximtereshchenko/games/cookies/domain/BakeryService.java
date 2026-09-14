@@ -80,8 +80,9 @@ public final class BakeryService {
         playerProgress.cumulativeClicks++;
     }
 
-    public void consumeGoldenCookie() {
+    public Buff consumeGoldenCookie() {
         goldenCookieTimestamp = Instant.now(clock);
+        return Buff.FRENZY;
     }
 
     public void completeTransaction(

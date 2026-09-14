@@ -12,7 +12,8 @@ final class FlareWidget extends Image {
 
     FlareWidget(Skin skin) {
         super(skin.get(Style.class).drawable);
-        scaleBy(2);
+        var initialScale = 2;
+        setScale(initialScale);
         getColor().a = 0;
         addAction(
             Actions.forever(
@@ -27,7 +28,7 @@ final class FlareWidget extends Image {
                         Actions.scaleTo(4, 4, CYCLE_TIME_SECONDS),
                         Actions.fadeOut(CYCLE_TIME_SECONDS)
                     ),
-                    Actions.scaleTo(2, 2)
+                    Actions.scaleTo(initialScale, initialScale)
                 )
             )
         );

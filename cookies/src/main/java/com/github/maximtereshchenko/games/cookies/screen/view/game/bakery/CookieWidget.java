@@ -20,12 +20,11 @@ final class CookieWidget extends Container<Stack> {
     ) {
         background(skin.get(Style.class).background);
         size(Value.percentWidth(0.4f, this));
-        var first = new FlareWidget(skin);
-        var second = new FlareWidget(skin);
-        second.act(FlareWidget.CYCLE_TIME_SECONDS);
+        var flareWidget = new FlareWidget(skin);
+        flareWidget.act(FlareWidget.CYCLE_TIME_SECONDS);
         var stack = new Stack();
-        stack.add(first);
-        stack.add(second);
+        stack.add(new FlareWidget(skin));
+        stack.add(flareWidget);
         stack.add(new CursorRingsWidget(skin, bakeryService));
         stack.add(
             new CookieButton(

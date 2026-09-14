@@ -58,6 +58,7 @@ public final class BakeryPanel extends Container<Stack> {
         stack.add(
             new GoldenCookieOverlay(
                 skin,
+                bundle,
                 bakeryService,
                 random
             )

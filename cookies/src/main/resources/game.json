@@ -187,6 +187,10 @@
       "name": "empty-circle",
       "color": "white-transparent-50"
     },
+    "empty-circle-black-transparent-50": {
+      "name": "empty-circle",
+      "color": "black-transparent-50"
+    },
     "milk-plain-white-transparent-90": {
       "name": "milk-plain",
       "color": "white-transparent-90"
@@ -303,6 +307,14 @@
     },
     "achievement-unlocked": {
       "font": "tahoma-10",
+      "fontColor": "white"
+    },
+    "buff-name-notification": {
+      "font": "merriweather-20",
+      "fontColor": "white"
+    },
+    "buff-description-notification": {
+      "font": "merriweather-16",
       "fontColor": "white"
     }
   },
@@ -2842,6 +2854,11 @@
       "locked": "white-transparent-50",
       "unlocked": "white",
       "over": "white"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.GoldenCookieNotification$Style": {
+    "default": {
+      "background": "empty-circle-black-transparent-50"
     }
   }
 }

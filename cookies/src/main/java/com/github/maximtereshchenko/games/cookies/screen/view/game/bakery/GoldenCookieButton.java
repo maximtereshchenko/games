@@ -1,10 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 
 import java.time.Duration;
@@ -19,6 +22,7 @@ final class GoldenCookieButton extends Button {
 
     GoldenCookieButton(
         Skin skin,
+        I18NBundle bundle,
         BakeryService bakeryService,
         Random random
     ) {
@@ -33,7 +37,21 @@ final class GoldenCookieButton extends Button {
 
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    bakeryService.consumeGoldenCookie();
+                    var mousePointer = new Vector2(
+                        Gdx.input.getX(),
+                        Gdx.input.getY()
+                    );
+                    var stage = getStage();
+                    stage.screenToStageCoordinates(mousePointer);
+                    stage.addActor(
+                        new GoldenCookieNotification(
+                            skin,
+                            bundle,
+                            mousePointer.x,
+                            mousePointer.y,
+                            bakeryService.consumeGoldenCookie()
+                        )
+                    );
                 }
             }
         );
