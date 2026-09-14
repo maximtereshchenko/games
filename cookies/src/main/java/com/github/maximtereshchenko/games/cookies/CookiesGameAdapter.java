@@ -15,6 +15,7 @@ import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.ScreenFactory;
 
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 final class CookiesGameAdapter implements ApplicationListener {
 
@@ -86,7 +87,8 @@ final class CookiesGameAdapter implements ApplicationListener {
                     )
                 )
             ),
-            cookiesGame
+            cookiesGame,
+            ThreadLocalRandom.current()
         );
         cookiesGame.setScreen(screenFactory.loadingScreen());
     }

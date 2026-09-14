@@ -107,7 +107,7 @@ public final class NotificationOverlay extends Table {
 
     private void add(PopUpFrame notification, PopUpFrame closeButton) {
         var row = add(notification)
-            .width(400)
+            .width(300)
             .getRow();
         notification.addListener(
             new ChangeListener() {

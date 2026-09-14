@@ -6,126 +6,112 @@ filter: Nearest, Nearest
 repeat: none
 alchemy-device
   rotate: false
-  xy: 204, 413
+  xy: 757, 13
   size: 53, 47
   orig: 53, 47
   offset: 0, 0
   index: -1
 alchemy-lab
   rotate: false
-  xy: 797, 828
+  xy: 882, 568
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 alchemy-lab-disabled
   rotate: false
-  xy: 798, 958
+  xy: 910, 698
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 alembic-alabascream
   rotate: false
-  xy: 260, 460
+  xy: 942, 354
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-astrofudge
   rotate: false
-  xy: 260, 410
+  xy: 972, 648
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-berrylium
   rotate: false
-  xy: 260, 360
+  xy: 970, 520
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-blueberrylium
   rotate: false
-  xy: 260, 310
+  xy: 970, 470
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-buttergold
   rotate: false
-  xy: 260, 260
+  xy: 970, 420
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-chalcedhoney
   rotate: false
-  xy: 260, 210
+  xy: 812, 12
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-cherrysilver
   rotate: false
-  xy: 260, 160
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-alembic-glimmeringue
-  rotate: false
-  xy: 780, 516
+  xy: 862, 12
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bank
   rotate: false
-  xy: 797, 698
+  xy: 948, 570
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-bank-building
-  rotate: false
-  xy: 52, 7
-  size: 53, 49
-  orig: 53, 49
-  offset: 0, 0
-  index: -1
 bank-disabled
   rotate: false
-  xy: 797, 632
+  xy: 920, 285
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 barrens
   rotate: false
-  xy: 873, 894
+  xy: 796, 894
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 beam-horizontal
   rotate: false
-  xy: 359, 2
+  xy: 2, 2
   size: 512, 16
   orig: 512, 16
   offset: 0, 0
   index: -1
 beam-vertical
   rotate: false
-  xy: 520, 510
+  xy: 516, 510
   size: 16, 512
   orig: 16, 512
   offset: 0, 0
   index: -1
 borders
   rotate: false
-  xy: 311, 9
+  xy: 521, 499
   size: 9, 9
   split: 3, 3, 3, 3
   orig: 9, 9
@@ -133,49 +119,49 @@ borders
   index: -1
 cash-storage
   rotate: false
-  xy: 873, 764
+  xy: 796, 764
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 cookie
   rotate: false
-  xy: 311, 20
+  xy: 2, 20
   size: 484, 488
   orig: 484, 488
   offset: 0, 0
   index: -1
 cookie-small
   rotate: false
-  xy: 1003, 874
+  xy: 488, 41
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 cookies
   rotate: false
-  xy: 6, 510
+  xy: 2, 510
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 0
 cursor
   rotate: false
-  xy: 260, 126
+  xy: 882, 534
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 empty
   rotate: false
-  xy: 255, 2
+  xy: 944, 351
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 empty-circle
   rotate: false
-  xy: 322, 9
+  xy: 678, 48
   size: 9, 9
   split: 4, 4, 4, 4
   orig: 9, 9
@@ -183,98 +169,105 @@ empty-circle
   index: -1
 factory
   rotate: false
-  xy: 797, 566
+  xy: 920, 219
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 factory-building
   rotate: false
-  xy: 2, 3
+  xy: 488, 327
   size: 48, 53
   orig: 48, 53
   offset: 0, 0
   index: -1
 factory-disabled
   rotate: false
-  xy: 797, 450
+  xy: 920, 153
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 farm
   rotate: false
-  xy: 797, 384
+  xy: 920, 87
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 farm-disabled
   rotate: false
-  xy: 797, 318
+  xy: 920, 21
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 flare
   rotate: false
-  xy: 538, 894
+  xy: 780, 634
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 frame-brown
   rotate: false
-  xy: 798, 896
+  xy: 910, 636
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-frame-brown-bright
+garden-bed
   rotate: false
-  xy: 734, 782
-  size: 60, 60
-  orig: 60, 60
+  xy: 618, 11
+  size: 58, 46
+  orig: 58, 46
   offset: 0, 0
   index: -1
-frame-brown-dark
+golden-cookie
   rotate: false
-  xy: 72, 382
-  size: 60, 60
-  orig: 60, 60
+  xy: 926, 926
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+golden-cookie-bright
+  rotate: false
+  xy: 926, 828
+  size: 96, 96
+  orig: 96, 96
   offset: 0, 0
   index: -1
 gradient-borders
   rotate: false
-  xy: 2, 124
+  xy: 538, 766
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 gradient-bottom
   rotate: false
-  xy: 1003, 958
+  xy: 976, 698
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
 gradient-bottom-long
   rotate: false
-  xy: 2, 382
+  xy: 534, 382
   size: 2, 640
   orig: 2, 640
   offset: 0, 0
   index: -1
 gradient-left
   rotate: false
-  xy: 6, 392
+  xy: 840, 333
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
 gradient-line-left-right
   rotate: false
-  xy: 52, 4
+  xy: 488, 59
   size: 201, 1
   split: 100, 100, 0, 1
   orig: 201, 1
@@ -282,7 +275,7 @@ gradient-line-left-right
   index: -1
 gradient-line-right
   rotate: false
-  xy: 255, 5
+  xy: 840, 351
   size: 102, 1
   split: 1, 100, 0, 1
   orig: 102, 1
@@ -290,210 +283,140 @@ gradient-line-right
   index: -1
 gradient-right
   rotate: false
-  xy: 797, 36
+  xy: 691, 44
   size: 64, 16
   orig: 64, 16
   offset: 0, 0
   index: -1
 gradient-top
   rotate: false
-  xy: 1003, 892
+  xy: 994, 698
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: -1
 gradient-top-long
   rotate: false
-  xy: 304, 94
+  xy: 1012, 698
   size: 2, 64
   orig: 2, 64
   offset: 0, 0
   index: -1
 grandma
   rotate: false
-  xy: 830, 516
+  xy: 992, 370
   size: 29, 48
   orig: 29, 48
   offset: 0, 0
   index: -1
-grandma-face
-  rotate: false
-  xy: 797, 252
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-grandma-face-disabled
-  rotate: false
-  xy: 797, 186
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 grassland
   rotate: false
-  xy: 668, 894
+  xy: 790, 196
   size: 128, 128
   orig: 128, 128
-  offset: 0, 0
-  index: -1
-hand-tilted
-  rotate: false
-  xy: 797, 120
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-hand-tilted-disabled
-  rotate: false
-  xy: 797, 54
-  size: 64, 64
-  orig: 64, 64
   offset: 0, 0
   index: -1
 industrial-zone
   rotate: false
-  xy: 538, 764
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-jungle
-  rotate: false
-  xy: 873, 634
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-kitchen
-  rotate: false
-  xy: 873, 504
+  xy: 840, 404
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 marble-gradient-black
   rotate: false
-  xy: 2, 58
+  xy: 538, 458
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
+marble-gradient-black
+  rotate: false
+  xy: 538, 392
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 1
+marble-gradient-black
+  rotate: false
+  xy: 538, 326
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 2
+marble-gradient-black
+  rotate: false
+  xy: 488, 260
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 3
+marble-gradient-blush
+  rotate: false
+  xy: 488, 194
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 0
+marble-gradient-blush
+  rotate: false
+  xy: 488, 128
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 1
+marble-gradient-blush
+  rotate: false
+  xy: 488, 62
+  size: 300, 64
+  orig: 300, 64
+  offset: 0, 0
+  index: 2
 milk-plain
   rotate: false
-  xy: 538, 522
+  xy: 538, 524
   size: 240, 240
   orig: 240, 240
   offset: 0, 0
   index: -1
-mine
-  rotate: false
-  xy: 668, 778
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-mine-disabled
-  rotate: false
-  xy: 863, 48
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-mine-entrance
-  rotate: false
-  xy: 204, 462
-  size: 54, 46
-  orig: 54, 46
-  offset: 0, 0
-  index: -1
-mountains
-  rotate: false
-  xy: 873, 374
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-night-forest
-  rotate: false
-  xy: 873, 244
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 rocket-building
   rotate: false
-  xy: 995, 56
+  xy: 488, 392
   size: 27, 56
   orig: 27, 56
   offset: 0, 0
   index: -1
-shipment
-  rotate: false
-  xy: 929, 48
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-shipment-disabled
-  rotate: false
-  xy: 6, 444
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-temple
-  rotate: false
-  xy: 72, 444
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-temple-building
-  rotate: false
-  xy: 873, 3
-  size: 54, 43
-  orig: 54, 43
-  offset: 0, 0
-  index: -1
-temple-disabled
-  rotate: false
-  xy: 138, 444
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 tower
   rotate: false
-  xy: 134, 384
+  xy: 488, 450
   size: 31, 58
   orig: 31, 58
   offset: 0, 0
   index: -1
-wooden-interior
-  rotate: false
-  xy: 873, 114
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 wooden-logs-left-bottom
   rotate: false
-  xy: 107, 8
+  xy: 780, 584
   size: 100, 48
   orig: 100, 48
   offset: 0, 0
   index: -1
 wooden-logs-left-bottom-bright
   rotate: false
-  xy: 209, 8
+  xy: 780, 534
   size: 100, 48
   orig: 100, 48
   offset: 0, 0
   index: -1
 wooden-logs-right-bottom
   rotate: false
-  xy: 668, 844
+  xy: 840, 354
+  size: 100, 48
+  orig: 100, 48
+  offset: 0, 0
+  index: -1
+wooden-logs-right-bottom-bright
+  rotate: false
+  xy: 516, 9
   size: 100, 48
   orig: 100, 48
   offset: 0, 0
@@ -504,893 +427,886 @@ size: 1024, 1024
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+alembic-glimmeringue
+  rotate: false
+  xy: 2, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
 alembic-glucosmium
   rotate: false
-  xy: 606, 302
+  xy: 52, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-hazelrald
   rotate: false
-  xy: 672, 368
+  xy: 578, 776
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 idol-hazelrald
   rotate: false
-  xy: 672, 368
+  xy: 578, 776
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-iridyum
   rotate: false
-  xy: 818, 846
+  xy: 628, 776
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-jetmint
   rotate: false
-  xy: 606, 252
+  xy: 633, 726
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-mooncandy
   rotate: false
-  xy: 722, 368
+  xy: 694, 710
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-plain
   rotate: false
-  xy: 818, 796
+  xy: 578, 663
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 alembic-sugarmuck
   rotate: false
-  xy: 606, 202
+  xy: 516, 652
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-alabascream
   rotate: false
-  xy: 772, 368
+  xy: 628, 663
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-astrofudge
   rotate: false
-  xy: 818, 746
+  xy: 744, 710
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-berrylium
   rotate: false
-  xy: 606, 152
+  xy: 760, 776
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-blueberrylium
   rotate: false
-  xy: 822, 368
+  xy: 744, 660
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-buttergold
   rotate: false
-  xy: 818, 696
+  xy: 566, 613
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-chalcedhoney
   rotate: false
-  xy: 606, 102
+  xy: 516, 602
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-cherrysilver
   rotate: false
-  xy: 818, 646
+  xy: 616, 613
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-glimmeringue
   rotate: false
-  xy: 606, 52
+  xy: 666, 613
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-glucosmium
   rotate: false
-  xy: 818, 596
+  xy: 716, 610
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-hazelrald
   rotate: false
-  xy: 818, 546
+  xy: 566, 563
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-iridyum
   rotate: false
-  xy: 818, 496
+  xy: 516, 552
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-jetmint
   rotate: false
-  xy: 884, 912
+  xy: 616, 563
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-mooncandy
   rotate: false
-  xy: 934, 914
+  xy: 666, 563
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-plain
   rotate: false
-  xy: 872, 368
+  xy: 766, 610
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 bag-sugarmuck
   rotate: false
-  xy: 606, 2
+  xy: 810, 776
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
+bank-building
+  rotate: false
+  xy: 578, 713
+  size: 53, 49
+  orig: 53, 49
+  offset: 0, 0
+  index: -1
 cookie-cosmic-sparkles
   rotate: false
-  xy: 656, 302
+  xy: 818, 974
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-cyan-outline
   rotate: false
-  xy: 656, 252
+  xy: 818, 924
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: 0
 cookie-cyan-outline
   rotate: false
-  xy: 656, 202
+  xy: 818, 874
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: 1
 cookie-cyan-outline
   rotate: false
-  xy: 656, 152
+  xy: 810, 726
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: 2
 cookie-cyan-outline
   rotate: false
-  xy: 656, 102
+  xy: 794, 676
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: 3
 cookie-eyeball-brown-white-ring
   rotate: false
-  xy: 656, 52
+  xy: 816, 626
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-brown-yellow-iris
   rotate: false
-  xy: 656, 2
+  xy: 844, 676
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-cluster
   rotate: false
-  xy: 706, 318
+  xy: 860, 824
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-floral-frame
   rotate: false
-  xy: 706, 268
+  xy: 868, 974
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-green
   rotate: false
-  xy: 756, 318
+  xy: 868, 924
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-large-red-ring
   rotate: false
-  xy: 706, 218
+  xy: 868, 874
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-pink
   rotate: false
-  xy: 756, 268
+  xy: 860, 774
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-red-cyan-ring
   rotate: false
-  xy: 806, 318
+  xy: 816, 576
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-red-hypnotic
   rotate: false
-  xy: 706, 168
+  xy: 716, 560
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-red-yellow-ring
   rotate: false
-  xy: 756, 218
+  xy: 566, 513
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-teal-blue
   rotate: false
-  xy: 806, 268
+  xy: 616, 513
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-eyeball-yellow-orange
   rotate: false
-  xy: 856, 318
+  xy: 666, 513
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-blue
   rotate: false
-  xy: 706, 118
+  xy: 766, 560
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-cyan
   rotate: false
-  xy: 756, 168
+  xy: 816, 526
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-green
   rotate: false
-  xy: 806, 218
+  xy: 716, 510
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-matrix-green
   rotate: false
-  xy: 856, 268
+  xy: 766, 510
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-orange
   rotate: false
-  xy: 706, 68
+  xy: 816, 476
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-pink
   rotate: false
-  xy: 756, 118
+  xy: 694, 460
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-halo-yellow
   rotate: false
-  xy: 806, 168
+  xy: 744, 460
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookie-medium
   rotate: false
-  xy: 856, 218
+  xy: 824, 426
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 cookies
   rotate: false
-  xy: 2, 498
+  xy: 2, 510
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 1
 cosmic-starburst-field
   rotate: false
-  xy: 706, 18
+  xy: 824, 376
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 deep-space-crimson-orb
   rotate: false
-  xy: 756, 68
+  xy: 874, 376
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 deep-space-cyan-orb
   rotate: false
-  xy: 806, 118
+  xy: 824, 326
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 deep-space-nebula
   rotate: false
-  xy: 856, 168
+  xy: 874, 326
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-garden-bed
+frame-brown-bright
   rotate: false
-  xy: 920, 964
-  size: 58, 46
-  orig: 58, 46
+  xy: 516, 764
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+frame-brown-dark
+  rotate: false
+  xy: 516, 702
+  size: 60, 60
+  orig: 60, 60
   offset: 0, 0
   index: -1
 gears-alabascream
   rotate: false
-  xy: 756, 18
+  xy: 924, 326
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-astrofudge
   rotate: false
-  xy: 806, 68
+  xy: 866, 626
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-berrylium
   rotate: false
-  xy: 856, 118
+  xy: 894, 724
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-blueberrylium
   rotate: false
-  xy: 806, 18
+  xy: 910, 824
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-buttergold
   rotate: false
-  xy: 856, 68
+  xy: 910, 774
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-chalcedhoney
   rotate: false
-  xy: 856, 18
+  xy: 918, 974
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-cherrysilver
   rotate: false
-  xy: 868, 846
+  xy: 918, 924
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-glimmeringue
   rotate: false
-  xy: 868, 796
+  xy: 918, 874
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-glucosmium
   rotate: false
-  xy: 868, 746
+  xy: 866, 576
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-hazelrald
   rotate: false
-  xy: 868, 696
+  xy: 874, 526
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-iridyum
   rotate: false
-  xy: 868, 646
+  xy: 916, 674
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-jetmint
   rotate: false
-  xy: 868, 596
+  xy: 944, 724
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-mooncandy
   rotate: false
-  xy: 868, 546
+  xy: 960, 824
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-plain
   rotate: false
-  xy: 868, 496
+  xy: 960, 774
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-sugarmuck
   rotate: false
-  xy: 906, 318
+  xy: 916, 624
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
+grandma-face
+  rotate: false
+  xy: 304, 314
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+grandma-face-disabled
+  rotate: false
+  xy: 304, 248
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 hand-alabascream
   rotate: false
-  xy: 906, 268
+  xy: 968, 974
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-astrofudge
   rotate: false
-  xy: 906, 218
+  xy: 968, 924
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-berrylium
   rotate: false
-  xy: 906, 168
+  xy: 968, 874
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-blueberrylium
   rotate: false
-  xy: 906, 118
+  xy: 874, 476
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-buttergold
   rotate: false
-  xy: 906, 68
+  xy: 924, 476
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-chalcedhoney
   rotate: false
-  xy: 906, 18
+  xy: 924, 574
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-cherrysilver
   rotate: false
-  xy: 934, 864
+  xy: 966, 674
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-glimmeringue
   rotate: false
-  xy: 918, 814
+  xy: 966, 624
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-glucosmium
   rotate: false
-  xy: 918, 764
+  xy: 924, 426
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-hazelrald
   rotate: false
-  xy: 918, 714
+  xy: 874, 426
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-iridyum
   rotate: false
-  xy: 918, 664
+  xy: 924, 376
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-jetmint
   rotate: false
-  xy: 918, 614
+  xy: 974, 376
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-mooncandy
   rotate: false
-  xy: 918, 564
+  xy: 974, 326
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-plain
   rotate: false
-  xy: 918, 514
+  xy: 974, 276
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-sugarmuck
   rotate: false
-  xy: 918, 464
+  xy: 974, 226
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
+hand-tilted
+  rotate: false
+  xy: 304, 182
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+hand-tilted-disabled
+  rotate: false
+  xy: 132, 116
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 idol-alabascream
   rotate: false
-  xy: 968, 814
+  xy: 974, 574
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 idol-astrofudge
   rotate: false
-  xy: 968, 764
+  xy: 974, 524
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 idol-berrylium
   rotate: false
-  xy: 968, 714
+  xy: 974, 474
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-blueberrylium
+jungle
   rotate: false
-  xy: 968, 664
-  size: 48, 48
-  orig: 48, 48
+  xy: 2, 380
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
-idol-buttergold
+kitchen
   rotate: false
-  xy: 968, 614
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-chalcedhoney
-  rotate: false
-  xy: 968, 564
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-cherrysilver
-  rotate: false
-  xy: 968, 514
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-glimmeringue
-  rotate: false
-  xy: 968, 464
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-glucosmium
-  rotate: false
-  xy: 922, 414
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-iridyum
-  rotate: false
-  xy: 956, 364
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-jetmint
-  rotate: false
-  xy: 956, 314
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-mooncandy
-  rotate: false
-  xy: 956, 264
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-plain
-  rotate: false
-  xy: 956, 214
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-idol-sugarmuck
-  rotate: false
-  xy: 956, 164
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-landscape-farm-alien-orb
-  rotate: false
-  xy: 956, 114
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-landscape-farm-daytime
-  rotate: false
-  xy: 956, 64
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-landscape-farm-desert
-  rotate: false
-  xy: 956, 14
-  size: 48, 48
-  orig: 48, 48
+  xy: 132, 380
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 marble
   rotate: false
-  xy: 304, 154
+  xy: 632, 48
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble
   rotate: false
-  xy: 304, 88
+  xy: 516, 958
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 1
 marble
   rotate: false
-  xy: 304, 22
+  xy: 516, 892
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 2
 marble
   rotate: false
-  xy: 606, 418
-  size: 300, 64
-  orig: 300, 64
-  offset: 0, 0
-  index: 3
-marble-gradient-black
-  rotate: false
-  xy: 2, 432
-  size: 300, 64
-  orig: 300, 64
-  offset: 0, 0
-  index: 1
-marble-gradient-black
-  rotate: false
-  xy: 516, 946
-  size: 300, 64
-  orig: 300, 64
-  offset: 0, 0
-  index: 2
-marble-gradient-black
-  rotate: false
-  xy: 2, 366
+  xy: 516, 826
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 3
 marble-gradient-blush
   rotate: false
-  xy: 516, 880
-  size: 300, 64
-  orig: 300, 64
-  offset: 0, 0
-  index: 0
-marble-gradient-blush
-  rotate: false
-  xy: 2, 300
-  size: 300, 64
-  orig: 300, 64
-  offset: 0, 0
-  index: 1
-marble-gradient-blush
-  rotate: false
-  xy: 516, 814
-  size: 300, 64
-  orig: 300, 64
-  offset: 0, 0
-  index: 2
-marble-gradient-blush
-  rotate: false
-  xy: 2, 234
+  xy: 392, 444
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 3
 marble-gradient-coral
   rotate: false
-  xy: 516, 748
+  xy: 392, 378
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble-gradient-coral
   rotate: false
-  xy: 2, 168
+  xy: 2, 314
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 1
 marble-gradient-coral
   rotate: false
-  xy: 516, 682
+  xy: 370, 312
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 2
 marble-gradient-coral
   rotate: false
-  xy: 2, 102
+  xy: 2, 248
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 3
 marble-gradient-red
   rotate: false
-  xy: 516, 616
+  xy: 370, 246
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble-gradient-red
   rotate: false
-  xy: 2, 36
+  xy: 2, 182
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 1
 marble-gradient-red
   rotate: false
-  xy: 516, 550
+  xy: 672, 246
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 2
 marble-gradient-red
   rotate: false
-  xy: 516, 484
+  xy: 672, 180
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 3
 marble-gradient-white
   rotate: false
-  xy: 304, 418
+  xy: 370, 180
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 0
 marble-gradient-white
   rotate: false
-  xy: 304, 352
+  xy: 330, 114
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 1
 marble-gradient-white
   rotate: false
-  xy: 304, 286
+  xy: 632, 114
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 2
 marble-gradient-white
   rotate: false
-  xy: 304, 220
+  xy: 330, 48
   size: 300, 64
   orig: 300, 64
   offset: 0, 0
   index: 3
+mine
+  rotate: false
+  xy: 198, 116
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+mine-disabled
+  rotate: false
+  xy: 264, 116
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+mine-entrance
+  rotate: false
+  xy: 102, 2
+  size: 54, 46
+  orig: 54, 46
+  offset: 0, 0
+  index: -1
+mountains
+  rotate: false
+  xy: 262, 380
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+night-forest
+  rotate: false
+  xy: 694, 314
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+shipment
+  rotate: false
+  xy: 132, 50
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+shipment-disabled
+  rotate: false
+  xy: 198, 50
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+temple
+  rotate: false
+  xy: 264, 50
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+temple-building
+  rotate: false
+  xy: 158, 5
+  size: 54, 43
+  orig: 54, 43
+  offset: 0, 0
+  index: -1
+temple-disabled
+  rotate: false
+  xy: 934, 114
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 wizard-tower
   rotate: false
-  xy: 606, 352
+  xy: 934, 48
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 wizard-tower-disabled
   rotate: false
-  xy: 818, 896
+  xy: 694, 760
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-wooden-logs-right-bottom-bright
+wooden-interior
   rotate: false
-  xy: 818, 962
-  size: 100, 48
-  orig: 100, 48
+  xy: 2, 52
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 
@@ -1406,758 +1322,856 @@ cookies
   orig: 512, 512
   offset: 0, 0
   index: 2
-landscape-farm-frost
+idol-blueberrylium
   rotate: false
   xy: 2, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-landscape-farm-giant-eyeball
+idol-buttergold
   rotate: false
   xy: 516, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-landscape-farm-golden
+idol-chalcedhoney
   rotate: false
   xy: 2, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-landscape-farm-infernal
+idol-cherrysilver
   rotate: false
   xy: 52, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-landscape-farm-psychedelic
-  rotate: false
-  xy: 52, 452
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-landscape-farm-molten-core
+idol-glimmeringue
   rotate: false
   xy: 516, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-landscape-farm-monochrome
+idol-glucosmium
   rotate: false
   xy: 566, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-landscape-farm-night
+idol-iridyum
   rotate: false
   xy: 2, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-alabascream
+idol-jetmint
   rotate: false
   xy: 52, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-astrofudge
+idol-mooncandy
   rotate: false
   xy: 102, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-berrylium
+idol-plain
   rotate: false
   xy: 516, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-blueberrylium
+idol-sugarmuck
   rotate: false
   xy: 566, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-buttergold
+landscape-farm-alien-orb
   rotate: false
   xy: 616, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-chalcedhoney
+landscape-farm-daytime
   rotate: false
   xy: 2, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-cherrysilver
+landscape-farm-desert
   rotate: false
   xy: 52, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-glimmeringue
+landscape-farm-frost
   rotate: false
   xy: 102, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-glucosmium
+landscape-farm-giant-eyeball
   rotate: false
   xy: 152, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-hazelrald
+landscape-farm-golden
   rotate: false
   xy: 516, 816
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-iridyum
+landscape-farm-infernal
   rotate: false
   xy: 566, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-jetmint
+landscape-farm-psychedelic
+  rotate: false
+  xy: 566, 866
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+landscape-farm-molten-core
   rotate: false
   xy: 616, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-mooncandy
+landscape-farm-monochrome
   rotate: false
   xy: 666, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-plain
+landscape-farm-night
   rotate: false
   xy: 2, 252
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-mouse-pointer-sugarmuck
+mouse-pointer-alabascream
   rotate: false
   xy: 52, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-alabascream
+mouse-pointer-astrofudge
   rotate: false
   xy: 102, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-astrofudge
+mouse-pointer-berrylium
   rotate: false
   xy: 152, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-berrylium
+mouse-pointer-blueberrylium
   rotate: false
   xy: 202, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-blueberrylium
+mouse-pointer-buttergold
   rotate: false
   xy: 516, 766
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-buttergold
+mouse-pointer-chalcedhoney
   rotate: false
   xy: 566, 816
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-chalcedhoney
+mouse-pointer-cherrysilver
   rotate: false
   xy: 616, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-cherrysilver
+mouse-pointer-glimmeringue
   rotate: false
   xy: 666, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-glimmeringue
+mouse-pointer-glucosmium
   rotate: false
   xy: 716, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-glucosmium
+mouse-pointer-hazelrald
   rotate: false
   xy: 2, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-hazelrald
+mouse-pointer-iridyum
   rotate: false
   xy: 52, 252
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-iridyum
+mouse-pointer-jetmint
   rotate: false
   xy: 102, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-jetmint
+mouse-pointer-mooncandy
   rotate: false
   xy: 152, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-mooncandy
+mouse-pointer-plain
   rotate: false
   xy: 202, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-plain
+mouse-pointer-sugarmuck
   rotate: false
   xy: 252, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-pickaxe-sugarmuck
+pickaxe-alabascream
   rotate: false
   xy: 516, 716
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-question-mark
+pickaxe-astrofudge
   rotate: false
   xy: 566, 766
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-alabascream
+pickaxe-berrylium
   rotate: false
   xy: 616, 816
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-astrofudge
+pickaxe-blueberrylium
   rotate: false
   xy: 666, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-berrylium
+pickaxe-buttergold
   rotate: false
   xy: 716, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-blueberrylium
+pickaxe-chalcedhoney
   rotate: false
   xy: 766, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-buttergold
+pickaxe-cherrysilver
   rotate: false
   xy: 2, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-chalcedhoney
+pickaxe-glimmeringue
   rotate: false
   xy: 52, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-cherrysilver
+pickaxe-glucosmium
   rotate: false
   xy: 102, 252
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-glimmeringue
+pickaxe-hazelrald
   rotate: false
   xy: 152, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-glucosmium
+pickaxe-iridyum
   rotate: false
   xy: 202, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-hazelrald
+pickaxe-jetmint
   rotate: false
   xy: 252, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-iridyum
+pickaxe-mooncandy
   rotate: false
   xy: 302, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-jetmint
+pickaxe-plain
   rotate: false
   xy: 516, 666
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-mooncandy
+pickaxe-sugarmuck
   rotate: false
   xy: 566, 716
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-plain
+question-mark
   rotate: false
   xy: 616, 766
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-sugarmuck
+rocket-alabascream
   rotate: false
   xy: 666, 816
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-alabascream
+rocket-astrofudge
   rotate: false
   xy: 716, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-astrofudge
+rocket-berrylium
   rotate: false
   xy: 766, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-berrylium
+rocket-blueberrylium
   rotate: false
   xy: 816, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-blueberrylium
+rocket-buttergold
   rotate: false
   xy: 2, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-buttergold
+rocket-chalcedhoney
   rotate: false
   xy: 52, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-chalcedhoney
+rocket-cherrysilver
   rotate: false
   xy: 102, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-cherrysilver
+rocket-glimmeringue
   rotate: false
   xy: 152, 252
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-glimmeringue
+rocket-glucosmium
   rotate: false
   xy: 202, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-glucosmium
+rocket-hazelrald
   rotate: false
   xy: 252, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-hazelrald
+rocket-iridyum
   rotate: false
   xy: 302, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-iridyum
+rocket-jetmint
   rotate: false
   xy: 352, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-jetmint
+rocket-mooncandy
   rotate: false
   xy: 516, 616
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-mooncandy
+rocket-plain
   rotate: false
   xy: 566, 666
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-plain
+rocket-sugarmuck
   rotate: false
   xy: 616, 716
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-sugarmuck
+rolling-pin-alabascream
   rotate: false
   xy: 666, 766
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-shadow-bust-glowing-eyes
+rolling-pin-astrofudge
   rotate: false
   xy: 716, 816
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-azure
+rolling-pin-berrylium
   rotate: false
   xy: 766, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-crimson
+rolling-pin-blueberrylium
   rotate: false
   xy: 816, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-neon
+rolling-pin-buttergold
   rotate: false
   xy: 866, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-neutral
+rolling-pin-chalcedhoney
   rotate: false
   xy: 2, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-porcelain
+rolling-pin-cherrysilver
   rotate: false
   xy: 52, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-shadowed
+rolling-pin-glimmeringue
   rotate: false
   xy: 102, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-terracotta
+rolling-pin-glucosmium
   rotate: false
   xy: 152, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-stone-bust-verdant
+rolling-pin-hazelrald
   rotate: false
   xy: 202, 252
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-alabascream
+rolling-pin-iridyum
   rotate: false
   xy: 252, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-astrofudge
+rolling-pin-jetmint
   rotate: false
   xy: 302, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-berrylium
+rolling-pin-mooncandy
   rotate: false
   xy: 352, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-blueberrylium
+rolling-pin-plain
   rotate: false
   xy: 402, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-buttergold
+rolling-pin-sugarmuck
   rotate: false
   xy: 516, 566
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-chalcedhoney
+shadow-bust-glowing-eyes
   rotate: false
   xy: 566, 616
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-cherrysilver
+stone-bust-azure
   rotate: false
   xy: 616, 666
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-glimmeringue
+stone-bust-crimson
   rotate: false
   xy: 666, 716
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-glucosmium
+stone-bust-neon
   rotate: false
   xy: 716, 766
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-hazelrald
+stone-bust-neutral
   rotate: false
   xy: 766, 816
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-iridyum
+stone-bust-porcelain
   rotate: false
   xy: 816, 866
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-jetmint
+stone-bust-shadowed
   rotate: false
   xy: 866, 916
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-mooncandy
+stone-bust-terracotta
   rotate: false
   xy: 916, 966
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-plain
+stone-bust-verdant
   rotate: false
   xy: 2, 2
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-watering-pot-sugarmuck
+watering-pot-alabascream
   rotate: false
   xy: 52, 52
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-alabascream
+watering-pot-astrofudge
   rotate: false
   xy: 102, 102
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-astrofudge
+watering-pot-berrylium
   rotate: false
   xy: 152, 152
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-berrylium
+watering-pot-blueberrylium
   rotate: false
   xy: 202, 202
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-blueberrylium
+watering-pot-buttergold
   rotate: false
   xy: 252, 252
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-buttergold
+watering-pot-chalcedhoney
   rotate: false
   xy: 302, 302
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-chalcedhoney
+watering-pot-cherrysilver
   rotate: false
   xy: 352, 352
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-cherrysilver
+watering-pot-glimmeringue
   rotate: false
   xy: 402, 402
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-glimmeringue
+watering-pot-glucosmium
   rotate: false
   xy: 452, 452
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-glucosmium
+watering-pot-hazelrald
   rotate: false
   xy: 516, 516
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-hazelrald
+watering-pot-iridyum
   rotate: false
   xy: 566, 566
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-iridyum
+watering-pot-jetmint
   rotate: false
   xy: 616, 616
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-jetmint
+watering-pot-mooncandy
   rotate: false
   xy: 666, 666
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-mooncandy
+watering-pot-plain
   rotate: false
   xy: 716, 716
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-plain
+watering-pot-sugarmuck
   rotate: false
   xy: 766, 766
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-wizard-hat-sugarmuck
+wizard-hat-alabascream
   rotate: false
   xy: 816, 816
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-astrofudge
+  rotate: false
+  xy: 866, 866
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-berrylium
+  rotate: false
+  xy: 916, 916
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-blueberrylium
+  rotate: false
+  xy: 966, 966
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-buttergold
+  rotate: false
+  xy: 52, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-chalcedhoney
+  rotate: false
+  xy: 102, 52
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-cherrysilver
+  rotate: false
+  xy: 152, 102
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-glimmeringue
+  rotate: false
+  xy: 202, 152
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-glucosmium
+  rotate: false
+  xy: 252, 202
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-hazelrald
+  rotate: false
+  xy: 302, 252
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-iridyum
+  rotate: false
+  xy: 352, 302
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-jetmint
+  rotate: false
+  xy: 402, 352
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-mooncandy
+  rotate: false
+  xy: 452, 402
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-plain
+  rotate: false
+  xy: 566, 516
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+wizard-hat-sugarmuck
+  rotate: false
+  xy: 616, 566
   size: 48, 48
   orig: 48, 48
   offset: 0, 0

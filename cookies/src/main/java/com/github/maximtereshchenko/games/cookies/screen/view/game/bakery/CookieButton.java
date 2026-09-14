@@ -98,7 +98,7 @@ final class CookieButton extends Button {
                         )
                     )
                 );
-                bakeryService.click();
+                bakeryService.bake();
                 toggle();
             }
 

@@ -1874,5 +1874,8 @@
       "value": "1E72"
     }
   },
-  "milkPercentPerUnlockedAchievement": 0.04
+  "milkPercentPerUnlockedAchievement": 0.04,
+  "baseGoldenCookieCooldownDuration": "PT5M",
+  "baseGoldenCookieSpawnDuration": "PT10M",
+  "baseGoldenCookieDuration": "PT13S"
 }

@@ -55,6 +55,13 @@ public final class BakeryPanel extends Container<Stack> {
             )
         );
         stack.add(new MilkWidget(skin, bakeryService));
+        stack.add(
+            new GoldenCookieOverlay(
+                skin,
+                bakeryService,
+                random
+            )
+        );
         setActor(stack);
     }
 }

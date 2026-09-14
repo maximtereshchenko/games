@@ -195,6 +195,10 @@
   "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
     "cookie": {
       "up": "cookie"
+    },
+    "golden-cookie": {
+      "up": "golden-cookie",
+      "over": "golden-cookie-bright"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {

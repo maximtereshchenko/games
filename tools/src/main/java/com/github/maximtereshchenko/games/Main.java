@@ -57,7 +57,41 @@ final class Main {
                 args[1],
                 args[2]
             );
+            case "brighten" -> brighten(
+                args[1],
+                Float.parseFloat(args[2]),
+                args[3]
+            );
         }
+    }
+
+    private static void brighten(
+        String inputPath,
+        float factor,
+        String outputPath
+    ) {
+        var sourcePixmap = new Pixmap(new FileHandle(inputPath));
+        var width = sourcePixmap.getWidth();
+        var height = sourcePixmap.getHeight();
+        var resultPixmap = new Pixmap(width, height, sourcePixmap.getFormat());
+        resultPixmap.setBlending(Pixmap.Blending.None);
+        for (var x = 0; x < width; x++) {
+            for (var y = 0; y < height; y++) {
+                var pixel = sourcePixmap.getPixel(x, y);
+                var r = (pixel >>> 24) & 0xFF;
+                var g = (pixel >>> 16) & 0xFF;
+                var b = (pixel >>> 8) & 0xFF;
+                var a = pixel & 0xFF;
+
+                r = Math.min(255, (int) (r * factor));
+                g = Math.min(255, (int) (g * factor));
+                b = Math.min(255, (int) (b * factor));
+
+                var brightenedPixel = (r << 24) | (g << 16) | (b << 8) | a;
+                resultPixmap.drawPixel(x, y, brightenedPixel);
+            }
+        }
+        PixmapIO.writePNG(new FileHandle(outputPath), resultPixmap);
     }
 
     private static void stripEmptyBorders(String inputPath, String outputPath) {

@@ -15,7 +15,7 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFor
 import com.github.maximtereshchenko.games.cookies.screen.view.loading.LoadingView;
 
 import java.time.Clock;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public final class ScreenFactory {
 
@@ -23,17 +23,20 @@ public final class ScreenFactory {
     private final AssetManager assetManager;
     private final Assets assets;
     private final Game game;
+    private final Random random;
 
     public ScreenFactory(
         SpriteBatch spriteBatch,
         AssetManager assetManager,
         Assets assets,
-        Game game
+        Game game,
+        Random random
     ) {
         this.spriteBatch = spriteBatch;
         this.assetManager = assetManager;
         this.assets = assets;
         this.game = game;
+        this.random = random;
     }
 
     public Screen loadingScreen() {
@@ -68,7 +71,8 @@ public final class ScreenFactory {
                 gameAssets.configuration()
             ),
             playerProgress,
-            clock
+            clock,
+            random
         );
         return new BakeryScreen(
             stageScreen(
@@ -81,7 +85,7 @@ public final class ScreenFactory {
                     ),
                     new BigDecimalFormatter(),
                     bakeryService,
-                    ThreadLocalRandom.current()
+                    random
                 )
             ),
             bakeryService,
