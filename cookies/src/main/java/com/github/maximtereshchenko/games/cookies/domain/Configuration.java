@@ -7,14 +7,27 @@ import java.util.Map;
 
 public record Configuration(
     BigDecimal baseBakingPower,
-    Map<Building, BigDecimal> buildingBasePrices,
-    Map<Building, BigDecimal> buildingBaseBakingRates,
+    Map<Building, BuildingConfiguration> buildingConfigurations,
     List<UpgradeTier> upgradeTiers,
-    Map<Upgrade, UpgradeUnlockRequirement> upgradeUnlockRequirements,
-    Map<Upgrade, Price> upgradePrices,
+    Map<Upgrade, UpgradeConfiguration> upgradeConfigurations,
     Map<Achievement, AchievementUnlockRequirement> achievementUnlockRequirements,
     float milkPercentPerUnlockedAchievement,
-    Duration baseGoldenCookieCooldownDuration,
-    Duration baseGoldenCookieSpawnDuration,
-    Duration baseGoldenCookieDuration
-) {}
+    GoldenCookieConfiguration goldenCookieConfiguration
+) {
+
+    record BuildingConfiguration(
+        BigDecimal basePrice,
+        BigDecimal baseBakingRate
+    ) {}
+
+    record UpgradeConfiguration(
+        UpgradeUnlockRequirement unlockRequirement,
+        Price price
+    ) {}
+
+    record GoldenCookieConfiguration(
+        Duration baseCooldownDuration,
+        Duration baseSpawnDuration,
+        Duration baseDuration
+    ) {}
+}

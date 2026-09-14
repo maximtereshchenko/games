@@ -58,7 +58,10 @@ public final class BakeryService {
         unlockUpgrades();
         unlockAchievements();
         if (goldenCookieTimestamp.isBefore(now) && shouldGoldenCookieSpawn(now)) {
-            goldenCookieTimestamp = now.plus(configuration.baseGoldenCookieDuration());
+            goldenCookieTimestamp = now.plus(
+                configuration.goldenCookieConfiguration()
+                    .baseDuration()
+            );
         }
         playerProgress.lastUpdatedTimestamp = now;
     }
@@ -80,9 +83,13 @@ public final class BakeryService {
         playerProgress.cumulativeClicks++;
     }
 
-    public Buff consumeGoldenCookie() {
+    public GoldenCookieEffect goldenCookieEffect() {
         goldenCookieTimestamp = Instant.now(clock);
-        return Buff.FRENZY;
+        return new BuffExtendedEffect(Buff.FRENZY);
+    }
+
+    public BuffDescription buffDescription(Buff buff) {
+        return new FrenzyDescription(7, 77);
     }
 
     public void completeTransaction(
@@ -203,14 +210,15 @@ public final class BakeryService {
     }
 
     public BigDecimal price(Upgrade upgrade) {
-        return switch (configuration.upgradePrices().get(upgrade)) {
+        return switch (configuration.upgradeConfigurations().get(upgrade).price()) {
             case ExactPrice exactPrice -> exactPrice.value();
             case TieredPrice tieredPrice -> configuration.upgradeTiers()
                 .get(tieredPrice.tier())
                 .basePriceMultiplier()
                 .multiply(
-                    configuration.buildingBasePrices()
+                    configuration.buildingConfigurations()
                         .get(tieredPrice.building())
+                        .basePrice()
                 );
         };
     }
@@ -284,7 +292,8 @@ public final class BakeryService {
 
     private boolean shouldGoldenCookieSpawn(Instant now) {
         var cooldown = goldenCookieTimestamp.plus(
-            configuration.baseGoldenCookieCooldownDuration()
+            configuration.goldenCookieConfiguration()
+                .baseCooldownDuration()
         );
         if (now.isBefore(cooldown)) {
             return false;
@@ -306,7 +315,8 @@ public final class BakeryService {
         Instant now
     ) {
         var millisPastCooldown = Duration.between(cooldown, now).toMillis();
-        var spawnDurationMillis = configuration.baseGoldenCookieSpawnDuration()
+        var spawnDurationMillis = configuration.goldenCookieConfiguration()
+            .baseSpawnDuration()
             .toMillis();
         var progress = Math.clamp((double) millisPastCooldown / spawnDurationMillis, 0, 1);
         return 1.0 - Math.pow(progress, 5);
@@ -317,8 +327,9 @@ public final class BakeryService {
         for (var i = from; i < to; i++) {
             price = price.add(
                 rounded(
-                    configuration.buildingBasePrices()
+                    configuration.buildingConfigurations()
                         .get(building)
+                        .basePrice()
                         .multiply(
                             BigDecimal.valueOf(1.15)
                                 .pow(i)
@@ -379,7 +390,7 @@ public final class BakeryService {
     }
 
     private boolean isRequirementSatisfied(Upgrade upgrade) {
-        return switch (configuration.upgradeUnlockRequirements().get(upgrade)) {
+        return switch (configuration.upgradeConfigurations().get(upgrade).unlockRequirement()) {
             case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(requirement);
             case TieredUnlockRequirement requirement -> isRequirementSatisfied(requirement);
             case ManuallyBakedUnlockRequirement _ -> isManuallyBakedUnlockRequirementSatisfied(
@@ -419,8 +430,9 @@ public final class BakeryService {
     }
 
     private BigDecimal bakingRate(Building building) {
-        var baseBakingRate = configuration.buildingBaseBakingRates()
-            .get(building);
+        var baseBakingRate = configuration.buildingConfigurations()
+            .get(building)
+            .baseBakingRate();
         return switch (building) {
             case CURSOR -> cursorBakingRate(baseBakingRate);
             case GRANDMA -> doubled(

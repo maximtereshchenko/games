@@ -49,7 +49,10 @@ final class GoldenCookieButton extends Button {
                             bundle,
                             mousePointer.x,
                             mousePointer.y,
-                            bakeryService.consumeGoldenCookie()
+                            stage.getWidth(),
+                            stage.getHeight(),
+                            bakeryService,
+                            bakeryService.goldenCookieEffect()
                         )
                     );
                 }

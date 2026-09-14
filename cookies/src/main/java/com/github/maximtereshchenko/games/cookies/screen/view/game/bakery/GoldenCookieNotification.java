@@ -2,12 +2,13 @@ package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.cookies.domain.Buff;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.domain.BuffExtendedEffect;
+import com.github.maximtereshchenko.games.cookies.domain.GoldenCookieEffect;
 
 final class GoldenCookieNotification extends Table {
 
@@ -16,38 +17,52 @@ final class GoldenCookieNotification extends Table {
         I18NBundle bundle,
         float x,
         float y,
-        Buff buff
+        float parentWidth,
+        float parentHeight,
+        BakeryService bakeryService,
+        GoldenCookieEffect goldenCookieEffect
     ) {
         defaults().pad(4);
         add(
-            new Label(
-                bundle.get("buff.%s.name".formatted(buff)),
-                skin,
-                "buff-name-notification"
-            )
+            switch (goldenCookieEffect) {
+                case BuffExtendedEffect buffExtendedEffect -> new BuffNameLabel(
+                    skin,
+                    "buff-name-notification",
+                    bundle,
+                    buffExtendedEffect.buff()
+                );
+            }
         )
             .row();
         add(
-            new Label(
-                bundle.get("buff.%s.description".formatted(buff)),
-                skin,
-                "buff-description-notification"
-            )
+            switch (goldenCookieEffect) {
+                case BuffExtendedEffect buffExtendedEffect -> new BuffDescriptionLabel(
+                    skin,
+                    "buff-description-notification",
+                    bundle,
+                    buffExtendedEffect.buff(),
+                    bakeryService.buffDescription(
+                        buffExtendedEffect.buff()
+                    )
+                );
+            }
         );
         background(skin.get(Style.class).background);
         pack();
+        var halfWidth = getWidth() / 2;
+        var halfHeight = getHeight() / 2;
         setPosition(
-            Math.max(0, x - getWidth() / 2),
-            Math.max(0, y - getHeight() / 2)
+            Math.clamp(x, halfWidth, parentWidth - halfWidth) - halfWidth,
+            Math.clamp(y, halfHeight, parentHeight - halfHeight) - halfHeight
         );
         var entranceDuration = 0.4f;
         addAction(
             Actions.sequence(
                 Actions.fadeOut(0),
                 Actions.parallel(
-                    Actions.moveBy(
-                        0,
-                        getHeight(),
+                    Actions.moveTo(
+                        getX(),
+                        Math.min(getY() + getHeight(), parentHeight - getHeight()),
                         entranceDuration
                     ),
                     Actions.fadeIn(
