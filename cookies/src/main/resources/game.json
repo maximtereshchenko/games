@@ -354,7 +354,8 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.CookieWidget$Style": {
     "default": {
-      "background": "gradient-borders"
+      "standardBackground": "gradient-borders",
+      "activeBuffBackground": "gradient-borders-gold"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.BakeryView$Style": {
