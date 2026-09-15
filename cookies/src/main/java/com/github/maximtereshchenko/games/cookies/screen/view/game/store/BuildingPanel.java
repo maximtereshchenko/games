@@ -97,6 +97,7 @@ final class BuildingPanel extends Table {
         int index
     ) {
         var buildingButton = new BuildingButton(
+            this,
             skin,
             bundle,
             bigDecimalFormatter,

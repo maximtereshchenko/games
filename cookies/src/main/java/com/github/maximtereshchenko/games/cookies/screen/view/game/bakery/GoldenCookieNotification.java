@@ -44,7 +44,8 @@ final class GoldenCookieNotification extends Table {
                     buffResetEffect.buff()
                 );
             }
-        );
+        )
+            .growX();
         background(skin.get(Style.class).background);
         pack();
         var halfWidth = getWidth() / 2;
@@ -73,6 +74,11 @@ final class GoldenCookieNotification extends Table {
                 Actions.removeActor()
             )
         );
+    }
+
+    @Override
+    public float getPrefWidth() {
+        return 350;
     }
 
     private static final class Style {

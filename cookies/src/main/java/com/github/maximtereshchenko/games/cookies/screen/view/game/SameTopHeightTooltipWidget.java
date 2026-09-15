@@ -1,13 +1,12 @@
-package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
+package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 
-final class UpgradeTooltipWidget extends ParentLeftTooltipWidget {
+public final class SameTopHeightTooltipWidget extends ActorLeftTooltipWidget {
 
-    UpgradeTooltipWidget(PopUpFrame popUpFrame) {
-        super(popUpFrame);
+    public SameTopHeightTooltipWidget(Actor actor, PopUpFrame popUpFrame) {
+        super(actor, popUpFrame);
     }
 
     @Override

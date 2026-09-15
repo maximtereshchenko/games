@@ -22,6 +22,7 @@ final class BuildingButton extends Button {
     private final Building building;
 
     BuildingButton(
+        Actor parent,
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
@@ -75,6 +76,7 @@ final class BuildingButton extends Button {
         );
         addListener(
             new BuildingTooltipWidget(
+                parent,
                 new PopUpFrame(
                     skin,
                     new BuildingTooltipPanel(

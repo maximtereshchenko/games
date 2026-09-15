@@ -29,10 +29,6 @@ final class ActiveBuff {
         remainingSeconds = durationSeconds;
     }
 
-    float durationSeconds() {
-        return durationSeconds;
-    }
-
     BuffEffect buffEffect() {
         return buffEffect;
     }

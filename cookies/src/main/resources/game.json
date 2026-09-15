@@ -31,6 +31,10 @@
     "georgia-9": {
       "file": "georgia.fnt",
       "scaledSize": 9
+    },
+    "georgia-12": {
+      "file": "georgia.fnt",
+      "scaledSize": 12
     }
   },
   "com.badlogic.gdx.graphics.Color": {
@@ -44,6 +48,12 @@
       "r": 0,
       "g": 0,
       "b": 0,
+      "a": 1
+    },
+    "grey": {
+      "r": 0.8,
+      "g": 0.8,
+      "b": 0.8,
       "a": 1
     },
     "green": {
@@ -62,6 +72,12 @@
       "r": 1,
       "g": 0,
       "b": 0,
+      "a": 1
+    },
+    "gold": {
+      "r": 0.9,
+      "g": 0.9,
+      "b": 0.7,
       "a": 1
     },
     "white-transparent-50": {
@@ -316,6 +332,14 @@
     "buff-description-notification": {
       "font": "merriweather-16",
       "fontColor": "white"
+    },
+    "buff-name-tooltip": {
+      "font": "georgia-12",
+      "fontColor": "gold"
+    },
+    "buff-description-tooltip": {
+      "font": "tahoma-10",
+      "fontColor": "grey"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
@@ -1400,6 +1424,12 @@
       "baseIconName": "progress",
       "max": 143,
       "color": "white-transparent-50"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuffTooltipPanel$Style": {
+    "default": {
+      "left": "feather-left",
+      "right": "feather-right"
     }
   }
 }

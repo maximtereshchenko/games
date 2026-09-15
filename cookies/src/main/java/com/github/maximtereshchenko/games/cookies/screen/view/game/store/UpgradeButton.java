@@ -7,10 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.ColoredButton;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
-import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeIcon;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.*;
 
 final class UpgradeButton extends ColoredButton {
 
@@ -20,6 +17,7 @@ final class UpgradeButton extends ColoredButton {
     private final Upgrade upgrade;
 
     UpgradeButton(
+        Actor parent,
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
@@ -33,7 +31,8 @@ final class UpgradeButton extends ColoredButton {
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
         addListener(
-            new UpgradeTooltipWidget(
+            new SameTopHeightTooltipWidget(
+                parent,
                 new PopUpFrame(
                     skin,
                     new UnlockedUpgradeTooltipPanel(

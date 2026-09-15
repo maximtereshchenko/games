@@ -66,6 +66,7 @@ public final class BakeryPanel extends Container<Stack> {
         stack.add(
             new BuffOverlay(
                 skin,
+                bundle,
                 bakeryService
             )
         );

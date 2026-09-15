@@ -79,6 +79,7 @@ final class UpgradePanel extends Container<Table> implements EventListener {
 
     private UpgradeButton upgradeButton(Upgrade upgrade) {
         var upgradeButton = new UpgradeButton(
+            this,
             skin,
             bundle,
             bigDecimalFormatter,

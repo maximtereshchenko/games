@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Buff;
 
@@ -13,7 +14,11 @@ final class BuffOverlay extends Table {
 
     private final List<BuffWidget> buffWidgets;
 
-    BuffOverlay(Skin skin, BakeryService bakeryService) {
+    BuffOverlay(
+        Skin skin,
+        I18NBundle bundle,
+        BakeryService bakeryService
+    ) {
         this.buffWidgets = new ArrayList<>();
         pad(16);
         top();
@@ -22,6 +27,7 @@ final class BuffOverlay extends Table {
             buffWidgets.add(
                 new BuffWidget(
                     skin,
+                    bundle,
                     bakeryService,
                     buff
                 )
