@@ -1,21 +1,19 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.ColoredButton;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeIcon;
 
-final class UpgradeButton extends Container<ImageButton> {
+final class UpgradeButton extends ColoredButton {
 
-    private final Style style;
+    private final UpgradeIcon upgradeIcon;
     private final BakeryService bakeryService;
     private final Upgrade upgrade;
 
@@ -26,12 +24,11 @@ final class UpgradeButton extends Container<ImageButton> {
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
-        var buttonStyle = skin.get(upgrade.name(), Style.class);
-        super(new ImageButton(buttonStyle));
-        this.style = buttonStyle;
+        var icon = new UpgradeIcon(skin, upgrade);
+        super(skin, icon);
+        this.upgradeIcon = icon;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
-        background(style.background);
         addListener(
             new UpgradeTooltipWidget(
                 new PopUpFrame(
@@ -61,23 +58,7 @@ final class UpgradeButton extends Container<ImageButton> {
     @Override
     public void act(float delta) {
         super.act(delta);
-        var isDisabled = !bakeryService.canAfford(upgrade);
-        var imageButton = getActor();
-        imageButton.setDisabled(isDisabled);
-        imageButton.getImage().setColor(color(isDisabled));
-    }
-
-    private Color color(boolean isDisabled) {
-        if (isDisabled) {
-            return style.disabledColor;
-        }
-        return style.enabledColor;
-    }
-
-    private static final class Style extends ImageButton.ImageButtonStyle {
-
-        Drawable background;
-        Color enabledColor;
-        Color disabledColor;
+        setDisabled(!bakeryService.canAfford(upgrade));
+        upgradeIcon.setColor(getColor());
     }
 }
