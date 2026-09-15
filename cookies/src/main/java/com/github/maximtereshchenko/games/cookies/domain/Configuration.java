@@ -28,8 +28,16 @@ public record Configuration(
     record GoldenCookieConfiguration(
         float baseCooldownDurationSeconds,
         float baseSpawnDurationSeconds,
-        float baseDurationSeconds
-    ) {}
+        float baseDurationSeconds,
+        Map<EffectType, Float> effectChances
+    ) {
+
+        enum EffectType {
+
+            FRENZY,
+            LUCKY
+        }
+    }
 
     record FrenzyBuffConfiguration(
         float multiplier,

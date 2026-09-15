@@ -2,6 +2,7 @@ package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
@@ -9,6 +10,8 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.BuffResetEffect;
 import com.github.maximtereshchenko.games.cookies.domain.GoldenCookieEffect;
+import com.github.maximtereshchenko.games.cookies.domain.LuckyGoldenCookieEffect;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class GoldenCookieNotification extends Table {
 
@@ -19,17 +22,25 @@ final class GoldenCookieNotification extends Table {
         float y,
         float parentWidth,
         float parentHeight,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         GoldenCookieEffect goldenCookieEffect
     ) {
+        var effectNameStyle = "golden-cookie-effect-name";
+        var effectDescriptionStyle = "golden-cookie-effect-description";
         defaults().pad(4);
         add(
             switch (goldenCookieEffect) {
                 case BuffResetEffect buffExtendedEffect -> new BuffNameLabel(
                     skin,
-                    "buff-name-notification",
+                    effectNameStyle,
                     bundle,
                     buffExtendedEffect.buff()
+                );
+                case LuckyGoldenCookieEffect _ -> new Label(
+                    bundle.get("golden-cookie.effect.lucky.name"),
+                    skin,
+                    effectNameStyle
                 );
             }
         )
@@ -38,10 +49,17 @@ final class GoldenCookieNotification extends Table {
             switch (goldenCookieEffect) {
                 case BuffResetEffect buffResetEffect -> new BuffDescriptionLabel(
                     skin,
-                    "buff-description-notification",
+                    effectDescriptionStyle,
                     bundle,
                     bakeryService,
                     buffResetEffect.buff()
+                );
+                case LuckyGoldenCookieEffect luckyGoldenCookieEffect -> new LuckyDescriptionLabel(
+                    skin,
+                    effectDescriptionStyle,
+                    bundle,
+                    bigDecimalFormatter,
+                    luckyGoldenCookieEffect
                 );
             }
         )

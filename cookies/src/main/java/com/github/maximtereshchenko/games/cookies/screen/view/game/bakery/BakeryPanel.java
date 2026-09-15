@@ -59,6 +59,7 @@ public final class BakeryPanel extends Container<Stack> {
             new GoldenCookieOverlay(
                 skin,
                 bundle,
+                bigDecimalFormatter,
                 bakeryService,
                 random
             )

@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Interval;
+import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.Random;
 
@@ -21,6 +22,7 @@ final class GoldenCookieButton extends Button {
     GoldenCookieButton(
         Skin skin,
         I18NBundle bundle,
+        BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random
     ) {
@@ -49,6 +51,7 @@ final class GoldenCookieButton extends Button {
                             mousePointer.y,
                             stage.getWidth(),
                             stage.getHeight(),
+                            bigDecimalFormatter,
                             bakeryService,
                             bakeryService.goldenCookieEffect()
                         )

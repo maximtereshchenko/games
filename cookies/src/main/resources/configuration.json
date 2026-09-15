@@ -2224,7 +2224,11 @@
   "goldenCookieConfiguration": {
     "baseCooldownDurationSeconds": 300,
     "baseSpawnDurationSeconds": 600,
-    "baseDurationSeconds": 13
+    "baseDurationSeconds": 13,
+    "effectChances": {
+      "FRENZY": 0.5,
+      "LUCKY": 0.5
+    }
   },
   "frenzyBuffConfiguration": {
     "multiplier": 7,

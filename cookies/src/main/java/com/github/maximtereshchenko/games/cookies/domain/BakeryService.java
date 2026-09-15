@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Random;
@@ -36,7 +37,7 @@ public final class BakeryService {
         this.buffs = new EnumMap<>(Buff.class);
         for (var buff : Buff.values()) {
             buffs.put(
-                Buff.FRENZY,
+                buff,
                 new ActiveBuff(newBuffEffect(buff))
             );
         }
@@ -59,14 +60,7 @@ public final class BakeryService {
 
     public void bake() {
         var amount = bakingPower();
-        playerProgress.balance =
-            playerProgress.balance.add(
-                amount
-            );
-        playerProgress.cumulativeBaked =
-            playerProgress.cumulativeBaked.add(
-                amount
-            );
+        addToBalance(amount);
         playerProgress.cumulativeManuallyBaked =
             playerProgress.cumulativeManuallyBaked.add(
                 amount
@@ -76,14 +70,35 @@ public final class BakeryService {
 
     public GoldenCookieEffect goldenCookieEffect() {
         goldenCookie.reset();
-        var values = Buff.values();
-        var buff = values[random.nextInt(values.length)];
-        buffs.get(buff)
-            .reset(
-                newBuffEffect(buff),
-                buffDuration(buff)
-            );
-        return new BuffResetEffect(buff);
+        return switch (effectType()) {
+            case FRENZY -> {
+                buffs.get(Buff.FRENZY)
+                    .reset(
+                        newBuffEffect(Buff.FRENZY),
+                        buffDuration(Buff.FRENZY)
+                    );
+                yield new BuffResetEffect(Buff.FRENZY);
+            }
+            case LUCKY -> {
+                var amount = BinaryOperator.<BigDecimal>minBy(
+                        Comparator.naturalOrder()
+                    )
+                    .apply(
+                        playerProgress.balance.multiply(
+                            BigDecimal.valueOf(0.15)
+                        ),
+                        bakingRate()
+                            .multiply(
+                                new BigDecimal(
+                                    TimeUnit.MINUTES.toSeconds(15)
+                                )
+                            )
+                    )
+                    .add(new BigDecimal(13));
+                addToBalance(amount);
+                yield new LuckyGoldenCookieEffect(amount);
+            }
+        };
     }
 
     public BuffEffect buffEffect(Buff buff) {
@@ -290,6 +305,31 @@ public final class BakeryService {
         return goldenCookie.interval();
     }
 
+    private void addToBalance(BigDecimal amount) {
+        playerProgress.balance =
+            playerProgress.balance.add(
+                amount
+            );
+        playerProgress.cumulativeBaked =
+            playerProgress.cumulativeBaked.add(
+                amount
+            );
+    }
+
+    private Configuration.GoldenCookieConfiguration.EffectType effectType() {
+        var chance = random.nextFloat();
+        var chances = configuration.goldenCookieConfiguration()
+            .effectChances()
+            .entrySet();
+        for (var entry : chances) {
+            chance -= entry.getValue();
+            if (chance < 0) {
+                return entry.getKey();
+            }
+        }
+        throw new IllegalStateException();
+    }
+
     private BigDecimal buildingsBakingRate() {
         var bakingRate = BigDecimal.ZERO;
         for (var building : Building.values()) {
@@ -322,14 +362,7 @@ public final class BakeryService {
     private void updatePlayerProgress(double deltaTimeSeconds) {
         var amount = bakingRate()
             .multiply(BigDecimal.valueOf(deltaTimeSeconds));
-        playerProgress.balance =
-            playerProgress.balance.add(
-                amount
-            );
-        playerProgress.cumulativeBaked =
-            playerProgress.cumulativeBaked.add(
-                amount
-            );
+        addToBalance(amount);
         unlockUpgrades();
         unlockAchievements();
     }
@@ -385,7 +418,7 @@ public final class BakeryService {
     }
 
     private boolean canAfford(BigDecimal value) {
-        return balance().compareTo(value) >= 0;
+        return playerProgress.balance.compareTo(value) >= 0;
     }
 
     private void unlockUpgrades() {
