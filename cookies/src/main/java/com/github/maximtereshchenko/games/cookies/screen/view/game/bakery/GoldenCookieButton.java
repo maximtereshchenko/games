@@ -62,7 +62,7 @@ final class GoldenCookieButton extends Button {
     public void act(float delta) {
         super.act(delta);
         var interval = bakeryService.goldenCookieInterval();
-        var isVisible = interval.remainingTimeSeconds() != 0;
+        var isVisible = interval.remainingSeconds() != 0;
         if (!isVisible() && isVisible) {
             setPosition(
                 random.nextFloat(getParent().getWidth() - getPrefWidth()),
@@ -79,8 +79,8 @@ final class GoldenCookieButton extends Button {
         }
         var curve = 1.0 - Math.pow(2 * interval.progress() - 1, 4);
         getColor().a = (float) curve;
-        var wobble = 1 + 0.06 * Math.sin(7.5 * interval.remainingTimeSeconds());
+        var wobble = 1 + 0.06 * Math.sin(7.5 * interval.remainingSeconds());
         setScale((float) (curve * wobble));
-        setRotation((float) (5 * Math.sin(10.5 * interval.remainingTimeSeconds())));
+        setRotation((float) (5 * Math.sin(10.5 * interval.remainingSeconds())));
     }
 }

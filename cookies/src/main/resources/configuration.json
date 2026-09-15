@@ -2225,5 +2225,9 @@
     "baseCooldownDurationSeconds": 300,
     "baseSpawnDurationSeconds": 600,
     "baseDurationSeconds": 13
+  },
+  "frenzyBuffConfiguration": {
+    "multiplier": 7,
+    "baseDurationSeconds": 77
   }
 }

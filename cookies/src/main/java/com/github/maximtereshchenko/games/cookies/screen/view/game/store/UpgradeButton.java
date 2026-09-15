@@ -1,5 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -13,6 +14,7 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeIcon;
 
 final class UpgradeButton extends ColoredButton {
 
+    private final Style style;
     private final UpgradeIcon upgradeIcon;
     private final BakeryService bakeryService;
     private final Upgrade upgrade;
@@ -26,6 +28,7 @@ final class UpgradeButton extends ColoredButton {
     ) {
         var icon = new UpgradeIcon(skin, upgrade);
         super(skin, icon);
+        this.style = skin.get(Style.class);
         this.upgradeIcon = icon;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
@@ -58,7 +61,21 @@ final class UpgradeButton extends ColoredButton {
     @Override
     public void act(float delta) {
         super.act(delta);
-        setDisabled(!bakeryService.canAfford(upgrade));
-        upgradeIcon.setColor(getColor());
+        var isDisabled = !bakeryService.canAfford(upgrade);
+        setDisabled(isDisabled);
+        upgradeIcon.setColor(color(isDisabled));
+    }
+
+    private Color color(boolean isDisabled) {
+        if (isDisabled) {
+            return style.disabledColor;
+        }
+        return style.enabledColor;
+    }
+
+    private static final class Style {
+
+        Color enabledColor;
+        Color disabledColor;
     }
 }

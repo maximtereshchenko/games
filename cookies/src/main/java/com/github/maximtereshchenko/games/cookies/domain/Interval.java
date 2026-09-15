@@ -1,8 +1,8 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
-public record Interval(double remainingTimeSeconds, double lengthSeconds) {
+public record Interval(float remainingSeconds, float durationSeconds) {
 
     public double progress() {
-        return remainingTimeSeconds / lengthSeconds;
+        return (durationSeconds - remainingSeconds) / durationSeconds;
     }
 }

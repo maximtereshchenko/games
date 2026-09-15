@@ -63,6 +63,12 @@ public final class BakeryPanel extends Container<Stack> {
                 random
             )
         );
+        stack.add(
+            new BuffOverlay(
+                skin,
+                bakeryService
+            )
+        );
         setActor(stack);
     }
 }

@@ -1379,9 +1379,25 @@
       "background": "empty-black-transparent-25",
       "up": "frame-brown",
       "disabled": "frame-brown-dark",
-      "over": "frame-brown-bright",
+      "over": "frame-brown-bright"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.store.UpgradeButton$Style": {
+    "default": {
       "enabledColor": "white",
       "disabledColor": "white-transparent-60"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuffIcon$Style": {
+    "FRENZY": {
+      "drawable": "cookie-buttergold"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuffDurationWidget$Style": {
+    "default": {
+      "baseIconName": "progress",
+      "max": 143,
+      "color": "white-transparent-50"
     }
   }
 }

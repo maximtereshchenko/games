@@ -6,6 +6,8 @@ import java.math.RoundingMode;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BinaryOperator;
@@ -14,7 +16,9 @@ public final class BakeryService {
 
     private final Configuration configuration;
     private final PlayerProgress playerProgress;
+    private final Random random;
     private final GoldenCookie goldenCookie;
+    private final Map<Buff, ActiveBuff> buffs;
 
     public BakeryService(
         Configuration configuration,
@@ -24,9 +28,17 @@ public final class BakeryService {
     ) {
         this.configuration = configuration;
         this.playerProgress = playerProgress;
+        this.random = random;
         this.goldenCookie = new GoldenCookie(
             configuration.goldenCookieConfiguration(),
             random
+        );
+        this.buffs = new EnumMap<>(Buff.class);
+        buffs.put(
+            Buff.FRENZY,
+            new FrenzyBuff(
+                configuration.frenzyBuffConfiguration()
+            )
         );
         updatePlayerProgress(
             (double) Duration.between(
@@ -40,6 +52,9 @@ public final class BakeryService {
     public void update(float deltaTimeSeconds) {
         updatePlayerProgress(deltaTimeSeconds);
         goldenCookie.update(deltaTimeSeconds);
+        for (var buff : buffs.values()) {
+            buff.update(deltaTimeSeconds);
+        }
     }
 
     public void bake() {
@@ -61,11 +76,18 @@ public final class BakeryService {
 
     public GoldenCookieEffect goldenCookieEffect() {
         goldenCookie.reset();
-        return new BuffExtendedEffect(Buff.FRENZY);
+        var values = Buff.values();
+        var buff = values[random.nextInt(values.length)];
+        buffs.get(buff).reset();
+        return new BuffExtendedEffect(buff);
     }
 
     public BuffDescription buffDescription(Buff buff) {
-        return new FrenzyDescription(7, 77);
+        return buffs.get(buff).buffDescription();
+    }
+
+    public Interval buffInterval(Buff buff) {
+        return buffs.get(buff).interval();
     }
 
     public void completeTransaction(

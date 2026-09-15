@@ -11,7 +11,8 @@ public record Configuration(
     Map<Upgrade, UpgradeConfiguration> upgradeConfigurations,
     Map<Achievement, AchievementUnlockRequirement> achievementUnlockRequirements,
     float milkPercentPerUnlockedAchievement,
-    GoldenCookieConfiguration goldenCookieConfiguration
+    GoldenCookieConfiguration goldenCookieConfiguration,
+    FrenzyBuffConfiguration frenzyBuffConfiguration
 ) {
 
     record BuildingConfiguration(
@@ -27,6 +28,11 @@ public record Configuration(
     record GoldenCookieConfiguration(
         float baseCooldownDurationSeconds,
         float baseSpawnDurationSeconds,
+        float baseDurationSeconds
+    ) {}
+
+    record FrenzyBuffConfiguration(
+        float multiplier,
         float baseDurationSeconds
     ) {}
 }
