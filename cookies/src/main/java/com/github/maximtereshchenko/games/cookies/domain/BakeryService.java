@@ -14,9 +14,7 @@ public final class BakeryService {
 
     private final Configuration configuration;
     private final PlayerProgress playerProgress;
-    private final Clock clock;
-    private final Random random;
-    private Instant goldenCookieTimestamp;
+    private final GoldenCookie goldenCookie;
 
     public BakeryService(
         Configuration configuration,
@@ -26,44 +24,22 @@ public final class BakeryService {
     ) {
         this.configuration = configuration;
         this.playerProgress = playerProgress;
-        this.clock = clock;
-        this.random = random;
-        this.goldenCookieTimestamp = Instant.now(clock);
+        this.goldenCookie = new GoldenCookie(
+            configuration.goldenCookieConfiguration(),
+            random
+        );
+        updatePlayerProgress(
+            (double) Duration.between(
+                    playerProgress.lastFlushTimestamp,
+                    Instant.now(clock)
+                )
+                .toMillis() / TimeUnit.SECONDS.toMillis(1)
+        );
     }
 
-    public void update() {
-        var now = Instant.now(clock);
-        var amount = bakingRate()
-            .multiply(
-                new BigDecimal(
-                    Duration.between(
-                            playerProgress.lastUpdatedTimestamp,
-                            now
-                        )
-                        .toMillis()
-                )
-                    .divide(
-                        new BigDecimal(TimeUnit.SECONDS.toMillis(1)),
-                        MathContext.UNLIMITED
-                    )
-            );
-        playerProgress.balance =
-            playerProgress.balance.add(
-                amount
-            );
-        playerProgress.cumulativeBaked =
-            playerProgress.cumulativeBaked.add(
-                amount
-            );
-        unlockUpgrades();
-        unlockAchievements();
-        if (goldenCookieTimestamp.isBefore(now) && shouldGoldenCookieSpawn(now)) {
-            goldenCookieTimestamp = now.plus(
-                configuration.goldenCookieConfiguration()
-                    .baseDuration()
-            );
-        }
-        playerProgress.lastUpdatedTimestamp = now;
+    public void update(float deltaTimeSeconds) {
+        updatePlayerProgress(deltaTimeSeconds);
+        goldenCookie.update(deltaTimeSeconds);
     }
 
     public void bake() {
@@ -84,7 +60,7 @@ public final class BakeryService {
     }
 
     public GoldenCookieEffect goldenCookieEffect() {
-        goldenCookieTimestamp = Instant.now(clock);
+        goldenCookie.reset();
         return new BuffExtendedEffect(Buff.FRENZY);
     }
 
@@ -255,10 +231,6 @@ public final class BakeryService {
         return playerProgress.createdTimestamp;
     }
 
-    public Instant lastUpdatedTimestamp() {
-        return playerProgress.lastUpdatedTimestamp;
-    }
-
     public long cumulativeClicks() {
         return playerProgress.cumulativeClicks;
     }
@@ -286,40 +258,23 @@ public final class BakeryService {
                playerProgress.unlockedAchievements.size();
     }
 
-    public Instant goldenCookieTimestamp() {
-        return goldenCookieTimestamp;
+    public Interval goldenCookieInterval() {
+        return goldenCookie.interval();
     }
 
-    private boolean shouldGoldenCookieSpawn(Instant now) {
-        var cooldown = goldenCookieTimestamp.plus(
-            configuration.goldenCookieConfiguration()
-                .baseCooldownDuration()
-        );
-        if (now.isBefore(cooldown)) {
-            return false;
-        }
-        var currentFailureChance = goldenCookieSpawnFailureProbability(
-            cooldown,
-            now
-        );
-        var previousFailureChance = goldenCookieSpawnFailureProbability(
-            cooldown,
-            playerProgress.lastUpdatedTimestamp
-        );
-        return previousFailureChance == 0 ||
-               random.nextDouble() < 1.0 - (currentFailureChance / previousFailureChance);
-    }
-
-    private double goldenCookieSpawnFailureProbability(
-        Instant cooldown,
-        Instant now
-    ) {
-        var millisPastCooldown = Duration.between(cooldown, now).toMillis();
-        var spawnDurationMillis = configuration.goldenCookieConfiguration()
-            .baseSpawnDuration()
-            .toMillis();
-        var progress = Math.clamp((double) millisPastCooldown / spawnDurationMillis, 0, 1);
-        return 1.0 - Math.pow(progress, 5);
+    private void updatePlayerProgress(double deltaTimeSeconds) {
+        var amount = bakingRate()
+            .multiply(BigDecimal.valueOf(deltaTimeSeconds));
+        playerProgress.balance =
+            playerProgress.balance.add(
+                amount
+            );
+        playerProgress.cumulativeBaked =
+            playerProgress.cumulativeBaked.add(
+                amount
+            );
+        unlockUpgrades();
+        unlockAchievements();
     }
 
     private BigDecimal price(Building building, int from, int to) {

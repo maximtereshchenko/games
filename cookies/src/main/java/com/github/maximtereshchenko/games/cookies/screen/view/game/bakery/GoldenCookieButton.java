@@ -9,16 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.domain.Interval;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Random;
 
 final class GoldenCookieButton extends Button {
 
     private final BakeryService bakeryService;
     private final Random random;
-    private Instant start;
 
     GoldenCookieButton(
         Skin skin,
@@ -63,34 +61,26 @@ final class GoldenCookieButton extends Button {
     @Override
     public void act(float delta) {
         super.act(delta);
-        var isVisible = bakeryService.lastUpdatedTimestamp()
-            .isBefore(bakeryService.goldenCookieTimestamp());
+        var interval = bakeryService.goldenCookieInterval();
+        var isVisible = interval.remainingTimeSeconds() != 0;
         if (!isVisible() && isVisible) {
-            start = bakeryService.lastUpdatedTimestamp();
             setPosition(
                 random.nextFloat(getParent().getWidth() - getPrefWidth()),
                 random.nextFloat(getParent().getHeight() - getPrefHeight())
             );
         }
         setVisible(isVisible);
-        transform();
+        transform(interval);
     }
 
-    private void transform() {
+    private void transform(Interval interval) {
         if (!isVisible()) {
             return;
         }
-        var millisPastStart = millisBetween(start, bakeryService.lastUpdatedTimestamp());
-        var progress = (double) millisPastStart /
-                       millisBetween(start, bakeryService.goldenCookieTimestamp());
-        var curve = (float) (1.0 - Math.pow(2 * progress - 1, 4));
-        getColor().a = curve;
-        var wobble = (float) (1 + 0.06 * Math.sin(0.0075 * millisPastStart));
-        setScale(curve * wobble);
-        setRotation((float) (5 * Math.sin(0.0105 * millisPastStart)));
-    }
-
-    private long millisBetween(Instant from, Instant to) {
-        return Duration.between(from, to).toMillis();
+        var curve = 1.0 - Math.pow(2 * interval.progress() - 1, 4);
+        getColor().a = (float) curve;
+        var wobble = 1 + 0.06 * Math.sin(7.5 * interval.remainingTimeSeconds());
+        setScale((float) (curve * wobble));
+        setRotation((float) (5 * Math.sin(10.5 * interval.remainingTimeSeconds())));
     }
 }

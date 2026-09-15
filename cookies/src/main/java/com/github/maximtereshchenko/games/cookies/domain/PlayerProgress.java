@@ -29,7 +29,8 @@ public final class PlayerProgress {
     final Set<Achievement> unlockedAchievements;
     final Instant createdTimestamp;
     private final Preferences preferences;
-    Instant lastUpdatedTimestamp;
+    private final Clock clock;
+    Instant lastFlushTimestamp;
     BigDecimal balance;
     BigDecimal cumulativeBaked;
     BigDecimal cumulativeManuallyBaked;
@@ -37,6 +38,7 @@ public final class PlayerProgress {
 
     public PlayerProgress(Preferences preferences, Clock clock) {
         this.preferences = preferences;
+        this.clock = clock;
         this.buildingCounts = new EnumMap<>(Building.class);
         this.unlockedUpgrades = new HashSet<>();
         this.activeUpgrades = new HashSet<>();
@@ -45,7 +47,7 @@ public final class PlayerProgress {
             CREATED_TIMESTAMP_KEY,
             clock
         );
-        this.lastUpdatedTimestamp = timestamp(
+        this.lastFlushTimestamp = timestamp(
             LAST_UPDATED_TIMESTAMP_KEY,
             clock
         );
@@ -78,6 +80,7 @@ public final class PlayerProgress {
     }
 
     public void flush() {
+        lastFlushTimestamp = Instant.now(clock);
         preferences.clear();
         for (var building : Building.values()) {
             preferences.putInteger(
@@ -94,7 +97,7 @@ public final class PlayerProgress {
         );
         preferences.putString(
             LAST_UPDATED_TIMESTAMP_KEY,
-            lastUpdatedTimestamp.toString()
+            lastFlushTimestamp.toString()
         );
         preferences.putString(
             BALANCE_KEY,

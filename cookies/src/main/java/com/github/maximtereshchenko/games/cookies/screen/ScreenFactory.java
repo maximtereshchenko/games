@@ -85,7 +85,8 @@ public final class ScreenFactory {
                     ),
                     new BigDecimalFormatter(),
                     bakeryService,
-                    random
+                    random,
+                    clock
                 )
             ),
             bakeryService,

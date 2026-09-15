@@ -2222,8 +2222,8 @@
   },
   "milkPercentPerUnlockedAchievement": 0.04,
   "goldenCookieConfiguration": {
-    "baseCooldownDuration": "PT1M",
-    "baseSpawnDuration": "PT10M",
-    "baseDuration": "PT13S"
+    "baseCooldownDurationSeconds": 300,
+    "baseSpawnDurationSeconds": 600,
+    "baseDurationSeconds": 13
   }
 }

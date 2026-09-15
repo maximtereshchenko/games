@@ -11,6 +11,7 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.Bakery
 import com.github.maximtereshchenko.games.cookies.screen.view.game.notification.NotificationOverlay;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.store.StorePanel;
 
+import java.time.Clock;
 import java.util.Random;
 
 public final class BakeryView extends Stack {
@@ -20,7 +21,8 @@ public final class BakeryView extends Stack {
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
-        Random random
+        Random random,
+        Clock clock
     ) {
         var table = new Table();
         table.setBackground(skin.get(Style.class).background);
@@ -42,7 +44,8 @@ public final class BakeryView extends Stack {
                     bundle,
                     bigDecimalFormatter,
                     bakeryService,
-                    random
+                    random,
+                    clock
                 )
             )
             .growX();

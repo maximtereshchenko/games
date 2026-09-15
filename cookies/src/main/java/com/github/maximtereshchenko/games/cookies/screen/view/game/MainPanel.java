@@ -8,6 +8,7 @@ import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.StatisticsPanel;
 
+import java.time.Clock;
 import java.util.Random;
 
 final class MainPanel extends Stack {
@@ -21,7 +22,8 @@ final class MainPanel extends Stack {
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
-        Random random
+        Random random,
+        Clock clock
     ) {
         this.buildingDisplayPanel = new BuildingDisplayPanel(
             skin,
@@ -32,7 +34,8 @@ final class MainPanel extends Stack {
             skin,
             bundle,
             bigDecimalFormatter,
-            bakeryService
+            bakeryService,
+            clock
         );
         this.current = buildingDisplayPanel;
         add(buildingDisplayPanel);

@@ -27,7 +27,7 @@ public final class BakeryScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        bakeryService.update();
+        bakeryService.update(delta);
         original.render(delta);
     }
 

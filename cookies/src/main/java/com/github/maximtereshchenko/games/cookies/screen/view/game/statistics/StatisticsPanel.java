@@ -6,13 +6,16 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
+import java.time.Clock;
+
 public final class StatisticsPanel extends Container<Table> {
 
     public StatisticsPanel(
         Skin skin,
         I18NBundle bundle,
         BigDecimalFormatter bigDecimalFormatter,
-        BakeryService bakeryService
+        BakeryService bakeryService,
+        Clock clock
     ) {
         super(new Table());
         fill();
@@ -33,7 +36,8 @@ public final class StatisticsPanel extends Container<Table> {
                 skin,
                 bundle,
                 bigDecimalFormatter,
-                bakeryService
+                bakeryService,
+                clock
             )
         );
         addPanel(
