@@ -427,7 +427,8 @@
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.FlareWidget$Style": {
     "default": {
-      "drawable": "flare"
+      "standardDrawable": "flare",
+      "activeBuffDrawable": "flare-gold"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.FallingCookiesWidget$Style": {

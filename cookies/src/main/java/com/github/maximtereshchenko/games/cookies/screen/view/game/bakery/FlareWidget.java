@@ -5,13 +5,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.domain.Buff;
 
 final class FlareWidget extends Image {
 
     static final float CYCLE_TIME_SECONDS = 2;
 
-    FlareWidget(Skin skin) {
-        super(skin.get(Style.class).drawable);
+    private final Style style;
+    private final BakeryService bakeryService;
+
+    FlareWidget(Skin skin, BakeryService bakeryService) {
+        this.style = skin.get(Style.class);
+        this.bakeryService = bakeryService;
         var initialScale = 2;
         setScale(initialScale);
         getColor().a = 0;
@@ -40,8 +46,31 @@ final class FlareWidget extends Image {
         setOrigin(Align.center);
     }
 
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        setDrawable(drawable());
+    }
+
+    private Drawable drawable() {
+        if (hasActiveBuff()) {
+            return style.activeBuffDrawable;
+        }
+        return style.standardDrawable;
+    }
+
+    private boolean hasActiveBuff() {
+        for (var buff : Buff.values()) {
+            if (bakeryService.buffInterval(buff).progress() < 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static final class Style {
 
-        Drawable drawable;
+        Drawable standardDrawable;
+        Drawable activeBuffDrawable;
     }
 }
