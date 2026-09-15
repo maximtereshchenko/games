@@ -34,12 +34,12 @@ public final class BakeryService {
             random
         );
         this.buffs = new EnumMap<>(Buff.class);
-        buffs.put(
-            Buff.FRENZY,
-            new FrenzyBuff(
-                configuration.frenzyBuffConfiguration()
-            )
-        );
+        for (var buff : Buff.values()) {
+            buffs.put(
+                Buff.FRENZY,
+                new ActiveBuff(newBuffEffect(buff))
+            );
+        }
         updatePlayerProgress(
             (double) Duration.between(
                     playerProgress.lastFlushTimestamp,
@@ -78,12 +78,16 @@ public final class BakeryService {
         goldenCookie.reset();
         var values = Buff.values();
         var buff = values[random.nextInt(values.length)];
-        buffs.get(buff).reset();
-        return new BuffExtendedEffect(buff);
+        buffs.get(buff)
+            .reset(
+                newBuffEffect(buff),
+                buffDuration(buff)
+            );
+        return new BuffResetEffect(buff);
     }
 
-    public BuffDescription buffDescription(Buff buff) {
-        return buffs.get(buff).buffDescription();
+    public BuffEffect buffEffect(Buff buff) {
+        return buffs.get(buff).buffEffect();
     }
 
     public Interval buffInterval(Buff buff) {
@@ -168,14 +172,16 @@ public final class BakeryService {
     }
 
     public BigDecimal bakingRate() {
-        var bakingRate = BigDecimal.ZERO;
-        for (var building : Building.values()) {
-            bakingRate = bakingRate.add(
-                bakingRate(building)
-                    .multiply(
-                        new BigDecimal(count(building))
-                    )
-            );
+        var bakingRate = buildingsBakingRate();
+        for (var buff : buffs.values()) {
+            if (buff.interval().progress() < 1) {
+                switch (buff.buffEffect()) {
+                    case FrenzyEffect frenzyEffect -> bakingRate =
+                        bakingRate.multiply(
+                            BigDecimal.valueOf(frenzyEffect.multiplier())
+                        );
+                }
+            }
         }
         return bakingRate;
     }
@@ -282,6 +288,35 @@ public final class BakeryService {
 
     public Interval goldenCookieInterval() {
         return goldenCookie.interval();
+    }
+
+    private BigDecimal buildingsBakingRate() {
+        var bakingRate = BigDecimal.ZERO;
+        for (var building : Building.values()) {
+            bakingRate = bakingRate.add(
+                bakingRate(building)
+                    .multiply(
+                        new BigDecimal(count(building))
+                    )
+            );
+        }
+        return bakingRate;
+    }
+
+    private float buffDuration(Buff buff) {
+        return switch (buff) {
+            case FRENZY -> configuration.frenzyBuffConfiguration()
+                .baseDurationSeconds();
+        };
+    }
+
+    private BuffEffect newBuffEffect(Buff buff) {
+        return switch (buff) {
+            case FRENZY -> new FrenzyEffect(
+                configuration.frenzyBuffConfiguration()
+                    .multiplier()
+            );
+        };
     }
 
     private void updatePlayerProgress(double deltaTimeSeconds) {

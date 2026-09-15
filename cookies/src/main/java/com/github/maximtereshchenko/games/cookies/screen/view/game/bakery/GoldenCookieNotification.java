@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.BuffExtendedEffect;
+import com.github.maximtereshchenko.games.cookies.domain.BuffResetEffect;
 import com.github.maximtereshchenko.games.cookies.domain.GoldenCookieEffect;
 
 final class GoldenCookieNotification extends Table {
@@ -25,7 +25,7 @@ final class GoldenCookieNotification extends Table {
         defaults().pad(4);
         add(
             switch (goldenCookieEffect) {
-                case BuffExtendedEffect buffExtendedEffect -> new BuffNameLabel(
+                case BuffResetEffect buffExtendedEffect -> new BuffNameLabel(
                     skin,
                     "buff-name-notification",
                     bundle,
@@ -36,14 +36,12 @@ final class GoldenCookieNotification extends Table {
             .row();
         add(
             switch (goldenCookieEffect) {
-                case BuffExtendedEffect buffExtendedEffect -> new BuffDescriptionLabel(
+                case BuffResetEffect buffResetEffect -> new BuffDescriptionLabel(
                     skin,
                     "buff-description-notification",
                     bundle,
-                    buffExtendedEffect.buff(),
-                    bakeryService.buffDescription(
-                        buffExtendedEffect.buff()
-                    )
+                    bakeryService,
+                    buffResetEffect.buff()
                 );
             }
         );
