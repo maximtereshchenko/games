@@ -185,13 +185,7 @@ public final class BakeryService {
                     Upgrade.CLICK_TIER_5,
                     Upgrade.CLICK_TIER_6,
                     Upgrade.CLICK_TIER_7,
-                    Upgrade.CLICK_TIER_8,
-                    Upgrade.CLICK_TIER_9,
-                    Upgrade.CLICK_TIER_10,
-                    Upgrade.CLICK_TIER_11,
-                    Upgrade.CLICK_TIER_12,
-                    Upgrade.CLICK_TIER_13,
-                    Upgrade.CLICK_TIER_14
+                    Upgrade.CLICK_TIER_8
                 )
             );
         if (activeBuffEffect(Buff.CLICK_FRENZY).orElse(null) instanceof ClickFrenzyEffect clickFrenzyEffect) {
@@ -540,13 +534,7 @@ public final class BakeryService {
                 Upgrade.GRANDMA_TIER_5,
                 Upgrade.GRANDMA_TIER_6,
                 Upgrade.GRANDMA_TIER_7,
-                Upgrade.GRANDMA_TIER_8,
-                Upgrade.GRANDMA_TIER_9,
-                Upgrade.GRANDMA_TIER_10,
-                Upgrade.GRANDMA_TIER_11,
-                Upgrade.GRANDMA_TIER_12,
-                Upgrade.GRANDMA_TIER_13,
-                Upgrade.GRANDMA_TIER_14
+                Upgrade.GRANDMA_TIER_8
             );
             case FARM -> doubled(
                 baseBakingRate,
@@ -558,13 +546,7 @@ public final class BakeryService {
                 Upgrade.FARM_TIER_5,
                 Upgrade.FARM_TIER_6,
                 Upgrade.FARM_TIER_7,
-                Upgrade.FARM_TIER_8,
-                Upgrade.FARM_TIER_9,
-                Upgrade.FARM_TIER_10,
-                Upgrade.FARM_TIER_11,
-                Upgrade.FARM_TIER_12,
-                Upgrade.FARM_TIER_13,
-                Upgrade.FARM_TIER_14
+                Upgrade.FARM_TIER_8
             );
             case MINE -> doubled(
                 baseBakingRate,
@@ -576,13 +558,7 @@ public final class BakeryService {
                 Upgrade.MINE_TIER_5,
                 Upgrade.MINE_TIER_6,
                 Upgrade.MINE_TIER_7,
-                Upgrade.MINE_TIER_8,
-                Upgrade.MINE_TIER_9,
-                Upgrade.MINE_TIER_10,
-                Upgrade.MINE_TIER_11,
-                Upgrade.MINE_TIER_12,
-                Upgrade.MINE_TIER_13,
-                Upgrade.MINE_TIER_14
+                Upgrade.MINE_TIER_8
             );
             case FACTORY -> doubled(
                 baseBakingRate,
@@ -594,13 +570,7 @@ public final class BakeryService {
                 Upgrade.FACTORY_TIER_5,
                 Upgrade.FACTORY_TIER_6,
                 Upgrade.FACTORY_TIER_7,
-                Upgrade.FACTORY_TIER_8,
-                Upgrade.FACTORY_TIER_9,
-                Upgrade.FACTORY_TIER_10,
-                Upgrade.FACTORY_TIER_11,
-                Upgrade.FACTORY_TIER_12,
-                Upgrade.FACTORY_TIER_13,
-                Upgrade.FACTORY_TIER_14
+                Upgrade.FACTORY_TIER_8
             );
             case BANK -> doubled(
                 baseBakingRate,
@@ -612,13 +582,7 @@ public final class BakeryService {
                 Upgrade.BANK_TIER_5,
                 Upgrade.BANK_TIER_6,
                 Upgrade.BANK_TIER_7,
-                Upgrade.BANK_TIER_8,
-                Upgrade.BANK_TIER_9,
-                Upgrade.BANK_TIER_10,
-                Upgrade.BANK_TIER_11,
-                Upgrade.BANK_TIER_12,
-                Upgrade.BANK_TIER_13,
-                Upgrade.BANK_TIER_14
+                Upgrade.BANK_TIER_8
             );
             case TEMPLE -> doubled(
                 baseBakingRate,
@@ -630,13 +594,7 @@ public final class BakeryService {
                 Upgrade.TEMPLE_TIER_5,
                 Upgrade.TEMPLE_TIER_6,
                 Upgrade.TEMPLE_TIER_7,
-                Upgrade.TEMPLE_TIER_8,
-                Upgrade.TEMPLE_TIER_9,
-                Upgrade.TEMPLE_TIER_10,
-                Upgrade.TEMPLE_TIER_11,
-                Upgrade.TEMPLE_TIER_12,
-                Upgrade.TEMPLE_TIER_13,
-                Upgrade.TEMPLE_TIER_14
+                Upgrade.TEMPLE_TIER_8
             );
             case WIZARD_TOWER -> doubled(
                 baseBakingRate,
@@ -648,13 +606,7 @@ public final class BakeryService {
                 Upgrade.WIZARD_TOWER_TIER_5,
                 Upgrade.WIZARD_TOWER_TIER_6,
                 Upgrade.WIZARD_TOWER_TIER_7,
-                Upgrade.WIZARD_TOWER_TIER_8,
-                Upgrade.WIZARD_TOWER_TIER_9,
-                Upgrade.WIZARD_TOWER_TIER_10,
-                Upgrade.WIZARD_TOWER_TIER_11,
-                Upgrade.WIZARD_TOWER_TIER_12,
-                Upgrade.WIZARD_TOWER_TIER_13,
-                Upgrade.WIZARD_TOWER_TIER_14
+                Upgrade.WIZARD_TOWER_TIER_8
             );
             case SHIPMENT -> doubled(
                 baseBakingRate,
@@ -666,13 +618,7 @@ public final class BakeryService {
                 Upgrade.SHIPMENT_TIER_5,
                 Upgrade.SHIPMENT_TIER_6,
                 Upgrade.SHIPMENT_TIER_7,
-                Upgrade.SHIPMENT_TIER_8,
-                Upgrade.SHIPMENT_TIER_9,
-                Upgrade.SHIPMENT_TIER_10,
-                Upgrade.SHIPMENT_TIER_11,
-                Upgrade.SHIPMENT_TIER_12,
-                Upgrade.SHIPMENT_TIER_13,
-                Upgrade.SHIPMENT_TIER_14
+                Upgrade.SHIPMENT_TIER_8
             );
             case ALCHEMY_LAB -> doubled(
                 baseBakingRate,
@@ -684,13 +630,7 @@ public final class BakeryService {
                 Upgrade.ALCHEMY_LAB_TIER_5,
                 Upgrade.ALCHEMY_LAB_TIER_6,
                 Upgrade.ALCHEMY_LAB_TIER_7,
-                Upgrade.ALCHEMY_LAB_TIER_8,
-                Upgrade.ALCHEMY_LAB_TIER_9,
-                Upgrade.ALCHEMY_LAB_TIER_10,
-                Upgrade.ALCHEMY_LAB_TIER_11,
-                Upgrade.ALCHEMY_LAB_TIER_12,
-                Upgrade.ALCHEMY_LAB_TIER_13,
-                Upgrade.ALCHEMY_LAB_TIER_14
+                Upgrade.ALCHEMY_LAB_TIER_8
             );
         };
     }
@@ -730,13 +670,7 @@ public final class BakeryService {
             new BigDecimal(20),
             Upgrade.CURSOR_TIER_6,
             Upgrade.CURSOR_TIER_7,
-            Upgrade.CURSOR_TIER_8,
-            Upgrade.CURSOR_TIER_9,
-            Upgrade.CURSOR_TIER_10,
-            Upgrade.CURSOR_TIER_11,
-            Upgrade.CURSOR_TIER_12,
-            Upgrade.CURSOR_TIER_13,
-            Upgrade.CURSOR_TIER_14
+            Upgrade.CURSOR_TIER_8
         );
     }
 

@@ -47,10 +47,10 @@ final class UpgradePanel extends Container<Table> implements EventListener {
     @Override
     public float getPrefHeight() {
         var table = getActor();
-        if (isExpanded || !table.hasChildren()) {
-            return super.getPrefHeight();
+        if (!isExpanded && table.hasChildren()) {
+            return table.getRowPrefHeight(0);
         }
-        return table.getRowPrefHeight(0);
+        return super.getPrefHeight();
     }
 
     @Override
@@ -58,6 +58,9 @@ final class UpgradePanel extends Container<Table> implements EventListener {
         super.act(delta);
         for (var upgrade : Upgrade.values()) {
             addUpgradeButton(upgrade);
+        }
+        if (!getActor().hasChildren()) {
+            isExpanded = false;
         }
     }
 

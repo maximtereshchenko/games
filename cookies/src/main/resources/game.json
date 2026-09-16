@@ -602,24 +602,6 @@
     "CLICK_TIER_8": {
       "drawable": "mouse-pointer-hazelrald"
     },
-    "CLICK_TIER_9": {
-      "drawable": "mouse-pointer-mooncandy"
-    },
-    "CLICK_TIER_10": {
-      "drawable": "mouse-pointer-astrofudge"
-    },
-    "CLICK_TIER_11": {
-      "drawable": "mouse-pointer-alabascream"
-    },
-    "CLICK_TIER_12": {
-      "drawable": "mouse-pointer-iridyum"
-    },
-    "CLICK_TIER_13": {
-      "drawable": "mouse-pointer-glucosmium"
-    },
-    "CLICK_TIER_14": {
-      "drawable": "mouse-pointer-glimmeringue"
-    },
     "CURSOR_TIER_0": {
       "drawable": "hand-plain"
     },
@@ -646,24 +628,6 @@
     },
     "CURSOR_TIER_8": {
       "drawable": "hand-hazelrald"
-    },
-    "CURSOR_TIER_9": {
-      "drawable": "hand-mooncandy"
-    },
-    "CURSOR_TIER_10": {
-      "drawable": "hand-astrofudge"
-    },
-    "CURSOR_TIER_11": {
-      "drawable": "hand-alabascream"
-    },
-    "CURSOR_TIER_12": {
-      "drawable": "hand-iridyum"
-    },
-    "CURSOR_TIER_13": {
-      "drawable": "hand-glucosmium"
-    },
-    "CURSOR_TIER_14": {
-      "drawable": "hand-glimmeringue"
     },
     "GRANDMA_TIER_0": {
       "drawable": "rolling-pin-plain"
@@ -692,24 +656,6 @@
     "GRANDMA_TIER_8": {
       "drawable": "rolling-pin-hazelrald"
     },
-    "GRANDMA_TIER_9": {
-      "drawable": "rolling-pin-mooncandy"
-    },
-    "GRANDMA_TIER_10": {
-      "drawable": "rolling-pin-astrofudge"
-    },
-    "GRANDMA_TIER_11": {
-      "drawable": "rolling-pin-alabascream"
-    },
-    "GRANDMA_TIER_12": {
-      "drawable": "rolling-pin-iridyum"
-    },
-    "GRANDMA_TIER_13": {
-      "drawable": "rolling-pin-glucosmium"
-    },
-    "GRANDMA_TIER_14": {
-      "drawable": "rolling-pin-glimmeringue"
-    },
     "FARM_TIER_0": {
       "drawable": "watering-pot-plain"
     },
@@ -736,24 +682,6 @@
     },
     "FARM_TIER_8": {
       "drawable": "watering-pot-hazelrald"
-    },
-    "FARM_TIER_9": {
-      "drawable": "watering-pot-mooncandy"
-    },
-    "FARM_TIER_10": {
-      "drawable": "watering-pot-astrofudge"
-    },
-    "FARM_TIER_11": {
-      "drawable": "watering-pot-alabascream"
-    },
-    "FARM_TIER_12": {
-      "drawable": "watering-pot-iridyum"
-    },
-    "FARM_TIER_13": {
-      "drawable": "watering-pot-glucosmium"
-    },
-    "FARM_TIER_14": {
-      "drawable": "watering-pot-glimmeringue"
     },
     "MINE_TIER_0": {
       "drawable": "pickaxe-plain"
@@ -782,24 +710,6 @@
     "MINE_TIER_8": {
       "drawable": "pickaxe-hazelrald"
     },
-    "MINE_TIER_9": {
-      "drawable": "pickaxe-mooncandy"
-    },
-    "MINE_TIER_10": {
-      "drawable": "pickaxe-astrofudge"
-    },
-    "MINE_TIER_11": {
-      "drawable": "pickaxe-alabascream"
-    },
-    "MINE_TIER_12": {
-      "drawable": "pickaxe-iridyum"
-    },
-    "MINE_TIER_13": {
-      "drawable": "pickaxe-glucosmium"
-    },
-    "MINE_TIER_14": {
-      "drawable": "pickaxe-glimmeringue"
-    },
     "FACTORY_TIER_0": {
       "drawable": "gears-plain"
     },
@@ -826,24 +736,6 @@
     },
     "FACTORY_TIER_8": {
       "drawable": "gears-hazelrald"
-    },
-    "FACTORY_TIER_9": {
-      "drawable": "gears-mooncandy"
-    },
-    "FACTORY_TIER_10": {
-      "drawable": "gears-astrofudge"
-    },
-    "FACTORY_TIER_11": {
-      "drawable": "gears-alabascream"
-    },
-    "FACTORY_TIER_12": {
-      "drawable": "gears-iridyum"
-    },
-    "FACTORY_TIER_13": {
-      "drawable": "gears-glucosmium"
-    },
-    "FACTORY_TIER_14": {
-      "drawable": "gears-glimmeringue"
     },
     "BANK_TIER_0": {
       "drawable": "bag-plain"
@@ -872,24 +764,6 @@
     "BANK_TIER_8": {
       "drawable": "bag-hazelrald"
     },
-    "BANK_TIER_9": {
-      "drawable": "bag-mooncandy"
-    },
-    "BANK_TIER_10": {
-      "drawable": "bag-astrofudge"
-    },
-    "BANK_TIER_11": {
-      "drawable": "bag-alabascream"
-    },
-    "BANK_TIER_12": {
-      "drawable": "bag-iridyum"
-    },
-    "BANK_TIER_13": {
-      "drawable": "bag-glucosmium"
-    },
-    "BANK_TIER_14": {
-      "drawable": "bag-glimmeringue"
-    },
     "TEMPLE_TIER_0": {
       "drawable": "idol-plain"
     },
@@ -916,24 +790,6 @@
     },
     "TEMPLE_TIER_8": {
       "drawable": "idol-hazelrald"
-    },
-    "TEMPLE_TIER_9": {
-      "drawable": "idol-mooncandy"
-    },
-    "TEMPLE_TIER_10": {
-      "drawable": "idol-astrofudge"
-    },
-    "TEMPLE_TIER_11": {
-      "drawable": "idol-alabascream"
-    },
-    "TEMPLE_TIER_12": {
-      "drawable": "idol-iridyum"
-    },
-    "TEMPLE_TIER_13": {
-      "drawable": "idol-glucosmium"
-    },
-    "TEMPLE_TIER_14": {
-      "drawable": "idol-glimmeringue"
     },
     "WIZARD_TOWER_TIER_0": {
       "drawable": "wizard-hat-plain"
@@ -962,24 +818,6 @@
     "WIZARD_TOWER_TIER_8": {
       "drawable": "wizard-hat-hazelrald"
     },
-    "WIZARD_TOWER_TIER_9": {
-      "drawable": "wizard-hat-mooncandy"
-    },
-    "WIZARD_TOWER_TIER_10": {
-      "drawable": "wizard-hat-astrofudge"
-    },
-    "WIZARD_TOWER_TIER_11": {
-      "drawable": "wizard-hat-alabascream"
-    },
-    "WIZARD_TOWER_TIER_12": {
-      "drawable": "wizard-hat-iridyum"
-    },
-    "WIZARD_TOWER_TIER_13": {
-      "drawable": "wizard-hat-glucosmium"
-    },
-    "WIZARD_TOWER_TIER_14": {
-      "drawable": "wizard-hat-glimmeringue"
-    },
     "SHIPMENT_TIER_0": {
       "drawable": "rocket-plain"
     },
@@ -1007,24 +845,6 @@
     "SHIPMENT_TIER_8": {
       "drawable": "rocket-hazelrald"
     },
-    "SHIPMENT_TIER_9": {
-      "drawable": "rocket-mooncandy"
-    },
-    "SHIPMENT_TIER_10": {
-      "drawable": "rocket-astrofudge"
-    },
-    "SHIPMENT_TIER_11": {
-      "drawable": "rocket-alabascream"
-    },
-    "SHIPMENT_TIER_12": {
-      "drawable": "rocket-iridyum"
-    },
-    "SHIPMENT_TIER_13": {
-      "drawable": "rocket-glucosmium"
-    },
-    "SHIPMENT_TIER_14": {
-      "drawable": "rocket-glimmeringue"
-    },
     "ALCHEMY_LAB_TIER_0": {
       "drawable": "alembic-plain"
     },
@@ -1051,24 +871,6 @@
     },
     "ALCHEMY_LAB_TIER_8": {
       "drawable": "alembic-hazelrald"
-    },
-    "ALCHEMY_LAB_TIER_9": {
-      "drawable": "alembic-mooncandy"
-    },
-    "ALCHEMY_LAB_TIER_10": {
-      "drawable": "alembic-astrofudge"
-    },
-    "ALCHEMY_LAB_TIER_11": {
-      "drawable": "alembic-alabascream"
-    },
-    "ALCHEMY_LAB_TIER_12": {
-      "drawable": "alembic-iridyum"
-    },
-    "ALCHEMY_LAB_TIER_13": {
-      "drawable": "alembic-glucosmium"
-    },
-    "ALCHEMY_LAB_TIER_14": {
-      "drawable": "alembic-glimmeringue"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -1249,146 +1051,6 @@
     },
     "CUMULATIVE_BAKED_TIER_12": {
       "unlocked": "cookie-eyeball-red-hypnotic",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_13": {
-      "unlocked": "cookie-eyeball-large-red-ring",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_14": {
-      "unlocked": "cookie-eyeball-cluster",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_15": {
-      "unlocked": "cookie-eyeball-brown-white-ring",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_16": {
-      "unlocked": "cookie-eyeball-pink",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_17": {
-      "unlocked": "cookie-eyeball-green",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_18": {
-      "unlocked": "cookie-eyeball-floral-frame",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_19": {
-      "unlocked": "cookie-eyeball-yellow-orange",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_20": {
-      "unlocked": "cookie-eyeball-teal-blue",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_21": {
-      "unlocked": "cookie-eyeball-red-cyan-ring",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_22": {
-      "unlocked": "cookie-eyeball-red-yellow-ring",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_23": {
-      "unlocked": "cookie-eyeball-brown-yellow-iris",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_24": {
-      "unlocked": "stone-bust-neutral",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_25": {
-      "unlocked": "stone-bust-shadowed",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_26": {
-      "unlocked": "stone-bust-crimson",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_27": {
-      "unlocked": "stone-bust-neon",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_28": {
-      "unlocked": "stone-bust-verdant",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_29": {
-      "unlocked": "stone-bust-azure",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_30": {
-      "unlocked": "stone-bust-porcelain",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_31": {
-      "unlocked": "stone-bust-terracotta",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_32": {
-      "unlocked": "shadow-bust-glowing-eyes",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_33": {
-      "unlocked": "landscape-farm-daytime",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_34": {
-      "unlocked": "landscape-farm-night",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_35": {
-      "unlocked": "landscape-farm-desert",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_36": {
-      "unlocked": "landscape-farm-frost",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_37": {
-      "unlocked": "landscape-farm-monochrome",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_38": {
-      "unlocked": "landscape-farm-infernal",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_39": {
-      "unlocked": "landscape-farm-psychedelic",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_40": {
-      "unlocked": "landscape-farm-golden",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_41": {
-      "unlocked": "landscape-farm-alien-orb",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_42": {
-      "unlocked": "landscape-farm-giant-eyeball",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_43": {
-      "unlocked": "landscape-farm-molten-core",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_44": {
-      "unlocked": "cosmic-starburst-field",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_45": {
-      "unlocked": "deep-space-nebula",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_46": {
-      "unlocked": "deep-space-cyan-orb",
-      "locked": "question-mark"
-    },
-    "CUMULATIVE_BAKED_TIER_47": {
-      "unlocked": "deep-space-crimson-orb",
       "locked": "question-mark"
     }
   },
