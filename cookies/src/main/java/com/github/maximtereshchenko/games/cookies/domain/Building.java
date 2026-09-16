@@ -11,5 +11,6 @@ public enum Building {
     TEMPLE,
     WIZARD_TOWER,
     SHIPMENT,
-    ALCHEMY_LAB
+    ALCHEMY_LAB,
+    PORTAL
 }

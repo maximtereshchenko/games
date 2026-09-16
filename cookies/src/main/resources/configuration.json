@@ -1,5 +1,5 @@
 {
-  "baseBakingPower": "1",
+  "baseBakingPower": "1E100",
   "buildingConfigurations": {
     "CURSOR": {
       "basePrice": "15",
@@ -40,6 +40,10 @@
     "ALCHEMY_LAB": {
       "basePrice": "7.5E10",
       "baseBakingRate": "1.6E6"
+    },
+    "PORTAL": {
+      "basePrice": "1E12",
+      "baseBakingRate": "1E7"
     }
   },
   "upgradeTiers": [
@@ -1230,6 +1234,114 @@
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
         "building": "ALCHEMY_LAB",
+        "tier": 8
+      }
+    },
+    "PORTAL_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 0
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 0
+      }
+    },
+    "PORTAL_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 1
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 1
+      }
+    },
+    "PORTAL_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 2
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 2
+      }
+    },
+    "PORTAL_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 3
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 3
+      }
+    },
+    "PORTAL_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 4
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 4
+      }
+    },
+    "PORTAL_TIER_5": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 5
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 5
+      }
+    },
+    "PORTAL_TIER_6": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 6
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 6
+      }
+    },
+    "PORTAL_TIER_7": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 7
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
+        "tier": 7
+      }
+    },
+    "PORTAL_TIER_8": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PORTAL",
+        "tier": 8
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PORTAL",
         "tier": 8
       }
     }

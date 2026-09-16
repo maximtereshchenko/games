@@ -180,6 +180,9 @@
     },
     "wooden-interior-tiled": {
       "region": "wooden-interior"
+    },
+    "earth-tiled": {
+      "region": "earth"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -436,6 +439,10 @@
     "ALCHEMY_LAB-button": {
       "unlocked": "alchemy-lab",
       "locked": "alchemy-lab-disabled"
+    },
+    "PORTAL-button": {
+      "unlocked": "portal",
+      "locked": "portal-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BottomOverlayWidget$Style": {
@@ -871,6 +878,33 @@
     },
     "ALCHEMY_LAB_TIER_8": {
       "drawable": "alembic-hazelrald"
+    },
+    "PORTAL_TIER_0": {
+      "drawable": "portal-plain"
+    },
+    "PORTAL_TIER_1": {
+      "drawable": "portal-berrylium"
+    },
+    "PORTAL_TIER_2": {
+      "drawable": "portal-blueberrylium"
+    },
+    "PORTAL_TIER_3": {
+      "drawable": "portal-chalcedhoney"
+    },
+    "PORTAL_TIER_4": {
+      "drawable": "portal-buttergold"
+    },
+    "PORTAL_TIER_5": {
+      "drawable": "portal-sugarmuck"
+    },
+    "PORTAL_TIER_6": {
+      "drawable": "portal-jetmint"
+    },
+    "PORTAL_TIER_7": {
+      "drawable": "portal-cherrysilver"
+    },
+    "PORTAL_TIER_8": {
+      "drawable": "portal-hazelrald"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -900,6 +934,9 @@
     },
     "ALCHEMY_LAB": {
       "background": "wooden-interior-tiled"
+    },
+    "PORTAL": {
+      "background": "earth-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingImage$Style": {
@@ -937,6 +974,10 @@
     },
     "ALCHEMY_LAB": {
       "drawable": "alchemy-device",
+      "rows": 2
+    },
+    "PORTAL": {
+      "drawable": "portal-building",
       "rows": 2
     }
   },
@@ -987,6 +1028,10 @@
     },
     "ALCHEMY_LAB": {
       "enabled": "alembic-plain",
+      "disabled": "question-mark"
+    },
+    "PORTAL": {
+      "enabled": "portal-plain",
       "disabled": "question-mark"
     }
   },
@@ -1100,7 +1145,8 @@
         "TEMPLE": "idol-buttergold",
         "WIZARD_TOWER": "wizard-hat-buttergold",
         "SHIPMENT": "rocket-buttergold",
-        "ALCHEMY_LAB": "alembic-buttergold"
+        "ALCHEMY_LAB": "alembic-buttergold",
+        "PORTAL": "portal-buttergold"
       }
     }
   },

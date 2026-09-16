@@ -632,6 +632,18 @@ public final class BakeryService {
                 Upgrade.ALCHEMY_LAB_TIER_7,
                 Upgrade.ALCHEMY_LAB_TIER_8
             );
+            case PORTAL -> doubled(
+                baseBakingRate,
+                Upgrade.PORTAL_TIER_0,
+                Upgrade.PORTAL_TIER_1,
+                Upgrade.PORTAL_TIER_2,
+                Upgrade.PORTAL_TIER_3,
+                Upgrade.PORTAL_TIER_4,
+                Upgrade.PORTAL_TIER_5,
+                Upgrade.PORTAL_TIER_6,
+                Upgrade.PORTAL_TIER_7,
+                Upgrade.PORTAL_TIER_8
+            );
         };
     }
 
