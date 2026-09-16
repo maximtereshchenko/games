@@ -26,6 +26,7 @@ final class BuffTooltipPanel extends Table {
                 skin,
                 "buff-name-tooltip",
                 bundle,
+                bakeryService,
                 buff
             )
         );

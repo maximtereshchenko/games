@@ -36,6 +36,7 @@ final class GoldenCookieNotification extends Table {
                     skin,
                     effectNameStyle,
                     bundle,
+                    bakeryService,
                     buffExtendedEffect.buff()
                 );
                 case LuckyGoldenCookieEffect _ -> new Label(
@@ -66,7 +67,6 @@ final class GoldenCookieNotification extends Table {
         )
             .growX();
         background(skin.get(Style.class).background);
-        pack();
         var halfWidth = getWidth() / 2;
         var halfHeight = getHeight() / 2;
         setPosition(
@@ -99,6 +99,13 @@ final class GoldenCookieNotification extends Table {
     @Override
     public float getPrefWidth() {
         return 350;
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        validate();
+        pack();
     }
 
     private static final class Style {

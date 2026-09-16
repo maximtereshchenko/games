@@ -1426,6 +1426,22 @@
       "drawable": "hand-buttergold"
     }
   },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuildingSpecialBuffIcon$Style": {
+    "default": {
+      "drawables": {
+        "CURSOR": "hand-buttergold",
+        "GRANDMA": "rolling-pin-buttergold",
+        "FARM": "watering-pot-buttergold",
+        "MINE": "pickaxe-buttergold",
+        "FACTORY": "gears-buttergold",
+        "BANK": "bag-buttergold",
+        "TEMPLE": "idol-buttergold",
+        "WIZARD_TOWER": "wizard-hat-buttergold",
+        "SHIPMENT": "rocket-buttergold",
+        "ALCHEMY_LAB": "alembic-buttergold"
+      }
+    }
+  },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuffDurationWidget$Style": {
     "default": {
       "baseIconName": "progress",

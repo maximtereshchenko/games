@@ -4,10 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
-import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
-import com.github.maximtereshchenko.games.cookies.domain.Buff;
-import com.github.maximtereshchenko.games.cookies.domain.ClickFrenzyEffect;
-import com.github.maximtereshchenko.games.cookies.domain.FrenzyEffect;
+import com.github.maximtereshchenko.games.cookies.domain.*;
 
 final class BuffDescriptionLabel extends Label {
 
@@ -44,6 +41,12 @@ final class BuffDescriptionLabel extends Label {
                     };
                     case ClickFrenzyEffect clickFrenzyEffect -> new Object[]{
                         clickFrenzyEffect.multiplier(),
+                        durationSeconds
+                    };
+                    case BuildingSpecialEffect buildingSpecialEffect -> new Object[]{
+                        buildingSpecialEffect.building().ordinal(),
+                        buildingSpecialEffect.count(),
+                        buildingSpecialEffect.multiplier(),
                         durationSeconds
                     };
                 }

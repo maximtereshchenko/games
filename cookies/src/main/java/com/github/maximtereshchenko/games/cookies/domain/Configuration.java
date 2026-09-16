@@ -13,7 +13,8 @@ public record Configuration(
     float milkPercentPerUnlockedAchievement,
     GoldenCookieConfiguration goldenCookieConfiguration,
     FrenzyBuffConfiguration frenzyBuffConfiguration,
-    ClickFrenzyBuffConfiguration clickFrenzyBuffConfiguration
+    ClickFrenzyBuffConfiguration clickFrenzyBuffConfiguration,
+    BuildingSpecialBuffConfiguration buildingSpecialBuffConfiguration
 ) {
 
     record BuildingConfiguration(
@@ -37,7 +38,8 @@ public record Configuration(
 
             FRENZY,
             CLICK_FRENZY,
-            LUCKY
+            LUCKY,
+            BUILDING_SPECIAL
         }
     }
 
@@ -49,5 +51,12 @@ public record Configuration(
     record ClickFrenzyBuffConfiguration(
         float multiplier,
         float baseDurationSeconds
+    ) {}
+
+    record BuildingSpecialBuffConfiguration(
+        int minBuildingCount,
+        float multiplierPerBuilding,
+        float baseDurationSeconds,
+        Buff fallback
     ) {}
 }

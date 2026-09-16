@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BinaryOperator;
+import java.util.stream.Stream;
 
 public final class BakeryService {
 
@@ -33,10 +34,7 @@ public final class BakeryService {
         );
         this.buffs = new EnumMap<>(Buff.class);
         for (var buff : Buff.values()) {
-            buffs.put(
-                buff,
-                new ActiveBuff(newBuffEffect(buff))
-            );
+            buffs.put(buff, new ActiveBuff());
         }
         updatePlayerProgress(
             (double) Duration.between(
@@ -67,29 +65,7 @@ public final class BakeryService {
 
     public GoldenCookieEffect goldenCookieEffect() {
         goldenCookie.reset();
-        return switch (effectType()) {
-            case FRENZY -> buffResetEffect(Buff.FRENZY);
-            case CLICK_FRENZY -> buffResetEffect(Buff.CLICK_FRENZY);
-            case LUCKY -> {
-                var amount = BinaryOperator.<BigDecimal>minBy(
-                        Comparator.naturalOrder()
-                    )
-                    .apply(
-                        playerProgress.balance.multiply(
-                            BigDecimal.valueOf(0.15)
-                        ),
-                        bakingRate()
-                            .multiply(
-                                new BigDecimal(
-                                    TimeUnit.MINUTES.toSeconds(15)
-                                )
-                            )
-                    )
-                    .add(new BigDecimal(13));
-                addToBalance(amount);
-                yield new LuckyGoldenCookieEffect(amount);
-            }
-        };
+        return goldenCookieEffect(effectType());
     }
 
     public BuffEffect buffEffect(Buff buff) {
@@ -179,9 +155,15 @@ public final class BakeryService {
 
     public BigDecimal bakingRate() {
         var bakingRate = buildingsBakingRate();
-        if (activeBuffEffect(Buff.FRENZY).orElse(null) instanceof FrenzyEffect frenzyEffect) {
-            return bakingRate.multiply(
-                BigDecimal.valueOf(frenzyEffect.multiplier())
+        for (var buff : Buff.values()) {
+            bakingRate = bakingRate.multiply(
+                BigDecimal.valueOf(
+                    switch (activeBuffEffect(buff).orElse(null)) {
+                        case BuildingSpecialEffect buildingSpecialEffect -> buildingSpecialEffect.multiplier();
+                        case FrenzyEffect frenzyEffect -> frenzyEffect.multiplier();
+                        case null, default -> 1;
+                    }
+                )
             );
         }
         return bakingRate;
@@ -297,6 +279,41 @@ public final class BakeryService {
         return goldenCookie.interval();
     }
 
+    private GoldenCookieEffect goldenCookieEffect(
+        Configuration.GoldenCookieConfiguration.EffectType effectType
+    ) {
+        return switch (effectType) {
+            case FRENZY -> buffResetEffect(Buff.FRENZY);
+            case CLICK_FRENZY -> buffResetEffect(Buff.CLICK_FRENZY);
+            case LUCKY -> {
+                var amount = BinaryOperator.<BigDecimal>minBy(
+                        Comparator.naturalOrder()
+                    )
+                    .apply(
+                        playerProgress.balance.multiply(
+                            BigDecimal.valueOf(0.15)
+                        ),
+                        bakingRate()
+                            .multiply(
+                                new BigDecimal(
+                                    TimeUnit.MINUTES.toSeconds(15)
+                                )
+                            )
+                    )
+                    .add(new BigDecimal(13));
+                addToBalance(amount);
+                yield new LuckyGoldenCookieEffect(amount);
+            }
+            case BUILDING_SPECIAL -> buffResetEffect(Buff.BUILDING_SPECIAL);
+        };
+    }
+
+    private List<Building> buildingSpecialBuffEligibleBuildings(int minBuildingCount) {
+        return Stream.of(Building.values())
+            .filter(building -> count(building) > minBuildingCount)
+            .toList();
+    }
+
     private Optional<BuffEffect> activeBuffEffect(Buff buff) {
         var activeBuff = buffs.get(buff);
         if (activeBuff.interval().progress() < 1) {
@@ -306,11 +323,51 @@ public final class BakeryService {
     }
 
     private BuffResetEffect buffResetEffect(Buff buff) {
-        buffs.get(buff)
-            .reset(
-                newBuffEffect(buff),
-                buffDuration(buff)
-            );
+        switch (buff) {
+            case FRENZY -> {
+                var frenzyBuffConfiguration = configuration.frenzyBuffConfiguration();
+                buffs.get(buff)
+                    .reset(
+                        new FrenzyEffect(
+                            frenzyBuffConfiguration.multiplier()
+                        ),
+                        frenzyBuffConfiguration.baseDurationSeconds()
+                    );
+            }
+            case CLICK_FRENZY -> {
+                var clickFrenzyBuffConfiguration = configuration.clickFrenzyBuffConfiguration();
+                buffs.get(buff)
+                    .reset(
+                        new ClickFrenzyEffect(
+                            clickFrenzyBuffConfiguration.multiplier()
+                        ),
+                        clickFrenzyBuffConfiguration.baseDurationSeconds()
+                    );
+            }
+            case BUILDING_SPECIAL -> {
+                var buildingSpecialBuffConfiguration =
+                    configuration.buildingSpecialBuffConfiguration();
+                var buildings = buildingSpecialBuffEligibleBuildings(
+                    buildingSpecialBuffConfiguration.minBuildingCount()
+                );
+                if (buildings.isEmpty()) {
+                    return buffResetEffect(
+                        buildingSpecialBuffConfiguration.fallback()
+                    );
+                }
+                var building = buildings.get(random.nextInt(buildings.size()));
+                var count = count(building);
+                buffs.get(buff)
+                    .reset(
+                        new BuildingSpecialEffect(
+                            building,
+                            count,
+                            buildingSpecialBuffConfiguration.multiplierPerBuilding() * count
+                        ),
+                        buildingSpecialBuffConfiguration.baseDurationSeconds()
+                    );
+            }
+        }
         return new BuffResetEffect(buff);
     }
 
@@ -350,28 +407,6 @@ public final class BakeryService {
             );
         }
         return bakingRate;
-    }
-
-    private float buffDuration(Buff buff) {
-        return switch (buff) {
-            case FRENZY -> configuration.frenzyBuffConfiguration()
-                .baseDurationSeconds();
-            case CLICK_FRENZY -> configuration.clickFrenzyBuffConfiguration()
-                .baseDurationSeconds();
-        };
-    }
-
-    private BuffEffect newBuffEffect(Buff buff) {
-        return switch (buff) {
-            case FRENZY -> new FrenzyEffect(
-                configuration.frenzyBuffConfiguration()
-                    .multiplier()
-            );
-            case CLICK_FRENZY -> new ClickFrenzyEffect(
-                configuration.clickFrenzyBuffConfiguration()
-                    .multiplier()
-            );
-        };
     }
 
     private void updatePlayerProgress(double deltaTimeSeconds) {

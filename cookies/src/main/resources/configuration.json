@@ -2226,9 +2226,10 @@
     "baseSpawnDurationSeconds": 600,
     "baseDurationSeconds": 13,
     "effectChances": {
-      "FRENZY": 0.485,
+      "FRENZY": 0.445,
       "CLICK_FRENZY": 0.03,
-      "LUCKY": 0.485
+      "LUCKY": 0.445,
+      "BUILDING_SPECIAL": 0.08
     }
   },
   "frenzyBuffConfiguration": {
@@ -2238,5 +2239,11 @@
   "clickFrenzyBuffConfiguration": {
     "multiplier": 777,
     "baseDurationSeconds": 13
+  },
+  "buildingSpecialBuffConfiguration": {
+    "minBuildingCount": 9,
+    "multiplierPerBuilding": 0.1,
+    "baseDurationSeconds": 30,
+    "fallback": "FRENZY"
   }
 }

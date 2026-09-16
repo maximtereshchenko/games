@@ -22,10 +22,16 @@ final class BuffWidget extends ColoredButton {
     ) {
         var stack = new Stack();
         stack.add(
-            new BuffIcon(
-                skin,
-                buff
-            )
+            switch (buff) {
+                case FRENZY, CLICK_FRENZY -> new BuffIcon(
+                    skin,
+                    buff
+                );
+                case BUILDING_SPECIAL -> new BuildingSpecialBuffIcon(
+                    skin,
+                    bakeryService
+                );
+            }
         );
         stack.add(
             new BuffDurationWidget(

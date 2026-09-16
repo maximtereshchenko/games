@@ -6,10 +6,9 @@ final class ActiveBuff {
     private float durationSeconds;
     private BuffEffect buffEffect;
 
-    ActiveBuff(BuffEffect buffEffect) {
+    ActiveBuff() {
         this.remainingSeconds = 0;
         this.durationSeconds = 0;
-        this.buffEffect = buffEffect;
     }
 
     void update(float deltaTimeSeconds) {
