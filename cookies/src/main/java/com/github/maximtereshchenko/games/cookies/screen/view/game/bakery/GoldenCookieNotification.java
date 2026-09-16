@@ -1,6 +1,7 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -92,6 +93,7 @@ final class GoldenCookieNotification extends Table {
                 Actions.removeActor()
             )
         );
+        setTouchable(Touchable.disabled);
     }
 
     @Override

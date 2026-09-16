@@ -38,7 +38,10 @@ final class BuffOverlay extends Table {
     @Override
     public void act(float delta) {
         super.act(delta);
-        buffWidgets.sort(Comparator.comparing(BuffWidget::isVisible));
+        buffWidgets.sort(
+            Comparator.comparing(BuffWidget::isVisible)
+                .reversed()
+        );
         clearChildren();
         for (var buffWidget : buffWidgets) {
             add(buffWidget).row();

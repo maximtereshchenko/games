@@ -1,3 +1,4 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
-public sealed interface BuffEffect permits FrenzyEffect {}
+public sealed interface BuffEffect
+    permits ClickFrenzyEffect, FrenzyEffect {}

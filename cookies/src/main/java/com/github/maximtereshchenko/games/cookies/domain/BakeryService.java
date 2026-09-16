@@ -6,10 +6,7 @@ import java.math.RoundingMode;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Comparator;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BinaryOperator;
 
@@ -71,14 +68,8 @@ public final class BakeryService {
     public GoldenCookieEffect goldenCookieEffect() {
         goldenCookie.reset();
         return switch (effectType()) {
-            case FRENZY -> {
-                buffs.get(Buff.FRENZY)
-                    .reset(
-                        newBuffEffect(Buff.FRENZY),
-                        buffDuration(Buff.FRENZY)
-                    );
-                yield new BuffResetEffect(Buff.FRENZY);
-            }
+            case FRENZY -> buffResetEffect(Buff.FRENZY);
+            case CLICK_FRENZY -> buffResetEffect(Buff.CLICK_FRENZY);
             case LUCKY -> {
                 var amount = BinaryOperator.<BigDecimal>minBy(
                         Comparator.naturalOrder()
@@ -188,21 +179,16 @@ public final class BakeryService {
 
     public BigDecimal bakingRate() {
         var bakingRate = buildingsBakingRate();
-        for (var buff : buffs.values()) {
-            if (buff.interval().progress() < 1) {
-                switch (buff.buffEffect()) {
-                    case FrenzyEffect frenzyEffect -> bakingRate =
-                        bakingRate.multiply(
-                            BigDecimal.valueOf(frenzyEffect.multiplier())
-                        );
-                }
-            }
+        if (activeBuffEffect(Buff.FRENZY).orElse(null) instanceof FrenzyEffect frenzyEffect) {
+            return bakingRate.multiply(
+                BigDecimal.valueOf(frenzyEffect.multiplier())
+            );
         }
         return bakingRate;
     }
 
     public BigDecimal bakingPower() {
-        return cursorBakingRate(configuration.baseBakingPower())
+        var bakingPower = cursorBakingRate(configuration.baseBakingPower())
             .add(
                 calculated(
                     BigDecimal.ZERO,
@@ -226,6 +212,12 @@ public final class BakeryService {
                     Upgrade.CLICK_TIER_14
                 )
             );
+        if (activeBuffEffect(Buff.CLICK_FRENZY).orElse(null) instanceof ClickFrenzyEffect clickFrenzyEffect) {
+            return bakingPower.multiply(
+                BigDecimal.valueOf(clickFrenzyEffect.multiplier())
+            );
+        }
+        return bakingPower;
     }
 
     public BigDecimal price(Upgrade upgrade) {
@@ -305,6 +297,23 @@ public final class BakeryService {
         return goldenCookie.interval();
     }
 
+    private Optional<BuffEffect> activeBuffEffect(Buff buff) {
+        var activeBuff = buffs.get(buff);
+        if (activeBuff.interval().progress() < 1) {
+            return Optional.of(activeBuff.buffEffect());
+        }
+        return Optional.empty();
+    }
+
+    private BuffResetEffect buffResetEffect(Buff buff) {
+        buffs.get(buff)
+            .reset(
+                newBuffEffect(buff),
+                buffDuration(buff)
+            );
+        return new BuffResetEffect(buff);
+    }
+
     private void addToBalance(BigDecimal amount) {
         playerProgress.balance =
             playerProgress.balance.add(
@@ -347,6 +356,8 @@ public final class BakeryService {
         return switch (buff) {
             case FRENZY -> configuration.frenzyBuffConfiguration()
                 .baseDurationSeconds();
+            case CLICK_FRENZY -> configuration.clickFrenzyBuffConfiguration()
+                .baseDurationSeconds();
         };
     }
 
@@ -354,6 +365,10 @@ public final class BakeryService {
         return switch (buff) {
             case FRENZY -> new FrenzyEffect(
                 configuration.frenzyBuffConfiguration()
+                    .multiplier()
+            );
+            case CLICK_FRENZY -> new ClickFrenzyEffect(
+                configuration.clickFrenzyBuffConfiguration()
                     .multiplier()
             );
         };

@@ -2226,12 +2226,17 @@
     "baseSpawnDurationSeconds": 600,
     "baseDurationSeconds": 13,
     "effectChances": {
-      "FRENZY": 0.5,
-      "LUCKY": 0.5
+      "FRENZY": 0.485,
+      "CLICK_FRENZY": 0.03,
+      "LUCKY": 0.485
     }
   },
   "frenzyBuffConfiguration": {
     "multiplier": 7,
     "baseDurationSeconds": 77
+  },
+  "clickFrenzyBuffConfiguration": {
+    "multiplier": 777,
+    "baseDurationSeconds": 13
   }
 }

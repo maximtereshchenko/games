@@ -1421,6 +1421,9 @@
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuffIcon$Style": {
     "FRENZY": {
       "drawable": "cookie-buttergold"
+    },
+    "CLICK_FRENZY": {
+      "drawable": "hand-buttergold"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BuffDurationWidget$Style": {

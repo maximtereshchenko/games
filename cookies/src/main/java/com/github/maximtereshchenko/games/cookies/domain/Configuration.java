@@ -12,7 +12,8 @@ public record Configuration(
     Map<Achievement, AchievementUnlockRequirement> achievementUnlockRequirements,
     float milkPercentPerUnlockedAchievement,
     GoldenCookieConfiguration goldenCookieConfiguration,
-    FrenzyBuffConfiguration frenzyBuffConfiguration
+    FrenzyBuffConfiguration frenzyBuffConfiguration,
+    ClickFrenzyBuffConfiguration clickFrenzyBuffConfiguration
 ) {
 
     record BuildingConfiguration(
@@ -35,11 +36,17 @@ public record Configuration(
         enum EffectType {
 
             FRENZY,
+            CLICK_FRENZY,
             LUCKY
         }
     }
 
     record FrenzyBuffConfiguration(
+        float multiplier,
+        float baseDurationSeconds
+    ) {}
+
+    record ClickFrenzyBuffConfiguration(
         float multiplier,
         float baseDurationSeconds
     ) {}
