@@ -15,5 +15,6 @@ public enum Building {
     PORTAL,
     TIME_MACHINE,
     ANTIMATTER_CONDENSER,
-    PRISM
+    PRISM,
+    CHANCEMAKER
 }

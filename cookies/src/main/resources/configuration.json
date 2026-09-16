@@ -56,6 +56,10 @@
     "PRISM": {
       "basePrice": "2.1E15",
       "baseBakingRate": "2.9E9"
+    },
+    "CHANCEMAKER": {
+      "basePrice": "2.6E16",
+      "baseBakingRate": "2.1E10"
     }
   },
   "upgradeTiers": [
@@ -1678,6 +1682,114 @@
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
         "building": "PRISM",
+        "tier": 8
+      }
+    },
+    "CHANCEMAKER_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 0
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 0
+      }
+    },
+    "CHANCEMAKER_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 1
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 1
+      }
+    },
+    "CHANCEMAKER_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 2
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 2
+      }
+    },
+    "CHANCEMAKER_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 3
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 3
+      }
+    },
+    "CHANCEMAKER_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 4
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 4
+      }
+    },
+    "CHANCEMAKER_TIER_5": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 5
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 5
+      }
+    },
+    "CHANCEMAKER_TIER_6": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 6
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 6
+      }
+    },
+    "CHANCEMAKER_TIER_7": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 7
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
+        "tier": 7
+      }
+    },
+    "CHANCEMAKER_TIER_8": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "CHANCEMAKER",
+        "tier": 8
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "CHANCEMAKER",
         "tier": 8
       }
     }

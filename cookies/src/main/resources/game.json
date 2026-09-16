@@ -192,6 +192,9 @@
     },
     "fields-squared-tiled": {
       "region": "fields-squared"
+    },
+    "stone-columns-tiled": {
+      "region": "stone-columns"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -464,6 +467,10 @@
     "PRISM-button": {
       "unlocked": "prism-icon",
       "locked": "prism-icon-disabled"
+    },
+    "CHANCEMAKER-button": {
+      "unlocked": "chancemaker",
+      "locked": "chancemaker-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BottomOverlayWidget$Style": {
@@ -1007,6 +1014,33 @@
     },
     "PRISM_TIER_8": {
       "drawable": "prism-hazelrald"
+    },
+    "CHANCEMAKER_TIER_0": {
+      "drawable": "die-plain"
+    },
+    "CHANCEMAKER_TIER_1": {
+      "drawable": "die-berrylium"
+    },
+    "CHANCEMAKER_TIER_2": {
+      "drawable": "die-blueberrylium"
+    },
+    "CHANCEMAKER_TIER_3": {
+      "drawable": "die-chalcedhoney"
+    },
+    "CHANCEMAKER_TIER_4": {
+      "drawable": "die-buttergold"
+    },
+    "CHANCEMAKER_TIER_5": {
+      "drawable": "die-sugarmuck"
+    },
+    "CHANCEMAKER_TIER_6": {
+      "drawable": "die-jetmint"
+    },
+    "CHANCEMAKER_TIER_7": {
+      "drawable": "die-cherrysilver"
+    },
+    "CHANCEMAKER_TIER_8": {
+      "drawable": "die-hazelrald"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -1048,6 +1082,9 @@
     },
     "PRISM": {
       "background": "fields-squared-tiled"
+    },
+    "CHANCEMAKER": {
+      "background": "stone-columns-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingImage$Style": {
@@ -1102,6 +1139,10 @@
     "PRISM": {
       "drawable": "prism",
       "rows": 1
+    },
+    "CHANCEMAKER": {
+      "drawable": "lucky-horseshoe",
+      "rows": 2
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.StatisticsPanel$Style": {
@@ -1167,6 +1208,10 @@
     },
     "PRISM": {
       "enabled": "prism-plain",
+      "disabled": "question-mark"
+    },
+    "CHANCEMAKER": {
+      "enabled": "die-plain",
       "disabled": "question-mark"
     }
   },
@@ -1284,7 +1329,8 @@
         "PORTAL": "portal-buttergold",
         "TIME_MACHINE": "hourglass-buttergold",
         "ANTIMATTER_CONDENSER": "atom-buttergold",
-        "PRISM": "prism-buttergold"
+        "PRISM": "prism-buttergold",
+        "CHANCEMAKER": "die-buttergold"
       }
     }
   },

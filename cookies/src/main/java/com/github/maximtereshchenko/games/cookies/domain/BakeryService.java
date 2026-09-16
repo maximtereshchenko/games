@@ -680,6 +680,18 @@ public final class BakeryService {
                 Upgrade.PRISM_TIER_7,
                 Upgrade.PRISM_TIER_8
             );
+            case CHANCEMAKER -> doubled(
+                baseBakingRate,
+                Upgrade.CHANCEMAKER_TIER_0,
+                Upgrade.CHANCEMAKER_TIER_1,
+                Upgrade.CHANCEMAKER_TIER_2,
+                Upgrade.CHANCEMAKER_TIER_3,
+                Upgrade.CHANCEMAKER_TIER_4,
+                Upgrade.CHANCEMAKER_TIER_5,
+                Upgrade.CHANCEMAKER_TIER_6,
+                Upgrade.CHANCEMAKER_TIER_7,
+                Upgrade.CHANCEMAKER_TIER_8
+            );
         };
     }
 
