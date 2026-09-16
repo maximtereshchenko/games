@@ -1,5 +1,5 @@
 {
-  "baseBakingPower": "1E100",
+  "baseBakingPower": "1",
   "buildingConfigurations": {
     "CURSOR": {
       "basePrice": "15",
@@ -52,6 +52,10 @@
     "ANTIMATTER_CONDENSER": {
       "basePrice": "1.7E14",
       "baseBakingRate": "4.3E8"
+    },
+    "PRISM": {
+      "basePrice": "2.1E15",
+      "baseBakingRate": "2.9E9"
     }
   },
   "upgradeTiers": [
@@ -1566,6 +1570,114 @@
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
         "building": "ANTIMATTER_CONDENSER",
+        "tier": 8
+      }
+    },
+    "PRISM_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 0
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 0
+      }
+    },
+    "PRISM_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 1
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 1
+      }
+    },
+    "PRISM_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 2
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 2
+      }
+    },
+    "PRISM_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 3
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 3
+      }
+    },
+    "PRISM_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 4
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 4
+      }
+    },
+    "PRISM_TIER_5": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 5
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 5
+      }
+    },
+    "PRISM_TIER_6": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 6
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 6
+      }
+    },
+    "PRISM_TIER_7": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 7
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
+        "tier": 7
+      }
+    },
+    "PRISM_TIER_8": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "PRISM",
+        "tier": 8
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "PRISM",
         "tier": 8
       }
     }

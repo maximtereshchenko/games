@@ -668,6 +668,18 @@ public final class BakeryService {
                 Upgrade.ANTIMATTER_CONDENSER_TIER_7,
                 Upgrade.ANTIMATTER_CONDENSER_TIER_8
             );
+            case PRISM -> doubled(
+                baseBakingRate,
+                Upgrade.PRISM_TIER_0,
+                Upgrade.PRISM_TIER_1,
+                Upgrade.PRISM_TIER_2,
+                Upgrade.PRISM_TIER_3,
+                Upgrade.PRISM_TIER_4,
+                Upgrade.PRISM_TIER_5,
+                Upgrade.PRISM_TIER_6,
+                Upgrade.PRISM_TIER_7,
+                Upgrade.PRISM_TIER_8
+            );
         };
     }
 

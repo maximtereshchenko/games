@@ -189,6 +189,9 @@
     },
     "metal-bars-tiled": {
       "region": "metal-bars"
+    },
+    "fields-squared-tiled": {
+      "region": "fields-squared"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -457,6 +460,10 @@
     "ANTIMATTER_CONDENSER-button": {
       "unlocked": "antimatter-condenser-icon",
       "locked": "antimatter-condenser-icon-disabled"
+    },
+    "PRISM-button": {
+      "unlocked": "prism-icon",
+      "locked": "prism-icon-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BottomOverlayWidget$Style": {
@@ -973,6 +980,33 @@
     },
     "ANTIMATTER_CONDENSER_TIER_8": {
       "drawable": "atom-hazelrald"
+    },
+    "PRISM_TIER_0": {
+      "drawable": "prism-plain"
+    },
+    "PRISM_TIER_1": {
+      "drawable": "prism-berrylium"
+    },
+    "PRISM_TIER_2": {
+      "drawable": "prism-blueberrylium"
+    },
+    "PRISM_TIER_3": {
+      "drawable": "prism-chalcedhoney"
+    },
+    "PRISM_TIER_4": {
+      "drawable": "prism-buttergold"
+    },
+    "PRISM_TIER_5": {
+      "drawable": "prism-sugarmuck"
+    },
+    "PRISM_TIER_6": {
+      "drawable": "prism-jetmint"
+    },
+    "PRISM_TIER_7": {
+      "drawable": "prism-cherrysilver"
+    },
+    "PRISM_TIER_8": {
+      "drawable": "prism-hazelrald"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -1011,6 +1045,9 @@
     },
     "ANTIMATTER_CONDENSER": {
       "background": "metal-bars-tiled"
+    },
+    "PRISM": {
+      "background": "fields-squared-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingImage$Style": {
@@ -1060,6 +1097,10 @@
     },
     "ANTIMATTER_CONDENSER": {
       "drawable": "antimatter-condenser",
+      "rows": 1
+    },
+    "PRISM": {
+      "drawable": "prism",
       "rows": 1
     }
   },
@@ -1122,6 +1163,10 @@
     },
     "ANTIMATTER_CONDENSER": {
       "enabled": "atom-plain",
+      "disabled": "question-mark"
+    },
+    "PRISM": {
+      "enabled": "prism-plain",
       "disabled": "question-mark"
     }
   },
@@ -1238,7 +1283,8 @@
         "ALCHEMY_LAB": "alembic-buttergold",
         "PORTAL": "portal-buttergold",
         "TIME_MACHINE": "hourglass-buttergold",
-        "ANTIMATTER_CONDENSER": "atom-buttergold"
+        "ANTIMATTER_CONDENSER": "atom-buttergold",
+        "PRISM": "prism-buttergold"
       }
     }
   },
