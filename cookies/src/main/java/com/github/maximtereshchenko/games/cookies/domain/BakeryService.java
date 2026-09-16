@@ -656,6 +656,18 @@ public final class BakeryService {
                 Upgrade.TIME_MACHINE_TIER_7,
                 Upgrade.TIME_MACHINE_TIER_8
             );
+            case ANTIMATTER_CONDENSER -> doubled(
+                baseBakingRate,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_0,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_1,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_2,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_3,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_4,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_5,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_6,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_7,
+                Upgrade.ANTIMATTER_CONDENSER_TIER_8
+            );
         };
     }
 

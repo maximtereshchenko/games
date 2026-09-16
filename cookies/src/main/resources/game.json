@@ -8,9 +8,9 @@
       "file": "merriweather.fnt",
       "scaledSize": 16
     },
-    "merriweather-20": {
+    "merriweather-15": {
       "file": "merriweather.fnt",
-      "scaledSize": 20
+      "scaledSize": 15
     },
     "merriweather-30": {
       "file": "merriweather.fnt",
@@ -186,6 +186,9 @@
     },
     "watches-tiled": {
       "region": "watches"
+    },
+    "metal-bars-tiled": {
+      "region": "metal-bars"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -242,7 +245,7 @@
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
     "store": {
       "background": "gradient-top-long",
-      "font": "merriweather-20",
+      "font": "merriweather-15",
       "fontColor": "white"
     },
     "beam-store": {
@@ -250,7 +253,7 @@
       "fontColor": "brown"
     },
     "building-name-button": {
-      "font": "merriweather-20",
+      "font": "merriweather-15",
       "fontColor": "white"
     },
     "building-name-tooltip": {
@@ -283,7 +286,7 @@
       "fontColor": "white"
     },
     "cookie-balance": {
-      "font": "merriweather-20",
+      "font": "merriweather-15",
       "fontColor": "white"
     },
     "baking-rate": {
@@ -295,7 +298,7 @@
       "fontColor": "white-transparent-60"
     },
     "statistics-title": {
-      "font": "merriweather-20",
+      "font": "merriweather-15",
       "fontColor": "white"
     },
     "statistics-sub-title": {
@@ -336,7 +339,7 @@
       "fontColor": "white"
     },
     "golden-cookie-effect-name": {
-      "font": "merriweather-20",
+      "font": "merriweather-15",
       "fontColor": "white"
     },
     "golden-cookie-effect-description": {
@@ -450,6 +453,10 @@
     "TIME_MACHINE-button": {
       "unlocked": "time-machine-icon",
       "locked": "time-machine-icon-disabled"
+    },
+    "ANTIMATTER_CONDENSER-button": {
+      "unlocked": "antimatter-condenser-icon",
+      "locked": "antimatter-condenser-icon-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BottomOverlayWidget$Style": {
@@ -939,6 +946,33 @@
     },
     "TIME_MACHINE_TIER_8": {
       "drawable": "hourglass-hazelrald"
+    },
+    "ANTIMATTER_CONDENSER_TIER_0": {
+      "drawable": "atom-plain"
+    },
+    "ANTIMATTER_CONDENSER_TIER_1": {
+      "drawable": "atom-berrylium"
+    },
+    "ANTIMATTER_CONDENSER_TIER_2": {
+      "drawable": "atom-blueberrylium"
+    },
+    "ANTIMATTER_CONDENSER_TIER_3": {
+      "drawable": "atom-chalcedhoney"
+    },
+    "ANTIMATTER_CONDENSER_TIER_4": {
+      "drawable": "atom-buttergold"
+    },
+    "ANTIMATTER_CONDENSER_TIER_5": {
+      "drawable": "atom-sugarmuck"
+    },
+    "ANTIMATTER_CONDENSER_TIER_6": {
+      "drawable": "atom-jetmint"
+    },
+    "ANTIMATTER_CONDENSER_TIER_7": {
+      "drawable": "atom-cherrysilver"
+    },
+    "ANTIMATTER_CONDENSER_TIER_8": {
+      "drawable": "atom-hazelrald"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -974,6 +1008,9 @@
     },
     "TIME_MACHINE": {
       "background": "watches-tiled"
+    },
+    "ANTIMATTER_CONDENSER": {
+      "background": "metal-bars-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingImage$Style": {
@@ -1019,6 +1056,10 @@
     },
     "TIME_MACHINE": {
       "drawable": "time-machine",
+      "rows": 1
+    },
+    "ANTIMATTER_CONDENSER": {
+      "drawable": "antimatter-condenser",
       "rows": 1
     }
   },
@@ -1077,6 +1118,10 @@
     },
     "TIME_MACHINE": {
       "enabled": "hourglass-plain",
+      "disabled": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER": {
+      "enabled": "atom-plain",
       "disabled": "question-mark"
     }
   },
@@ -1192,7 +1237,8 @@
         "SHIPMENT": "rocket-buttergold",
         "ALCHEMY_LAB": "alembic-buttergold",
         "PORTAL": "portal-buttergold",
-        "TIME_MACHINE": "hourglass-buttergold"
+        "TIME_MACHINE": "hourglass-buttergold",
+        "ANTIMATTER_CONDENSER": "atom-buttergold"
       }
     }
   },

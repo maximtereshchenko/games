@@ -13,5 +13,6 @@ public enum Building {
     SHIPMENT,
     ALCHEMY_LAB,
     PORTAL,
-    TIME_MACHINE
+    TIME_MACHINE,
+    ANTIMATTER_CONDENSER
 }
