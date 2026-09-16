@@ -644,6 +644,18 @@ public final class BakeryService {
                 Upgrade.PORTAL_TIER_7,
                 Upgrade.PORTAL_TIER_8
             );
+            case TIME_MACHINE -> doubled(
+                baseBakingRate,
+                Upgrade.TIME_MACHINE_TIER_0,
+                Upgrade.TIME_MACHINE_TIER_1,
+                Upgrade.TIME_MACHINE_TIER_2,
+                Upgrade.TIME_MACHINE_TIER_3,
+                Upgrade.TIME_MACHINE_TIER_4,
+                Upgrade.TIME_MACHINE_TIER_5,
+                Upgrade.TIME_MACHINE_TIER_6,
+                Upgrade.TIME_MACHINE_TIER_7,
+                Upgrade.TIME_MACHINE_TIER_8
+            );
         };
     }
 

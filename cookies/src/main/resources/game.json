@@ -183,6 +183,9 @@
     },
     "earth-tiled": {
       "region": "earth"
+    },
+    "watches-tiled": {
+      "region": "watches"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -443,6 +446,10 @@
     "PORTAL-button": {
       "unlocked": "portal",
       "locked": "portal-disabled"
+    },
+    "TIME_MACHINE-button": {
+      "unlocked": "time-machine-icon",
+      "locked": "time-machine-icon-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BottomOverlayWidget$Style": {
@@ -905,6 +912,33 @@
     },
     "PORTAL_TIER_8": {
       "drawable": "portal-hazelrald"
+    },
+    "TIME_MACHINE_TIER_0": {
+      "drawable": "hourglass-plain"
+    },
+    "TIME_MACHINE_TIER_1": {
+      "drawable": "hourglass-berrylium"
+    },
+    "TIME_MACHINE_TIER_2": {
+      "drawable": "hourglass-blueberrylium"
+    },
+    "TIME_MACHINE_TIER_3": {
+      "drawable": "hourglass-chalcedhoney"
+    },
+    "TIME_MACHINE_TIER_4": {
+      "drawable": "hourglass-buttergold"
+    },
+    "TIME_MACHINE_TIER_5": {
+      "drawable": "hourglass-sugarmuck"
+    },
+    "TIME_MACHINE_TIER_6": {
+      "drawable": "hourglass-jetmint"
+    },
+    "TIME_MACHINE_TIER_7": {
+      "drawable": "hourglass-cherrysilver"
+    },
+    "TIME_MACHINE_TIER_8": {
+      "drawable": "hourglass-hazelrald"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -937,6 +971,9 @@
     },
     "PORTAL": {
       "background": "earth-tiled"
+    },
+    "TIME_MACHINE": {
+      "background": "watches-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingImage$Style": {
@@ -979,6 +1016,10 @@
     "PORTAL": {
       "drawable": "portal-building",
       "rows": 2
+    },
+    "TIME_MACHINE": {
+      "drawable": "time-machine",
+      "rows": 1
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.StatisticsPanel$Style": {
@@ -1032,6 +1073,10 @@
     },
     "PORTAL": {
       "enabled": "portal-plain",
+      "disabled": "question-mark"
+    },
+    "TIME_MACHINE": {
+      "enabled": "hourglass-plain",
       "disabled": "question-mark"
     }
   },
@@ -1146,7 +1191,8 @@
         "WIZARD_TOWER": "wizard-hat-buttergold",
         "SHIPMENT": "rocket-buttergold",
         "ALCHEMY_LAB": "alembic-buttergold",
-        "PORTAL": "portal-buttergold"
+        "PORTAL": "portal-buttergold",
+        "TIME_MACHINE": "hourglass-buttergold"
       }
     }
   },

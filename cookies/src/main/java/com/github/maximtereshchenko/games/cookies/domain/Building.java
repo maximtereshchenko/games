@@ -12,5 +12,6 @@ public enum Building {
     WIZARD_TOWER,
     SHIPMENT,
     ALCHEMY_LAB,
-    PORTAL
+    PORTAL,
+    TIME_MACHINE
 }

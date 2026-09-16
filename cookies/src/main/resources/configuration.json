@@ -1,5 +1,5 @@
 {
-  "baseBakingPower": "1E100",
+  "baseBakingPower": "1",
   "buildingConfigurations": {
     "CURSOR": {
       "basePrice": "15",
@@ -44,6 +44,10 @@
     "PORTAL": {
       "basePrice": "1E12",
       "baseBakingRate": "1E7"
+    },
+    "TIME_MACHINE": {
+      "basePrice": "1.4E13",
+      "baseBakingRate": "6.5E7"
     }
   },
   "upgradeTiers": [
@@ -1342,6 +1346,114 @@
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
         "building": "PORTAL",
+        "tier": 8
+      }
+    },
+    "TIME_MACHINE_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 0
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 0
+      }
+    },
+    "TIME_MACHINE_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 1
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 1
+      }
+    },
+    "TIME_MACHINE_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 2
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 2
+      }
+    },
+    "TIME_MACHINE_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 3
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 3
+      }
+    },
+    "TIME_MACHINE_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 4
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 4
+      }
+    },
+    "TIME_MACHINE_TIER_5": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 5
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 5
+      }
+    },
+    "TIME_MACHINE_TIER_6": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 6
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 6
+      }
+    },
+    "TIME_MACHINE_TIER_7": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 7
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
+        "tier": 7
+      }
+    },
+    "TIME_MACHINE_TIER_8": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "TIME_MACHINE",
+        "tier": 8
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "TIME_MACHINE",
         "tier": 8
       }
     }
