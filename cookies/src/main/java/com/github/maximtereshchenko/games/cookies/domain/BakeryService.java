@@ -1,7 +1,6 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.time.Clock;
 import java.time.Duration;
@@ -154,19 +153,63 @@ public final class BakeryService {
     }
 
     public BigDecimal bakingRate() {
-        var bakingRate = buildingsBakingRate();
-        for (var buff : Buff.values()) {
-            bakingRate = bakingRate.multiply(
-                BigDecimal.valueOf(
-                    switch (activeBuffEffect(buff).orElse(null)) {
-                        case BuildingSpecialEffect buildingSpecialEffect -> buildingSpecialEffect.multiplier();
-                        case FrenzyEffect frenzyEffect -> frenzyEffect.multiplier();
-                        case null, default -> 1;
-                    }
-                )
-            );
-        }
-        return bakingRate;
+        return buffedBakingRate(
+            multiplied(
+                multiplied(
+                    multiplied(
+                        multiplied(
+                            multiplied(
+                                buildingsBakingRate(),
+                                BigDecimal.valueOf(1.01),
+                                Upgrade.FLAVORED_COOKIE_TIER_0,
+                                Upgrade.FLAVORED_COOKIE_TIER_1,
+                                Upgrade.FLAVORED_COOKIE_TIER_2
+                            ),
+                            BigDecimal.valueOf(1.02),
+                            Upgrade.FLAVORED_COOKIE_TIER_3,
+                            Upgrade.FLAVORED_COOKIE_TIER_4,
+                            Upgrade.FLAVORED_COOKIE_TIER_5,
+                            Upgrade.FLAVORED_COOKIE_TIER_6,
+                            Upgrade.FLAVORED_COOKIE_TIER_7,
+                            Upgrade.FLAVORED_COOKIE_TIER_8,
+                            Upgrade.FLAVORED_COOKIE_TIER_9,
+                            Upgrade.FLAVORED_COOKIE_TIER_10,
+                            Upgrade.FLAVORED_COOKIE_TIER_11,
+                            Upgrade.FLAVORED_COOKIE_TIER_12,
+                            Upgrade.FLAVORED_COOKIE_TIER_13,
+                            Upgrade.FLAVORED_COOKIE_TIER_14,
+                            Upgrade.FLAVORED_COOKIE_TIER_17,
+                            Upgrade.FLAVORED_COOKIE_TIER_18,
+                            Upgrade.FLAVORED_COOKIE_TIER_19,
+                            Upgrade.FLAVORED_COOKIE_TIER_20,
+                            Upgrade.FLAVORED_COOKIE_TIER_21,
+                            Upgrade.FLAVORED_COOKIE_TIER_22,
+                            Upgrade.FLAVORED_COOKIE_TIER_23,
+                            Upgrade.FLAVORED_COOKIE_TIER_24,
+                            Upgrade.FLAVORED_COOKIE_TIER_25,
+                            Upgrade.FLAVORED_COOKIE_TIER_26,
+                            Upgrade.FLAVORED_COOKIE_TIER_27,
+                            Upgrade.FLAVORED_COOKIE_TIER_28
+                        ),
+                        BigDecimal.valueOf(1.03),
+                        Upgrade.FLAVORED_COOKIE_TIER_31,
+                        Upgrade.FLAVORED_COOKIE_TIER_32,
+                        Upgrade.FLAVORED_COOKIE_TIER_33,
+                        Upgrade.FLAVORED_COOKIE_TIER_34,
+                        Upgrade.FLAVORED_COOKIE_TIER_35,
+                        Upgrade.FLAVORED_COOKIE_TIER_36
+                    ),
+                    BigDecimal.valueOf(1.04),
+                    Upgrade.FLAVORED_COOKIE_TIER_37,
+                    Upgrade.FLAVORED_COOKIE_TIER_38
+                ),
+                BigDecimal.valueOf(1.05),
+                Upgrade.FLAVORED_COOKIE_TIER_15,
+                Upgrade.FLAVORED_COOKIE_TIER_16,
+                Upgrade.FLAVORED_COOKIE_TIER_29,
+                Upgrade.FLAVORED_COOKIE_TIER_30
+            )
+        );
     }
 
     public BigDecimal bakingPower() {
@@ -271,6 +314,22 @@ public final class BakeryService {
 
     public Interval goldenCookieInterval() {
         return goldenCookie.interval();
+    }
+
+    private BigDecimal buffedBakingRate(BigDecimal base) {
+        var bakingRate = base;
+        for (var buff : Buff.values()) {
+            bakingRate = bakingRate.multiply(
+                BigDecimal.valueOf(
+                    switch (activeBuffEffect(buff).orElse(null)) {
+                        case BuildingSpecialEffect buildingSpecialEffect -> buildingSpecialEffect.multiplier();
+                        case FrenzyEffect frenzyEffect -> frenzyEffect.multiplier();
+                        case null, default -> 1;
+                    }
+                )
+            );
+        }
+        return bakingRate;
     }
 
     private GoldenCookieEffect goldenCookieEffect(
@@ -482,21 +541,24 @@ public final class BakeryService {
         return switch (configuration.upgradeConfigurations().get(upgrade).unlockRequirement()) {
             case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(requirement);
             case TieredUnlockRequirement requirement -> isRequirementSatisfied(requirement);
-            case ManuallyBakedUnlockRequirement _ -> isManuallyBakedUnlockRequirementSatisfied(
+            case ManuallyBakedUnlockRequirement manuallyBakedUnlockRequirement -> isRequirementSatisfied(
+                manuallyBakedUnlockRequirement,
                 upgrade
             );
         };
     }
 
-    private boolean isManuallyBakedUnlockRequirementSatisfied(
+    private boolean isRequirementSatisfied(
+        ManuallyBakedUnlockRequirement requirement,
         Upgrade upgrade
     ) {
         return playerProgress.cumulativeManuallyBaked
                    .compareTo(
                        price(upgrade)
-                           .divide(
-                               new BigDecimal(50),
-                               MathContext.UNLIMITED
+                           .multiply(
+                               BigDecimal.valueOf(
+                                   requirement.percent()
+                               )
                            )
                    ) >= 0;
     }

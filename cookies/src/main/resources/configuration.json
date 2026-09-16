@@ -107,7 +107,8 @@
   "upgradeConfigurations": {
     "CLICK_TIER_0": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -116,7 +117,8 @@
     },
     "CLICK_TIER_1": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -125,7 +127,8 @@
     },
     "CLICK_TIER_2": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -134,7 +137,8 @@
     },
     "CLICK_TIER_3": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -143,7 +147,8 @@
     },
     "CLICK_TIER_4": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -152,7 +157,8 @@
     },
     "CLICK_TIER_5": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -161,7 +167,8 @@
     },
     "CLICK_TIER_6": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -170,7 +177,8 @@
     },
     "CLICK_TIER_7": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -179,7 +187,8 @@
     },
     "CLICK_TIER_8": {
       "unlockRequirement": {
-        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement"
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.02
       },
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
@@ -2108,6 +2117,396 @@
         "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
         "building": "FRACTAL_ENGINE",
         "tier": 1
+      }
+    },
+    "FLAVORED_COOKIE_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "4999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "49999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_5": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_6": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_7": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_8": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_9": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_10": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_11": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_12": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "4999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_13": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_14": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "49999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_15": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_16": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_17": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_18": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_19": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "4999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_20": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_21": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "49999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_22": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_23": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_24": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_25": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_26": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_27": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_28": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_29": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "49999999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_30": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "49999999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_31": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_32": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_33": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "999999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_34": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "4999999999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_35": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9999999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_36": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "49999999999999999995"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_37": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "99999999999999999999"
+      }
+    },
+    "FLAVORED_COOKIE_TIER_38": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ManuallyBakedUnlockRequirement",
+        "percent": 0.05
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "499999999999999999995"
       }
     }
   },

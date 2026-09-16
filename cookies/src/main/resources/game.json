@@ -1117,6 +1117,123 @@
     },
     "GRANDMA_SYNERGY_FRACTAL_ENGINE": {
       "drawable": "grandma-face"
+    },
+    "FLAVORED_COOKIE_TIER_0": {
+      "drawable": "cookie-plain"
+    },
+    "FLAVORED_COOKIE_TIER_1": {
+      "drawable": "cookie-sugar"
+    },
+    "FLAVORED_COOKIE_TIER_2": {
+      "drawable": "cookie-oatmeal-raisin"
+    },
+    "FLAVORED_COOKIE_TIER_3": {
+      "drawable": "cookie-peanut-butter"
+    },
+    "FLAVORED_COOKIE_TIER_4": {
+      "drawable": "cookie-coconut"
+    },
+    "FLAVORED_COOKIE_TIER_5": {
+      "drawable": "cookie-macadamia-nut"
+    },
+    "FLAVORED_COOKIE_TIER_6": {
+      "drawable": "cookie-almond"
+    },
+    "FLAVORED_COOKIE_TIER_7": {
+      "drawable": "cookie-hazelnut"
+    },
+    "FLAVORED_COOKIE_TIER_8": {
+      "drawable": "cookie-walnut"
+    },
+    "FLAVORED_COOKIE_TIER_9": {
+      "drawable": "cookie-cashew"
+    },
+    "FLAVORED_COOKIE_TIER_10": {
+      "drawable": "cookie-white-chocolate"
+    },
+    "FLAVORED_COOKIE_TIER_11": {
+      "drawable": "cookie-milk-chocolate"
+    },
+    "FLAVORED_COOKIE_TIER_12": {
+      "drawable": "cookie-double-chip"
+    },
+    "FLAVORED_COOKIE_TIER_13": {
+      "drawable": "cookie-white-chocolate-macadamia-nut"
+    },
+    "FLAVORED_COOKIE_TIER_14": {
+      "drawable": "cookie-all-chocolate"
+    },
+    "FLAVORED_COOKIE_TIER_15": {
+      "drawable": "cookie-dark-chocolate-coated"
+    },
+    "FLAVORED_COOKIE_TIER_16": {
+      "drawable": "cookie-white-chocolate-coated"
+    },
+    "FLAVORED_COOKIE_TIER_17": {
+      "drawable": "cookie-eclipse"
+    },
+    "FLAVORED_COOKIE_TIER_18": {
+      "drawable": "cookie-zebra"
+    },
+    "FLAVORED_COOKIE_TIER_19": {
+      "drawable": "cookie-snickerdoodles"
+    },
+    "FLAVORED_COOKIE_TIER_20": {
+      "drawable": "cookie-stroopwafels"
+    },
+    "FLAVORED_COOKIE_TIER_21": {
+      "drawable": "cookie-macaroons"
+    },
+    "FLAVORED_COOKIE_TIER_22": {
+      "drawable": "cookie-empire-biscuits"
+    },
+    "FLAVORED_COOKIE_TIER_23": {
+      "drawable": "cookie-madeleines"
+    },
+    "FLAVORED_COOKIE_TIER_24": {
+      "drawable": "cookie-palmiers"
+    },
+    "FLAVORED_COOKIE_TIER_25": {
+      "drawable": "cookie-palets"
+    },
+    "FLAVORED_COOKIE_TIER_26": {
+      "drawable": "cookie-sables"
+    },
+    "FLAVORED_COOKIE_TIER_27": {
+      "drawable": "cookie-gingerbread-men"
+    },
+    "FLAVORED_COOKIE_TIER_28": {
+      "drawable": "cookie-gingerbread-trees"
+    },
+    "FLAVORED_COOKIE_TIER_29": {
+      "drawable": "cookie-pure-black-chocolate"
+    },
+    "FLAVORED_COOKIE_TIER_30": {
+      "drawable": "cookie-pure-white-chocolate"
+    },
+    "FLAVORED_COOKIE_TIER_31": {
+      "drawable": "cookie-ladyfingers"
+    },
+    "FLAVORED_COOKIE_TIER_32": {
+      "drawable": "cookie-tuiles"
+    },
+    "FLAVORED_COOKIE_TIER_33": {
+      "drawable": "cookie-chocolate-stuffed-biscuits"
+    },
+    "FLAVORED_COOKIE_TIER_34": {
+      "drawable": "cookie-checker"
+    },
+    "FLAVORED_COOKIE_TIER_35": {
+      "drawable": "cookie-butter"
+    },
+    "FLAVORED_COOKIE_TIER_36": {
+      "drawable": "cookie-cream"
+    },
+    "FLAVORED_COOKIE_TIER_37": {
+      "drawable": "cookie-gingersnaps"
+    },
+    "FLAVORED_COOKIE_TIER_38": {
+      "drawable": "cookie-cinnamon"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {

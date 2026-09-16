@@ -1,3 +1,4 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
-record ManuallyBakedUnlockRequirement() implements UpgradeUnlockRequirement {}
+record ManuallyBakedUnlockRequirement(float percent)
+    implements UpgradeUnlockRequirement {}
