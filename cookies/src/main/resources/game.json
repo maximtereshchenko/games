@@ -420,8 +420,8 @@
       "locked": "hand-tilted-disabled"
     },
     "GRANDMA-button": {
-      "unlocked": "grandma-face",
-      "locked": "grandma-face-disabled"
+      "unlocked": "grandma-face-detailed",
+      "locked": "grandma-face-detailed-disabled"
     },
     "FARM-button": {
       "unlocked": "farm",
@@ -1075,6 +1075,48 @@
     },
     "FRACTAL_ENGINE_TIER_8": {
       "drawable": "fractal-hazelrald"
+    },
+    "GRANDMA_SYNERGY_FARM": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_MINE": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_FACTORY": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_BANK": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_TEMPLE": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_WIZARD_TOWER": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_SHIPMENT": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_ALCHEMY_LAB": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_PORTAL": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_TIME_MACHINE": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_ANTIMATTER_CONDENSER": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_PRISM": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_CHANCEMAKER": {
+      "drawable": "grandma-face"
+    },
+    "GRANDMA_SYNERGY_FRACTAL_ENGINE": {
+      "drawable": "grandma-face"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {

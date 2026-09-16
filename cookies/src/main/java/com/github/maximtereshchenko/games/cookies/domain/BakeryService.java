@@ -514,8 +514,13 @@ public final class BakeryService {
     private boolean isRequirementSatisfied(
         BuildingCountUnlockRequirement requirement
     ) {
-        return playerProgress.buildingCounts
-                   .get(requirement.building()) >= requirement.count();
+        return requirement.counts()
+            .entrySet()
+            .stream()
+            .allMatch(
+                entry -> playerProgress.buildingCounts
+                             .get(entry.getKey()) >= entry.getValue()
+            );
     }
 
     private BigDecimal bakingRate(Building building) {
@@ -534,175 +539,245 @@ public final class BakeryService {
                 Upgrade.GRANDMA_TIER_5,
                 Upgrade.GRANDMA_TIER_6,
                 Upgrade.GRANDMA_TIER_7,
-                Upgrade.GRANDMA_TIER_8
+                Upgrade.GRANDMA_TIER_8,
+                Upgrade.GRANDMA_SYNERGY_FARM,
+                Upgrade.GRANDMA_SYNERGY_MINE,
+                Upgrade.GRANDMA_SYNERGY_FACTORY,
+                Upgrade.GRANDMA_SYNERGY_BANK,
+                Upgrade.GRANDMA_SYNERGY_TEMPLE,
+                Upgrade.GRANDMA_SYNERGY_WIZARD_TOWER,
+                Upgrade.GRANDMA_SYNERGY_SHIPMENT,
+                Upgrade.GRANDMA_SYNERGY_ALCHEMY_LAB,
+                Upgrade.GRANDMA_SYNERGY_PORTAL,
+                Upgrade.GRANDMA_SYNERGY_TIME_MACHINE,
+                Upgrade.GRANDMA_SYNERGY_ANTIMATTER_CONDENSER,
+                Upgrade.GRANDMA_SYNERGY_PRISM,
+                Upgrade.GRANDMA_SYNERGY_CHANCEMAKER,
+                Upgrade.GRANDMA_SYNERGY_FRACTAL_ENGINE
             );
-            case FARM -> doubled(
-                baseBakingRate,
-                Upgrade.FARM_TIER_0,
-                Upgrade.FARM_TIER_1,
-                Upgrade.FARM_TIER_2,
-                Upgrade.FARM_TIER_3,
-                Upgrade.FARM_TIER_4,
-                Upgrade.FARM_TIER_5,
-                Upgrade.FARM_TIER_6,
-                Upgrade.FARM_TIER_7,
-                Upgrade.FARM_TIER_8
+            case FARM -> withGrandmaSynergy(
+                Building.FARM,
+                Upgrade.GRANDMA_SYNERGY_FARM,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.FARM_TIER_0,
+                    Upgrade.FARM_TIER_1,
+                    Upgrade.FARM_TIER_2,
+                    Upgrade.FARM_TIER_3,
+                    Upgrade.FARM_TIER_4,
+                    Upgrade.FARM_TIER_5,
+                    Upgrade.FARM_TIER_6,
+                    Upgrade.FARM_TIER_7,
+                    Upgrade.FARM_TIER_8
+                )
             );
-            case MINE -> doubled(
-                baseBakingRate,
-                Upgrade.MINE_TIER_0,
-                Upgrade.MINE_TIER_1,
-                Upgrade.MINE_TIER_2,
-                Upgrade.MINE_TIER_3,
-                Upgrade.MINE_TIER_4,
-                Upgrade.MINE_TIER_5,
-                Upgrade.MINE_TIER_6,
-                Upgrade.MINE_TIER_7,
-                Upgrade.MINE_TIER_8
+            case MINE -> withGrandmaSynergy(
+                Building.MINE,
+                Upgrade.GRANDMA_SYNERGY_MINE,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.MINE_TIER_0,
+                    Upgrade.MINE_TIER_1,
+                    Upgrade.MINE_TIER_2,
+                    Upgrade.MINE_TIER_3,
+                    Upgrade.MINE_TIER_4,
+                    Upgrade.MINE_TIER_5,
+                    Upgrade.MINE_TIER_6,
+                    Upgrade.MINE_TIER_7,
+                    Upgrade.MINE_TIER_8
+                )
             );
-            case FACTORY -> doubled(
-                baseBakingRate,
-                Upgrade.FACTORY_TIER_0,
-                Upgrade.FACTORY_TIER_1,
-                Upgrade.FACTORY_TIER_2,
-                Upgrade.FACTORY_TIER_3,
-                Upgrade.FACTORY_TIER_4,
-                Upgrade.FACTORY_TIER_5,
-                Upgrade.FACTORY_TIER_6,
-                Upgrade.FACTORY_TIER_7,
-                Upgrade.FACTORY_TIER_8
+            case FACTORY -> withGrandmaSynergy(
+                Building.FACTORY,
+                Upgrade.GRANDMA_SYNERGY_FACTORY,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.FACTORY_TIER_0,
+                    Upgrade.FACTORY_TIER_1,
+                    Upgrade.FACTORY_TIER_2,
+                    Upgrade.FACTORY_TIER_3,
+                    Upgrade.FACTORY_TIER_4,
+                    Upgrade.FACTORY_TIER_5,
+                    Upgrade.FACTORY_TIER_6,
+                    Upgrade.FACTORY_TIER_7,
+                    Upgrade.FACTORY_TIER_8
+                )
             );
-            case BANK -> doubled(
-                baseBakingRate,
-                Upgrade.BANK_TIER_0,
-                Upgrade.BANK_TIER_1,
-                Upgrade.BANK_TIER_2,
-                Upgrade.BANK_TIER_3,
-                Upgrade.BANK_TIER_4,
-                Upgrade.BANK_TIER_5,
-                Upgrade.BANK_TIER_6,
-                Upgrade.BANK_TIER_7,
-                Upgrade.BANK_TIER_8
+            case BANK -> withGrandmaSynergy(
+                Building.BANK,
+                Upgrade.GRANDMA_SYNERGY_BANK,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.BANK_TIER_0,
+                    Upgrade.BANK_TIER_1,
+                    Upgrade.BANK_TIER_2,
+                    Upgrade.BANK_TIER_3,
+                    Upgrade.BANK_TIER_4,
+                    Upgrade.BANK_TIER_5,
+                    Upgrade.BANK_TIER_6,
+                    Upgrade.BANK_TIER_7,
+                    Upgrade.BANK_TIER_8
+                )
             );
-            case TEMPLE -> doubled(
-                baseBakingRate,
-                Upgrade.TEMPLE_TIER_0,
-                Upgrade.TEMPLE_TIER_1,
-                Upgrade.TEMPLE_TIER_2,
-                Upgrade.TEMPLE_TIER_3,
-                Upgrade.TEMPLE_TIER_4,
-                Upgrade.TEMPLE_TIER_5,
-                Upgrade.TEMPLE_TIER_6,
-                Upgrade.TEMPLE_TIER_7,
-                Upgrade.TEMPLE_TIER_8
+            case TEMPLE -> withGrandmaSynergy(
+                Building.TEMPLE,
+                Upgrade.GRANDMA_SYNERGY_TEMPLE,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.TEMPLE_TIER_0,
+                    Upgrade.TEMPLE_TIER_1,
+                    Upgrade.TEMPLE_TIER_2,
+                    Upgrade.TEMPLE_TIER_3,
+                    Upgrade.TEMPLE_TIER_4,
+                    Upgrade.TEMPLE_TIER_5,
+                    Upgrade.TEMPLE_TIER_6,
+                    Upgrade.TEMPLE_TIER_7,
+                    Upgrade.TEMPLE_TIER_8
+                )
             );
-            case WIZARD_TOWER -> doubled(
-                baseBakingRate,
-                Upgrade.WIZARD_TOWER_TIER_0,
-                Upgrade.WIZARD_TOWER_TIER_1,
-                Upgrade.WIZARD_TOWER_TIER_2,
-                Upgrade.WIZARD_TOWER_TIER_3,
-                Upgrade.WIZARD_TOWER_TIER_4,
-                Upgrade.WIZARD_TOWER_TIER_5,
-                Upgrade.WIZARD_TOWER_TIER_6,
-                Upgrade.WIZARD_TOWER_TIER_7,
-                Upgrade.WIZARD_TOWER_TIER_8
+            case WIZARD_TOWER -> withGrandmaSynergy(
+                Building.WIZARD_TOWER,
+                Upgrade.GRANDMA_SYNERGY_WIZARD_TOWER,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.WIZARD_TOWER_TIER_0,
+                    Upgrade.WIZARD_TOWER_TIER_1,
+                    Upgrade.WIZARD_TOWER_TIER_2,
+                    Upgrade.WIZARD_TOWER_TIER_3,
+                    Upgrade.WIZARD_TOWER_TIER_4,
+                    Upgrade.WIZARD_TOWER_TIER_5,
+                    Upgrade.WIZARD_TOWER_TIER_6,
+                    Upgrade.WIZARD_TOWER_TIER_7,
+                    Upgrade.WIZARD_TOWER_TIER_8
+                )
             );
-            case SHIPMENT -> doubled(
-                baseBakingRate,
-                Upgrade.SHIPMENT_TIER_0,
-                Upgrade.SHIPMENT_TIER_1,
-                Upgrade.SHIPMENT_TIER_2,
-                Upgrade.SHIPMENT_TIER_3,
-                Upgrade.SHIPMENT_TIER_4,
-                Upgrade.SHIPMENT_TIER_5,
-                Upgrade.SHIPMENT_TIER_6,
-                Upgrade.SHIPMENT_TIER_7,
-                Upgrade.SHIPMENT_TIER_8
+            case SHIPMENT -> withGrandmaSynergy(
+                Building.SHIPMENT,
+                Upgrade.GRANDMA_SYNERGY_SHIPMENT,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.SHIPMENT_TIER_0,
+                    Upgrade.SHIPMENT_TIER_1,
+                    Upgrade.SHIPMENT_TIER_2,
+                    Upgrade.SHIPMENT_TIER_3,
+                    Upgrade.SHIPMENT_TIER_4,
+                    Upgrade.SHIPMENT_TIER_5,
+                    Upgrade.SHIPMENT_TIER_6,
+                    Upgrade.SHIPMENT_TIER_7,
+                    Upgrade.SHIPMENT_TIER_8
+                )
             );
-            case ALCHEMY_LAB -> doubled(
-                baseBakingRate,
-                Upgrade.ALCHEMY_LAB_TIER_0,
-                Upgrade.ALCHEMY_LAB_TIER_1,
-                Upgrade.ALCHEMY_LAB_TIER_2,
-                Upgrade.ALCHEMY_LAB_TIER_3,
-                Upgrade.ALCHEMY_LAB_TIER_4,
-                Upgrade.ALCHEMY_LAB_TIER_5,
-                Upgrade.ALCHEMY_LAB_TIER_6,
-                Upgrade.ALCHEMY_LAB_TIER_7,
-                Upgrade.ALCHEMY_LAB_TIER_8
+            case ALCHEMY_LAB -> withGrandmaSynergy(
+                Building.ALCHEMY_LAB,
+                Upgrade.GRANDMA_SYNERGY_ALCHEMY_LAB,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.ALCHEMY_LAB_TIER_0,
+                    Upgrade.ALCHEMY_LAB_TIER_1,
+                    Upgrade.ALCHEMY_LAB_TIER_2,
+                    Upgrade.ALCHEMY_LAB_TIER_3,
+                    Upgrade.ALCHEMY_LAB_TIER_4,
+                    Upgrade.ALCHEMY_LAB_TIER_5,
+                    Upgrade.ALCHEMY_LAB_TIER_6,
+                    Upgrade.ALCHEMY_LAB_TIER_7,
+                    Upgrade.ALCHEMY_LAB_TIER_8
+                )
             );
-            case PORTAL -> doubled(
-                baseBakingRate,
-                Upgrade.PORTAL_TIER_0,
-                Upgrade.PORTAL_TIER_1,
-                Upgrade.PORTAL_TIER_2,
-                Upgrade.PORTAL_TIER_3,
-                Upgrade.PORTAL_TIER_4,
-                Upgrade.PORTAL_TIER_5,
-                Upgrade.PORTAL_TIER_6,
-                Upgrade.PORTAL_TIER_7,
-                Upgrade.PORTAL_TIER_8
+            case PORTAL -> withGrandmaSynergy(
+                Building.PORTAL,
+                Upgrade.GRANDMA_SYNERGY_PORTAL,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.PORTAL_TIER_0,
+                    Upgrade.PORTAL_TIER_1,
+                    Upgrade.PORTAL_TIER_2,
+                    Upgrade.PORTAL_TIER_3,
+                    Upgrade.PORTAL_TIER_4,
+                    Upgrade.PORTAL_TIER_5,
+                    Upgrade.PORTAL_TIER_6,
+                    Upgrade.PORTAL_TIER_7,
+                    Upgrade.PORTAL_TIER_8
+                )
             );
-            case TIME_MACHINE -> doubled(
-                baseBakingRate,
-                Upgrade.TIME_MACHINE_TIER_0,
-                Upgrade.TIME_MACHINE_TIER_1,
-                Upgrade.TIME_MACHINE_TIER_2,
-                Upgrade.TIME_MACHINE_TIER_3,
-                Upgrade.TIME_MACHINE_TIER_4,
-                Upgrade.TIME_MACHINE_TIER_5,
-                Upgrade.TIME_MACHINE_TIER_6,
-                Upgrade.TIME_MACHINE_TIER_7,
-                Upgrade.TIME_MACHINE_TIER_8
+            case TIME_MACHINE -> withGrandmaSynergy(
+                Building.TIME_MACHINE,
+                Upgrade.GRANDMA_SYNERGY_TIME_MACHINE,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.TIME_MACHINE_TIER_0,
+                    Upgrade.TIME_MACHINE_TIER_1,
+                    Upgrade.TIME_MACHINE_TIER_2,
+                    Upgrade.TIME_MACHINE_TIER_3,
+                    Upgrade.TIME_MACHINE_TIER_4,
+                    Upgrade.TIME_MACHINE_TIER_5,
+                    Upgrade.TIME_MACHINE_TIER_6,
+                    Upgrade.TIME_MACHINE_TIER_7,
+                    Upgrade.TIME_MACHINE_TIER_8
+                )
             );
-            case ANTIMATTER_CONDENSER -> doubled(
-                baseBakingRate,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_0,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_1,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_2,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_3,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_4,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_5,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_6,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_7,
-                Upgrade.ANTIMATTER_CONDENSER_TIER_8
+            case ANTIMATTER_CONDENSER -> withGrandmaSynergy(
+                Building.ANTIMATTER_CONDENSER,
+                Upgrade.GRANDMA_SYNERGY_ANTIMATTER_CONDENSER,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_0,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_1,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_2,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_3,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_4,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_5,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_6,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_7,
+                    Upgrade.ANTIMATTER_CONDENSER_TIER_8
+                )
             );
-            case PRISM -> doubled(
-                baseBakingRate,
-                Upgrade.PRISM_TIER_0,
-                Upgrade.PRISM_TIER_1,
-                Upgrade.PRISM_TIER_2,
-                Upgrade.PRISM_TIER_3,
-                Upgrade.PRISM_TIER_4,
-                Upgrade.PRISM_TIER_5,
-                Upgrade.PRISM_TIER_6,
-                Upgrade.PRISM_TIER_7,
-                Upgrade.PRISM_TIER_8
+            case PRISM -> withGrandmaSynergy(
+                Building.PRISM,
+                Upgrade.GRANDMA_SYNERGY_PRISM,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.PRISM_TIER_0,
+                    Upgrade.PRISM_TIER_1,
+                    Upgrade.PRISM_TIER_2,
+                    Upgrade.PRISM_TIER_3,
+                    Upgrade.PRISM_TIER_4,
+                    Upgrade.PRISM_TIER_5,
+                    Upgrade.PRISM_TIER_6,
+                    Upgrade.PRISM_TIER_7,
+                    Upgrade.PRISM_TIER_8
+                )
             );
-            case CHANCEMAKER -> doubled(
-                baseBakingRate,
-                Upgrade.CHANCEMAKER_TIER_0,
-                Upgrade.CHANCEMAKER_TIER_1,
-                Upgrade.CHANCEMAKER_TIER_2,
-                Upgrade.CHANCEMAKER_TIER_3,
-                Upgrade.CHANCEMAKER_TIER_4,
-                Upgrade.CHANCEMAKER_TIER_5,
-                Upgrade.CHANCEMAKER_TIER_6,
-                Upgrade.CHANCEMAKER_TIER_7,
-                Upgrade.CHANCEMAKER_TIER_8
+            case CHANCEMAKER -> withGrandmaSynergy(
+                Building.CHANCEMAKER,
+                Upgrade.GRANDMA_SYNERGY_CHANCEMAKER,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.CHANCEMAKER_TIER_0,
+                    Upgrade.CHANCEMAKER_TIER_1,
+                    Upgrade.CHANCEMAKER_TIER_2,
+                    Upgrade.CHANCEMAKER_TIER_3,
+                    Upgrade.CHANCEMAKER_TIER_4,
+                    Upgrade.CHANCEMAKER_TIER_5,
+                    Upgrade.CHANCEMAKER_TIER_6,
+                    Upgrade.CHANCEMAKER_TIER_7,
+                    Upgrade.CHANCEMAKER_TIER_8
+                )
             );
-            case FRACTAL_ENGINE -> doubled(
-                baseBakingRate,
-                Upgrade.FRACTAL_ENGINE_TIER_0,
-                Upgrade.FRACTAL_ENGINE_TIER_1,
-                Upgrade.FRACTAL_ENGINE_TIER_2,
-                Upgrade.FRACTAL_ENGINE_TIER_3,
-                Upgrade.FRACTAL_ENGINE_TIER_4,
-                Upgrade.FRACTAL_ENGINE_TIER_5,
-                Upgrade.FRACTAL_ENGINE_TIER_6,
-                Upgrade.FRACTAL_ENGINE_TIER_7,
-                Upgrade.FRACTAL_ENGINE_TIER_8
+            case FRACTAL_ENGINE -> withGrandmaSynergy(
+                Building.FRACTAL_ENGINE,
+                Upgrade.GRANDMA_SYNERGY_FRACTAL_ENGINE,
+                doubled(
+                    baseBakingRate,
+                    Upgrade.FRACTAL_ENGINE_TIER_0,
+                    Upgrade.FRACTAL_ENGINE_TIER_1,
+                    Upgrade.FRACTAL_ENGINE_TIER_2,
+                    Upgrade.FRACTAL_ENGINE_TIER_3,
+                    Upgrade.FRACTAL_ENGINE_TIER_4,
+                    Upgrade.FRACTAL_ENGINE_TIER_5,
+                    Upgrade.FRACTAL_ENGINE_TIER_6,
+                    Upgrade.FRACTAL_ENGINE_TIER_7,
+                    Upgrade.FRACTAL_ENGINE_TIER_8
+                )
             );
         };
     }
@@ -782,5 +857,18 @@ public final class BakeryService {
             }
         }
         return count;
+    }
+
+    private BigDecimal withGrandmaSynergy(
+        Building building,
+        Upgrade upgrade,
+        BigDecimal bakingRate
+    ) {
+        if (!playerProgress.activeUpgrades.contains(upgrade)) {
+            return bakingRate;
+        }
+        var multiplier = count(Building.GRANDMA) /
+                         (building.ordinal() - Building.GRANDMA.ordinal());
+        return bakingRate.multiply(BigDecimal.valueOf(1 + 0.01 * multiplier));
     }
 }
