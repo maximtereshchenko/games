@@ -1234,6 +1234,21 @@
     },
     "FLAVORED_COOKIE_TIER_38": {
       "drawable": "cookie-cinnamon"
+    },
+    "KITTEN_TIER_0": {
+      "drawable": "kitten-plain"
+    },
+    "KITTEN_TIER_1": {
+      "drawable": "kitten-berrylium"
+    },
+    "KITTEN_TIER_2": {
+      "drawable": "kitten-blueberrylium"
+    },
+    "KITTEN_TIER_3": {
+      "drawable": "kitten-chalcedhoney"
+    },
+    "KITTEN_TIER_4": {
+      "drawable": "kitten-buttergold"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {

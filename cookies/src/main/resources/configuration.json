@@ -2508,6 +2508,56 @@
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
         "value": "499999999999999999995"
       }
+    },
+    "KITTEN_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.AchievementCountUnlockRequirement",
+        "count": 13
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9E6"
+      }
+    },
+    "KITTEN_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.AchievementCountUnlockRequirement",
+        "count": 25
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9E9"
+      }
+    },
+    "KITTEN_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.AchievementCountUnlockRequirement",
+        "count": 50
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9E13"
+      }
+    },
+    "KITTEN_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.AchievementCountUnlockRequirement",
+        "count": 75
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9E16"
+      }
+    },
+    "KITTEN_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.AchievementCountUnlockRequirement",
+        "count": 100
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "9E20"
+      }
     }
   },
   "achievementUnlockRequirements": {
