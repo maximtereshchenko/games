@@ -195,6 +195,9 @@
     },
     "stone-columns-tiled": {
       "region": "stone-columns"
+    },
+    "fractals-tiled": {
+      "region": "fractals"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
@@ -471,6 +474,10 @@
     "CHANCEMAKER-button": {
       "unlocked": "chancemaker",
       "locked": "chancemaker-disabled"
+    },
+    "FRACTAL_ENGINE-button": {
+      "unlocked": "fractal-engine-icon",
+      "locked": "fractal-engine-icon-disabled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BottomOverlayWidget$Style": {
@@ -1041,6 +1048,33 @@
     },
     "CHANCEMAKER_TIER_8": {
       "drawable": "die-hazelrald"
+    },
+    "FRACTAL_ENGINE_TIER_0": {
+      "drawable": "fractal-plain"
+    },
+    "FRACTAL_ENGINE_TIER_1": {
+      "drawable": "fractal-berrylium"
+    },
+    "FRACTAL_ENGINE_TIER_2": {
+      "drawable": "fractal-blueberrylium"
+    },
+    "FRACTAL_ENGINE_TIER_3": {
+      "drawable": "fractal-chalcedhoney"
+    },
+    "FRACTAL_ENGINE_TIER_4": {
+      "drawable": "fractal-buttergold"
+    },
+    "FRACTAL_ENGINE_TIER_5": {
+      "drawable": "fractal-sugarmuck"
+    },
+    "FRACTAL_ENGINE_TIER_6": {
+      "drawable": "fractal-jetmint"
+    },
+    "FRACTAL_ENGINE_TIER_7": {
+      "drawable": "fractal-cherrysilver"
+    },
+    "FRACTAL_ENGINE_TIER_8": {
+      "drawable": "fractal-hazelrald"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
@@ -1085,6 +1119,9 @@
     },
     "CHANCEMAKER": {
       "background": "stone-columns-tiled"
+    },
+    "FRACTAL_ENGINE": {
+      "background": "fractals-tiled"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingImage$Style": {
@@ -1143,6 +1180,10 @@
     "CHANCEMAKER": {
       "drawable": "lucky-horseshoe",
       "rows": 2
+    },
+    "FRACTAL_ENGINE": {
+      "drawable": "fractal-engine",
+      "rows": 1
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.StatisticsPanel$Style": {
@@ -1212,6 +1253,10 @@
     },
     "CHANCEMAKER": {
       "enabled": "die-plain",
+      "disabled": "question-mark"
+    },
+    "FRACTAL_ENGINE": {
+      "enabled": "fractal-plain",
       "disabled": "question-mark"
     }
   },
@@ -1330,7 +1375,8 @@
         "TIME_MACHINE": "hourglass-buttergold",
         "ANTIMATTER_CONDENSER": "atom-buttergold",
         "PRISM": "prism-buttergold",
-        "CHANCEMAKER": "die-buttergold"
+        "CHANCEMAKER": "die-buttergold",
+        "FRACTAL_ENGINE": "fractal-buttergold"
       }
     }
   },

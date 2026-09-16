@@ -16,5 +16,6 @@ public enum Building {
     TIME_MACHINE,
     ANTIMATTER_CONDENSER,
     PRISM,
-    CHANCEMAKER
+    CHANCEMAKER,
+    FRACTAL_ENGINE
 }

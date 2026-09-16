@@ -692,6 +692,18 @@ public final class BakeryService {
                 Upgrade.CHANCEMAKER_TIER_7,
                 Upgrade.CHANCEMAKER_TIER_8
             );
+            case FRACTAL_ENGINE -> doubled(
+                baseBakingRate,
+                Upgrade.FRACTAL_ENGINE_TIER_0,
+                Upgrade.FRACTAL_ENGINE_TIER_1,
+                Upgrade.FRACTAL_ENGINE_TIER_2,
+                Upgrade.FRACTAL_ENGINE_TIER_3,
+                Upgrade.FRACTAL_ENGINE_TIER_4,
+                Upgrade.FRACTAL_ENGINE_TIER_5,
+                Upgrade.FRACTAL_ENGINE_TIER_6,
+                Upgrade.FRACTAL_ENGINE_TIER_7,
+                Upgrade.FRACTAL_ENGINE_TIER_8
+            );
         };
     }
 

@@ -60,6 +60,10 @@
     "CHANCEMAKER": {
       "basePrice": "2.6E16",
       "baseBakingRate": "2.1E10"
+    },
+    "FRACTAL_ENGINE": {
+      "basePrice": "3.1E17",
+      "baseBakingRate": "1.5E11"
     }
   },
   "upgradeTiers": [
@@ -1790,6 +1794,114 @@
       "price": {
         "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
         "building": "CHANCEMAKER",
+        "tier": 8
+      }
+    },
+    "FRACTAL_ENGINE_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 0
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 0
+      }
+    },
+    "FRACTAL_ENGINE_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 1
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 1
+      }
+    },
+    "FRACTAL_ENGINE_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 2
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 2
+      }
+    },
+    "FRACTAL_ENGINE_TIER_3": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 3
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 3
+      }
+    },
+    "FRACTAL_ENGINE_TIER_4": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 4
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 4
+      }
+    },
+    "FRACTAL_ENGINE_TIER_5": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 5
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 5
+      }
+    },
+    "FRACTAL_ENGINE_TIER_6": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 6
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 6
+      }
+    },
+    "FRACTAL_ENGINE_TIER_7": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 7
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
+        "tier": 7
+      }
+    },
+    "FRACTAL_ENGINE_TIER_8": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredUnlockRequirement",
+        "building": "FRACTAL_ENGINE",
+        "tier": 8
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.TieredPrice",
+        "building": "FRACTAL_ENGINE",
         "tier": 8
       }
     }
