@@ -11,8 +11,8 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTooltipWidget;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeIcon;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 final class ActiveUpgradeIconPanel extends HorizontalGroup {
 
@@ -32,7 +32,7 @@ final class ActiveUpgradeIconPanel extends HorizontalGroup {
         this.bundle = bundle;
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
-        this.upgrades = new HashSet<>();
+        this.upgrades = new TreeSet<>();
         wrap();
         rowAlign(Align.left);
     }
