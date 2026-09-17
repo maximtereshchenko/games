@@ -1505,6 +1505,98 @@
     "CUMULATIVE_BAKED_TIER_12": {
       "unlocked": "cookie-eyeball-red-hypnotic",
       "locked": "question-mark"
+    },
+    "CUMULATIVE_BAKED_TIER_13": {
+      "unlocked": "cookie-eyeball-large-red-ring",
+      "locked": "question-mark"
+    },
+    "CUMULATIVE_BAKED_TIER_14": {
+      "unlocked": "cookie-eyeball-cluster",
+      "locked": "question-mark"
+    },
+    "CUMULATIVE_BAKED_TIER_15": {
+      "unlocked": "cookie-eyeball-brown-white-ring",
+      "locked": "question-mark"
+    },
+    "CUMULATIVE_BAKED_TIER_16": {
+      "unlocked": "cookie-eyeball-pink",
+      "locked": "question-mark"
+    },
+    "CUMULATIVE_BAKED_TIER_17": {
+      "unlocked": "cookie-eyeball-green",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_0": {
+      "unlocked": "cookie-cyan-outline_0",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_1": {
+      "unlocked": "cookie-cyan-outline_1",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_2": {
+      "unlocked": "cookie-cyan-outline_2",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_3": {
+      "unlocked": "cookie-cyan-outline_3",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_4": {
+      "unlocked": "cookie-halo-cyan",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_5": {
+      "unlocked": "cookie-halo-green",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_6": {
+      "unlocked": "cookie-halo-yellow",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_7": {
+      "unlocked": "cookie-halo-orange",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_8": {
+      "unlocked": "cookie-halo-pink",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_9": {
+      "unlocked": "cookie-halo-blue",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_10": {
+      "unlocked": "cookie-halo-matrix-green",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_11": {
+      "unlocked": "cookie-cosmic-sparkles",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_12": {
+      "unlocked": "cookie-eyeball-red-hypnotic",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_13": {
+      "unlocked": "cookie-eyeball-large-red-ring",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_14": {
+      "unlocked": "cookie-eyeball-cluster",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_15": {
+      "unlocked": "cookie-eyeball-brown-white-ring",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_16": {
+      "unlocked": "cookie-eyeball-pink",
+      "locked": "question-mark"
+    },
+    "BAKING_RATE_TIER_17": {
+      "unlocked": "cookie-eyeball-green",
+      "locked": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.HoverableAchievementIcon$Style": {

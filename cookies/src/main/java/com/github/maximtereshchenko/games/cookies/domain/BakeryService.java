@@ -520,7 +520,12 @@ public final class BakeryService {
             case CumulativeBakedUnlockRequirement requirement -> isRequirementSatisfied(
                 requirement
             );
+            case BakingRateUnlockRequirement requirement -> isRequirementSatisfied(requirement);
         };
+    }
+
+    private boolean isRequirementSatisfied(BakingRateUnlockRequirement requirement) {
+        return bakingRate().compareTo(requirement.value()) >= 0;
     }
 
     private boolean isRequirementSatisfied(
