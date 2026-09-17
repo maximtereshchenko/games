@@ -521,6 +521,9 @@ public final class BakeryService {
                 requirement
             );
             case BakingRateUnlockRequirement requirement -> isRequirementSatisfied(requirement);
+            case CumulativeManuallyBakedUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
         };
     }
 
@@ -532,6 +535,13 @@ public final class BakeryService {
         CumulativeBakedUnlockRequirement requirement
     ) {
         return playerProgress.cumulativeBaked
+                   .compareTo(requirement.value()) >= 0;
+    }
+
+    private boolean isRequirementSatisfied(
+        CumulativeManuallyBakedUnlockRequirement requirement
+    ) {
+        return playerProgress.cumulativeManuallyBaked
                    .compareTo(requirement.value()) >= 0;
     }
 

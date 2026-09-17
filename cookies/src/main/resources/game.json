@@ -1597,6 +1597,42 @@
     "BAKING_RATE_TIER_17": {
       "unlocked": "cookie-eyeball-green",
       "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_0": {
+      "unlocked": "mouse-pointer-plain",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_1": {
+      "unlocked": "mouse-pointer-berrylium",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_2": {
+      "unlocked": "mouse-pointer-blueberrylium",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_3": {
+      "unlocked": "mouse-pointer-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_4": {
+      "unlocked": "mouse-pointer-buttergold",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_5": {
+      "unlocked": "mouse-pointer-sugarmuck",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_6": {
+      "unlocked": "mouse-pointer-jetmint",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_7": {
+      "unlocked": "mouse-pointer-cherrysilver",
+      "locked": "question-mark"
+    },
+    "MANUALLY_BAKED_TIER_8": {
+      "unlocked": "mouse-pointer-hazelrald",
+      "locked": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.HoverableAchievementIcon$Style": {
