@@ -1,32 +1,40 @@
 package com.github.maximtereshchenko.games.cookies.domain;
 
+import java.util.List;
 import java.util.Random;
+import java.util.function.BinaryOperator;
 
 final class GoldenCookie {
 
     private final Configuration.GoldenCookieConfiguration configuration;
+    private final PlayerProgress playerProgress;
     private final Random random;
+    private float remainingDurationSeconds;
     private float durationSeconds;
     private float spawnSeconds;
 
     GoldenCookie(
         Configuration.GoldenCookieConfiguration configuration,
+        PlayerProgress playerProgress,
         Random random
     ) {
         this.configuration = configuration;
+        this.playerProgress = playerProgress;
         this.random = random;
+        this.remainingDurationSeconds = 0;
         this.durationSeconds = 0;
         this.spawnSeconds = 0;
     }
 
     void update(float deltaTimeSeconds) {
-        durationSeconds = Math.max(0, durationSeconds - deltaTimeSeconds);
-        if (durationSeconds != 0) {
+        remainingDurationSeconds = Math.max(0, remainingDurationSeconds - deltaTimeSeconds);
+        if (remainingDurationSeconds != 0) {
             return;
         }
         spawnSeconds += deltaTimeSeconds;
-        var activeSpawnDurationSeconds = spawnSeconds -
-                                         configuration.baseCooldownDurationSeconds();
+        var activeSpawnDurationSeconds = spawnSeconds - reduced(
+            configuration.baseCooldownDurationSeconds()
+        );
         if (activeSpawnDurationSeconds < 0) {
             return;
         }
@@ -37,20 +45,35 @@ final class GoldenCookie {
             activeSpawnDurationSeconds
         );
         if (shouldSpawn(previousFailureChance, currentFailureChance)) {
-            durationSeconds = configuration.baseDurationSeconds();
+            durationSeconds = calculated(
+                configuration.baseDurationSeconds(),
+                (calculated, value) -> calculated * value
+            );
+            remainingDurationSeconds = durationSeconds;
             spawnSeconds = 0;
         }
     }
 
     void reset() {
-        durationSeconds = 0;
+        remainingDurationSeconds = 0;
     }
 
     Interval interval() {
-        return new Interval(
-            durationSeconds,
-            configuration.baseDurationSeconds()
-        );
+        return new Interval(remainingDurationSeconds, durationSeconds);
+    }
+
+    private float calculated(float base, BinaryOperator<Float> operator) {
+        var calculated = base;
+        for (var upgrade : List.of(Upgrade.GOLDEN_COOKIE_TIER_0, Upgrade.GOLDEN_COOKIE_TIER_1)) {
+            if (playerProgress.activeUpgrades.contains(upgrade)) {
+                calculated = operator.apply(calculated, 2f);
+            }
+        }
+        return calculated;
+    }
+
+    private float reduced(float base) {
+        return calculated(base, (calculated, value) -> calculated / value);
     }
 
     private boolean shouldSpawn(
@@ -66,7 +89,9 @@ final class GoldenCookie {
     ) {
         var progress = Math.clamp(
             activeSpawnDurationSeconds /
-            configuration.baseSpawnDurationSeconds(),
+            reduced(
+                configuration.baseSpawnDurationSeconds()
+            ),
             0.0,
             1.0
         );

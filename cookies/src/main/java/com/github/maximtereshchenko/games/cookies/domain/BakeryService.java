@@ -29,6 +29,7 @@ public final class BakeryService {
         this.random = random;
         this.goldenCookie = new GoldenCookie(
             configuration.goldenCookieConfiguration(),
+            playerProgress,
             random
         );
         this.buffs = new EnumMap<>(Buff.class);
@@ -64,6 +65,7 @@ public final class BakeryService {
 
     public GoldenCookieEffect goldenCookieEffect() {
         goldenCookie.reset();
+        playerProgress.cumulativeGoldenCookies++;
         return goldenCookieEffect(effectType());
     }
 
@@ -365,7 +367,7 @@ public final class BakeryService {
 
     private List<Building> buildingSpecialBuffEligibleBuildings(int minBuildingCount) {
         return Stream.of(Building.values())
-            .filter(building -> count(building) > minBuildingCount)
+            .filter(building -> count(building) >= minBuildingCount)
             .toList();
     }
 
@@ -386,7 +388,9 @@ public final class BakeryService {
                         new FrenzyEffect(
                             frenzyBuffConfiguration.multiplier()
                         ),
-                        frenzyBuffConfiguration.baseDurationSeconds()
+                        increasedDuration(
+                            frenzyBuffConfiguration.baseDurationSeconds()
+                        )
                     );
             }
             case CLICK_FRENZY -> {
@@ -396,7 +400,9 @@ public final class BakeryService {
                         new ClickFrenzyEffect(
                             clickFrenzyBuffConfiguration.multiplier()
                         ),
-                        clickFrenzyBuffConfiguration.baseDurationSeconds()
+                        increasedDuration(
+                            clickFrenzyBuffConfiguration.baseDurationSeconds()
+                        )
                     );
             }
             case BUILDING_SPECIAL -> {
@@ -419,11 +425,20 @@ public final class BakeryService {
                             count,
                             buildingSpecialBuffConfiguration.multiplierPerBuilding() * count
                         ),
-                        buildingSpecialBuffConfiguration.baseDurationSeconds()
+                        increasedDuration(
+                            buildingSpecialBuffConfiguration.baseDurationSeconds()
+                        )
                     );
             }
         }
         return new BuffResetEffect(buff);
+    }
+
+    private float increasedDuration(float base) {
+        if (isActive(Upgrade.GOLDEN_COOKIE_TIER_2)) {
+            return base * 2;
+        }
+        return base;
     }
 
     private void addToBalance(BigDecimal amount) {
@@ -548,7 +563,14 @@ public final class BakeryService {
                 upgrade
             );
             case AchievementCountUnlockRequirement requirement -> isRequirementSatisfied(requirement);
+            case GoldenCookieCountRequirement requirement -> isRequirementSatisfied(requirement);
         };
+    }
+
+    private boolean isRequirementSatisfied(
+        GoldenCookieCountRequirement requirement
+    ) {
+        return playerProgress.cumulativeGoldenCookies >= requirement.count();
     }
 
     private boolean isRequirementSatisfied(

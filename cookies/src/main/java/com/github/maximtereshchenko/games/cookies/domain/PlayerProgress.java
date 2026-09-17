@@ -22,6 +22,7 @@ public final class PlayerProgress {
     private static final String CUMULATIVE_BAKED_KEY = "cumulative-baked";
     private static final String CUMULATIVE_MANUALLY_BAKED_KEY = "cumulative-manually-baked";
     private static final String CUMULATIVE_CLICKS_KEY = "cumulative-clicks";
+    private static final String CUMULATIVE_GOLDEN_COOKIES_KEY = "cumulative-golden-cookies";
 
     final Map<Building, Integer> buildingCounts;
     final Set<Upgrade> unlockedUpgrades;
@@ -35,6 +36,7 @@ public final class PlayerProgress {
     BigDecimal cumulativeBaked;
     BigDecimal cumulativeManuallyBaked;
     long cumulativeClicks;
+    int cumulativeGoldenCookies;
 
     public PlayerProgress(Preferences preferences, Clock clock) {
         this.preferences = preferences;
@@ -59,6 +61,9 @@ public final class PlayerProgress {
             CUMULATIVE_MANUALLY_BAKED_KEY
         );
         this.cumulativeClicks = preferences.getLong(
+            CUMULATIVE_CLICKS_KEY
+        );
+        this.cumulativeGoldenCookies = preferences.getInteger(
             CUMULATIVE_CLICKS_KEY
         );
         readBuildingCounts();
@@ -114,6 +119,10 @@ public final class PlayerProgress {
         preferences.putLong(
             CUMULATIVE_CLICKS_KEY,
             cumulativeClicks
+        );
+        preferences.putInteger(
+            CUMULATIVE_GOLDEN_COOKIES_KEY,
+            cumulativeGoldenCookies
         );
         preferences.flush();
     }

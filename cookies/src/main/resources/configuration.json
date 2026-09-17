@@ -2558,6 +2558,36 @@
         "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
         "value": "9E20"
       }
+    },
+    "GOLDEN_COOKIE_TIER_0": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.GoldenCookieCountRequirement",
+        "count": 7
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "777777777"
+      }
+    },
+    "GOLDEN_COOKIE_TIER_1": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.GoldenCookieCountRequirement",
+        "count": 27
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "77777777777"
+      }
+    },
+    "GOLDEN_COOKIE_TIER_2": {
+      "unlockRequirement": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.GoldenCookieCountRequirement",
+        "count": 77
+      },
+      "price": {
+        "type": "com.github.maximtereshchenko.games.cookies.domain.ExactPrice",
+        "value": "77777777777777"
+      }
     }
   },
   "achievementUnlockRequirements": {
@@ -2635,7 +2665,7 @@
     "baseDurationSeconds": 13
   },
   "buildingSpecialBuffConfiguration": {
-    "minBuildingCount": 9,
+    "minBuildingCount": 10,
     "multiplierPerBuilding": 0.1,
     "baseDurationSeconds": 30,
     "fallback": "FRENZY"

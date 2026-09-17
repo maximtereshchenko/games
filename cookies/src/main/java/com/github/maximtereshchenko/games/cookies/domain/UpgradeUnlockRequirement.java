@@ -4,4 +4,5 @@ sealed interface UpgradeUnlockRequirement extends UnlockRequirement
     permits AchievementCountUnlockRequirement,
     BuildingCountUnlockRequirement,
     ManuallyBakedUnlockRequirement,
-    TieredUnlockRequirement {}
+    TieredUnlockRequirement,
+    GoldenCookieCountRequirement {}

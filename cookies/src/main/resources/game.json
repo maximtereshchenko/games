@@ -1249,6 +1249,15 @@
     },
     "KITTEN_TIER_4": {
       "drawable": "kitten-buttergold"
+    },
+    "GOLDEN_COOKIE_TIER_0": {
+      "drawable": "four-leaf-clover"
+    },
+    "GOLDEN_COOKIE_TIER_1": {
+      "drawable": "four-leaf-clover"
+    },
+    "GOLDEN_COOKIE_TIER_2": {
+      "drawable": "four-leaf-clover"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.display.BuildingDisplayWidget$Style": {
