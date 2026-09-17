@@ -1,10 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.math.BigDecimal;
@@ -17,12 +19,13 @@ final class TransactionValueLabel extends Label {
     private final Building building;
 
     TransactionValueLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         Building building
     ) {
-        var labelStyle = skin.get(Style.class);
+        var labelStyle = assetManager.get(assets.game().skin()).get(Style.class);
         super(
             "",
             new LabelStyle(

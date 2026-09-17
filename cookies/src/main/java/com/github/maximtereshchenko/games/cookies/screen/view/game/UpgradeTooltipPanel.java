@@ -1,12 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +19,8 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
     private final Upgrade upgrade;
 
     protected UpgradeTooltipPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
@@ -27,32 +28,34 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
-        super(skin, bundle);
+        super(assetManager, assets);
     }
 
     @Override
-    protected final Image icon(Skin skin) {
-        return new UpgradeIcon(skin, upgrade);
+    protected final Image icon(AssetManager assetManager, Assets assets) {
+        return new UpgradeIcon(assetManager, assets, upgrade);
     }
 
     @Override
-    protected final Label name(Skin skin, I18NBundle bundle) {
+    protected final Label name(AssetManager assetManager, Assets assets) {
         return new UpgradeNameLabel(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             upgrade
         );
     }
 
     @Override
     protected final Optional<Table> value(
-        Skin skin
+        AssetManager assetManager,
+        Assets assets
     ) {
         var table = new Table();
-        table.add(new SmallCookieIcon(skin));
+        table.add(new SmallCookieIcon(assetManager, assets));
         table.add(
             price(
-                skin,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 bakeryService,
                 upgrade
@@ -62,24 +65,25 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
     }
 
     @Override
-    protected List<Badge> badges(Skin skin, I18NBundle bundle) {
+    protected List<Badge> badges(AssetManager assetManager, Assets assets) {
         return List.of(
             new Badge(
-                skin,
-                bundle.get("upgrade.tooltip.badge")
+                assetManager,
+                assets,
+                assetManager.get(assets.game().bundle()).get("upgrade.tooltip.badge")
             )
         );
     }
 
     @Override
     protected final Optional<Label> description(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.of(
             new UpgradeDescriptionLabel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 upgrade
             )
         );
@@ -87,20 +91,21 @@ public abstract class UpgradeTooltipPanel extends TooltipPanel {
 
     @Override
     protected final Optional<FlavorTextLabel> flavorText(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.of(
             new UpgradeFlavorTextLabel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 upgrade
             )
         );
     }
 
     protected abstract Label price(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade

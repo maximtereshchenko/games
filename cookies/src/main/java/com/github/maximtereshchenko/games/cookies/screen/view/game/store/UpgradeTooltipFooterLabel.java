@@ -1,16 +1,17 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.I18NBundle;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class UpgradeTooltipFooterLabel extends Label {
 
-    UpgradeTooltipFooterLabel(Skin skin, I18NBundle bundle) {
+    UpgradeTooltipFooterLabel(AssetManager assetManager, Assets assets) {
         super(
-            bundle.get("upgrade.tooltip.purchase-hint"),
-            skin,
+            assetManager.get(assets.game().bundle()).get("upgrade.tooltip.purchase-hint"),
+            assetManager.get(assets.game().skin()),
             "upgrade-tooltip-footer"
         );
         setAlignment(Align.center);

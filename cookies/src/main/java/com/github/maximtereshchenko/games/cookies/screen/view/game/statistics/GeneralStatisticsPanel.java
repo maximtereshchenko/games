@@ -1,8 +1,9 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.assets.AssetManager;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.SmallCookieIcon;
 
@@ -11,94 +12,112 @@ import java.time.Clock;
 final class GeneralStatisticsPanel extends StatisticLinePanel {
 
     GeneralStatisticsPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Clock clock
     ) {
+        var bundle = assetManager.get(assets.game().bundle());
         super(
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.balance"),
-                new SmallCookieIcon(skin),
+                new SmallCookieIcon(assetManager, assets),
                 new BalanceStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.cumulative-baked"),
-                new SmallCookieIcon(skin),
+                new SmallCookieIcon(assetManager, assets),
                 new CumulativeBakedStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.time-passed"),
                 new TimePassedStatisticsLabel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService,
                     clock
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.buildings-count"),
                 new BuildingsCountStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.baking-rate"),
-                new SmallCookieIcon(skin),
+                new SmallCookieIcon(assetManager, assets),
                 new BakingRateStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.baking-power"),
-                new SmallCookieIcon(skin),
+                new SmallCookieIcon(assetManager, assets),
                 new BakingPowerStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.cumulative-clicks"),
                 new CumulativeClicksStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.cumulative-manually-baked"),
-                new SmallCookieIcon(skin),
+                new SmallCookieIcon(assetManager, assets),
                 new CumulativeManuallyBakedStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.general.cumulative-golden-cookies"),
                 new CumulativeGoldenCookiesStatisticsLabel(
-                    skin,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             )

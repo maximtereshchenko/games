@@ -1,8 +1,10 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -14,13 +16,13 @@ final class TimePassedStatisticsLabel extends StatisticsValueLabel {
     private final Clock clock;
 
     TimePassedStatisticsLabel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Clock clock
     ) {
-        super(skin, bakeryService);
-        this.bundle = bundle;
+        super(assetManager, assets, bakeryService);
+        this.bundle = assetManager.get(assets.game().bundle());
         this.clock = clock;
     }
 

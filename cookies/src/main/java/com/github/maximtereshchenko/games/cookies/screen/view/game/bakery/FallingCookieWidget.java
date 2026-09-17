@@ -1,22 +1,25 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.Random;
 
 final class FallingCookieWidget extends Image {
 
     FallingCookieWidget(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         Random random,
         float parentWidth,
         float parentHeight
     ) {
-        super(skin.get(Style.class).drawable);
+        super(assetManager.get(assets.game().skin()).get(Style.class).drawable);
         setOrigin(Align.center);
         setScale(random.nextFloat(0.8f, 1.2f));
         setRotation(random.nextFloat(360));

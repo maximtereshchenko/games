@@ -1,24 +1,27 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.Random;
 
 final class CookieParticle extends Image {
 
     CookieParticle(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         Random random,
         float x,
         float y
     ) {
-        super(skin.get(Style.class).drawable);
+        super(assetManager.get(assets.game().skin()).get(Style.class).drawable);
         setTouchable(Touchable.disabled);
         setOrigin(Align.center);
         setScale(

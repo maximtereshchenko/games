@@ -1,15 +1,18 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class CumulativeGoldenCookiesStatisticsLabel extends StatisticsValueLabel {
 
     CumulativeGoldenCookiesStatisticsLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService
     ) {
-        super(skin, bakeryService);
+        super(assetManager, assets, bakeryService);
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.display;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.Random;
 
@@ -13,12 +15,13 @@ final class BuildingImage extends Image {
     private final int row;
 
     BuildingImage(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         Building building,
         Random random,
         int index
     ) {
-        var style = skin.get(building.name(), Style.class);
+        var style = assetManager.get(assets.game().skin()).get(building.name(), Style.class);
         super(style.drawable);
         this.row = index % style.rows;
         var column = index / style.rows;

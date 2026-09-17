@@ -1,49 +1,54 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.assets.AssetManager;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class AchievementPanel extends StatisticLinePanel {
 
     AchievementPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService
     ) {
+        var bundle = assetManager.get(assets.game().bundle());
         super(
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.achievements.unlocked"),
                 new AchievementStatisticsLabel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.achievements.milk"),
                 new MilkStatisticsLabel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             ),
             new StatisticsLine(
-                skin,
+                assetManager,
+                assets,
                 bundle.get("statistics.achievements.kitten-multiplier"),
                 new KittenMultiplierStatisticsLabel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             )
         );
         add(
             new AchievementIconPanel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService
             )
         )

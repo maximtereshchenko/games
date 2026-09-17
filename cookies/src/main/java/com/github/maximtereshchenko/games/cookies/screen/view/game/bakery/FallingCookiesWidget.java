@@ -1,11 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -13,19 +15,22 @@ import java.util.Random;
 
 final class FallingCookiesWidget extends WidgetGroup {
 
-    private final Skin skin;
+    private final AssetManager assetManager;
+    private final Assets assets;
     private final Style style;
     private final BakeryService bakeryService;
     private final Random random;
     private float offsetPercentage;
 
     FallingCookiesWidget(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Random random
     ) {
-        this.skin = skin;
-        this.style = skin.get(Style.class);
+        this.assetManager = assetManager;
+        this.assets = assets;
+        this.style = assetManager.get(assets.game().skin()).get(Style.class);
         this.bakeryService = bakeryService;
         this.random = random;
         setLayoutEnabled(false);
@@ -48,7 +53,7 @@ final class FallingCookiesWidget extends WidgetGroup {
     }
 
     void addFallingCookieWidget() {
-        addActor(new FallingCookieWidget(skin, random, getWidth(), getHeight()));
+        addActor(new FallingCookieWidget(assetManager, assets, random, getWidth(), getHeight()));
     }
 
     private void draw(Batch batch, Drawable drawable) {

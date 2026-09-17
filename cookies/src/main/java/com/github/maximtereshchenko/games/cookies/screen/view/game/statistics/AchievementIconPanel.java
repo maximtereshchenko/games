@@ -1,11 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementTooltipPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTooltipWidget;
@@ -13,25 +14,27 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTool
 final class AchievementIconPanel extends HorizontalGroup {
 
     AchievementIconPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService
     ) {
         wrap();
         rowAlign(Align.left);
         for (var achievement : Achievement.values()) {
             var achievementIcon = new HoverableAchievementIcon(
-                skin,
+                assetManager,
+                assets,
                 bakeryService,
                 achievement
             );
             achievementIcon.addListener(
                 new TopCenterTooltipWidget(
                     new PopUpFrame(
-                        skin,
+                        assetManager,
+                        assets,
                         new AchievementTooltipPanel(
-                            skin,
-                            bundle,
+                            assetManager,
+                            assets,
                             bakeryService,
                             achievement
                         )

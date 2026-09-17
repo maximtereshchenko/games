@@ -1,16 +1,17 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.Random;
@@ -22,12 +23,13 @@ final class CookieButton extends Button {
     private static final float PRESSED_SCALE = 0.98f;
 
     CookieButton(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random
     ) {
-        super(skin, "cookie");
+        super(assetManager.get(assets.game().skin()), "cookie");
         setTransform(true);
         removeListener(getClickListener());
         addListener(new ClickListener() {
@@ -81,7 +83,8 @@ final class CookieButton extends Button {
                 stage.screenToStageCoordinates(mousePointer);
                 stage.addActor(
                     new CookieParticle(
-                        skin,
+                        assetManager,
+                        assets,
                         random,
                         mousePointer.x,
                         mousePointer.y
@@ -89,7 +92,8 @@ final class CookieButton extends Button {
                 );
                 stage.addActor(
                     new BakingPowerParticle(
-                        skin,
+                        assetManager,
+                        assets,
                         random,
                         mousePointer.x,
                         mousePointer.y,

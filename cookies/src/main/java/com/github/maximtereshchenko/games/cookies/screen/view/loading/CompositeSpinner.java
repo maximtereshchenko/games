@@ -1,21 +1,25 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.loading;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class CompositeSpinner extends Stack {
 
-    CompositeSpinner(Skin skin) {
+    CompositeSpinner(AssetManager assetManager, Assets assets) {
         add(
             new Spinner(
-                skin,
+                assetManager,
+                assets,
                 "bottom",
                 5
             )
         );
         add(
             new Spinner(
-                skin,
+                assetManager,
+                assets,
                 "top",
                 9
             )

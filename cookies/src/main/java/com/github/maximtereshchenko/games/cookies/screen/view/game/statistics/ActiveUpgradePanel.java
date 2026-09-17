@@ -1,33 +1,35 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.assets.AssetManager;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class ActiveUpgradePanel extends StatisticLinePanel {
 
     ActiveUpgradePanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         super(
             new StatisticsLine(
-                skin,
-                bundle.get("statistics.upgrades.active"),
+                assetManager,
+                assets,
+                assetManager.get(assets.game().bundle()).get("statistics.upgrades.active"),
                 new UpgradeStatisticsLabel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService
                 )
             )
         );
         add(
             new ActiveUpgradeIconPanel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 bakeryService
             )

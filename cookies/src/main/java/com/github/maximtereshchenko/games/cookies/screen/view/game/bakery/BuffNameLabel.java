@@ -1,9 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.*;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class BuffNameLabel extends Label {
 
@@ -12,14 +14,14 @@ final class BuffNameLabel extends Label {
     private final Buff buff;
 
     BuffNameLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         String styleName,
-        I18NBundle bundle,
         BakeryService bakeryService,
         Buff buff
     ) {
-        super("", skin, styleName);
-        this.bundle = bundle;
+        super("", assetManager.get(assets.game().skin()), styleName);
+        this.bundle = assetManager.get(assets.game().bundle());
         this.bakeryService = bakeryService;
         this.buff = buff;
     }

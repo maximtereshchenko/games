@@ -1,14 +1,15 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.notification;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementTooltipPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTooltipWidget;
@@ -17,14 +18,14 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.UnlockAchieve
 public final class NotificationOverlay extends Table {
 
     public NotificationOverlay(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService
     ) {
         bottom();
         padBottom(12);
         defaults().pad(2);
-        var closeButtonPopUpFrame = closeButtonPopUpFrame(skin);
+        var closeButtonPopUpFrame = closeButtonPopUpFrame(assetManager, assets);
         for (var achievement : Achievement.values()) {
             if (!bakeryService.isUnlocked(achievement)) {
                 addAction(
@@ -34,8 +35,8 @@ public final class NotificationOverlay extends Table {
                         Actions.run(
                             () -> add(
                                 notificationPopUpFrame(
-                                    skin,
-                                    bundle,
+                                    assetManager,
+                                    assets,
                                     bakeryService,
                                     achievement
                                 ),
@@ -49,16 +50,17 @@ public final class NotificationOverlay extends Table {
     }
 
     private PopUpFrame notificationPopUpFrame(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
         var popUpFrame = new PopUpFrame(
-            skin,
+            assetManager,
+            assets,
             new NotificationPanel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService,
                 achievement
             )
@@ -66,10 +68,11 @@ public final class NotificationOverlay extends Table {
         popUpFrame.addListener(
             new TopCenterTooltipWidget(
                 new PopUpFrame(
-                    skin,
+                    assetManager,
+                    assets,
                     new AchievementTooltipPanel(
-                        skin,
-                        bundle,
+                        assetManager,
+                        assets,
                         bakeryService,
                         achievement
                     )
@@ -79,10 +82,11 @@ public final class NotificationOverlay extends Table {
         return popUpFrame;
     }
 
-    private PopUpFrame closeButtonPopUpFrame(Skin skin) {
+    private PopUpFrame closeButtonPopUpFrame(AssetManager assetManager, Assets assets) {
         var closeButtonPopUpFrame = new PopUpFrame(
-            skin,
-            new CloseButton(skin)
+            assetManager,
+            assets,
+            new CloseButton(assetManager, assets)
         );
         closeButtonPopUpFrame.addListener(
             new ChangeListener() {

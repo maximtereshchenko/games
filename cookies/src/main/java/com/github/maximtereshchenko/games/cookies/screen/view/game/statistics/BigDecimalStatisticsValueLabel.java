@@ -1,7 +1,9 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.math.BigDecimal;
@@ -11,11 +13,12 @@ abstract class BigDecimalStatisticsValueLabel extends StatisticsValueLabel {
     private final BigDecimalFormatter bigDecimalFormatter;
 
     BigDecimalStatisticsValueLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
-        super(skin, bakeryService);
+        super(assetManager, assets, bakeryService);
         this.bigDecimalFormatter = bigDecimalFormatter;
     }
 

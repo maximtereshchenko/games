@@ -1,20 +1,21 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class BuildingPanel extends Table {
 
     BuildingPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
@@ -23,8 +24,8 @@ final class BuildingPanel extends Table {
         var buildings = Building.values();
         for (var i = 0; i < buildings.length; i++) {
             addAction(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 eventListener,
                 bigDecimalFormatter,
                 transaction,
@@ -36,8 +37,8 @@ final class BuildingPanel extends Table {
     }
 
     private void addAction(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
@@ -50,8 +51,8 @@ final class BuildingPanel extends Table {
                 Actions.run(
                     () -> add(
                         buildingButton(
-                            skin,
-                            bundle,
+                            assetManager,
+                            assets,
                             eventListener,
                             bigDecimalFormatter,
                             transaction,
@@ -87,8 +88,8 @@ final class BuildingPanel extends Table {
     }
 
     private BuildingButton buildingButton(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
@@ -98,8 +99,8 @@ final class BuildingPanel extends Table {
     ) {
         var buildingButton = new BuildingButton(
             this,
-            skin,
-            bundle,
+            assetManager,
+            assets,
             bigDecimalFormatter,
             transaction,
             bakeryService,

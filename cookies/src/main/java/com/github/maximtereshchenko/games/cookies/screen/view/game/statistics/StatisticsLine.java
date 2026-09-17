@@ -1,14 +1,17 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class StatisticsLine extends Table {
 
     StatisticsLine(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         String text,
         Actor... actors
     ) {
@@ -16,7 +19,7 @@ final class StatisticsLine extends Table {
         add(
             new Label(
                 text,
-                skin,
+                assetManager.get(assets.game().skin()),
                 "statistics-key"
             )
         );

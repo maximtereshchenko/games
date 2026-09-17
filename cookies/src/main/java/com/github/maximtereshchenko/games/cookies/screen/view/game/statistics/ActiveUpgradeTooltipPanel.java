@@ -1,11 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.Badge;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.UpgradeTooltipPanel;
@@ -17,15 +18,15 @@ import java.util.Optional;
 final class ActiveUpgradeTooltipPanel extends UpgradeTooltipPanel {
 
     ActiveUpgradeTooltipPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
         super(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             bigDecimalFormatter,
             bakeryService,
             upgrade
@@ -33,12 +34,13 @@ final class ActiveUpgradeTooltipPanel extends UpgradeTooltipPanel {
     }
 
     @Override
-    protected List<Badge> badges(Skin skin, I18NBundle bundle) {
-        var badges = new ArrayList<>(super.badges(skin, bundle));
+    protected List<Badge> badges(AssetManager assetManager, Assets assets) {
+        var badges = new ArrayList<>(super.badges(assetManager, assets));
         badges.add(
             new Badge(
-                skin,
-                bundle.get("statistics.upgrades.badge")
+                assetManager,
+                assets,
+                assetManager.get(assets.game().bundle()).get("statistics.upgrades.badge")
             )
         );
         return badges;
@@ -46,7 +48,8 @@ final class ActiveUpgradeTooltipPanel extends UpgradeTooltipPanel {
 
     @Override
     protected Label price(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
@@ -55,15 +58,15 @@ final class ActiveUpgradeTooltipPanel extends UpgradeTooltipPanel {
             bigDecimalFormatter.string(
                 bakeryService.price(upgrade)
             ),
-            skin,
+            assetManager.get(assets.game().skin()),
             "upgrade-price-tooltip"
         );
     }
 
     @Override
     protected Optional<Actor> footer(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.empty();
     }

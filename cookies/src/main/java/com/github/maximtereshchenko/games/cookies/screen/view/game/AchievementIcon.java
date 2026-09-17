@@ -1,10 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 public class AchievementIcon extends Image {
 
@@ -13,11 +15,12 @@ public class AchievementIcon extends Image {
     private final Achievement achievement;
 
     public AchievementIcon(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
-        this.style = skin.get(achievement.name(), Style.class);
+        this.style = assetManager.get(assets.game().skin()).get(achievement.name(), Style.class);
         this.bakeryService = bakeryService;
         this.achievement = achievement;
         setDrawable(drawable());

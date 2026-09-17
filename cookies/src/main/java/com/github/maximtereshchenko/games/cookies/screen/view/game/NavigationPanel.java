@@ -1,18 +1,21 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.I18NBundle;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class NavigationPanel extends Table {
 
     NavigationPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         EventListener statisticsEventListener
     ) {
+        var skin = assetManager.get(assets.game().skin());
+        var bundle = assetManager.get(assets.game().bundle());
         var statisticsButton = new TextButton(
             bundle.get("navigation.statistics"),
             skin,

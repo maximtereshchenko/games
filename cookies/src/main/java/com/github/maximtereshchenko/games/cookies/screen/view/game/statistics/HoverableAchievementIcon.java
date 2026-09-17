@@ -1,25 +1,28 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementIcon;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.UnlockAchievementAction;
 
 final class HoverableAchievementIcon extends AchievementIcon {
 
     HoverableAchievementIcon(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
-        super(skin, bakeryService, achievement);
-        var style = skin.get(Style.class);
+        super(assetManager, assets, bakeryService, achievement);
+        var style = assetManager.get(assets.game().skin()).get(Style.class);
         setColor(style.locked);
         var listener = new InputListener() {
 

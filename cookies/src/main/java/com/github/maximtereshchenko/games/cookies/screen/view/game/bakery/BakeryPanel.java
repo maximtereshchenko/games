@@ -1,12 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.Random;
@@ -14,8 +15,8 @@ import java.util.Random;
 public final class BakeryPanel extends Container<Stack> {
 
     public BakeryPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random
@@ -23,13 +24,15 @@ public final class BakeryPanel extends Container<Stack> {
         fill();
         clip();
         var cookieWidget = new CookieWidget(
-            skin,
+            assetManager,
+            assets,
             bigDecimalFormatter,
             bakeryService,
             random
         );
         var fallingCookiesWidget = new FallingCookiesWidget(
-            skin,
+            assetManager,
+            assets,
             bakeryService,
             random
         );
@@ -43,22 +46,22 @@ public final class BakeryPanel extends Container<Stack> {
             }
         );
         var stack = new Stack();
-        stack.add(new BottomOverlayWidget(skin));
+        stack.add(new BottomOverlayWidget(assetManager, assets));
         stack.add(fallingCookiesWidget);
         stack.add(cookieWidget);
         stack.add(
             new BakingStatisticsWidget(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 bakeryService
             )
         );
-        stack.add(new MilkWidget(skin, bakeryService));
+        stack.add(new MilkWidget(assetManager, assets, bakeryService));
         stack.add(
             new GoldenCookieOverlay(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 bakeryService,
                 random
@@ -66,8 +69,8 @@ public final class BakeryPanel extends Container<Stack> {
         );
         stack.add(
             new BuffOverlay(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService
             )
         );

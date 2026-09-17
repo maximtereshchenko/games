@@ -1,9 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class BuildingCountLabel extends Label {
 
@@ -11,11 +13,12 @@ final class BuildingCountLabel extends Label {
     private final Building building;
 
     BuildingCountLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Building building
     ) {
-        super("", skin, "building-count");
+        super("", assetManager.get(assets.game().skin()), "building-count");
         this.bakeryService = bakeryService;
         this.building = building;
     }

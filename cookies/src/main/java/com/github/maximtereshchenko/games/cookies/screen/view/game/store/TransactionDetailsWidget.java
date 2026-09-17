@@ -1,19 +1,20 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.SmallCookieIcon;
 
 final class TransactionDetailsWidget extends Table {
 
     TransactionDetailsWidget(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         BakeryService bakeryService,
@@ -21,9 +22,9 @@ final class TransactionDetailsWidget extends Table {
     ) {
         add(
             new BuildingNameLabel(
-                skin,
+                assetManager,
+                assets,
                 "building-name-button",
-                bundle,
                 bakeryService,
                 building
             )
@@ -32,12 +33,13 @@ final class TransactionDetailsWidget extends Table {
             .left()
             .padBottom(4)
             .row();
-        add(new SmallCookieIcon(skin))
+        add(new SmallCookieIcon(assetManager, assets))
             .width(Value.prefWidth)
             .padTop(2);
         add(
             new TransactionValueLabel(
-                skin,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 transaction,
                 building

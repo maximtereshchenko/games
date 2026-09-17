@@ -1,16 +1,17 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class UpgradeNameLabel extends Label {
 
-    UpgradeNameLabel(Skin skin, I18NBundle bundle, Upgrade upgrade) {
+    UpgradeNameLabel(AssetManager assetManager, Assets assets, Upgrade upgrade) {
         super(
-            bundle.get("store.upgrade.%s.name".formatted(upgrade.name())),
-            skin,
+            assetManager.get(assets.game().bundle()).get("store.upgrade.%s.name".formatted(upgrade.name())),
+            assetManager.get(assets.game().skin()),
             "upgrade-name"
         );
     }

@@ -1,13 +1,14 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,20 +19,21 @@ public final class AchievementTooltipPanel extends TooltipPanel {
     private final Achievement achievement;
 
     public AchievementTooltipPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
         this.bakeryService = bakeryService;
         this.achievement = achievement;
-        super(skin, bundle);
+        super(assetManager, assets);
     }
 
     @Override
-    protected Image icon(Skin skin) {
+    protected Image icon(AssetManager assetManager, Assets assets) {
         return new AchievementIcon(
-            skin,
+            assetManager,
+            assets,
             bakeryService,
             achievement
         );
@@ -39,35 +41,36 @@ public final class AchievementTooltipPanel extends TooltipPanel {
 
     @Override
     protected Label name(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return new AchievementNameLabel(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             bakeryService,
             achievement
         );
     }
 
     @Override
-    protected Optional<Table> value(Skin skin) {
+    protected Optional<Table> value(AssetManager assetManager, Assets assets) {
         return Optional.empty();
     }
 
     @Override
     protected List<Badge> badges(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return List.of(
             new Badge(
-                skin,
-                bundle.get("achievement.tooltip.badge")
+                assetManager,
+                assets,
+                assetManager.get(assets.game().bundle()).get("achievement.tooltip.badge")
             ),
             new AchievementBadge(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService,
                 achievement
             )
@@ -76,13 +79,13 @@ public final class AchievementTooltipPanel extends TooltipPanel {
 
     @Override
     protected Optional<Label> description(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.of(
             new AchievementDescriptionLabel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService,
                 achievement
             )
@@ -91,16 +94,16 @@ public final class AchievementTooltipPanel extends TooltipPanel {
 
     @Override
     protected Optional<FlavorTextLabel> flavorText(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.empty();
     }
 
     @Override
     protected Optional<Actor> footer(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.empty();
     }

@@ -1,23 +1,27 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Align;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.ArrayList;
 import java.util.List;
 
 final class CursorRingsWidget extends WidgetGroup {
 
-    private final Skin skin;
+    private final AssetManager assetManager;
+    private final Assets assets;
     private final BakeryService bakeryService;
     private final List<CursorWidget> cursorWidgets;
     private double accumulatedTimeSeconds;
 
-    CursorRingsWidget(Skin skin, BakeryService bakeryService) {
-        this.skin = skin;
+    CursorRingsWidget(AssetManager assetManager, Assets assets, BakeryService bakeryService) {
+        this.assetManager = assetManager;
+        this.assets = assets;
         this.bakeryService = bakeryService;
         this.cursorWidgets = new ArrayList<>();
         setLayoutEnabled(false);
@@ -62,7 +66,7 @@ final class CursorRingsWidget extends WidgetGroup {
             i < bakeryService.count(Building.CURSOR);
             i++
         ) {
-            var cursorWidget = new CursorWidget(skin);
+            var cursorWidget = new CursorWidget(assetManager, assets);
             cursorWidget.scale(getWidth());
             cursorWidgets.add(cursorWidget);
             addActor(cursorWidget);

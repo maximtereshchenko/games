@@ -1,16 +1,17 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.I18NBundle;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class StoreLabel extends Label {
 
-    StoreLabel(Skin skin, I18NBundle bundle) {
+    StoreLabel(AssetManager assetManager, Assets assets) {
         super(
-            bundle.get("store.title"),
-            skin,
+            assetManager.get(assets.game().bundle()).get("store.title"),
+            assetManager.get(assets.game().skin()),
             "store"
         );
         setAlignment(Align.center);

@@ -1,18 +1,20 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Layout;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class FocusableScrollPane<T extends Actor & Layout> extends ScrollPane {
 
     private final T layout;
 
-    FocusableScrollPane(Skin skin, T layout) {
-        super(layout, skin);
+    FocusableScrollPane(AssetManager assetManager, Assets assets, T layout) {
+        super(layout, assetManager.get(assets.game().skin()));
         this.layout = layout;
         setScrollbarsOnTop(true);
         addListener(

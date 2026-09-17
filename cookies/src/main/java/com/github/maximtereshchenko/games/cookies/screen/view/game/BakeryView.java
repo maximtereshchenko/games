@@ -1,12 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.bakery.BakeryPanel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.notification.NotificationOverlay;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.store.StorePanel;
@@ -17,31 +18,31 @@ import java.util.Random;
 public final class BakeryView extends Stack {
 
     public BakeryView(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random,
         Clock clock
     ) {
         var table = new Table();
-        table.setBackground(skin.get(Style.class).background);
+        table.setBackground(assetManager.get(assets.game().skin()).get(Style.class).background);
         table.defaults().growY();
         table.add(
                 new BakeryPanel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService,
                     random
                 )
             )
             .width(Value.percentWidth(0.3f, this));
-        addBeam(table, skin);
+        addBeam(table, assetManager, assets);
         table.add(
                 new NavigablePanel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService,
                     random,
@@ -49,13 +50,14 @@ public final class BakeryView extends Stack {
                 )
             )
             .growX();
-        addBeam(table, skin);
+        addBeam(table, assetManager, assets);
         table.add(
             new FocusableScrollPane<>(
-                skin,
+                assetManager,
+                assets,
                 new StorePanel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bigDecimalFormatter,
                     bakeryService
                 )
@@ -64,15 +66,15 @@ public final class BakeryView extends Stack {
         add(table);
         add(
             new NotificationOverlay(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService
             )
         );
     }
 
-    private void addBeam(Table table, Skin skin) {
-        table.add(new BeamWidget(skin, "vertical"))
+    private void addBeam(Table table, AssetManager assetManager, Assets assets) {
+        table.add(new BeamWidget(assetManager, assets, "vertical"))
             .width(Value.prefWidth);
     }
 

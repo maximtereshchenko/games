@@ -1,12 +1,14 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Buff;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class FlareWidget extends Image {
 
@@ -15,8 +17,8 @@ final class FlareWidget extends Image {
     private final Style style;
     private final BakeryService bakeryService;
 
-    FlareWidget(Skin skin, BakeryService bakeryService) {
-        this.style = skin.get(Style.class);
+    FlareWidget(AssetManager assetManager, Assets assets, BakeryService bakeryService) {
+        this.style = assetManager.get(assets.game().skin()).get(Style.class);
         this.bakeryService = bakeryService;
         var initialScale = 2;
         setScale(initialScale);

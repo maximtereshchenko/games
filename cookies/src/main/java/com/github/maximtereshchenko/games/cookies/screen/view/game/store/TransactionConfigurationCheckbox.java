@@ -1,11 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 class TransactionConfigurationCheckbox extends CheckBox {
 
-    TransactionConfigurationCheckbox(Skin skin, String text) {
-        super(text, skin, "transaction-configuration");
+    TransactionConfigurationCheckbox(AssetManager assetManager, Assets assets, String text) {
+        super(text, assetManager.get(assets.game().skin()), "transaction-configuration");
     }
 }

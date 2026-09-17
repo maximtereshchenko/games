@@ -1,16 +1,17 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.TransactionMode;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 
@@ -23,15 +24,15 @@ final class BuildingButton extends Button {
 
     BuildingButton(
         Actor parent,
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         BakeryService bakeryService,
         Building building,
         int index
     ) {
-        this.style = skin.get(
+        this.style = assetManager.get(assets.game().skin()).get(
             String.valueOf(index % 4),
             Style.class
         );
@@ -40,7 +41,8 @@ final class BuildingButton extends Button {
         this.building = building;
         add(
             new BuildingIcon(
-                skin,
+                assetManager,
+                assets,
                 "%s-button".formatted(building.name()),
                 bakeryService,
                 building,
@@ -49,8 +51,8 @@ final class BuildingButton extends Button {
         );
         add(
             new TransactionDetailsWidget(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 transaction,
                 bakeryService,
@@ -59,7 +61,8 @@ final class BuildingButton extends Button {
         ).growX();
         add(
             new BuildingCountLabel(
-                skin,
+                assetManager,
+                assets,
                 bakeryService,
                 building
             )
@@ -78,10 +81,11 @@ final class BuildingButton extends Button {
             new BuildingTooltipWidget(
                 parent,
                 new PopUpFrame(
-                    skin,
+                    assetManager,
+                    assets,
                     new BuildingTooltipPanel(
-                        skin,
-                        bundle,
+                        assetManager,
+                        assets,
                         bigDecimalFormatter,
                         transaction,
                         bakeryService,

@@ -1,8 +1,10 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BeamWidget;
 
 final class StoreBeamWidget extends BeamWidget implements EventListener {
@@ -10,9 +12,9 @@ final class StoreBeamWidget extends BeamWidget implements EventListener {
     private final Label label;
     private final EventListener delegateListener;
 
-    StoreBeamWidget(Skin skin, String text) {
-        super(skin, "store");
-        this.label = new Label(text, skin, "beam-store");
+    StoreBeamWidget(AssetManager assetManager, Assets assets, String text) {
+        super(assetManager, assets, "store");
+        this.label = new Label(text, assetManager.get(assets.game().skin()), "beam-store");
         this.delegateListener = new DelegateListener();
         label.setVisible(false);
         add(label);

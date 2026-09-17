@@ -1,16 +1,19 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.Random;
 
 final class BakingPowerParticle extends Label {
 
     BakingPowerParticle(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         Random random,
         float x,
         float y,
@@ -18,7 +21,7 @@ final class BakingPowerParticle extends Label {
     ) {
         super(
             text,
-            skin,
+            assetManager.get(assets.game().skin()),
             "baking-power"
         );
         setTouchable(Touchable.disabled);

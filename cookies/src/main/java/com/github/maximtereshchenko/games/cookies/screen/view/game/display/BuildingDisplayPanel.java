@@ -1,10 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.display;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.HorizontalBeamWidget;
 
 import java.util.EnumMap;
@@ -16,7 +18,8 @@ public final class BuildingDisplayPanel extends Table {
     private final Map<Building, BuildingDisplayWidget> buildingDisplayWidgets;
 
     public BuildingDisplayPanel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Random random
     ) {
@@ -32,7 +35,8 @@ public final class BuildingDisplayPanel extends Table {
                             building,
                             Actions.run(
                                 () -> addBuildingDisplayWidget(
-                                    skin,
+                                    assetManager,
+                                    assets,
                                     bakeryService,
                                     building,
                                     random
@@ -46,7 +50,8 @@ public final class BuildingDisplayPanel extends Table {
     }
 
     private void addBuildingDisplayWidget(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Building building,
         Random random
@@ -54,7 +59,8 @@ public final class BuildingDisplayPanel extends Table {
         buildingDisplayWidgets.put(
             building,
             new BuildingDisplayWidget(
-                skin,
+                assetManager,
+                assets,
                 bakeryService,
                 building,
                 random
@@ -63,7 +69,7 @@ public final class BuildingDisplayPanel extends Table {
         clearChildren();
         for (var buildingDisplayWidget : buildingDisplayWidgets.values()) {
             add(buildingDisplayWidget).row();
-            add(new HorizontalBeamWidget(skin)).row();
+            add(new HorizontalBeamWidget(assetManager, assets)).row();
         }
     }
 }

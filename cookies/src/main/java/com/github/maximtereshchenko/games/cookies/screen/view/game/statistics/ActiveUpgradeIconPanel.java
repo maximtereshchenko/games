@@ -1,11 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.TopCenterTooltipWidget;
@@ -16,20 +17,20 @@ import java.util.TreeSet;
 
 final class ActiveUpgradeIconPanel extends HorizontalGroup {
 
-    private final Skin skin;
-    private final I18NBundle bundle;
+    private final AssetManager assetManager;
+    private final Assets assets;
     private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
     private final Set<Upgrade> upgrades;
 
     ActiveUpgradeIconPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
-        this.skin = skin;
-        this.bundle = bundle;
+        this.assetManager = assetManager;
+        this.assets = assets;
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.upgrades = new TreeSet<>();
@@ -55,16 +56,18 @@ final class ActiveUpgradeIconPanel extends HorizontalGroup {
         clearChildren();
         for (var upgrade : upgrades) {
             var upgradeIcon = new UpgradeIcon(
-                skin,
+                assetManager,
+                assets,
                 upgrade
             );
             upgradeIcon.addListener(
                 new TopCenterTooltipWidget(
                     new PopUpFrame(
-                        skin,
+                        assetManager,
+                        assets,
                         new ActiveUpgradeTooltipPanel(
-                            skin,
-                            bundle,
+                            assetManager,
+                            assets,
                             bigDecimalFormatter,
                             bakeryService,
                             upgrade

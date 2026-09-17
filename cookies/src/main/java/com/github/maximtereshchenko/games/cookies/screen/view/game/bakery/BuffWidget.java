@@ -1,10 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Buff;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.ColoredButton;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.SameTopHeightTooltipWidget;
@@ -15,8 +16,8 @@ final class BuffWidget extends ColoredButton {
     private final Buff buff;
 
     BuffWidget(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Buff buff
     ) {
@@ -24,32 +25,36 @@ final class BuffWidget extends ColoredButton {
         stack.add(
             switch (buff) {
                 case FRENZY, CLICK_FRENZY -> new BuffIcon(
-                    skin,
+                    assetManager,
+                    assets,
                     buff
                 );
                 case BUILDING_SPECIAL -> new BuildingSpecialBuffIcon(
-                    skin,
+                    assetManager,
+                    assets,
                     bakeryService
                 );
             }
         );
         stack.add(
             new BuffDurationWidget(
-                skin,
+                assetManager,
+                assets,
                 bakeryService,
                 buff
             )
         );
-        super(skin, stack);
+        super(assetManager, assets, stack);
         this.bakeryService = bakeryService;
         this.buff = buff;
         var tooltipWidget = new SameTopHeightTooltipWidget(
             this,
             new PopUpFrame(
-                skin,
+                assetManager,
+                assets,
                 new BuffTooltipPanel(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService,
                     buff
                 )

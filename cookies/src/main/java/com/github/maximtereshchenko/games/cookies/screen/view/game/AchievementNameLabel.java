@@ -1,23 +1,25 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 public final class AchievementNameLabel extends Label {
 
     public AchievementNameLabel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
+        var bundle = assetManager.get(assets.game().bundle());
         super(
             bundle.get("achievement.locked.name"),
-            skin,
+            assetManager.get(assets.game().skin()),
             "achievement-name"
         );
         setWrap(true);

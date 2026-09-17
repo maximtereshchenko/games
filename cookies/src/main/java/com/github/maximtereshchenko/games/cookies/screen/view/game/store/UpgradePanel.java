@@ -1,13 +1,14 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.HashSet;
@@ -15,8 +16,8 @@ import java.util.Set;
 
 final class UpgradePanel extends Container<Table> implements EventListener {
 
-    private final Skin skin;
-    private final I18NBundle bundle;
+    private final AssetManager assetManager;
+    private final Assets assets;
     private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
     private final Set<Upgrade> upgrades;
@@ -24,14 +25,14 @@ final class UpgradePanel extends Container<Table> implements EventListener {
     private boolean isExpanded;
 
     UpgradePanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
+        this.assetManager = assetManager;
+        this.assets = assets;
         super(new Table().left());
-        this.skin = skin;
-        this.bundle = bundle;
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.upgrades = new HashSet<>();
@@ -83,8 +84,8 @@ final class UpgradePanel extends Container<Table> implements EventListener {
     private UpgradeButton upgradeButton(Upgrade upgrade) {
         var upgradeButton = new UpgradeButton(
             this,
-            skin,
-            bundle,
+            assetManager,
+            assets,
             bigDecimalFormatter,
             bakeryService,
             upgrade

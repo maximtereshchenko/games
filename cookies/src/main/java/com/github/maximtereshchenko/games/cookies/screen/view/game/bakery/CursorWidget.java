@@ -1,14 +1,16 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class CursorWidget extends Image {
 
-    CursorWidget(Skin skin) {
-        super(skin, "cursor");
+    CursorWidget(AssetManager assetManager, Assets assets) {
+        super(assetManager.get(assets.game().skin()), "cursor");
         setOrigin(Align.center);
     }
 

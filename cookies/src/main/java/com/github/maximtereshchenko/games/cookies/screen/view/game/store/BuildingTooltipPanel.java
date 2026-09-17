@@ -1,13 +1,14 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.*;
 
 import java.util.List;
@@ -21,8 +22,8 @@ final class BuildingTooltipPanel extends TooltipPanel {
     private final Building building;
 
     BuildingTooltipPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         BakeryService bakeryService,
@@ -32,24 +33,25 @@ final class BuildingTooltipPanel extends TooltipPanel {
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
         this.building = building;
-        super(skin, bundle);
+        super(assetManager, assets);
     }
 
     @Override
-    protected Image icon(Skin skin) {
+    protected Image icon(AssetManager assetManager, Assets assets) {
         return new BuildingTooltipIcon(
-            skin,
+            assetManager,
+            assets,
             bakeryService,
             building
         );
     }
 
     @Override
-    protected Label name(Skin skin, I18NBundle bundle) {
+    protected Label name(AssetManager assetManager, Assets assets) {
         return new BuildingNameLabel(
-            skin,
+            assetManager,
+            assets,
             "building-name-tooltip",
-            bundle,
             bakeryService,
             building
         );
@@ -57,13 +59,15 @@ final class BuildingTooltipPanel extends TooltipPanel {
 
     @Override
     protected Optional<Table> value(
-        Skin skin
+        AssetManager assetManager,
+        Assets assets
     ) {
         var table = new Table();
-        table.add(new SmallCookieIcon(skin));
+        table.add(new SmallCookieIcon(assetManager, assets));
         table.add(
             new TransactionValueLabel(
-                skin,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 transaction,
                 building
@@ -74,13 +78,13 @@ final class BuildingTooltipPanel extends TooltipPanel {
 
     @Override
     protected List<Badge> badges(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return List.of(
             new BuildingCountBadge(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService,
                 building
             )
@@ -89,21 +93,21 @@ final class BuildingTooltipPanel extends TooltipPanel {
 
     @Override
     protected Optional<Label> description(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.empty();
     }
 
     @Override
     protected Optional<FlavorTextLabel> flavorText(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.of(
             new BuildingFlavorTextLabel(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService,
                 building
             )
@@ -112,8 +116,8 @@ final class BuildingTooltipPanel extends TooltipPanel {
 
     @Override
     protected Optional<Actor> footer(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         return Optional.empty();
     }

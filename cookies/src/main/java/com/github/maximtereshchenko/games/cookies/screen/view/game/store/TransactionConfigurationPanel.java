@@ -1,32 +1,33 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.TransactionMode;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class TransactionConfigurationPanel extends Table {
 
     TransactionConfigurationPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         Transaction transaction
     ) {
-        background(skin.get(Style.class).background);
-        var allCheckbox = new AllCheckbox(skin, bundle);
-        var oneCheckbox = new TransactionAmountNumberCheckbox(skin, 1);
-        var tenCheckbox = new TransactionAmountNumberCheckbox(skin, 10);
-        var hundredCheckbox = new TransactionAmountNumberCheckbox(skin, 100);
+        background(assetManager.get(assets.game().skin()).get(Style.class).background);
+        var allCheckbox = new AllCheckbox(assetManager, assets);
+        var oneCheckbox = new TransactionAmountNumberCheckbox(assetManager, assets, 1);
+        var tenCheckbox = new TransactionAmountNumberCheckbox(assetManager, assets, 10);
+        var hundredCheckbox = new TransactionAmountNumberCheckbox(assetManager, assets, 100);
         var buyCheckbox = new BuyCheckbox(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             allCheckbox,
             hundredCheckbox
         );
-        var sellCheckbox = new SellCheckbox(skin, bundle);
+        var sellCheckbox = new SellCheckbox(assetManager, assets);
         var transactionModeRadioGroup = new RadioGroup<>(
             buyCheckbox,
             sellCheckbox

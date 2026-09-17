@@ -1,11 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class UpgradePriceLabel extends Label {
@@ -15,12 +17,13 @@ final class UpgradePriceLabel extends Label {
     private final Upgrade upgrade;
 
     UpgradePriceLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
-        var labelStyle = skin.get(Style.class);
+        var labelStyle = assetManager.get(assets.game().skin()).get(Style.class);
         super(
             bigDecimalFormatter.string(
                 bakeryService.price(upgrade)

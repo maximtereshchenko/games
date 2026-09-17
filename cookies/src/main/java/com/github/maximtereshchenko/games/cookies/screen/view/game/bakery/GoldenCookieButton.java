@@ -1,15 +1,16 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Interval;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.Random;
@@ -20,13 +21,13 @@ final class GoldenCookieButton extends Button {
     private final Random random;
 
     GoldenCookieButton(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random
     ) {
-        super(skin, "golden-cookie");
+        super(assetManager.get(assets.game().skin()), "golden-cookie");
         this.bakeryService = bakeryService;
         this.random = random;
         setTransform(true);
@@ -45,8 +46,8 @@ final class GoldenCookieButton extends Button {
                     stage.screenToStageCoordinates(mousePointer);
                     stage.addActor(
                         new GoldenCookieNotification(
-                            skin,
-                            bundle,
+                            assetManager,
+                            assets,
                             mousePointer.x,
                             mousePointer.y,
                             stage.getWidth(),

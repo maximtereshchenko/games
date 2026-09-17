@@ -1,8 +1,10 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.statistics;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.stream.Stream;
 
@@ -13,14 +15,14 @@ abstract class PercentStatisticsLabel<T extends Enum<T>> extends StatisticsValue
     private final T[] values;
 
     PercentStatisticsLabel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         String key,
         BakeryService bakeryService,
         T[] values
     ) {
-        super(skin, bakeryService);
-        this.bundle = bundle;
+        super(assetManager, assets, bakeryService);
+        this.bundle = assetManager.get(assets.game().bundle());
         this.key = key;
         this.values = values;
     }

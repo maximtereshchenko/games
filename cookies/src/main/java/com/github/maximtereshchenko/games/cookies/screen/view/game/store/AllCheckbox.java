@@ -1,12 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.assets.AssetManager;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class AllCheckbox extends TransactionAmountCheckbox {
 
-    AllCheckbox(Skin skin, I18NBundle bundle) {
-        super(skin, bundle.get("store.transaction.all"));
+    AllCheckbox(AssetManager assetManager, Assets assets) {
+        super(assetManager, assets, assetManager.get(assets.game().bundle()).get("store.transaction.all"));
         setVisible(false);
     }
 

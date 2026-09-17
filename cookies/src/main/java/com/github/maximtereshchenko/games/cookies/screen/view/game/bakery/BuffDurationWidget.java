@@ -1,10 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Buff;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class BuffDurationWidget extends Image {
 
@@ -14,12 +17,13 @@ final class BuffDurationWidget extends Image {
     private final Buff buff;
 
     BuffDurationWidget(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Buff buff
     ) {
-        this.skin = skin;
-        this.style = skin.get(Style.class);
+        this.skin = assetManager.get(assets.game().skin());
+        this.style = assetManager.get(assets.game().skin()).get(Style.class);
         this.bakeryService = bakeryService;
         this.buff = buff;
         setColor(style.color);

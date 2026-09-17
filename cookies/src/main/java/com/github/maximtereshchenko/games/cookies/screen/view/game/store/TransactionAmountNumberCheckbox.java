@@ -1,11 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class TransactionAmountNumberCheckbox extends TransactionAmountCheckbox {
 
-    TransactionAmountNumberCheckbox(Skin skin, int amount) {
-        super(skin, String.valueOf(amount));
+    TransactionAmountNumberCheckbox(AssetManager assetManager, Assets assets, int amount) {
+        super(assetManager, assets, String.valueOf(amount));
     }
 
     @Override

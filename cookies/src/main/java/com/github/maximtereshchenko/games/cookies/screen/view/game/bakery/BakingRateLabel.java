@@ -1,9 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class BakingRateLabel extends Label {
@@ -13,17 +15,17 @@ final class BakingRateLabel extends Label {
     private final BakeryService bakeryService;
 
     BakingRateLabel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
         super(
             "",
-            skin,
+            assetManager.get(assets.game().skin()),
             "baking-rate"
         );
-        this.bundle = bundle;
+        this.bundle = assetManager.get(assets.game().bundle());
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
     }

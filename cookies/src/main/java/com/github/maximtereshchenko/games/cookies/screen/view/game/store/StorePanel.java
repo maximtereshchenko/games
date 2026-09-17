@@ -1,49 +1,53 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 public final class StorePanel extends Table {
 
     public StorePanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
-        background(skin.get(Style.class).background);
+        var bundle = assetManager.get(assets.game().bundle());
+        background(assetManager.get(assets.game().skin()).get(Style.class).background);
         var upgradesBeam = new StoreBeamWidget(
-            skin,
+            assetManager,
+            assets,
             bundle.get("store.section.upgrades")
         );
         var upgradePanel = new UpgradePanel(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             bigDecimalFormatter,
             bakeryService
         );
         var buildingsBeam = new StoreBeamWidget(
-            skin,
+            assetManager,
+            assets,
             bundle.get("store.section.buildings")
         );
         var transaction = new Transaction(bakeryService);
         var transactionPanel = new TransactionConfigurationPanel(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             transaction
         );
         upgradesBeam.addListener(upgradePanel);
         upgradePanel.addListener(upgradesBeam);
         transactionPanel.addListener(buildingsBeam);
         var buildingPanel = new BuildingPanel(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             buildingsBeam,
             bigDecimalFormatter,
             transaction,
@@ -58,7 +62,7 @@ public final class StorePanel extends Table {
                 }
             })
             .height(Value.prefHeight);
-        add(new StoreLabel(skin, bundle)).growX().row();
+        add(new StoreLabel(assetManager, assets)).growX().row();
         add(upgradesBeam).row();
         add(upgradePanel).row();
         add(buildingsBeam).row();

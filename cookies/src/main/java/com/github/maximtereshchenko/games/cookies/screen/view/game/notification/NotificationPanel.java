@@ -1,11 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.notification;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Value;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.Achievement;
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementIcon;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.AchievementNameLabel;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpSeparator;
@@ -13,14 +14,15 @@ import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpSeparato
 final class NotificationPanel extends Table {
 
     NotificationPanel(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
         add(
             new AchievementIcon(
-                skin,
+                assetManager,
+                assets,
                 bakeryService,
                 achievement
             )
@@ -30,27 +32,27 @@ final class NotificationPanel extends Table {
             .padRight(6);
         add(
             table(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bakeryService,
                 achievement
             )
         )
             .growX();
-        add(new CloseButton(skin))
+        add(new CloseButton(assetManager, assets))
             .top()
             .right();
     }
 
     private Table table(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService,
         Achievement achievement
     ) {
         var achievementNameLabel = new AchievementNameLabel(
-            skin,
-            bundle,
+            assetManager,
+            assets,
             bakeryService,
             achievement
         );
@@ -58,14 +60,14 @@ final class NotificationPanel extends Table {
         var table = new Table();
         table.add(
                 new AchievementUnlockedLabel(
-                    skin,
-                    bundle
+                    assetManager,
+                    assets
                 )
             )
             .padBottom(8)
             .left()
             .row();
-        table.add(new PopUpSeparator(skin))
+        table.add(new PopUpSeparator(assetManager, assets))
             .padBottom(4)
             .growX()
             .row();

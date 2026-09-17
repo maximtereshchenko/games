@@ -1,7 +1,9 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 final class CookieBalanceLabel extends BaseCookieBalanceLabel {
@@ -10,11 +12,12 @@ final class CookieBalanceLabel extends BaseCookieBalanceLabel {
     private final BakeryService bakeryService;
 
     CookieBalanceLabel(
-        Skin skin,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService
     ) {
-        super("", skin);
+        super("", assetManager, assets);
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
     }

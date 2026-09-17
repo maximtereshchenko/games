@@ -47,8 +47,8 @@ public final class ScreenFactory {
         return new LoadingScreen(
             stageScreen(
                 new LoadingView(
-                    assetManager.get(loadingAssets.skin()),
-                    assetManager.get(loadingAssets.bundle())
+                    assetManager,
+                    assets
                 )
             ),
             assetManager,
@@ -77,12 +77,8 @@ public final class ScreenFactory {
         return new BakeryScreen(
             stageScreen(
                 new BakeryView(
-                    assetManager.get(
-                        gameAssets.skin()
-                    ),
-                    assetManager.get(
-                        gameAssets.bundle()
-                    ),
+                    assetManager,
+                    assets,
                     new BigDecimalFormatter(),
                     bakeryService,
                     random,

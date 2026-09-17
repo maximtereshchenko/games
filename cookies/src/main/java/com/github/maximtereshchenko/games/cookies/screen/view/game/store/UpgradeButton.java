@@ -1,12 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Upgrade;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.*;
 
 final class UpgradeButton extends ColoredButton {
@@ -18,15 +19,15 @@ final class UpgradeButton extends ColoredButton {
 
     UpgradeButton(
         Actor parent,
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Upgrade upgrade
     ) {
-        var icon = new UpgradeIcon(skin, upgrade);
-        super(skin, icon);
-        this.style = skin.get(Style.class);
+        var icon = new UpgradeIcon(assetManager, assets, upgrade);
+        super(assetManager, assets, icon);
+        this.style = assetManager.get(assets.game().skin()).get(Style.class);
         this.upgradeIcon = icon;
         this.bakeryService = bakeryService;
         this.upgrade = upgrade;
@@ -34,10 +35,11 @@ final class UpgradeButton extends ColoredButton {
             new SameTopHeightTooltipWidget(
                 parent,
                 new PopUpFrame(
-                    skin,
+                    assetManager,
+                    assets,
                     new UnlockedUpgradeTooltipPanel(
-                        skin,
-                        bundle,
+                        assetManager,
+                        assets,
                         bigDecimalFormatter,
                         bakeryService,
                         upgrade

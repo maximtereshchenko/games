@@ -1,11 +1,13 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class MilkWidget extends Widget {
 
@@ -13,8 +15,8 @@ final class MilkWidget extends Widget {
     private final BakeryService bakeryService;
     private float offsetPercentage;
 
-    MilkWidget(Skin skin, BakeryService bakeryService) {
-        this.style = skin.get(Style.class);
+    MilkWidget(AssetManager assetManager, Assets assets, BakeryService bakeryService) {
+        this.style = assetManager.get(assets.game().skin()).get(Style.class);
         this.bakeryService = bakeryService;
         setTouchable(Touchable.disabled);
     }

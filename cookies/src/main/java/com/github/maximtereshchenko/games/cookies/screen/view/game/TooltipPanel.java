@@ -1,8 +1,12 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.utils.I18NBundle;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,17 +14,17 @@ import java.util.Optional;
 public abstract class TooltipPanel extends Table {
 
     protected TooltipPanel(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         pad(8, 16, 8, 16);
-        add(icon(skin))
+        add(icon(assetManager, assets))
             .width(Value.prefWidth);
-        add(header(skin, bundle))
+        add(header(assetManager, assets))
             .growX()
             .row();
-        addSeparator(skin);
-        description(skin, bundle)
+        addSeparator(assetManager, assets);
+        description(assetManager, assets)
             .ifPresent(
                 description -> add(description)
                     .colspan(2)
@@ -28,7 +32,7 @@ public abstract class TooltipPanel extends Table {
                     .padBottom(8)
                     .row()
             );
-        flavorText(skin, bundle)
+        flavorText(assetManager, assets)
             .ifPresent(
                 flavorText -> add(flavorText)
                     .colspan(2)
@@ -36,75 +40,61 @@ public abstract class TooltipPanel extends Table {
                     .growX()
                     .row()
             );
-        footer(skin, bundle)
-            .ifPresent(footer -> addFooter(skin, footer));
+        footer(assetManager, assets)
+            .ifPresent(footer -> addFooter(assetManager, assets, footer));
 
     }
 
-    protected abstract Image icon(Skin skin);
+    protected abstract Image icon(AssetManager assetManager, Assets assets);
 
-    protected abstract Label name(Skin skin, I18NBundle bundle);
+    protected abstract Label name(AssetManager assetManager, Assets assets);
 
-    protected abstract Optional<Table> value(
-        Skin skin
-    );
+    protected abstract Optional<Table> value(AssetManager assetManager, Assets assets);
 
-    protected abstract List<Badge> badges(
-        Skin skin,
-        I18NBundle bundle
-    );
+    protected abstract List<Badge> badges(AssetManager assetManager, Assets assets);
 
-    protected abstract Optional<Label> description(
-        Skin skin,
-        I18NBundle bundle
-    );
+    protected abstract Optional<Label> description(AssetManager assetManager, Assets assets);
 
-    protected abstract Optional<FlavorTextLabel> flavorText(
-        Skin skin,
-        I18NBundle bundle
-    );
+    protected abstract Optional<FlavorTextLabel> flavorText(AssetManager assetManager, Assets assets);
 
-    protected abstract Optional<Actor> footer(
-        Skin skin,
-        I18NBundle bundle
-    );
+    protected abstract Optional<Actor> footer(AssetManager assetManager, Assets assets);
 
-    private void addSeparator(Skin skin) {
-        add(new PopUpSeparator(skin))
+    private void addSeparator(AssetManager assetManager, Assets assets) {
+        add(new PopUpSeparator(assetManager, assets))
             .colspan(2)
             .growX()
             .padBottom(8)
             .row();
     }
 
-    private void addFooter(Skin skin, Actor actor) {
-        addSeparator(skin);
+    private void addFooter(AssetManager assetManager, Assets assets, Actor actor) {
+        addSeparator(assetManager, assets);
         add(actor)
             .colspan(2)
             .growX();
     }
 
     private Table header(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         var table = new Table();
-        table.add(name(skin, bundle))
+        table.add(name(assetManager, assets))
             .growX();
-        table.add(value(skin).orElse(null))
+        table.add(value(assetManager, assets).orElse(null))
             .row();
-        table.add(badgeLine(skin, bundle))
+        table.add(badgeLine(assetManager, assets))
             .colspan(2)
             .left();
         return table;
     }
 
     private Table badgeLine(
-        Skin skin,
-        I18NBundle bundle
+        AssetManager assetManager,
+        Assets assets
     ) {
         var table = new Table();
-        for (var badge : badges(skin, bundle)) {
+        for (var badge : badges(assetManager, assets)) {
             table.add(badge).padRight(4);
         }
         return table;

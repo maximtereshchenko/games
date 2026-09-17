@@ -1,10 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Buff;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,8 +16,8 @@ final class BuffOverlay extends Table {
     private final List<BuffWidget> buffWidgets;
 
     BuffOverlay(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BakeryService bakeryService
     ) {
         this.buffWidgets = new ArrayList<>();
@@ -26,8 +27,8 @@ final class BuffOverlay extends Table {
         for (var buff : Buff.values()) {
             buffWidgets.add(
                 new BuffWidget(
-                    skin,
-                    bundle,
+                    assetManager,
+                    assets,
                     bakeryService,
                     buff
                 )

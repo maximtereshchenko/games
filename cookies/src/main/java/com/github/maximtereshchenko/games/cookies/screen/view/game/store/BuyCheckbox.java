@@ -1,19 +1,20 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.store;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.I18NBundle;
+
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
 final class BuyCheckbox extends TransactionConfigurationCheckbox {
 
     BuyCheckbox(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         AllCheckbox allCheckbox,
         TransactionAmountNumberCheckbox transactionAmountNumberCheckbox
     ) {
-        super(skin, bundle.get("store.transaction.buy"));
+        super(assetManager, assets, assetManager.get(assets.game().bundle()).get("store.transaction.buy"));
         addListener(
             new ChangeListener() {
 

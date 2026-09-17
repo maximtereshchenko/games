@@ -1,10 +1,11 @@
 package com.github.maximtereshchenko.games.cookies.screen.view.game.bakery;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
-import com.badlogic.gdx.utils.I18NBundle;
+
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
+import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.Random;
@@ -12,8 +13,8 @@ import java.util.Random;
 final class GoldenCookieOverlay extends WidgetGroup {
 
     GoldenCookieOverlay(
-        Skin skin,
-        I18NBundle bundle,
+        AssetManager assetManager,
+        Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
         BakeryService bakeryService,
         Random random
@@ -21,8 +22,8 @@ final class GoldenCookieOverlay extends WidgetGroup {
         setTouchable(Touchable.childrenOnly);
         addActor(
             new GoldenCookieButton(
-                skin,
-                bundle,
+                assetManager,
+                assets,
                 bigDecimalFormatter,
                 bakeryService,
                 random
