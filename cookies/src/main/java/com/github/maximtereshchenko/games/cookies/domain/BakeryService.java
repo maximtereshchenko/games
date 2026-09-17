@@ -118,6 +118,12 @@ public final class BakeryService {
         return playerProgress.buildingCounts.get(building);
     }
 
+    public int totalBuildingCount() {
+        return Stream.of(Building.values())
+            .mapToInt(this::count)
+            .sum();
+    }
+
     public BigDecimal balance() {
         return rounded(
             playerProgress.balance,
@@ -527,7 +533,16 @@ public final class BakeryService {
             case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(
                 requirement
             );
+            case TotalBuildingCountUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
         };
+    }
+
+    private boolean isRequirementSatisfied(
+        TotalBuildingCountUnlockRequirement requirement
+    ) {
+        return totalBuildingCount() >= requirement.count();
     }
 
     private boolean isRequirementSatisfied(BakingRateUnlockRequirement requirement) {

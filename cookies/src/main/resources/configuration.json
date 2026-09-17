@@ -3436,6 +3436,22 @@
       "counts": {
         "FRACTAL_ENGINE": 300
       }
+    },
+    "TOTAL_BUILDING_COUNT_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalBuildingCountUnlockRequirement",
+      "count": 100
+    },
+    "TOTAL_BUILDING_COUNT_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalBuildingCountUnlockRequirement",
+      "count": 500
+    },
+    "TOTAL_BUILDING_COUNT_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalBuildingCountUnlockRequirement",
+      "count": 1000
+    },
+    "TOTAL_BUILDING_COUNT_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalBuildingCountUnlockRequirement",
+      "count": 2500
     }
   },
   "milkPercentPerUnlockedAchievement": 0.04,
