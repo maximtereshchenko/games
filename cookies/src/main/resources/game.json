@@ -2093,6 +2093,22 @@
     "TOTAL_BUILDING_COUNT_TIER_3": {
       "unlocked": "column-chalcedhoney",
       "locked": "question-mark"
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_0": {
+      "unlocked": "flask-plain",
+      "locked": "question-mark"
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_1": {
+      "unlocked": "flask-berrylium",
+      "locked": "question-mark"
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_2": {
+      "unlocked": "flask-blueberrylium",
+      "locked": "question-mark"
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_3": {
+      "unlocked": "flask-buttergold",
+      "locked": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.HoverableAchievementIcon$Style": {

@@ -536,7 +536,18 @@ public final class BakeryService {
             case TotalBuildingCountUnlockRequirement requirement -> isRequirementSatisfied(
                 requirement
             );
+            case TotalUpgradeCountUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
         };
+    }
+
+    private boolean isRequirementSatisfied(
+        TotalUpgradeCountUnlockRequirement requirement
+    ) {
+        return Stream.of(Upgrade.values())
+                   .filter(this::isActive)
+                   .count() >= requirement.count();
     }
 
     private boolean isRequirementSatisfied(

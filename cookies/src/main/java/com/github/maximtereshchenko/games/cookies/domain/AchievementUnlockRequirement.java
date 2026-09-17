@@ -5,4 +5,5 @@ sealed interface AchievementUnlockRequirement extends UnlockRequirement
     BakingRateUnlockRequirement,
     CumulativeManuallyBakedUnlockRequirement,
     BuildingCountUnlockRequirement,
-    TotalBuildingCountUnlockRequirement {}
+    TotalBuildingCountUnlockRequirement,
+    TotalUpgradeCountUnlockRequirement {}

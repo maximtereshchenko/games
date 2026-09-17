@@ -3452,6 +3452,22 @@
     "TOTAL_BUILDING_COUNT_TIER_3": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.TotalBuildingCountUnlockRequirement",
       "count": 2500
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalUpgradeCountUnlockRequirement",
+      "count": 20
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalUpgradeCountUnlockRequirement",
+      "count": 50
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalUpgradeCountUnlockRequirement",
+      "count": 100
+    },
+    "TOTAL_UPGRADE_COUNT_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.TotalUpgradeCountUnlockRequirement",
+      "count": 200
     }
   },
   "milkPercentPerUnlockedAchievement": 0.04,
