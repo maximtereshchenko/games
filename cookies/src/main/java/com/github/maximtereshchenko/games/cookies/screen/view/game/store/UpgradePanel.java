@@ -12,6 +12,7 @@ import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 final class UpgradePanel extends Container<Table> implements EventListener {
@@ -20,6 +21,7 @@ final class UpgradePanel extends Container<Table> implements EventListener {
     private final Assets assets;
     private final BigDecimalFormatter bigDecimalFormatter;
     private final BakeryService bakeryService;
+    private final Random random;
     private final Set<Upgrade> upgrades;
     private final EventListener delegateListener;
     private boolean isExpanded;
@@ -28,13 +30,15 @@ final class UpgradePanel extends Container<Table> implements EventListener {
         AssetManager assetManager,
         Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
-        BakeryService bakeryService
+        BakeryService bakeryService,
+        Random random
     ) {
         this.assetManager = assetManager;
         this.assets = assets;
         super(new Table().left());
         this.bigDecimalFormatter = bigDecimalFormatter;
         this.bakeryService = bakeryService;
+        this.random = random;
         this.upgrades = new HashSet<>();
         this.delegateListener = new DelegateListener();
         this.isExpanded = false;
@@ -88,6 +92,7 @@ final class UpgradePanel extends Container<Table> implements EventListener {
             assets,
             bigDecimalFormatter,
             bakeryService,
+            random,
             upgrade
         );
         upgradeButton.addListener(

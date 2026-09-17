@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,8 +15,10 @@ import com.github.maximtereshchenko.games.cookies.domain.Configuration;
 import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.ScreenFactory;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 final class CookiesGameAdapter implements ApplicationListener {
 
@@ -84,6 +87,28 @@ final class CookiesGameAdapter implements ApplicationListener {
                     new AssetDescriptor<>(
                         "game",
                         I18NBundle.class
+                    ),
+                    sounds(7, "sounds/cookie_%d.mp3"),
+                    sounds(4, "sounds/building_%d.mp3"),
+                    new AssetDescriptor<>(
+                        "sounds/tick.mp3",
+                        Sound.class
+                    ),
+                    new AssetDescriptor<>(
+                        "sounds/menu-on.mp3",
+                        Sound.class
+                    ),
+                    new AssetDescriptor<>(
+                        "sounds/menu-off.mp3",
+                        Sound.class
+                    ),
+                    new AssetDescriptor<>(
+                        "sounds/golden-cookie-spawn.mp3",
+                        Sound.class
+                    ),
+                    new AssetDescriptor<>(
+                        "sounds/golden-cookie-consume.mp3",
+                        Sound.class
                     )
                 )
             ),
@@ -116,5 +141,12 @@ final class CookiesGameAdapter implements ApplicationListener {
     @Override
     public void dispose() {
         cookiesGame.dispose();
+    }
+
+    private List<AssetDescriptor<Sound>> sounds(int max, String pattern) {
+        return IntStream.range(0, max)
+            .mapToObj(pattern::formatted)
+            .map(name -> new AssetDescriptor<>(name, Sound.class))
+            .toList();
     }
 }

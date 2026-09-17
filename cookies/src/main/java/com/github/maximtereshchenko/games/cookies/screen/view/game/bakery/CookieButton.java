@@ -29,7 +29,8 @@ final class CookieButton extends Button {
         BakeryService bakeryService,
         Random random
     ) {
-        super(assetManager.get(assets.game().skin()), "cookie");
+        var gameAssets = assets.game();
+        super(assetManager.get(gameAssets.skin()), "cookie");
         setTransform(true);
         removeListener(getClickListener());
         addListener(new ClickListener() {
@@ -104,6 +105,17 @@ final class CookieButton extends Button {
                 );
                 bakeryService.bake();
                 toggle();
+                playSound();
+            }
+
+            private void playSound() {
+                var cookieSounds = gameAssets.cookieSounds();
+                assetManager.get(
+                        cookieSounds.get(
+                            random.nextInt(cookieSounds.size())
+                        )
+                    )
+                    .play();
             }
 
             private void scale(float scale) {

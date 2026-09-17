@@ -10,13 +10,16 @@ import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
+import java.util.Random;
+
 public final class StorePanel extends Table {
 
     public StorePanel(
         AssetManager assetManager,
         Assets assets,
         BigDecimalFormatter bigDecimalFormatter,
-        BakeryService bakeryService
+        BakeryService bakeryService,
+        Random random
     ) {
         var bundle = assetManager.get(assets.game().bundle());
         background(assetManager.get(assets.game().skin()).get(Style.class).background);
@@ -29,7 +32,8 @@ public final class StorePanel extends Table {
             assetManager,
             assets,
             bigDecimalFormatter,
-            bakeryService
+            bakeryService,
+            random
         );
         var buildingsBeam = new StoreBeamWidget(
             assetManager,
@@ -51,7 +55,8 @@ public final class StorePanel extends Table {
             buildingsBeam,
             bigDecimalFormatter,
             transaction,
-            bakeryService
+            bakeryService,
+            random
         );
         defaults()
             .width(new Value() {

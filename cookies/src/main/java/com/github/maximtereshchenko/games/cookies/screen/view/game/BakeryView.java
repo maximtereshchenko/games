@@ -59,7 +59,8 @@ public final class BakeryView extends Stack {
                     assetManager,
                     assets,
                     bigDecimalFormatter,
-                    bakeryService
+                    bakeryService,
+                    random
                 )
             )
         );

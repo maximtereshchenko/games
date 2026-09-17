@@ -17,6 +17,8 @@ import java.util.Random;
 
 final class GoldenCookieButton extends Button {
 
+    private final AssetManager assetManager;
+    private final Assets assets;
     private final BakeryService bakeryService;
     private final Random random;
 
@@ -27,7 +29,10 @@ final class GoldenCookieButton extends Button {
         BakeryService bakeryService,
         Random random
     ) {
-        super(assetManager.get(assets.game().skin()), "golden-cookie");
+        var gameAssets = assets.game();
+        super(assetManager.get(gameAssets.skin()), "golden-cookie");
+        this.assetManager = assetManager;
+        this.assets = assets;
         this.bakeryService = bakeryService;
         this.random = random;
         setTransform(true);
@@ -57,6 +62,10 @@ final class GoldenCookieButton extends Button {
                             bakeryService.goldenCookieEffect()
                         )
                     );
+                    assetManager.get(
+                            gameAssets.goldenCookieConsumeSound()
+                        )
+                        .play();
                 }
             }
         );
@@ -72,6 +81,11 @@ final class GoldenCookieButton extends Button {
                 random.nextFloat(getParent().getWidth() - getPrefWidth()),
                 random.nextFloat(getParent().getHeight() - getPrefHeight())
             );
+            assetManager.get(
+                    assets.game()
+                        .goldenCookieSpawnSound()
+                )
+                .play();
         }
         setVisible(isVisible);
         transform(interval);

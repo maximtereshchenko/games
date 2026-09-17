@@ -11,6 +11,8 @@ import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 
+import java.util.Random;
+
 final class BuildingPanel extends Table {
 
     BuildingPanel(
@@ -19,7 +21,8 @@ final class BuildingPanel extends Table {
         EventListener eventListener,
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
-        BakeryService bakeryService
+        BakeryService bakeryService,
+        Random random
     ) {
         var buildings = Building.values();
         for (var i = 0; i < buildings.length; i++) {
@@ -30,6 +33,7 @@ final class BuildingPanel extends Table {
                 bigDecimalFormatter,
                 transaction,
                 bakeryService,
+                random,
                 buildings,
                 i
             );
@@ -43,6 +47,7 @@ final class BuildingPanel extends Table {
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         BakeryService bakeryService,
+        Random random,
         Building[] buildings,
         int index
     ) {
@@ -57,6 +62,7 @@ final class BuildingPanel extends Table {
                             bigDecimalFormatter,
                             transaction,
                             bakeryService,
+                            random,
                             buildings,
                             index
                         )
@@ -94,6 +100,7 @@ final class BuildingPanel extends Table {
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         BakeryService bakeryService,
+        Random random,
         Building[] buildings,
         int index
     ) {
@@ -104,6 +111,7 @@ final class BuildingPanel extends Table {
             bigDecimalFormatter,
             transaction,
             bakeryService,
+            random,
             buildings[index],
             index
         );

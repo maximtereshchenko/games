@@ -7,13 +7,14 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.domain.TransactionMode;
 import com.github.maximtereshchenko.games.cookies.screen.Assets;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.BigDecimalFormatter;
 import com.github.maximtereshchenko.games.cookies.screen.view.game.PopUpFrame;
+
+import java.util.Random;
 
 final class BuildingButton extends Button {
 
@@ -29,13 +30,16 @@ final class BuildingButton extends Button {
         BigDecimalFormatter bigDecimalFormatter,
         Transaction transaction,
         BakeryService bakeryService,
+        Random random,
         Building building,
         int index
     ) {
-        this.style = assetManager.get(assets.game().skin()).get(
-            String.valueOf(index % 4),
-            Style.class
-        );
+        var gameAssets = assets.game();
+        this.style = assetManager.get(gameAssets.skin())
+            .get(
+                String.valueOf(index % 4),
+                Style.class
+            );
         this.transaction = transaction;
         this.bakeryService = bakeryService;
         this.building = building;
@@ -74,6 +78,13 @@ final class BuildingButton extends Button {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     transaction.complete(building);
+                    var buildingSounds = gameAssets.buildingSounds();
+                    assetManager.get(
+                            buildingSounds.get(
+                                random.nextInt(buildingSounds.size())
+                            )
+                        )
+                        .play();
                 }
             }
         );
