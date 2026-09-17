@@ -1633,6 +1633,450 @@
     "MANUALLY_BAKED_TIER_8": {
       "unlocked": "mouse-pointer-hazelrald",
       "locked": "question-mark"
+    },
+    "CURSOR_TIER_0": {
+      "unlocked": "hand-plain_0",
+      "locked": "question-mark"
+    },
+    "CURSOR_TIER_1": {
+      "unlocked": "hand-plain_1",
+      "locked": "question-mark"
+    },
+    "CURSOR_TIER_2": {
+      "unlocked": "hand-plain_2",
+      "locked": "question-mark"
+    },
+    "CURSOR_TIER_3": {
+      "unlocked": "hand-berrylium",
+      "locked": "question-mark"
+    },
+    "CURSOR_TIER_4": {
+      "unlocked": "hand-blueberrylium",
+      "locked": "question-mark"
+    },
+    "CURSOR_TIER_5": {
+      "unlocked": "hand-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_0": {
+      "unlocked": "rolling-pin-plain",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_1": {
+      "unlocked": "rolling-pin-berrylium",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_2": {
+      "unlocked": "rolling-pin-blueberrylium",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_3": {
+      "unlocked": "rolling-pin-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_4": {
+      "unlocked": "rolling-pin-buttergold",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_5": {
+      "unlocked": "rolling-pin-sugarmuck",
+      "locked": "question-mark"
+    },
+    "GRANDMA_TIER_6": {
+      "unlocked": "rolling-pin-jetmint",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_0": {
+      "unlocked": "watering-pot-plain",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_1": {
+      "unlocked": "watering-pot-berrylium",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_2": {
+      "unlocked": "watering-pot-blueberrylium",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_3": {
+      "unlocked": "watering-pot-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_4": {
+      "unlocked": "watering-pot-buttergold",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_5": {
+      "unlocked": "watering-pot-sugarmuck",
+      "locked": "question-mark"
+    },
+    "FARM_TIER_6": {
+      "unlocked": "watering-pot-jetmint",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_0": {
+      "unlocked": "pickaxe-plain",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_1": {
+      "unlocked": "pickaxe-berrylium",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_2": {
+      "unlocked": "pickaxe-blueberrylium",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_3": {
+      "unlocked": "pickaxe-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_4": {
+      "unlocked": "pickaxe-buttergold",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_5": {
+      "unlocked": "pickaxe-sugarmuck",
+      "locked": "question-mark"
+    },
+    "MINE_TIER_6": {
+      "unlocked": "pickaxe-jetmint",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_0": {
+      "unlocked": "gears-plain",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_1": {
+      "unlocked": "gears-berrylium",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_2": {
+      "unlocked": "gears-blueberrylium",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_3": {
+      "unlocked": "gears-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_4": {
+      "unlocked": "gears-buttergold",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_5": {
+      "unlocked": "gears-sugarmuck",
+      "locked": "question-mark"
+    },
+    "FACTORY_TIER_6": {
+      "unlocked": "gears-jetmint",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_0": {
+      "unlocked": "bag-plain",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_1": {
+      "unlocked": "bag-berrylium",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_2": {
+      "unlocked": "bag-blueberrylium",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_3": {
+      "unlocked": "bag-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_4": {
+      "unlocked": "bag-buttergold",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_5": {
+      "unlocked": "bag-sugarmuck",
+      "locked": "question-mark"
+    },
+    "BANK_TIER_6": {
+      "unlocked": "bag-jetmint",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_0": {
+      "unlocked": "idol-plain",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_1": {
+      "unlocked": "idol-berrylium",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_2": {
+      "unlocked": "idol-blueberrylium",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_3": {
+      "unlocked": "idol-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_4": {
+      "unlocked": "idol-buttergold",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_5": {
+      "unlocked": "idol-sugarmuck",
+      "locked": "question-mark"
+    },
+    "TEMPLE_TIER_6": {
+      "unlocked": "idol-jetmint",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_0": {
+      "unlocked": "wizard-hat-plain",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_1": {
+      "unlocked": "wizard-hat-berrylium",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_2": {
+      "unlocked": "wizard-hat-blueberrylium",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_3": {
+      "unlocked": "wizard-hat-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_4": {
+      "unlocked": "wizard-hat-buttergold",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_5": {
+      "unlocked": "wizard-hat-sugarmuck",
+      "locked": "question-mark"
+    },
+    "WIZARD_TOWER_TIER_6": {
+      "unlocked": "wizard-hat-jetmint",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_0": {
+      "unlocked": "rocket-plain",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_1": {
+      "unlocked": "rocket-berrylium",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_2": {
+      "unlocked": "rocket-blueberrylium",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_3": {
+      "unlocked": "rocket-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_4": {
+      "unlocked": "rocket-buttergold",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_5": {
+      "unlocked": "rocket-sugarmuck",
+      "locked": "question-mark"
+    },
+    "SHIPMENT_TIER_6": {
+      "unlocked": "rocket-jetmint",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_0": {
+      "unlocked": "alembic-plain",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_1": {
+      "unlocked": "alembic-berrylium",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_2": {
+      "unlocked": "alembic-blueberrylium",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_3": {
+      "unlocked": "alembic-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_4": {
+      "unlocked": "alembic-buttergold",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_5": {
+      "unlocked": "alembic-sugarmuck",
+      "locked": "question-mark"
+    },
+    "ALCHEMY_LAB_TIER_6": {
+      "unlocked": "alembic-jetmint",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_0": {
+      "unlocked": "portal-plain",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_1": {
+      "unlocked": "portal-berrylium",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_2": {
+      "unlocked": "portal-blueberrylium",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_3": {
+      "unlocked": "portal-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_4": {
+      "unlocked": "portal-buttergold",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_5": {
+      "unlocked": "portal-sugarmuck",
+      "locked": "question-mark"
+    },
+    "PORTAL_TIER_6": {
+      "unlocked": "portal-jetmint",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_0": {
+      "unlocked": "hourglass-plain",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_1": {
+      "unlocked": "hourglass-berrylium",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_2": {
+      "unlocked": "hourglass-blueberrylium",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_3": {
+      "unlocked": "hourglass-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_4": {
+      "unlocked": "hourglass-buttergold",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_5": {
+      "unlocked": "hourglass-sugarmuck",
+      "locked": "question-mark"
+    },
+    "TIME_MACHINE_TIER_6": {
+      "unlocked": "hourglass-jetmint",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_0": {
+      "unlocked": "atom-plain",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_1": {
+      "unlocked": "atom-berrylium",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_2": {
+      "unlocked": "atom-blueberrylium",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_3": {
+      "unlocked": "atom-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_4": {
+      "unlocked": "atom-buttergold",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_5": {
+      "unlocked": "atom-sugarmuck",
+      "locked": "question-mark"
+    },
+    "ANTIMATTER_CONDENSER_TIER_6": {
+      "unlocked": "atom-jetmint",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_0": {
+      "unlocked": "prism-plain",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_1": {
+      "unlocked": "prism-berrylium",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_2": {
+      "unlocked": "prism-blueberrylium",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_3": {
+      "unlocked": "prism-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_4": {
+      "unlocked": "prism-buttergold",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_5": {
+      "unlocked": "prism-sugarmuck",
+      "locked": "question-mark"
+    },
+    "PRISM_TIER_6": {
+      "unlocked": "prism-jetmint",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_0": {
+      "unlocked": "die-plain",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_1": {
+      "unlocked": "die-berrylium",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_2": {
+      "unlocked": "die-blueberrylium",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_3": {
+      "unlocked": "die-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_4": {
+      "unlocked": "die-buttergold",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_5": {
+      "unlocked": "die-sugarmuck",
+      "locked": "question-mark"
+    },
+    "CHANCEMAKER_TIER_6": {
+      "unlocked": "die-jetmint",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_0": {
+      "unlocked": "fractal-plain",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_1": {
+      "unlocked": "fractal-berrylium",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_2": {
+      "unlocked": "fractal-blueberrylium",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_3": {
+      "unlocked": "fractal-chalcedhoney",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_4": {
+      "unlocked": "fractal-buttergold",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_5": {
+      "unlocked": "fractal-sugarmuck",
+      "locked": "question-mark"
+    },
+    "FRACTAL_ENGINE_TIER_6": {
+      "unlocked": "fractal-jetmint",
+      "locked": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.HoverableAchievementIcon$Style": {

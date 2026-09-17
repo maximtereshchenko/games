@@ -524,6 +524,9 @@ public final class BakeryService {
             case CumulativeManuallyBakedUnlockRequirement requirement -> isRequirementSatisfied(
                 requirement
             );
+            case BuildingCountUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
         };
     }
 

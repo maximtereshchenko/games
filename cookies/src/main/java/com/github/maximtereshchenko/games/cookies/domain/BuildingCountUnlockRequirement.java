@@ -4,4 +4,4 @@ import java.util.Map;
 
 record BuildingCountUnlockRequirement(
     Map<Building, Integer> counts
-) implements UpgradeUnlockRequirement {}
+) implements UpgradeUnlockRequirement, AchievementUnlockRequirement {}
