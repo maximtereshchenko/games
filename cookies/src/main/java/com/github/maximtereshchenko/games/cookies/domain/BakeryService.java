@@ -300,6 +300,10 @@ public final class BakeryService {
         return playerProgress.cumulativeClicks;
     }
 
+    public int cumulativeGoldenCookies() {
+        return playerProgress.cumulativeGoldenCookies;
+    }
+
     public BigDecimal cumulativeManuallyBaked() {
         return playerProgress.cumulativeManuallyBaked;
     }

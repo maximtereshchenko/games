@@ -93,6 +93,14 @@ final class GeneralStatisticsPanel extends StatisticLinePanel {
                     bigDecimalFormatter,
                     bakeryService
                 )
+            ),
+            new StatisticsLine(
+                skin,
+                bundle.get("statistics.general.cumulative-golden-cookies"),
+                new CumulativeGoldenCookiesStatisticsLabel(
+                    skin,
+                    bakeryService
+                )
             )
         );
     }
