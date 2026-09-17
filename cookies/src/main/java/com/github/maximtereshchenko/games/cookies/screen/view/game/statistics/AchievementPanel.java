@@ -20,6 +20,24 @@ final class AchievementPanel extends StatisticLinePanel {
                     bundle,
                     bakeryService
                 )
+            ),
+            new StatisticsLine(
+                skin,
+                bundle.get("statistics.achievements.milk"),
+                new MilkStatisticsLabel(
+                    skin,
+                    bundle,
+                    bakeryService
+                )
+            ),
+            new StatisticsLine(
+                skin,
+                bundle.get("statistics.achievements.kitten-multiplier"),
+                new KittenMultiplierStatisticsLabel(
+                    skin,
+                    bundle,
+                    bakeryService
+                )
             )
         );
         add(

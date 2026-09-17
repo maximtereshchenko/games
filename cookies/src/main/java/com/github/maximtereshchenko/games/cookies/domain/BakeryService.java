@@ -163,63 +163,64 @@ public final class BakeryService {
 
     public BigDecimal bakingRate() {
         return buffedBakingRate(
-            withMilk(
-                multiplied(
+            BigDecimal.valueOf(kittenMultiplier())
+                .multiply(
                     multiplied(
                         multiplied(
                             multiplied(
                                 multiplied(
-                                    buildingsBakingRate(),
-                                    BigDecimal.valueOf(1.01),
-                                    Upgrade.FLAVORED_COOKIE_TIER_0,
-                                    Upgrade.FLAVORED_COOKIE_TIER_1,
-                                    Upgrade.FLAVORED_COOKIE_TIER_2
+                                    multiplied(
+                                        buildingsBakingRate(),
+                                        BigDecimal.valueOf(1.01),
+                                        Upgrade.FLAVORED_COOKIE_TIER_0,
+                                        Upgrade.FLAVORED_COOKIE_TIER_1,
+                                        Upgrade.FLAVORED_COOKIE_TIER_2
+                                    ),
+                                    BigDecimal.valueOf(1.02),
+                                    Upgrade.FLAVORED_COOKIE_TIER_3,
+                                    Upgrade.FLAVORED_COOKIE_TIER_4,
+                                    Upgrade.FLAVORED_COOKIE_TIER_5,
+                                    Upgrade.FLAVORED_COOKIE_TIER_6,
+                                    Upgrade.FLAVORED_COOKIE_TIER_7,
+                                    Upgrade.FLAVORED_COOKIE_TIER_8,
+                                    Upgrade.FLAVORED_COOKIE_TIER_9,
+                                    Upgrade.FLAVORED_COOKIE_TIER_10,
+                                    Upgrade.FLAVORED_COOKIE_TIER_11,
+                                    Upgrade.FLAVORED_COOKIE_TIER_12,
+                                    Upgrade.FLAVORED_COOKIE_TIER_13,
+                                    Upgrade.FLAVORED_COOKIE_TIER_14,
+                                    Upgrade.FLAVORED_COOKIE_TIER_17,
+                                    Upgrade.FLAVORED_COOKIE_TIER_18,
+                                    Upgrade.FLAVORED_COOKIE_TIER_19,
+                                    Upgrade.FLAVORED_COOKIE_TIER_20,
+                                    Upgrade.FLAVORED_COOKIE_TIER_21,
+                                    Upgrade.FLAVORED_COOKIE_TIER_22,
+                                    Upgrade.FLAVORED_COOKIE_TIER_23,
+                                    Upgrade.FLAVORED_COOKIE_TIER_24,
+                                    Upgrade.FLAVORED_COOKIE_TIER_25,
+                                    Upgrade.FLAVORED_COOKIE_TIER_26,
+                                    Upgrade.FLAVORED_COOKIE_TIER_27,
+                                    Upgrade.FLAVORED_COOKIE_TIER_28
                                 ),
-                                BigDecimal.valueOf(1.02),
-                                Upgrade.FLAVORED_COOKIE_TIER_3,
-                                Upgrade.FLAVORED_COOKIE_TIER_4,
-                                Upgrade.FLAVORED_COOKIE_TIER_5,
-                                Upgrade.FLAVORED_COOKIE_TIER_6,
-                                Upgrade.FLAVORED_COOKIE_TIER_7,
-                                Upgrade.FLAVORED_COOKIE_TIER_8,
-                                Upgrade.FLAVORED_COOKIE_TIER_9,
-                                Upgrade.FLAVORED_COOKIE_TIER_10,
-                                Upgrade.FLAVORED_COOKIE_TIER_11,
-                                Upgrade.FLAVORED_COOKIE_TIER_12,
-                                Upgrade.FLAVORED_COOKIE_TIER_13,
-                                Upgrade.FLAVORED_COOKIE_TIER_14,
-                                Upgrade.FLAVORED_COOKIE_TIER_17,
-                                Upgrade.FLAVORED_COOKIE_TIER_18,
-                                Upgrade.FLAVORED_COOKIE_TIER_19,
-                                Upgrade.FLAVORED_COOKIE_TIER_20,
-                                Upgrade.FLAVORED_COOKIE_TIER_21,
-                                Upgrade.FLAVORED_COOKIE_TIER_22,
-                                Upgrade.FLAVORED_COOKIE_TIER_23,
-                                Upgrade.FLAVORED_COOKIE_TIER_24,
-                                Upgrade.FLAVORED_COOKIE_TIER_25,
-                                Upgrade.FLAVORED_COOKIE_TIER_26,
-                                Upgrade.FLAVORED_COOKIE_TIER_27,
-                                Upgrade.FLAVORED_COOKIE_TIER_28
+                                BigDecimal.valueOf(1.03),
+                                Upgrade.FLAVORED_COOKIE_TIER_31,
+                                Upgrade.FLAVORED_COOKIE_TIER_32,
+                                Upgrade.FLAVORED_COOKIE_TIER_33,
+                                Upgrade.FLAVORED_COOKIE_TIER_34,
+                                Upgrade.FLAVORED_COOKIE_TIER_35,
+                                Upgrade.FLAVORED_COOKIE_TIER_36
                             ),
-                            BigDecimal.valueOf(1.03),
-                            Upgrade.FLAVORED_COOKIE_TIER_31,
-                            Upgrade.FLAVORED_COOKIE_TIER_32,
-                            Upgrade.FLAVORED_COOKIE_TIER_33,
-                            Upgrade.FLAVORED_COOKIE_TIER_34,
-                            Upgrade.FLAVORED_COOKIE_TIER_35,
-                            Upgrade.FLAVORED_COOKIE_TIER_36
+                            BigDecimal.valueOf(1.04),
+                            Upgrade.FLAVORED_COOKIE_TIER_37,
+                            Upgrade.FLAVORED_COOKIE_TIER_38
                         ),
-                        BigDecimal.valueOf(1.04),
-                        Upgrade.FLAVORED_COOKIE_TIER_37,
-                        Upgrade.FLAVORED_COOKIE_TIER_38
-                    ),
-                    BigDecimal.valueOf(1.05),
-                    Upgrade.FLAVORED_COOKIE_TIER_15,
-                    Upgrade.FLAVORED_COOKIE_TIER_16,
-                    Upgrade.FLAVORED_COOKIE_TIER_29,
-                    Upgrade.FLAVORED_COOKIE_TIER_30
+                        BigDecimal.valueOf(1.05),
+                        Upgrade.FLAVORED_COOKIE_TIER_15,
+                        Upgrade.FLAVORED_COOKIE_TIER_16,
+                        Upgrade.FLAVORED_COOKIE_TIER_29,
+                        Upgrade.FLAVORED_COOKIE_TIER_30
+                    )
                 )
-            )
         );
     }
 
@@ -325,6 +326,24 @@ public final class BakeryService {
     public float milk() {
         return configuration.milkPercentPerUnlockedAchievement() *
                playerProgress.unlockedAchievements.size();
+    }
+
+    public float kittenMultiplier() {
+        var upgradeMultipliers = Map.of(
+            Upgrade.KITTEN_TIER_0, 0.1f,
+            Upgrade.KITTEN_TIER_1, 0.125f,
+            Upgrade.KITTEN_TIER_2, 0.15f,
+            Upgrade.KITTEN_TIER_3, 0.175f,
+            Upgrade.KITTEN_TIER_4, 0.2f
+        );
+        var multiplier = 1f;
+        var milk = milk();
+        for (var entry : upgradeMultipliers.entrySet()) {
+            if (isActive(entry.getKey())) {
+                multiplier *= 1 + milk * entry.getValue();
+            }
+        }
+        return multiplier;
     }
 
     public Interval goldenCookieInterval() {
@@ -1054,29 +1073,5 @@ public final class BakeryService {
         var multiplier = count(Building.GRANDMA) /
                          (building.ordinal() - Building.GRANDMA.ordinal());
         return bakingRate.multiply(BigDecimal.valueOf(1 + 0.01 * multiplier));
-    }
-
-    private BigDecimal withMilk(BigDecimal base) {
-        var multipliers = Map.of(
-            Upgrade.KITTEN_TIER_0, 0.1,
-            Upgrade.KITTEN_TIER_1, 0.125,
-            Upgrade.KITTEN_TIER_2, 0.15,
-            Upgrade.KITTEN_TIER_3, 0.175,
-            Upgrade.KITTEN_TIER_4, 0.2
-        );
-        var bakingRate = base;
-        var milk = BigDecimal.valueOf(milk());
-        for (var entry : multipliers.entrySet()) {
-            if (isActive(entry.getKey())) {
-                bakingRate = bakingRate.multiply(
-                    BigDecimal.ONE.add(
-                        milk.multiply(
-                            BigDecimal.valueOf(entry.getValue())
-                        )
-                    )
-                );
-            }
-        }
-        return bakingRate;
     }
 }
