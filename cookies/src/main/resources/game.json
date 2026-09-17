@@ -2141,6 +2141,26 @@
     "EVERY_BUILDING_TIER_5": {
       "unlocked": "set-square-sugarmuck",
       "locked": "question-mark"
+    },
+    "GOLDEN_COOKIE_TIER_0": {
+      "unlocked": "cookie-buttergold",
+      "locked": "question-mark"
+    },
+    "GOLDEN_COOKIE_TIER_1": {
+      "unlocked": "golden-cookies",
+      "locked": "question-mark"
+    },
+    "GOLDEN_COOKIE_TIER_2": {
+      "unlocked": "golden-cookie-heap",
+      "locked": "question-mark"
+    },
+    "GOLDEN_COOKIE_TIER_3": {
+      "unlocked": "golden-cookie-frame",
+      "locked": "question-mark"
+    },
+    "GOLDEN_COOKIE_TIER_4": {
+      "unlocked": "four-leaf-clover-frame",
+      "locked": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.HoverableAchievementIcon$Style": {

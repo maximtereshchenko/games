@@ -551,7 +551,16 @@ public final class BakeryService {
                 10,
                 count -> count + 10
             );
+            case CumulativeGoldenCookiesUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
         };
+    }
+
+    private boolean isRequirementSatisfied(
+        CumulativeGoldenCookiesUnlockRequirement requirement
+    ) {
+        return playerProgress.cumulativeGoldenCookies >= requirement.count();
     }
 
     private boolean isUnlockRequirementSatisfied(int start, IntUnaryOperator operator) {

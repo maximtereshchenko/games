@@ -554,21 +554,21 @@ bag-sugarmuck
   index: -1
 bank-building
   rotate: false
-  xy: 402, 22
+  xy: 602, 20
   size: 53, 49
   orig: 53, 49
   offset: 0, 0
   index: -1
 chancemaker
   rotate: false
-  xy: 572, 5
+  xy: 772, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 chancemaker-disabled
   rotate: false
-  xy: 638, 5
+  xy: 838, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -1086,28 +1086,14 @@ die-sugarmuck
   index: -1
 factory
   rotate: false
-  xy: 704, 5
+  xy: 904, 5
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 factory-disabled
   rotate: false
-  xy: 770, 5
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-farm
-  rotate: false
-  xy: 836, 5
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-farm-disabled
-  rotate: false
-  xy: 902, 5
+  xy: 2, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -1161,37 +1147,44 @@ four-leaf-clover
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-berrylium
+four-leaf-clover-frame
   rotate: false
   xy: 552, 722
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-blueberrylium
+fractal-berrylium
   rotate: false
   xy: 602, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-buttergold
+fractal-blueberrylium
   rotate: false
   xy: 652, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-chalcedhoney
+fractal-buttergold
   rotate: false
   xy: 702, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-cherrysilver
+fractal-chalcedhoney
   rotate: false
   xy: 752, 721
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+fractal-cherrysilver
+  rotate: false
+  xy: 802, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -1203,44 +1196,37 @@ fractal-engine
   orig: 53, 37
   offset: 0, 0
   index: -1
-fractal-engine-icon
-  rotate: false
-  xy: 2, 2
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 fractal-hazelrald
-  rotate: false
-  xy: 802, 721
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-fractal-jetmint
   rotate: false
   xy: 852, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-plain
+fractal-jetmint
   rotate: false
   xy: 902, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-fractal-sugarmuck
+fractal-plain
   rotate: false
   xy: 952, 721
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
+fractal-sugarmuck
+  rotate: false
+  xy: 2, 718
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
 frame-brown-dark
   rotate: false
-  xy: 510, 10
+  xy: 710, 9
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
@@ -1254,63 +1240,84 @@ garden-bed
   index: -1
 gears-berrylium
   rotate: false
-  xy: 2, 718
+  xy: 52, 718
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-blueberrylium
   rotate: false
-  xy: 52, 718
+  xy: 102, 703
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-buttergold
   rotate: false
-  xy: 102, 703
+  xy: 152, 696
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-chalcedhoney
   rotate: false
-  xy: 152, 696
+  xy: 202, 696
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-cherrysilver
   rotate: false
-  xy: 202, 696
+  xy: 252, 682
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-hazelrald
   rotate: false
-  xy: 252, 682
+  xy: 302, 676
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-jetmint
   rotate: false
-  xy: 302, 676
+  xy: 352, 675
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-plain
   rotate: false
-  xy: 352, 675
+  xy: 402, 673
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 gears-sugarmuck
   rotate: false
-  xy: 402, 673
+  xy: 452, 673
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+golden-cookie-frame
+  rotate: false
+  xy: 502, 673
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+golden-cookie-heap
+  rotate: false
+  xy: 552, 672
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+golden-cookies
+  rotate: false
+  xy: 602, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -1332,252 +1339,252 @@ gradient-right
   index: -1
 grandma-face
   rotate: false
-  xy: 452, 673
+  xy: 652, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-berrylium
   rotate: false
-  xy: 502, 673
+  xy: 702, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-blueberrylium
   rotate: false
-  xy: 552, 672
+  xy: 752, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-buttergold
   rotate: false
-  xy: 602, 671
+  xy: 802, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-chalcedhoney
   rotate: false
-  xy: 652, 671
+  xy: 852, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-cherrysilver
   rotate: false
-  xy: 702, 671
+  xy: 902, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-hazelrald
   rotate: false
-  xy: 752, 671
+  xy: 952, 671
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 hand-jetmint
   rotate: false
-  xy: 802, 671
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-hand-plain
-  rotate: false
-  xy: 852, 671
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-hand-plain
-  rotate: false
-  xy: 852, 671
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: 0
-hand-plain
-  rotate: false
-  xy: 902, 671
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: 1
-hand-plain
-  rotate: false
-  xy: 952, 671
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: 2
-hand-sugarmuck
-  rotate: false
   xy: 2, 668
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-berrylium
+hand-plain
   rotate: false
   xy: 52, 668
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-blueberrylium
+hand-plain
+  rotate: false
+  xy: 52, 668
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: 0
+hand-plain
   rotate: false
   xy: 102, 653
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: -1
-hourglass-buttergold
+  index: 1
+hand-plain
   rotate: false
   xy: 152, 646
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: -1
-hourglass-chalcedhoney
+  index: 2
+hand-sugarmuck
   rotate: false
   xy: 202, 646
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-cherrysilver
+hourglass-berrylium
   rotate: false
   xy: 252, 632
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-hazelrald
+hourglass-blueberrylium
   rotate: false
   xy: 302, 626
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-jetmint
+hourglass-buttergold
   rotate: false
   xy: 352, 625
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-plain
+hourglass-chalcedhoney
   rotate: false
   xy: 402, 623
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-hourglass-sugarmuck
+hourglass-cherrysilver
   rotate: false
   xy: 452, 623
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-berrylium
+hourglass-hazelrald
   rotate: false
   xy: 502, 623
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-blueberrylium
+hourglass-jetmint
   rotate: false
   xy: 552, 622
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-buttergold
+hourglass-plain
   rotate: false
   xy: 602, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-chalcedhoney
+hourglass-sugarmuck
   rotate: false
   xy: 652, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-cherrysilver
+idol-berrylium
   rotate: false
   xy: 702, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-hazelrald
+idol-blueberrylium
   rotate: false
   xy: 752, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-jetmint
+idol-buttergold
   rotate: false
   xy: 802, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-plain
+idol-chalcedhoney
   rotate: false
   xy: 852, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-idol-sugarmuck
+idol-cherrysilver
   rotate: false
   xy: 902, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-kitten-berrylium
+idol-hazelrald
   rotate: false
   xy: 952, 621
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-kitten-blueberrylium
+idol-jetmint
   rotate: false
   xy: 2, 618
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-kitten-buttergold
+idol-plain
   rotate: false
   xy: 52, 618
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-kitten-chalcedhoney
+idol-sugarmuck
   rotate: false
   xy: 102, 603
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-kitten-plain
+kitten-berrylium
   rotate: false
   xy: 152, 596
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+kitten-blueberrylium
+  rotate: false
+  xy: 202, 596
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+kitten-buttergold
+  rotate: false
+  xy: 252, 582
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+kitten-chalcedhoney
+  rotate: false
+  xy: 302, 576
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+kitten-plain
+  rotate: false
+  xy: 352, 575
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -1598,1449 +1605,1449 @@ mine-entrance
   index: -1
 monk
   rotate: false
-  xy: 202, 596
+  xy: 402, 573
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-berrylium
   rotate: false
-  xy: 252, 582
+  xy: 452, 573
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-blueberrylium
   rotate: false
-  xy: 302, 576
+  xy: 502, 573
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-buttergold
   rotate: false
-  xy: 352, 575
+  xy: 552, 572
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-chalcedhoney
   rotate: false
-  xy: 402, 573
+  xy: 602, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-cherrysilver
   rotate: false
-  xy: 452, 573
+  xy: 652, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-hazelrald
   rotate: false
-  xy: 502, 573
+  xy: 702, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-jetmint
   rotate: false
-  xy: 552, 572
+  xy: 752, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-plain
   rotate: false
-  xy: 602, 571
+  xy: 802, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mouse-pointer-sugarmuck
   rotate: false
-  xy: 652, 571
+  xy: 852, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-berrylium
   rotate: false
-  xy: 702, 571
+  xy: 902, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-blueberrylium
   rotate: false
-  xy: 752, 571
+  xy: 952, 571
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-buttergold
   rotate: false
-  xy: 802, 571
+  xy: 2, 568
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-chalcedhoney
   rotate: false
-  xy: 852, 571
+  xy: 52, 568
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-cherrysilver
   rotate: false
-  xy: 902, 571
+  xy: 102, 553
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-hazelrald
   rotate: false
-  xy: 952, 571
+  xy: 152, 546
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-jetmint
   rotate: false
-  xy: 2, 568
+  xy: 202, 546
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-plain
   rotate: false
-  xy: 52, 568
+  xy: 252, 532
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 pickaxe-sugarmuck
   rotate: false
-  xy: 102, 553
+  xy: 302, 526
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-berrylium
   rotate: false
-  xy: 152, 546
+  xy: 352, 525
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-blueberrylium
   rotate: false
-  xy: 202, 546
+  xy: 402, 523
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-building
   rotate: false
-  xy: 457, 13
+  xy: 657, 11
   size: 51, 58
   orig: 51, 58
   offset: 0, 0
   index: -1
 portal-buttergold
   rotate: false
-  xy: 252, 532
+  xy: 452, 523
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-chalcedhoney
   rotate: false
-  xy: 302, 526
+  xy: 502, 523
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-cherrysilver
   rotate: false
-  xy: 352, 525
+  xy: 552, 522
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-hazelrald
   rotate: false
-  xy: 402, 523
+  xy: 602, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-jetmint
   rotate: false
-  xy: 452, 523
+  xy: 652, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-plain
   rotate: false
-  xy: 502, 523
+  xy: 702, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal-sugarmuck
   rotate: false
-  xy: 552, 522
+  xy: 752, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-berrylium
   rotate: false
-  xy: 602, 521
+  xy: 802, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-blueberrylium
   rotate: false
-  xy: 652, 521
+  xy: 852, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-buttergold
   rotate: false
-  xy: 702, 521
+  xy: 902, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-chalcedhoney
   rotate: false
-  xy: 752, 521
+  xy: 952, 521
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-cherrysilver
   rotate: false
-  xy: 802, 521
+  xy: 2, 518
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-hazelrald
   rotate: false
-  xy: 852, 521
+  xy: 52, 518
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-jetmint
   rotate: false
-  xy: 902, 521
+  xy: 102, 503
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-plain
   rotate: false
-  xy: 952, 521
+  xy: 152, 496
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 prism-sugarmuck
   rotate: false
-  xy: 2, 518
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: -1
-progress
-  rotate: false
-  xy: 52, 518
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: 0
-progress
-  rotate: false
-  xy: 102, 503
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: 1
-progress
-  rotate: false
-  xy: 152, 496
-  size: 48, 48
-  orig: 48, 48
-  offset: 0, 0
-  index: 2
-progress
-  rotate: false
   xy: 202, 496
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 3
+  index: -1
 progress
   rotate: false
   xy: 252, 482
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 4
+  index: 0
 progress
   rotate: false
   xy: 302, 476
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 5
+  index: 1
 progress
   rotate: false
   xy: 352, 475
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 6
+  index: 2
 progress
   rotate: false
   xy: 402, 473
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 7
+  index: 3
 progress
   rotate: false
   xy: 452, 473
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 8
+  index: 4
 progress
   rotate: false
   xy: 502, 473
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 9
+  index: 5
 progress
   rotate: false
   xy: 552, 472
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 10
+  index: 6
 progress
   rotate: false
   xy: 602, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 11
+  index: 7
 progress
   rotate: false
   xy: 652, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 12
+  index: 8
 progress
   rotate: false
   xy: 702, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 13
+  index: 9
 progress
   rotate: false
   xy: 752, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 14
+  index: 10
 progress
   rotate: false
   xy: 802, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 15
+  index: 11
 progress
   rotate: false
   xy: 852, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 16
+  index: 12
 progress
   rotate: false
   xy: 902, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 17
+  index: 13
 progress
   rotate: false
   xy: 952, 471
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 18
+  index: 14
 progress
   rotate: false
   xy: 2, 468
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 19
+  index: 15
 progress
   rotate: false
   xy: 52, 468
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 20
+  index: 16
 progress
   rotate: false
   xy: 102, 453
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 21
+  index: 17
 progress
   rotate: false
   xy: 152, 446
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 22
+  index: 18
 progress
   rotate: false
   xy: 202, 446
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 23
+  index: 19
 progress
   rotate: false
   xy: 252, 432
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 24
+  index: 20
 progress
   rotate: false
   xy: 302, 426
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 25
+  index: 21
 progress
   rotate: false
   xy: 352, 425
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 26
+  index: 22
 progress
   rotate: false
   xy: 402, 423
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 27
+  index: 23
 progress
   rotate: false
   xy: 452, 423
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 28
+  index: 24
 progress
   rotate: false
   xy: 502, 423
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 29
+  index: 25
 progress
   rotate: false
   xy: 552, 422
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 30
+  index: 26
 progress
   rotate: false
   xy: 602, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 31
+  index: 27
 progress
   rotate: false
   xy: 652, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 32
+  index: 28
 progress
   rotate: false
   xy: 702, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 33
+  index: 29
 progress
   rotate: false
   xy: 752, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 34
+  index: 30
 progress
   rotate: false
   xy: 802, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 35
+  index: 31
 progress
   rotate: false
   xy: 852, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 36
+  index: 32
 progress
   rotate: false
   xy: 902, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 37
+  index: 33
 progress
   rotate: false
   xy: 952, 421
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 38
+  index: 34
 progress
   rotate: false
   xy: 2, 418
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 39
+  index: 35
 progress
   rotate: false
   xy: 52, 418
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 40
+  index: 36
 progress
   rotate: false
   xy: 102, 403
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 41
+  index: 37
 progress
   rotate: false
   xy: 152, 396
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 42
+  index: 38
 progress
   rotate: false
   xy: 202, 396
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 43
+  index: 39
 progress
   rotate: false
   xy: 252, 382
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 44
+  index: 40
 progress
   rotate: false
   xy: 302, 376
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 45
+  index: 41
 progress
   rotate: false
   xy: 352, 375
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 46
+  index: 42
 progress
   rotate: false
   xy: 402, 373
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 47
+  index: 43
 progress
   rotate: false
   xy: 452, 373
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 48
+  index: 44
 progress
   rotate: false
   xy: 502, 373
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 49
+  index: 45
 progress
   rotate: false
   xy: 552, 372
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 50
+  index: 46
 progress
   rotate: false
   xy: 602, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 51
+  index: 47
 progress
   rotate: false
   xy: 652, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 52
+  index: 48
 progress
   rotate: false
   xy: 702, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 53
+  index: 49
 progress
   rotate: false
   xy: 752, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 54
+  index: 50
 progress
   rotate: false
   xy: 802, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 55
+  index: 51
 progress
   rotate: false
   xy: 852, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 56
+  index: 52
 progress
   rotate: false
   xy: 902, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 57
+  index: 53
 progress
   rotate: false
   xy: 952, 371
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 58
+  index: 54
 progress
   rotate: false
   xy: 2, 368
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 59
+  index: 55
 progress
   rotate: false
   xy: 52, 368
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 60
+  index: 56
 progress
   rotate: false
   xy: 102, 353
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 61
+  index: 57
 progress
   rotate: false
   xy: 152, 346
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 62
+  index: 58
 progress
   rotate: false
   xy: 202, 346
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 63
+  index: 59
 progress
   rotate: false
   xy: 252, 332
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 64
+  index: 60
 progress
   rotate: false
   xy: 302, 326
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 65
+  index: 61
 progress
   rotate: false
   xy: 352, 325
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 66
+  index: 62
 progress
   rotate: false
   xy: 402, 323
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 67
+  index: 63
 progress
   rotate: false
   xy: 452, 323
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 68
+  index: 64
 progress
   rotate: false
   xy: 502, 323
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 69
+  index: 65
 progress
   rotate: false
   xy: 552, 322
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 70
+  index: 66
 progress
   rotate: false
   xy: 602, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 71
+  index: 67
 progress
   rotate: false
   xy: 652, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 72
+  index: 68
 progress
   rotate: false
   xy: 702, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 73
+  index: 69
 progress
   rotate: false
   xy: 752, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 74
+  index: 70
 progress
   rotate: false
   xy: 802, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 75
+  index: 71
 progress
   rotate: false
   xy: 852, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 76
+  index: 72
 progress
   rotate: false
   xy: 902, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 77
+  index: 73
 progress
   rotate: false
   xy: 952, 321
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 78
+  index: 74
 progress
   rotate: false
   xy: 2, 318
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 79
+  index: 75
 progress
   rotate: false
   xy: 52, 318
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 80
+  index: 76
 progress
   rotate: false
   xy: 102, 303
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 81
+  index: 77
 progress
   rotate: false
   xy: 152, 296
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 82
+  index: 78
 progress
   rotate: false
   xy: 202, 296
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 83
+  index: 79
 progress
   rotate: false
   xy: 252, 282
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 84
+  index: 80
 progress
   rotate: false
   xy: 302, 276
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 85
+  index: 81
 progress
   rotate: false
   xy: 352, 275
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 86
+  index: 82
 progress
   rotate: false
   xy: 402, 273
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 87
+  index: 83
 progress
   rotate: false
   xy: 452, 273
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 88
+  index: 84
 progress
   rotate: false
   xy: 502, 273
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 89
+  index: 85
 progress
   rotate: false
   xy: 552, 272
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 90
+  index: 86
 progress
   rotate: false
   xy: 602, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 91
+  index: 87
 progress
   rotate: false
   xy: 652, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 92
+  index: 88
 progress
   rotate: false
   xy: 702, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 93
+  index: 89
 progress
   rotate: false
   xy: 752, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 94
+  index: 90
 progress
   rotate: false
   xy: 802, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 95
+  index: 91
 progress
   rotate: false
   xy: 852, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 96
+  index: 92
 progress
   rotate: false
   xy: 902, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 97
+  index: 93
 progress
   rotate: false
   xy: 952, 271
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 98
+  index: 94
 progress
   rotate: false
   xy: 2, 268
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 99
+  index: 95
 progress
   rotate: false
   xy: 52, 268
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 100
+  index: 96
 progress
   rotate: false
   xy: 102, 253
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 101
+  index: 97
 progress
   rotate: false
   xy: 152, 246
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 102
+  index: 98
 progress
   rotate: false
   xy: 202, 246
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 103
+  index: 99
 progress
   rotate: false
   xy: 252, 232
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 104
+  index: 100
 progress
   rotate: false
   xy: 302, 226
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 105
+  index: 101
 progress
   rotate: false
   xy: 352, 225
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 106
+  index: 102
 progress
   rotate: false
   xy: 402, 223
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 107
+  index: 103
 progress
   rotate: false
   xy: 452, 223
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 108
+  index: 104
 progress
   rotate: false
   xy: 502, 223
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 109
+  index: 105
 progress
   rotate: false
   xy: 552, 222
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 110
+  index: 106
 progress
   rotate: false
   xy: 602, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 111
+  index: 107
 progress
   rotate: false
   xy: 652, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 112
+  index: 108
 progress
   rotate: false
   xy: 702, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 113
+  index: 109
 progress
   rotate: false
   xy: 752, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 114
+  index: 110
 progress
   rotate: false
   xy: 802, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 115
+  index: 111
 progress
   rotate: false
   xy: 852, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 116
+  index: 112
 progress
   rotate: false
   xy: 902, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 117
+  index: 113
 progress
   rotate: false
   xy: 952, 221
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 118
+  index: 114
 progress
   rotate: false
   xy: 2, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 119
+  index: 115
 progress
   rotate: false
   xy: 52, 218
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 120
+  index: 116
 progress
   rotate: false
   xy: 102, 203
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 121
+  index: 117
 progress
   rotate: false
   xy: 152, 196
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 122
+  index: 118
 progress
   rotate: false
   xy: 202, 196
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 123
+  index: 119
 progress
   rotate: false
   xy: 252, 182
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 124
+  index: 120
 progress
   rotate: false
   xy: 302, 176
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 125
+  index: 121
 progress
   rotate: false
   xy: 352, 175
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 126
+  index: 122
 progress
   rotate: false
   xy: 402, 173
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 127
+  index: 123
 progress
   rotate: false
   xy: 452, 173
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 128
+  index: 124
 progress
   rotate: false
   xy: 502, 173
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 129
+  index: 125
 progress
   rotate: false
   xy: 552, 172
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 130
+  index: 126
 progress
   rotate: false
   xy: 602, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 131
+  index: 127
 progress
   rotate: false
   xy: 652, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 132
+  index: 128
 progress
   rotate: false
   xy: 702, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 133
+  index: 129
 progress
   rotate: false
   xy: 752, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 134
+  index: 130
 progress
   rotate: false
   xy: 802, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 135
+  index: 131
 progress
   rotate: false
   xy: 852, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 136
+  index: 132
 progress
   rotate: false
   xy: 902, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 137
+  index: 133
 progress
   rotate: false
   xy: 952, 171
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 138
+  index: 134
 progress
   rotate: false
   xy: 2, 168
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 139
+  index: 135
 progress
   rotate: false
   xy: 52, 168
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 140
+  index: 136
 progress
   rotate: false
   xy: 102, 153
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 141
+  index: 137
 progress
   rotate: false
   xy: 152, 146
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 142
+  index: 138
 progress
   rotate: false
   xy: 202, 146
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: 143
-question-mark
+  index: 139
+progress
   rotate: false
   xy: 252, 132
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: -1
-rocket-berrylium
+  index: 140
+progress
   rotate: false
   xy: 302, 126
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: -1
-rocket-blueberrylium
+  index: 141
+progress
   rotate: false
   xy: 352, 125
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: -1
-rocket-buttergold
+  index: 142
+progress
   rotate: false
   xy: 402, 123
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
-  index: -1
-rocket-chalcedhoney
+  index: 143
+question-mark
   rotate: false
   xy: 452, 123
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-cherrysilver
+rocket-berrylium
   rotate: false
   xy: 502, 123
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-hazelrald
+rocket-blueberrylium
   rotate: false
   xy: 552, 122
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-jetmint
+rocket-buttergold
   rotate: false
   xy: 602, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-plain
+rocket-chalcedhoney
   rotate: false
   xy: 652, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rocket-sugarmuck
+rocket-cherrysilver
   rotate: false
   xy: 702, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-berrylium
+rocket-hazelrald
   rotate: false
   xy: 752, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-blueberrylium
+rocket-jetmint
   rotate: false
   xy: 802, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-buttergold
+rocket-plain
   rotate: false
   xy: 852, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-chalcedhoney
+rocket-sugarmuck
   rotate: false
   xy: 902, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-cherrysilver
+rolling-pin-berrylium
   rotate: false
   xy: 952, 121
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-hazelrald
+rolling-pin-blueberrylium
   rotate: false
   xy: 2, 118
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-jetmint
+rolling-pin-buttergold
   rotate: false
   xy: 52, 118
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-plain
+rolling-pin-chalcedhoney
   rotate: false
   xy: 102, 103
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-rolling-pin-sugarmuck
+rolling-pin-cherrysilver
   rotate: false
   xy: 152, 96
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-set-square
+rolling-pin-hazelrald
   rotate: false
   xy: 202, 96
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-set-square-berrylium
+rolling-pin-jetmint
   rotate: false
   xy: 252, 82
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-set-square-blueberrylium
+rolling-pin-plain
   rotate: false
   xy: 302, 76
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-set-square-buttergold
+rolling-pin-sugarmuck
   rotate: false
   xy: 352, 75
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-set-square-plain
+set-square
   rotate: false
   xy: 402, 73
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-set-square-sugarmuck
+set-square-berrylium
   rotate: false
   xy: 452, 73
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+set-square-blueberrylium
+  rotate: false
+  xy: 502, 73
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+set-square-buttergold
+  rotate: false
+  xy: 552, 72
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+set-square-plain
+  rotate: false
+  xy: 602, 71
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+set-square-sugarmuck
+  rotate: false
+  xy: 652, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -3054,126 +3061,126 @@ temple-building
   index: -1
 watering-pot-berrylium
   rotate: false
-  xy: 502, 73
+  xy: 702, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-blueberrylium
   rotate: false
-  xy: 552, 72
+  xy: 752, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-buttergold
   rotate: false
-  xy: 602, 71
+  xy: 802, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-chalcedhoney
   rotate: false
-  xy: 652, 71
+  xy: 852, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-cherrysilver
   rotate: false
-  xy: 702, 71
+  xy: 902, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-hazelrald
   rotate: false
-  xy: 752, 71
+  xy: 952, 71
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-jetmint
   rotate: false
-  xy: 802, 71
+  xy: 2, 68
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-plain
   rotate: false
-  xy: 852, 71
+  xy: 52, 68
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 watering-pot-sugarmuck
   rotate: false
-  xy: 902, 71
+  xy: 102, 53
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-berrylium
   rotate: false
-  xy: 952, 71
+  xy: 152, 46
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-blueberrylium
   rotate: false
-  xy: 2, 68
+  xy: 202, 46
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-buttergold
   rotate: false
-  xy: 52, 68
+  xy: 252, 32
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-chalcedhoney
   rotate: false
-  xy: 102, 53
+  xy: 302, 26
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-cherrysilver
   rotate: false
-  xy: 152, 46
+  xy: 352, 25
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-hazelrald
   rotate: false
-  xy: 202, 46
+  xy: 402, 23
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-jetmint
   rotate: false
-  xy: 252, 32
+  xy: 452, 23
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-plain
   rotate: false
-  xy: 302, 26
+  xy: 502, 23
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 wizard-hat-sugarmuck
   rotate: false
-  xy: 352, 25
+  xy: 552, 22
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
@@ -3191,23 +3198,44 @@ cookies
   orig: 512, 512
   offset: 0, 0
   index: 1
-fractal-engine-icon-disabled
+farm
   rotate: false
   xy: 948, 926
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-grandma-face-detailed
+farm-disabled
   rotate: false
   xy: 948, 860
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-grandma-face-detailed-disabled
+fractal-engine-icon
   rotate: false
   xy: 948, 666
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fractal-engine-icon-disabled
+  rotate: false
+  xy: 948, 600
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+grandma-face-detailed
+  rotate: false
+  xy: 948, 534
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+grandma-face-detailed-disabled
+  rotate: false
+  xy: 948, 468
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3221,14 +3249,14 @@ grassland
   index: -1
 hand-tilted
   rotate: false
-  xy: 948, 600
+  xy: 948, 402
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 hand-tilted-disabled
   rotate: false
-  xy: 948, 534
+  xy: 948, 336
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3403,14 +3431,14 @@ metal-bars
   index: -1
 mine
   rotate: false
-  xy: 948, 468
+  xy: 434, 412
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 mine-disabled
   rotate: false
-  xy: 948, 402
+  xy: 434, 346
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3431,42 +3459,42 @@ night-forest
   index: -1
 portal
   rotate: false
-  xy: 948, 336
+  xy: 434, 276
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 portal-disabled
   rotate: false
-  xy: 434, 412
+  xy: 434, 210
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 prism-icon
   rotate: false
-  xy: 434, 346
+  xy: 434, 144
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 prism-icon-disabled
   rotate: false
-  xy: 434, 276
+  xy: 932, 270
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 shipment
   rotate: false
-  xy: 434, 210
+  xy: 932, 204
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 shipment-disabled
   rotate: false
-  xy: 434, 144
+  xy: 434, 78
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3480,28 +3508,28 @@ stone-columns
   index: -1
 temple
   rotate: false
-  xy: 932, 270
+  xy: 932, 138
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 temple-disabled
   rotate: false
-  xy: 932, 204
+  xy: 932, 72
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 time-machine-icon
   rotate: false
-  xy: 434, 78
+  xy: 2, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 time-machine-icon-disabled
   rotate: false
-  xy: 932, 138
+  xy: 68, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -3515,14 +3543,14 @@ watches
   index: -1
 wizard-tower
   rotate: false
-  xy: 932, 72
+  xy: 134, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 wizard-tower-disabled
   rotate: false
-  xy: 2, 2
+  xy: 200, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

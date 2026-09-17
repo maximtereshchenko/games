@@ -3498,6 +3498,26 @@
     "EVERY_BUILDING_TIER_5": {
       "type": "com.github.maximtereshchenko.games.cookies.domain.EveryBuildingCountUnlockRequirement",
       "count": 300
+    },
+    "GOLDEN_COOKIE_TIER_0": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeGoldenCookiesUnlockRequirement",
+      "count": 1
+    },
+    "GOLDEN_COOKIE_TIER_1": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeGoldenCookiesUnlockRequirement",
+      "count": 7
+    },
+    "GOLDEN_COOKIE_TIER_2": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeGoldenCookiesUnlockRequirement",
+      "count": 27
+    },
+    "GOLDEN_COOKIE_TIER_3": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeGoldenCookiesUnlockRequirement",
+      "count": 77
+    },
+    "GOLDEN_COOKIE_TIER_4": {
+      "type": "com.github.maximtereshchenko.games.cookies.domain.CumulativeGoldenCookiesUnlockRequirement",
+      "count": 777
     }
   },
   "milkPercentPerUnlockedAchievement": 0.04,
