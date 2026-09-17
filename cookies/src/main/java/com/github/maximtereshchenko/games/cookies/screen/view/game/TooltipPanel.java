@@ -19,7 +19,8 @@ public abstract class TooltipPanel extends Table {
     ) {
         pad(8, 16, 8, 16);
         add(icon(assetManager, assets))
-            .width(Value.prefWidth);
+            .width(Value.prefWidth)
+            .padRight(6);
         add(header(assetManager, assets))
             .growX()
             .row();

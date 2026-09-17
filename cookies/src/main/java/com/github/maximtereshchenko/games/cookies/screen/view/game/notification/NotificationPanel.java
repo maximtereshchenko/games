@@ -19,6 +19,7 @@ final class NotificationPanel extends Table {
         BakeryService bakeryService,
         Achievement achievement
     ) {
+        pad(8);
         add(
             new AchievementIcon(
                 assetManager,

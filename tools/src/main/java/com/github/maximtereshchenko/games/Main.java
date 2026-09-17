@@ -307,11 +307,6 @@ final class Main {
                         }
                         pixmaps[i] = textureData.consumePixmap();
                     }
-                    var info = new BitmapFontWriter.FontInfo();
-                    info.overrideMetrics(font.getData());
-                    info.face = fontFile.nameWithoutExtension();
-                    info.size = freeTypeFontParameter.size;
-                    info.descent = 0;
                     BitmapFontWriter.writeFont(
                         font.getData(),
                         pixmaps,
@@ -321,7 +316,7 @@ final class Main {
                                 fontFile.nameWithoutExtension()
                             )
                         ),
-                        info
+                        null
                     );
                     Gdx.app.exit();
                 }

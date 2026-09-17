@@ -2,39 +2,48 @@
   "com.badlogic.gdx.graphics.g2d.BitmapFont": {
     "merriweather-10": {
       "file": "merriweather.fnt",
-      "scaledSize": 10
+      "scaledSize": 10,
+      "useIntegerPositions": false
     },
     "merriweather-16": {
       "file": "merriweather.fnt",
-      "scaledSize": 16
+      "scaledSize": 16,
+      "useIntegerPositions": false
     },
     "merriweather-15": {
       "file": "merriweather.fnt",
-      "scaledSize": 15
+      "scaledSize": 15,
+      "useIntegerPositions": false
     },
     "merriweather-30": {
       "file": "merriweather.fnt",
-      "scaledSize": 30
+      "scaledSize": 30,
+      "useIntegerPositions": false
     },
     "tahoma-8": {
       "file": "tahoma.fnt",
-      "scaledSize": 8
+      "scaledSize": 8,
+      "useIntegerPositions": false
     },
     "tahoma-10": {
       "file": "tahoma.fnt",
-      "scaledSize": 10
+      "scaledSize": 10,
+      "useIntegerPositions": false
     },
     "tahoma-11": {
       "file": "tahoma.fnt",
-      "scaledSize": 11
+      "scaledSize": 11,
+      "useIntegerPositions": false
     },
     "georgia-9": {
       "file": "georgia.fnt",
-      "scaledSize": 9
+      "scaledSize": 9,
+      "useIntegerPositions": false
     },
     "georgia-12": {
       "file": "georgia.fnt",
-      "scaledSize": 12
+      "scaledSize": 12,
+      "useIntegerPositions": false
     }
   },
   "com.badlogic.gdx.graphics.Color": {
