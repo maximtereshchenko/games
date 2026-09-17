@@ -20,6 +20,7 @@ public final class AchievementNameLabel extends Label {
             skin,
             "achievement-name"
         );
+        setWrap(true);
         addAction(
             new UnlockAchievementAction(
                 bakeryService,

@@ -24,7 +24,7 @@ public abstract class TooltipPanel extends Table {
             .ifPresent(
                 description -> add(description)
                     .colspan(2)
-                    .left()
+                    .growX()
                     .padBottom(8)
                     .row()
             );
@@ -90,12 +90,11 @@ public abstract class TooltipPanel extends Table {
     ) {
         var table = new Table();
         table.add(name(skin, bundle))
-            .left();
-        table.add().growX();
+            .growX();
         table.add(value(skin).orElse(null))
             .row();
         table.add(badgeLine(skin, bundle))
-            .colspan(3)
+            .colspan(2)
             .left();
         return table;
     }

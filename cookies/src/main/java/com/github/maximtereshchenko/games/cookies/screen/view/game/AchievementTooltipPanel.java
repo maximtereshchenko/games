@@ -104,5 +104,4 @@ public final class AchievementTooltipPanel extends TooltipPanel {
     ) {
         return Optional.empty();
     }
-
 }
