@@ -6,4 +6,7 @@ sealed interface AchievementUnlockRequirement extends UnlockRequirement
     CumulativeManuallyBakedUnlockRequirement,
     BuildingCountUnlockRequirement,
     TotalBuildingCountUnlockRequirement,
-    TotalUpgradeCountUnlockRequirement {}
+    TotalUpgradeCountUnlockRequirement,
+    EveryBuildingCountUnlockRequirement,
+    MathematicianUnlockRequirement,
+    Base10UnlockRequirement {}

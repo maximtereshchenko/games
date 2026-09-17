@@ -8,6 +8,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BinaryOperator;
+import java.util.function.IntUnaryOperator;
 import java.util.stream.Stream;
 
 public final class BakeryService {
@@ -539,7 +540,38 @@ public final class BakeryService {
             case TotalUpgradeCountUnlockRequirement requirement -> isRequirementSatisfied(
                 requirement
             );
+            case EveryBuildingCountUnlockRequirement requirement -> isRequirementSatisfied(
+                requirement
+            );
+            case MathematicianUnlockRequirement _ -> isUnlockRequirementSatisfied(
+                1,
+                count -> Math.min(128, count * 2)
+            );
+            case Base10UnlockRequirement _ -> isUnlockRequirementSatisfied(
+                10,
+                count -> count + 10
+            );
         };
+    }
+
+    private boolean isUnlockRequirementSatisfied(int start, IntUnaryOperator operator) {
+        var count = start;
+        var buildings = Building.values();
+        for (var i = buildings.length - 1; i >= 0; i--) {
+            if (count(buildings[i]) < count) {
+                return false;
+            }
+            count = operator.applyAsInt(count);
+        }
+        return true;
+    }
+
+    private boolean isRequirementSatisfied(
+        EveryBuildingCountUnlockRequirement requirement
+    ) {
+        return Stream.of(Building.values())
+            .map(this::count)
+            .allMatch(count -> count >= requirement.count());
     }
 
     private boolean isRequirementSatisfied(

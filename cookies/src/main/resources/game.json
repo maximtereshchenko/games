@@ -2109,6 +2109,38 @@
     "TOTAL_UPGRADE_COUNT_TIER_3": {
       "unlocked": "flask-buttergold",
       "locked": "question-mark"
+    },
+    "EVERY_BUILDING_TIER_0": {
+      "unlocked": "monk",
+      "locked": "question-mark"
+    },
+    "MATHEMATICIAN": {
+      "unlocked": "set-square",
+      "locked": "question-mark"
+    },
+    "BASE_10": {
+      "unlocked": "set-square",
+      "locked": "question-mark"
+    },
+    "EVERY_BUILDING_TIER_1": {
+      "unlocked": "set-square-plain",
+      "locked": "question-mark"
+    },
+    "EVERY_BUILDING_TIER_2": {
+      "unlocked": "set-square-berrylium",
+      "locked": "question-mark"
+    },
+    "EVERY_BUILDING_TIER_3": {
+      "unlocked": "set-square-blueberrylium",
+      "locked": "question-mark"
+    },
+    "EVERY_BUILDING_TIER_4": {
+      "unlocked": "set-square-buttergold",
+      "locked": "question-mark"
+    },
+    "EVERY_BUILDING_TIER_5": {
+      "unlocked": "set-square-sugarmuck",
+      "locked": "question-mark"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.HoverableAchievementIcon$Style": {
