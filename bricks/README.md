@@ -74,13 +74,13 @@ Requires Java 25 and Maven.
 ### Package project
 
 ```shell
-mvn clean install
+./mvnw clean install
 ```
 
 ### Build classpath
 
 ```shell
-mvn -pl bricks dependency:build-classpath -Dmdep.outputFile=./classpath.txt
+./mvnw -pl bricks dependency:build-classpath -Dmdep.outputFile=./classpath.txt
 ```
 
 ### Run application

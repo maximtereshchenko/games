@@ -21,8 +21,10 @@ in Java.
 
 ## Architecture
 
-- **Custom archetype ECS** (`com.github.maximtereshchenko.games.ecs`) — entities are bags of components
-  grouped into archetype tables; systems query by component mask and update the registry each frame /
+- **Custom archetype ECS** (`com.github.maximtereshchenko.games.ecs`) — entities are bags of
+  components
+  grouped into archetype tables; systems query by component mask and update the registry each
+  frame /
   turn.
 - **One session core for all modes** — movement, collisions, food, warping, growth, air supply, UI
   sync, and rendering are shared systems. Modes differ mainly by which components and policies are
@@ -69,13 +71,13 @@ Requires Java 25 and Maven.
 ### Package project
 
 ```shell
-mvn clean install
+./mvnw clean install
 ```
 
 ### Build classpath
 
 ```shell
-mvn -pl snakes dependency:build-classpath -Dmdep.outputFile=./classpath.txt
+./mvnw -pl snakes dependency:build-classpath -Dmdep.outputFile=./classpath.txt
 ```
 
 ### Run application
