@@ -12,7 +12,8 @@ final class NavigationPanel extends Table {
     NavigationPanel(
         AssetManager assetManager,
         Assets assets,
-        EventListener statisticsEventListener
+        EventListener statisticsEventListener,
+        EventListener optionsEventListener
     ) {
         var skin = assetManager.get(assets.game().skin());
         var bundle = assetManager.get(assets.game().bundle());
@@ -22,14 +23,14 @@ final class NavigationPanel extends Table {
             "left-bottom"
         );
         statisticsButton.addListener(statisticsEventListener);
+        var optionsButton = new TextButton(
+            bundle.get("navigation.options"),
+            skin,
+            "right-bottom"
+        );
+        optionsButton.addListener(optionsEventListener);
         add(statisticsButton);
         add().growX();
-        add(
-            new TextButton(
-                bundle.get("navigation.legacy"),
-                skin,
-                "right-bottom"
-            )
-        );
+        add(optionsButton);
     }
 }

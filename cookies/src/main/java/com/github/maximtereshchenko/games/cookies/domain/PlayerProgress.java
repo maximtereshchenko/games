@@ -23,6 +23,7 @@ public final class PlayerProgress {
     private static final String CUMULATIVE_MANUALLY_BAKED_KEY = "cumulative-manually-baked";
     private static final String CUMULATIVE_CLICKS_KEY = "cumulative-clicks";
     private static final String CUMULATIVE_GOLDEN_COOKIES_KEY = "cumulative-golden-cookies";
+    private static final String VOLUME_KEY = "volume";
 
     final Map<Building, Integer> buildingCounts;
     final Set<Upgrade> unlockedUpgrades;
@@ -37,6 +38,7 @@ public final class PlayerProgress {
     BigDecimal cumulativeManuallyBaked;
     long cumulativeClicks;
     int cumulativeGoldenCookies;
+    float volume;
 
     public PlayerProgress(Preferences preferences, Clock clock) {
         this.preferences = preferences;
@@ -66,6 +68,10 @@ public final class PlayerProgress {
         this.cumulativeGoldenCookies = preferences.getInteger(
             CUMULATIVE_CLICKS_KEY
         );
+        this.volume = preferences.getFloat(
+            VOLUME_KEY,
+            0.75f
+        );
         readBuildingCounts();
         read(
             Upgrade.values(),
@@ -84,7 +90,7 @@ public final class PlayerProgress {
         );
     }
 
-    public void flush() {
+    void flush() {
         lastFlushTimestamp = Instant.now(clock);
         preferences.clear();
         for (var building : Building.values()) {
@@ -123,6 +129,10 @@ public final class PlayerProgress {
         preferences.putInteger(
             CUMULATIVE_GOLDEN_COOKIES_KEY,
             cumulativeGoldenCookies
+        );
+        preferences.putFloat(
+            VOLUME_KEY,
+            volume
         );
         preferences.flush();
     }

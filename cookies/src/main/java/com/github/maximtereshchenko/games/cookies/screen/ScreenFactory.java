@@ -60,17 +60,16 @@ public final class ScreenFactory {
     Screen bakeryScreen() {
         var gameAssets = assets.game();
         var clock = Clock.systemDefaultZone();
-        var playerProgress = new PlayerProgress(
-            assetManager.get(
-                gameAssets.preferences()
-            ),
-            clock
-        );
         var bakeryService = new BakeryService(
             assetManager.get(
                 gameAssets.configuration()
             ),
-            playerProgress,
+            new PlayerProgress(
+                assetManager.get(
+                    gameAssets.preferences()
+                ),
+                clock
+            ),
             clock,
             random
         );
@@ -85,8 +84,7 @@ public final class ScreenFactory {
                     clock
                 )
             ),
-            bakeryService,
-            playerProgress
+            bakeryService
         );
     }
 

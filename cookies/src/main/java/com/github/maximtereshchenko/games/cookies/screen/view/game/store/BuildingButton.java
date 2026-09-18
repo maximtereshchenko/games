@@ -84,7 +84,7 @@ final class BuildingButton extends Button {
                                 random.nextInt(buildingSounds.size())
                             )
                         )
-                        .play();
+                        .play(bakeryService.volume());
                 }
             }
         );

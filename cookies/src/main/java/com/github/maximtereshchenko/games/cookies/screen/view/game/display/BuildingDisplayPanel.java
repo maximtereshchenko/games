@@ -3,7 +3,6 @@ package com.github.maximtereshchenko.games.cookies.screen.view.game.display;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.Building;
 import com.github.maximtereshchenko.games.cookies.screen.Assets;

@@ -15,10 +15,7 @@ public final class PopUpFrame extends Stack {
         for (var drawable : style.drawables) {
             add(new Image(drawable));
         }
-        add(
-            new Container<>(table)
-                .fill()
-        );
+        add(new Container<>(table).fill());
     }
 
     private static final class Style {

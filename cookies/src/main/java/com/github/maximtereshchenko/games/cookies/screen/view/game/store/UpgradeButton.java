@@ -63,7 +63,7 @@ final class UpgradeButton extends ColoredButton {
                                 random.nextInt(buildingSounds.size())
                             )
                         )
-                        .play();
+                        .play(bakeryService.volume());
                 }
             }
         );

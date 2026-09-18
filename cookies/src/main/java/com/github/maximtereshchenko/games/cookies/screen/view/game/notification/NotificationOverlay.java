@@ -25,7 +25,11 @@ public final class NotificationOverlay extends Table {
         bottom();
         padBottom(12);
         defaults().pad(2);
-        var closeButtonPopUpFrame = closeButtonPopUpFrame(assetManager, assets);
+        var closeButtonPopUpFrame = closeButtonPopUpFrame(
+            assetManager,
+            assets,
+            bakeryService
+        );
         for (var achievement : Achievement.values()) {
             if (!bakeryService.isUnlocked(achievement)) {
                 addAction(
@@ -82,11 +86,19 @@ public final class NotificationOverlay extends Table {
         return popUpFrame;
     }
 
-    private PopUpFrame closeButtonPopUpFrame(AssetManager assetManager, Assets assets) {
+    private PopUpFrame closeButtonPopUpFrame(
+        AssetManager assetManager,
+        Assets assets,
+        BakeryService bakeryService
+    ) {
         var closeButtonPopUpFrame = new PopUpFrame(
             assetManager,
             assets,
-            new CloseButton(assetManager, assets)
+            new CloseButton(
+                assetManager,
+                assets,
+                bakeryService
+            )
         );
         closeButtonPopUpFrame.addListener(
             new ChangeListener() {

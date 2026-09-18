@@ -315,7 +315,7 @@
       "font": "tahoma-10",
       "fontColor": "white-transparent-60"
     },
-    "statistics-title": {
+    "togglable-panel-title": {
       "font": "merriweather-15",
       "fontColor": "white"
     },
@@ -371,6 +371,14 @@
     "buff-description-tooltip": {
       "font": "tahoma-10",
       "fontColor": "grey"
+    },
+    "options-description": {
+      "font": "tahoma-8",
+      "fontColor": "white-transparent-50"
+    },
+    "volume": {
+      "font": "merriweather-10",
+      "fontColor": "white"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
@@ -395,6 +403,19 @@
       "font": "merriweather-10",
       "fontColor": "white",
       "up": "empty-black-transparent-0"
+    },
+    "save": {
+      "font": "merriweather-10",
+      "fontColor": "white",
+      "up": "borders",
+      "over": "borders-bright",
+      "down": "borders-dark"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
+    "default-horizontal": {
+      "background": "empty-circle-white-transparent-50",
+      "knob": "empty-circle"
     }
   },
   "com.github.maximtereshchenko.games.cookies.screen.view.game.store.TransactionConfigurationPanel$Style": {
@@ -1378,11 +1399,15 @@
       "rows": 1
     }
   },
-  "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.StatisticsPanel$Style": {
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.TogglablePanel$Style": {
     "default": {
       "bottomBackground": "noise-tiled",
       "topBackground": "gradient-borders",
-      "titleSeparator": "gradient-line-left-right",
+      "titleSeparator": "gradient-line-left-right"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.statistics.StatisticsPanel$Style": {
+    "default": {
       "subTitleSeparator": "gradient-line-right"
     }
   },
@@ -2239,6 +2264,11 @@
     "default": {
       "left": "feather-left",
       "right": "feather-right"
+    }
+  },
+  "com.github.maximtereshchenko.games.cookies.screen.view.game.options.VolumeWidget$Style": {
+    "default": {
+      "background": "borders"
     }
   }
 }

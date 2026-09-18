@@ -40,7 +40,13 @@ final class NotificationPanel extends Table {
             )
         )
             .growX();
-        add(new CloseButton(assetManager, assets))
+        add(
+            new CloseButton(
+                assetManager,
+                assets,
+                bakeryService
+            )
+        )
             .top()
             .right();
     }

@@ -65,7 +65,7 @@ final class GoldenCookieButton extends Button {
                     assetManager.get(
                             gameAssets.goldenCookieConsumeSound()
                         )
-                        .play();
+                        .play(bakeryService.volume());
                 }
             }
         );
@@ -85,7 +85,7 @@ final class GoldenCookieButton extends Button {
                     assets.game()
                         .goldenCookieSpawnSound()
                 )
-                .play();
+                .play(bakeryService.volume());
         }
         setVisible(isVisible);
         transform(interval);

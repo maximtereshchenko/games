@@ -115,7 +115,7 @@ final class CookieButton extends Button {
                             random.nextInt(cookieSounds.size())
                         )
                     )
-                    .play();
+                    .play(bakeryService.volume());
             }
 
             private void scale(float scale) {

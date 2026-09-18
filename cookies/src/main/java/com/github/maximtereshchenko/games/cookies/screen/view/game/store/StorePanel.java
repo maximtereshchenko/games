@@ -44,6 +44,7 @@ public final class StorePanel extends Table {
         var transactionPanel = new TransactionConfigurationPanel(
             assetManager,
             assets,
+            bakeryService,
             transaction
         );
         upgradesBeam.addListener(upgradePanel);

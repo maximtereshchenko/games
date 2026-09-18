@@ -38,7 +38,14 @@ final class NavigablePanel extends Table {
 
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
-                        mainPanel.toggle();
+                        mainPanel.toggleStatistics();
+                    }
+                },
+                new ChangeListener() {
+
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        mainPanel.toggleOptions();
                     }
                 }
             )

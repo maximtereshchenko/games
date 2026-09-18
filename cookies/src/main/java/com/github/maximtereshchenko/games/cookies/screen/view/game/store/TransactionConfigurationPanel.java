@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
+import com.github.maximtereshchenko.games.cookies.domain.BakeryService;
 import com.github.maximtereshchenko.games.cookies.domain.TransactionMode;
 import com.github.maximtereshchenko.games.cookies.screen.Assets;
 
@@ -14,20 +15,49 @@ final class TransactionConfigurationPanel extends Table {
     TransactionConfigurationPanel(
         AssetManager assetManager,
         Assets assets,
+        BakeryService bakeryService,
         Transaction transaction
     ) {
-        background(assetManager.get(assets.game().skin()).get(Style.class).background);
-        var allCheckbox = new AllCheckbox(assetManager, assets);
-        var oneCheckbox = new TransactionAmountNumberCheckbox(assetManager, assets, 1);
-        var tenCheckbox = new TransactionAmountNumberCheckbox(assetManager, assets, 10);
-        var hundredCheckbox = new TransactionAmountNumberCheckbox(assetManager, assets, 100);
+        background(
+            assetManager.get(assets.game().skin())
+                .get(Style.class)
+                .background
+        );
+        var allCheckbox = new AllCheckbox(
+            assetManager,
+            assets,
+            bakeryService
+        );
+        var oneCheckbox = new TransactionAmountNumberCheckbox(
+            assetManager,
+            assets,
+            bakeryService,
+            1
+        );
+        var tenCheckbox = new TransactionAmountNumberCheckbox(
+            assetManager,
+            assets,
+            bakeryService,
+            10
+        );
+        var hundredCheckbox = new TransactionAmountNumberCheckbox(
+            assetManager,
+            assets,
+            bakeryService,
+            100
+        );
         var buyCheckbox = new BuyCheckbox(
             assetManager,
             assets,
+            bakeryService,
             allCheckbox,
             hundredCheckbox
         );
-        var sellCheckbox = new SellCheckbox(assetManager, assets);
+        var sellCheckbox = new SellCheckbox(
+            assetManager,
+            assets,
+            bakeryService
+        );
         var transactionModeRadioGroup = new RadioGroup<>(
             buyCheckbox,
             sellCheckbox

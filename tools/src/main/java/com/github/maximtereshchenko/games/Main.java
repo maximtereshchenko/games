@@ -57,17 +57,21 @@ final class Main {
                 args[1],
                 args[2]
             );
-            case "brighten" -> brighten(
+            case "multiplyColor" -> multiplyColor(
                 args[1],
                 Float.parseFloat(args[2]),
-                args[3]
+                Integer.parseInt(args[3]),
+                Integer.parseInt(args[4]),
+                args[5]
             );
         }
     }
 
-    private static void brighten(
+    private static void multiplyColor(
         String inputPath,
         float factor,
+        int startX,
+        int startY,
         String outputPath
     ) {
         var sourcePixmap = new Pixmap(new FileHandle(inputPath));
@@ -78,17 +82,21 @@ final class Main {
         for (var x = 0; x < width; x++) {
             for (var y = 0; y < height; y++) {
                 var pixel = sourcePixmap.getPixel(x, y);
-                var r = (pixel >>> 24) & 0xFF;
-                var g = (pixel >>> 16) & 0xFF;
-                var b = (pixel >>> 8) & 0xFF;
-                var a = pixel & 0xFF;
+                if (x < startX || y < startY) {
+                    resultPixmap.drawPixel(x, y, pixel);
+                } else {
+                    var r = (pixel >>> 24) & 0xFF;
+                    var g = (pixel >>> 16) & 0xFF;
+                    var b = (pixel >>> 8) & 0xFF;
+                    var a = pixel & 0xFF;
 
-                r = Math.min(255, (int) (r * factor));
-                g = Math.min(255, (int) (g * factor));
-                b = Math.min(255, (int) (b * factor));
+                    r = Math.min(255, (int) (r * factor));
+                    g = Math.min(255, (int) (g * factor));
+                    b = Math.min(255, (int) (b * factor));
 
-                var brightenedPixel = (r << 24) | (g << 16) | (b << 8) | a;
-                resultPixmap.drawPixel(x, y, brightenedPixel);
+                    var brightenedPixel = (r << 24) | (g << 16) | (b << 8) | a;
+                    resultPixmap.drawPixel(x, y, brightenedPixel);
+                }
             }
         }
         PixmapIO.writePNG(new FileHandle(outputPath), resultPixmap);

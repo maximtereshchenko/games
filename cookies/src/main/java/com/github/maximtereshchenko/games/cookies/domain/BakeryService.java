@@ -350,6 +350,18 @@ public final class BakeryService {
         return goldenCookie.interval();
     }
 
+    public void flush() {
+        playerProgress.flush();
+    }
+
+    public float volume() {
+        return playerProgress.volume;
+    }
+
+    public void updateVolume(float volume) {
+        playerProgress.volume = volume;
+    }
+
     private BigDecimal buffedBakingRate(BigDecimal base) {
         var bakingRate = base;
         for (var buff : Buff.values()) {
